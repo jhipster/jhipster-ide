@@ -3,7 +3,7 @@ grammar io.github.jhipster.jdl.dsl.JDL with org.eclipse.xtext.common.Terminals
 generate jdl "http://www.github.io/jhipster/jdl/dsl/JDL"
 
 DomainModel:
-	entities+=Entity* | relationships+=Relationship*;
+	entities+=Entity* | relationships+=Relationships*;
 
 /* =========================================================================
  * ENTITY
@@ -11,44 +11,77 @@ DomainModel:
 Entity:
 	"entity" name=ID "{"
 		fields+=Field*
-	"{";
+	"}";
 
 Field:
-	name=ID type=Type validations=Validation;
+	name=ID type=Type Validators=Validator;
 
 enum Type:
 	String | Integer | Long | BigDecimal | Float | Double | Enum | Boolean | LocalDate | Date | ZonedDateTime | UUID |
 	Blob | AnyBlob | ImageBlob;
 
-Validation:
+Validator:
 	name=ID type=Type;
 	
 /* =========================================================================
  * RELATIONSHIP
  * ========================================================================= */
+Relationships:
+	"relationship" cardinality=Cardinality "{"
+		relationships+=Relationship*
+	"}";
+
 Relationship:
-	"relationship" name=ID;
+	fromEntity=Entity fromName=RelationshipName?  "to" toEntity=Entity toName=RelationshipName?;
+	
+RelationshipName:
+	"{" name=ID "}";
+	
+enum Cardinality:
+	OneToMany | ManyToOne| OneToOne | ManyToMany;
 
 /* =========================================================================
  * ENUM
  * ========================================================================= */
 Enum:
-	"enum" name=ID;
+	"enum" name=ID "{"
+		values+=ID ("," values+=ID)*
+	"}";
+
+/* =========================================================================
+ * GENERATION OPTION
+ * ========================================================================= */
+GenerationOption: ServiceGenerationOption | DTOGenerationOption | PaginateGenerationOption | AngularSuffixGenerationOption;
 
 /* =========================================================================
  * SERVICE
  * ========================================================================= */
-Service:
-	"service" name=ID;
+ServiceGenerationOption:
+	"service" entities+=ID ("," entities+=ID)* "with" serviceType=ServiceType;
 
+enum ServiceType:
+	serviceClass | serviceImpl;
+	
 /* =========================================================================
  * DTO
  * ========================================================================= */
-DTO:
-	"dto" name=ID;
+DTOGenerationOption:
+	"dto" entities+=ID ("," entities+=ID)* "with" dtoType=DTOType;
+
+enum DTOType:
+	mapstruct;
 
 /* =========================================================================
- * PAGINATION
+ * PAGINATE
  * ========================================================================= */
-Paginate:
-	"paginate" name=ID;
+PaginateGenerationOption:
+	"paginate" entities+=ID ("," entities+=ID)* "with" paginateType=PaginateType;
+
+enum PaginateType:
+	pagination | infiniteScroll;
+	
+/* =========================================================================
+ * ANGULAR SUFFIX
+ * ========================================================================= */
+AngularSuffixGenerationOption:
+	"angularSuffix" entities+=ID ("," entities+=ID)* "with" id=ID;
