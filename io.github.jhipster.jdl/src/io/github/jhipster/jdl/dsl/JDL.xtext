@@ -1,0 +1,54 @@
+grammar io.github.jhipster.jdl.dsl.JDL with org.eclipse.xtext.common.Terminals
+
+generate jdl "http://www.github.io/jhipster/jdl/dsl/JDL"
+
+DomainModel:
+	entities+=Entity* | relationships+=Relationship*;
+
+/* =========================================================================
+ * ENTITY
+ * ========================================================================= */
+Entity:
+	"entity" name=ID "{"
+		fields+=Field*
+	"{";
+
+Field:
+	name=ID type=Type validations=Validation;
+
+enum Type:
+	String | Integer | Long | BigDecimal | Float | Double | Enum | Boolean | LocalDate | Date | ZonedDateTime | UUID |
+	Blob | AnyBlob | ImageBlob;
+
+Validation:
+	name=ID type=Type;
+	
+/* =========================================================================
+ * RELATIONSHIP
+ * ========================================================================= */
+Relationship:
+	"relationship" name=ID;
+
+/* =========================================================================
+ * ENUM
+ * ========================================================================= */
+Enum:
+	"enum" name=ID;
+
+/* =========================================================================
+ * SERVICE
+ * ========================================================================= */
+Service:
+	"service" name=ID;
+
+/* =========================================================================
+ * DTO
+ * ========================================================================= */
+DTO:
+	"dto" name=ID;
+
+/* =========================================================================
+ * PAGINATION
+ * ========================================================================= */
+Paginate:
+	"paginate" name=ID;
