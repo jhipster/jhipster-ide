@@ -53,35 +53,23 @@ Enum:
  * ========================================================================= */
 GenerationOption: ServiceGenerationOption | DTOGenerationOption | PaginateGenerationOption | AngularSuffixGenerationOption;
 
-/* =========================================================================
- * SERVICE
- * ========================================================================= */
 ServiceGenerationOption:
 	"service" entities+=ID ("," entities+=ID)* "with" serviceType=ServiceType;
 
 enum ServiceType:
 	serviceClass | serviceImpl;
 	
-/* =========================================================================
- * DTO
- * ========================================================================= */
 DTOGenerationOption:
 	"dto" entities+=ID ("," entities+=ID)* "with" dtoType=DTOType;
 
 enum DTOType:
 	mapstruct;
 
-/* =========================================================================
- * PAGINATE
- * ========================================================================= */
 PaginateGenerationOption:
 	"paginate" entities+=ID ("," entities+=ID)* "with" paginateType=PaginateType;
 
 enum PaginateType:
 	pagination | infiniteScroll;
-	
-/* =========================================================================
- * ANGULAR SUFFIX
- * ========================================================================= */
+
 AngularSuffixGenerationOption:
 	"angularSuffix" entities+=ID ("," entities+=ID)* "with" id=ID;
