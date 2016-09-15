@@ -3,17 +3,21 @@ grammar io.github.jhipster.jdl.dsl.JDL with org.eclipse.xtext.common.Terminals
 generate jdl "http://www.github.io/jhipster/jdl/dsl/JDL"
 
 DomainModel:
-	entities+=Entity* | relationships+=Relationships*;
+	elements+=Elements*;
+
+Elements:
+	Entity | Relationships | GenerationSetting
+;
 
 /* =========================================================================
  * ENTITY
  * ========================================================================= */
 Entity:
 	"entity" name=ID "{"
-		fields+=Fields*
+		fields+=Field ("," fields+=Field)*
 	"}";
 
-Fields:
+Field:
 	StringField | IntegerField;
 
 StringField:
@@ -73,27 +77,29 @@ Enum:
 	"}";
 
 /* =========================================================================
- * GENERATION OPTION
+ * GENERATION SETTING
  * ========================================================================= */
-GenerationOption: ServiceGenerationOption | DTOGenerationOption | PaginateGenerationOption | AngularSuffixGenerationOption;
+GenerationSetting: 
+	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting
+;
 
-ServiceGenerationOption:
+ServiceGenerationSetting:
 	"service" entities+=ID ("," entities+=ID)* "with" serviceType=ServiceType;
 
 enum ServiceType:
 	serviceClass | serviceImpl;
 	
-DTOGenerationOption:
+DTOGenerationSetting:
 	"dto" entities+=ID ("," entities+=ID)* "with" dtoType=DTOType;
 
 enum DTOType:
 	mapstruct;
 
-PaginateGenerationOption:
+PaginateGenerationSetting:
 	"paginate" entities+=ID ("," entities+=ID)* "with" paginateType=PaginateType;
 
 enum PaginateType:
 	pagination | infiniteScroll;
 
-AngularSuffixGenerationOption:
+AngularSuffixGenerationSetting:
 	"angularSuffix" entities+=ID ("," entities+=ID)* "with" id=ID;
