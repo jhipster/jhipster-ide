@@ -10,18 +10,42 @@ DomainModel:
  * ========================================================================= */
 Entity:
 	"entity" name=ID "{"
-		fields+=Field*
+		fields+=Fields*
 	"}";
 
-Field:
-	name=ID type=Type Validators=Validator;
+Fields:
+	StringField | IntegerField;
 
-enum Type:
-	String | Integer | Long | BigDecimal | Float | Double | Enum | Boolean | LocalDate | Date | ZonedDateTime | UUID |
-	Blob | AnyBlob | ImageBlob;
+StringField:
+	name=ID "String" validators?=StringValidators;
 
-Validator:
-	name=ID type=Type;
+IntegerField:
+	name=ID "Integer" validators?=IntegerValidators;
+
+RequiredValidator:
+	"required";
+	
+MinLengthValidator:
+	"minlength("value=INT")";
+	
+MaxLengthValidator:
+	"maxlength("value=INT")";
+	
+PatternValidator:
+	"pattern("value=STRING")";
+
+MinValidator:
+	"min("value=INT")";
+
+MaxValidator:
+	"max("value=INT")";
+		
+StringValidators:
+	(required?=RequiredValidator) (minLength?=MinLengthValidator) (maxlength?=MaxLengthValidator) (pattern?=PatternValidator)
+;
+
+IntegerValidators:
+	(required?=RequiredValidator) (minLength?=MinValidator) (maxlength?=MaxValidator);
 	
 /* =========================================================================
  * RELATIONSHIP
