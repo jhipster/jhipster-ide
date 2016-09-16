@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalJDLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'mapstruct'", "'OneToMany'", "'ManyToOne'", "'OneToOne'", "'ManyToMany'", "'serviceClass'", "'serviceImpl'", "'pagination'", "'infiniteScroll'", "'entity'", "'{'", "'}'", "','", "'String'", "'Integer'", "'Long'", "'BigDecimal'", "'Float'", "'Double'", "'Boolean'", "'LocalDate'", "'ZonedDateTime'", "'Blob'", "'AnyBlob'", "'ImageBlob'", "'minlength'", "'('", "')'", "'maxlength'", "'pattern'", "'min'", "'max'", "'minbytes'", "'maxbytes'", "'relationship'", "'to'", "'service'", "'with'", "'dto'", "'paginate'", "'angularSuffix'", "'required'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'mapstruct'", "'OneToMany'", "'ManyToOne'", "'OneToOne'", "'ManyToMany'", "'serviceClass'", "'serviceImpl'", "'pagination'", "'infiniteScroll'", "'entity'", "'{'", "'}'", "','", "'String'", "'Integer'", "'Long'", "'BigDecimal'", "'Float'", "'Double'", "'Boolean'", "'LocalDate'", "'ZonedDateTime'", "'Blob'", "'AnyBlob'", "'ImageBlob'", "'minlength'", "'('", "')'", "'maxlength'", "'pattern'", "'min'", "'max'", "'minbytes'", "'maxbytes'", "'relationship'", "'to'", "'enum'", "'service'", "'with'", "'dto'", "'paginate'", "'angularSuffix'", "'required'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -36,6 +36,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     public static final int T__14=14;
     public static final int T__51=51;
     public static final int T__52=52;
+    public static final int T__53=53;
     public static final int RULE_ID=4;
     public static final int T__26=26;
     public static final int T__27=27;
@@ -160,7 +161,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==20||LA1_0==45||LA1_0==47||(LA1_0>=49 && LA1_0<=51)) ) {
+                if ( (LA1_0==20||LA1_0==45||(LA1_0>=47 && LA1_0<=48)||(LA1_0>=50 && LA1_0<=52)) ) {
                     alt1=1;
                 }
 
@@ -467,31 +468,31 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleEnumField"
-    // InternalJDL.g:162:1: ruleEnumField : ( ( rule__EnumField__EnumTypeAssignment ) ) ;
+    // InternalJDL.g:162:1: ruleEnumField : ( ( rule__EnumField__Group__0 ) ) ;
     public final void ruleEnumField() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:166:2: ( ( ( rule__EnumField__EnumTypeAssignment ) ) )
-            // InternalJDL.g:167:2: ( ( rule__EnumField__EnumTypeAssignment ) )
+            // InternalJDL.g:166:2: ( ( ( rule__EnumField__Group__0 ) ) )
+            // InternalJDL.g:167:2: ( ( rule__EnumField__Group__0 ) )
             {
-            // InternalJDL.g:167:2: ( ( rule__EnumField__EnumTypeAssignment ) )
-            // InternalJDL.g:168:3: ( rule__EnumField__EnumTypeAssignment )
+            // InternalJDL.g:167:2: ( ( rule__EnumField__Group__0 ) )
+            // InternalJDL.g:168:3: ( rule__EnumField__Group__0 )
             {
-             before(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment()); 
-            // InternalJDL.g:169:3: ( rule__EnumField__EnumTypeAssignment )
-            // InternalJDL.g:169:4: rule__EnumField__EnumTypeAssignment
+             before(grammarAccess.getEnumFieldAccess().getGroup()); 
+            // InternalJDL.g:169:3: ( rule__EnumField__Group__0 )
+            // InternalJDL.g:169:4: rule__EnumField__Group__0
             {
             pushFollow(FOLLOW_2);
-            rule__EnumField__EnumTypeAssignment();
+            rule__EnumField__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment()); 
+             after(grammarAccess.getEnumFieldAccess().getGroup()); 
 
             }
 
@@ -2746,12 +2747,89 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleRelationshipName"
 
 
+    // $ANTLR start "entryRuleEnumType"
+    // InternalJDL.g:903:1: entryRuleEnumType : ruleEnumType EOF ;
+    public final void entryRuleEnumType() throws RecognitionException {
+        try {
+            // InternalJDL.g:904:1: ( ruleEnumType EOF )
+            // InternalJDL.g:905:1: ruleEnumType EOF
+            {
+             before(grammarAccess.getEnumTypeRule()); 
+            pushFollow(FOLLOW_1);
+            ruleEnumType();
+
+            state._fsp--;
+
+             after(grammarAccess.getEnumTypeRule()); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return ;
+    }
+    // $ANTLR end "entryRuleEnumType"
+
+
+    // $ANTLR start "ruleEnumType"
+    // InternalJDL.g:912:1: ruleEnumType : ( ( rule__EnumType__Group__0 ) ) ;
+    public final void ruleEnumType() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:916:2: ( ( ( rule__EnumType__Group__0 ) ) )
+            // InternalJDL.g:917:2: ( ( rule__EnumType__Group__0 ) )
+            {
+            // InternalJDL.g:917:2: ( ( rule__EnumType__Group__0 ) )
+            // InternalJDL.g:918:3: ( rule__EnumType__Group__0 )
+            {
+             before(grammarAccess.getEnumTypeAccess().getGroup()); 
+            // InternalJDL.g:919:3: ( rule__EnumType__Group__0 )
+            // InternalJDL.g:919:4: rule__EnumType__Group__0
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumTypeAccess().getGroup()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "ruleEnumType"
+
+
     // $ANTLR start "entryRuleGenerationSetting"
-    // InternalJDL.g:903:1: entryRuleGenerationSetting : ruleGenerationSetting EOF ;
+    // InternalJDL.g:928:1: entryRuleGenerationSetting : ruleGenerationSetting EOF ;
     public final void entryRuleGenerationSetting() throws RecognitionException {
         try {
-            // InternalJDL.g:904:1: ( ruleGenerationSetting EOF )
-            // InternalJDL.g:905:1: ruleGenerationSetting EOF
+            // InternalJDL.g:929:1: ( ruleGenerationSetting EOF )
+            // InternalJDL.g:930:1: ruleGenerationSetting EOF
             {
              before(grammarAccess.getGenerationSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -2777,21 +2855,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleGenerationSetting"
-    // InternalJDL.g:912:1: ruleGenerationSetting : ( ( rule__GenerationSetting__Alternatives ) ) ;
+    // InternalJDL.g:937:1: ruleGenerationSetting : ( ( rule__GenerationSetting__Alternatives ) ) ;
     public final void ruleGenerationSetting() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:916:2: ( ( ( rule__GenerationSetting__Alternatives ) ) )
-            // InternalJDL.g:917:2: ( ( rule__GenerationSetting__Alternatives ) )
+            // InternalJDL.g:941:2: ( ( ( rule__GenerationSetting__Alternatives ) ) )
+            // InternalJDL.g:942:2: ( ( rule__GenerationSetting__Alternatives ) )
             {
-            // InternalJDL.g:917:2: ( ( rule__GenerationSetting__Alternatives ) )
-            // InternalJDL.g:918:3: ( rule__GenerationSetting__Alternatives )
+            // InternalJDL.g:942:2: ( ( rule__GenerationSetting__Alternatives ) )
+            // InternalJDL.g:943:3: ( rule__GenerationSetting__Alternatives )
             {
              before(grammarAccess.getGenerationSettingAccess().getAlternatives()); 
-            // InternalJDL.g:919:3: ( rule__GenerationSetting__Alternatives )
-            // InternalJDL.g:919:4: rule__GenerationSetting__Alternatives
+            // InternalJDL.g:944:3: ( rule__GenerationSetting__Alternatives )
+            // InternalJDL.g:944:4: rule__GenerationSetting__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__GenerationSetting__Alternatives();
@@ -2824,11 +2902,11 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleServiceGenerationSetting"
-    // InternalJDL.g:928:1: entryRuleServiceGenerationSetting : ruleServiceGenerationSetting EOF ;
+    // InternalJDL.g:953:1: entryRuleServiceGenerationSetting : ruleServiceGenerationSetting EOF ;
     public final void entryRuleServiceGenerationSetting() throws RecognitionException {
         try {
-            // InternalJDL.g:929:1: ( ruleServiceGenerationSetting EOF )
-            // InternalJDL.g:930:1: ruleServiceGenerationSetting EOF
+            // InternalJDL.g:954:1: ( ruleServiceGenerationSetting EOF )
+            // InternalJDL.g:955:1: ruleServiceGenerationSetting EOF
             {
              before(grammarAccess.getServiceGenerationSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -2854,21 +2932,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleServiceGenerationSetting"
-    // InternalJDL.g:937:1: ruleServiceGenerationSetting : ( ( rule__ServiceGenerationSetting__Group__0 ) ) ;
+    // InternalJDL.g:962:1: ruleServiceGenerationSetting : ( ( rule__ServiceGenerationSetting__Group__0 ) ) ;
     public final void ruleServiceGenerationSetting() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:941:2: ( ( ( rule__ServiceGenerationSetting__Group__0 ) ) )
-            // InternalJDL.g:942:2: ( ( rule__ServiceGenerationSetting__Group__0 ) )
+            // InternalJDL.g:966:2: ( ( ( rule__ServiceGenerationSetting__Group__0 ) ) )
+            // InternalJDL.g:967:2: ( ( rule__ServiceGenerationSetting__Group__0 ) )
             {
-            // InternalJDL.g:942:2: ( ( rule__ServiceGenerationSetting__Group__0 ) )
-            // InternalJDL.g:943:3: ( rule__ServiceGenerationSetting__Group__0 )
+            // InternalJDL.g:967:2: ( ( rule__ServiceGenerationSetting__Group__0 ) )
+            // InternalJDL.g:968:3: ( rule__ServiceGenerationSetting__Group__0 )
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getGroup()); 
-            // InternalJDL.g:944:3: ( rule__ServiceGenerationSetting__Group__0 )
-            // InternalJDL.g:944:4: rule__ServiceGenerationSetting__Group__0
+            // InternalJDL.g:969:3: ( rule__ServiceGenerationSetting__Group__0 )
+            // InternalJDL.g:969:4: rule__ServiceGenerationSetting__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__Group__0();
@@ -2901,11 +2979,11 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleDTOGenerationSetting"
-    // InternalJDL.g:953:1: entryRuleDTOGenerationSetting : ruleDTOGenerationSetting EOF ;
+    // InternalJDL.g:978:1: entryRuleDTOGenerationSetting : ruleDTOGenerationSetting EOF ;
     public final void entryRuleDTOGenerationSetting() throws RecognitionException {
         try {
-            // InternalJDL.g:954:1: ( ruleDTOGenerationSetting EOF )
-            // InternalJDL.g:955:1: ruleDTOGenerationSetting EOF
+            // InternalJDL.g:979:1: ( ruleDTOGenerationSetting EOF )
+            // InternalJDL.g:980:1: ruleDTOGenerationSetting EOF
             {
              before(grammarAccess.getDTOGenerationSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -2931,21 +3009,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleDTOGenerationSetting"
-    // InternalJDL.g:962:1: ruleDTOGenerationSetting : ( ( rule__DTOGenerationSetting__Group__0 ) ) ;
+    // InternalJDL.g:987:1: ruleDTOGenerationSetting : ( ( rule__DTOGenerationSetting__Group__0 ) ) ;
     public final void ruleDTOGenerationSetting() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:966:2: ( ( ( rule__DTOGenerationSetting__Group__0 ) ) )
-            // InternalJDL.g:967:2: ( ( rule__DTOGenerationSetting__Group__0 ) )
+            // InternalJDL.g:991:2: ( ( ( rule__DTOGenerationSetting__Group__0 ) ) )
+            // InternalJDL.g:992:2: ( ( rule__DTOGenerationSetting__Group__0 ) )
             {
-            // InternalJDL.g:967:2: ( ( rule__DTOGenerationSetting__Group__0 ) )
-            // InternalJDL.g:968:3: ( rule__DTOGenerationSetting__Group__0 )
+            // InternalJDL.g:992:2: ( ( rule__DTOGenerationSetting__Group__0 ) )
+            // InternalJDL.g:993:3: ( rule__DTOGenerationSetting__Group__0 )
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getGroup()); 
-            // InternalJDL.g:969:3: ( rule__DTOGenerationSetting__Group__0 )
-            // InternalJDL.g:969:4: rule__DTOGenerationSetting__Group__0
+            // InternalJDL.g:994:3: ( rule__DTOGenerationSetting__Group__0 )
+            // InternalJDL.g:994:4: rule__DTOGenerationSetting__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__Group__0();
@@ -2978,11 +3056,11 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRulePaginateGenerationSetting"
-    // InternalJDL.g:978:1: entryRulePaginateGenerationSetting : rulePaginateGenerationSetting EOF ;
+    // InternalJDL.g:1003:1: entryRulePaginateGenerationSetting : rulePaginateGenerationSetting EOF ;
     public final void entryRulePaginateGenerationSetting() throws RecognitionException {
         try {
-            // InternalJDL.g:979:1: ( rulePaginateGenerationSetting EOF )
-            // InternalJDL.g:980:1: rulePaginateGenerationSetting EOF
+            // InternalJDL.g:1004:1: ( rulePaginateGenerationSetting EOF )
+            // InternalJDL.g:1005:1: rulePaginateGenerationSetting EOF
             {
              before(grammarAccess.getPaginateGenerationSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -3008,21 +3086,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rulePaginateGenerationSetting"
-    // InternalJDL.g:987:1: rulePaginateGenerationSetting : ( ( rule__PaginateGenerationSetting__Group__0 ) ) ;
+    // InternalJDL.g:1012:1: rulePaginateGenerationSetting : ( ( rule__PaginateGenerationSetting__Group__0 ) ) ;
     public final void rulePaginateGenerationSetting() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:991:2: ( ( ( rule__PaginateGenerationSetting__Group__0 ) ) )
-            // InternalJDL.g:992:2: ( ( rule__PaginateGenerationSetting__Group__0 ) )
+            // InternalJDL.g:1016:2: ( ( ( rule__PaginateGenerationSetting__Group__0 ) ) )
+            // InternalJDL.g:1017:2: ( ( rule__PaginateGenerationSetting__Group__0 ) )
             {
-            // InternalJDL.g:992:2: ( ( rule__PaginateGenerationSetting__Group__0 ) )
-            // InternalJDL.g:993:3: ( rule__PaginateGenerationSetting__Group__0 )
+            // InternalJDL.g:1017:2: ( ( rule__PaginateGenerationSetting__Group__0 ) )
+            // InternalJDL.g:1018:3: ( rule__PaginateGenerationSetting__Group__0 )
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getGroup()); 
-            // InternalJDL.g:994:3: ( rule__PaginateGenerationSetting__Group__0 )
-            // InternalJDL.g:994:4: rule__PaginateGenerationSetting__Group__0
+            // InternalJDL.g:1019:3: ( rule__PaginateGenerationSetting__Group__0 )
+            // InternalJDL.g:1019:4: rule__PaginateGenerationSetting__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__Group__0();
@@ -3055,11 +3133,11 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "entryRuleAngularSuffixGenerationSetting"
-    // InternalJDL.g:1003:1: entryRuleAngularSuffixGenerationSetting : ruleAngularSuffixGenerationSetting EOF ;
+    // InternalJDL.g:1028:1: entryRuleAngularSuffixGenerationSetting : ruleAngularSuffixGenerationSetting EOF ;
     public final void entryRuleAngularSuffixGenerationSetting() throws RecognitionException {
         try {
-            // InternalJDL.g:1004:1: ( ruleAngularSuffixGenerationSetting EOF )
-            // InternalJDL.g:1005:1: ruleAngularSuffixGenerationSetting EOF
+            // InternalJDL.g:1029:1: ( ruleAngularSuffixGenerationSetting EOF )
+            // InternalJDL.g:1030:1: ruleAngularSuffixGenerationSetting EOF
             {
              before(grammarAccess.getAngularSuffixGenerationSettingRule()); 
             pushFollow(FOLLOW_1);
@@ -3085,21 +3163,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleAngularSuffixGenerationSetting"
-    // InternalJDL.g:1012:1: ruleAngularSuffixGenerationSetting : ( ( rule__AngularSuffixGenerationSetting__Group__0 ) ) ;
+    // InternalJDL.g:1037:1: ruleAngularSuffixGenerationSetting : ( ( rule__AngularSuffixGenerationSetting__Group__0 ) ) ;
     public final void ruleAngularSuffixGenerationSetting() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1016:2: ( ( ( rule__AngularSuffixGenerationSetting__Group__0 ) ) )
-            // InternalJDL.g:1017:2: ( ( rule__AngularSuffixGenerationSetting__Group__0 ) )
+            // InternalJDL.g:1041:2: ( ( ( rule__AngularSuffixGenerationSetting__Group__0 ) ) )
+            // InternalJDL.g:1042:2: ( ( rule__AngularSuffixGenerationSetting__Group__0 ) )
             {
-            // InternalJDL.g:1017:2: ( ( rule__AngularSuffixGenerationSetting__Group__0 ) )
-            // InternalJDL.g:1018:3: ( rule__AngularSuffixGenerationSetting__Group__0 )
+            // InternalJDL.g:1042:2: ( ( rule__AngularSuffixGenerationSetting__Group__0 ) )
+            // InternalJDL.g:1043:3: ( rule__AngularSuffixGenerationSetting__Group__0 )
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getGroup()); 
-            // InternalJDL.g:1019:3: ( rule__AngularSuffixGenerationSetting__Group__0 )
-            // InternalJDL.g:1019:4: rule__AngularSuffixGenerationSetting__Group__0
+            // InternalJDL.g:1044:3: ( rule__AngularSuffixGenerationSetting__Group__0 )
+            // InternalJDL.g:1044:4: rule__AngularSuffixGenerationSetting__Group__0
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__Group__0();
@@ -3132,21 +3210,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleCardinality"
-    // InternalJDL.g:1028:1: ruleCardinality : ( ( rule__Cardinality__Alternatives ) ) ;
+    // InternalJDL.g:1053:1: ruleCardinality : ( ( rule__Cardinality__Alternatives ) ) ;
     public final void ruleCardinality() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1032:1: ( ( ( rule__Cardinality__Alternatives ) ) )
-            // InternalJDL.g:1033:2: ( ( rule__Cardinality__Alternatives ) )
+            // InternalJDL.g:1057:1: ( ( ( rule__Cardinality__Alternatives ) ) )
+            // InternalJDL.g:1058:2: ( ( rule__Cardinality__Alternatives ) )
             {
-            // InternalJDL.g:1033:2: ( ( rule__Cardinality__Alternatives ) )
-            // InternalJDL.g:1034:3: ( rule__Cardinality__Alternatives )
+            // InternalJDL.g:1058:2: ( ( rule__Cardinality__Alternatives ) )
+            // InternalJDL.g:1059:3: ( rule__Cardinality__Alternatives )
             {
              before(grammarAccess.getCardinalityAccess().getAlternatives()); 
-            // InternalJDL.g:1035:3: ( rule__Cardinality__Alternatives )
-            // InternalJDL.g:1035:4: rule__Cardinality__Alternatives
+            // InternalJDL.g:1060:3: ( rule__Cardinality__Alternatives )
+            // InternalJDL.g:1060:4: rule__Cardinality__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__Cardinality__Alternatives();
@@ -3179,21 +3257,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleServiceType"
-    // InternalJDL.g:1044:1: ruleServiceType : ( ( rule__ServiceType__Alternatives ) ) ;
+    // InternalJDL.g:1069:1: ruleServiceType : ( ( rule__ServiceType__Alternatives ) ) ;
     public final void ruleServiceType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1048:1: ( ( ( rule__ServiceType__Alternatives ) ) )
-            // InternalJDL.g:1049:2: ( ( rule__ServiceType__Alternatives ) )
+            // InternalJDL.g:1073:1: ( ( ( rule__ServiceType__Alternatives ) ) )
+            // InternalJDL.g:1074:2: ( ( rule__ServiceType__Alternatives ) )
             {
-            // InternalJDL.g:1049:2: ( ( rule__ServiceType__Alternatives ) )
-            // InternalJDL.g:1050:3: ( rule__ServiceType__Alternatives )
+            // InternalJDL.g:1074:2: ( ( rule__ServiceType__Alternatives ) )
+            // InternalJDL.g:1075:3: ( rule__ServiceType__Alternatives )
             {
              before(grammarAccess.getServiceTypeAccess().getAlternatives()); 
-            // InternalJDL.g:1051:3: ( rule__ServiceType__Alternatives )
-            // InternalJDL.g:1051:4: rule__ServiceType__Alternatives
+            // InternalJDL.g:1076:3: ( rule__ServiceType__Alternatives )
+            // InternalJDL.g:1076:4: rule__ServiceType__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__ServiceType__Alternatives();
@@ -3226,21 +3304,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleDTOType"
-    // InternalJDL.g:1060:1: ruleDTOType : ( ( 'mapstruct' ) ) ;
+    // InternalJDL.g:1085:1: ruleDTOType : ( ( 'mapstruct' ) ) ;
     public final void ruleDTOType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1064:1: ( ( ( 'mapstruct' ) ) )
-            // InternalJDL.g:1065:2: ( ( 'mapstruct' ) )
+            // InternalJDL.g:1089:1: ( ( ( 'mapstruct' ) ) )
+            // InternalJDL.g:1090:2: ( ( 'mapstruct' ) )
             {
-            // InternalJDL.g:1065:2: ( ( 'mapstruct' ) )
-            // InternalJDL.g:1066:3: ( 'mapstruct' )
+            // InternalJDL.g:1090:2: ( ( 'mapstruct' ) )
+            // InternalJDL.g:1091:3: ( 'mapstruct' )
             {
              before(grammarAccess.getDTOTypeAccess().getMapstructEnumLiteralDeclaration()); 
-            // InternalJDL.g:1067:3: ( 'mapstruct' )
-            // InternalJDL.g:1067:4: 'mapstruct'
+            // InternalJDL.g:1092:3: ( 'mapstruct' )
+            // InternalJDL.g:1092:4: 'mapstruct'
             {
             match(input,11,FOLLOW_2); 
 
@@ -3269,21 +3347,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rulePaginateType"
-    // InternalJDL.g:1076:1: rulePaginateType : ( ( rule__PaginateType__Alternatives ) ) ;
+    // InternalJDL.g:1101:1: rulePaginateType : ( ( rule__PaginateType__Alternatives ) ) ;
     public final void rulePaginateType() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1080:1: ( ( ( rule__PaginateType__Alternatives ) ) )
-            // InternalJDL.g:1081:2: ( ( rule__PaginateType__Alternatives ) )
+            // InternalJDL.g:1105:1: ( ( ( rule__PaginateType__Alternatives ) ) )
+            // InternalJDL.g:1106:2: ( ( rule__PaginateType__Alternatives ) )
             {
-            // InternalJDL.g:1081:2: ( ( rule__PaginateType__Alternatives ) )
-            // InternalJDL.g:1082:3: ( rule__PaginateType__Alternatives )
+            // InternalJDL.g:1106:2: ( ( rule__PaginateType__Alternatives ) )
+            // InternalJDL.g:1107:3: ( rule__PaginateType__Alternatives )
             {
              before(grammarAccess.getPaginateTypeAccess().getAlternatives()); 
-            // InternalJDL.g:1083:3: ( rule__PaginateType__Alternatives )
-            // InternalJDL.g:1083:4: rule__PaginateType__Alternatives
+            // InternalJDL.g:1108:3: ( rule__PaginateType__Alternatives )
+            // InternalJDL.g:1108:4: rule__PaginateType__Alternatives
             {
             pushFollow(FOLLOW_2);
             rule__PaginateType__Alternatives();
@@ -3316,31 +3394,36 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Elements__Alternatives"
-    // InternalJDL.g:1091:1: rule__Elements__Alternatives : ( ( ruleEntity ) | ( ruleRelationships ) | ( ruleGenerationSetting ) );
+    // InternalJDL.g:1116:1: rule__Elements__Alternatives : ( ( ruleEntity ) | ( ruleEnumType ) | ( ruleRelationships ) | ( ruleGenerationSetting ) );
     public final void rule__Elements__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1095:1: ( ( ruleEntity ) | ( ruleRelationships ) | ( ruleGenerationSetting ) )
-            int alt2=3;
+            // InternalJDL.g:1120:1: ( ( ruleEntity ) | ( ruleEnumType ) | ( ruleRelationships ) | ( ruleGenerationSetting ) )
+            int alt2=4;
             switch ( input.LA(1) ) {
             case 20:
                 {
                 alt2=1;
                 }
                 break;
-            case 45:
+            case 47:
                 {
                 alt2=2;
                 }
                 break;
-            case 47:
-            case 49:
-            case 50:
-            case 51:
+            case 45:
                 {
                 alt2=3;
+                }
+                break;
+            case 48:
+            case 50:
+            case 51:
+            case 52:
+                {
+                alt2=4;
                 }
                 break;
             default:
@@ -3352,10 +3435,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
             switch (alt2) {
                 case 1 :
-                    // InternalJDL.g:1096:2: ( ruleEntity )
+                    // InternalJDL.g:1121:2: ( ruleEntity )
                     {
-                    // InternalJDL.g:1096:2: ( ruleEntity )
-                    // InternalJDL.g:1097:3: ruleEntity
+                    // InternalJDL.g:1121:2: ( ruleEntity )
+                    // InternalJDL.g:1122:3: ruleEntity
                     {
                      before(grammarAccess.getElementsAccess().getEntityParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -3371,18 +3454,18 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1102:2: ( ruleRelationships )
+                    // InternalJDL.g:1127:2: ( ruleEnumType )
                     {
-                    // InternalJDL.g:1102:2: ( ruleRelationships )
-                    // InternalJDL.g:1103:3: ruleRelationships
+                    // InternalJDL.g:1127:2: ( ruleEnumType )
+                    // InternalJDL.g:1128:3: ruleEnumType
                     {
-                     before(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_1()); 
+                     before(grammarAccess.getElementsAccess().getEnumTypeParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
-                    ruleRelationships();
+                    ruleEnumType();
 
                     state._fsp--;
 
-                     after(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_1()); 
+                     after(grammarAccess.getElementsAccess().getEnumTypeParserRuleCall_1()); 
 
                     }
 
@@ -3390,18 +3473,37 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1108:2: ( ruleGenerationSetting )
+                    // InternalJDL.g:1133:2: ( ruleRelationships )
                     {
-                    // InternalJDL.g:1108:2: ( ruleGenerationSetting )
-                    // InternalJDL.g:1109:3: ruleGenerationSetting
+                    // InternalJDL.g:1133:2: ( ruleRelationships )
+                    // InternalJDL.g:1134:3: ruleRelationships
                     {
-                     before(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_2()); 
+                     before(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_2()); 
+                    pushFollow(FOLLOW_2);
+                    ruleRelationships();
+
+                    state._fsp--;
+
+                     after(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_2()); 
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // InternalJDL.g:1139:2: ( ruleGenerationSetting )
+                    {
+                    // InternalJDL.g:1139:2: ( ruleGenerationSetting )
+                    // InternalJDL.g:1140:3: ruleGenerationSetting
+                    {
+                     before(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
                     ruleGenerationSetting();
 
                     state._fsp--;
 
-                     after(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_2()); 
+                     after(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_3()); 
 
                     }
 
@@ -3426,18 +3528,25 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Field__Alternatives"
-    // InternalJDL.g:1118:1: rule__Field__Alternatives : ( ( ruleStringField ) | ( ruleNumericField ) | ( ruleBooleanField ) | ( ruleDateField ) | ( ruleBinaryLargeObjectField ) | ( ruleEnumField ) );
+    // InternalJDL.g:1149:1: rule__Field__Alternatives : ( ( ruleStringField ) | ( ruleNumericField ) | ( ruleBooleanField ) | ( ruleDateField ) | ( ruleBinaryLargeObjectField ) | ( ruleEnumField ) );
     public final void rule__Field__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1122:1: ( ( ruleStringField ) | ( ruleNumericField ) | ( ruleBooleanField ) | ( ruleDateField ) | ( ruleBinaryLargeObjectField ) | ( ruleEnumField ) )
+            // InternalJDL.g:1153:1: ( ( ruleStringField ) | ( ruleNumericField ) | ( ruleBooleanField ) | ( ruleDateField ) | ( ruleBinaryLargeObjectField ) | ( ruleEnumField ) )
             int alt3=6;
             int LA3_0 = input.LA(1);
 
             if ( (LA3_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
+                case 33:
+                case 34:
+                case 35:
+                    {
+                    alt3=5;
+                    }
+                    break;
                 case 25:
                 case 26:
                 case 27:
@@ -3447,16 +3556,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     alt3=2;
                     }
                     break;
+                case 24:
+                    {
+                    alt3=1;
+                    }
+                    break;
                 case 30:
                     {
                     alt3=3;
-                    }
-                    break;
-                case 33:
-                case 34:
-                case 35:
-                    {
-                    alt3=5;
                     }
                     break;
                 case 31:
@@ -3465,16 +3572,9 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     alt3=4;
                     }
                     break;
-                case EOF:
-                case 22:
-                case 23:
+                case RULE_ID:
                     {
                     alt3=6;
-                    }
-                    break;
-                case 24:
-                    {
-                    alt3=1;
                     }
                     break;
                 default:
@@ -3493,10 +3593,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt3) {
                 case 1 :
-                    // InternalJDL.g:1123:2: ( ruleStringField )
+                    // InternalJDL.g:1154:2: ( ruleStringField )
                     {
-                    // InternalJDL.g:1123:2: ( ruleStringField )
-                    // InternalJDL.g:1124:3: ruleStringField
+                    // InternalJDL.g:1154:2: ( ruleStringField )
+                    // InternalJDL.g:1155:3: ruleStringField
                     {
                      before(grammarAccess.getFieldAccess().getStringFieldParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -3512,10 +3612,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1129:2: ( ruleNumericField )
+                    // InternalJDL.g:1160:2: ( ruleNumericField )
                     {
-                    // InternalJDL.g:1129:2: ( ruleNumericField )
-                    // InternalJDL.g:1130:3: ruleNumericField
+                    // InternalJDL.g:1160:2: ( ruleNumericField )
+                    // InternalJDL.g:1161:3: ruleNumericField
                     {
                      before(grammarAccess.getFieldAccess().getNumericFieldParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -3531,10 +3631,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1135:2: ( ruleBooleanField )
+                    // InternalJDL.g:1166:2: ( ruleBooleanField )
                     {
-                    // InternalJDL.g:1135:2: ( ruleBooleanField )
-                    // InternalJDL.g:1136:3: ruleBooleanField
+                    // InternalJDL.g:1166:2: ( ruleBooleanField )
+                    // InternalJDL.g:1167:3: ruleBooleanField
                     {
                      before(grammarAccess.getFieldAccess().getBooleanFieldParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -3550,10 +3650,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalJDL.g:1141:2: ( ruleDateField )
+                    // InternalJDL.g:1172:2: ( ruleDateField )
                     {
-                    // InternalJDL.g:1141:2: ( ruleDateField )
-                    // InternalJDL.g:1142:3: ruleDateField
+                    // InternalJDL.g:1172:2: ( ruleDateField )
+                    // InternalJDL.g:1173:3: ruleDateField
                     {
                      before(grammarAccess.getFieldAccess().getDateFieldParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -3569,10 +3669,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 5 :
-                    // InternalJDL.g:1147:2: ( ruleBinaryLargeObjectField )
+                    // InternalJDL.g:1178:2: ( ruleBinaryLargeObjectField )
                     {
-                    // InternalJDL.g:1147:2: ( ruleBinaryLargeObjectField )
-                    // InternalJDL.g:1148:3: ruleBinaryLargeObjectField
+                    // InternalJDL.g:1178:2: ( ruleBinaryLargeObjectField )
+                    // InternalJDL.g:1179:3: ruleBinaryLargeObjectField
                     {
                      before(grammarAccess.getFieldAccess().getBinaryLargeObjectFieldParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
@@ -3588,10 +3688,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 6 :
-                    // InternalJDL.g:1153:2: ( ruleEnumField )
+                    // InternalJDL.g:1184:2: ( ruleEnumField )
                     {
-                    // InternalJDL.g:1153:2: ( ruleEnumField )
-                    // InternalJDL.g:1154:3: ruleEnumField
+                    // InternalJDL.g:1184:2: ( ruleEnumField )
+                    // InternalJDL.g:1185:3: ruleEnumField
                     {
                      before(grammarAccess.getFieldAccess().getEnumFieldParserRuleCall_5()); 
                     pushFollow(FOLLOW_2);
@@ -3624,28 +3724,18 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericField__Alternatives"
-    // InternalJDL.g:1163:1: rule__NumericField__Alternatives : ( ( ruleIntegerField ) | ( ruleLongField ) | ( ruleBigDecimalField ) | ( ruleFloatField ) | ( ruleDoubleField ) );
+    // InternalJDL.g:1194:1: rule__NumericField__Alternatives : ( ( ruleIntegerField ) | ( ruleLongField ) | ( ruleBigDecimalField ) | ( ruleFloatField ) | ( ruleDoubleField ) );
     public final void rule__NumericField__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1167:1: ( ( ruleIntegerField ) | ( ruleLongField ) | ( ruleBigDecimalField ) | ( ruleFloatField ) | ( ruleDoubleField ) )
+            // InternalJDL.g:1198:1: ( ( ruleIntegerField ) | ( ruleLongField ) | ( ruleBigDecimalField ) | ( ruleFloatField ) | ( ruleDoubleField ) )
             int alt4=5;
             int LA4_0 = input.LA(1);
 
             if ( (LA4_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
-                case 29:
-                    {
-                    alt4=5;
-                    }
-                    break;
-                case 28:
-                    {
-                    alt4=4;
-                    }
-                    break;
                 case 27:
                     {
                     alt4=3;
@@ -3659,6 +3749,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                 case 25:
                     {
                     alt4=1;
+                    }
+                    break;
+                case 29:
+                    {
+                    alt4=5;
+                    }
+                    break;
+                case 28:
+                    {
+                    alt4=4;
                     }
                     break;
                 default:
@@ -3677,10 +3777,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt4) {
                 case 1 :
-                    // InternalJDL.g:1168:2: ( ruleIntegerField )
+                    // InternalJDL.g:1199:2: ( ruleIntegerField )
                     {
-                    // InternalJDL.g:1168:2: ( ruleIntegerField )
-                    // InternalJDL.g:1169:3: ruleIntegerField
+                    // InternalJDL.g:1199:2: ( ruleIntegerField )
+                    // InternalJDL.g:1200:3: ruleIntegerField
                     {
                      before(grammarAccess.getNumericFieldAccess().getIntegerFieldParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -3696,10 +3796,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1174:2: ( ruleLongField )
+                    // InternalJDL.g:1205:2: ( ruleLongField )
                     {
-                    // InternalJDL.g:1174:2: ( ruleLongField )
-                    // InternalJDL.g:1175:3: ruleLongField
+                    // InternalJDL.g:1205:2: ( ruleLongField )
+                    // InternalJDL.g:1206:3: ruleLongField
                     {
                      before(grammarAccess.getNumericFieldAccess().getLongFieldParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -3715,10 +3815,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1180:2: ( ruleBigDecimalField )
+                    // InternalJDL.g:1211:2: ( ruleBigDecimalField )
                     {
-                    // InternalJDL.g:1180:2: ( ruleBigDecimalField )
-                    // InternalJDL.g:1181:3: ruleBigDecimalField
+                    // InternalJDL.g:1211:2: ( ruleBigDecimalField )
+                    // InternalJDL.g:1212:3: ruleBigDecimalField
                     {
                      before(grammarAccess.getNumericFieldAccess().getBigDecimalFieldParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -3734,10 +3834,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalJDL.g:1186:2: ( ruleFloatField )
+                    // InternalJDL.g:1217:2: ( ruleFloatField )
                     {
-                    // InternalJDL.g:1186:2: ( ruleFloatField )
-                    // InternalJDL.g:1187:3: ruleFloatField
+                    // InternalJDL.g:1217:2: ( ruleFloatField )
+                    // InternalJDL.g:1218:3: ruleFloatField
                     {
                      before(grammarAccess.getNumericFieldAccess().getFloatFieldParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -3753,10 +3853,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 5 :
-                    // InternalJDL.g:1192:2: ( ruleDoubleField )
+                    // InternalJDL.g:1223:2: ( ruleDoubleField )
                     {
-                    // InternalJDL.g:1192:2: ( ruleDoubleField )
-                    // InternalJDL.g:1193:3: ruleDoubleField
+                    // InternalJDL.g:1223:2: ( ruleDoubleField )
+                    // InternalJDL.g:1224:3: ruleDoubleField
                     {
                      before(grammarAccess.getNumericFieldAccess().getDoubleFieldParserRuleCall_4()); 
                     pushFollow(FOLLOW_2);
@@ -3789,13 +3889,13 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DateField__Alternatives"
-    // InternalJDL.g:1202:1: rule__DateField__Alternatives : ( ( ruleLocalDateField ) | ( ruleZonedDateTimeField ) );
+    // InternalJDL.g:1233:1: rule__DateField__Alternatives : ( ( ruleLocalDateField ) | ( ruleZonedDateTimeField ) );
     public final void rule__DateField__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1206:1: ( ( ruleLocalDateField ) | ( ruleZonedDateTimeField ) )
+            // InternalJDL.g:1237:1: ( ( ruleLocalDateField ) | ( ruleZonedDateTimeField ) )
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -3823,10 +3923,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt5) {
                 case 1 :
-                    // InternalJDL.g:1207:2: ( ruleLocalDateField )
+                    // InternalJDL.g:1238:2: ( ruleLocalDateField )
                     {
-                    // InternalJDL.g:1207:2: ( ruleLocalDateField )
-                    // InternalJDL.g:1208:3: ruleLocalDateField
+                    // InternalJDL.g:1238:2: ( ruleLocalDateField )
+                    // InternalJDL.g:1239:3: ruleLocalDateField
                     {
                      before(grammarAccess.getDateFieldAccess().getLocalDateFieldParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -3842,10 +3942,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1213:2: ( ruleZonedDateTimeField )
+                    // InternalJDL.g:1244:2: ( ruleZonedDateTimeField )
                     {
-                    // InternalJDL.g:1213:2: ( ruleZonedDateTimeField )
-                    // InternalJDL.g:1214:3: ruleZonedDateTimeField
+                    // InternalJDL.g:1244:2: ( ruleZonedDateTimeField )
+                    // InternalJDL.g:1245:3: ruleZonedDateTimeField
                     {
                      before(grammarAccess.getDateFieldAccess().getZonedDateTimeFieldParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -3878,23 +3978,18 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BinaryLargeObjectField__Alternatives"
-    // InternalJDL.g:1223:1: rule__BinaryLargeObjectField__Alternatives : ( ( ruleBlobField ) | ( ruleAnyBlobField ) | ( ruleImageBlobField ) );
+    // InternalJDL.g:1254:1: rule__BinaryLargeObjectField__Alternatives : ( ( ruleBlobField ) | ( ruleAnyBlobField ) | ( ruleImageBlobField ) );
     public final void rule__BinaryLargeObjectField__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1227:1: ( ( ruleBlobField ) | ( ruleAnyBlobField ) | ( ruleImageBlobField ) )
+            // InternalJDL.g:1258:1: ( ( ruleBlobField ) | ( ruleAnyBlobField ) | ( ruleImageBlobField ) )
             int alt6=3;
             int LA6_0 = input.LA(1);
 
             if ( (LA6_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
-                case 35:
-                    {
-                    alt6=3;
-                    }
-                    break;
                 case 34:
                     {
                     alt6=2;
@@ -3903,6 +3998,11 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                 case 33:
                     {
                     alt6=1;
+                    }
+                    break;
+                case 35:
+                    {
+                    alt6=3;
                     }
                     break;
                 default:
@@ -3921,10 +4021,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalJDL.g:1228:2: ( ruleBlobField )
+                    // InternalJDL.g:1259:2: ( ruleBlobField )
                     {
-                    // InternalJDL.g:1228:2: ( ruleBlobField )
-                    // InternalJDL.g:1229:3: ruleBlobField
+                    // InternalJDL.g:1259:2: ( ruleBlobField )
+                    // InternalJDL.g:1260:3: ruleBlobField
                     {
                      before(grammarAccess.getBinaryLargeObjectFieldAccess().getBlobFieldParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -3940,10 +4040,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1234:2: ( ruleAnyBlobField )
+                    // InternalJDL.g:1265:2: ( ruleAnyBlobField )
                     {
-                    // InternalJDL.g:1234:2: ( ruleAnyBlobField )
-                    // InternalJDL.g:1235:3: ruleAnyBlobField
+                    // InternalJDL.g:1265:2: ( ruleAnyBlobField )
+                    // InternalJDL.g:1266:3: ruleAnyBlobField
                     {
                      before(grammarAccess.getBinaryLargeObjectFieldAccess().getAnyBlobFieldParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -3959,10 +4059,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1240:2: ( ruleImageBlobField )
+                    // InternalJDL.g:1271:2: ( ruleImageBlobField )
                     {
-                    // InternalJDL.g:1240:2: ( ruleImageBlobField )
-                    // InternalJDL.g:1241:3: ruleImageBlobField
+                    // InternalJDL.g:1271:2: ( ruleImageBlobField )
+                    // InternalJDL.g:1272:3: ruleImageBlobField
                     {
                      before(grammarAccess.getBinaryLargeObjectFieldAccess().getImageBlobFieldParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -3995,31 +4095,31 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__GenerationSetting__Alternatives"
-    // InternalJDL.g:1250:1: rule__GenerationSetting__Alternatives : ( ( ruleServiceGenerationSetting ) | ( ruleDTOGenerationSetting ) | ( rulePaginateGenerationSetting ) | ( ruleAngularSuffixGenerationSetting ) );
+    // InternalJDL.g:1281:1: rule__GenerationSetting__Alternatives : ( ( ruleServiceGenerationSetting ) | ( ruleDTOGenerationSetting ) | ( rulePaginateGenerationSetting ) | ( ruleAngularSuffixGenerationSetting ) );
     public final void rule__GenerationSetting__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1254:1: ( ( ruleServiceGenerationSetting ) | ( ruleDTOGenerationSetting ) | ( rulePaginateGenerationSetting ) | ( ruleAngularSuffixGenerationSetting ) )
+            // InternalJDL.g:1285:1: ( ( ruleServiceGenerationSetting ) | ( ruleDTOGenerationSetting ) | ( rulePaginateGenerationSetting ) | ( ruleAngularSuffixGenerationSetting ) )
             int alt7=4;
             switch ( input.LA(1) ) {
-            case 47:
+            case 48:
                 {
                 alt7=1;
                 }
                 break;
-            case 49:
+            case 50:
                 {
                 alt7=2;
                 }
                 break;
-            case 50:
+            case 51:
                 {
                 alt7=3;
                 }
                 break;
-            case 51:
+            case 52:
                 {
                 alt7=4;
                 }
@@ -4033,10 +4133,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
             switch (alt7) {
                 case 1 :
-                    // InternalJDL.g:1255:2: ( ruleServiceGenerationSetting )
+                    // InternalJDL.g:1286:2: ( ruleServiceGenerationSetting )
                     {
-                    // InternalJDL.g:1255:2: ( ruleServiceGenerationSetting )
-                    // InternalJDL.g:1256:3: ruleServiceGenerationSetting
+                    // InternalJDL.g:1286:2: ( ruleServiceGenerationSetting )
+                    // InternalJDL.g:1287:3: ruleServiceGenerationSetting
                     {
                      before(grammarAccess.getGenerationSettingAccess().getServiceGenerationSettingParserRuleCall_0()); 
                     pushFollow(FOLLOW_2);
@@ -4052,10 +4152,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1261:2: ( ruleDTOGenerationSetting )
+                    // InternalJDL.g:1292:2: ( ruleDTOGenerationSetting )
                     {
-                    // InternalJDL.g:1261:2: ( ruleDTOGenerationSetting )
-                    // InternalJDL.g:1262:3: ruleDTOGenerationSetting
+                    // InternalJDL.g:1292:2: ( ruleDTOGenerationSetting )
+                    // InternalJDL.g:1293:3: ruleDTOGenerationSetting
                     {
                      before(grammarAccess.getGenerationSettingAccess().getDTOGenerationSettingParserRuleCall_1()); 
                     pushFollow(FOLLOW_2);
@@ -4071,10 +4171,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1267:2: ( rulePaginateGenerationSetting )
+                    // InternalJDL.g:1298:2: ( rulePaginateGenerationSetting )
                     {
-                    // InternalJDL.g:1267:2: ( rulePaginateGenerationSetting )
-                    // InternalJDL.g:1268:3: rulePaginateGenerationSetting
+                    // InternalJDL.g:1298:2: ( rulePaginateGenerationSetting )
+                    // InternalJDL.g:1299:3: rulePaginateGenerationSetting
                     {
                      before(grammarAccess.getGenerationSettingAccess().getPaginateGenerationSettingParserRuleCall_2()); 
                     pushFollow(FOLLOW_2);
@@ -4090,10 +4190,10 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalJDL.g:1273:2: ( ruleAngularSuffixGenerationSetting )
+                    // InternalJDL.g:1304:2: ( ruleAngularSuffixGenerationSetting )
                     {
-                    // InternalJDL.g:1273:2: ( ruleAngularSuffixGenerationSetting )
-                    // InternalJDL.g:1274:3: ruleAngularSuffixGenerationSetting
+                    // InternalJDL.g:1304:2: ( ruleAngularSuffixGenerationSetting )
+                    // InternalJDL.g:1305:3: ruleAngularSuffixGenerationSetting
                     {
                      before(grammarAccess.getGenerationSettingAccess().getAngularSuffixGenerationSettingParserRuleCall_3()); 
                     pushFollow(FOLLOW_2);
@@ -4126,13 +4226,13 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Cardinality__Alternatives"
-    // InternalJDL.g:1283:1: rule__Cardinality__Alternatives : ( ( ( 'OneToMany' ) ) | ( ( 'ManyToOne' ) ) | ( ( 'OneToOne' ) ) | ( ( 'ManyToMany' ) ) );
+    // InternalJDL.g:1314:1: rule__Cardinality__Alternatives : ( ( ( 'OneToMany' ) ) | ( ( 'ManyToOne' ) ) | ( ( 'OneToOne' ) ) | ( ( 'ManyToMany' ) ) );
     public final void rule__Cardinality__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1287:1: ( ( ( 'OneToMany' ) ) | ( ( 'ManyToOne' ) ) | ( ( 'OneToOne' ) ) | ( ( 'ManyToMany' ) ) )
+            // InternalJDL.g:1318:1: ( ( ( 'OneToMany' ) ) | ( ( 'ManyToOne' ) ) | ( ( 'OneToOne' ) ) | ( ( 'ManyToMany' ) ) )
             int alt8=4;
             switch ( input.LA(1) ) {
             case 12:
@@ -4164,14 +4264,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
             switch (alt8) {
                 case 1 :
-                    // InternalJDL.g:1288:2: ( ( 'OneToMany' ) )
+                    // InternalJDL.g:1319:2: ( ( 'OneToMany' ) )
                     {
-                    // InternalJDL.g:1288:2: ( ( 'OneToMany' ) )
-                    // InternalJDL.g:1289:3: ( 'OneToMany' )
+                    // InternalJDL.g:1319:2: ( ( 'OneToMany' ) )
+                    // InternalJDL.g:1320:3: ( 'OneToMany' )
                     {
                      before(grammarAccess.getCardinalityAccess().getOneToManyEnumLiteralDeclaration_0()); 
-                    // InternalJDL.g:1290:3: ( 'OneToMany' )
-                    // InternalJDL.g:1290:4: 'OneToMany'
+                    // InternalJDL.g:1321:3: ( 'OneToMany' )
+                    // InternalJDL.g:1321:4: 'OneToMany'
                     {
                     match(input,12,FOLLOW_2); 
 
@@ -4185,14 +4285,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1294:2: ( ( 'ManyToOne' ) )
+                    // InternalJDL.g:1325:2: ( ( 'ManyToOne' ) )
                     {
-                    // InternalJDL.g:1294:2: ( ( 'ManyToOne' ) )
-                    // InternalJDL.g:1295:3: ( 'ManyToOne' )
+                    // InternalJDL.g:1325:2: ( ( 'ManyToOne' ) )
+                    // InternalJDL.g:1326:3: ( 'ManyToOne' )
                     {
                      before(grammarAccess.getCardinalityAccess().getManyToOneEnumLiteralDeclaration_1()); 
-                    // InternalJDL.g:1296:3: ( 'ManyToOne' )
-                    // InternalJDL.g:1296:4: 'ManyToOne'
+                    // InternalJDL.g:1327:3: ( 'ManyToOne' )
+                    // InternalJDL.g:1327:4: 'ManyToOne'
                     {
                     match(input,13,FOLLOW_2); 
 
@@ -4206,14 +4306,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // InternalJDL.g:1300:2: ( ( 'OneToOne' ) )
+                    // InternalJDL.g:1331:2: ( ( 'OneToOne' ) )
                     {
-                    // InternalJDL.g:1300:2: ( ( 'OneToOne' ) )
-                    // InternalJDL.g:1301:3: ( 'OneToOne' )
+                    // InternalJDL.g:1331:2: ( ( 'OneToOne' ) )
+                    // InternalJDL.g:1332:3: ( 'OneToOne' )
                     {
                      before(grammarAccess.getCardinalityAccess().getOneToOneEnumLiteralDeclaration_2()); 
-                    // InternalJDL.g:1302:3: ( 'OneToOne' )
-                    // InternalJDL.g:1302:4: 'OneToOne'
+                    // InternalJDL.g:1333:3: ( 'OneToOne' )
+                    // InternalJDL.g:1333:4: 'OneToOne'
                     {
                     match(input,14,FOLLOW_2); 
 
@@ -4227,14 +4327,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // InternalJDL.g:1306:2: ( ( 'ManyToMany' ) )
+                    // InternalJDL.g:1337:2: ( ( 'ManyToMany' ) )
                     {
-                    // InternalJDL.g:1306:2: ( ( 'ManyToMany' ) )
-                    // InternalJDL.g:1307:3: ( 'ManyToMany' )
+                    // InternalJDL.g:1337:2: ( ( 'ManyToMany' ) )
+                    // InternalJDL.g:1338:3: ( 'ManyToMany' )
                     {
                      before(grammarAccess.getCardinalityAccess().getManyToManyEnumLiteralDeclaration_3()); 
-                    // InternalJDL.g:1308:3: ( 'ManyToMany' )
-                    // InternalJDL.g:1308:4: 'ManyToMany'
+                    // InternalJDL.g:1339:3: ( 'ManyToMany' )
+                    // InternalJDL.g:1339:4: 'ManyToMany'
                     {
                     match(input,15,FOLLOW_2); 
 
@@ -4265,13 +4365,13 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceType__Alternatives"
-    // InternalJDL.g:1316:1: rule__ServiceType__Alternatives : ( ( ( 'serviceClass' ) ) | ( ( 'serviceImpl' ) ) );
+    // InternalJDL.g:1347:1: rule__ServiceType__Alternatives : ( ( ( 'serviceClass' ) ) | ( ( 'serviceImpl' ) ) );
     public final void rule__ServiceType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1320:1: ( ( ( 'serviceClass' ) ) | ( ( 'serviceImpl' ) ) )
+            // InternalJDL.g:1351:1: ( ( ( 'serviceClass' ) ) | ( ( 'serviceImpl' ) ) )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -4289,14 +4389,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalJDL.g:1321:2: ( ( 'serviceClass' ) )
+                    // InternalJDL.g:1352:2: ( ( 'serviceClass' ) )
                     {
-                    // InternalJDL.g:1321:2: ( ( 'serviceClass' ) )
-                    // InternalJDL.g:1322:3: ( 'serviceClass' )
+                    // InternalJDL.g:1352:2: ( ( 'serviceClass' ) )
+                    // InternalJDL.g:1353:3: ( 'serviceClass' )
                     {
                      before(grammarAccess.getServiceTypeAccess().getServiceClassEnumLiteralDeclaration_0()); 
-                    // InternalJDL.g:1323:3: ( 'serviceClass' )
-                    // InternalJDL.g:1323:4: 'serviceClass'
+                    // InternalJDL.g:1354:3: ( 'serviceClass' )
+                    // InternalJDL.g:1354:4: 'serviceClass'
                     {
                     match(input,16,FOLLOW_2); 
 
@@ -4310,14 +4410,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1327:2: ( ( 'serviceImpl' ) )
+                    // InternalJDL.g:1358:2: ( ( 'serviceImpl' ) )
                     {
-                    // InternalJDL.g:1327:2: ( ( 'serviceImpl' ) )
-                    // InternalJDL.g:1328:3: ( 'serviceImpl' )
+                    // InternalJDL.g:1358:2: ( ( 'serviceImpl' ) )
+                    // InternalJDL.g:1359:3: ( 'serviceImpl' )
                     {
                      before(grammarAccess.getServiceTypeAccess().getServiceImplEnumLiteralDeclaration_1()); 
-                    // InternalJDL.g:1329:3: ( 'serviceImpl' )
-                    // InternalJDL.g:1329:4: 'serviceImpl'
+                    // InternalJDL.g:1360:3: ( 'serviceImpl' )
+                    // InternalJDL.g:1360:4: 'serviceImpl'
                     {
                     match(input,17,FOLLOW_2); 
 
@@ -4348,13 +4448,13 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateType__Alternatives"
-    // InternalJDL.g:1337:1: rule__PaginateType__Alternatives : ( ( ( 'pagination' ) ) | ( ( 'infiniteScroll' ) ) );
+    // InternalJDL.g:1368:1: rule__PaginateType__Alternatives : ( ( ( 'pagination' ) ) | ( ( 'infiniteScroll' ) ) );
     public final void rule__PaginateType__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1341:1: ( ( ( 'pagination' ) ) | ( ( 'infiniteScroll' ) ) )
+            // InternalJDL.g:1372:1: ( ( ( 'pagination' ) ) | ( ( 'infiniteScroll' ) ) )
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -4372,14 +4472,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalJDL.g:1342:2: ( ( 'pagination' ) )
+                    // InternalJDL.g:1373:2: ( ( 'pagination' ) )
                     {
-                    // InternalJDL.g:1342:2: ( ( 'pagination' ) )
-                    // InternalJDL.g:1343:3: ( 'pagination' )
+                    // InternalJDL.g:1373:2: ( ( 'pagination' ) )
+                    // InternalJDL.g:1374:3: ( 'pagination' )
                     {
                      before(grammarAccess.getPaginateTypeAccess().getPaginationEnumLiteralDeclaration_0()); 
-                    // InternalJDL.g:1344:3: ( 'pagination' )
-                    // InternalJDL.g:1344:4: 'pagination'
+                    // InternalJDL.g:1375:3: ( 'pagination' )
+                    // InternalJDL.g:1375:4: 'pagination'
                     {
                     match(input,18,FOLLOW_2); 
 
@@ -4393,14 +4493,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // InternalJDL.g:1348:2: ( ( 'infiniteScroll' ) )
+                    // InternalJDL.g:1379:2: ( ( 'infiniteScroll' ) )
                     {
-                    // InternalJDL.g:1348:2: ( ( 'infiniteScroll' ) )
-                    // InternalJDL.g:1349:3: ( 'infiniteScroll' )
+                    // InternalJDL.g:1379:2: ( ( 'infiniteScroll' ) )
+                    // InternalJDL.g:1380:3: ( 'infiniteScroll' )
                     {
                      before(grammarAccess.getPaginateTypeAccess().getInfiniteScrollEnumLiteralDeclaration_1()); 
-                    // InternalJDL.g:1350:3: ( 'infiniteScroll' )
-                    // InternalJDL.g:1350:4: 'infiniteScroll'
+                    // InternalJDL.g:1381:3: ( 'infiniteScroll' )
+                    // InternalJDL.g:1381:4: 'infiniteScroll'
                     {
                     match(input,19,FOLLOW_2); 
 
@@ -4431,14 +4531,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__0"
-    // InternalJDL.g:1358:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
+    // InternalJDL.g:1389:1: rule__Entity__Group__0 : rule__Entity__Group__0__Impl rule__Entity__Group__1 ;
     public final void rule__Entity__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1362:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
-            // InternalJDL.g:1363:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
+            // InternalJDL.g:1393:1: ( rule__Entity__Group__0__Impl rule__Entity__Group__1 )
+            // InternalJDL.g:1394:2: rule__Entity__Group__0__Impl rule__Entity__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__Entity__Group__0__Impl();
@@ -4469,17 +4569,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__0__Impl"
-    // InternalJDL.g:1370:1: rule__Entity__Group__0__Impl : ( 'entity' ) ;
+    // InternalJDL.g:1401:1: rule__Entity__Group__0__Impl : ( 'entity' ) ;
     public final void rule__Entity__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1374:1: ( ( 'entity' ) )
-            // InternalJDL.g:1375:1: ( 'entity' )
+            // InternalJDL.g:1405:1: ( ( 'entity' ) )
+            // InternalJDL.g:1406:1: ( 'entity' )
             {
-            // InternalJDL.g:1375:1: ( 'entity' )
-            // InternalJDL.g:1376:2: 'entity'
+            // InternalJDL.g:1406:1: ( 'entity' )
+            // InternalJDL.g:1407:2: 'entity'
             {
              before(grammarAccess.getEntityAccess().getEntityKeyword_0()); 
             match(input,20,FOLLOW_2); 
@@ -4506,14 +4606,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__1"
-    // InternalJDL.g:1385:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
+    // InternalJDL.g:1416:1: rule__Entity__Group__1 : rule__Entity__Group__1__Impl rule__Entity__Group__2 ;
     public final void rule__Entity__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1389:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
-            // InternalJDL.g:1390:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
+            // InternalJDL.g:1420:1: ( rule__Entity__Group__1__Impl rule__Entity__Group__2 )
+            // InternalJDL.g:1421:2: rule__Entity__Group__1__Impl rule__Entity__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Entity__Group__1__Impl();
@@ -4544,21 +4644,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__1__Impl"
-    // InternalJDL.g:1397:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
+    // InternalJDL.g:1428:1: rule__Entity__Group__1__Impl : ( ( rule__Entity__NameAssignment_1 ) ) ;
     public final void rule__Entity__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1401:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
-            // InternalJDL.g:1402:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // InternalJDL.g:1432:1: ( ( ( rule__Entity__NameAssignment_1 ) ) )
+            // InternalJDL.g:1433:1: ( ( rule__Entity__NameAssignment_1 ) )
             {
-            // InternalJDL.g:1402:1: ( ( rule__Entity__NameAssignment_1 ) )
-            // InternalJDL.g:1403:2: ( rule__Entity__NameAssignment_1 )
+            // InternalJDL.g:1433:1: ( ( rule__Entity__NameAssignment_1 ) )
+            // InternalJDL.g:1434:2: ( rule__Entity__NameAssignment_1 )
             {
              before(grammarAccess.getEntityAccess().getNameAssignment_1()); 
-            // InternalJDL.g:1404:2: ( rule__Entity__NameAssignment_1 )
-            // InternalJDL.g:1404:3: rule__Entity__NameAssignment_1
+            // InternalJDL.g:1435:2: ( rule__Entity__NameAssignment_1 )
+            // InternalJDL.g:1435:3: rule__Entity__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Entity__NameAssignment_1();
@@ -4591,14 +4691,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__2"
-    // InternalJDL.g:1412:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
+    // InternalJDL.g:1443:1: rule__Entity__Group__2 : rule__Entity__Group__2__Impl rule__Entity__Group__3 ;
     public final void rule__Entity__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1416:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
-            // InternalJDL.g:1417:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
+            // InternalJDL.g:1447:1: ( rule__Entity__Group__2__Impl rule__Entity__Group__3 )
+            // InternalJDL.g:1448:2: rule__Entity__Group__2__Impl rule__Entity__Group__3
             {
             pushFollow(FOLLOW_4);
             rule__Entity__Group__2__Impl();
@@ -4629,17 +4729,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__2__Impl"
-    // InternalJDL.g:1424:1: rule__Entity__Group__2__Impl : ( '{' ) ;
+    // InternalJDL.g:1455:1: rule__Entity__Group__2__Impl : ( '{' ) ;
     public final void rule__Entity__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1428:1: ( ( '{' ) )
-            // InternalJDL.g:1429:1: ( '{' )
+            // InternalJDL.g:1459:1: ( ( '{' ) )
+            // InternalJDL.g:1460:1: ( '{' )
             {
-            // InternalJDL.g:1429:1: ( '{' )
-            // InternalJDL.g:1430:2: '{'
+            // InternalJDL.g:1460:1: ( '{' )
+            // InternalJDL.g:1461:2: '{'
             {
              before(grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_2()); 
             match(input,21,FOLLOW_2); 
@@ -4666,14 +4766,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__3"
-    // InternalJDL.g:1439:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
+    // InternalJDL.g:1470:1: rule__Entity__Group__3 : rule__Entity__Group__3__Impl rule__Entity__Group__4 ;
     public final void rule__Entity__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1443:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
-            // InternalJDL.g:1444:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
+            // InternalJDL.g:1474:1: ( rule__Entity__Group__3__Impl rule__Entity__Group__4 )
+            // InternalJDL.g:1475:2: rule__Entity__Group__3__Impl rule__Entity__Group__4
             {
             pushFollow(FOLLOW_6);
             rule__Entity__Group__3__Impl();
@@ -4704,21 +4804,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__3__Impl"
-    // InternalJDL.g:1451:1: rule__Entity__Group__3__Impl : ( ( rule__Entity__FieldsAssignment_3 ) ) ;
+    // InternalJDL.g:1482:1: rule__Entity__Group__3__Impl : ( ( rule__Entity__FieldsAssignment_3 ) ) ;
     public final void rule__Entity__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1455:1: ( ( ( rule__Entity__FieldsAssignment_3 ) ) )
-            // InternalJDL.g:1456:1: ( ( rule__Entity__FieldsAssignment_3 ) )
+            // InternalJDL.g:1486:1: ( ( ( rule__Entity__FieldsAssignment_3 ) ) )
+            // InternalJDL.g:1487:1: ( ( rule__Entity__FieldsAssignment_3 ) )
             {
-            // InternalJDL.g:1456:1: ( ( rule__Entity__FieldsAssignment_3 ) )
-            // InternalJDL.g:1457:2: ( rule__Entity__FieldsAssignment_3 )
+            // InternalJDL.g:1487:1: ( ( rule__Entity__FieldsAssignment_3 ) )
+            // InternalJDL.g:1488:2: ( rule__Entity__FieldsAssignment_3 )
             {
              before(grammarAccess.getEntityAccess().getFieldsAssignment_3()); 
-            // InternalJDL.g:1458:2: ( rule__Entity__FieldsAssignment_3 )
-            // InternalJDL.g:1458:3: rule__Entity__FieldsAssignment_3
+            // InternalJDL.g:1489:2: ( rule__Entity__FieldsAssignment_3 )
+            // InternalJDL.g:1489:3: rule__Entity__FieldsAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__Entity__FieldsAssignment_3();
@@ -4751,14 +4851,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__4"
-    // InternalJDL.g:1466:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl rule__Entity__Group__5 ;
+    // InternalJDL.g:1497:1: rule__Entity__Group__4 : rule__Entity__Group__4__Impl rule__Entity__Group__5 ;
     public final void rule__Entity__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1470:1: ( rule__Entity__Group__4__Impl rule__Entity__Group__5 )
-            // InternalJDL.g:1471:2: rule__Entity__Group__4__Impl rule__Entity__Group__5
+            // InternalJDL.g:1501:1: ( rule__Entity__Group__4__Impl rule__Entity__Group__5 )
+            // InternalJDL.g:1502:2: rule__Entity__Group__4__Impl rule__Entity__Group__5
             {
             pushFollow(FOLLOW_6);
             rule__Entity__Group__4__Impl();
@@ -4789,20 +4889,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__4__Impl"
-    // InternalJDL.g:1478:1: rule__Entity__Group__4__Impl : ( ( rule__Entity__Group_4__0 )* ) ;
+    // InternalJDL.g:1509:1: rule__Entity__Group__4__Impl : ( ( rule__Entity__Group_4__0 )* ) ;
     public final void rule__Entity__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1482:1: ( ( ( rule__Entity__Group_4__0 )* ) )
-            // InternalJDL.g:1483:1: ( ( rule__Entity__Group_4__0 )* )
+            // InternalJDL.g:1513:1: ( ( ( rule__Entity__Group_4__0 )* ) )
+            // InternalJDL.g:1514:1: ( ( rule__Entity__Group_4__0 )* )
             {
-            // InternalJDL.g:1483:1: ( ( rule__Entity__Group_4__0 )* )
-            // InternalJDL.g:1484:2: ( rule__Entity__Group_4__0 )*
+            // InternalJDL.g:1514:1: ( ( rule__Entity__Group_4__0 )* )
+            // InternalJDL.g:1515:2: ( rule__Entity__Group_4__0 )*
             {
              before(grammarAccess.getEntityAccess().getGroup_4()); 
-            // InternalJDL.g:1485:2: ( rule__Entity__Group_4__0 )*
+            // InternalJDL.g:1516:2: ( rule__Entity__Group_4__0 )*
             loop11:
             do {
                 int alt11=2;
@@ -4815,7 +4915,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
                 switch (alt11) {
             	case 1 :
-            	    // InternalJDL.g:1485:3: rule__Entity__Group_4__0
+            	    // InternalJDL.g:1516:3: rule__Entity__Group_4__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__Entity__Group_4__0();
@@ -4854,14 +4954,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__5"
-    // InternalJDL.g:1493:1: rule__Entity__Group__5 : rule__Entity__Group__5__Impl ;
+    // InternalJDL.g:1524:1: rule__Entity__Group__5 : rule__Entity__Group__5__Impl ;
     public final void rule__Entity__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1497:1: ( rule__Entity__Group__5__Impl )
-            // InternalJDL.g:1498:2: rule__Entity__Group__5__Impl
+            // InternalJDL.g:1528:1: ( rule__Entity__Group__5__Impl )
+            // InternalJDL.g:1529:2: rule__Entity__Group__5__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Entity__Group__5__Impl();
@@ -4887,17 +4987,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group__5__Impl"
-    // InternalJDL.g:1504:1: rule__Entity__Group__5__Impl : ( '}' ) ;
+    // InternalJDL.g:1535:1: rule__Entity__Group__5__Impl : ( '}' ) ;
     public final void rule__Entity__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1508:1: ( ( '}' ) )
-            // InternalJDL.g:1509:1: ( '}' )
+            // InternalJDL.g:1539:1: ( ( '}' ) )
+            // InternalJDL.g:1540:1: ( '}' )
             {
-            // InternalJDL.g:1509:1: ( '}' )
-            // InternalJDL.g:1510:2: '}'
+            // InternalJDL.g:1540:1: ( '}' )
+            // InternalJDL.g:1541:2: '}'
             {
              before(grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_5()); 
             match(input,22,FOLLOW_2); 
@@ -4924,14 +5024,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group_4__0"
-    // InternalJDL.g:1520:1: rule__Entity__Group_4__0 : rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1 ;
+    // InternalJDL.g:1551:1: rule__Entity__Group_4__0 : rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1 ;
     public final void rule__Entity__Group_4__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1524:1: ( rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1 )
-            // InternalJDL.g:1525:2: rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1
+            // InternalJDL.g:1555:1: ( rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1 )
+            // InternalJDL.g:1556:2: rule__Entity__Group_4__0__Impl rule__Entity__Group_4__1
             {
             pushFollow(FOLLOW_4);
             rule__Entity__Group_4__0__Impl();
@@ -4962,17 +5062,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group_4__0__Impl"
-    // InternalJDL.g:1532:1: rule__Entity__Group_4__0__Impl : ( ',' ) ;
+    // InternalJDL.g:1563:1: rule__Entity__Group_4__0__Impl : ( ',' ) ;
     public final void rule__Entity__Group_4__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1536:1: ( ( ',' ) )
-            // InternalJDL.g:1537:1: ( ',' )
+            // InternalJDL.g:1567:1: ( ( ',' ) )
+            // InternalJDL.g:1568:1: ( ',' )
             {
-            // InternalJDL.g:1537:1: ( ',' )
-            // InternalJDL.g:1538:2: ','
+            // InternalJDL.g:1568:1: ( ',' )
+            // InternalJDL.g:1569:2: ','
             {
              before(grammarAccess.getEntityAccess().getCommaKeyword_4_0()); 
             match(input,23,FOLLOW_2); 
@@ -4999,14 +5099,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group_4__1"
-    // InternalJDL.g:1547:1: rule__Entity__Group_4__1 : rule__Entity__Group_4__1__Impl ;
+    // InternalJDL.g:1578:1: rule__Entity__Group_4__1 : rule__Entity__Group_4__1__Impl ;
     public final void rule__Entity__Group_4__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1551:1: ( rule__Entity__Group_4__1__Impl )
-            // InternalJDL.g:1552:2: rule__Entity__Group_4__1__Impl
+            // InternalJDL.g:1582:1: ( rule__Entity__Group_4__1__Impl )
+            // InternalJDL.g:1583:2: rule__Entity__Group_4__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Entity__Group_4__1__Impl();
@@ -5032,21 +5132,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__Group_4__1__Impl"
-    // InternalJDL.g:1558:1: rule__Entity__Group_4__1__Impl : ( ( rule__Entity__FieldsAssignment_4_1 ) ) ;
+    // InternalJDL.g:1589:1: rule__Entity__Group_4__1__Impl : ( ( rule__Entity__FieldsAssignment_4_1 ) ) ;
     public final void rule__Entity__Group_4__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1562:1: ( ( ( rule__Entity__FieldsAssignment_4_1 ) ) )
-            // InternalJDL.g:1563:1: ( ( rule__Entity__FieldsAssignment_4_1 ) )
+            // InternalJDL.g:1593:1: ( ( ( rule__Entity__FieldsAssignment_4_1 ) ) )
+            // InternalJDL.g:1594:1: ( ( rule__Entity__FieldsAssignment_4_1 ) )
             {
-            // InternalJDL.g:1563:1: ( ( rule__Entity__FieldsAssignment_4_1 ) )
-            // InternalJDL.g:1564:2: ( rule__Entity__FieldsAssignment_4_1 )
+            // InternalJDL.g:1594:1: ( ( rule__Entity__FieldsAssignment_4_1 ) )
+            // InternalJDL.g:1595:2: ( rule__Entity__FieldsAssignment_4_1 )
             {
              before(grammarAccess.getEntityAccess().getFieldsAssignment_4_1()); 
-            // InternalJDL.g:1565:2: ( rule__Entity__FieldsAssignment_4_1 )
-            // InternalJDL.g:1565:3: rule__Entity__FieldsAssignment_4_1
+            // InternalJDL.g:1596:2: ( rule__Entity__FieldsAssignment_4_1 )
+            // InternalJDL.g:1596:3: rule__Entity__FieldsAssignment_4_1
             {
             pushFollow(FOLLOW_2);
             rule__Entity__FieldsAssignment_4_1();
@@ -5078,17 +5178,278 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Entity__Group_4__1__Impl"
 
 
+    // $ANTLR start "rule__EnumField__Group__0"
+    // InternalJDL.g:1605:1: rule__EnumField__Group__0 : rule__EnumField__Group__0__Impl rule__EnumField__Group__1 ;
+    public final void rule__EnumField__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1609:1: ( rule__EnumField__Group__0__Impl rule__EnumField__Group__1 )
+            // InternalJDL.g:1610:2: rule__EnumField__Group__0__Impl rule__EnumField__Group__1
+            {
+            pushFollow(FOLLOW_4);
+            rule__EnumField__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumField__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__0"
+
+
+    // $ANTLR start "rule__EnumField__Group__0__Impl"
+    // InternalJDL.g:1617:1: rule__EnumField__Group__0__Impl : ( ( rule__EnumField__NameAssignment_0 ) ) ;
+    public final void rule__EnumField__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1621:1: ( ( ( rule__EnumField__NameAssignment_0 ) ) )
+            // InternalJDL.g:1622:1: ( ( rule__EnumField__NameAssignment_0 ) )
+            {
+            // InternalJDL.g:1622:1: ( ( rule__EnumField__NameAssignment_0 ) )
+            // InternalJDL.g:1623:2: ( rule__EnumField__NameAssignment_0 )
+            {
+             before(grammarAccess.getEnumFieldAccess().getNameAssignment_0()); 
+            // InternalJDL.g:1624:2: ( rule__EnumField__NameAssignment_0 )
+            // InternalJDL.g:1624:3: rule__EnumField__NameAssignment_0
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumField__NameAssignment_0();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumFieldAccess().getNameAssignment_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__0__Impl"
+
+
+    // $ANTLR start "rule__EnumField__Group__1"
+    // InternalJDL.g:1632:1: rule__EnumField__Group__1 : rule__EnumField__Group__1__Impl rule__EnumField__Group__2 ;
+    public final void rule__EnumField__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1636:1: ( rule__EnumField__Group__1__Impl rule__EnumField__Group__2 )
+            // InternalJDL.g:1637:2: rule__EnumField__Group__1__Impl rule__EnumField__Group__2
+            {
+            pushFollow(FOLLOW_8);
+            rule__EnumField__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumField__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__1"
+
+
+    // $ANTLR start "rule__EnumField__Group__1__Impl"
+    // InternalJDL.g:1644:1: rule__EnumField__Group__1__Impl : ( ( rule__EnumField__EnumTypeAssignment_1 ) ) ;
+    public final void rule__EnumField__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1648:1: ( ( ( rule__EnumField__EnumTypeAssignment_1 ) ) )
+            // InternalJDL.g:1649:1: ( ( rule__EnumField__EnumTypeAssignment_1 ) )
+            {
+            // InternalJDL.g:1649:1: ( ( rule__EnumField__EnumTypeAssignment_1 ) )
+            // InternalJDL.g:1650:2: ( rule__EnumField__EnumTypeAssignment_1 )
+            {
+             before(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment_1()); 
+            // InternalJDL.g:1651:2: ( rule__EnumField__EnumTypeAssignment_1 )
+            // InternalJDL.g:1651:3: rule__EnumField__EnumTypeAssignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumField__EnumTypeAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__1__Impl"
+
+
+    // $ANTLR start "rule__EnumField__Group__2"
+    // InternalJDL.g:1659:1: rule__EnumField__Group__2 : rule__EnumField__Group__2__Impl ;
+    public final void rule__EnumField__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1663:1: ( rule__EnumField__Group__2__Impl )
+            // InternalJDL.g:1664:2: rule__EnumField__Group__2__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumField__Group__2__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__2"
+
+
+    // $ANTLR start "rule__EnumField__Group__2__Impl"
+    // InternalJDL.g:1670:1: rule__EnumField__Group__2__Impl : ( ( rule__EnumField__ValidatorsAssignment_2 )? ) ;
+    public final void rule__EnumField__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:1674:1: ( ( ( rule__EnumField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:1675:1: ( ( rule__EnumField__ValidatorsAssignment_2 )? )
+            {
+            // InternalJDL.g:1675:1: ( ( rule__EnumField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1676:2: ( rule__EnumField__ValidatorsAssignment_2 )?
+            {
+             before(grammarAccess.getEnumFieldAccess().getValidatorsAssignment_2()); 
+            // InternalJDL.g:1677:2: ( rule__EnumField__ValidatorsAssignment_2 )?
+            int alt12=2;
+            int LA12_0 = input.LA(1);
+
+            if ( (LA12_0==53) ) {
+                alt12=1;
+            }
+            switch (alt12) {
+                case 1 :
+                    // InternalJDL.g:1677:3: rule__EnumField__ValidatorsAssignment_2
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__EnumField__ValidatorsAssignment_2();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getEnumFieldAccess().getValidatorsAssignment_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__Group__2__Impl"
+
+
     // $ANTLR start "rule__StringField__Group__0"
-    // InternalJDL.g:1574:1: rule__StringField__Group__0 : rule__StringField__Group__0__Impl rule__StringField__Group__1 ;
+    // InternalJDL.g:1686:1: rule__StringField__Group__0 : rule__StringField__Group__0__Impl rule__StringField__Group__1 ;
     public final void rule__StringField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1578:1: ( rule__StringField__Group__0__Impl rule__StringField__Group__1 )
-            // InternalJDL.g:1579:2: rule__StringField__Group__0__Impl rule__StringField__Group__1
+            // InternalJDL.g:1690:1: ( rule__StringField__Group__0__Impl rule__StringField__Group__1 )
+            // InternalJDL.g:1691:2: rule__StringField__Group__0__Impl rule__StringField__Group__1
             {
-            pushFollow(FOLLOW_8);
+            pushFollow(FOLLOW_9);
             rule__StringField__Group__0__Impl();
 
             state._fsp--;
@@ -5117,21 +5478,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__Group__0__Impl"
-    // InternalJDL.g:1586:1: rule__StringField__Group__0__Impl : ( ( rule__StringField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:1698:1: rule__StringField__Group__0__Impl : ( ( rule__StringField__NameAssignment_0 ) ) ;
     public final void rule__StringField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1590:1: ( ( ( rule__StringField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1591:1: ( ( rule__StringField__NameAssignment_0 ) )
+            // InternalJDL.g:1702:1: ( ( ( rule__StringField__NameAssignment_0 ) ) )
+            // InternalJDL.g:1703:1: ( ( rule__StringField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1591:1: ( ( rule__StringField__NameAssignment_0 ) )
-            // InternalJDL.g:1592:2: ( rule__StringField__NameAssignment_0 )
+            // InternalJDL.g:1703:1: ( ( rule__StringField__NameAssignment_0 ) )
+            // InternalJDL.g:1704:2: ( rule__StringField__NameAssignment_0 )
             {
              before(grammarAccess.getStringFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1593:2: ( rule__StringField__NameAssignment_0 )
-            // InternalJDL.g:1593:3: rule__StringField__NameAssignment_0
+            // InternalJDL.g:1705:2: ( rule__StringField__NameAssignment_0 )
+            // InternalJDL.g:1705:3: rule__StringField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__StringField__NameAssignment_0();
@@ -5164,16 +5525,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__Group__1"
-    // InternalJDL.g:1601:1: rule__StringField__Group__1 : rule__StringField__Group__1__Impl rule__StringField__Group__2 ;
+    // InternalJDL.g:1713:1: rule__StringField__Group__1 : rule__StringField__Group__1__Impl rule__StringField__Group__2 ;
     public final void rule__StringField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1605:1: ( rule__StringField__Group__1__Impl rule__StringField__Group__2 )
-            // InternalJDL.g:1606:2: rule__StringField__Group__1__Impl rule__StringField__Group__2
+            // InternalJDL.g:1717:1: ( rule__StringField__Group__1__Impl rule__StringField__Group__2 )
+            // InternalJDL.g:1718:2: rule__StringField__Group__1__Impl rule__StringField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__StringField__Group__1__Impl();
 
             state._fsp--;
@@ -5202,17 +5563,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__Group__1__Impl"
-    // InternalJDL.g:1613:1: rule__StringField__Group__1__Impl : ( 'String' ) ;
+    // InternalJDL.g:1725:1: rule__StringField__Group__1__Impl : ( 'String' ) ;
     public final void rule__StringField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1617:1: ( ( 'String' ) )
-            // InternalJDL.g:1618:1: ( 'String' )
+            // InternalJDL.g:1729:1: ( ( 'String' ) )
+            // InternalJDL.g:1730:1: ( 'String' )
             {
-            // InternalJDL.g:1618:1: ( 'String' )
-            // InternalJDL.g:1619:2: 'String'
+            // InternalJDL.g:1730:1: ( 'String' )
+            // InternalJDL.g:1731:2: 'String'
             {
              before(grammarAccess.getStringFieldAccess().getStringKeyword_1()); 
             match(input,24,FOLLOW_2); 
@@ -5239,14 +5600,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__Group__2"
-    // InternalJDL.g:1628:1: rule__StringField__Group__2 : rule__StringField__Group__2__Impl ;
+    // InternalJDL.g:1740:1: rule__StringField__Group__2 : rule__StringField__Group__2__Impl ;
     public final void rule__StringField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1632:1: ( rule__StringField__Group__2__Impl )
-            // InternalJDL.g:1633:2: rule__StringField__Group__2__Impl
+            // InternalJDL.g:1744:1: ( rule__StringField__Group__2__Impl )
+            // InternalJDL.g:1745:2: rule__StringField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__StringField__Group__2__Impl();
@@ -5272,29 +5633,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__Group__2__Impl"
-    // InternalJDL.g:1639:1: rule__StringField__Group__2__Impl : ( ( rule__StringField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:1751:1: rule__StringField__Group__2__Impl : ( ( rule__StringField__ValidatorsAssignment_2 )? ) ;
     public final void rule__StringField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1643:1: ( ( ( rule__StringField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:1644:1: ( ( rule__StringField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1755:1: ( ( ( rule__StringField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:1756:1: ( ( rule__StringField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:1644:1: ( ( rule__StringField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:1645:2: ( rule__StringField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:1756:1: ( ( rule__StringField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1757:2: ( rule__StringField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getStringFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:1646:2: ( rule__StringField__ValidatorsAssignment_2 )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalJDL.g:1758:2: ( rule__StringField__ValidatorsAssignment_2 )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0==52) ) {
-                alt12=1;
+            if ( (LA13_0==53) ) {
+                alt13=1;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // InternalJDL.g:1646:3: rule__StringField__ValidatorsAssignment_2
+                    // InternalJDL.g:1758:3: rule__StringField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__StringField__ValidatorsAssignment_2();
@@ -5330,14 +5691,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__0"
-    // InternalJDL.g:1655:1: rule__IntegerField__Group__0 : rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1 ;
+    // InternalJDL.g:1767:1: rule__IntegerField__Group__0 : rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1 ;
     public final void rule__IntegerField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1659:1: ( rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1 )
-            // InternalJDL.g:1660:2: rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1
+            // InternalJDL.g:1771:1: ( rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1 )
+            // InternalJDL.g:1772:2: rule__IntegerField__Group__0__Impl rule__IntegerField__Group__1
             {
             pushFollow(FOLLOW_10);
             rule__IntegerField__Group__0__Impl();
@@ -5368,21 +5729,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__0__Impl"
-    // InternalJDL.g:1667:1: rule__IntegerField__Group__0__Impl : ( ( rule__IntegerField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:1779:1: rule__IntegerField__Group__0__Impl : ( ( rule__IntegerField__NameAssignment_0 ) ) ;
     public final void rule__IntegerField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1671:1: ( ( ( rule__IntegerField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1672:1: ( ( rule__IntegerField__NameAssignment_0 ) )
+            // InternalJDL.g:1783:1: ( ( ( rule__IntegerField__NameAssignment_0 ) ) )
+            // InternalJDL.g:1784:1: ( ( rule__IntegerField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1672:1: ( ( rule__IntegerField__NameAssignment_0 ) )
-            // InternalJDL.g:1673:2: ( rule__IntegerField__NameAssignment_0 )
+            // InternalJDL.g:1784:1: ( ( rule__IntegerField__NameAssignment_0 ) )
+            // InternalJDL.g:1785:2: ( rule__IntegerField__NameAssignment_0 )
             {
              before(grammarAccess.getIntegerFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1674:2: ( rule__IntegerField__NameAssignment_0 )
-            // InternalJDL.g:1674:3: rule__IntegerField__NameAssignment_0
+            // InternalJDL.g:1786:2: ( rule__IntegerField__NameAssignment_0 )
+            // InternalJDL.g:1786:3: rule__IntegerField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__IntegerField__NameAssignment_0();
@@ -5415,16 +5776,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__1"
-    // InternalJDL.g:1682:1: rule__IntegerField__Group__1 : rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2 ;
+    // InternalJDL.g:1794:1: rule__IntegerField__Group__1 : rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2 ;
     public final void rule__IntegerField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1686:1: ( rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2 )
-            // InternalJDL.g:1687:2: rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2
+            // InternalJDL.g:1798:1: ( rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2 )
+            // InternalJDL.g:1799:2: rule__IntegerField__Group__1__Impl rule__IntegerField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__IntegerField__Group__1__Impl();
 
             state._fsp--;
@@ -5453,17 +5814,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__1__Impl"
-    // InternalJDL.g:1694:1: rule__IntegerField__Group__1__Impl : ( 'Integer' ) ;
+    // InternalJDL.g:1806:1: rule__IntegerField__Group__1__Impl : ( 'Integer' ) ;
     public final void rule__IntegerField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1698:1: ( ( 'Integer' ) )
-            // InternalJDL.g:1699:1: ( 'Integer' )
+            // InternalJDL.g:1810:1: ( ( 'Integer' ) )
+            // InternalJDL.g:1811:1: ( 'Integer' )
             {
-            // InternalJDL.g:1699:1: ( 'Integer' )
-            // InternalJDL.g:1700:2: 'Integer'
+            // InternalJDL.g:1811:1: ( 'Integer' )
+            // InternalJDL.g:1812:2: 'Integer'
             {
              before(grammarAccess.getIntegerFieldAccess().getIntegerKeyword_1()); 
             match(input,25,FOLLOW_2); 
@@ -5490,14 +5851,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__2"
-    // InternalJDL.g:1709:1: rule__IntegerField__Group__2 : rule__IntegerField__Group__2__Impl ;
+    // InternalJDL.g:1821:1: rule__IntegerField__Group__2 : rule__IntegerField__Group__2__Impl ;
     public final void rule__IntegerField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1713:1: ( rule__IntegerField__Group__2__Impl )
-            // InternalJDL.g:1714:2: rule__IntegerField__Group__2__Impl
+            // InternalJDL.g:1825:1: ( rule__IntegerField__Group__2__Impl )
+            // InternalJDL.g:1826:2: rule__IntegerField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__IntegerField__Group__2__Impl();
@@ -5523,29 +5884,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__Group__2__Impl"
-    // InternalJDL.g:1720:1: rule__IntegerField__Group__2__Impl : ( ( rule__IntegerField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:1832:1: rule__IntegerField__Group__2__Impl : ( ( rule__IntegerField__ValidatorsAssignment_2 )? ) ;
     public final void rule__IntegerField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1724:1: ( ( ( rule__IntegerField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:1725:1: ( ( rule__IntegerField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1836:1: ( ( ( rule__IntegerField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:1837:1: ( ( rule__IntegerField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:1725:1: ( ( rule__IntegerField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:1726:2: ( rule__IntegerField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:1837:1: ( ( rule__IntegerField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1838:2: ( rule__IntegerField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getIntegerFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:1727:2: ( rule__IntegerField__ValidatorsAssignment_2 )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalJDL.g:1839:2: ( rule__IntegerField__ValidatorsAssignment_2 )?
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==52) ) {
-                alt13=1;
+            if ( (LA14_0==53) ) {
+                alt14=1;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
-                    // InternalJDL.g:1727:3: rule__IntegerField__ValidatorsAssignment_2
+                    // InternalJDL.g:1839:3: rule__IntegerField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__IntegerField__ValidatorsAssignment_2();
@@ -5581,14 +5942,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__0"
-    // InternalJDL.g:1736:1: rule__LongField__Group__0 : rule__LongField__Group__0__Impl rule__LongField__Group__1 ;
+    // InternalJDL.g:1848:1: rule__LongField__Group__0 : rule__LongField__Group__0__Impl rule__LongField__Group__1 ;
     public final void rule__LongField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1740:1: ( rule__LongField__Group__0__Impl rule__LongField__Group__1 )
-            // InternalJDL.g:1741:2: rule__LongField__Group__0__Impl rule__LongField__Group__1
+            // InternalJDL.g:1852:1: ( rule__LongField__Group__0__Impl rule__LongField__Group__1 )
+            // InternalJDL.g:1853:2: rule__LongField__Group__0__Impl rule__LongField__Group__1
             {
             pushFollow(FOLLOW_11);
             rule__LongField__Group__0__Impl();
@@ -5619,21 +5980,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__0__Impl"
-    // InternalJDL.g:1748:1: rule__LongField__Group__0__Impl : ( ( rule__LongField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:1860:1: rule__LongField__Group__0__Impl : ( ( rule__LongField__NameAssignment_0 ) ) ;
     public final void rule__LongField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1752:1: ( ( ( rule__LongField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1753:1: ( ( rule__LongField__NameAssignment_0 ) )
+            // InternalJDL.g:1864:1: ( ( ( rule__LongField__NameAssignment_0 ) ) )
+            // InternalJDL.g:1865:1: ( ( rule__LongField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1753:1: ( ( rule__LongField__NameAssignment_0 ) )
-            // InternalJDL.g:1754:2: ( rule__LongField__NameAssignment_0 )
+            // InternalJDL.g:1865:1: ( ( rule__LongField__NameAssignment_0 ) )
+            // InternalJDL.g:1866:2: ( rule__LongField__NameAssignment_0 )
             {
              before(grammarAccess.getLongFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1755:2: ( rule__LongField__NameAssignment_0 )
-            // InternalJDL.g:1755:3: rule__LongField__NameAssignment_0
+            // InternalJDL.g:1867:2: ( rule__LongField__NameAssignment_0 )
+            // InternalJDL.g:1867:3: rule__LongField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__LongField__NameAssignment_0();
@@ -5666,16 +6027,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__1"
-    // InternalJDL.g:1763:1: rule__LongField__Group__1 : rule__LongField__Group__1__Impl rule__LongField__Group__2 ;
+    // InternalJDL.g:1875:1: rule__LongField__Group__1 : rule__LongField__Group__1__Impl rule__LongField__Group__2 ;
     public final void rule__LongField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1767:1: ( rule__LongField__Group__1__Impl rule__LongField__Group__2 )
-            // InternalJDL.g:1768:2: rule__LongField__Group__1__Impl rule__LongField__Group__2
+            // InternalJDL.g:1879:1: ( rule__LongField__Group__1__Impl rule__LongField__Group__2 )
+            // InternalJDL.g:1880:2: rule__LongField__Group__1__Impl rule__LongField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__LongField__Group__1__Impl();
 
             state._fsp--;
@@ -5704,17 +6065,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__1__Impl"
-    // InternalJDL.g:1775:1: rule__LongField__Group__1__Impl : ( 'Long' ) ;
+    // InternalJDL.g:1887:1: rule__LongField__Group__1__Impl : ( 'Long' ) ;
     public final void rule__LongField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1779:1: ( ( 'Long' ) )
-            // InternalJDL.g:1780:1: ( 'Long' )
+            // InternalJDL.g:1891:1: ( ( 'Long' ) )
+            // InternalJDL.g:1892:1: ( 'Long' )
             {
-            // InternalJDL.g:1780:1: ( 'Long' )
-            // InternalJDL.g:1781:2: 'Long'
+            // InternalJDL.g:1892:1: ( 'Long' )
+            // InternalJDL.g:1893:2: 'Long'
             {
              before(grammarAccess.getLongFieldAccess().getLongKeyword_1()); 
             match(input,26,FOLLOW_2); 
@@ -5741,14 +6102,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__2"
-    // InternalJDL.g:1790:1: rule__LongField__Group__2 : rule__LongField__Group__2__Impl ;
+    // InternalJDL.g:1902:1: rule__LongField__Group__2 : rule__LongField__Group__2__Impl ;
     public final void rule__LongField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1794:1: ( rule__LongField__Group__2__Impl )
-            // InternalJDL.g:1795:2: rule__LongField__Group__2__Impl
+            // InternalJDL.g:1906:1: ( rule__LongField__Group__2__Impl )
+            // InternalJDL.g:1907:2: rule__LongField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LongField__Group__2__Impl();
@@ -5774,29 +6135,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__Group__2__Impl"
-    // InternalJDL.g:1801:1: rule__LongField__Group__2__Impl : ( ( rule__LongField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:1913:1: rule__LongField__Group__2__Impl : ( ( rule__LongField__ValidatorsAssignment_2 )? ) ;
     public final void rule__LongField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1805:1: ( ( ( rule__LongField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:1806:1: ( ( rule__LongField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1917:1: ( ( ( rule__LongField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:1918:1: ( ( rule__LongField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:1806:1: ( ( rule__LongField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:1807:2: ( rule__LongField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:1918:1: ( ( rule__LongField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1919:2: ( rule__LongField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getLongFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:1808:2: ( rule__LongField__ValidatorsAssignment_2 )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            // InternalJDL.g:1920:2: ( rule__LongField__ValidatorsAssignment_2 )?
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA14_0==52) ) {
-                alt14=1;
+            if ( (LA15_0==53) ) {
+                alt15=1;
             }
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
-                    // InternalJDL.g:1808:3: rule__LongField__ValidatorsAssignment_2
+                    // InternalJDL.g:1920:3: rule__LongField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__LongField__ValidatorsAssignment_2();
@@ -5832,14 +6193,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__0"
-    // InternalJDL.g:1817:1: rule__BigDecimalField__Group__0 : rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1 ;
+    // InternalJDL.g:1929:1: rule__BigDecimalField__Group__0 : rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1 ;
     public final void rule__BigDecimalField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1821:1: ( rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1 )
-            // InternalJDL.g:1822:2: rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1
+            // InternalJDL.g:1933:1: ( rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1 )
+            // InternalJDL.g:1934:2: rule__BigDecimalField__Group__0__Impl rule__BigDecimalField__Group__1
             {
             pushFollow(FOLLOW_12);
             rule__BigDecimalField__Group__0__Impl();
@@ -5870,21 +6231,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__0__Impl"
-    // InternalJDL.g:1829:1: rule__BigDecimalField__Group__0__Impl : ( ( rule__BigDecimalField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:1941:1: rule__BigDecimalField__Group__0__Impl : ( ( rule__BigDecimalField__NameAssignment_0 ) ) ;
     public final void rule__BigDecimalField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1833:1: ( ( ( rule__BigDecimalField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1834:1: ( ( rule__BigDecimalField__NameAssignment_0 ) )
+            // InternalJDL.g:1945:1: ( ( ( rule__BigDecimalField__NameAssignment_0 ) ) )
+            // InternalJDL.g:1946:1: ( ( rule__BigDecimalField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1834:1: ( ( rule__BigDecimalField__NameAssignment_0 ) )
-            // InternalJDL.g:1835:2: ( rule__BigDecimalField__NameAssignment_0 )
+            // InternalJDL.g:1946:1: ( ( rule__BigDecimalField__NameAssignment_0 ) )
+            // InternalJDL.g:1947:2: ( rule__BigDecimalField__NameAssignment_0 )
             {
              before(grammarAccess.getBigDecimalFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1836:2: ( rule__BigDecimalField__NameAssignment_0 )
-            // InternalJDL.g:1836:3: rule__BigDecimalField__NameAssignment_0
+            // InternalJDL.g:1948:2: ( rule__BigDecimalField__NameAssignment_0 )
+            // InternalJDL.g:1948:3: rule__BigDecimalField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__BigDecimalField__NameAssignment_0();
@@ -5917,16 +6278,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__1"
-    // InternalJDL.g:1844:1: rule__BigDecimalField__Group__1 : rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2 ;
+    // InternalJDL.g:1956:1: rule__BigDecimalField__Group__1 : rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2 ;
     public final void rule__BigDecimalField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1848:1: ( rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2 )
-            // InternalJDL.g:1849:2: rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2
+            // InternalJDL.g:1960:1: ( rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2 )
+            // InternalJDL.g:1961:2: rule__BigDecimalField__Group__1__Impl rule__BigDecimalField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__BigDecimalField__Group__1__Impl();
 
             state._fsp--;
@@ -5955,17 +6316,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__1__Impl"
-    // InternalJDL.g:1856:1: rule__BigDecimalField__Group__1__Impl : ( 'BigDecimal' ) ;
+    // InternalJDL.g:1968:1: rule__BigDecimalField__Group__1__Impl : ( 'BigDecimal' ) ;
     public final void rule__BigDecimalField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1860:1: ( ( 'BigDecimal' ) )
-            // InternalJDL.g:1861:1: ( 'BigDecimal' )
+            // InternalJDL.g:1972:1: ( ( 'BigDecimal' ) )
+            // InternalJDL.g:1973:1: ( 'BigDecimal' )
             {
-            // InternalJDL.g:1861:1: ( 'BigDecimal' )
-            // InternalJDL.g:1862:2: 'BigDecimal'
+            // InternalJDL.g:1973:1: ( 'BigDecimal' )
+            // InternalJDL.g:1974:2: 'BigDecimal'
             {
              before(grammarAccess.getBigDecimalFieldAccess().getBigDecimalKeyword_1()); 
             match(input,27,FOLLOW_2); 
@@ -5992,14 +6353,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__2"
-    // InternalJDL.g:1871:1: rule__BigDecimalField__Group__2 : rule__BigDecimalField__Group__2__Impl ;
+    // InternalJDL.g:1983:1: rule__BigDecimalField__Group__2 : rule__BigDecimalField__Group__2__Impl ;
     public final void rule__BigDecimalField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1875:1: ( rule__BigDecimalField__Group__2__Impl )
-            // InternalJDL.g:1876:2: rule__BigDecimalField__Group__2__Impl
+            // InternalJDL.g:1987:1: ( rule__BigDecimalField__Group__2__Impl )
+            // InternalJDL.g:1988:2: rule__BigDecimalField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__BigDecimalField__Group__2__Impl();
@@ -6025,29 +6386,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__Group__2__Impl"
-    // InternalJDL.g:1882:1: rule__BigDecimalField__Group__2__Impl : ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:1994:1: rule__BigDecimalField__Group__2__Impl : ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? ) ;
     public final void rule__BigDecimalField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1886:1: ( ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:1887:1: ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:1998:1: ( ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:1999:1: ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:1887:1: ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:1888:2: ( rule__BigDecimalField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:1999:1: ( ( rule__BigDecimalField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2000:2: ( rule__BigDecimalField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getBigDecimalFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:1889:2: ( rule__BigDecimalField__ValidatorsAssignment_2 )?
-            int alt15=2;
-            int LA15_0 = input.LA(1);
+            // InternalJDL.g:2001:2: ( rule__BigDecimalField__ValidatorsAssignment_2 )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
 
-            if ( (LA15_0==52) ) {
-                alt15=1;
+            if ( (LA16_0==53) ) {
+                alt16=1;
             }
-            switch (alt15) {
+            switch (alt16) {
                 case 1 :
-                    // InternalJDL.g:1889:3: rule__BigDecimalField__ValidatorsAssignment_2
+                    // InternalJDL.g:2001:3: rule__BigDecimalField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__BigDecimalField__ValidatorsAssignment_2();
@@ -6083,14 +6444,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__0"
-    // InternalJDL.g:1898:1: rule__FloatField__Group__0 : rule__FloatField__Group__0__Impl rule__FloatField__Group__1 ;
+    // InternalJDL.g:2010:1: rule__FloatField__Group__0 : rule__FloatField__Group__0__Impl rule__FloatField__Group__1 ;
     public final void rule__FloatField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1902:1: ( rule__FloatField__Group__0__Impl rule__FloatField__Group__1 )
-            // InternalJDL.g:1903:2: rule__FloatField__Group__0__Impl rule__FloatField__Group__1
+            // InternalJDL.g:2014:1: ( rule__FloatField__Group__0__Impl rule__FloatField__Group__1 )
+            // InternalJDL.g:2015:2: rule__FloatField__Group__0__Impl rule__FloatField__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__FloatField__Group__0__Impl();
@@ -6121,21 +6482,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__0__Impl"
-    // InternalJDL.g:1910:1: rule__FloatField__Group__0__Impl : ( ( rule__FloatField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2022:1: rule__FloatField__Group__0__Impl : ( ( rule__FloatField__NameAssignment_0 ) ) ;
     public final void rule__FloatField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1914:1: ( ( ( rule__FloatField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1915:1: ( ( rule__FloatField__NameAssignment_0 ) )
+            // InternalJDL.g:2026:1: ( ( ( rule__FloatField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2027:1: ( ( rule__FloatField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1915:1: ( ( rule__FloatField__NameAssignment_0 ) )
-            // InternalJDL.g:1916:2: ( rule__FloatField__NameAssignment_0 )
+            // InternalJDL.g:2027:1: ( ( rule__FloatField__NameAssignment_0 ) )
+            // InternalJDL.g:2028:2: ( rule__FloatField__NameAssignment_0 )
             {
              before(grammarAccess.getFloatFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1917:2: ( rule__FloatField__NameAssignment_0 )
-            // InternalJDL.g:1917:3: rule__FloatField__NameAssignment_0
+            // InternalJDL.g:2029:2: ( rule__FloatField__NameAssignment_0 )
+            // InternalJDL.g:2029:3: rule__FloatField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__FloatField__NameAssignment_0();
@@ -6168,16 +6529,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__1"
-    // InternalJDL.g:1925:1: rule__FloatField__Group__1 : rule__FloatField__Group__1__Impl rule__FloatField__Group__2 ;
+    // InternalJDL.g:2037:1: rule__FloatField__Group__1 : rule__FloatField__Group__1__Impl rule__FloatField__Group__2 ;
     public final void rule__FloatField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1929:1: ( rule__FloatField__Group__1__Impl rule__FloatField__Group__2 )
-            // InternalJDL.g:1930:2: rule__FloatField__Group__1__Impl rule__FloatField__Group__2
+            // InternalJDL.g:2041:1: ( rule__FloatField__Group__1__Impl rule__FloatField__Group__2 )
+            // InternalJDL.g:2042:2: rule__FloatField__Group__1__Impl rule__FloatField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__FloatField__Group__1__Impl();
 
             state._fsp--;
@@ -6206,17 +6567,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__1__Impl"
-    // InternalJDL.g:1937:1: rule__FloatField__Group__1__Impl : ( 'Float' ) ;
+    // InternalJDL.g:2049:1: rule__FloatField__Group__1__Impl : ( 'Float' ) ;
     public final void rule__FloatField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1941:1: ( ( 'Float' ) )
-            // InternalJDL.g:1942:1: ( 'Float' )
+            // InternalJDL.g:2053:1: ( ( 'Float' ) )
+            // InternalJDL.g:2054:1: ( 'Float' )
             {
-            // InternalJDL.g:1942:1: ( 'Float' )
-            // InternalJDL.g:1943:2: 'Float'
+            // InternalJDL.g:2054:1: ( 'Float' )
+            // InternalJDL.g:2055:2: 'Float'
             {
              before(grammarAccess.getFloatFieldAccess().getFloatKeyword_1()); 
             match(input,28,FOLLOW_2); 
@@ -6243,14 +6604,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__2"
-    // InternalJDL.g:1952:1: rule__FloatField__Group__2 : rule__FloatField__Group__2__Impl ;
+    // InternalJDL.g:2064:1: rule__FloatField__Group__2 : rule__FloatField__Group__2__Impl ;
     public final void rule__FloatField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1956:1: ( rule__FloatField__Group__2__Impl )
-            // InternalJDL.g:1957:2: rule__FloatField__Group__2__Impl
+            // InternalJDL.g:2068:1: ( rule__FloatField__Group__2__Impl )
+            // InternalJDL.g:2069:2: rule__FloatField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__FloatField__Group__2__Impl();
@@ -6276,29 +6637,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__Group__2__Impl"
-    // InternalJDL.g:1963:1: rule__FloatField__Group__2__Impl : ( ( rule__FloatField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2075:1: rule__FloatField__Group__2__Impl : ( ( rule__FloatField__ValidatorsAssignment_2 )? ) ;
     public final void rule__FloatField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1967:1: ( ( ( rule__FloatField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:1968:1: ( ( rule__FloatField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2079:1: ( ( ( rule__FloatField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2080:1: ( ( rule__FloatField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:1968:1: ( ( rule__FloatField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:1969:2: ( rule__FloatField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2080:1: ( ( rule__FloatField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2081:2: ( rule__FloatField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getFloatFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:1970:2: ( rule__FloatField__ValidatorsAssignment_2 )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // InternalJDL.g:2082:2: ( rule__FloatField__ValidatorsAssignment_2 )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA16_0==52) ) {
-                alt16=1;
+            if ( (LA17_0==53) ) {
+                alt17=1;
             }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
-                    // InternalJDL.g:1970:3: rule__FloatField__ValidatorsAssignment_2
+                    // InternalJDL.g:2082:3: rule__FloatField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__FloatField__ValidatorsAssignment_2();
@@ -6334,14 +6695,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__0"
-    // InternalJDL.g:1979:1: rule__DoubleField__Group__0 : rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1 ;
+    // InternalJDL.g:2091:1: rule__DoubleField__Group__0 : rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1 ;
     public final void rule__DoubleField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1983:1: ( rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1 )
-            // InternalJDL.g:1984:2: rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1
+            // InternalJDL.g:2095:1: ( rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1 )
+            // InternalJDL.g:2096:2: rule__DoubleField__Group__0__Impl rule__DoubleField__Group__1
             {
             pushFollow(FOLLOW_14);
             rule__DoubleField__Group__0__Impl();
@@ -6372,21 +6733,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__0__Impl"
-    // InternalJDL.g:1991:1: rule__DoubleField__Group__0__Impl : ( ( rule__DoubleField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2103:1: rule__DoubleField__Group__0__Impl : ( ( rule__DoubleField__NameAssignment_0 ) ) ;
     public final void rule__DoubleField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:1995:1: ( ( ( rule__DoubleField__NameAssignment_0 ) ) )
-            // InternalJDL.g:1996:1: ( ( rule__DoubleField__NameAssignment_0 ) )
+            // InternalJDL.g:2107:1: ( ( ( rule__DoubleField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2108:1: ( ( rule__DoubleField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:1996:1: ( ( rule__DoubleField__NameAssignment_0 ) )
-            // InternalJDL.g:1997:2: ( rule__DoubleField__NameAssignment_0 )
+            // InternalJDL.g:2108:1: ( ( rule__DoubleField__NameAssignment_0 ) )
+            // InternalJDL.g:2109:2: ( rule__DoubleField__NameAssignment_0 )
             {
              before(grammarAccess.getDoubleFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:1998:2: ( rule__DoubleField__NameAssignment_0 )
-            // InternalJDL.g:1998:3: rule__DoubleField__NameAssignment_0
+            // InternalJDL.g:2110:2: ( rule__DoubleField__NameAssignment_0 )
+            // InternalJDL.g:2110:3: rule__DoubleField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__DoubleField__NameAssignment_0();
@@ -6419,16 +6780,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__1"
-    // InternalJDL.g:2006:1: rule__DoubleField__Group__1 : rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2 ;
+    // InternalJDL.g:2118:1: rule__DoubleField__Group__1 : rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2 ;
     public final void rule__DoubleField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2010:1: ( rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2 )
-            // InternalJDL.g:2011:2: rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2
+            // InternalJDL.g:2122:1: ( rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2 )
+            // InternalJDL.g:2123:2: rule__DoubleField__Group__1__Impl rule__DoubleField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__DoubleField__Group__1__Impl();
 
             state._fsp--;
@@ -6457,17 +6818,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__1__Impl"
-    // InternalJDL.g:2018:1: rule__DoubleField__Group__1__Impl : ( 'Double' ) ;
+    // InternalJDL.g:2130:1: rule__DoubleField__Group__1__Impl : ( 'Double' ) ;
     public final void rule__DoubleField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2022:1: ( ( 'Double' ) )
-            // InternalJDL.g:2023:1: ( 'Double' )
+            // InternalJDL.g:2134:1: ( ( 'Double' ) )
+            // InternalJDL.g:2135:1: ( 'Double' )
             {
-            // InternalJDL.g:2023:1: ( 'Double' )
-            // InternalJDL.g:2024:2: 'Double'
+            // InternalJDL.g:2135:1: ( 'Double' )
+            // InternalJDL.g:2136:2: 'Double'
             {
              before(grammarAccess.getDoubleFieldAccess().getDoubleKeyword_1()); 
             match(input,29,FOLLOW_2); 
@@ -6494,14 +6855,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__2"
-    // InternalJDL.g:2033:1: rule__DoubleField__Group__2 : rule__DoubleField__Group__2__Impl ;
+    // InternalJDL.g:2145:1: rule__DoubleField__Group__2 : rule__DoubleField__Group__2__Impl ;
     public final void rule__DoubleField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2037:1: ( rule__DoubleField__Group__2__Impl )
-            // InternalJDL.g:2038:2: rule__DoubleField__Group__2__Impl
+            // InternalJDL.g:2149:1: ( rule__DoubleField__Group__2__Impl )
+            // InternalJDL.g:2150:2: rule__DoubleField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__DoubleField__Group__2__Impl();
@@ -6527,29 +6888,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__Group__2__Impl"
-    // InternalJDL.g:2044:1: rule__DoubleField__Group__2__Impl : ( ( rule__DoubleField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2156:1: rule__DoubleField__Group__2__Impl : ( ( rule__DoubleField__ValidatorsAssignment_2 )? ) ;
     public final void rule__DoubleField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2048:1: ( ( ( rule__DoubleField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2049:1: ( ( rule__DoubleField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2160:1: ( ( ( rule__DoubleField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2161:1: ( ( rule__DoubleField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2049:1: ( ( rule__DoubleField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2050:2: ( rule__DoubleField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2161:1: ( ( rule__DoubleField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2162:2: ( rule__DoubleField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getDoubleFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2051:2: ( rule__DoubleField__ValidatorsAssignment_2 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            // InternalJDL.g:2163:2: ( rule__DoubleField__ValidatorsAssignment_2 )?
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==52) ) {
-                alt17=1;
+            if ( (LA18_0==53) ) {
+                alt18=1;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
-                    // InternalJDL.g:2051:3: rule__DoubleField__ValidatorsAssignment_2
+                    // InternalJDL.g:2163:3: rule__DoubleField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__DoubleField__ValidatorsAssignment_2();
@@ -6585,14 +6946,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__0"
-    // InternalJDL.g:2060:1: rule__BooleanField__Group__0 : rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1 ;
+    // InternalJDL.g:2172:1: rule__BooleanField__Group__0 : rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1 ;
     public final void rule__BooleanField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2064:1: ( rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1 )
-            // InternalJDL.g:2065:2: rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1
+            // InternalJDL.g:2176:1: ( rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1 )
+            // InternalJDL.g:2177:2: rule__BooleanField__Group__0__Impl rule__BooleanField__Group__1
             {
             pushFollow(FOLLOW_15);
             rule__BooleanField__Group__0__Impl();
@@ -6623,21 +6984,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__0__Impl"
-    // InternalJDL.g:2072:1: rule__BooleanField__Group__0__Impl : ( ( rule__BooleanField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2184:1: rule__BooleanField__Group__0__Impl : ( ( rule__BooleanField__NameAssignment_0 ) ) ;
     public final void rule__BooleanField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2076:1: ( ( ( rule__BooleanField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2077:1: ( ( rule__BooleanField__NameAssignment_0 ) )
+            // InternalJDL.g:2188:1: ( ( ( rule__BooleanField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2189:1: ( ( rule__BooleanField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2077:1: ( ( rule__BooleanField__NameAssignment_0 ) )
-            // InternalJDL.g:2078:2: ( rule__BooleanField__NameAssignment_0 )
+            // InternalJDL.g:2189:1: ( ( rule__BooleanField__NameAssignment_0 ) )
+            // InternalJDL.g:2190:2: ( rule__BooleanField__NameAssignment_0 )
             {
              before(grammarAccess.getBooleanFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2079:2: ( rule__BooleanField__NameAssignment_0 )
-            // InternalJDL.g:2079:3: rule__BooleanField__NameAssignment_0
+            // InternalJDL.g:2191:2: ( rule__BooleanField__NameAssignment_0 )
+            // InternalJDL.g:2191:3: rule__BooleanField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__BooleanField__NameAssignment_0();
@@ -6670,16 +7031,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__1"
-    // InternalJDL.g:2087:1: rule__BooleanField__Group__1 : rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2 ;
+    // InternalJDL.g:2199:1: rule__BooleanField__Group__1 : rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2 ;
     public final void rule__BooleanField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2091:1: ( rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2 )
-            // InternalJDL.g:2092:2: rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2
+            // InternalJDL.g:2203:1: ( rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2 )
+            // InternalJDL.g:2204:2: rule__BooleanField__Group__1__Impl rule__BooleanField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__BooleanField__Group__1__Impl();
 
             state._fsp--;
@@ -6708,17 +7069,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__1__Impl"
-    // InternalJDL.g:2099:1: rule__BooleanField__Group__1__Impl : ( 'Boolean' ) ;
+    // InternalJDL.g:2211:1: rule__BooleanField__Group__1__Impl : ( 'Boolean' ) ;
     public final void rule__BooleanField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2103:1: ( ( 'Boolean' ) )
-            // InternalJDL.g:2104:1: ( 'Boolean' )
+            // InternalJDL.g:2215:1: ( ( 'Boolean' ) )
+            // InternalJDL.g:2216:1: ( 'Boolean' )
             {
-            // InternalJDL.g:2104:1: ( 'Boolean' )
-            // InternalJDL.g:2105:2: 'Boolean'
+            // InternalJDL.g:2216:1: ( 'Boolean' )
+            // InternalJDL.g:2217:2: 'Boolean'
             {
              before(grammarAccess.getBooleanFieldAccess().getBooleanKeyword_1()); 
             match(input,30,FOLLOW_2); 
@@ -6745,14 +7106,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__2"
-    // InternalJDL.g:2114:1: rule__BooleanField__Group__2 : rule__BooleanField__Group__2__Impl ;
+    // InternalJDL.g:2226:1: rule__BooleanField__Group__2 : rule__BooleanField__Group__2__Impl ;
     public final void rule__BooleanField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2118:1: ( rule__BooleanField__Group__2__Impl )
-            // InternalJDL.g:2119:2: rule__BooleanField__Group__2__Impl
+            // InternalJDL.g:2230:1: ( rule__BooleanField__Group__2__Impl )
+            // InternalJDL.g:2231:2: rule__BooleanField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__BooleanField__Group__2__Impl();
@@ -6778,29 +7139,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__Group__2__Impl"
-    // InternalJDL.g:2125:1: rule__BooleanField__Group__2__Impl : ( ( rule__BooleanField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2237:1: rule__BooleanField__Group__2__Impl : ( ( rule__BooleanField__ValidatorsAssignment_2 )? ) ;
     public final void rule__BooleanField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2129:1: ( ( ( rule__BooleanField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2130:1: ( ( rule__BooleanField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2241:1: ( ( ( rule__BooleanField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2242:1: ( ( rule__BooleanField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2130:1: ( ( rule__BooleanField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2131:2: ( rule__BooleanField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2242:1: ( ( rule__BooleanField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2243:2: ( rule__BooleanField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getBooleanFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2132:2: ( rule__BooleanField__ValidatorsAssignment_2 )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            // InternalJDL.g:2244:2: ( rule__BooleanField__ValidatorsAssignment_2 )?
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA18_0==52) ) {
-                alt18=1;
+            if ( (LA19_0==53) ) {
+                alt19=1;
             }
-            switch (alt18) {
+            switch (alt19) {
                 case 1 :
-                    // InternalJDL.g:2132:3: rule__BooleanField__ValidatorsAssignment_2
+                    // InternalJDL.g:2244:3: rule__BooleanField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__BooleanField__ValidatorsAssignment_2();
@@ -6836,14 +7197,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__0"
-    // InternalJDL.g:2141:1: rule__LocalDateField__Group__0 : rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1 ;
+    // InternalJDL.g:2253:1: rule__LocalDateField__Group__0 : rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1 ;
     public final void rule__LocalDateField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2145:1: ( rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1 )
-            // InternalJDL.g:2146:2: rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1
+            // InternalJDL.g:2257:1: ( rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1 )
+            // InternalJDL.g:2258:2: rule__LocalDateField__Group__0__Impl rule__LocalDateField__Group__1
             {
             pushFollow(FOLLOW_16);
             rule__LocalDateField__Group__0__Impl();
@@ -6874,21 +7235,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__0__Impl"
-    // InternalJDL.g:2153:1: rule__LocalDateField__Group__0__Impl : ( ( rule__LocalDateField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2265:1: rule__LocalDateField__Group__0__Impl : ( ( rule__LocalDateField__NameAssignment_0 ) ) ;
     public final void rule__LocalDateField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2157:1: ( ( ( rule__LocalDateField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2158:1: ( ( rule__LocalDateField__NameAssignment_0 ) )
+            // InternalJDL.g:2269:1: ( ( ( rule__LocalDateField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2270:1: ( ( rule__LocalDateField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2158:1: ( ( rule__LocalDateField__NameAssignment_0 ) )
-            // InternalJDL.g:2159:2: ( rule__LocalDateField__NameAssignment_0 )
+            // InternalJDL.g:2270:1: ( ( rule__LocalDateField__NameAssignment_0 ) )
+            // InternalJDL.g:2271:2: ( rule__LocalDateField__NameAssignment_0 )
             {
              before(grammarAccess.getLocalDateFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2160:2: ( rule__LocalDateField__NameAssignment_0 )
-            // InternalJDL.g:2160:3: rule__LocalDateField__NameAssignment_0
+            // InternalJDL.g:2272:2: ( rule__LocalDateField__NameAssignment_0 )
+            // InternalJDL.g:2272:3: rule__LocalDateField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__LocalDateField__NameAssignment_0();
@@ -6921,16 +7282,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__1"
-    // InternalJDL.g:2168:1: rule__LocalDateField__Group__1 : rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2 ;
+    // InternalJDL.g:2280:1: rule__LocalDateField__Group__1 : rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2 ;
     public final void rule__LocalDateField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2172:1: ( rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2 )
-            // InternalJDL.g:2173:2: rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2
+            // InternalJDL.g:2284:1: ( rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2 )
+            // InternalJDL.g:2285:2: rule__LocalDateField__Group__1__Impl rule__LocalDateField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__LocalDateField__Group__1__Impl();
 
             state._fsp--;
@@ -6959,17 +7320,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__1__Impl"
-    // InternalJDL.g:2180:1: rule__LocalDateField__Group__1__Impl : ( 'LocalDate' ) ;
+    // InternalJDL.g:2292:1: rule__LocalDateField__Group__1__Impl : ( 'LocalDate' ) ;
     public final void rule__LocalDateField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2184:1: ( ( 'LocalDate' ) )
-            // InternalJDL.g:2185:1: ( 'LocalDate' )
+            // InternalJDL.g:2296:1: ( ( 'LocalDate' ) )
+            // InternalJDL.g:2297:1: ( 'LocalDate' )
             {
-            // InternalJDL.g:2185:1: ( 'LocalDate' )
-            // InternalJDL.g:2186:2: 'LocalDate'
+            // InternalJDL.g:2297:1: ( 'LocalDate' )
+            // InternalJDL.g:2298:2: 'LocalDate'
             {
              before(grammarAccess.getLocalDateFieldAccess().getLocalDateKeyword_1()); 
             match(input,31,FOLLOW_2); 
@@ -6996,14 +7357,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__2"
-    // InternalJDL.g:2195:1: rule__LocalDateField__Group__2 : rule__LocalDateField__Group__2__Impl ;
+    // InternalJDL.g:2307:1: rule__LocalDateField__Group__2 : rule__LocalDateField__Group__2__Impl ;
     public final void rule__LocalDateField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2199:1: ( rule__LocalDateField__Group__2__Impl )
-            // InternalJDL.g:2200:2: rule__LocalDateField__Group__2__Impl
+            // InternalJDL.g:2311:1: ( rule__LocalDateField__Group__2__Impl )
+            // InternalJDL.g:2312:2: rule__LocalDateField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__LocalDateField__Group__2__Impl();
@@ -7029,29 +7390,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__Group__2__Impl"
-    // InternalJDL.g:2206:1: rule__LocalDateField__Group__2__Impl : ( ( rule__LocalDateField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2318:1: rule__LocalDateField__Group__2__Impl : ( ( rule__LocalDateField__ValidatorsAssignment_2 )? ) ;
     public final void rule__LocalDateField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2210:1: ( ( ( rule__LocalDateField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2211:1: ( ( rule__LocalDateField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2322:1: ( ( ( rule__LocalDateField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2323:1: ( ( rule__LocalDateField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2211:1: ( ( rule__LocalDateField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2212:2: ( rule__LocalDateField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2323:1: ( ( rule__LocalDateField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2324:2: ( rule__LocalDateField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getLocalDateFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2213:2: ( rule__LocalDateField__ValidatorsAssignment_2 )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            // InternalJDL.g:2325:2: ( rule__LocalDateField__ValidatorsAssignment_2 )?
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==52) ) {
-                alt19=1;
+            if ( (LA20_0==53) ) {
+                alt20=1;
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
-                    // InternalJDL.g:2213:3: rule__LocalDateField__ValidatorsAssignment_2
+                    // InternalJDL.g:2325:3: rule__LocalDateField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__LocalDateField__ValidatorsAssignment_2();
@@ -7087,14 +7448,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__0"
-    // InternalJDL.g:2222:1: rule__ZonedDateTimeField__Group__0 : rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1 ;
+    // InternalJDL.g:2334:1: rule__ZonedDateTimeField__Group__0 : rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1 ;
     public final void rule__ZonedDateTimeField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2226:1: ( rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1 )
-            // InternalJDL.g:2227:2: rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1
+            // InternalJDL.g:2338:1: ( rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1 )
+            // InternalJDL.g:2339:2: rule__ZonedDateTimeField__Group__0__Impl rule__ZonedDateTimeField__Group__1
             {
             pushFollow(FOLLOW_17);
             rule__ZonedDateTimeField__Group__0__Impl();
@@ -7125,21 +7486,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__0__Impl"
-    // InternalJDL.g:2234:1: rule__ZonedDateTimeField__Group__0__Impl : ( ( rule__ZonedDateTimeField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2346:1: rule__ZonedDateTimeField__Group__0__Impl : ( ( rule__ZonedDateTimeField__NameAssignment_0 ) ) ;
     public final void rule__ZonedDateTimeField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2238:1: ( ( ( rule__ZonedDateTimeField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2239:1: ( ( rule__ZonedDateTimeField__NameAssignment_0 ) )
+            // InternalJDL.g:2350:1: ( ( ( rule__ZonedDateTimeField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2351:1: ( ( rule__ZonedDateTimeField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2239:1: ( ( rule__ZonedDateTimeField__NameAssignment_0 ) )
-            // InternalJDL.g:2240:2: ( rule__ZonedDateTimeField__NameAssignment_0 )
+            // InternalJDL.g:2351:1: ( ( rule__ZonedDateTimeField__NameAssignment_0 ) )
+            // InternalJDL.g:2352:2: ( rule__ZonedDateTimeField__NameAssignment_0 )
             {
              before(grammarAccess.getZonedDateTimeFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2241:2: ( rule__ZonedDateTimeField__NameAssignment_0 )
-            // InternalJDL.g:2241:3: rule__ZonedDateTimeField__NameAssignment_0
+            // InternalJDL.g:2353:2: ( rule__ZonedDateTimeField__NameAssignment_0 )
+            // InternalJDL.g:2353:3: rule__ZonedDateTimeField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__ZonedDateTimeField__NameAssignment_0();
@@ -7172,16 +7533,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__1"
-    // InternalJDL.g:2249:1: rule__ZonedDateTimeField__Group__1 : rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2 ;
+    // InternalJDL.g:2361:1: rule__ZonedDateTimeField__Group__1 : rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2 ;
     public final void rule__ZonedDateTimeField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2253:1: ( rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2 )
-            // InternalJDL.g:2254:2: rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2
+            // InternalJDL.g:2365:1: ( rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2 )
+            // InternalJDL.g:2366:2: rule__ZonedDateTimeField__Group__1__Impl rule__ZonedDateTimeField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__ZonedDateTimeField__Group__1__Impl();
 
             state._fsp--;
@@ -7210,17 +7571,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__1__Impl"
-    // InternalJDL.g:2261:1: rule__ZonedDateTimeField__Group__1__Impl : ( 'ZonedDateTime' ) ;
+    // InternalJDL.g:2373:1: rule__ZonedDateTimeField__Group__1__Impl : ( 'ZonedDateTime' ) ;
     public final void rule__ZonedDateTimeField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2265:1: ( ( 'ZonedDateTime' ) )
-            // InternalJDL.g:2266:1: ( 'ZonedDateTime' )
+            // InternalJDL.g:2377:1: ( ( 'ZonedDateTime' ) )
+            // InternalJDL.g:2378:1: ( 'ZonedDateTime' )
             {
-            // InternalJDL.g:2266:1: ( 'ZonedDateTime' )
-            // InternalJDL.g:2267:2: 'ZonedDateTime'
+            // InternalJDL.g:2378:1: ( 'ZonedDateTime' )
+            // InternalJDL.g:2379:2: 'ZonedDateTime'
             {
              before(grammarAccess.getZonedDateTimeFieldAccess().getZonedDateTimeKeyword_1()); 
             match(input,32,FOLLOW_2); 
@@ -7247,14 +7608,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__2"
-    // InternalJDL.g:2276:1: rule__ZonedDateTimeField__Group__2 : rule__ZonedDateTimeField__Group__2__Impl ;
+    // InternalJDL.g:2388:1: rule__ZonedDateTimeField__Group__2 : rule__ZonedDateTimeField__Group__2__Impl ;
     public final void rule__ZonedDateTimeField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2280:1: ( rule__ZonedDateTimeField__Group__2__Impl )
-            // InternalJDL.g:2281:2: rule__ZonedDateTimeField__Group__2__Impl
+            // InternalJDL.g:2392:1: ( rule__ZonedDateTimeField__Group__2__Impl )
+            // InternalJDL.g:2393:2: rule__ZonedDateTimeField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ZonedDateTimeField__Group__2__Impl();
@@ -7280,29 +7641,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__Group__2__Impl"
-    // InternalJDL.g:2287:1: rule__ZonedDateTimeField__Group__2__Impl : ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2399:1: rule__ZonedDateTimeField__Group__2__Impl : ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? ) ;
     public final void rule__ZonedDateTimeField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2291:1: ( ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2292:1: ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2403:1: ( ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2404:1: ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2292:1: ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2293:2: ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2404:1: ( ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2405:2: ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getZonedDateTimeFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2294:2: ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalJDL.g:2406:2: ( rule__ZonedDateTimeField__ValidatorsAssignment_2 )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA20_0==52) ) {
-                alt20=1;
+            if ( (LA21_0==53) ) {
+                alt21=1;
             }
-            switch (alt20) {
+            switch (alt21) {
                 case 1 :
-                    // InternalJDL.g:2294:3: rule__ZonedDateTimeField__ValidatorsAssignment_2
+                    // InternalJDL.g:2406:3: rule__ZonedDateTimeField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__ZonedDateTimeField__ValidatorsAssignment_2();
@@ -7338,14 +7699,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__0"
-    // InternalJDL.g:2303:1: rule__BlobField__Group__0 : rule__BlobField__Group__0__Impl rule__BlobField__Group__1 ;
+    // InternalJDL.g:2415:1: rule__BlobField__Group__0 : rule__BlobField__Group__0__Impl rule__BlobField__Group__1 ;
     public final void rule__BlobField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2307:1: ( rule__BlobField__Group__0__Impl rule__BlobField__Group__1 )
-            // InternalJDL.g:2308:2: rule__BlobField__Group__0__Impl rule__BlobField__Group__1
+            // InternalJDL.g:2419:1: ( rule__BlobField__Group__0__Impl rule__BlobField__Group__1 )
+            // InternalJDL.g:2420:2: rule__BlobField__Group__0__Impl rule__BlobField__Group__1
             {
             pushFollow(FOLLOW_18);
             rule__BlobField__Group__0__Impl();
@@ -7376,21 +7737,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__0__Impl"
-    // InternalJDL.g:2315:1: rule__BlobField__Group__0__Impl : ( ( rule__BlobField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2427:1: rule__BlobField__Group__0__Impl : ( ( rule__BlobField__NameAssignment_0 ) ) ;
     public final void rule__BlobField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2319:1: ( ( ( rule__BlobField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2320:1: ( ( rule__BlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2431:1: ( ( ( rule__BlobField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2432:1: ( ( rule__BlobField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2320:1: ( ( rule__BlobField__NameAssignment_0 ) )
-            // InternalJDL.g:2321:2: ( rule__BlobField__NameAssignment_0 )
+            // InternalJDL.g:2432:1: ( ( rule__BlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2433:2: ( rule__BlobField__NameAssignment_0 )
             {
              before(grammarAccess.getBlobFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2322:2: ( rule__BlobField__NameAssignment_0 )
-            // InternalJDL.g:2322:3: rule__BlobField__NameAssignment_0
+            // InternalJDL.g:2434:2: ( rule__BlobField__NameAssignment_0 )
+            // InternalJDL.g:2434:3: rule__BlobField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__BlobField__NameAssignment_0();
@@ -7423,16 +7784,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__1"
-    // InternalJDL.g:2330:1: rule__BlobField__Group__1 : rule__BlobField__Group__1__Impl rule__BlobField__Group__2 ;
+    // InternalJDL.g:2442:1: rule__BlobField__Group__1 : rule__BlobField__Group__1__Impl rule__BlobField__Group__2 ;
     public final void rule__BlobField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2334:1: ( rule__BlobField__Group__1__Impl rule__BlobField__Group__2 )
-            // InternalJDL.g:2335:2: rule__BlobField__Group__1__Impl rule__BlobField__Group__2
+            // InternalJDL.g:2446:1: ( rule__BlobField__Group__1__Impl rule__BlobField__Group__2 )
+            // InternalJDL.g:2447:2: rule__BlobField__Group__1__Impl rule__BlobField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__BlobField__Group__1__Impl();
 
             state._fsp--;
@@ -7461,17 +7822,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__1__Impl"
-    // InternalJDL.g:2342:1: rule__BlobField__Group__1__Impl : ( 'Blob' ) ;
+    // InternalJDL.g:2454:1: rule__BlobField__Group__1__Impl : ( 'Blob' ) ;
     public final void rule__BlobField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2346:1: ( ( 'Blob' ) )
-            // InternalJDL.g:2347:1: ( 'Blob' )
+            // InternalJDL.g:2458:1: ( ( 'Blob' ) )
+            // InternalJDL.g:2459:1: ( 'Blob' )
             {
-            // InternalJDL.g:2347:1: ( 'Blob' )
-            // InternalJDL.g:2348:2: 'Blob'
+            // InternalJDL.g:2459:1: ( 'Blob' )
+            // InternalJDL.g:2460:2: 'Blob'
             {
              before(grammarAccess.getBlobFieldAccess().getBlobKeyword_1()); 
             match(input,33,FOLLOW_2); 
@@ -7498,14 +7859,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__2"
-    // InternalJDL.g:2357:1: rule__BlobField__Group__2 : rule__BlobField__Group__2__Impl ;
+    // InternalJDL.g:2469:1: rule__BlobField__Group__2 : rule__BlobField__Group__2__Impl ;
     public final void rule__BlobField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2361:1: ( rule__BlobField__Group__2__Impl )
-            // InternalJDL.g:2362:2: rule__BlobField__Group__2__Impl
+            // InternalJDL.g:2473:1: ( rule__BlobField__Group__2__Impl )
+            // InternalJDL.g:2474:2: rule__BlobField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__BlobField__Group__2__Impl();
@@ -7531,29 +7892,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__Group__2__Impl"
-    // InternalJDL.g:2368:1: rule__BlobField__Group__2__Impl : ( ( rule__BlobField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2480:1: rule__BlobField__Group__2__Impl : ( ( rule__BlobField__ValidatorsAssignment_2 )? ) ;
     public final void rule__BlobField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2372:1: ( ( ( rule__BlobField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2373:1: ( ( rule__BlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2484:1: ( ( ( rule__BlobField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2485:1: ( ( rule__BlobField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2373:1: ( ( rule__BlobField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2374:2: ( rule__BlobField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2485:1: ( ( rule__BlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2486:2: ( rule__BlobField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getBlobFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2375:2: ( rule__BlobField__ValidatorsAssignment_2 )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalJDL.g:2487:2: ( rule__BlobField__ValidatorsAssignment_2 )?
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==52) ) {
-                alt21=1;
+            if ( (LA22_0==53) ) {
+                alt22=1;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
-                    // InternalJDL.g:2375:3: rule__BlobField__ValidatorsAssignment_2
+                    // InternalJDL.g:2487:3: rule__BlobField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__BlobField__ValidatorsAssignment_2();
@@ -7589,14 +7950,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__0"
-    // InternalJDL.g:2384:1: rule__AnyBlobField__Group__0 : rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1 ;
+    // InternalJDL.g:2496:1: rule__AnyBlobField__Group__0 : rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1 ;
     public final void rule__AnyBlobField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2388:1: ( rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1 )
-            // InternalJDL.g:2389:2: rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1
+            // InternalJDL.g:2500:1: ( rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1 )
+            // InternalJDL.g:2501:2: rule__AnyBlobField__Group__0__Impl rule__AnyBlobField__Group__1
             {
             pushFollow(FOLLOW_19);
             rule__AnyBlobField__Group__0__Impl();
@@ -7627,21 +7988,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__0__Impl"
-    // InternalJDL.g:2396:1: rule__AnyBlobField__Group__0__Impl : ( ( rule__AnyBlobField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2508:1: rule__AnyBlobField__Group__0__Impl : ( ( rule__AnyBlobField__NameAssignment_0 ) ) ;
     public final void rule__AnyBlobField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2400:1: ( ( ( rule__AnyBlobField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2401:1: ( ( rule__AnyBlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2512:1: ( ( ( rule__AnyBlobField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2513:1: ( ( rule__AnyBlobField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2401:1: ( ( rule__AnyBlobField__NameAssignment_0 ) )
-            // InternalJDL.g:2402:2: ( rule__AnyBlobField__NameAssignment_0 )
+            // InternalJDL.g:2513:1: ( ( rule__AnyBlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2514:2: ( rule__AnyBlobField__NameAssignment_0 )
             {
              before(grammarAccess.getAnyBlobFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2403:2: ( rule__AnyBlobField__NameAssignment_0 )
-            // InternalJDL.g:2403:3: rule__AnyBlobField__NameAssignment_0
+            // InternalJDL.g:2515:2: ( rule__AnyBlobField__NameAssignment_0 )
+            // InternalJDL.g:2515:3: rule__AnyBlobField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__AnyBlobField__NameAssignment_0();
@@ -7674,16 +8035,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__1"
-    // InternalJDL.g:2411:1: rule__AnyBlobField__Group__1 : rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2 ;
+    // InternalJDL.g:2523:1: rule__AnyBlobField__Group__1 : rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2 ;
     public final void rule__AnyBlobField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2415:1: ( rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2 )
-            // InternalJDL.g:2416:2: rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2
+            // InternalJDL.g:2527:1: ( rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2 )
+            // InternalJDL.g:2528:2: rule__AnyBlobField__Group__1__Impl rule__AnyBlobField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__AnyBlobField__Group__1__Impl();
 
             state._fsp--;
@@ -7712,17 +8073,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__1__Impl"
-    // InternalJDL.g:2423:1: rule__AnyBlobField__Group__1__Impl : ( 'AnyBlob' ) ;
+    // InternalJDL.g:2535:1: rule__AnyBlobField__Group__1__Impl : ( 'AnyBlob' ) ;
     public final void rule__AnyBlobField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2427:1: ( ( 'AnyBlob' ) )
-            // InternalJDL.g:2428:1: ( 'AnyBlob' )
+            // InternalJDL.g:2539:1: ( ( 'AnyBlob' ) )
+            // InternalJDL.g:2540:1: ( 'AnyBlob' )
             {
-            // InternalJDL.g:2428:1: ( 'AnyBlob' )
-            // InternalJDL.g:2429:2: 'AnyBlob'
+            // InternalJDL.g:2540:1: ( 'AnyBlob' )
+            // InternalJDL.g:2541:2: 'AnyBlob'
             {
              before(grammarAccess.getAnyBlobFieldAccess().getAnyBlobKeyword_1()); 
             match(input,34,FOLLOW_2); 
@@ -7749,14 +8110,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__2"
-    // InternalJDL.g:2438:1: rule__AnyBlobField__Group__2 : rule__AnyBlobField__Group__2__Impl ;
+    // InternalJDL.g:2550:1: rule__AnyBlobField__Group__2 : rule__AnyBlobField__Group__2__Impl ;
     public final void rule__AnyBlobField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2442:1: ( rule__AnyBlobField__Group__2__Impl )
-            // InternalJDL.g:2443:2: rule__AnyBlobField__Group__2__Impl
+            // InternalJDL.g:2554:1: ( rule__AnyBlobField__Group__2__Impl )
+            // InternalJDL.g:2555:2: rule__AnyBlobField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AnyBlobField__Group__2__Impl();
@@ -7782,29 +8143,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__Group__2__Impl"
-    // InternalJDL.g:2449:1: rule__AnyBlobField__Group__2__Impl : ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2561:1: rule__AnyBlobField__Group__2__Impl : ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? ) ;
     public final void rule__AnyBlobField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2453:1: ( ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2454:1: ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2565:1: ( ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2566:1: ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2454:1: ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2455:2: ( rule__AnyBlobField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2566:1: ( ( rule__AnyBlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2567:2: ( rule__AnyBlobField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getAnyBlobFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2456:2: ( rule__AnyBlobField__ValidatorsAssignment_2 )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            // InternalJDL.g:2568:2: ( rule__AnyBlobField__ValidatorsAssignment_2 )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA22_0==52) ) {
-                alt22=1;
+            if ( (LA23_0==53) ) {
+                alt23=1;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
-                    // InternalJDL.g:2456:3: rule__AnyBlobField__ValidatorsAssignment_2
+                    // InternalJDL.g:2568:3: rule__AnyBlobField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__AnyBlobField__ValidatorsAssignment_2();
@@ -7840,14 +8201,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__0"
-    // InternalJDL.g:2465:1: rule__ImageBlobField__Group__0 : rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1 ;
+    // InternalJDL.g:2577:1: rule__ImageBlobField__Group__0 : rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1 ;
     public final void rule__ImageBlobField__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2469:1: ( rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1 )
-            // InternalJDL.g:2470:2: rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1
+            // InternalJDL.g:2581:1: ( rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1 )
+            // InternalJDL.g:2582:2: rule__ImageBlobField__Group__0__Impl rule__ImageBlobField__Group__1
             {
             pushFollow(FOLLOW_20);
             rule__ImageBlobField__Group__0__Impl();
@@ -7878,21 +8239,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__0__Impl"
-    // InternalJDL.g:2477:1: rule__ImageBlobField__Group__0__Impl : ( ( rule__ImageBlobField__NameAssignment_0 ) ) ;
+    // InternalJDL.g:2589:1: rule__ImageBlobField__Group__0__Impl : ( ( rule__ImageBlobField__NameAssignment_0 ) ) ;
     public final void rule__ImageBlobField__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2481:1: ( ( ( rule__ImageBlobField__NameAssignment_0 ) ) )
-            // InternalJDL.g:2482:1: ( ( rule__ImageBlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2593:1: ( ( ( rule__ImageBlobField__NameAssignment_0 ) ) )
+            // InternalJDL.g:2594:1: ( ( rule__ImageBlobField__NameAssignment_0 ) )
             {
-            // InternalJDL.g:2482:1: ( ( rule__ImageBlobField__NameAssignment_0 ) )
-            // InternalJDL.g:2483:2: ( rule__ImageBlobField__NameAssignment_0 )
+            // InternalJDL.g:2594:1: ( ( rule__ImageBlobField__NameAssignment_0 ) )
+            // InternalJDL.g:2595:2: ( rule__ImageBlobField__NameAssignment_0 )
             {
              before(grammarAccess.getImageBlobFieldAccess().getNameAssignment_0()); 
-            // InternalJDL.g:2484:2: ( rule__ImageBlobField__NameAssignment_0 )
-            // InternalJDL.g:2484:3: rule__ImageBlobField__NameAssignment_0
+            // InternalJDL.g:2596:2: ( rule__ImageBlobField__NameAssignment_0 )
+            // InternalJDL.g:2596:3: rule__ImageBlobField__NameAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__ImageBlobField__NameAssignment_0();
@@ -7925,16 +8286,16 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__1"
-    // InternalJDL.g:2492:1: rule__ImageBlobField__Group__1 : rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2 ;
+    // InternalJDL.g:2604:1: rule__ImageBlobField__Group__1 : rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2 ;
     public final void rule__ImageBlobField__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2496:1: ( rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2 )
-            // InternalJDL.g:2497:2: rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2
+            // InternalJDL.g:2608:1: ( rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2 )
+            // InternalJDL.g:2609:2: rule__ImageBlobField__Group__1__Impl rule__ImageBlobField__Group__2
             {
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_8);
             rule__ImageBlobField__Group__1__Impl();
 
             state._fsp--;
@@ -7963,17 +8324,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__1__Impl"
-    // InternalJDL.g:2504:1: rule__ImageBlobField__Group__1__Impl : ( 'ImageBlob' ) ;
+    // InternalJDL.g:2616:1: rule__ImageBlobField__Group__1__Impl : ( 'ImageBlob' ) ;
     public final void rule__ImageBlobField__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2508:1: ( ( 'ImageBlob' ) )
-            // InternalJDL.g:2509:1: ( 'ImageBlob' )
+            // InternalJDL.g:2620:1: ( ( 'ImageBlob' ) )
+            // InternalJDL.g:2621:1: ( 'ImageBlob' )
             {
-            // InternalJDL.g:2509:1: ( 'ImageBlob' )
-            // InternalJDL.g:2510:2: 'ImageBlob'
+            // InternalJDL.g:2621:1: ( 'ImageBlob' )
+            // InternalJDL.g:2622:2: 'ImageBlob'
             {
              before(grammarAccess.getImageBlobFieldAccess().getImageBlobKeyword_1()); 
             match(input,35,FOLLOW_2); 
@@ -8000,14 +8361,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__2"
-    // InternalJDL.g:2519:1: rule__ImageBlobField__Group__2 : rule__ImageBlobField__Group__2__Impl ;
+    // InternalJDL.g:2631:1: rule__ImageBlobField__Group__2 : rule__ImageBlobField__Group__2__Impl ;
     public final void rule__ImageBlobField__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2523:1: ( rule__ImageBlobField__Group__2__Impl )
-            // InternalJDL.g:2524:2: rule__ImageBlobField__Group__2__Impl
+            // InternalJDL.g:2635:1: ( rule__ImageBlobField__Group__2__Impl )
+            // InternalJDL.g:2636:2: rule__ImageBlobField__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ImageBlobField__Group__2__Impl();
@@ -8033,29 +8394,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__Group__2__Impl"
-    // InternalJDL.g:2530:1: rule__ImageBlobField__Group__2__Impl : ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? ) ;
+    // InternalJDL.g:2642:1: rule__ImageBlobField__Group__2__Impl : ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? ) ;
     public final void rule__ImageBlobField__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2534:1: ( ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? ) )
-            // InternalJDL.g:2535:1: ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2646:1: ( ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? ) )
+            // InternalJDL.g:2647:1: ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? )
             {
-            // InternalJDL.g:2535:1: ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? )
-            // InternalJDL.g:2536:2: ( rule__ImageBlobField__ValidatorsAssignment_2 )?
+            // InternalJDL.g:2647:1: ( ( rule__ImageBlobField__ValidatorsAssignment_2 )? )
+            // InternalJDL.g:2648:2: ( rule__ImageBlobField__ValidatorsAssignment_2 )?
             {
              before(grammarAccess.getImageBlobFieldAccess().getValidatorsAssignment_2()); 
-            // InternalJDL.g:2537:2: ( rule__ImageBlobField__ValidatorsAssignment_2 )?
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // InternalJDL.g:2649:2: ( rule__ImageBlobField__ValidatorsAssignment_2 )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA23_0==52) ) {
-                alt23=1;
+            if ( (LA24_0==53) ) {
+                alt24=1;
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
-                    // InternalJDL.g:2537:3: rule__ImageBlobField__ValidatorsAssignment_2
+                    // InternalJDL.g:2649:3: rule__ImageBlobField__ValidatorsAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__ImageBlobField__ValidatorsAssignment_2();
@@ -8091,14 +8452,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__0"
-    // InternalJDL.g:2546:1: rule__MinLengthValidator__Group__0 : rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1 ;
+    // InternalJDL.g:2658:1: rule__MinLengthValidator__Group__0 : rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1 ;
     public final void rule__MinLengthValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2550:1: ( rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1 )
-            // InternalJDL.g:2551:2: rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1
+            // InternalJDL.g:2662:1: ( rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1 )
+            // InternalJDL.g:2663:2: rule__MinLengthValidator__Group__0__Impl rule__MinLengthValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MinLengthValidator__Group__0__Impl();
@@ -8129,17 +8490,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__0__Impl"
-    // InternalJDL.g:2558:1: rule__MinLengthValidator__Group__0__Impl : ( 'minlength' ) ;
+    // InternalJDL.g:2670:1: rule__MinLengthValidator__Group__0__Impl : ( 'minlength' ) ;
     public final void rule__MinLengthValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2562:1: ( ( 'minlength' ) )
-            // InternalJDL.g:2563:1: ( 'minlength' )
+            // InternalJDL.g:2674:1: ( ( 'minlength' ) )
+            // InternalJDL.g:2675:1: ( 'minlength' )
             {
-            // InternalJDL.g:2563:1: ( 'minlength' )
-            // InternalJDL.g:2564:2: 'minlength'
+            // InternalJDL.g:2675:1: ( 'minlength' )
+            // InternalJDL.g:2676:2: 'minlength'
             {
              before(grammarAccess.getMinLengthValidatorAccess().getMinlengthKeyword_0()); 
             match(input,36,FOLLOW_2); 
@@ -8166,14 +8527,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__1"
-    // InternalJDL.g:2573:1: rule__MinLengthValidator__Group__1 : rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2 ;
+    // InternalJDL.g:2685:1: rule__MinLengthValidator__Group__1 : rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2 ;
     public final void rule__MinLengthValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2577:1: ( rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2 )
-            // InternalJDL.g:2578:2: rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2
+            // InternalJDL.g:2689:1: ( rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2 )
+            // InternalJDL.g:2690:2: rule__MinLengthValidator__Group__1__Impl rule__MinLengthValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MinLengthValidator__Group__1__Impl();
@@ -8204,17 +8565,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__1__Impl"
-    // InternalJDL.g:2585:1: rule__MinLengthValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:2697:1: rule__MinLengthValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MinLengthValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2589:1: ( ( '(' ) )
-            // InternalJDL.g:2590:1: ( '(' )
+            // InternalJDL.g:2701:1: ( ( '(' ) )
+            // InternalJDL.g:2702:1: ( '(' )
             {
-            // InternalJDL.g:2590:1: ( '(' )
-            // InternalJDL.g:2591:2: '('
+            // InternalJDL.g:2702:1: ( '(' )
+            // InternalJDL.g:2703:2: '('
             {
              before(grammarAccess.getMinLengthValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -8241,14 +8602,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__2"
-    // InternalJDL.g:2600:1: rule__MinLengthValidator__Group__2 : rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3 ;
+    // InternalJDL.g:2712:1: rule__MinLengthValidator__Group__2 : rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3 ;
     public final void rule__MinLengthValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2604:1: ( rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3 )
-            // InternalJDL.g:2605:2: rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3
+            // InternalJDL.g:2716:1: ( rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3 )
+            // InternalJDL.g:2717:2: rule__MinLengthValidator__Group__2__Impl rule__MinLengthValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MinLengthValidator__Group__2__Impl();
@@ -8279,21 +8640,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__2__Impl"
-    // InternalJDL.g:2612:1: rule__MinLengthValidator__Group__2__Impl : ( ( rule__MinLengthValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:2724:1: rule__MinLengthValidator__Group__2__Impl : ( ( rule__MinLengthValidator__ValueAssignment_2 ) ) ;
     public final void rule__MinLengthValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2616:1: ( ( ( rule__MinLengthValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:2617:1: ( ( rule__MinLengthValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2728:1: ( ( ( rule__MinLengthValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:2729:1: ( ( rule__MinLengthValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:2617:1: ( ( rule__MinLengthValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:2618:2: ( rule__MinLengthValidator__ValueAssignment_2 )
+            // InternalJDL.g:2729:1: ( ( rule__MinLengthValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2730:2: ( rule__MinLengthValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMinLengthValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:2619:2: ( rule__MinLengthValidator__ValueAssignment_2 )
-            // InternalJDL.g:2619:3: rule__MinLengthValidator__ValueAssignment_2
+            // InternalJDL.g:2731:2: ( rule__MinLengthValidator__ValueAssignment_2 )
+            // InternalJDL.g:2731:3: rule__MinLengthValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MinLengthValidator__ValueAssignment_2();
@@ -8326,14 +8687,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__3"
-    // InternalJDL.g:2627:1: rule__MinLengthValidator__Group__3 : rule__MinLengthValidator__Group__3__Impl ;
+    // InternalJDL.g:2739:1: rule__MinLengthValidator__Group__3 : rule__MinLengthValidator__Group__3__Impl ;
     public final void rule__MinLengthValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2631:1: ( rule__MinLengthValidator__Group__3__Impl )
-            // InternalJDL.g:2632:2: rule__MinLengthValidator__Group__3__Impl
+            // InternalJDL.g:2743:1: ( rule__MinLengthValidator__Group__3__Impl )
+            // InternalJDL.g:2744:2: rule__MinLengthValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MinLengthValidator__Group__3__Impl();
@@ -8359,17 +8720,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__Group__3__Impl"
-    // InternalJDL.g:2638:1: rule__MinLengthValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:2750:1: rule__MinLengthValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MinLengthValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2642:1: ( ( ')' ) )
-            // InternalJDL.g:2643:1: ( ')' )
+            // InternalJDL.g:2754:1: ( ( ')' ) )
+            // InternalJDL.g:2755:1: ( ')' )
             {
-            // InternalJDL.g:2643:1: ( ')' )
-            // InternalJDL.g:2644:2: ')'
+            // InternalJDL.g:2755:1: ( ')' )
+            // InternalJDL.g:2756:2: ')'
             {
              before(grammarAccess.getMinLengthValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -8396,14 +8757,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__0"
-    // InternalJDL.g:2654:1: rule__MaxLengthValidator__Group__0 : rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1 ;
+    // InternalJDL.g:2766:1: rule__MaxLengthValidator__Group__0 : rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1 ;
     public final void rule__MaxLengthValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2658:1: ( rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1 )
-            // InternalJDL.g:2659:2: rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1
+            // InternalJDL.g:2770:1: ( rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1 )
+            // InternalJDL.g:2771:2: rule__MaxLengthValidator__Group__0__Impl rule__MaxLengthValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MaxLengthValidator__Group__0__Impl();
@@ -8434,17 +8795,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__0__Impl"
-    // InternalJDL.g:2666:1: rule__MaxLengthValidator__Group__0__Impl : ( 'maxlength' ) ;
+    // InternalJDL.g:2778:1: rule__MaxLengthValidator__Group__0__Impl : ( 'maxlength' ) ;
     public final void rule__MaxLengthValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2670:1: ( ( 'maxlength' ) )
-            // InternalJDL.g:2671:1: ( 'maxlength' )
+            // InternalJDL.g:2782:1: ( ( 'maxlength' ) )
+            // InternalJDL.g:2783:1: ( 'maxlength' )
             {
-            // InternalJDL.g:2671:1: ( 'maxlength' )
-            // InternalJDL.g:2672:2: 'maxlength'
+            // InternalJDL.g:2783:1: ( 'maxlength' )
+            // InternalJDL.g:2784:2: 'maxlength'
             {
              before(grammarAccess.getMaxLengthValidatorAccess().getMaxlengthKeyword_0()); 
             match(input,39,FOLLOW_2); 
@@ -8471,14 +8832,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__1"
-    // InternalJDL.g:2681:1: rule__MaxLengthValidator__Group__1 : rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2 ;
+    // InternalJDL.g:2793:1: rule__MaxLengthValidator__Group__1 : rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2 ;
     public final void rule__MaxLengthValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2685:1: ( rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2 )
-            // InternalJDL.g:2686:2: rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2
+            // InternalJDL.g:2797:1: ( rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2 )
+            // InternalJDL.g:2798:2: rule__MaxLengthValidator__Group__1__Impl rule__MaxLengthValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MaxLengthValidator__Group__1__Impl();
@@ -8509,17 +8870,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__1__Impl"
-    // InternalJDL.g:2693:1: rule__MaxLengthValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:2805:1: rule__MaxLengthValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MaxLengthValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2697:1: ( ( '(' ) )
-            // InternalJDL.g:2698:1: ( '(' )
+            // InternalJDL.g:2809:1: ( ( '(' ) )
+            // InternalJDL.g:2810:1: ( '(' )
             {
-            // InternalJDL.g:2698:1: ( '(' )
-            // InternalJDL.g:2699:2: '('
+            // InternalJDL.g:2810:1: ( '(' )
+            // InternalJDL.g:2811:2: '('
             {
              before(grammarAccess.getMaxLengthValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -8546,14 +8907,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__2"
-    // InternalJDL.g:2708:1: rule__MaxLengthValidator__Group__2 : rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3 ;
+    // InternalJDL.g:2820:1: rule__MaxLengthValidator__Group__2 : rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3 ;
     public final void rule__MaxLengthValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2712:1: ( rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3 )
-            // InternalJDL.g:2713:2: rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3
+            // InternalJDL.g:2824:1: ( rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3 )
+            // InternalJDL.g:2825:2: rule__MaxLengthValidator__Group__2__Impl rule__MaxLengthValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MaxLengthValidator__Group__2__Impl();
@@ -8584,21 +8945,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__2__Impl"
-    // InternalJDL.g:2720:1: rule__MaxLengthValidator__Group__2__Impl : ( ( rule__MaxLengthValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:2832:1: rule__MaxLengthValidator__Group__2__Impl : ( ( rule__MaxLengthValidator__ValueAssignment_2 ) ) ;
     public final void rule__MaxLengthValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2724:1: ( ( ( rule__MaxLengthValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:2725:1: ( ( rule__MaxLengthValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2836:1: ( ( ( rule__MaxLengthValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:2837:1: ( ( rule__MaxLengthValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:2725:1: ( ( rule__MaxLengthValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:2726:2: ( rule__MaxLengthValidator__ValueAssignment_2 )
+            // InternalJDL.g:2837:1: ( ( rule__MaxLengthValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2838:2: ( rule__MaxLengthValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMaxLengthValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:2727:2: ( rule__MaxLengthValidator__ValueAssignment_2 )
-            // InternalJDL.g:2727:3: rule__MaxLengthValidator__ValueAssignment_2
+            // InternalJDL.g:2839:2: ( rule__MaxLengthValidator__ValueAssignment_2 )
+            // InternalJDL.g:2839:3: rule__MaxLengthValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MaxLengthValidator__ValueAssignment_2();
@@ -8631,14 +8992,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__3"
-    // InternalJDL.g:2735:1: rule__MaxLengthValidator__Group__3 : rule__MaxLengthValidator__Group__3__Impl ;
+    // InternalJDL.g:2847:1: rule__MaxLengthValidator__Group__3 : rule__MaxLengthValidator__Group__3__Impl ;
     public final void rule__MaxLengthValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2739:1: ( rule__MaxLengthValidator__Group__3__Impl )
-            // InternalJDL.g:2740:2: rule__MaxLengthValidator__Group__3__Impl
+            // InternalJDL.g:2851:1: ( rule__MaxLengthValidator__Group__3__Impl )
+            // InternalJDL.g:2852:2: rule__MaxLengthValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MaxLengthValidator__Group__3__Impl();
@@ -8664,17 +9025,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__Group__3__Impl"
-    // InternalJDL.g:2746:1: rule__MaxLengthValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:2858:1: rule__MaxLengthValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MaxLengthValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2750:1: ( ( ')' ) )
-            // InternalJDL.g:2751:1: ( ')' )
+            // InternalJDL.g:2862:1: ( ( ')' ) )
+            // InternalJDL.g:2863:1: ( ')' )
             {
-            // InternalJDL.g:2751:1: ( ')' )
-            // InternalJDL.g:2752:2: ')'
+            // InternalJDL.g:2863:1: ( ')' )
+            // InternalJDL.g:2864:2: ')'
             {
              before(grammarAccess.getMaxLengthValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -8701,14 +9062,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__0"
-    // InternalJDL.g:2762:1: rule__PatternValidator__Group__0 : rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1 ;
+    // InternalJDL.g:2874:1: rule__PatternValidator__Group__0 : rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1 ;
     public final void rule__PatternValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2766:1: ( rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1 )
-            // InternalJDL.g:2767:2: rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1
+            // InternalJDL.g:2878:1: ( rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1 )
+            // InternalJDL.g:2879:2: rule__PatternValidator__Group__0__Impl rule__PatternValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__PatternValidator__Group__0__Impl();
@@ -8739,17 +9100,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__0__Impl"
-    // InternalJDL.g:2774:1: rule__PatternValidator__Group__0__Impl : ( 'pattern' ) ;
+    // InternalJDL.g:2886:1: rule__PatternValidator__Group__0__Impl : ( 'pattern' ) ;
     public final void rule__PatternValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2778:1: ( ( 'pattern' ) )
-            // InternalJDL.g:2779:1: ( 'pattern' )
+            // InternalJDL.g:2890:1: ( ( 'pattern' ) )
+            // InternalJDL.g:2891:1: ( 'pattern' )
             {
-            // InternalJDL.g:2779:1: ( 'pattern' )
-            // InternalJDL.g:2780:2: 'pattern'
+            // InternalJDL.g:2891:1: ( 'pattern' )
+            // InternalJDL.g:2892:2: 'pattern'
             {
              before(grammarAccess.getPatternValidatorAccess().getPatternKeyword_0()); 
             match(input,40,FOLLOW_2); 
@@ -8776,14 +9137,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__1"
-    // InternalJDL.g:2789:1: rule__PatternValidator__Group__1 : rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2 ;
+    // InternalJDL.g:2901:1: rule__PatternValidator__Group__1 : rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2 ;
     public final void rule__PatternValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2793:1: ( rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2 )
-            // InternalJDL.g:2794:2: rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2
+            // InternalJDL.g:2905:1: ( rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2 )
+            // InternalJDL.g:2906:2: rule__PatternValidator__Group__1__Impl rule__PatternValidator__Group__2
             {
             pushFollow(FOLLOW_24);
             rule__PatternValidator__Group__1__Impl();
@@ -8814,17 +9175,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__1__Impl"
-    // InternalJDL.g:2801:1: rule__PatternValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:2913:1: rule__PatternValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__PatternValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2805:1: ( ( '(' ) )
-            // InternalJDL.g:2806:1: ( '(' )
+            // InternalJDL.g:2917:1: ( ( '(' ) )
+            // InternalJDL.g:2918:1: ( '(' )
             {
-            // InternalJDL.g:2806:1: ( '(' )
-            // InternalJDL.g:2807:2: '('
+            // InternalJDL.g:2918:1: ( '(' )
+            // InternalJDL.g:2919:2: '('
             {
              before(grammarAccess.getPatternValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -8851,14 +9212,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__2"
-    // InternalJDL.g:2816:1: rule__PatternValidator__Group__2 : rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3 ;
+    // InternalJDL.g:2928:1: rule__PatternValidator__Group__2 : rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3 ;
     public final void rule__PatternValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2820:1: ( rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3 )
-            // InternalJDL.g:2821:2: rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3
+            // InternalJDL.g:2932:1: ( rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3 )
+            // InternalJDL.g:2933:2: rule__PatternValidator__Group__2__Impl rule__PatternValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__PatternValidator__Group__2__Impl();
@@ -8889,21 +9250,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__2__Impl"
-    // InternalJDL.g:2828:1: rule__PatternValidator__Group__2__Impl : ( ( rule__PatternValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:2940:1: rule__PatternValidator__Group__2__Impl : ( ( rule__PatternValidator__ValueAssignment_2 ) ) ;
     public final void rule__PatternValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2832:1: ( ( ( rule__PatternValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:2833:1: ( ( rule__PatternValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2944:1: ( ( ( rule__PatternValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:2945:1: ( ( rule__PatternValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:2833:1: ( ( rule__PatternValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:2834:2: ( rule__PatternValidator__ValueAssignment_2 )
+            // InternalJDL.g:2945:1: ( ( rule__PatternValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:2946:2: ( rule__PatternValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getPatternValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:2835:2: ( rule__PatternValidator__ValueAssignment_2 )
-            // InternalJDL.g:2835:3: rule__PatternValidator__ValueAssignment_2
+            // InternalJDL.g:2947:2: ( rule__PatternValidator__ValueAssignment_2 )
+            // InternalJDL.g:2947:3: rule__PatternValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__PatternValidator__ValueAssignment_2();
@@ -8936,14 +9297,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__3"
-    // InternalJDL.g:2843:1: rule__PatternValidator__Group__3 : rule__PatternValidator__Group__3__Impl ;
+    // InternalJDL.g:2955:1: rule__PatternValidator__Group__3 : rule__PatternValidator__Group__3__Impl ;
     public final void rule__PatternValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2847:1: ( rule__PatternValidator__Group__3__Impl )
-            // InternalJDL.g:2848:2: rule__PatternValidator__Group__3__Impl
+            // InternalJDL.g:2959:1: ( rule__PatternValidator__Group__3__Impl )
+            // InternalJDL.g:2960:2: rule__PatternValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PatternValidator__Group__3__Impl();
@@ -8969,17 +9330,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__Group__3__Impl"
-    // InternalJDL.g:2854:1: rule__PatternValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:2966:1: rule__PatternValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__PatternValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2858:1: ( ( ')' ) )
-            // InternalJDL.g:2859:1: ( ')' )
+            // InternalJDL.g:2970:1: ( ( ')' ) )
+            // InternalJDL.g:2971:1: ( ')' )
             {
-            // InternalJDL.g:2859:1: ( ')' )
-            // InternalJDL.g:2860:2: ')'
+            // InternalJDL.g:2971:1: ( ')' )
+            // InternalJDL.g:2972:2: ')'
             {
              before(grammarAccess.getPatternValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -9006,14 +9367,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__0"
-    // InternalJDL.g:2870:1: rule__MinValidator__Group__0 : rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1 ;
+    // InternalJDL.g:2982:1: rule__MinValidator__Group__0 : rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1 ;
     public final void rule__MinValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2874:1: ( rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1 )
-            // InternalJDL.g:2875:2: rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1
+            // InternalJDL.g:2986:1: ( rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1 )
+            // InternalJDL.g:2987:2: rule__MinValidator__Group__0__Impl rule__MinValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MinValidator__Group__0__Impl();
@@ -9044,17 +9405,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__0__Impl"
-    // InternalJDL.g:2882:1: rule__MinValidator__Group__0__Impl : ( 'min' ) ;
+    // InternalJDL.g:2994:1: rule__MinValidator__Group__0__Impl : ( 'min' ) ;
     public final void rule__MinValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2886:1: ( ( 'min' ) )
-            // InternalJDL.g:2887:1: ( 'min' )
+            // InternalJDL.g:2998:1: ( ( 'min' ) )
+            // InternalJDL.g:2999:1: ( 'min' )
             {
-            // InternalJDL.g:2887:1: ( 'min' )
-            // InternalJDL.g:2888:2: 'min'
+            // InternalJDL.g:2999:1: ( 'min' )
+            // InternalJDL.g:3000:2: 'min'
             {
              before(grammarAccess.getMinValidatorAccess().getMinKeyword_0()); 
             match(input,41,FOLLOW_2); 
@@ -9081,14 +9442,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__1"
-    // InternalJDL.g:2897:1: rule__MinValidator__Group__1 : rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2 ;
+    // InternalJDL.g:3009:1: rule__MinValidator__Group__1 : rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2 ;
     public final void rule__MinValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2901:1: ( rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2 )
-            // InternalJDL.g:2902:2: rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2
+            // InternalJDL.g:3013:1: ( rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2 )
+            // InternalJDL.g:3014:2: rule__MinValidator__Group__1__Impl rule__MinValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MinValidator__Group__1__Impl();
@@ -9119,17 +9480,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__1__Impl"
-    // InternalJDL.g:2909:1: rule__MinValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:3021:1: rule__MinValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MinValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2913:1: ( ( '(' ) )
-            // InternalJDL.g:2914:1: ( '(' )
+            // InternalJDL.g:3025:1: ( ( '(' ) )
+            // InternalJDL.g:3026:1: ( '(' )
             {
-            // InternalJDL.g:2914:1: ( '(' )
-            // InternalJDL.g:2915:2: '('
+            // InternalJDL.g:3026:1: ( '(' )
+            // InternalJDL.g:3027:2: '('
             {
              before(grammarAccess.getMinValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -9156,14 +9517,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__2"
-    // InternalJDL.g:2924:1: rule__MinValidator__Group__2 : rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3 ;
+    // InternalJDL.g:3036:1: rule__MinValidator__Group__2 : rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3 ;
     public final void rule__MinValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2928:1: ( rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3 )
-            // InternalJDL.g:2929:2: rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3
+            // InternalJDL.g:3040:1: ( rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3 )
+            // InternalJDL.g:3041:2: rule__MinValidator__Group__2__Impl rule__MinValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MinValidator__Group__2__Impl();
@@ -9194,21 +9555,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__2__Impl"
-    // InternalJDL.g:2936:1: rule__MinValidator__Group__2__Impl : ( ( rule__MinValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:3048:1: rule__MinValidator__Group__2__Impl : ( ( rule__MinValidator__ValueAssignment_2 ) ) ;
     public final void rule__MinValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2940:1: ( ( ( rule__MinValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:2941:1: ( ( rule__MinValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3052:1: ( ( ( rule__MinValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:3053:1: ( ( rule__MinValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:2941:1: ( ( rule__MinValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:2942:2: ( rule__MinValidator__ValueAssignment_2 )
+            // InternalJDL.g:3053:1: ( ( rule__MinValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3054:2: ( rule__MinValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMinValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:2943:2: ( rule__MinValidator__ValueAssignment_2 )
-            // InternalJDL.g:2943:3: rule__MinValidator__ValueAssignment_2
+            // InternalJDL.g:3055:2: ( rule__MinValidator__ValueAssignment_2 )
+            // InternalJDL.g:3055:3: rule__MinValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MinValidator__ValueAssignment_2();
@@ -9241,14 +9602,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__3"
-    // InternalJDL.g:2951:1: rule__MinValidator__Group__3 : rule__MinValidator__Group__3__Impl ;
+    // InternalJDL.g:3063:1: rule__MinValidator__Group__3 : rule__MinValidator__Group__3__Impl ;
     public final void rule__MinValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2955:1: ( rule__MinValidator__Group__3__Impl )
-            // InternalJDL.g:2956:2: rule__MinValidator__Group__3__Impl
+            // InternalJDL.g:3067:1: ( rule__MinValidator__Group__3__Impl )
+            // InternalJDL.g:3068:2: rule__MinValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MinValidator__Group__3__Impl();
@@ -9274,17 +9635,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__Group__3__Impl"
-    // InternalJDL.g:2962:1: rule__MinValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:3074:1: rule__MinValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MinValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2966:1: ( ( ')' ) )
-            // InternalJDL.g:2967:1: ( ')' )
+            // InternalJDL.g:3078:1: ( ( ')' ) )
+            // InternalJDL.g:3079:1: ( ')' )
             {
-            // InternalJDL.g:2967:1: ( ')' )
-            // InternalJDL.g:2968:2: ')'
+            // InternalJDL.g:3079:1: ( ')' )
+            // InternalJDL.g:3080:2: ')'
             {
              before(grammarAccess.getMinValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -9311,14 +9672,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__0"
-    // InternalJDL.g:2978:1: rule__MaxValidator__Group__0 : rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1 ;
+    // InternalJDL.g:3090:1: rule__MaxValidator__Group__0 : rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1 ;
     public final void rule__MaxValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2982:1: ( rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1 )
-            // InternalJDL.g:2983:2: rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1
+            // InternalJDL.g:3094:1: ( rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1 )
+            // InternalJDL.g:3095:2: rule__MaxValidator__Group__0__Impl rule__MaxValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MaxValidator__Group__0__Impl();
@@ -9349,17 +9710,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__0__Impl"
-    // InternalJDL.g:2990:1: rule__MaxValidator__Group__0__Impl : ( 'max' ) ;
+    // InternalJDL.g:3102:1: rule__MaxValidator__Group__0__Impl : ( 'max' ) ;
     public final void rule__MaxValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:2994:1: ( ( 'max' ) )
-            // InternalJDL.g:2995:1: ( 'max' )
+            // InternalJDL.g:3106:1: ( ( 'max' ) )
+            // InternalJDL.g:3107:1: ( 'max' )
             {
-            // InternalJDL.g:2995:1: ( 'max' )
-            // InternalJDL.g:2996:2: 'max'
+            // InternalJDL.g:3107:1: ( 'max' )
+            // InternalJDL.g:3108:2: 'max'
             {
              before(grammarAccess.getMaxValidatorAccess().getMaxKeyword_0()); 
             match(input,42,FOLLOW_2); 
@@ -9386,14 +9747,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__1"
-    // InternalJDL.g:3005:1: rule__MaxValidator__Group__1 : rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2 ;
+    // InternalJDL.g:3117:1: rule__MaxValidator__Group__1 : rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2 ;
     public final void rule__MaxValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3009:1: ( rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2 )
-            // InternalJDL.g:3010:2: rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2
+            // InternalJDL.g:3121:1: ( rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2 )
+            // InternalJDL.g:3122:2: rule__MaxValidator__Group__1__Impl rule__MaxValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MaxValidator__Group__1__Impl();
@@ -9424,17 +9785,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__1__Impl"
-    // InternalJDL.g:3017:1: rule__MaxValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:3129:1: rule__MaxValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MaxValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3021:1: ( ( '(' ) )
-            // InternalJDL.g:3022:1: ( '(' )
+            // InternalJDL.g:3133:1: ( ( '(' ) )
+            // InternalJDL.g:3134:1: ( '(' )
             {
-            // InternalJDL.g:3022:1: ( '(' )
-            // InternalJDL.g:3023:2: '('
+            // InternalJDL.g:3134:1: ( '(' )
+            // InternalJDL.g:3135:2: '('
             {
              before(grammarAccess.getMaxValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -9461,14 +9822,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__2"
-    // InternalJDL.g:3032:1: rule__MaxValidator__Group__2 : rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3 ;
+    // InternalJDL.g:3144:1: rule__MaxValidator__Group__2 : rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3 ;
     public final void rule__MaxValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3036:1: ( rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3 )
-            // InternalJDL.g:3037:2: rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3
+            // InternalJDL.g:3148:1: ( rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3 )
+            // InternalJDL.g:3149:2: rule__MaxValidator__Group__2__Impl rule__MaxValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MaxValidator__Group__2__Impl();
@@ -9499,21 +9860,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__2__Impl"
-    // InternalJDL.g:3044:1: rule__MaxValidator__Group__2__Impl : ( ( rule__MaxValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:3156:1: rule__MaxValidator__Group__2__Impl : ( ( rule__MaxValidator__ValueAssignment_2 ) ) ;
     public final void rule__MaxValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3048:1: ( ( ( rule__MaxValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:3049:1: ( ( rule__MaxValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3160:1: ( ( ( rule__MaxValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:3161:1: ( ( rule__MaxValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:3049:1: ( ( rule__MaxValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:3050:2: ( rule__MaxValidator__ValueAssignment_2 )
+            // InternalJDL.g:3161:1: ( ( rule__MaxValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3162:2: ( rule__MaxValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMaxValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:3051:2: ( rule__MaxValidator__ValueAssignment_2 )
-            // InternalJDL.g:3051:3: rule__MaxValidator__ValueAssignment_2
+            // InternalJDL.g:3163:2: ( rule__MaxValidator__ValueAssignment_2 )
+            // InternalJDL.g:3163:3: rule__MaxValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MaxValidator__ValueAssignment_2();
@@ -9546,14 +9907,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__3"
-    // InternalJDL.g:3059:1: rule__MaxValidator__Group__3 : rule__MaxValidator__Group__3__Impl ;
+    // InternalJDL.g:3171:1: rule__MaxValidator__Group__3 : rule__MaxValidator__Group__3__Impl ;
     public final void rule__MaxValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3063:1: ( rule__MaxValidator__Group__3__Impl )
-            // InternalJDL.g:3064:2: rule__MaxValidator__Group__3__Impl
+            // InternalJDL.g:3175:1: ( rule__MaxValidator__Group__3__Impl )
+            // InternalJDL.g:3176:2: rule__MaxValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MaxValidator__Group__3__Impl();
@@ -9579,17 +9940,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__Group__3__Impl"
-    // InternalJDL.g:3070:1: rule__MaxValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:3182:1: rule__MaxValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MaxValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3074:1: ( ( ')' ) )
-            // InternalJDL.g:3075:1: ( ')' )
+            // InternalJDL.g:3186:1: ( ( ')' ) )
+            // InternalJDL.g:3187:1: ( ')' )
             {
-            // InternalJDL.g:3075:1: ( ')' )
-            // InternalJDL.g:3076:2: ')'
+            // InternalJDL.g:3187:1: ( ')' )
+            // InternalJDL.g:3188:2: ')'
             {
              before(grammarAccess.getMaxValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -9616,14 +9977,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__0"
-    // InternalJDL.g:3086:1: rule__MinBytesValidator__Group__0 : rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1 ;
+    // InternalJDL.g:3198:1: rule__MinBytesValidator__Group__0 : rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1 ;
     public final void rule__MinBytesValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3090:1: ( rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1 )
-            // InternalJDL.g:3091:2: rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1
+            // InternalJDL.g:3202:1: ( rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1 )
+            // InternalJDL.g:3203:2: rule__MinBytesValidator__Group__0__Impl rule__MinBytesValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MinBytesValidator__Group__0__Impl();
@@ -9654,17 +10015,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__0__Impl"
-    // InternalJDL.g:3098:1: rule__MinBytesValidator__Group__0__Impl : ( 'minbytes' ) ;
+    // InternalJDL.g:3210:1: rule__MinBytesValidator__Group__0__Impl : ( 'minbytes' ) ;
     public final void rule__MinBytesValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3102:1: ( ( 'minbytes' ) )
-            // InternalJDL.g:3103:1: ( 'minbytes' )
+            // InternalJDL.g:3214:1: ( ( 'minbytes' ) )
+            // InternalJDL.g:3215:1: ( 'minbytes' )
             {
-            // InternalJDL.g:3103:1: ( 'minbytes' )
-            // InternalJDL.g:3104:2: 'minbytes'
+            // InternalJDL.g:3215:1: ( 'minbytes' )
+            // InternalJDL.g:3216:2: 'minbytes'
             {
              before(grammarAccess.getMinBytesValidatorAccess().getMinbytesKeyword_0()); 
             match(input,43,FOLLOW_2); 
@@ -9691,14 +10052,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__1"
-    // InternalJDL.g:3113:1: rule__MinBytesValidator__Group__1 : rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2 ;
+    // InternalJDL.g:3225:1: rule__MinBytesValidator__Group__1 : rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2 ;
     public final void rule__MinBytesValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3117:1: ( rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2 )
-            // InternalJDL.g:3118:2: rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2
+            // InternalJDL.g:3229:1: ( rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2 )
+            // InternalJDL.g:3230:2: rule__MinBytesValidator__Group__1__Impl rule__MinBytesValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MinBytesValidator__Group__1__Impl();
@@ -9729,17 +10090,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__1__Impl"
-    // InternalJDL.g:3125:1: rule__MinBytesValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:3237:1: rule__MinBytesValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MinBytesValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3129:1: ( ( '(' ) )
-            // InternalJDL.g:3130:1: ( '(' )
+            // InternalJDL.g:3241:1: ( ( '(' ) )
+            // InternalJDL.g:3242:1: ( '(' )
             {
-            // InternalJDL.g:3130:1: ( '(' )
-            // InternalJDL.g:3131:2: '('
+            // InternalJDL.g:3242:1: ( '(' )
+            // InternalJDL.g:3243:2: '('
             {
              before(grammarAccess.getMinBytesValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -9766,14 +10127,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__2"
-    // InternalJDL.g:3140:1: rule__MinBytesValidator__Group__2 : rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3 ;
+    // InternalJDL.g:3252:1: rule__MinBytesValidator__Group__2 : rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3 ;
     public final void rule__MinBytesValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3144:1: ( rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3 )
-            // InternalJDL.g:3145:2: rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3
+            // InternalJDL.g:3256:1: ( rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3 )
+            // InternalJDL.g:3257:2: rule__MinBytesValidator__Group__2__Impl rule__MinBytesValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MinBytesValidator__Group__2__Impl();
@@ -9804,21 +10165,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__2__Impl"
-    // InternalJDL.g:3152:1: rule__MinBytesValidator__Group__2__Impl : ( ( rule__MinBytesValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:3264:1: rule__MinBytesValidator__Group__2__Impl : ( ( rule__MinBytesValidator__ValueAssignment_2 ) ) ;
     public final void rule__MinBytesValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3156:1: ( ( ( rule__MinBytesValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:3157:1: ( ( rule__MinBytesValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3268:1: ( ( ( rule__MinBytesValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:3269:1: ( ( rule__MinBytesValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:3157:1: ( ( rule__MinBytesValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:3158:2: ( rule__MinBytesValidator__ValueAssignment_2 )
+            // InternalJDL.g:3269:1: ( ( rule__MinBytesValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3270:2: ( rule__MinBytesValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMinBytesValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:3159:2: ( rule__MinBytesValidator__ValueAssignment_2 )
-            // InternalJDL.g:3159:3: rule__MinBytesValidator__ValueAssignment_2
+            // InternalJDL.g:3271:2: ( rule__MinBytesValidator__ValueAssignment_2 )
+            // InternalJDL.g:3271:3: rule__MinBytesValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MinBytesValidator__ValueAssignment_2();
@@ -9851,14 +10212,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__3"
-    // InternalJDL.g:3167:1: rule__MinBytesValidator__Group__3 : rule__MinBytesValidator__Group__3__Impl ;
+    // InternalJDL.g:3279:1: rule__MinBytesValidator__Group__3 : rule__MinBytesValidator__Group__3__Impl ;
     public final void rule__MinBytesValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3171:1: ( rule__MinBytesValidator__Group__3__Impl )
-            // InternalJDL.g:3172:2: rule__MinBytesValidator__Group__3__Impl
+            // InternalJDL.g:3283:1: ( rule__MinBytesValidator__Group__3__Impl )
+            // InternalJDL.g:3284:2: rule__MinBytesValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MinBytesValidator__Group__3__Impl();
@@ -9884,17 +10245,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__Group__3__Impl"
-    // InternalJDL.g:3178:1: rule__MinBytesValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:3290:1: rule__MinBytesValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MinBytesValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3182:1: ( ( ')' ) )
-            // InternalJDL.g:3183:1: ( ')' )
+            // InternalJDL.g:3294:1: ( ( ')' ) )
+            // InternalJDL.g:3295:1: ( ')' )
             {
-            // InternalJDL.g:3183:1: ( ')' )
-            // InternalJDL.g:3184:2: ')'
+            // InternalJDL.g:3295:1: ( ')' )
+            // InternalJDL.g:3296:2: ')'
             {
              before(grammarAccess.getMinBytesValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -9921,14 +10282,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__0"
-    // InternalJDL.g:3194:1: rule__MaxBytesValidator__Group__0 : rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1 ;
+    // InternalJDL.g:3306:1: rule__MaxBytesValidator__Group__0 : rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1 ;
     public final void rule__MaxBytesValidator__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3198:1: ( rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1 )
-            // InternalJDL.g:3199:2: rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1
+            // InternalJDL.g:3310:1: ( rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1 )
+            // InternalJDL.g:3311:2: rule__MaxBytesValidator__Group__0__Impl rule__MaxBytesValidator__Group__1
             {
             pushFollow(FOLLOW_21);
             rule__MaxBytesValidator__Group__0__Impl();
@@ -9959,17 +10320,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__0__Impl"
-    // InternalJDL.g:3206:1: rule__MaxBytesValidator__Group__0__Impl : ( 'maxbytes' ) ;
+    // InternalJDL.g:3318:1: rule__MaxBytesValidator__Group__0__Impl : ( 'maxbytes' ) ;
     public final void rule__MaxBytesValidator__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3210:1: ( ( 'maxbytes' ) )
-            // InternalJDL.g:3211:1: ( 'maxbytes' )
+            // InternalJDL.g:3322:1: ( ( 'maxbytes' ) )
+            // InternalJDL.g:3323:1: ( 'maxbytes' )
             {
-            // InternalJDL.g:3211:1: ( 'maxbytes' )
-            // InternalJDL.g:3212:2: 'maxbytes'
+            // InternalJDL.g:3323:1: ( 'maxbytes' )
+            // InternalJDL.g:3324:2: 'maxbytes'
             {
              before(grammarAccess.getMaxBytesValidatorAccess().getMaxbytesKeyword_0()); 
             match(input,44,FOLLOW_2); 
@@ -9996,14 +10357,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__1"
-    // InternalJDL.g:3221:1: rule__MaxBytesValidator__Group__1 : rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2 ;
+    // InternalJDL.g:3333:1: rule__MaxBytesValidator__Group__1 : rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2 ;
     public final void rule__MaxBytesValidator__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3225:1: ( rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2 )
-            // InternalJDL.g:3226:2: rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2
+            // InternalJDL.g:3337:1: ( rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2 )
+            // InternalJDL.g:3338:2: rule__MaxBytesValidator__Group__1__Impl rule__MaxBytesValidator__Group__2
             {
             pushFollow(FOLLOW_22);
             rule__MaxBytesValidator__Group__1__Impl();
@@ -10034,17 +10395,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__1__Impl"
-    // InternalJDL.g:3233:1: rule__MaxBytesValidator__Group__1__Impl : ( '(' ) ;
+    // InternalJDL.g:3345:1: rule__MaxBytesValidator__Group__1__Impl : ( '(' ) ;
     public final void rule__MaxBytesValidator__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3237:1: ( ( '(' ) )
-            // InternalJDL.g:3238:1: ( '(' )
+            // InternalJDL.g:3349:1: ( ( '(' ) )
+            // InternalJDL.g:3350:1: ( '(' )
             {
-            // InternalJDL.g:3238:1: ( '(' )
-            // InternalJDL.g:3239:2: '('
+            // InternalJDL.g:3350:1: ( '(' )
+            // InternalJDL.g:3351:2: '('
             {
              before(grammarAccess.getMaxBytesValidatorAccess().getLeftParenthesisKeyword_1()); 
             match(input,37,FOLLOW_2); 
@@ -10071,14 +10432,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__2"
-    // InternalJDL.g:3248:1: rule__MaxBytesValidator__Group__2 : rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3 ;
+    // InternalJDL.g:3360:1: rule__MaxBytesValidator__Group__2 : rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3 ;
     public final void rule__MaxBytesValidator__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3252:1: ( rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3 )
-            // InternalJDL.g:3253:2: rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3
+            // InternalJDL.g:3364:1: ( rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3 )
+            // InternalJDL.g:3365:2: rule__MaxBytesValidator__Group__2__Impl rule__MaxBytesValidator__Group__3
             {
             pushFollow(FOLLOW_23);
             rule__MaxBytesValidator__Group__2__Impl();
@@ -10109,21 +10470,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__2__Impl"
-    // InternalJDL.g:3260:1: rule__MaxBytesValidator__Group__2__Impl : ( ( rule__MaxBytesValidator__ValueAssignment_2 ) ) ;
+    // InternalJDL.g:3372:1: rule__MaxBytesValidator__Group__2__Impl : ( ( rule__MaxBytesValidator__ValueAssignment_2 ) ) ;
     public final void rule__MaxBytesValidator__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3264:1: ( ( ( rule__MaxBytesValidator__ValueAssignment_2 ) ) )
-            // InternalJDL.g:3265:1: ( ( rule__MaxBytesValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3376:1: ( ( ( rule__MaxBytesValidator__ValueAssignment_2 ) ) )
+            // InternalJDL.g:3377:1: ( ( rule__MaxBytesValidator__ValueAssignment_2 ) )
             {
-            // InternalJDL.g:3265:1: ( ( rule__MaxBytesValidator__ValueAssignment_2 ) )
-            // InternalJDL.g:3266:2: ( rule__MaxBytesValidator__ValueAssignment_2 )
+            // InternalJDL.g:3377:1: ( ( rule__MaxBytesValidator__ValueAssignment_2 ) )
+            // InternalJDL.g:3378:2: ( rule__MaxBytesValidator__ValueAssignment_2 )
             {
              before(grammarAccess.getMaxBytesValidatorAccess().getValueAssignment_2()); 
-            // InternalJDL.g:3267:2: ( rule__MaxBytesValidator__ValueAssignment_2 )
-            // InternalJDL.g:3267:3: rule__MaxBytesValidator__ValueAssignment_2
+            // InternalJDL.g:3379:2: ( rule__MaxBytesValidator__ValueAssignment_2 )
+            // InternalJDL.g:3379:3: rule__MaxBytesValidator__ValueAssignment_2
             {
             pushFollow(FOLLOW_2);
             rule__MaxBytesValidator__ValueAssignment_2();
@@ -10156,14 +10517,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__3"
-    // InternalJDL.g:3275:1: rule__MaxBytesValidator__Group__3 : rule__MaxBytesValidator__Group__3__Impl ;
+    // InternalJDL.g:3387:1: rule__MaxBytesValidator__Group__3 : rule__MaxBytesValidator__Group__3__Impl ;
     public final void rule__MaxBytesValidator__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3279:1: ( rule__MaxBytesValidator__Group__3__Impl )
-            // InternalJDL.g:3280:2: rule__MaxBytesValidator__Group__3__Impl
+            // InternalJDL.g:3391:1: ( rule__MaxBytesValidator__Group__3__Impl )
+            // InternalJDL.g:3392:2: rule__MaxBytesValidator__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__MaxBytesValidator__Group__3__Impl();
@@ -10189,17 +10550,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__Group__3__Impl"
-    // InternalJDL.g:3286:1: rule__MaxBytesValidator__Group__3__Impl : ( ')' ) ;
+    // InternalJDL.g:3398:1: rule__MaxBytesValidator__Group__3__Impl : ( ')' ) ;
     public final void rule__MaxBytesValidator__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3290:1: ( ( ')' ) )
-            // InternalJDL.g:3291:1: ( ')' )
+            // InternalJDL.g:3402:1: ( ( ')' ) )
+            // InternalJDL.g:3403:1: ( ')' )
             {
-            // InternalJDL.g:3291:1: ( ')' )
-            // InternalJDL.g:3292:2: ')'
+            // InternalJDL.g:3403:1: ( ')' )
+            // InternalJDL.g:3404:2: ')'
             {
              before(grammarAccess.getMaxBytesValidatorAccess().getRightParenthesisKeyword_3()); 
             match(input,38,FOLLOW_2); 
@@ -10226,14 +10587,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__0"
-    // InternalJDL.g:3302:1: rule__StringValidators__Group__0 : rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1 ;
+    // InternalJDL.g:3414:1: rule__StringValidators__Group__0 : rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1 ;
     public final void rule__StringValidators__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3306:1: ( rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1 )
-            // InternalJDL.g:3307:2: rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1
+            // InternalJDL.g:3418:1: ( rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1 )
+            // InternalJDL.g:3419:2: rule__StringValidators__Group__0__Impl rule__StringValidators__Group__1
             {
             pushFollow(FOLLOW_25);
             rule__StringValidators__Group__0__Impl();
@@ -10264,21 +10625,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__0__Impl"
-    // InternalJDL.g:3314:1: rule__StringValidators__Group__0__Impl : ( ( rule__StringValidators__RequiredAssignment_0 ) ) ;
+    // InternalJDL.g:3426:1: rule__StringValidators__Group__0__Impl : ( ( rule__StringValidators__RequiredAssignment_0 ) ) ;
     public final void rule__StringValidators__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3318:1: ( ( ( rule__StringValidators__RequiredAssignment_0 ) ) )
-            // InternalJDL.g:3319:1: ( ( rule__StringValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3430:1: ( ( ( rule__StringValidators__RequiredAssignment_0 ) ) )
+            // InternalJDL.g:3431:1: ( ( rule__StringValidators__RequiredAssignment_0 ) )
             {
-            // InternalJDL.g:3319:1: ( ( rule__StringValidators__RequiredAssignment_0 ) )
-            // InternalJDL.g:3320:2: ( rule__StringValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3431:1: ( ( rule__StringValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3432:2: ( rule__StringValidators__RequiredAssignment_0 )
             {
              before(grammarAccess.getStringValidatorsAccess().getRequiredAssignment_0()); 
-            // InternalJDL.g:3321:2: ( rule__StringValidators__RequiredAssignment_0 )
-            // InternalJDL.g:3321:3: rule__StringValidators__RequiredAssignment_0
+            // InternalJDL.g:3433:2: ( rule__StringValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3433:3: rule__StringValidators__RequiredAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__StringValidators__RequiredAssignment_0();
@@ -10311,14 +10672,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__1"
-    // InternalJDL.g:3329:1: rule__StringValidators__Group__1 : rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2 ;
+    // InternalJDL.g:3441:1: rule__StringValidators__Group__1 : rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2 ;
     public final void rule__StringValidators__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3333:1: ( rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2 )
-            // InternalJDL.g:3334:2: rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2
+            // InternalJDL.g:3445:1: ( rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2 )
+            // InternalJDL.g:3446:2: rule__StringValidators__Group__1__Impl rule__StringValidators__Group__2
             {
             pushFollow(FOLLOW_25);
             rule__StringValidators__Group__1__Impl();
@@ -10349,29 +10710,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__1__Impl"
-    // InternalJDL.g:3341:1: rule__StringValidators__Group__1__Impl : ( ( rule__StringValidators__MinLengthAssignment_1 )? ) ;
+    // InternalJDL.g:3453:1: rule__StringValidators__Group__1__Impl : ( ( rule__StringValidators__MinLengthAssignment_1 )? ) ;
     public final void rule__StringValidators__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3345:1: ( ( ( rule__StringValidators__MinLengthAssignment_1 )? ) )
-            // InternalJDL.g:3346:1: ( ( rule__StringValidators__MinLengthAssignment_1 )? )
+            // InternalJDL.g:3457:1: ( ( ( rule__StringValidators__MinLengthAssignment_1 )? ) )
+            // InternalJDL.g:3458:1: ( ( rule__StringValidators__MinLengthAssignment_1 )? )
             {
-            // InternalJDL.g:3346:1: ( ( rule__StringValidators__MinLengthAssignment_1 )? )
-            // InternalJDL.g:3347:2: ( rule__StringValidators__MinLengthAssignment_1 )?
+            // InternalJDL.g:3458:1: ( ( rule__StringValidators__MinLengthAssignment_1 )? )
+            // InternalJDL.g:3459:2: ( rule__StringValidators__MinLengthAssignment_1 )?
             {
              before(grammarAccess.getStringValidatorsAccess().getMinLengthAssignment_1()); 
-            // InternalJDL.g:3348:2: ( rule__StringValidators__MinLengthAssignment_1 )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // InternalJDL.g:3460:2: ( rule__StringValidators__MinLengthAssignment_1 )?
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==36) ) {
-                alt24=1;
+            if ( (LA25_0==36) ) {
+                alt25=1;
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
-                    // InternalJDL.g:3348:3: rule__StringValidators__MinLengthAssignment_1
+                    // InternalJDL.g:3460:3: rule__StringValidators__MinLengthAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__StringValidators__MinLengthAssignment_1();
@@ -10407,14 +10768,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__2"
-    // InternalJDL.g:3356:1: rule__StringValidators__Group__2 : rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3 ;
+    // InternalJDL.g:3468:1: rule__StringValidators__Group__2 : rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3 ;
     public final void rule__StringValidators__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3360:1: ( rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3 )
-            // InternalJDL.g:3361:2: rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3
+            // InternalJDL.g:3472:1: ( rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3 )
+            // InternalJDL.g:3473:2: rule__StringValidators__Group__2__Impl rule__StringValidators__Group__3
             {
             pushFollow(FOLLOW_25);
             rule__StringValidators__Group__2__Impl();
@@ -10445,29 +10806,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__2__Impl"
-    // InternalJDL.g:3368:1: rule__StringValidators__Group__2__Impl : ( ( rule__StringValidators__MaxlengthAssignment_2 )? ) ;
+    // InternalJDL.g:3480:1: rule__StringValidators__Group__2__Impl : ( ( rule__StringValidators__MaxlengthAssignment_2 )? ) ;
     public final void rule__StringValidators__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3372:1: ( ( ( rule__StringValidators__MaxlengthAssignment_2 )? ) )
-            // InternalJDL.g:3373:1: ( ( rule__StringValidators__MaxlengthAssignment_2 )? )
+            // InternalJDL.g:3484:1: ( ( ( rule__StringValidators__MaxlengthAssignment_2 )? ) )
+            // InternalJDL.g:3485:1: ( ( rule__StringValidators__MaxlengthAssignment_2 )? )
             {
-            // InternalJDL.g:3373:1: ( ( rule__StringValidators__MaxlengthAssignment_2 )? )
-            // InternalJDL.g:3374:2: ( rule__StringValidators__MaxlengthAssignment_2 )?
+            // InternalJDL.g:3485:1: ( ( rule__StringValidators__MaxlengthAssignment_2 )? )
+            // InternalJDL.g:3486:2: ( rule__StringValidators__MaxlengthAssignment_2 )?
             {
              before(grammarAccess.getStringValidatorsAccess().getMaxlengthAssignment_2()); 
-            // InternalJDL.g:3375:2: ( rule__StringValidators__MaxlengthAssignment_2 )?
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            // InternalJDL.g:3487:2: ( rule__StringValidators__MaxlengthAssignment_2 )?
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==39) ) {
-                alt25=1;
+            if ( (LA26_0==39) ) {
+                alt26=1;
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
-                    // InternalJDL.g:3375:3: rule__StringValidators__MaxlengthAssignment_2
+                    // InternalJDL.g:3487:3: rule__StringValidators__MaxlengthAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__StringValidators__MaxlengthAssignment_2();
@@ -10503,14 +10864,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__3"
-    // InternalJDL.g:3383:1: rule__StringValidators__Group__3 : rule__StringValidators__Group__3__Impl ;
+    // InternalJDL.g:3495:1: rule__StringValidators__Group__3 : rule__StringValidators__Group__3__Impl ;
     public final void rule__StringValidators__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3387:1: ( rule__StringValidators__Group__3__Impl )
-            // InternalJDL.g:3388:2: rule__StringValidators__Group__3__Impl
+            // InternalJDL.g:3499:1: ( rule__StringValidators__Group__3__Impl )
+            // InternalJDL.g:3500:2: rule__StringValidators__Group__3__Impl
             {
             pushFollow(FOLLOW_2);
             rule__StringValidators__Group__3__Impl();
@@ -10536,29 +10897,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__Group__3__Impl"
-    // InternalJDL.g:3394:1: rule__StringValidators__Group__3__Impl : ( ( rule__StringValidators__PatternAssignment_3 )? ) ;
+    // InternalJDL.g:3506:1: rule__StringValidators__Group__3__Impl : ( ( rule__StringValidators__PatternAssignment_3 )? ) ;
     public final void rule__StringValidators__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3398:1: ( ( ( rule__StringValidators__PatternAssignment_3 )? ) )
-            // InternalJDL.g:3399:1: ( ( rule__StringValidators__PatternAssignment_3 )? )
+            // InternalJDL.g:3510:1: ( ( ( rule__StringValidators__PatternAssignment_3 )? ) )
+            // InternalJDL.g:3511:1: ( ( rule__StringValidators__PatternAssignment_3 )? )
             {
-            // InternalJDL.g:3399:1: ( ( rule__StringValidators__PatternAssignment_3 )? )
-            // InternalJDL.g:3400:2: ( rule__StringValidators__PatternAssignment_3 )?
+            // InternalJDL.g:3511:1: ( ( rule__StringValidators__PatternAssignment_3 )? )
+            // InternalJDL.g:3512:2: ( rule__StringValidators__PatternAssignment_3 )?
             {
              before(grammarAccess.getStringValidatorsAccess().getPatternAssignment_3()); 
-            // InternalJDL.g:3401:2: ( rule__StringValidators__PatternAssignment_3 )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            // InternalJDL.g:3513:2: ( rule__StringValidators__PatternAssignment_3 )?
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==40) ) {
-                alt26=1;
+            if ( (LA27_0==40) ) {
+                alt27=1;
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
-                    // InternalJDL.g:3401:3: rule__StringValidators__PatternAssignment_3
+                    // InternalJDL.g:3513:3: rule__StringValidators__PatternAssignment_3
                     {
                     pushFollow(FOLLOW_2);
                     rule__StringValidators__PatternAssignment_3();
@@ -10594,14 +10955,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__0"
-    // InternalJDL.g:3410:1: rule__NumericValidators__Group__0 : rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1 ;
+    // InternalJDL.g:3522:1: rule__NumericValidators__Group__0 : rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1 ;
     public final void rule__NumericValidators__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3414:1: ( rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1 )
-            // InternalJDL.g:3415:2: rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1
+            // InternalJDL.g:3526:1: ( rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1 )
+            // InternalJDL.g:3527:2: rule__NumericValidators__Group__0__Impl rule__NumericValidators__Group__1
             {
             pushFollow(FOLLOW_26);
             rule__NumericValidators__Group__0__Impl();
@@ -10632,21 +10993,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__0__Impl"
-    // InternalJDL.g:3422:1: rule__NumericValidators__Group__0__Impl : ( ( rule__NumericValidators__RequiredAssignment_0 ) ) ;
+    // InternalJDL.g:3534:1: rule__NumericValidators__Group__0__Impl : ( ( rule__NumericValidators__RequiredAssignment_0 ) ) ;
     public final void rule__NumericValidators__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3426:1: ( ( ( rule__NumericValidators__RequiredAssignment_0 ) ) )
-            // InternalJDL.g:3427:1: ( ( rule__NumericValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3538:1: ( ( ( rule__NumericValidators__RequiredAssignment_0 ) ) )
+            // InternalJDL.g:3539:1: ( ( rule__NumericValidators__RequiredAssignment_0 ) )
             {
-            // InternalJDL.g:3427:1: ( ( rule__NumericValidators__RequiredAssignment_0 ) )
-            // InternalJDL.g:3428:2: ( rule__NumericValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3539:1: ( ( rule__NumericValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3540:2: ( rule__NumericValidators__RequiredAssignment_0 )
             {
              before(grammarAccess.getNumericValidatorsAccess().getRequiredAssignment_0()); 
-            // InternalJDL.g:3429:2: ( rule__NumericValidators__RequiredAssignment_0 )
-            // InternalJDL.g:3429:3: rule__NumericValidators__RequiredAssignment_0
+            // InternalJDL.g:3541:2: ( rule__NumericValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3541:3: rule__NumericValidators__RequiredAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__NumericValidators__RequiredAssignment_0();
@@ -10679,14 +11040,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__1"
-    // InternalJDL.g:3437:1: rule__NumericValidators__Group__1 : rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2 ;
+    // InternalJDL.g:3549:1: rule__NumericValidators__Group__1 : rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2 ;
     public final void rule__NumericValidators__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3441:1: ( rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2 )
-            // InternalJDL.g:3442:2: rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2
+            // InternalJDL.g:3553:1: ( rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2 )
+            // InternalJDL.g:3554:2: rule__NumericValidators__Group__1__Impl rule__NumericValidators__Group__2
             {
             pushFollow(FOLLOW_26);
             rule__NumericValidators__Group__1__Impl();
@@ -10717,29 +11078,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__1__Impl"
-    // InternalJDL.g:3449:1: rule__NumericValidators__Group__1__Impl : ( ( rule__NumericValidators__MinlengthAssignment_1 )? ) ;
+    // InternalJDL.g:3561:1: rule__NumericValidators__Group__1__Impl : ( ( rule__NumericValidators__MinlengthAssignment_1 )? ) ;
     public final void rule__NumericValidators__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3453:1: ( ( ( rule__NumericValidators__MinlengthAssignment_1 )? ) )
-            // InternalJDL.g:3454:1: ( ( rule__NumericValidators__MinlengthAssignment_1 )? )
+            // InternalJDL.g:3565:1: ( ( ( rule__NumericValidators__MinlengthAssignment_1 )? ) )
+            // InternalJDL.g:3566:1: ( ( rule__NumericValidators__MinlengthAssignment_1 )? )
             {
-            // InternalJDL.g:3454:1: ( ( rule__NumericValidators__MinlengthAssignment_1 )? )
-            // InternalJDL.g:3455:2: ( rule__NumericValidators__MinlengthAssignment_1 )?
+            // InternalJDL.g:3566:1: ( ( rule__NumericValidators__MinlengthAssignment_1 )? )
+            // InternalJDL.g:3567:2: ( rule__NumericValidators__MinlengthAssignment_1 )?
             {
              before(grammarAccess.getNumericValidatorsAccess().getMinlengthAssignment_1()); 
-            // InternalJDL.g:3456:2: ( rule__NumericValidators__MinlengthAssignment_1 )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // InternalJDL.g:3568:2: ( rule__NumericValidators__MinlengthAssignment_1 )?
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA27_0==41) ) {
-                alt27=1;
+            if ( (LA28_0==41) ) {
+                alt28=1;
             }
-            switch (alt27) {
+            switch (alt28) {
                 case 1 :
-                    // InternalJDL.g:3456:3: rule__NumericValidators__MinlengthAssignment_1
+                    // InternalJDL.g:3568:3: rule__NumericValidators__MinlengthAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__NumericValidators__MinlengthAssignment_1();
@@ -10775,14 +11136,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__2"
-    // InternalJDL.g:3464:1: rule__NumericValidators__Group__2 : rule__NumericValidators__Group__2__Impl ;
+    // InternalJDL.g:3576:1: rule__NumericValidators__Group__2 : rule__NumericValidators__Group__2__Impl ;
     public final void rule__NumericValidators__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3468:1: ( rule__NumericValidators__Group__2__Impl )
-            // InternalJDL.g:3469:2: rule__NumericValidators__Group__2__Impl
+            // InternalJDL.g:3580:1: ( rule__NumericValidators__Group__2__Impl )
+            // InternalJDL.g:3581:2: rule__NumericValidators__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__NumericValidators__Group__2__Impl();
@@ -10808,29 +11169,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__Group__2__Impl"
-    // InternalJDL.g:3475:1: rule__NumericValidators__Group__2__Impl : ( ( rule__NumericValidators__MaxlengthAssignment_2 )? ) ;
+    // InternalJDL.g:3587:1: rule__NumericValidators__Group__2__Impl : ( ( rule__NumericValidators__MaxlengthAssignment_2 )? ) ;
     public final void rule__NumericValidators__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3479:1: ( ( ( rule__NumericValidators__MaxlengthAssignment_2 )? ) )
-            // InternalJDL.g:3480:1: ( ( rule__NumericValidators__MaxlengthAssignment_2 )? )
+            // InternalJDL.g:3591:1: ( ( ( rule__NumericValidators__MaxlengthAssignment_2 )? ) )
+            // InternalJDL.g:3592:1: ( ( rule__NumericValidators__MaxlengthAssignment_2 )? )
             {
-            // InternalJDL.g:3480:1: ( ( rule__NumericValidators__MaxlengthAssignment_2 )? )
-            // InternalJDL.g:3481:2: ( rule__NumericValidators__MaxlengthAssignment_2 )?
+            // InternalJDL.g:3592:1: ( ( rule__NumericValidators__MaxlengthAssignment_2 )? )
+            // InternalJDL.g:3593:2: ( rule__NumericValidators__MaxlengthAssignment_2 )?
             {
              before(grammarAccess.getNumericValidatorsAccess().getMaxlengthAssignment_2()); 
-            // InternalJDL.g:3482:2: ( rule__NumericValidators__MaxlengthAssignment_2 )?
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            // InternalJDL.g:3594:2: ( rule__NumericValidators__MaxlengthAssignment_2 )?
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==42) ) {
-                alt28=1;
+            if ( (LA29_0==42) ) {
+                alt29=1;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
-                    // InternalJDL.g:3482:3: rule__NumericValidators__MaxlengthAssignment_2
+                    // InternalJDL.g:3594:3: rule__NumericValidators__MaxlengthAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__NumericValidators__MaxlengthAssignment_2();
@@ -10866,14 +11227,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__0"
-    // InternalJDL.g:3491:1: rule__BlobValidators__Group__0 : rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1 ;
+    // InternalJDL.g:3603:1: rule__BlobValidators__Group__0 : rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1 ;
     public final void rule__BlobValidators__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3495:1: ( rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1 )
-            // InternalJDL.g:3496:2: rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1
+            // InternalJDL.g:3607:1: ( rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1 )
+            // InternalJDL.g:3608:2: rule__BlobValidators__Group__0__Impl rule__BlobValidators__Group__1
             {
             pushFollow(FOLLOW_27);
             rule__BlobValidators__Group__0__Impl();
@@ -10904,21 +11265,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__0__Impl"
-    // InternalJDL.g:3503:1: rule__BlobValidators__Group__0__Impl : ( ( rule__BlobValidators__RequiredAssignment_0 ) ) ;
+    // InternalJDL.g:3615:1: rule__BlobValidators__Group__0__Impl : ( ( rule__BlobValidators__RequiredAssignment_0 ) ) ;
     public final void rule__BlobValidators__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3507:1: ( ( ( rule__BlobValidators__RequiredAssignment_0 ) ) )
-            // InternalJDL.g:3508:1: ( ( rule__BlobValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3619:1: ( ( ( rule__BlobValidators__RequiredAssignment_0 ) ) )
+            // InternalJDL.g:3620:1: ( ( rule__BlobValidators__RequiredAssignment_0 ) )
             {
-            // InternalJDL.g:3508:1: ( ( rule__BlobValidators__RequiredAssignment_0 ) )
-            // InternalJDL.g:3509:2: ( rule__BlobValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3620:1: ( ( rule__BlobValidators__RequiredAssignment_0 ) )
+            // InternalJDL.g:3621:2: ( rule__BlobValidators__RequiredAssignment_0 )
             {
              before(grammarAccess.getBlobValidatorsAccess().getRequiredAssignment_0()); 
-            // InternalJDL.g:3510:2: ( rule__BlobValidators__RequiredAssignment_0 )
-            // InternalJDL.g:3510:3: rule__BlobValidators__RequiredAssignment_0
+            // InternalJDL.g:3622:2: ( rule__BlobValidators__RequiredAssignment_0 )
+            // InternalJDL.g:3622:3: rule__BlobValidators__RequiredAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__BlobValidators__RequiredAssignment_0();
@@ -10951,14 +11312,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__1"
-    // InternalJDL.g:3518:1: rule__BlobValidators__Group__1 : rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2 ;
+    // InternalJDL.g:3630:1: rule__BlobValidators__Group__1 : rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2 ;
     public final void rule__BlobValidators__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3522:1: ( rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2 )
-            // InternalJDL.g:3523:2: rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2
+            // InternalJDL.g:3634:1: ( rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2 )
+            // InternalJDL.g:3635:2: rule__BlobValidators__Group__1__Impl rule__BlobValidators__Group__2
             {
             pushFollow(FOLLOW_27);
             rule__BlobValidators__Group__1__Impl();
@@ -10989,29 +11350,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__1__Impl"
-    // InternalJDL.g:3530:1: rule__BlobValidators__Group__1__Impl : ( ( rule__BlobValidators__MinbytesAssignment_1 )? ) ;
+    // InternalJDL.g:3642:1: rule__BlobValidators__Group__1__Impl : ( ( rule__BlobValidators__MinbytesAssignment_1 )? ) ;
     public final void rule__BlobValidators__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3534:1: ( ( ( rule__BlobValidators__MinbytesAssignment_1 )? ) )
-            // InternalJDL.g:3535:1: ( ( rule__BlobValidators__MinbytesAssignment_1 )? )
+            // InternalJDL.g:3646:1: ( ( ( rule__BlobValidators__MinbytesAssignment_1 )? ) )
+            // InternalJDL.g:3647:1: ( ( rule__BlobValidators__MinbytesAssignment_1 )? )
             {
-            // InternalJDL.g:3535:1: ( ( rule__BlobValidators__MinbytesAssignment_1 )? )
-            // InternalJDL.g:3536:2: ( rule__BlobValidators__MinbytesAssignment_1 )?
+            // InternalJDL.g:3647:1: ( ( rule__BlobValidators__MinbytesAssignment_1 )? )
+            // InternalJDL.g:3648:2: ( rule__BlobValidators__MinbytesAssignment_1 )?
             {
              before(grammarAccess.getBlobValidatorsAccess().getMinbytesAssignment_1()); 
-            // InternalJDL.g:3537:2: ( rule__BlobValidators__MinbytesAssignment_1 )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            // InternalJDL.g:3649:2: ( rule__BlobValidators__MinbytesAssignment_1 )?
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0==43) ) {
-                alt29=1;
+            if ( (LA30_0==43) ) {
+                alt30=1;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
-                    // InternalJDL.g:3537:3: rule__BlobValidators__MinbytesAssignment_1
+                    // InternalJDL.g:3649:3: rule__BlobValidators__MinbytesAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__BlobValidators__MinbytesAssignment_1();
@@ -11047,14 +11408,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__2"
-    // InternalJDL.g:3545:1: rule__BlobValidators__Group__2 : rule__BlobValidators__Group__2__Impl ;
+    // InternalJDL.g:3657:1: rule__BlobValidators__Group__2 : rule__BlobValidators__Group__2__Impl ;
     public final void rule__BlobValidators__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3549:1: ( rule__BlobValidators__Group__2__Impl )
-            // InternalJDL.g:3550:2: rule__BlobValidators__Group__2__Impl
+            // InternalJDL.g:3661:1: ( rule__BlobValidators__Group__2__Impl )
+            // InternalJDL.g:3662:2: rule__BlobValidators__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__BlobValidators__Group__2__Impl();
@@ -11080,29 +11441,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__Group__2__Impl"
-    // InternalJDL.g:3556:1: rule__BlobValidators__Group__2__Impl : ( ( rule__BlobValidators__MaxbytesAssignment_2 )? ) ;
+    // InternalJDL.g:3668:1: rule__BlobValidators__Group__2__Impl : ( ( rule__BlobValidators__MaxbytesAssignment_2 )? ) ;
     public final void rule__BlobValidators__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3560:1: ( ( ( rule__BlobValidators__MaxbytesAssignment_2 )? ) )
-            // InternalJDL.g:3561:1: ( ( rule__BlobValidators__MaxbytesAssignment_2 )? )
+            // InternalJDL.g:3672:1: ( ( ( rule__BlobValidators__MaxbytesAssignment_2 )? ) )
+            // InternalJDL.g:3673:1: ( ( rule__BlobValidators__MaxbytesAssignment_2 )? )
             {
-            // InternalJDL.g:3561:1: ( ( rule__BlobValidators__MaxbytesAssignment_2 )? )
-            // InternalJDL.g:3562:2: ( rule__BlobValidators__MaxbytesAssignment_2 )?
+            // InternalJDL.g:3673:1: ( ( rule__BlobValidators__MaxbytesAssignment_2 )? )
+            // InternalJDL.g:3674:2: ( rule__BlobValidators__MaxbytesAssignment_2 )?
             {
              before(grammarAccess.getBlobValidatorsAccess().getMaxbytesAssignment_2()); 
-            // InternalJDL.g:3563:2: ( rule__BlobValidators__MaxbytesAssignment_2 )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            // InternalJDL.g:3675:2: ( rule__BlobValidators__MaxbytesAssignment_2 )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA30_0==44) ) {
-                alt30=1;
+            if ( (LA31_0==44) ) {
+                alt31=1;
             }
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
-                    // InternalJDL.g:3563:3: rule__BlobValidators__MaxbytesAssignment_2
+                    // InternalJDL.g:3675:3: rule__BlobValidators__MaxbytesAssignment_2
                     {
                     pushFollow(FOLLOW_2);
                     rule__BlobValidators__MaxbytesAssignment_2();
@@ -11138,14 +11499,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__0"
-    // InternalJDL.g:3572:1: rule__Relationships__Group__0 : rule__Relationships__Group__0__Impl rule__Relationships__Group__1 ;
+    // InternalJDL.g:3684:1: rule__Relationships__Group__0 : rule__Relationships__Group__0__Impl rule__Relationships__Group__1 ;
     public final void rule__Relationships__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3576:1: ( rule__Relationships__Group__0__Impl rule__Relationships__Group__1 )
-            // InternalJDL.g:3577:2: rule__Relationships__Group__0__Impl rule__Relationships__Group__1
+            // InternalJDL.g:3688:1: ( rule__Relationships__Group__0__Impl rule__Relationships__Group__1 )
+            // InternalJDL.g:3689:2: rule__Relationships__Group__0__Impl rule__Relationships__Group__1
             {
             pushFollow(FOLLOW_28);
             rule__Relationships__Group__0__Impl();
@@ -11176,17 +11537,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__0__Impl"
-    // InternalJDL.g:3584:1: rule__Relationships__Group__0__Impl : ( 'relationship' ) ;
+    // InternalJDL.g:3696:1: rule__Relationships__Group__0__Impl : ( 'relationship' ) ;
     public final void rule__Relationships__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3588:1: ( ( 'relationship' ) )
-            // InternalJDL.g:3589:1: ( 'relationship' )
+            // InternalJDL.g:3700:1: ( ( 'relationship' ) )
+            // InternalJDL.g:3701:1: ( 'relationship' )
             {
-            // InternalJDL.g:3589:1: ( 'relationship' )
-            // InternalJDL.g:3590:2: 'relationship'
+            // InternalJDL.g:3701:1: ( 'relationship' )
+            // InternalJDL.g:3702:2: 'relationship'
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipKeyword_0()); 
             match(input,45,FOLLOW_2); 
@@ -11213,14 +11574,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__1"
-    // InternalJDL.g:3599:1: rule__Relationships__Group__1 : rule__Relationships__Group__1__Impl rule__Relationships__Group__2 ;
+    // InternalJDL.g:3711:1: rule__Relationships__Group__1 : rule__Relationships__Group__1__Impl rule__Relationships__Group__2 ;
     public final void rule__Relationships__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3603:1: ( rule__Relationships__Group__1__Impl rule__Relationships__Group__2 )
-            // InternalJDL.g:3604:2: rule__Relationships__Group__1__Impl rule__Relationships__Group__2
+            // InternalJDL.g:3715:1: ( rule__Relationships__Group__1__Impl rule__Relationships__Group__2 )
+            // InternalJDL.g:3716:2: rule__Relationships__Group__1__Impl rule__Relationships__Group__2
             {
             pushFollow(FOLLOW_5);
             rule__Relationships__Group__1__Impl();
@@ -11251,21 +11612,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__1__Impl"
-    // InternalJDL.g:3611:1: rule__Relationships__Group__1__Impl : ( ( rule__Relationships__CardinalityAssignment_1 ) ) ;
+    // InternalJDL.g:3723:1: rule__Relationships__Group__1__Impl : ( ( rule__Relationships__CardinalityAssignment_1 ) ) ;
     public final void rule__Relationships__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3615:1: ( ( ( rule__Relationships__CardinalityAssignment_1 ) ) )
-            // InternalJDL.g:3616:1: ( ( rule__Relationships__CardinalityAssignment_1 ) )
+            // InternalJDL.g:3727:1: ( ( ( rule__Relationships__CardinalityAssignment_1 ) ) )
+            // InternalJDL.g:3728:1: ( ( rule__Relationships__CardinalityAssignment_1 ) )
             {
-            // InternalJDL.g:3616:1: ( ( rule__Relationships__CardinalityAssignment_1 ) )
-            // InternalJDL.g:3617:2: ( rule__Relationships__CardinalityAssignment_1 )
+            // InternalJDL.g:3728:1: ( ( rule__Relationships__CardinalityAssignment_1 ) )
+            // InternalJDL.g:3729:2: ( rule__Relationships__CardinalityAssignment_1 )
             {
              before(grammarAccess.getRelationshipsAccess().getCardinalityAssignment_1()); 
-            // InternalJDL.g:3618:2: ( rule__Relationships__CardinalityAssignment_1 )
-            // InternalJDL.g:3618:3: rule__Relationships__CardinalityAssignment_1
+            // InternalJDL.g:3730:2: ( rule__Relationships__CardinalityAssignment_1 )
+            // InternalJDL.g:3730:3: rule__Relationships__CardinalityAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__Relationships__CardinalityAssignment_1();
@@ -11298,14 +11659,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__2"
-    // InternalJDL.g:3626:1: rule__Relationships__Group__2 : rule__Relationships__Group__2__Impl rule__Relationships__Group__3 ;
+    // InternalJDL.g:3738:1: rule__Relationships__Group__2 : rule__Relationships__Group__2__Impl rule__Relationships__Group__3 ;
     public final void rule__Relationships__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3630:1: ( rule__Relationships__Group__2__Impl rule__Relationships__Group__3 )
-            // InternalJDL.g:3631:2: rule__Relationships__Group__2__Impl rule__Relationships__Group__3
+            // InternalJDL.g:3742:1: ( rule__Relationships__Group__2__Impl rule__Relationships__Group__3 )
+            // InternalJDL.g:3743:2: rule__Relationships__Group__2__Impl rule__Relationships__Group__3
             {
             pushFollow(FOLLOW_29);
             rule__Relationships__Group__2__Impl();
@@ -11336,17 +11697,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__2__Impl"
-    // InternalJDL.g:3638:1: rule__Relationships__Group__2__Impl : ( '{' ) ;
+    // InternalJDL.g:3750:1: rule__Relationships__Group__2__Impl : ( '{' ) ;
     public final void rule__Relationships__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3642:1: ( ( '{' ) )
-            // InternalJDL.g:3643:1: ( '{' )
+            // InternalJDL.g:3754:1: ( ( '{' ) )
+            // InternalJDL.g:3755:1: ( '{' )
             {
-            // InternalJDL.g:3643:1: ( '{' )
-            // InternalJDL.g:3644:2: '{'
+            // InternalJDL.g:3755:1: ( '{' )
+            // InternalJDL.g:3756:2: '{'
             {
              before(grammarAccess.getRelationshipsAccess().getLeftCurlyBracketKeyword_2()); 
             match(input,21,FOLLOW_2); 
@@ -11373,14 +11734,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__3"
-    // InternalJDL.g:3653:1: rule__Relationships__Group__3 : rule__Relationships__Group__3__Impl rule__Relationships__Group__4 ;
+    // InternalJDL.g:3765:1: rule__Relationships__Group__3 : rule__Relationships__Group__3__Impl rule__Relationships__Group__4 ;
     public final void rule__Relationships__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3657:1: ( rule__Relationships__Group__3__Impl rule__Relationships__Group__4 )
-            // InternalJDL.g:3658:2: rule__Relationships__Group__3__Impl rule__Relationships__Group__4
+            // InternalJDL.g:3769:1: ( rule__Relationships__Group__3__Impl rule__Relationships__Group__4 )
+            // InternalJDL.g:3770:2: rule__Relationships__Group__3__Impl rule__Relationships__Group__4
             {
             pushFollow(FOLLOW_29);
             rule__Relationships__Group__3__Impl();
@@ -11411,33 +11772,33 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__3__Impl"
-    // InternalJDL.g:3665:1: rule__Relationships__Group__3__Impl : ( ( rule__Relationships__RelationshipsAssignment_3 )* ) ;
+    // InternalJDL.g:3777:1: rule__Relationships__Group__3__Impl : ( ( rule__Relationships__RelationshipsAssignment_3 )* ) ;
     public final void rule__Relationships__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3669:1: ( ( ( rule__Relationships__RelationshipsAssignment_3 )* ) )
-            // InternalJDL.g:3670:1: ( ( rule__Relationships__RelationshipsAssignment_3 )* )
+            // InternalJDL.g:3781:1: ( ( ( rule__Relationships__RelationshipsAssignment_3 )* ) )
+            // InternalJDL.g:3782:1: ( ( rule__Relationships__RelationshipsAssignment_3 )* )
             {
-            // InternalJDL.g:3670:1: ( ( rule__Relationships__RelationshipsAssignment_3 )* )
-            // InternalJDL.g:3671:2: ( rule__Relationships__RelationshipsAssignment_3 )*
+            // InternalJDL.g:3782:1: ( ( rule__Relationships__RelationshipsAssignment_3 )* )
+            // InternalJDL.g:3783:2: ( rule__Relationships__RelationshipsAssignment_3 )*
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsAssignment_3()); 
-            // InternalJDL.g:3672:2: ( rule__Relationships__RelationshipsAssignment_3 )*
-            loop31:
+            // InternalJDL.g:3784:2: ( rule__Relationships__RelationshipsAssignment_3 )*
+            loop32:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( (LA31_0==20) ) {
-                    alt31=1;
+                if ( (LA32_0==20) ) {
+                    alt32=1;
                 }
 
 
-                switch (alt31) {
+                switch (alt32) {
             	case 1 :
-            	    // InternalJDL.g:3672:3: rule__Relationships__RelationshipsAssignment_3
+            	    // InternalJDL.g:3784:3: rule__Relationships__RelationshipsAssignment_3
             	    {
             	    pushFollow(FOLLOW_30);
             	    rule__Relationships__RelationshipsAssignment_3();
@@ -11449,7 +11810,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop32;
                 }
             } while (true);
 
@@ -11476,14 +11837,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__4"
-    // InternalJDL.g:3680:1: rule__Relationships__Group__4 : rule__Relationships__Group__4__Impl ;
+    // InternalJDL.g:3792:1: rule__Relationships__Group__4 : rule__Relationships__Group__4__Impl ;
     public final void rule__Relationships__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3684:1: ( rule__Relationships__Group__4__Impl )
-            // InternalJDL.g:3685:2: rule__Relationships__Group__4__Impl
+            // InternalJDL.g:3796:1: ( rule__Relationships__Group__4__Impl )
+            // InternalJDL.g:3797:2: rule__Relationships__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Relationships__Group__4__Impl();
@@ -11509,17 +11870,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__Group__4__Impl"
-    // InternalJDL.g:3691:1: rule__Relationships__Group__4__Impl : ( '}' ) ;
+    // InternalJDL.g:3803:1: rule__Relationships__Group__4__Impl : ( '}' ) ;
     public final void rule__Relationships__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3695:1: ( ( '}' ) )
-            // InternalJDL.g:3696:1: ( '}' )
+            // InternalJDL.g:3807:1: ( ( '}' ) )
+            // InternalJDL.g:3808:1: ( '}' )
             {
-            // InternalJDL.g:3696:1: ( '}' )
-            // InternalJDL.g:3697:2: '}'
+            // InternalJDL.g:3808:1: ( '}' )
+            // InternalJDL.g:3809:2: '}'
             {
              before(grammarAccess.getRelationshipsAccess().getRightCurlyBracketKeyword_4()); 
             match(input,22,FOLLOW_2); 
@@ -11546,14 +11907,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__0"
-    // InternalJDL.g:3707:1: rule__Relationship__Group__0 : rule__Relationship__Group__0__Impl rule__Relationship__Group__1 ;
+    // InternalJDL.g:3819:1: rule__Relationship__Group__0 : rule__Relationship__Group__0__Impl rule__Relationship__Group__1 ;
     public final void rule__Relationship__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3711:1: ( rule__Relationship__Group__0__Impl rule__Relationship__Group__1 )
-            // InternalJDL.g:3712:2: rule__Relationship__Group__0__Impl rule__Relationship__Group__1
+            // InternalJDL.g:3823:1: ( rule__Relationship__Group__0__Impl rule__Relationship__Group__1 )
+            // InternalJDL.g:3824:2: rule__Relationship__Group__0__Impl rule__Relationship__Group__1
             {
             pushFollow(FOLLOW_31);
             rule__Relationship__Group__0__Impl();
@@ -11584,21 +11945,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__0__Impl"
-    // InternalJDL.g:3719:1: rule__Relationship__Group__0__Impl : ( ( rule__Relationship__FromEntityAssignment_0 ) ) ;
+    // InternalJDL.g:3831:1: rule__Relationship__Group__0__Impl : ( ( rule__Relationship__FromEntityAssignment_0 ) ) ;
     public final void rule__Relationship__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3723:1: ( ( ( rule__Relationship__FromEntityAssignment_0 ) ) )
-            // InternalJDL.g:3724:1: ( ( rule__Relationship__FromEntityAssignment_0 ) )
+            // InternalJDL.g:3835:1: ( ( ( rule__Relationship__FromEntityAssignment_0 ) ) )
+            // InternalJDL.g:3836:1: ( ( rule__Relationship__FromEntityAssignment_0 ) )
             {
-            // InternalJDL.g:3724:1: ( ( rule__Relationship__FromEntityAssignment_0 ) )
-            // InternalJDL.g:3725:2: ( rule__Relationship__FromEntityAssignment_0 )
+            // InternalJDL.g:3836:1: ( ( rule__Relationship__FromEntityAssignment_0 ) )
+            // InternalJDL.g:3837:2: ( rule__Relationship__FromEntityAssignment_0 )
             {
              before(grammarAccess.getRelationshipAccess().getFromEntityAssignment_0()); 
-            // InternalJDL.g:3726:2: ( rule__Relationship__FromEntityAssignment_0 )
-            // InternalJDL.g:3726:3: rule__Relationship__FromEntityAssignment_0
+            // InternalJDL.g:3838:2: ( rule__Relationship__FromEntityAssignment_0 )
+            // InternalJDL.g:3838:3: rule__Relationship__FromEntityAssignment_0
             {
             pushFollow(FOLLOW_2);
             rule__Relationship__FromEntityAssignment_0();
@@ -11631,14 +11992,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__1"
-    // InternalJDL.g:3734:1: rule__Relationship__Group__1 : rule__Relationship__Group__1__Impl rule__Relationship__Group__2 ;
+    // InternalJDL.g:3846:1: rule__Relationship__Group__1 : rule__Relationship__Group__1__Impl rule__Relationship__Group__2 ;
     public final void rule__Relationship__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3738:1: ( rule__Relationship__Group__1__Impl rule__Relationship__Group__2 )
-            // InternalJDL.g:3739:2: rule__Relationship__Group__1__Impl rule__Relationship__Group__2
+            // InternalJDL.g:3850:1: ( rule__Relationship__Group__1__Impl rule__Relationship__Group__2 )
+            // InternalJDL.g:3851:2: rule__Relationship__Group__1__Impl rule__Relationship__Group__2
             {
             pushFollow(FOLLOW_31);
             rule__Relationship__Group__1__Impl();
@@ -11669,29 +12030,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__1__Impl"
-    // InternalJDL.g:3746:1: rule__Relationship__Group__1__Impl : ( ( rule__Relationship__FromNameAssignment_1 )? ) ;
+    // InternalJDL.g:3858:1: rule__Relationship__Group__1__Impl : ( ( rule__Relationship__FromNameAssignment_1 )? ) ;
     public final void rule__Relationship__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3750:1: ( ( ( rule__Relationship__FromNameAssignment_1 )? ) )
-            // InternalJDL.g:3751:1: ( ( rule__Relationship__FromNameAssignment_1 )? )
+            // InternalJDL.g:3862:1: ( ( ( rule__Relationship__FromNameAssignment_1 )? ) )
+            // InternalJDL.g:3863:1: ( ( rule__Relationship__FromNameAssignment_1 )? )
             {
-            // InternalJDL.g:3751:1: ( ( rule__Relationship__FromNameAssignment_1 )? )
-            // InternalJDL.g:3752:2: ( rule__Relationship__FromNameAssignment_1 )?
+            // InternalJDL.g:3863:1: ( ( rule__Relationship__FromNameAssignment_1 )? )
+            // InternalJDL.g:3864:2: ( rule__Relationship__FromNameAssignment_1 )?
             {
              before(grammarAccess.getRelationshipAccess().getFromNameAssignment_1()); 
-            // InternalJDL.g:3753:2: ( rule__Relationship__FromNameAssignment_1 )?
-            int alt32=2;
-            int LA32_0 = input.LA(1);
+            // InternalJDL.g:3865:2: ( rule__Relationship__FromNameAssignment_1 )?
+            int alt33=2;
+            int LA33_0 = input.LA(1);
 
-            if ( (LA32_0==21) ) {
-                alt32=1;
+            if ( (LA33_0==21) ) {
+                alt33=1;
             }
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
-                    // InternalJDL.g:3753:3: rule__Relationship__FromNameAssignment_1
+                    // InternalJDL.g:3865:3: rule__Relationship__FromNameAssignment_1
                     {
                     pushFollow(FOLLOW_2);
                     rule__Relationship__FromNameAssignment_1();
@@ -11727,14 +12088,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__2"
-    // InternalJDL.g:3761:1: rule__Relationship__Group__2 : rule__Relationship__Group__2__Impl rule__Relationship__Group__3 ;
+    // InternalJDL.g:3873:1: rule__Relationship__Group__2 : rule__Relationship__Group__2__Impl rule__Relationship__Group__3 ;
     public final void rule__Relationship__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3765:1: ( rule__Relationship__Group__2__Impl rule__Relationship__Group__3 )
-            // InternalJDL.g:3766:2: rule__Relationship__Group__2__Impl rule__Relationship__Group__3
+            // InternalJDL.g:3877:1: ( rule__Relationship__Group__2__Impl rule__Relationship__Group__3 )
+            // InternalJDL.g:3878:2: rule__Relationship__Group__2__Impl rule__Relationship__Group__3
             {
             pushFollow(FOLLOW_32);
             rule__Relationship__Group__2__Impl();
@@ -11765,17 +12126,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__2__Impl"
-    // InternalJDL.g:3773:1: rule__Relationship__Group__2__Impl : ( 'to' ) ;
+    // InternalJDL.g:3885:1: rule__Relationship__Group__2__Impl : ( 'to' ) ;
     public final void rule__Relationship__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3777:1: ( ( 'to' ) )
-            // InternalJDL.g:3778:1: ( 'to' )
+            // InternalJDL.g:3889:1: ( ( 'to' ) )
+            // InternalJDL.g:3890:1: ( 'to' )
             {
-            // InternalJDL.g:3778:1: ( 'to' )
-            // InternalJDL.g:3779:2: 'to'
+            // InternalJDL.g:3890:1: ( 'to' )
+            // InternalJDL.g:3891:2: 'to'
             {
              before(grammarAccess.getRelationshipAccess().getToKeyword_2()); 
             match(input,46,FOLLOW_2); 
@@ -11802,14 +12163,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__3"
-    // InternalJDL.g:3788:1: rule__Relationship__Group__3 : rule__Relationship__Group__3__Impl rule__Relationship__Group__4 ;
+    // InternalJDL.g:3900:1: rule__Relationship__Group__3 : rule__Relationship__Group__3__Impl rule__Relationship__Group__4 ;
     public final void rule__Relationship__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3792:1: ( rule__Relationship__Group__3__Impl rule__Relationship__Group__4 )
-            // InternalJDL.g:3793:2: rule__Relationship__Group__3__Impl rule__Relationship__Group__4
+            // InternalJDL.g:3904:1: ( rule__Relationship__Group__3__Impl rule__Relationship__Group__4 )
+            // InternalJDL.g:3905:2: rule__Relationship__Group__3__Impl rule__Relationship__Group__4
             {
             pushFollow(FOLLOW_5);
             rule__Relationship__Group__3__Impl();
@@ -11840,21 +12201,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__3__Impl"
-    // InternalJDL.g:3800:1: rule__Relationship__Group__3__Impl : ( ( rule__Relationship__ToEntityAssignment_3 ) ) ;
+    // InternalJDL.g:3912:1: rule__Relationship__Group__3__Impl : ( ( rule__Relationship__ToEntityAssignment_3 ) ) ;
     public final void rule__Relationship__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3804:1: ( ( ( rule__Relationship__ToEntityAssignment_3 ) ) )
-            // InternalJDL.g:3805:1: ( ( rule__Relationship__ToEntityAssignment_3 ) )
+            // InternalJDL.g:3916:1: ( ( ( rule__Relationship__ToEntityAssignment_3 ) ) )
+            // InternalJDL.g:3917:1: ( ( rule__Relationship__ToEntityAssignment_3 ) )
             {
-            // InternalJDL.g:3805:1: ( ( rule__Relationship__ToEntityAssignment_3 ) )
-            // InternalJDL.g:3806:2: ( rule__Relationship__ToEntityAssignment_3 )
+            // InternalJDL.g:3917:1: ( ( rule__Relationship__ToEntityAssignment_3 ) )
+            // InternalJDL.g:3918:2: ( rule__Relationship__ToEntityAssignment_3 )
             {
              before(grammarAccess.getRelationshipAccess().getToEntityAssignment_3()); 
-            // InternalJDL.g:3807:2: ( rule__Relationship__ToEntityAssignment_3 )
-            // InternalJDL.g:3807:3: rule__Relationship__ToEntityAssignment_3
+            // InternalJDL.g:3919:2: ( rule__Relationship__ToEntityAssignment_3 )
+            // InternalJDL.g:3919:3: rule__Relationship__ToEntityAssignment_3
             {
             pushFollow(FOLLOW_2);
             rule__Relationship__ToEntityAssignment_3();
@@ -11887,14 +12248,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__4"
-    // InternalJDL.g:3815:1: rule__Relationship__Group__4 : rule__Relationship__Group__4__Impl ;
+    // InternalJDL.g:3927:1: rule__Relationship__Group__4 : rule__Relationship__Group__4__Impl ;
     public final void rule__Relationship__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3819:1: ( rule__Relationship__Group__4__Impl )
-            // InternalJDL.g:3820:2: rule__Relationship__Group__4__Impl
+            // InternalJDL.g:3931:1: ( rule__Relationship__Group__4__Impl )
+            // InternalJDL.g:3932:2: rule__Relationship__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__Relationship__Group__4__Impl();
@@ -11920,29 +12281,29 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__Group__4__Impl"
-    // InternalJDL.g:3826:1: rule__Relationship__Group__4__Impl : ( ( rule__Relationship__ToNameAssignment_4 )? ) ;
+    // InternalJDL.g:3938:1: rule__Relationship__Group__4__Impl : ( ( rule__Relationship__ToNameAssignment_4 )? ) ;
     public final void rule__Relationship__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3830:1: ( ( ( rule__Relationship__ToNameAssignment_4 )? ) )
-            // InternalJDL.g:3831:1: ( ( rule__Relationship__ToNameAssignment_4 )? )
+            // InternalJDL.g:3942:1: ( ( ( rule__Relationship__ToNameAssignment_4 )? ) )
+            // InternalJDL.g:3943:1: ( ( rule__Relationship__ToNameAssignment_4 )? )
             {
-            // InternalJDL.g:3831:1: ( ( rule__Relationship__ToNameAssignment_4 )? )
-            // InternalJDL.g:3832:2: ( rule__Relationship__ToNameAssignment_4 )?
+            // InternalJDL.g:3943:1: ( ( rule__Relationship__ToNameAssignment_4 )? )
+            // InternalJDL.g:3944:2: ( rule__Relationship__ToNameAssignment_4 )?
             {
              before(grammarAccess.getRelationshipAccess().getToNameAssignment_4()); 
-            // InternalJDL.g:3833:2: ( rule__Relationship__ToNameAssignment_4 )?
-            int alt33=2;
-            int LA33_0 = input.LA(1);
+            // InternalJDL.g:3945:2: ( rule__Relationship__ToNameAssignment_4 )?
+            int alt34=2;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA33_0==21) ) {
-                alt33=1;
+            if ( (LA34_0==21) ) {
+                alt34=1;
             }
-            switch (alt33) {
+            switch (alt34) {
                 case 1 :
-                    // InternalJDL.g:3833:3: rule__Relationship__ToNameAssignment_4
+                    // InternalJDL.g:3945:3: rule__Relationship__ToNameAssignment_4
                     {
                     pushFollow(FOLLOW_2);
                     rule__Relationship__ToNameAssignment_4();
@@ -11978,14 +12339,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__0"
-    // InternalJDL.g:3842:1: rule__RelationshipName__Group__0 : rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1 ;
+    // InternalJDL.g:3954:1: rule__RelationshipName__Group__0 : rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1 ;
     public final void rule__RelationshipName__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3846:1: ( rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1 )
-            // InternalJDL.g:3847:2: rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1
+            // InternalJDL.g:3958:1: ( rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1 )
+            // InternalJDL.g:3959:2: rule__RelationshipName__Group__0__Impl rule__RelationshipName__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__RelationshipName__Group__0__Impl();
@@ -12016,17 +12377,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__0__Impl"
-    // InternalJDL.g:3854:1: rule__RelationshipName__Group__0__Impl : ( '{' ) ;
+    // InternalJDL.g:3966:1: rule__RelationshipName__Group__0__Impl : ( '{' ) ;
     public final void rule__RelationshipName__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3858:1: ( ( '{' ) )
-            // InternalJDL.g:3859:1: ( '{' )
+            // InternalJDL.g:3970:1: ( ( '{' ) )
+            // InternalJDL.g:3971:1: ( '{' )
             {
-            // InternalJDL.g:3859:1: ( '{' )
-            // InternalJDL.g:3860:2: '{'
+            // InternalJDL.g:3971:1: ( '{' )
+            // InternalJDL.g:3972:2: '{'
             {
              before(grammarAccess.getRelationshipNameAccess().getLeftCurlyBracketKeyword_0()); 
             match(input,21,FOLLOW_2); 
@@ -12053,14 +12414,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__1"
-    // InternalJDL.g:3869:1: rule__RelationshipName__Group__1 : rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2 ;
+    // InternalJDL.g:3981:1: rule__RelationshipName__Group__1 : rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2 ;
     public final void rule__RelationshipName__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3873:1: ( rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2 )
-            // InternalJDL.g:3874:2: rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2
+            // InternalJDL.g:3985:1: ( rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2 )
+            // InternalJDL.g:3986:2: rule__RelationshipName__Group__1__Impl rule__RelationshipName__Group__2
             {
             pushFollow(FOLLOW_33);
             rule__RelationshipName__Group__1__Impl();
@@ -12091,21 +12452,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__1__Impl"
-    // InternalJDL.g:3881:1: rule__RelationshipName__Group__1__Impl : ( ( rule__RelationshipName__NameAssignment_1 ) ) ;
+    // InternalJDL.g:3993:1: rule__RelationshipName__Group__1__Impl : ( ( rule__RelationshipName__NameAssignment_1 ) ) ;
     public final void rule__RelationshipName__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3885:1: ( ( ( rule__RelationshipName__NameAssignment_1 ) ) )
-            // InternalJDL.g:3886:1: ( ( rule__RelationshipName__NameAssignment_1 ) )
+            // InternalJDL.g:3997:1: ( ( ( rule__RelationshipName__NameAssignment_1 ) ) )
+            // InternalJDL.g:3998:1: ( ( rule__RelationshipName__NameAssignment_1 ) )
             {
-            // InternalJDL.g:3886:1: ( ( rule__RelationshipName__NameAssignment_1 ) )
-            // InternalJDL.g:3887:2: ( rule__RelationshipName__NameAssignment_1 )
+            // InternalJDL.g:3998:1: ( ( rule__RelationshipName__NameAssignment_1 ) )
+            // InternalJDL.g:3999:2: ( rule__RelationshipName__NameAssignment_1 )
             {
              before(grammarAccess.getRelationshipNameAccess().getNameAssignment_1()); 
-            // InternalJDL.g:3888:2: ( rule__RelationshipName__NameAssignment_1 )
-            // InternalJDL.g:3888:3: rule__RelationshipName__NameAssignment_1
+            // InternalJDL.g:4000:2: ( rule__RelationshipName__NameAssignment_1 )
+            // InternalJDL.g:4000:3: rule__RelationshipName__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__RelationshipName__NameAssignment_1();
@@ -12138,14 +12499,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__2"
-    // InternalJDL.g:3896:1: rule__RelationshipName__Group__2 : rule__RelationshipName__Group__2__Impl ;
+    // InternalJDL.g:4008:1: rule__RelationshipName__Group__2 : rule__RelationshipName__Group__2__Impl ;
     public final void rule__RelationshipName__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3900:1: ( rule__RelationshipName__Group__2__Impl )
-            // InternalJDL.g:3901:2: rule__RelationshipName__Group__2__Impl
+            // InternalJDL.g:4012:1: ( rule__RelationshipName__Group__2__Impl )
+            // InternalJDL.g:4013:2: rule__RelationshipName__Group__2__Impl
             {
             pushFollow(FOLLOW_2);
             rule__RelationshipName__Group__2__Impl();
@@ -12171,17 +12532,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__Group__2__Impl"
-    // InternalJDL.g:3907:1: rule__RelationshipName__Group__2__Impl : ( '}' ) ;
+    // InternalJDL.g:4019:1: rule__RelationshipName__Group__2__Impl : ( '}' ) ;
     public final void rule__RelationshipName__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3911:1: ( ( '}' ) )
-            // InternalJDL.g:3912:1: ( '}' )
+            // InternalJDL.g:4023:1: ( ( '}' ) )
+            // InternalJDL.g:4024:1: ( '}' )
             {
-            // InternalJDL.g:3912:1: ( '}' )
-            // InternalJDL.g:3913:2: '}'
+            // InternalJDL.g:4024:1: ( '}' )
+            // InternalJDL.g:4025:2: '}'
             {
              before(grammarAccess.getRelationshipNameAccess().getRightCurlyBracketKeyword_2()); 
             match(input,22,FOLLOW_2); 
@@ -12207,15 +12568,663 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__RelationshipName__Group__2__Impl"
 
 
+    // $ANTLR start "rule__EnumType__Group__0"
+    // InternalJDL.g:4035:1: rule__EnumType__Group__0 : rule__EnumType__Group__0__Impl rule__EnumType__Group__1 ;
+    public final void rule__EnumType__Group__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4039:1: ( rule__EnumType__Group__0__Impl rule__EnumType__Group__1 )
+            // InternalJDL.g:4040:2: rule__EnumType__Group__0__Impl rule__EnumType__Group__1
+            {
+            pushFollow(FOLLOW_4);
+            rule__EnumType__Group__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__0"
+
+
+    // $ANTLR start "rule__EnumType__Group__0__Impl"
+    // InternalJDL.g:4047:1: rule__EnumType__Group__0__Impl : ( 'enum' ) ;
+    public final void rule__EnumType__Group__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4051:1: ( ( 'enum' ) )
+            // InternalJDL.g:4052:1: ( 'enum' )
+            {
+            // InternalJDL.g:4052:1: ( 'enum' )
+            // InternalJDL.g:4053:2: 'enum'
+            {
+             before(grammarAccess.getEnumTypeAccess().getEnumKeyword_0()); 
+            match(input,47,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getEnumKeyword_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__0__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group__1"
+    // InternalJDL.g:4062:1: rule__EnumType__Group__1 : rule__EnumType__Group__1__Impl rule__EnumType__Group__2 ;
+    public final void rule__EnumType__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4066:1: ( rule__EnumType__Group__1__Impl rule__EnumType__Group__2 )
+            // InternalJDL.g:4067:2: rule__EnumType__Group__1__Impl rule__EnumType__Group__2
+            {
+            pushFollow(FOLLOW_5);
+            rule__EnumType__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__1"
+
+
+    // $ANTLR start "rule__EnumType__Group__1__Impl"
+    // InternalJDL.g:4074:1: rule__EnumType__Group__1__Impl : ( ( rule__EnumType__NameAssignment_1 ) ) ;
+    public final void rule__EnumType__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4078:1: ( ( ( rule__EnumType__NameAssignment_1 ) ) )
+            // InternalJDL.g:4079:1: ( ( rule__EnumType__NameAssignment_1 ) )
+            {
+            // InternalJDL.g:4079:1: ( ( rule__EnumType__NameAssignment_1 ) )
+            // InternalJDL.g:4080:2: ( rule__EnumType__NameAssignment_1 )
+            {
+             before(grammarAccess.getEnumTypeAccess().getNameAssignment_1()); 
+            // InternalJDL.g:4081:2: ( rule__EnumType__NameAssignment_1 )
+            // InternalJDL.g:4081:3: rule__EnumType__NameAssignment_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__NameAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumTypeAccess().getNameAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__1__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group__2"
+    // InternalJDL.g:4089:1: rule__EnumType__Group__2 : rule__EnumType__Group__2__Impl rule__EnumType__Group__3 ;
+    public final void rule__EnumType__Group__2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4093:1: ( rule__EnumType__Group__2__Impl rule__EnumType__Group__3 )
+            // InternalJDL.g:4094:2: rule__EnumType__Group__2__Impl rule__EnumType__Group__3
+            {
+            pushFollow(FOLLOW_4);
+            rule__EnumType__Group__2__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__3();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__2"
+
+
+    // $ANTLR start "rule__EnumType__Group__2__Impl"
+    // InternalJDL.g:4101:1: rule__EnumType__Group__2__Impl : ( '{' ) ;
+    public final void rule__EnumType__Group__2__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4105:1: ( ( '{' ) )
+            // InternalJDL.g:4106:1: ( '{' )
+            {
+            // InternalJDL.g:4106:1: ( '{' )
+            // InternalJDL.g:4107:2: '{'
+            {
+             before(grammarAccess.getEnumTypeAccess().getLeftCurlyBracketKeyword_2()); 
+            match(input,21,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getLeftCurlyBracketKeyword_2()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__2__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group__3"
+    // InternalJDL.g:4116:1: rule__EnumType__Group__3 : rule__EnumType__Group__3__Impl rule__EnumType__Group__4 ;
+    public final void rule__EnumType__Group__3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4120:1: ( rule__EnumType__Group__3__Impl rule__EnumType__Group__4 )
+            // InternalJDL.g:4121:2: rule__EnumType__Group__3__Impl rule__EnumType__Group__4
+            {
+            pushFollow(FOLLOW_6);
+            rule__EnumType__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__4();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__3"
+
+
+    // $ANTLR start "rule__EnumType__Group__3__Impl"
+    // InternalJDL.g:4128:1: rule__EnumType__Group__3__Impl : ( ( rule__EnumType__ValuesAssignment_3 ) ) ;
+    public final void rule__EnumType__Group__3__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4132:1: ( ( ( rule__EnumType__ValuesAssignment_3 ) ) )
+            // InternalJDL.g:4133:1: ( ( rule__EnumType__ValuesAssignment_3 ) )
+            {
+            // InternalJDL.g:4133:1: ( ( rule__EnumType__ValuesAssignment_3 ) )
+            // InternalJDL.g:4134:2: ( rule__EnumType__ValuesAssignment_3 )
+            {
+             before(grammarAccess.getEnumTypeAccess().getValuesAssignment_3()); 
+            // InternalJDL.g:4135:2: ( rule__EnumType__ValuesAssignment_3 )
+            // InternalJDL.g:4135:3: rule__EnumType__ValuesAssignment_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__ValuesAssignment_3();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumTypeAccess().getValuesAssignment_3()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__3__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group__4"
+    // InternalJDL.g:4143:1: rule__EnumType__Group__4 : rule__EnumType__Group__4__Impl rule__EnumType__Group__5 ;
+    public final void rule__EnumType__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4147:1: ( rule__EnumType__Group__4__Impl rule__EnumType__Group__5 )
+            // InternalJDL.g:4148:2: rule__EnumType__Group__4__Impl rule__EnumType__Group__5
+            {
+            pushFollow(FOLLOW_6);
+            rule__EnumType__Group__4__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__5();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__4"
+
+
+    // $ANTLR start "rule__EnumType__Group__4__Impl"
+    // InternalJDL.g:4155:1: rule__EnumType__Group__4__Impl : ( ( rule__EnumType__Group_4__0 )* ) ;
+    public final void rule__EnumType__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4159:1: ( ( ( rule__EnumType__Group_4__0 )* ) )
+            // InternalJDL.g:4160:1: ( ( rule__EnumType__Group_4__0 )* )
+            {
+            // InternalJDL.g:4160:1: ( ( rule__EnumType__Group_4__0 )* )
+            // InternalJDL.g:4161:2: ( rule__EnumType__Group_4__0 )*
+            {
+             before(grammarAccess.getEnumTypeAccess().getGroup_4()); 
+            // InternalJDL.g:4162:2: ( rule__EnumType__Group_4__0 )*
+            loop35:
+            do {
+                int alt35=2;
+                int LA35_0 = input.LA(1);
+
+                if ( (LA35_0==23) ) {
+                    alt35=1;
+                }
+
+
+                switch (alt35) {
+            	case 1 :
+            	    // InternalJDL.g:4162:3: rule__EnumType__Group_4__0
+            	    {
+            	    pushFollow(FOLLOW_7);
+            	    rule__EnumType__Group_4__0();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop35;
+                }
+            } while (true);
+
+             after(grammarAccess.getEnumTypeAccess().getGroup_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__4__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group__5"
+    // InternalJDL.g:4170:1: rule__EnumType__Group__5 : rule__EnumType__Group__5__Impl ;
+    public final void rule__EnumType__Group__5() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4174:1: ( rule__EnumType__Group__5__Impl )
+            // InternalJDL.g:4175:2: rule__EnumType__Group__5__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group__5__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__5"
+
+
+    // $ANTLR start "rule__EnumType__Group__5__Impl"
+    // InternalJDL.g:4181:1: rule__EnumType__Group__5__Impl : ( '}' ) ;
+    public final void rule__EnumType__Group__5__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4185:1: ( ( '}' ) )
+            // InternalJDL.g:4186:1: ( '}' )
+            {
+            // InternalJDL.g:4186:1: ( '}' )
+            // InternalJDL.g:4187:2: '}'
+            {
+             before(grammarAccess.getEnumTypeAccess().getRightCurlyBracketKeyword_5()); 
+            match(input,22,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getRightCurlyBracketKeyword_5()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group__5__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group_4__0"
+    // InternalJDL.g:4197:1: rule__EnumType__Group_4__0 : rule__EnumType__Group_4__0__Impl rule__EnumType__Group_4__1 ;
+    public final void rule__EnumType__Group_4__0() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4201:1: ( rule__EnumType__Group_4__0__Impl rule__EnumType__Group_4__1 )
+            // InternalJDL.g:4202:2: rule__EnumType__Group_4__0__Impl rule__EnumType__Group_4__1
+            {
+            pushFollow(FOLLOW_4);
+            rule__EnumType__Group_4__0__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group_4__1();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group_4__0"
+
+
+    // $ANTLR start "rule__EnumType__Group_4__0__Impl"
+    // InternalJDL.g:4209:1: rule__EnumType__Group_4__0__Impl : ( ',' ) ;
+    public final void rule__EnumType__Group_4__0__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4213:1: ( ( ',' ) )
+            // InternalJDL.g:4214:1: ( ',' )
+            {
+            // InternalJDL.g:4214:1: ( ',' )
+            // InternalJDL.g:4215:2: ','
+            {
+             before(grammarAccess.getEnumTypeAccess().getCommaKeyword_4_0()); 
+            match(input,23,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getCommaKeyword_4_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group_4__0__Impl"
+
+
+    // $ANTLR start "rule__EnumType__Group_4__1"
+    // InternalJDL.g:4224:1: rule__EnumType__Group_4__1 : rule__EnumType__Group_4__1__Impl ;
+    public final void rule__EnumType__Group_4__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4228:1: ( rule__EnumType__Group_4__1__Impl )
+            // InternalJDL.g:4229:2: rule__EnumType__Group_4__1__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__Group_4__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group_4__1"
+
+
+    // $ANTLR start "rule__EnumType__Group_4__1__Impl"
+    // InternalJDL.g:4235:1: rule__EnumType__Group_4__1__Impl : ( ( rule__EnumType__ValuesAssignment_4_1 ) ) ;
+    public final void rule__EnumType__Group_4__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:4239:1: ( ( ( rule__EnumType__ValuesAssignment_4_1 ) ) )
+            // InternalJDL.g:4240:1: ( ( rule__EnumType__ValuesAssignment_4_1 ) )
+            {
+            // InternalJDL.g:4240:1: ( ( rule__EnumType__ValuesAssignment_4_1 ) )
+            // InternalJDL.g:4241:2: ( rule__EnumType__ValuesAssignment_4_1 )
+            {
+             before(grammarAccess.getEnumTypeAccess().getValuesAssignment_4_1()); 
+            // InternalJDL.g:4242:2: ( rule__EnumType__ValuesAssignment_4_1 )
+            // InternalJDL.g:4242:3: rule__EnumType__ValuesAssignment_4_1
+            {
+            pushFollow(FOLLOW_2);
+            rule__EnumType__ValuesAssignment_4_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getEnumTypeAccess().getValuesAssignment_4_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__Group_4__1__Impl"
+
+
     // $ANTLR start "rule__ServiceGenerationSetting__Group__0"
-    // InternalJDL.g:3923:1: rule__ServiceGenerationSetting__Group__0 : rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1 ;
+    // InternalJDL.g:4251:1: rule__ServiceGenerationSetting__Group__0 : rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1 ;
     public final void rule__ServiceGenerationSetting__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3927:1: ( rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1 )
-            // InternalJDL.g:3928:2: rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1
+            // InternalJDL.g:4255:1: ( rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1 )
+            // InternalJDL.g:4256:2: rule__ServiceGenerationSetting__Group__0__Impl rule__ServiceGenerationSetting__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__ServiceGenerationSetting__Group__0__Impl();
@@ -12246,20 +13255,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__0__Impl"
-    // InternalJDL.g:3935:1: rule__ServiceGenerationSetting__Group__0__Impl : ( 'service' ) ;
+    // InternalJDL.g:4263:1: rule__ServiceGenerationSetting__Group__0__Impl : ( 'service' ) ;
     public final void rule__ServiceGenerationSetting__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3939:1: ( ( 'service' ) )
-            // InternalJDL.g:3940:1: ( 'service' )
+            // InternalJDL.g:4267:1: ( ( 'service' ) )
+            // InternalJDL.g:4268:1: ( 'service' )
             {
-            // InternalJDL.g:3940:1: ( 'service' )
-            // InternalJDL.g:3941:2: 'service'
+            // InternalJDL.g:4268:1: ( 'service' )
+            // InternalJDL.g:4269:2: 'service'
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getServiceKeyword_0()); 
-            match(input,47,FOLLOW_2); 
+            match(input,48,FOLLOW_2); 
              after(grammarAccess.getServiceGenerationSettingAccess().getServiceKeyword_0()); 
 
             }
@@ -12283,14 +13292,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__1"
-    // InternalJDL.g:3950:1: rule__ServiceGenerationSetting__Group__1 : rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2 ;
+    // InternalJDL.g:4278:1: rule__ServiceGenerationSetting__Group__1 : rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2 ;
     public final void rule__ServiceGenerationSetting__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3954:1: ( rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2 )
-            // InternalJDL.g:3955:2: rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2
+            // InternalJDL.g:4282:1: ( rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2 )
+            // InternalJDL.g:4283:2: rule__ServiceGenerationSetting__Group__1__Impl rule__ServiceGenerationSetting__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__ServiceGenerationSetting__Group__1__Impl();
@@ -12321,21 +13330,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__1__Impl"
-    // InternalJDL.g:3962:1: rule__ServiceGenerationSetting__Group__1__Impl : ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) ) ;
+    // InternalJDL.g:4290:1: rule__ServiceGenerationSetting__Group__1__Impl : ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) ) ;
     public final void rule__ServiceGenerationSetting__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3966:1: ( ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) ) )
-            // InternalJDL.g:3967:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4294:1: ( ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) ) )
+            // InternalJDL.g:4295:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) )
             {
-            // InternalJDL.g:3967:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) )
-            // InternalJDL.g:3968:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4295:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4296:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_1 )
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getEntitiesAssignment_1()); 
-            // InternalJDL.g:3969:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_1 )
-            // InternalJDL.g:3969:3: rule__ServiceGenerationSetting__EntitiesAssignment_1
+            // InternalJDL.g:4297:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4297:3: rule__ServiceGenerationSetting__EntitiesAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__EntitiesAssignment_1();
@@ -12368,14 +13377,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__2"
-    // InternalJDL.g:3977:1: rule__ServiceGenerationSetting__Group__2 : rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3 ;
+    // InternalJDL.g:4305:1: rule__ServiceGenerationSetting__Group__2 : rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3 ;
     public final void rule__ServiceGenerationSetting__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3981:1: ( rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3 )
-            // InternalJDL.g:3982:2: rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3
+            // InternalJDL.g:4309:1: ( rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3 )
+            // InternalJDL.g:4310:2: rule__ServiceGenerationSetting__Group__2__Impl rule__ServiceGenerationSetting__Group__3
             {
             pushFollow(FOLLOW_34);
             rule__ServiceGenerationSetting__Group__2__Impl();
@@ -12406,33 +13415,33 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__2__Impl"
-    // InternalJDL.g:3989:1: rule__ServiceGenerationSetting__Group__2__Impl : ( ( rule__ServiceGenerationSetting__Group_2__0 )* ) ;
+    // InternalJDL.g:4317:1: rule__ServiceGenerationSetting__Group__2__Impl : ( ( rule__ServiceGenerationSetting__Group_2__0 )* ) ;
     public final void rule__ServiceGenerationSetting__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:3993:1: ( ( ( rule__ServiceGenerationSetting__Group_2__0 )* ) )
-            // InternalJDL.g:3994:1: ( ( rule__ServiceGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4321:1: ( ( ( rule__ServiceGenerationSetting__Group_2__0 )* ) )
+            // InternalJDL.g:4322:1: ( ( rule__ServiceGenerationSetting__Group_2__0 )* )
             {
-            // InternalJDL.g:3994:1: ( ( rule__ServiceGenerationSetting__Group_2__0 )* )
-            // InternalJDL.g:3995:2: ( rule__ServiceGenerationSetting__Group_2__0 )*
+            // InternalJDL.g:4322:1: ( ( rule__ServiceGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4323:2: ( rule__ServiceGenerationSetting__Group_2__0 )*
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getGroup_2()); 
-            // InternalJDL.g:3996:2: ( rule__ServiceGenerationSetting__Group_2__0 )*
-            loop34:
+            // InternalJDL.g:4324:2: ( rule__ServiceGenerationSetting__Group_2__0 )*
+            loop36:
             do {
-                int alt34=2;
-                int LA34_0 = input.LA(1);
+                int alt36=2;
+                int LA36_0 = input.LA(1);
 
-                if ( (LA34_0==23) ) {
-                    alt34=1;
+                if ( (LA36_0==23) ) {
+                    alt36=1;
                 }
 
 
-                switch (alt34) {
+                switch (alt36) {
             	case 1 :
-            	    // InternalJDL.g:3996:3: rule__ServiceGenerationSetting__Group_2__0
+            	    // InternalJDL.g:4324:3: rule__ServiceGenerationSetting__Group_2__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__ServiceGenerationSetting__Group_2__0();
@@ -12444,7 +13453,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop34;
+            	    break loop36;
                 }
             } while (true);
 
@@ -12471,14 +13480,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__3"
-    // InternalJDL.g:4004:1: rule__ServiceGenerationSetting__Group__3 : rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4 ;
+    // InternalJDL.g:4332:1: rule__ServiceGenerationSetting__Group__3 : rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4 ;
     public final void rule__ServiceGenerationSetting__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4008:1: ( rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4 )
-            // InternalJDL.g:4009:2: rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4
+            // InternalJDL.g:4336:1: ( rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4 )
+            // InternalJDL.g:4337:2: rule__ServiceGenerationSetting__Group__3__Impl rule__ServiceGenerationSetting__Group__4
             {
             pushFollow(FOLLOW_35);
             rule__ServiceGenerationSetting__Group__3__Impl();
@@ -12509,20 +13518,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__3__Impl"
-    // InternalJDL.g:4016:1: rule__ServiceGenerationSetting__Group__3__Impl : ( 'with' ) ;
+    // InternalJDL.g:4344:1: rule__ServiceGenerationSetting__Group__3__Impl : ( 'with' ) ;
     public final void rule__ServiceGenerationSetting__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4020:1: ( ( 'with' ) )
-            // InternalJDL.g:4021:1: ( 'with' )
+            // InternalJDL.g:4348:1: ( ( 'with' ) )
+            // InternalJDL.g:4349:1: ( 'with' )
             {
-            // InternalJDL.g:4021:1: ( 'with' )
-            // InternalJDL.g:4022:2: 'with'
+            // InternalJDL.g:4349:1: ( 'with' )
+            // InternalJDL.g:4350:2: 'with'
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getWithKeyword_3()); 
-            match(input,48,FOLLOW_2); 
+            match(input,49,FOLLOW_2); 
              after(grammarAccess.getServiceGenerationSettingAccess().getWithKeyword_3()); 
 
             }
@@ -12546,14 +13555,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__4"
-    // InternalJDL.g:4031:1: rule__ServiceGenerationSetting__Group__4 : rule__ServiceGenerationSetting__Group__4__Impl ;
+    // InternalJDL.g:4359:1: rule__ServiceGenerationSetting__Group__4 : rule__ServiceGenerationSetting__Group__4__Impl ;
     public final void rule__ServiceGenerationSetting__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4035:1: ( rule__ServiceGenerationSetting__Group__4__Impl )
-            // InternalJDL.g:4036:2: rule__ServiceGenerationSetting__Group__4__Impl
+            // InternalJDL.g:4363:1: ( rule__ServiceGenerationSetting__Group__4__Impl )
+            // InternalJDL.g:4364:2: rule__ServiceGenerationSetting__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__Group__4__Impl();
@@ -12579,21 +13588,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group__4__Impl"
-    // InternalJDL.g:4042:1: rule__ServiceGenerationSetting__Group__4__Impl : ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) ) ;
+    // InternalJDL.g:4370:1: rule__ServiceGenerationSetting__Group__4__Impl : ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) ) ;
     public final void rule__ServiceGenerationSetting__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4046:1: ( ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) ) )
-            // InternalJDL.g:4047:1: ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) )
+            // InternalJDL.g:4374:1: ( ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) ) )
+            // InternalJDL.g:4375:1: ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) )
             {
-            // InternalJDL.g:4047:1: ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) )
-            // InternalJDL.g:4048:2: ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 )
+            // InternalJDL.g:4375:1: ( ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 ) )
+            // InternalJDL.g:4376:2: ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 )
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getServiceTypeAssignment_4()); 
-            // InternalJDL.g:4049:2: ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 )
-            // InternalJDL.g:4049:3: rule__ServiceGenerationSetting__ServiceTypeAssignment_4
+            // InternalJDL.g:4377:2: ( rule__ServiceGenerationSetting__ServiceTypeAssignment_4 )
+            // InternalJDL.g:4377:3: rule__ServiceGenerationSetting__ServiceTypeAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__ServiceTypeAssignment_4();
@@ -12626,14 +13635,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group_2__0"
-    // InternalJDL.g:4058:1: rule__ServiceGenerationSetting__Group_2__0 : rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1 ;
+    // InternalJDL.g:4386:1: rule__ServiceGenerationSetting__Group_2__0 : rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1 ;
     public final void rule__ServiceGenerationSetting__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4062:1: ( rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1 )
-            // InternalJDL.g:4063:2: rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1
+            // InternalJDL.g:4390:1: ( rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1 )
+            // InternalJDL.g:4391:2: rule__ServiceGenerationSetting__Group_2__0__Impl rule__ServiceGenerationSetting__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__ServiceGenerationSetting__Group_2__0__Impl();
@@ -12664,17 +13673,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group_2__0__Impl"
-    // InternalJDL.g:4070:1: rule__ServiceGenerationSetting__Group_2__0__Impl : ( ',' ) ;
+    // InternalJDL.g:4398:1: rule__ServiceGenerationSetting__Group_2__0__Impl : ( ',' ) ;
     public final void rule__ServiceGenerationSetting__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4074:1: ( ( ',' ) )
-            // InternalJDL.g:4075:1: ( ',' )
+            // InternalJDL.g:4402:1: ( ( ',' ) )
+            // InternalJDL.g:4403:1: ( ',' )
             {
-            // InternalJDL.g:4075:1: ( ',' )
-            // InternalJDL.g:4076:2: ','
+            // InternalJDL.g:4403:1: ( ',' )
+            // InternalJDL.g:4404:2: ','
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getCommaKeyword_2_0()); 
             match(input,23,FOLLOW_2); 
@@ -12701,14 +13710,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group_2__1"
-    // InternalJDL.g:4085:1: rule__ServiceGenerationSetting__Group_2__1 : rule__ServiceGenerationSetting__Group_2__1__Impl ;
+    // InternalJDL.g:4413:1: rule__ServiceGenerationSetting__Group_2__1 : rule__ServiceGenerationSetting__Group_2__1__Impl ;
     public final void rule__ServiceGenerationSetting__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4089:1: ( rule__ServiceGenerationSetting__Group_2__1__Impl )
-            // InternalJDL.g:4090:2: rule__ServiceGenerationSetting__Group_2__1__Impl
+            // InternalJDL.g:4417:1: ( rule__ServiceGenerationSetting__Group_2__1__Impl )
+            // InternalJDL.g:4418:2: rule__ServiceGenerationSetting__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__Group_2__1__Impl();
@@ -12734,21 +13743,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__Group_2__1__Impl"
-    // InternalJDL.g:4096:1: rule__ServiceGenerationSetting__Group_2__1__Impl : ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) ) ;
+    // InternalJDL.g:4424:1: rule__ServiceGenerationSetting__Group_2__1__Impl : ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) ) ;
     public final void rule__ServiceGenerationSetting__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4100:1: ( ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) ) )
-            // InternalJDL.g:4101:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4428:1: ( ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) ) )
+            // InternalJDL.g:4429:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) )
             {
-            // InternalJDL.g:4101:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) )
-            // InternalJDL.g:4102:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4429:1: ( ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4430:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 )
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getEntitiesAssignment_2_1()); 
-            // InternalJDL.g:4103:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 )
-            // InternalJDL.g:4103:3: rule__ServiceGenerationSetting__EntitiesAssignment_2_1
+            // InternalJDL.g:4431:2: ( rule__ServiceGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4431:3: rule__ServiceGenerationSetting__EntitiesAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__ServiceGenerationSetting__EntitiesAssignment_2_1();
@@ -12781,14 +13790,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__0"
-    // InternalJDL.g:4112:1: rule__DTOGenerationSetting__Group__0 : rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1 ;
+    // InternalJDL.g:4440:1: rule__DTOGenerationSetting__Group__0 : rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1 ;
     public final void rule__DTOGenerationSetting__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4116:1: ( rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1 )
-            // InternalJDL.g:4117:2: rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1
+            // InternalJDL.g:4444:1: ( rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1 )
+            // InternalJDL.g:4445:2: rule__DTOGenerationSetting__Group__0__Impl rule__DTOGenerationSetting__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__DTOGenerationSetting__Group__0__Impl();
@@ -12819,20 +13828,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__0__Impl"
-    // InternalJDL.g:4124:1: rule__DTOGenerationSetting__Group__0__Impl : ( 'dto' ) ;
+    // InternalJDL.g:4452:1: rule__DTOGenerationSetting__Group__0__Impl : ( 'dto' ) ;
     public final void rule__DTOGenerationSetting__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4128:1: ( ( 'dto' ) )
-            // InternalJDL.g:4129:1: ( 'dto' )
+            // InternalJDL.g:4456:1: ( ( 'dto' ) )
+            // InternalJDL.g:4457:1: ( 'dto' )
             {
-            // InternalJDL.g:4129:1: ( 'dto' )
-            // InternalJDL.g:4130:2: 'dto'
+            // InternalJDL.g:4457:1: ( 'dto' )
+            // InternalJDL.g:4458:2: 'dto'
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getDtoKeyword_0()); 
-            match(input,49,FOLLOW_2); 
+            match(input,50,FOLLOW_2); 
              after(grammarAccess.getDTOGenerationSettingAccess().getDtoKeyword_0()); 
 
             }
@@ -12856,14 +13865,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__1"
-    // InternalJDL.g:4139:1: rule__DTOGenerationSetting__Group__1 : rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2 ;
+    // InternalJDL.g:4467:1: rule__DTOGenerationSetting__Group__1 : rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2 ;
     public final void rule__DTOGenerationSetting__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4143:1: ( rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2 )
-            // InternalJDL.g:4144:2: rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2
+            // InternalJDL.g:4471:1: ( rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2 )
+            // InternalJDL.g:4472:2: rule__DTOGenerationSetting__Group__1__Impl rule__DTOGenerationSetting__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__DTOGenerationSetting__Group__1__Impl();
@@ -12894,21 +13903,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__1__Impl"
-    // InternalJDL.g:4151:1: rule__DTOGenerationSetting__Group__1__Impl : ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) ) ;
+    // InternalJDL.g:4479:1: rule__DTOGenerationSetting__Group__1__Impl : ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) ) ;
     public final void rule__DTOGenerationSetting__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4155:1: ( ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) ) )
-            // InternalJDL.g:4156:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4483:1: ( ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) ) )
+            // InternalJDL.g:4484:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) )
             {
-            // InternalJDL.g:4156:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) )
-            // InternalJDL.g:4157:2: ( rule__DTOGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4484:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4485:2: ( rule__DTOGenerationSetting__EntitiesAssignment_1 )
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getEntitiesAssignment_1()); 
-            // InternalJDL.g:4158:2: ( rule__DTOGenerationSetting__EntitiesAssignment_1 )
-            // InternalJDL.g:4158:3: rule__DTOGenerationSetting__EntitiesAssignment_1
+            // InternalJDL.g:4486:2: ( rule__DTOGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4486:3: rule__DTOGenerationSetting__EntitiesAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__EntitiesAssignment_1();
@@ -12941,14 +13950,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__2"
-    // InternalJDL.g:4166:1: rule__DTOGenerationSetting__Group__2 : rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3 ;
+    // InternalJDL.g:4494:1: rule__DTOGenerationSetting__Group__2 : rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3 ;
     public final void rule__DTOGenerationSetting__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4170:1: ( rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3 )
-            // InternalJDL.g:4171:2: rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3
+            // InternalJDL.g:4498:1: ( rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3 )
+            // InternalJDL.g:4499:2: rule__DTOGenerationSetting__Group__2__Impl rule__DTOGenerationSetting__Group__3
             {
             pushFollow(FOLLOW_34);
             rule__DTOGenerationSetting__Group__2__Impl();
@@ -12979,33 +13988,33 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__2__Impl"
-    // InternalJDL.g:4178:1: rule__DTOGenerationSetting__Group__2__Impl : ( ( rule__DTOGenerationSetting__Group_2__0 )* ) ;
+    // InternalJDL.g:4506:1: rule__DTOGenerationSetting__Group__2__Impl : ( ( rule__DTOGenerationSetting__Group_2__0 )* ) ;
     public final void rule__DTOGenerationSetting__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4182:1: ( ( ( rule__DTOGenerationSetting__Group_2__0 )* ) )
-            // InternalJDL.g:4183:1: ( ( rule__DTOGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4510:1: ( ( ( rule__DTOGenerationSetting__Group_2__0 )* ) )
+            // InternalJDL.g:4511:1: ( ( rule__DTOGenerationSetting__Group_2__0 )* )
             {
-            // InternalJDL.g:4183:1: ( ( rule__DTOGenerationSetting__Group_2__0 )* )
-            // InternalJDL.g:4184:2: ( rule__DTOGenerationSetting__Group_2__0 )*
+            // InternalJDL.g:4511:1: ( ( rule__DTOGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4512:2: ( rule__DTOGenerationSetting__Group_2__0 )*
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getGroup_2()); 
-            // InternalJDL.g:4185:2: ( rule__DTOGenerationSetting__Group_2__0 )*
-            loop35:
+            // InternalJDL.g:4513:2: ( rule__DTOGenerationSetting__Group_2__0 )*
+            loop37:
             do {
-                int alt35=2;
-                int LA35_0 = input.LA(1);
+                int alt37=2;
+                int LA37_0 = input.LA(1);
 
-                if ( (LA35_0==23) ) {
-                    alt35=1;
+                if ( (LA37_0==23) ) {
+                    alt37=1;
                 }
 
 
-                switch (alt35) {
+                switch (alt37) {
             	case 1 :
-            	    // InternalJDL.g:4185:3: rule__DTOGenerationSetting__Group_2__0
+            	    // InternalJDL.g:4513:3: rule__DTOGenerationSetting__Group_2__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__DTOGenerationSetting__Group_2__0();
@@ -13017,7 +14026,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop35;
+            	    break loop37;
                 }
             } while (true);
 
@@ -13044,14 +14053,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__3"
-    // InternalJDL.g:4193:1: rule__DTOGenerationSetting__Group__3 : rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4 ;
+    // InternalJDL.g:4521:1: rule__DTOGenerationSetting__Group__3 : rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4 ;
     public final void rule__DTOGenerationSetting__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4197:1: ( rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4 )
-            // InternalJDL.g:4198:2: rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4
+            // InternalJDL.g:4525:1: ( rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4 )
+            // InternalJDL.g:4526:2: rule__DTOGenerationSetting__Group__3__Impl rule__DTOGenerationSetting__Group__4
             {
             pushFollow(FOLLOW_36);
             rule__DTOGenerationSetting__Group__3__Impl();
@@ -13082,20 +14091,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__3__Impl"
-    // InternalJDL.g:4205:1: rule__DTOGenerationSetting__Group__3__Impl : ( 'with' ) ;
+    // InternalJDL.g:4533:1: rule__DTOGenerationSetting__Group__3__Impl : ( 'with' ) ;
     public final void rule__DTOGenerationSetting__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4209:1: ( ( 'with' ) )
-            // InternalJDL.g:4210:1: ( 'with' )
+            // InternalJDL.g:4537:1: ( ( 'with' ) )
+            // InternalJDL.g:4538:1: ( 'with' )
             {
-            // InternalJDL.g:4210:1: ( 'with' )
-            // InternalJDL.g:4211:2: 'with'
+            // InternalJDL.g:4538:1: ( 'with' )
+            // InternalJDL.g:4539:2: 'with'
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getWithKeyword_3()); 
-            match(input,48,FOLLOW_2); 
+            match(input,49,FOLLOW_2); 
              after(grammarAccess.getDTOGenerationSettingAccess().getWithKeyword_3()); 
 
             }
@@ -13119,14 +14128,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__4"
-    // InternalJDL.g:4220:1: rule__DTOGenerationSetting__Group__4 : rule__DTOGenerationSetting__Group__4__Impl ;
+    // InternalJDL.g:4548:1: rule__DTOGenerationSetting__Group__4 : rule__DTOGenerationSetting__Group__4__Impl ;
     public final void rule__DTOGenerationSetting__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4224:1: ( rule__DTOGenerationSetting__Group__4__Impl )
-            // InternalJDL.g:4225:2: rule__DTOGenerationSetting__Group__4__Impl
+            // InternalJDL.g:4552:1: ( rule__DTOGenerationSetting__Group__4__Impl )
+            // InternalJDL.g:4553:2: rule__DTOGenerationSetting__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__Group__4__Impl();
@@ -13152,21 +14161,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group__4__Impl"
-    // InternalJDL.g:4231:1: rule__DTOGenerationSetting__Group__4__Impl : ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) ) ;
+    // InternalJDL.g:4559:1: rule__DTOGenerationSetting__Group__4__Impl : ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) ) ;
     public final void rule__DTOGenerationSetting__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4235:1: ( ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) ) )
-            // InternalJDL.g:4236:1: ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) )
+            // InternalJDL.g:4563:1: ( ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) ) )
+            // InternalJDL.g:4564:1: ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) )
             {
-            // InternalJDL.g:4236:1: ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) )
-            // InternalJDL.g:4237:2: ( rule__DTOGenerationSetting__DtoTypeAssignment_4 )
+            // InternalJDL.g:4564:1: ( ( rule__DTOGenerationSetting__DtoTypeAssignment_4 ) )
+            // InternalJDL.g:4565:2: ( rule__DTOGenerationSetting__DtoTypeAssignment_4 )
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getDtoTypeAssignment_4()); 
-            // InternalJDL.g:4238:2: ( rule__DTOGenerationSetting__DtoTypeAssignment_4 )
-            // InternalJDL.g:4238:3: rule__DTOGenerationSetting__DtoTypeAssignment_4
+            // InternalJDL.g:4566:2: ( rule__DTOGenerationSetting__DtoTypeAssignment_4 )
+            // InternalJDL.g:4566:3: rule__DTOGenerationSetting__DtoTypeAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__DtoTypeAssignment_4();
@@ -13199,14 +14208,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group_2__0"
-    // InternalJDL.g:4247:1: rule__DTOGenerationSetting__Group_2__0 : rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1 ;
+    // InternalJDL.g:4575:1: rule__DTOGenerationSetting__Group_2__0 : rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1 ;
     public final void rule__DTOGenerationSetting__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4251:1: ( rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1 )
-            // InternalJDL.g:4252:2: rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1
+            // InternalJDL.g:4579:1: ( rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1 )
+            // InternalJDL.g:4580:2: rule__DTOGenerationSetting__Group_2__0__Impl rule__DTOGenerationSetting__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__DTOGenerationSetting__Group_2__0__Impl();
@@ -13237,17 +14246,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group_2__0__Impl"
-    // InternalJDL.g:4259:1: rule__DTOGenerationSetting__Group_2__0__Impl : ( ',' ) ;
+    // InternalJDL.g:4587:1: rule__DTOGenerationSetting__Group_2__0__Impl : ( ',' ) ;
     public final void rule__DTOGenerationSetting__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4263:1: ( ( ',' ) )
-            // InternalJDL.g:4264:1: ( ',' )
+            // InternalJDL.g:4591:1: ( ( ',' ) )
+            // InternalJDL.g:4592:1: ( ',' )
             {
-            // InternalJDL.g:4264:1: ( ',' )
-            // InternalJDL.g:4265:2: ','
+            // InternalJDL.g:4592:1: ( ',' )
+            // InternalJDL.g:4593:2: ','
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getCommaKeyword_2_0()); 
             match(input,23,FOLLOW_2); 
@@ -13274,14 +14283,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group_2__1"
-    // InternalJDL.g:4274:1: rule__DTOGenerationSetting__Group_2__1 : rule__DTOGenerationSetting__Group_2__1__Impl ;
+    // InternalJDL.g:4602:1: rule__DTOGenerationSetting__Group_2__1 : rule__DTOGenerationSetting__Group_2__1__Impl ;
     public final void rule__DTOGenerationSetting__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4278:1: ( rule__DTOGenerationSetting__Group_2__1__Impl )
-            // InternalJDL.g:4279:2: rule__DTOGenerationSetting__Group_2__1__Impl
+            // InternalJDL.g:4606:1: ( rule__DTOGenerationSetting__Group_2__1__Impl )
+            // InternalJDL.g:4607:2: rule__DTOGenerationSetting__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__Group_2__1__Impl();
@@ -13307,21 +14316,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__Group_2__1__Impl"
-    // InternalJDL.g:4285:1: rule__DTOGenerationSetting__Group_2__1__Impl : ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) ) ;
+    // InternalJDL.g:4613:1: rule__DTOGenerationSetting__Group_2__1__Impl : ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) ) ;
     public final void rule__DTOGenerationSetting__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4289:1: ( ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) ) )
-            // InternalJDL.g:4290:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4617:1: ( ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) ) )
+            // InternalJDL.g:4618:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) )
             {
-            // InternalJDL.g:4290:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) )
-            // InternalJDL.g:4291:2: ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4618:1: ( ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4619:2: ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 )
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getEntitiesAssignment_2_1()); 
-            // InternalJDL.g:4292:2: ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 )
-            // InternalJDL.g:4292:3: rule__DTOGenerationSetting__EntitiesAssignment_2_1
+            // InternalJDL.g:4620:2: ( rule__DTOGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4620:3: rule__DTOGenerationSetting__EntitiesAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__DTOGenerationSetting__EntitiesAssignment_2_1();
@@ -13354,14 +14363,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__0"
-    // InternalJDL.g:4301:1: rule__PaginateGenerationSetting__Group__0 : rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1 ;
+    // InternalJDL.g:4629:1: rule__PaginateGenerationSetting__Group__0 : rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1 ;
     public final void rule__PaginateGenerationSetting__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4305:1: ( rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1 )
-            // InternalJDL.g:4306:2: rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1
+            // InternalJDL.g:4633:1: ( rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1 )
+            // InternalJDL.g:4634:2: rule__PaginateGenerationSetting__Group__0__Impl rule__PaginateGenerationSetting__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__PaginateGenerationSetting__Group__0__Impl();
@@ -13392,20 +14401,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__0__Impl"
-    // InternalJDL.g:4313:1: rule__PaginateGenerationSetting__Group__0__Impl : ( 'paginate' ) ;
+    // InternalJDL.g:4641:1: rule__PaginateGenerationSetting__Group__0__Impl : ( 'paginate' ) ;
     public final void rule__PaginateGenerationSetting__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4317:1: ( ( 'paginate' ) )
-            // InternalJDL.g:4318:1: ( 'paginate' )
+            // InternalJDL.g:4645:1: ( ( 'paginate' ) )
+            // InternalJDL.g:4646:1: ( 'paginate' )
             {
-            // InternalJDL.g:4318:1: ( 'paginate' )
-            // InternalJDL.g:4319:2: 'paginate'
+            // InternalJDL.g:4646:1: ( 'paginate' )
+            // InternalJDL.g:4647:2: 'paginate'
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getPaginateKeyword_0()); 
-            match(input,50,FOLLOW_2); 
+            match(input,51,FOLLOW_2); 
              after(grammarAccess.getPaginateGenerationSettingAccess().getPaginateKeyword_0()); 
 
             }
@@ -13429,14 +14438,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__1"
-    // InternalJDL.g:4328:1: rule__PaginateGenerationSetting__Group__1 : rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2 ;
+    // InternalJDL.g:4656:1: rule__PaginateGenerationSetting__Group__1 : rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2 ;
     public final void rule__PaginateGenerationSetting__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4332:1: ( rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2 )
-            // InternalJDL.g:4333:2: rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2
+            // InternalJDL.g:4660:1: ( rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2 )
+            // InternalJDL.g:4661:2: rule__PaginateGenerationSetting__Group__1__Impl rule__PaginateGenerationSetting__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__PaginateGenerationSetting__Group__1__Impl();
@@ -13467,21 +14476,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__1__Impl"
-    // InternalJDL.g:4340:1: rule__PaginateGenerationSetting__Group__1__Impl : ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) ) ;
+    // InternalJDL.g:4668:1: rule__PaginateGenerationSetting__Group__1__Impl : ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) ) ;
     public final void rule__PaginateGenerationSetting__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4344:1: ( ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) ) )
-            // InternalJDL.g:4345:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4672:1: ( ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) ) )
+            // InternalJDL.g:4673:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) )
             {
-            // InternalJDL.g:4345:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) )
-            // InternalJDL.g:4346:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4673:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4674:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_1 )
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesAssignment_1()); 
-            // InternalJDL.g:4347:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_1 )
-            // InternalJDL.g:4347:3: rule__PaginateGenerationSetting__EntitiesAssignment_1
+            // InternalJDL.g:4675:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4675:3: rule__PaginateGenerationSetting__EntitiesAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__EntitiesAssignment_1();
@@ -13514,14 +14523,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__2"
-    // InternalJDL.g:4355:1: rule__PaginateGenerationSetting__Group__2 : rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3 ;
+    // InternalJDL.g:4683:1: rule__PaginateGenerationSetting__Group__2 : rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3 ;
     public final void rule__PaginateGenerationSetting__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4359:1: ( rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3 )
-            // InternalJDL.g:4360:2: rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3
+            // InternalJDL.g:4687:1: ( rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3 )
+            // InternalJDL.g:4688:2: rule__PaginateGenerationSetting__Group__2__Impl rule__PaginateGenerationSetting__Group__3
             {
             pushFollow(FOLLOW_34);
             rule__PaginateGenerationSetting__Group__2__Impl();
@@ -13552,33 +14561,33 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__2__Impl"
-    // InternalJDL.g:4367:1: rule__PaginateGenerationSetting__Group__2__Impl : ( ( rule__PaginateGenerationSetting__Group_2__0 )* ) ;
+    // InternalJDL.g:4695:1: rule__PaginateGenerationSetting__Group__2__Impl : ( ( rule__PaginateGenerationSetting__Group_2__0 )* ) ;
     public final void rule__PaginateGenerationSetting__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4371:1: ( ( ( rule__PaginateGenerationSetting__Group_2__0 )* ) )
-            // InternalJDL.g:4372:1: ( ( rule__PaginateGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4699:1: ( ( ( rule__PaginateGenerationSetting__Group_2__0 )* ) )
+            // InternalJDL.g:4700:1: ( ( rule__PaginateGenerationSetting__Group_2__0 )* )
             {
-            // InternalJDL.g:4372:1: ( ( rule__PaginateGenerationSetting__Group_2__0 )* )
-            // InternalJDL.g:4373:2: ( rule__PaginateGenerationSetting__Group_2__0 )*
+            // InternalJDL.g:4700:1: ( ( rule__PaginateGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4701:2: ( rule__PaginateGenerationSetting__Group_2__0 )*
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getGroup_2()); 
-            // InternalJDL.g:4374:2: ( rule__PaginateGenerationSetting__Group_2__0 )*
-            loop36:
+            // InternalJDL.g:4702:2: ( rule__PaginateGenerationSetting__Group_2__0 )*
+            loop38:
             do {
-                int alt36=2;
-                int LA36_0 = input.LA(1);
+                int alt38=2;
+                int LA38_0 = input.LA(1);
 
-                if ( (LA36_0==23) ) {
-                    alt36=1;
+                if ( (LA38_0==23) ) {
+                    alt38=1;
                 }
 
 
-                switch (alt36) {
+                switch (alt38) {
             	case 1 :
-            	    // InternalJDL.g:4374:3: rule__PaginateGenerationSetting__Group_2__0
+            	    // InternalJDL.g:4702:3: rule__PaginateGenerationSetting__Group_2__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__PaginateGenerationSetting__Group_2__0();
@@ -13590,7 +14599,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop36;
+            	    break loop38;
                 }
             } while (true);
 
@@ -13617,14 +14626,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__3"
-    // InternalJDL.g:4382:1: rule__PaginateGenerationSetting__Group__3 : rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4 ;
+    // InternalJDL.g:4710:1: rule__PaginateGenerationSetting__Group__3 : rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4 ;
     public final void rule__PaginateGenerationSetting__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4386:1: ( rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4 )
-            // InternalJDL.g:4387:2: rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4
+            // InternalJDL.g:4714:1: ( rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4 )
+            // InternalJDL.g:4715:2: rule__PaginateGenerationSetting__Group__3__Impl rule__PaginateGenerationSetting__Group__4
             {
             pushFollow(FOLLOW_37);
             rule__PaginateGenerationSetting__Group__3__Impl();
@@ -13655,20 +14664,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__3__Impl"
-    // InternalJDL.g:4394:1: rule__PaginateGenerationSetting__Group__3__Impl : ( 'with' ) ;
+    // InternalJDL.g:4722:1: rule__PaginateGenerationSetting__Group__3__Impl : ( 'with' ) ;
     public final void rule__PaginateGenerationSetting__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4398:1: ( ( 'with' ) )
-            // InternalJDL.g:4399:1: ( 'with' )
+            // InternalJDL.g:4726:1: ( ( 'with' ) )
+            // InternalJDL.g:4727:1: ( 'with' )
             {
-            // InternalJDL.g:4399:1: ( 'with' )
-            // InternalJDL.g:4400:2: 'with'
+            // InternalJDL.g:4727:1: ( 'with' )
+            // InternalJDL.g:4728:2: 'with'
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getWithKeyword_3()); 
-            match(input,48,FOLLOW_2); 
+            match(input,49,FOLLOW_2); 
              after(grammarAccess.getPaginateGenerationSettingAccess().getWithKeyword_3()); 
 
             }
@@ -13692,14 +14701,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__4"
-    // InternalJDL.g:4409:1: rule__PaginateGenerationSetting__Group__4 : rule__PaginateGenerationSetting__Group__4__Impl ;
+    // InternalJDL.g:4737:1: rule__PaginateGenerationSetting__Group__4 : rule__PaginateGenerationSetting__Group__4__Impl ;
     public final void rule__PaginateGenerationSetting__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4413:1: ( rule__PaginateGenerationSetting__Group__4__Impl )
-            // InternalJDL.g:4414:2: rule__PaginateGenerationSetting__Group__4__Impl
+            // InternalJDL.g:4741:1: ( rule__PaginateGenerationSetting__Group__4__Impl )
+            // InternalJDL.g:4742:2: rule__PaginateGenerationSetting__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__Group__4__Impl();
@@ -13725,21 +14734,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group__4__Impl"
-    // InternalJDL.g:4420:1: rule__PaginateGenerationSetting__Group__4__Impl : ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) ) ;
+    // InternalJDL.g:4748:1: rule__PaginateGenerationSetting__Group__4__Impl : ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) ) ;
     public final void rule__PaginateGenerationSetting__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4424:1: ( ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) ) )
-            // InternalJDL.g:4425:1: ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) )
+            // InternalJDL.g:4752:1: ( ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) ) )
+            // InternalJDL.g:4753:1: ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) )
             {
-            // InternalJDL.g:4425:1: ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) )
-            // InternalJDL.g:4426:2: ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 )
+            // InternalJDL.g:4753:1: ( ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 ) )
+            // InternalJDL.g:4754:2: ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 )
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getPaginateTypeAssignment_4()); 
-            // InternalJDL.g:4427:2: ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 )
-            // InternalJDL.g:4427:3: rule__PaginateGenerationSetting__PaginateTypeAssignment_4
+            // InternalJDL.g:4755:2: ( rule__PaginateGenerationSetting__PaginateTypeAssignment_4 )
+            // InternalJDL.g:4755:3: rule__PaginateGenerationSetting__PaginateTypeAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__PaginateTypeAssignment_4();
@@ -13772,14 +14781,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group_2__0"
-    // InternalJDL.g:4436:1: rule__PaginateGenerationSetting__Group_2__0 : rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1 ;
+    // InternalJDL.g:4764:1: rule__PaginateGenerationSetting__Group_2__0 : rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1 ;
     public final void rule__PaginateGenerationSetting__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4440:1: ( rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1 )
-            // InternalJDL.g:4441:2: rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1
+            // InternalJDL.g:4768:1: ( rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1 )
+            // InternalJDL.g:4769:2: rule__PaginateGenerationSetting__Group_2__0__Impl rule__PaginateGenerationSetting__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__PaginateGenerationSetting__Group_2__0__Impl();
@@ -13810,17 +14819,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group_2__0__Impl"
-    // InternalJDL.g:4448:1: rule__PaginateGenerationSetting__Group_2__0__Impl : ( ',' ) ;
+    // InternalJDL.g:4776:1: rule__PaginateGenerationSetting__Group_2__0__Impl : ( ',' ) ;
     public final void rule__PaginateGenerationSetting__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4452:1: ( ( ',' ) )
-            // InternalJDL.g:4453:1: ( ',' )
+            // InternalJDL.g:4780:1: ( ( ',' ) )
+            // InternalJDL.g:4781:1: ( ',' )
             {
-            // InternalJDL.g:4453:1: ( ',' )
-            // InternalJDL.g:4454:2: ','
+            // InternalJDL.g:4781:1: ( ',' )
+            // InternalJDL.g:4782:2: ','
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getCommaKeyword_2_0()); 
             match(input,23,FOLLOW_2); 
@@ -13847,14 +14856,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group_2__1"
-    // InternalJDL.g:4463:1: rule__PaginateGenerationSetting__Group_2__1 : rule__PaginateGenerationSetting__Group_2__1__Impl ;
+    // InternalJDL.g:4791:1: rule__PaginateGenerationSetting__Group_2__1 : rule__PaginateGenerationSetting__Group_2__1__Impl ;
     public final void rule__PaginateGenerationSetting__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4467:1: ( rule__PaginateGenerationSetting__Group_2__1__Impl )
-            // InternalJDL.g:4468:2: rule__PaginateGenerationSetting__Group_2__1__Impl
+            // InternalJDL.g:4795:1: ( rule__PaginateGenerationSetting__Group_2__1__Impl )
+            // InternalJDL.g:4796:2: rule__PaginateGenerationSetting__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__Group_2__1__Impl();
@@ -13880,21 +14889,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__Group_2__1__Impl"
-    // InternalJDL.g:4474:1: rule__PaginateGenerationSetting__Group_2__1__Impl : ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) ) ;
+    // InternalJDL.g:4802:1: rule__PaginateGenerationSetting__Group_2__1__Impl : ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) ) ;
     public final void rule__PaginateGenerationSetting__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4478:1: ( ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) ) )
-            // InternalJDL.g:4479:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4806:1: ( ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) ) )
+            // InternalJDL.g:4807:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) )
             {
-            // InternalJDL.g:4479:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) )
-            // InternalJDL.g:4480:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4807:1: ( ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4808:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 )
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesAssignment_2_1()); 
-            // InternalJDL.g:4481:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 )
-            // InternalJDL.g:4481:3: rule__PaginateGenerationSetting__EntitiesAssignment_2_1
+            // InternalJDL.g:4809:2: ( rule__PaginateGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4809:3: rule__PaginateGenerationSetting__EntitiesAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__PaginateGenerationSetting__EntitiesAssignment_2_1();
@@ -13927,14 +14936,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__0"
-    // InternalJDL.g:4490:1: rule__AngularSuffixGenerationSetting__Group__0 : rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1 ;
+    // InternalJDL.g:4818:1: rule__AngularSuffixGenerationSetting__Group__0 : rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1 ;
     public final void rule__AngularSuffixGenerationSetting__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4494:1: ( rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1 )
-            // InternalJDL.g:4495:2: rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1
+            // InternalJDL.g:4822:1: ( rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1 )
+            // InternalJDL.g:4823:2: rule__AngularSuffixGenerationSetting__Group__0__Impl rule__AngularSuffixGenerationSetting__Group__1
             {
             pushFollow(FOLLOW_4);
             rule__AngularSuffixGenerationSetting__Group__0__Impl();
@@ -13965,20 +14974,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__0__Impl"
-    // InternalJDL.g:4502:1: rule__AngularSuffixGenerationSetting__Group__0__Impl : ( 'angularSuffix' ) ;
+    // InternalJDL.g:4830:1: rule__AngularSuffixGenerationSetting__Group__0__Impl : ( 'angularSuffix' ) ;
     public final void rule__AngularSuffixGenerationSetting__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4506:1: ( ( 'angularSuffix' ) )
-            // InternalJDL.g:4507:1: ( 'angularSuffix' )
+            // InternalJDL.g:4834:1: ( ( 'angularSuffix' ) )
+            // InternalJDL.g:4835:1: ( 'angularSuffix' )
             {
-            // InternalJDL.g:4507:1: ( 'angularSuffix' )
-            // InternalJDL.g:4508:2: 'angularSuffix'
+            // InternalJDL.g:4835:1: ( 'angularSuffix' )
+            // InternalJDL.g:4836:2: 'angularSuffix'
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getAngularSuffixKeyword_0()); 
-            match(input,51,FOLLOW_2); 
+            match(input,52,FOLLOW_2); 
              after(grammarAccess.getAngularSuffixGenerationSettingAccess().getAngularSuffixKeyword_0()); 
 
             }
@@ -14002,14 +15011,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__1"
-    // InternalJDL.g:4517:1: rule__AngularSuffixGenerationSetting__Group__1 : rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2 ;
+    // InternalJDL.g:4845:1: rule__AngularSuffixGenerationSetting__Group__1 : rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2 ;
     public final void rule__AngularSuffixGenerationSetting__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4521:1: ( rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2 )
-            // InternalJDL.g:4522:2: rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2
+            // InternalJDL.g:4849:1: ( rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2 )
+            // InternalJDL.g:4850:2: rule__AngularSuffixGenerationSetting__Group__1__Impl rule__AngularSuffixGenerationSetting__Group__2
             {
             pushFollow(FOLLOW_34);
             rule__AngularSuffixGenerationSetting__Group__1__Impl();
@@ -14040,21 +15049,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__1__Impl"
-    // InternalJDL.g:4529:1: rule__AngularSuffixGenerationSetting__Group__1__Impl : ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) ) ;
+    // InternalJDL.g:4857:1: rule__AngularSuffixGenerationSetting__Group__1__Impl : ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) ) ;
     public final void rule__AngularSuffixGenerationSetting__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4533:1: ( ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) ) )
-            // InternalJDL.g:4534:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4861:1: ( ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) ) )
+            // InternalJDL.g:4862:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) )
             {
-            // InternalJDL.g:4534:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) )
-            // InternalJDL.g:4535:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4862:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 ) )
+            // InternalJDL.g:4863:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 )
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_1()); 
-            // InternalJDL.g:4536:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 )
-            // InternalJDL.g:4536:3: rule__AngularSuffixGenerationSetting__EntitiesAssignment_1
+            // InternalJDL.g:4864:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 )
+            // InternalJDL.g:4864:3: rule__AngularSuffixGenerationSetting__EntitiesAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__EntitiesAssignment_1();
@@ -14087,14 +15096,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__2"
-    // InternalJDL.g:4544:1: rule__AngularSuffixGenerationSetting__Group__2 : rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3 ;
+    // InternalJDL.g:4872:1: rule__AngularSuffixGenerationSetting__Group__2 : rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3 ;
     public final void rule__AngularSuffixGenerationSetting__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4548:1: ( rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3 )
-            // InternalJDL.g:4549:2: rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3
+            // InternalJDL.g:4876:1: ( rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3 )
+            // InternalJDL.g:4877:2: rule__AngularSuffixGenerationSetting__Group__2__Impl rule__AngularSuffixGenerationSetting__Group__3
             {
             pushFollow(FOLLOW_34);
             rule__AngularSuffixGenerationSetting__Group__2__Impl();
@@ -14125,33 +15134,33 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__2__Impl"
-    // InternalJDL.g:4556:1: rule__AngularSuffixGenerationSetting__Group__2__Impl : ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* ) ;
+    // InternalJDL.g:4884:1: rule__AngularSuffixGenerationSetting__Group__2__Impl : ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* ) ;
     public final void rule__AngularSuffixGenerationSetting__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4560:1: ( ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* ) )
-            // InternalJDL.g:4561:1: ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4888:1: ( ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* ) )
+            // InternalJDL.g:4889:1: ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* )
             {
-            // InternalJDL.g:4561:1: ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* )
-            // InternalJDL.g:4562:2: ( rule__AngularSuffixGenerationSetting__Group_2__0 )*
+            // InternalJDL.g:4889:1: ( ( rule__AngularSuffixGenerationSetting__Group_2__0 )* )
+            // InternalJDL.g:4890:2: ( rule__AngularSuffixGenerationSetting__Group_2__0 )*
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getGroup_2()); 
-            // InternalJDL.g:4563:2: ( rule__AngularSuffixGenerationSetting__Group_2__0 )*
-            loop37:
+            // InternalJDL.g:4891:2: ( rule__AngularSuffixGenerationSetting__Group_2__0 )*
+            loop39:
             do {
-                int alt37=2;
-                int LA37_0 = input.LA(1);
+                int alt39=2;
+                int LA39_0 = input.LA(1);
 
-                if ( (LA37_0==23) ) {
-                    alt37=1;
+                if ( (LA39_0==23) ) {
+                    alt39=1;
                 }
 
 
-                switch (alt37) {
+                switch (alt39) {
             	case 1 :
-            	    // InternalJDL.g:4563:3: rule__AngularSuffixGenerationSetting__Group_2__0
+            	    // InternalJDL.g:4891:3: rule__AngularSuffixGenerationSetting__Group_2__0
             	    {
             	    pushFollow(FOLLOW_7);
             	    rule__AngularSuffixGenerationSetting__Group_2__0();
@@ -14163,7 +15172,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop37;
+            	    break loop39;
                 }
             } while (true);
 
@@ -14190,14 +15199,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__3"
-    // InternalJDL.g:4571:1: rule__AngularSuffixGenerationSetting__Group__3 : rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4 ;
+    // InternalJDL.g:4899:1: rule__AngularSuffixGenerationSetting__Group__3 : rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4 ;
     public final void rule__AngularSuffixGenerationSetting__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4575:1: ( rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4 )
-            // InternalJDL.g:4576:2: rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4
+            // InternalJDL.g:4903:1: ( rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4 )
+            // InternalJDL.g:4904:2: rule__AngularSuffixGenerationSetting__Group__3__Impl rule__AngularSuffixGenerationSetting__Group__4
             {
             pushFollow(FOLLOW_4);
             rule__AngularSuffixGenerationSetting__Group__3__Impl();
@@ -14228,20 +15237,20 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__3__Impl"
-    // InternalJDL.g:4583:1: rule__AngularSuffixGenerationSetting__Group__3__Impl : ( 'with' ) ;
+    // InternalJDL.g:4911:1: rule__AngularSuffixGenerationSetting__Group__3__Impl : ( 'with' ) ;
     public final void rule__AngularSuffixGenerationSetting__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4587:1: ( ( 'with' ) )
-            // InternalJDL.g:4588:1: ( 'with' )
+            // InternalJDL.g:4915:1: ( ( 'with' ) )
+            // InternalJDL.g:4916:1: ( 'with' )
             {
-            // InternalJDL.g:4588:1: ( 'with' )
-            // InternalJDL.g:4589:2: 'with'
+            // InternalJDL.g:4916:1: ( 'with' )
+            // InternalJDL.g:4917:2: 'with'
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getWithKeyword_3()); 
-            match(input,48,FOLLOW_2); 
+            match(input,49,FOLLOW_2); 
              after(grammarAccess.getAngularSuffixGenerationSettingAccess().getWithKeyword_3()); 
 
             }
@@ -14265,14 +15274,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__4"
-    // InternalJDL.g:4598:1: rule__AngularSuffixGenerationSetting__Group__4 : rule__AngularSuffixGenerationSetting__Group__4__Impl ;
+    // InternalJDL.g:4926:1: rule__AngularSuffixGenerationSetting__Group__4 : rule__AngularSuffixGenerationSetting__Group__4__Impl ;
     public final void rule__AngularSuffixGenerationSetting__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4602:1: ( rule__AngularSuffixGenerationSetting__Group__4__Impl )
-            // InternalJDL.g:4603:2: rule__AngularSuffixGenerationSetting__Group__4__Impl
+            // InternalJDL.g:4930:1: ( rule__AngularSuffixGenerationSetting__Group__4__Impl )
+            // InternalJDL.g:4931:2: rule__AngularSuffixGenerationSetting__Group__4__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__Group__4__Impl();
@@ -14298,21 +15307,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group__4__Impl"
-    // InternalJDL.g:4609:1: rule__AngularSuffixGenerationSetting__Group__4__Impl : ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) ) ;
+    // InternalJDL.g:4937:1: rule__AngularSuffixGenerationSetting__Group__4__Impl : ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) ) ;
     public final void rule__AngularSuffixGenerationSetting__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4613:1: ( ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) ) )
-            // InternalJDL.g:4614:1: ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) )
+            // InternalJDL.g:4941:1: ( ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) ) )
+            // InternalJDL.g:4942:1: ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) )
             {
-            // InternalJDL.g:4614:1: ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) )
-            // InternalJDL.g:4615:2: ( rule__AngularSuffixGenerationSetting__IdAssignment_4 )
+            // InternalJDL.g:4942:1: ( ( rule__AngularSuffixGenerationSetting__IdAssignment_4 ) )
+            // InternalJDL.g:4943:2: ( rule__AngularSuffixGenerationSetting__IdAssignment_4 )
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getIdAssignment_4()); 
-            // InternalJDL.g:4616:2: ( rule__AngularSuffixGenerationSetting__IdAssignment_4 )
-            // InternalJDL.g:4616:3: rule__AngularSuffixGenerationSetting__IdAssignment_4
+            // InternalJDL.g:4944:2: ( rule__AngularSuffixGenerationSetting__IdAssignment_4 )
+            // InternalJDL.g:4944:3: rule__AngularSuffixGenerationSetting__IdAssignment_4
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__IdAssignment_4();
@@ -14345,14 +15354,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group_2__0"
-    // InternalJDL.g:4625:1: rule__AngularSuffixGenerationSetting__Group_2__0 : rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1 ;
+    // InternalJDL.g:4953:1: rule__AngularSuffixGenerationSetting__Group_2__0 : rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1 ;
     public final void rule__AngularSuffixGenerationSetting__Group_2__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4629:1: ( rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1 )
-            // InternalJDL.g:4630:2: rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1
+            // InternalJDL.g:4957:1: ( rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1 )
+            // InternalJDL.g:4958:2: rule__AngularSuffixGenerationSetting__Group_2__0__Impl rule__AngularSuffixGenerationSetting__Group_2__1
             {
             pushFollow(FOLLOW_4);
             rule__AngularSuffixGenerationSetting__Group_2__0__Impl();
@@ -14383,17 +15392,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group_2__0__Impl"
-    // InternalJDL.g:4637:1: rule__AngularSuffixGenerationSetting__Group_2__0__Impl : ( ',' ) ;
+    // InternalJDL.g:4965:1: rule__AngularSuffixGenerationSetting__Group_2__0__Impl : ( ',' ) ;
     public final void rule__AngularSuffixGenerationSetting__Group_2__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4641:1: ( ( ',' ) )
-            // InternalJDL.g:4642:1: ( ',' )
+            // InternalJDL.g:4969:1: ( ( ',' ) )
+            // InternalJDL.g:4970:1: ( ',' )
             {
-            // InternalJDL.g:4642:1: ( ',' )
-            // InternalJDL.g:4643:2: ','
+            // InternalJDL.g:4970:1: ( ',' )
+            // InternalJDL.g:4971:2: ','
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getCommaKeyword_2_0()); 
             match(input,23,FOLLOW_2); 
@@ -14420,14 +15429,14 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group_2__1"
-    // InternalJDL.g:4652:1: rule__AngularSuffixGenerationSetting__Group_2__1 : rule__AngularSuffixGenerationSetting__Group_2__1__Impl ;
+    // InternalJDL.g:4980:1: rule__AngularSuffixGenerationSetting__Group_2__1 : rule__AngularSuffixGenerationSetting__Group_2__1__Impl ;
     public final void rule__AngularSuffixGenerationSetting__Group_2__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4656:1: ( rule__AngularSuffixGenerationSetting__Group_2__1__Impl )
-            // InternalJDL.g:4657:2: rule__AngularSuffixGenerationSetting__Group_2__1__Impl
+            // InternalJDL.g:4984:1: ( rule__AngularSuffixGenerationSetting__Group_2__1__Impl )
+            // InternalJDL.g:4985:2: rule__AngularSuffixGenerationSetting__Group_2__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__Group_2__1__Impl();
@@ -14453,21 +15462,21 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__Group_2__1__Impl"
-    // InternalJDL.g:4663:1: rule__AngularSuffixGenerationSetting__Group_2__1__Impl : ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) ) ;
+    // InternalJDL.g:4991:1: rule__AngularSuffixGenerationSetting__Group_2__1__Impl : ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) ) ;
     public final void rule__AngularSuffixGenerationSetting__Group_2__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4667:1: ( ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) ) )
-            // InternalJDL.g:4668:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4995:1: ( ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) ) )
+            // InternalJDL.g:4996:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) )
             {
-            // InternalJDL.g:4668:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) )
-            // InternalJDL.g:4669:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4996:1: ( ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 ) )
+            // InternalJDL.g:4997:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 )
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_2_1()); 
-            // InternalJDL.g:4670:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 )
-            // InternalJDL.g:4670:3: rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1
+            // InternalJDL.g:4998:2: ( rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 )
+            // InternalJDL.g:4998:3: rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1
             {
             pushFollow(FOLLOW_2);
             rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1();
@@ -14500,17 +15509,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DomainModel__ElementsAssignment"
-    // InternalJDL.g:4679:1: rule__DomainModel__ElementsAssignment : ( ruleElements ) ;
+    // InternalJDL.g:5007:1: rule__DomainModel__ElementsAssignment : ( ruleElements ) ;
     public final void rule__DomainModel__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4683:1: ( ( ruleElements ) )
-            // InternalJDL.g:4684:2: ( ruleElements )
+            // InternalJDL.g:5011:1: ( ( ruleElements ) )
+            // InternalJDL.g:5012:2: ( ruleElements )
             {
-            // InternalJDL.g:4684:2: ( ruleElements )
-            // InternalJDL.g:4685:3: ruleElements
+            // InternalJDL.g:5012:2: ( ruleElements )
+            // InternalJDL.g:5013:3: ruleElements
             {
              before(grammarAccess.getDomainModelAccess().getElementsElementsParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -14541,17 +15550,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__NameAssignment_1"
-    // InternalJDL.g:4694:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5022:1: rule__Entity__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Entity__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4698:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4699:2: ( RULE_ID )
+            // InternalJDL.g:5026:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5027:2: ( RULE_ID )
             {
-            // InternalJDL.g:4699:2: ( RULE_ID )
-            // InternalJDL.g:4700:3: RULE_ID
+            // InternalJDL.g:5027:2: ( RULE_ID )
+            // InternalJDL.g:5028:3: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -14578,17 +15587,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__FieldsAssignment_3"
-    // InternalJDL.g:4709:1: rule__Entity__FieldsAssignment_3 : ( ruleField ) ;
+    // InternalJDL.g:5037:1: rule__Entity__FieldsAssignment_3 : ( ruleField ) ;
     public final void rule__Entity__FieldsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4713:1: ( ( ruleField ) )
-            // InternalJDL.g:4714:2: ( ruleField )
+            // InternalJDL.g:5041:1: ( ( ruleField ) )
+            // InternalJDL.g:5042:2: ( ruleField )
             {
-            // InternalJDL.g:4714:2: ( ruleField )
-            // InternalJDL.g:4715:3: ruleField
+            // InternalJDL.g:5042:2: ( ruleField )
+            // InternalJDL.g:5043:3: ruleField
             {
              before(grammarAccess.getEntityAccess().getFieldsFieldParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -14619,17 +15628,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__FieldsAssignment_4_1"
-    // InternalJDL.g:4724:1: rule__Entity__FieldsAssignment_4_1 : ( ruleField ) ;
+    // InternalJDL.g:5052:1: rule__Entity__FieldsAssignment_4_1 : ( ruleField ) ;
     public final void rule__Entity__FieldsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4728:1: ( ( ruleField ) )
-            // InternalJDL.g:4729:2: ( ruleField )
+            // InternalJDL.g:5056:1: ( ( ruleField ) )
+            // InternalJDL.g:5057:2: ( ruleField )
             {
-            // InternalJDL.g:4729:2: ( ruleField )
-            // InternalJDL.g:4730:3: ruleField
+            // InternalJDL.g:5057:2: ( ruleField )
+            // InternalJDL.g:5058:3: ruleField
             {
              before(grammarAccess.getEntityAccess().getFieldsFieldParserRuleCall_4_1_0()); 
             pushFollow(FOLLOW_2);
@@ -14659,30 +15668,22 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Entity__FieldsAssignment_4_1"
 
 
-    // $ANTLR start "rule__EnumField__EnumTypeAssignment"
-    // InternalJDL.g:4739:1: rule__EnumField__EnumTypeAssignment : ( ( RULE_ID ) ) ;
-    public final void rule__EnumField__EnumTypeAssignment() throws RecognitionException {
+    // $ANTLR start "rule__EnumField__NameAssignment_0"
+    // InternalJDL.g:5067:1: rule__EnumField__NameAssignment_0 : ( RULE_ID ) ;
+    public final void rule__EnumField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4743:1: ( ( ( RULE_ID ) ) )
-            // InternalJDL.g:4744:2: ( ( RULE_ID ) )
+            // InternalJDL.g:5071:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5072:2: ( RULE_ID )
             {
-            // InternalJDL.g:4744:2: ( ( RULE_ID ) )
-            // InternalJDL.g:4745:3: ( RULE_ID )
+            // InternalJDL.g:5072:2: ( RULE_ID )
+            // InternalJDL.g:5073:3: RULE_ID
             {
-             before(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_0()); 
-            // InternalJDL.g:4746:3: ( RULE_ID )
-            // InternalJDL.g:4747:4: RULE_ID
-            {
-             before(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_0_1()); 
+             before(grammarAccess.getEnumFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_0_1()); 
-
-            }
-
-             after(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_0()); 
+             after(grammarAccess.getEnumFieldAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
 
@@ -14701,21 +15702,107 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__EnumField__EnumTypeAssignment"
+    // $ANTLR end "rule__EnumField__NameAssignment_0"
+
+
+    // $ANTLR start "rule__EnumField__EnumTypeAssignment_1"
+    // InternalJDL.g:5082:1: rule__EnumField__EnumTypeAssignment_1 : ( ( RULE_ID ) ) ;
+    public final void rule__EnumField__EnumTypeAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:5086:1: ( ( ( RULE_ID ) ) )
+            // InternalJDL.g:5087:2: ( ( RULE_ID ) )
+            {
+            // InternalJDL.g:5087:2: ( ( RULE_ID ) )
+            // InternalJDL.g:5088:3: ( RULE_ID )
+            {
+             before(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_1_0()); 
+            // InternalJDL.g:5089:3: ( RULE_ID )
+            // InternalJDL.g:5090:4: RULE_ID
+            {
+             before(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_1_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_1_0_1()); 
+
+            }
+
+             after(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__EnumTypeAssignment_1"
+
+
+    // $ANTLR start "rule__EnumField__ValidatorsAssignment_2"
+    // InternalJDL.g:5101:1: rule__EnumField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
+    public final void rule__EnumField__ValidatorsAssignment_2() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:5105:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5106:2: ( ruleRequiredValidator )
+            {
+            // InternalJDL.g:5106:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5107:3: ruleRequiredValidator
+            {
+             before(grammarAccess.getEnumFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0()); 
+            pushFollow(FOLLOW_2);
+            ruleRequiredValidator();
+
+            state._fsp--;
+
+             after(grammarAccess.getEnumFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumField__ValidatorsAssignment_2"
 
 
     // $ANTLR start "rule__StringField__NameAssignment_0"
-    // InternalJDL.g:4758:1: rule__StringField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5116:1: rule__StringField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__StringField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4762:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4763:2: ( RULE_ID )
+            // InternalJDL.g:5120:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5121:2: ( RULE_ID )
             {
-            // InternalJDL.g:4763:2: ( RULE_ID )
-            // InternalJDL.g:4764:3: RULE_ID
+            // InternalJDL.g:5121:2: ( RULE_ID )
+            // InternalJDL.g:5122:3: RULE_ID
             {
              before(grammarAccess.getStringFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -14742,17 +15829,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringField__ValidatorsAssignment_2"
-    // InternalJDL.g:4773:1: rule__StringField__ValidatorsAssignment_2 : ( ruleStringValidators ) ;
+    // InternalJDL.g:5131:1: rule__StringField__ValidatorsAssignment_2 : ( ruleStringValidators ) ;
     public final void rule__StringField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4777:1: ( ( ruleStringValidators ) )
-            // InternalJDL.g:4778:2: ( ruleStringValidators )
+            // InternalJDL.g:5135:1: ( ( ruleStringValidators ) )
+            // InternalJDL.g:5136:2: ( ruleStringValidators )
             {
-            // InternalJDL.g:4778:2: ( ruleStringValidators )
-            // InternalJDL.g:4779:3: ruleStringValidators
+            // InternalJDL.g:5136:2: ( ruleStringValidators )
+            // InternalJDL.g:5137:3: ruleStringValidators
             {
              before(grammarAccess.getStringFieldAccess().getValidatorsStringValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -14783,17 +15870,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__NameAssignment_0"
-    // InternalJDL.g:4788:1: rule__IntegerField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5146:1: rule__IntegerField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__IntegerField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4792:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4793:2: ( RULE_ID )
+            // InternalJDL.g:5150:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5151:2: ( RULE_ID )
             {
-            // InternalJDL.g:4793:2: ( RULE_ID )
-            // InternalJDL.g:4794:3: RULE_ID
+            // InternalJDL.g:5151:2: ( RULE_ID )
+            // InternalJDL.g:5152:3: RULE_ID
             {
              before(grammarAccess.getIntegerFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -14820,17 +15907,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__IntegerField__ValidatorsAssignment_2"
-    // InternalJDL.g:4803:1: rule__IntegerField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
+    // InternalJDL.g:5161:1: rule__IntegerField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
     public final void rule__IntegerField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4807:1: ( ( ruleNumericValidators ) )
-            // InternalJDL.g:4808:2: ( ruleNumericValidators )
+            // InternalJDL.g:5165:1: ( ( ruleNumericValidators ) )
+            // InternalJDL.g:5166:2: ( ruleNumericValidators )
             {
-            // InternalJDL.g:4808:2: ( ruleNumericValidators )
-            // InternalJDL.g:4809:3: ruleNumericValidators
+            // InternalJDL.g:5166:2: ( ruleNumericValidators )
+            // InternalJDL.g:5167:3: ruleNumericValidators
             {
              before(grammarAccess.getIntegerFieldAccess().getValidatorsNumericValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -14861,17 +15948,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__NameAssignment_0"
-    // InternalJDL.g:4818:1: rule__LongField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5176:1: rule__LongField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__LongField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4822:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4823:2: ( RULE_ID )
+            // InternalJDL.g:5180:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5181:2: ( RULE_ID )
             {
-            // InternalJDL.g:4823:2: ( RULE_ID )
-            // InternalJDL.g:4824:3: RULE_ID
+            // InternalJDL.g:5181:2: ( RULE_ID )
+            // InternalJDL.g:5182:3: RULE_ID
             {
              before(grammarAccess.getLongFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -14898,17 +15985,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LongField__ValidatorsAssignment_2"
-    // InternalJDL.g:4833:1: rule__LongField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
+    // InternalJDL.g:5191:1: rule__LongField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
     public final void rule__LongField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4837:1: ( ( ruleNumericValidators ) )
-            // InternalJDL.g:4838:2: ( ruleNumericValidators )
+            // InternalJDL.g:5195:1: ( ( ruleNumericValidators ) )
+            // InternalJDL.g:5196:2: ( ruleNumericValidators )
             {
-            // InternalJDL.g:4838:2: ( ruleNumericValidators )
-            // InternalJDL.g:4839:3: ruleNumericValidators
+            // InternalJDL.g:5196:2: ( ruleNumericValidators )
+            // InternalJDL.g:5197:3: ruleNumericValidators
             {
              before(grammarAccess.getLongFieldAccess().getValidatorsNumericValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -14939,17 +16026,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__NameAssignment_0"
-    // InternalJDL.g:4848:1: rule__BigDecimalField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5206:1: rule__BigDecimalField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__BigDecimalField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4852:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4853:2: ( RULE_ID )
+            // InternalJDL.g:5210:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5211:2: ( RULE_ID )
             {
-            // InternalJDL.g:4853:2: ( RULE_ID )
-            // InternalJDL.g:4854:3: RULE_ID
+            // InternalJDL.g:5211:2: ( RULE_ID )
+            // InternalJDL.g:5212:3: RULE_ID
             {
              before(grammarAccess.getBigDecimalFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -14976,17 +16063,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BigDecimalField__ValidatorsAssignment_2"
-    // InternalJDL.g:4863:1: rule__BigDecimalField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
+    // InternalJDL.g:5221:1: rule__BigDecimalField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
     public final void rule__BigDecimalField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4867:1: ( ( ruleNumericValidators ) )
-            // InternalJDL.g:4868:2: ( ruleNumericValidators )
+            // InternalJDL.g:5225:1: ( ( ruleNumericValidators ) )
+            // InternalJDL.g:5226:2: ( ruleNumericValidators )
             {
-            // InternalJDL.g:4868:2: ( ruleNumericValidators )
-            // InternalJDL.g:4869:3: ruleNumericValidators
+            // InternalJDL.g:5226:2: ( ruleNumericValidators )
+            // InternalJDL.g:5227:3: ruleNumericValidators
             {
              before(grammarAccess.getBigDecimalFieldAccess().getValidatorsNumericValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15017,17 +16104,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__NameAssignment_0"
-    // InternalJDL.g:4878:1: rule__FloatField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5236:1: rule__FloatField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__FloatField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4882:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4883:2: ( RULE_ID )
+            // InternalJDL.g:5240:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5241:2: ( RULE_ID )
             {
-            // InternalJDL.g:4883:2: ( RULE_ID )
-            // InternalJDL.g:4884:3: RULE_ID
+            // InternalJDL.g:5241:2: ( RULE_ID )
+            // InternalJDL.g:5242:3: RULE_ID
             {
              before(grammarAccess.getFloatFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15054,17 +16141,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FloatField__ValidatorsAssignment_2"
-    // InternalJDL.g:4893:1: rule__FloatField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
+    // InternalJDL.g:5251:1: rule__FloatField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
     public final void rule__FloatField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4897:1: ( ( ruleNumericValidators ) )
-            // InternalJDL.g:4898:2: ( ruleNumericValidators )
+            // InternalJDL.g:5255:1: ( ( ruleNumericValidators ) )
+            // InternalJDL.g:5256:2: ( ruleNumericValidators )
             {
-            // InternalJDL.g:4898:2: ( ruleNumericValidators )
-            // InternalJDL.g:4899:3: ruleNumericValidators
+            // InternalJDL.g:5256:2: ( ruleNumericValidators )
+            // InternalJDL.g:5257:3: ruleNumericValidators
             {
              before(grammarAccess.getFloatFieldAccess().getValidatorsNumericValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15095,17 +16182,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__NameAssignment_0"
-    // InternalJDL.g:4908:1: rule__DoubleField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5266:1: rule__DoubleField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__DoubleField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4912:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4913:2: ( RULE_ID )
+            // InternalJDL.g:5270:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5271:2: ( RULE_ID )
             {
-            // InternalJDL.g:4913:2: ( RULE_ID )
-            // InternalJDL.g:4914:3: RULE_ID
+            // InternalJDL.g:5271:2: ( RULE_ID )
+            // InternalJDL.g:5272:3: RULE_ID
             {
              before(grammarAccess.getDoubleFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15132,17 +16219,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DoubleField__ValidatorsAssignment_2"
-    // InternalJDL.g:4923:1: rule__DoubleField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
+    // InternalJDL.g:5281:1: rule__DoubleField__ValidatorsAssignment_2 : ( ruleNumericValidators ) ;
     public final void rule__DoubleField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4927:1: ( ( ruleNumericValidators ) )
-            // InternalJDL.g:4928:2: ( ruleNumericValidators )
+            // InternalJDL.g:5285:1: ( ( ruleNumericValidators ) )
+            // InternalJDL.g:5286:2: ( ruleNumericValidators )
             {
-            // InternalJDL.g:4928:2: ( ruleNumericValidators )
-            // InternalJDL.g:4929:3: ruleNumericValidators
+            // InternalJDL.g:5286:2: ( ruleNumericValidators )
+            // InternalJDL.g:5287:3: ruleNumericValidators
             {
              before(grammarAccess.getDoubleFieldAccess().getValidatorsNumericValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15173,17 +16260,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__NameAssignment_0"
-    // InternalJDL.g:4938:1: rule__BooleanField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5296:1: rule__BooleanField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__BooleanField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4942:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4943:2: ( RULE_ID )
+            // InternalJDL.g:5300:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5301:2: ( RULE_ID )
             {
-            // InternalJDL.g:4943:2: ( RULE_ID )
-            // InternalJDL.g:4944:3: RULE_ID
+            // InternalJDL.g:5301:2: ( RULE_ID )
+            // InternalJDL.g:5302:3: RULE_ID
             {
              before(grammarAccess.getBooleanFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15210,17 +16297,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BooleanField__ValidatorsAssignment_2"
-    // InternalJDL.g:4953:1: rule__BooleanField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5311:1: rule__BooleanField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
     public final void rule__BooleanField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4957:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:4958:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5315:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5316:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:4958:2: ( ruleRequiredValidator )
-            // InternalJDL.g:4959:3: ruleRequiredValidator
+            // InternalJDL.g:5316:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5317:3: ruleRequiredValidator
             {
              before(grammarAccess.getBooleanFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15251,17 +16338,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__NameAssignment_0"
-    // InternalJDL.g:4968:1: rule__LocalDateField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5326:1: rule__LocalDateField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__LocalDateField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4972:1: ( ( RULE_ID ) )
-            // InternalJDL.g:4973:2: ( RULE_ID )
+            // InternalJDL.g:5330:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5331:2: ( RULE_ID )
             {
-            // InternalJDL.g:4973:2: ( RULE_ID )
-            // InternalJDL.g:4974:3: RULE_ID
+            // InternalJDL.g:5331:2: ( RULE_ID )
+            // InternalJDL.g:5332:3: RULE_ID
             {
              before(grammarAccess.getLocalDateFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15288,17 +16375,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__LocalDateField__ValidatorsAssignment_2"
-    // InternalJDL.g:4983:1: rule__LocalDateField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5341:1: rule__LocalDateField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
     public final void rule__LocalDateField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:4987:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:4988:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5345:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5346:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:4988:2: ( ruleRequiredValidator )
-            // InternalJDL.g:4989:3: ruleRequiredValidator
+            // InternalJDL.g:5346:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5347:3: ruleRequiredValidator
             {
              before(grammarAccess.getLocalDateFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15329,17 +16416,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__NameAssignment_0"
-    // InternalJDL.g:4998:1: rule__ZonedDateTimeField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5356:1: rule__ZonedDateTimeField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__ZonedDateTimeField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5002:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5003:2: ( RULE_ID )
+            // InternalJDL.g:5360:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5361:2: ( RULE_ID )
             {
-            // InternalJDL.g:5003:2: ( RULE_ID )
-            // InternalJDL.g:5004:3: RULE_ID
+            // InternalJDL.g:5361:2: ( RULE_ID )
+            // InternalJDL.g:5362:3: RULE_ID
             {
              before(grammarAccess.getZonedDateTimeFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15366,17 +16453,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ZonedDateTimeField__ValidatorsAssignment_2"
-    // InternalJDL.g:5013:1: rule__ZonedDateTimeField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5371:1: rule__ZonedDateTimeField__ValidatorsAssignment_2 : ( ruleRequiredValidator ) ;
     public final void rule__ZonedDateTimeField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5017:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:5018:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5375:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5376:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:5018:2: ( ruleRequiredValidator )
-            // InternalJDL.g:5019:3: ruleRequiredValidator
+            // InternalJDL.g:5376:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5377:3: ruleRequiredValidator
             {
              before(grammarAccess.getZonedDateTimeFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15407,17 +16494,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__NameAssignment_0"
-    // InternalJDL.g:5028:1: rule__BlobField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5386:1: rule__BlobField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__BlobField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5032:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5033:2: ( RULE_ID )
+            // InternalJDL.g:5390:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5391:2: ( RULE_ID )
             {
-            // InternalJDL.g:5033:2: ( RULE_ID )
-            // InternalJDL.g:5034:3: RULE_ID
+            // InternalJDL.g:5391:2: ( RULE_ID )
+            // InternalJDL.g:5392:3: RULE_ID
             {
              before(grammarAccess.getBlobFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15444,17 +16531,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobField__ValidatorsAssignment_2"
-    // InternalJDL.g:5043:1: rule__BlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
+    // InternalJDL.g:5401:1: rule__BlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
     public final void rule__BlobField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5047:1: ( ( ruleBlobValidators ) )
-            // InternalJDL.g:5048:2: ( ruleBlobValidators )
+            // InternalJDL.g:5405:1: ( ( ruleBlobValidators ) )
+            // InternalJDL.g:5406:2: ( ruleBlobValidators )
             {
-            // InternalJDL.g:5048:2: ( ruleBlobValidators )
-            // InternalJDL.g:5049:3: ruleBlobValidators
+            // InternalJDL.g:5406:2: ( ruleBlobValidators )
+            // InternalJDL.g:5407:3: ruleBlobValidators
             {
              before(grammarAccess.getBlobFieldAccess().getValidatorsBlobValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15485,17 +16572,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__NameAssignment_0"
-    // InternalJDL.g:5058:1: rule__AnyBlobField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5416:1: rule__AnyBlobField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__AnyBlobField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5062:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5063:2: ( RULE_ID )
+            // InternalJDL.g:5420:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5421:2: ( RULE_ID )
             {
-            // InternalJDL.g:5063:2: ( RULE_ID )
-            // InternalJDL.g:5064:3: RULE_ID
+            // InternalJDL.g:5421:2: ( RULE_ID )
+            // InternalJDL.g:5422:3: RULE_ID
             {
              before(grammarAccess.getAnyBlobFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15522,17 +16609,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AnyBlobField__ValidatorsAssignment_2"
-    // InternalJDL.g:5073:1: rule__AnyBlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
+    // InternalJDL.g:5431:1: rule__AnyBlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
     public final void rule__AnyBlobField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5077:1: ( ( ruleBlobValidators ) )
-            // InternalJDL.g:5078:2: ( ruleBlobValidators )
+            // InternalJDL.g:5435:1: ( ( ruleBlobValidators ) )
+            // InternalJDL.g:5436:2: ( ruleBlobValidators )
             {
-            // InternalJDL.g:5078:2: ( ruleBlobValidators )
-            // InternalJDL.g:5079:3: ruleBlobValidators
+            // InternalJDL.g:5436:2: ( ruleBlobValidators )
+            // InternalJDL.g:5437:3: ruleBlobValidators
             {
              before(grammarAccess.getAnyBlobFieldAccess().getValidatorsBlobValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15563,17 +16650,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__NameAssignment_0"
-    // InternalJDL.g:5088:1: rule__ImageBlobField__NameAssignment_0 : ( RULE_ID ) ;
+    // InternalJDL.g:5446:1: rule__ImageBlobField__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__ImageBlobField__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5092:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5093:2: ( RULE_ID )
+            // InternalJDL.g:5450:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5451:2: ( RULE_ID )
             {
-            // InternalJDL.g:5093:2: ( RULE_ID )
-            // InternalJDL.g:5094:3: RULE_ID
+            // InternalJDL.g:5451:2: ( RULE_ID )
+            // InternalJDL.g:5452:3: RULE_ID
             {
              before(grammarAccess.getImageBlobFieldAccess().getNameIDTerminalRuleCall_0_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -15600,17 +16687,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ImageBlobField__ValidatorsAssignment_2"
-    // InternalJDL.g:5103:1: rule__ImageBlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
+    // InternalJDL.g:5461:1: rule__ImageBlobField__ValidatorsAssignment_2 : ( ruleBlobValidators ) ;
     public final void rule__ImageBlobField__ValidatorsAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5107:1: ( ( ruleBlobValidators ) )
-            // InternalJDL.g:5108:2: ( ruleBlobValidators )
+            // InternalJDL.g:5465:1: ( ( ruleBlobValidators ) )
+            // InternalJDL.g:5466:2: ( ruleBlobValidators )
             {
-            // InternalJDL.g:5108:2: ( ruleBlobValidators )
-            // InternalJDL.g:5109:3: ruleBlobValidators
+            // InternalJDL.g:5466:2: ( ruleBlobValidators )
+            // InternalJDL.g:5467:3: ruleBlobValidators
             {
              before(grammarAccess.getImageBlobFieldAccess().getValidatorsBlobValidatorsParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -15641,24 +16728,24 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RequiredValidator__RequiredAssignment"
-    // InternalJDL.g:5118:1: rule__RequiredValidator__RequiredAssignment : ( ( 'required' ) ) ;
+    // InternalJDL.g:5476:1: rule__RequiredValidator__RequiredAssignment : ( ( 'required' ) ) ;
     public final void rule__RequiredValidator__RequiredAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5122:1: ( ( ( 'required' ) ) )
-            // InternalJDL.g:5123:2: ( ( 'required' ) )
+            // InternalJDL.g:5480:1: ( ( ( 'required' ) ) )
+            // InternalJDL.g:5481:2: ( ( 'required' ) )
             {
-            // InternalJDL.g:5123:2: ( ( 'required' ) )
-            // InternalJDL.g:5124:3: ( 'required' )
-            {
-             before(grammarAccess.getRequiredValidatorAccess().getRequiredRequiredKeyword_0()); 
-            // InternalJDL.g:5125:3: ( 'required' )
-            // InternalJDL.g:5126:4: 'required'
+            // InternalJDL.g:5481:2: ( ( 'required' ) )
+            // InternalJDL.g:5482:3: ( 'required' )
             {
              before(grammarAccess.getRequiredValidatorAccess().getRequiredRequiredKeyword_0()); 
-            match(input,52,FOLLOW_2); 
+            // InternalJDL.g:5483:3: ( 'required' )
+            // InternalJDL.g:5484:4: 'required'
+            {
+             before(grammarAccess.getRequiredValidatorAccess().getRequiredRequiredKeyword_0()); 
+            match(input,53,FOLLOW_2); 
              after(grammarAccess.getRequiredValidatorAccess().getRequiredRequiredKeyword_0()); 
 
             }
@@ -15686,17 +16773,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinLengthValidator__ValueAssignment_2"
-    // InternalJDL.g:5137:1: rule__MinLengthValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5495:1: rule__MinLengthValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MinLengthValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5141:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5142:2: ( RULE_INT )
+            // InternalJDL.g:5499:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5500:2: ( RULE_INT )
             {
-            // InternalJDL.g:5142:2: ( RULE_INT )
-            // InternalJDL.g:5143:3: RULE_INT
+            // InternalJDL.g:5500:2: ( RULE_INT )
+            // InternalJDL.g:5501:3: RULE_INT
             {
              before(grammarAccess.getMinLengthValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15723,17 +16810,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxLengthValidator__ValueAssignment_2"
-    // InternalJDL.g:5152:1: rule__MaxLengthValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5510:1: rule__MaxLengthValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MaxLengthValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5156:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5157:2: ( RULE_INT )
+            // InternalJDL.g:5514:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5515:2: ( RULE_INT )
             {
-            // InternalJDL.g:5157:2: ( RULE_INT )
-            // InternalJDL.g:5158:3: RULE_INT
+            // InternalJDL.g:5515:2: ( RULE_INT )
+            // InternalJDL.g:5516:3: RULE_INT
             {
              before(grammarAccess.getMaxLengthValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15760,17 +16847,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PatternValidator__ValueAssignment_2"
-    // InternalJDL.g:5167:1: rule__PatternValidator__ValueAssignment_2 : ( RULE_STRING ) ;
+    // InternalJDL.g:5525:1: rule__PatternValidator__ValueAssignment_2 : ( RULE_STRING ) ;
     public final void rule__PatternValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5171:1: ( ( RULE_STRING ) )
-            // InternalJDL.g:5172:2: ( RULE_STRING )
+            // InternalJDL.g:5529:1: ( ( RULE_STRING ) )
+            // InternalJDL.g:5530:2: ( RULE_STRING )
             {
-            // InternalJDL.g:5172:2: ( RULE_STRING )
-            // InternalJDL.g:5173:3: RULE_STRING
+            // InternalJDL.g:5530:2: ( RULE_STRING )
+            // InternalJDL.g:5531:3: RULE_STRING
             {
              before(grammarAccess.getPatternValidatorAccess().getValueSTRINGTerminalRuleCall_2_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
@@ -15797,17 +16884,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinValidator__ValueAssignment_2"
-    // InternalJDL.g:5182:1: rule__MinValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5540:1: rule__MinValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MinValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5186:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5187:2: ( RULE_INT )
+            // InternalJDL.g:5544:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5545:2: ( RULE_INT )
             {
-            // InternalJDL.g:5187:2: ( RULE_INT )
-            // InternalJDL.g:5188:3: RULE_INT
+            // InternalJDL.g:5545:2: ( RULE_INT )
+            // InternalJDL.g:5546:3: RULE_INT
             {
              before(grammarAccess.getMinValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15834,17 +16921,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxValidator__ValueAssignment_2"
-    // InternalJDL.g:5197:1: rule__MaxValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5555:1: rule__MaxValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MaxValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5201:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5202:2: ( RULE_INT )
+            // InternalJDL.g:5559:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5560:2: ( RULE_INT )
             {
-            // InternalJDL.g:5202:2: ( RULE_INT )
-            // InternalJDL.g:5203:3: RULE_INT
+            // InternalJDL.g:5560:2: ( RULE_INT )
+            // InternalJDL.g:5561:3: RULE_INT
             {
              before(grammarAccess.getMaxValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15871,17 +16958,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MinBytesValidator__ValueAssignment_2"
-    // InternalJDL.g:5212:1: rule__MinBytesValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5570:1: rule__MinBytesValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MinBytesValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5216:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5217:2: ( RULE_INT )
+            // InternalJDL.g:5574:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5575:2: ( RULE_INT )
             {
-            // InternalJDL.g:5217:2: ( RULE_INT )
-            // InternalJDL.g:5218:3: RULE_INT
+            // InternalJDL.g:5575:2: ( RULE_INT )
+            // InternalJDL.g:5576:3: RULE_INT
             {
              before(grammarAccess.getMinBytesValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15908,17 +16995,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__MaxBytesValidator__ValueAssignment_2"
-    // InternalJDL.g:5227:1: rule__MaxBytesValidator__ValueAssignment_2 : ( RULE_INT ) ;
+    // InternalJDL.g:5585:1: rule__MaxBytesValidator__ValueAssignment_2 : ( RULE_INT ) ;
     public final void rule__MaxBytesValidator__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5231:1: ( ( RULE_INT ) )
-            // InternalJDL.g:5232:2: ( RULE_INT )
+            // InternalJDL.g:5589:1: ( ( RULE_INT ) )
+            // InternalJDL.g:5590:2: ( RULE_INT )
             {
-            // InternalJDL.g:5232:2: ( RULE_INT )
-            // InternalJDL.g:5233:3: RULE_INT
+            // InternalJDL.g:5590:2: ( RULE_INT )
+            // InternalJDL.g:5591:3: RULE_INT
             {
              before(grammarAccess.getMaxBytesValidatorAccess().getValueINTTerminalRuleCall_2_0()); 
             match(input,RULE_INT,FOLLOW_2); 
@@ -15945,17 +17032,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__RequiredAssignment_0"
-    // InternalJDL.g:5242:1: rule__StringValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5600:1: rule__StringValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
     public final void rule__StringValidators__RequiredAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5246:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:5247:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5604:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5605:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:5247:2: ( ruleRequiredValidator )
-            // InternalJDL.g:5248:3: ruleRequiredValidator
+            // InternalJDL.g:5605:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5606:3: ruleRequiredValidator
             {
              before(grammarAccess.getStringValidatorsAccess().getRequiredRequiredValidatorParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -15986,17 +17073,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__MinLengthAssignment_1"
-    // InternalJDL.g:5257:1: rule__StringValidators__MinLengthAssignment_1 : ( ruleMinLengthValidator ) ;
+    // InternalJDL.g:5615:1: rule__StringValidators__MinLengthAssignment_1 : ( ruleMinLengthValidator ) ;
     public final void rule__StringValidators__MinLengthAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5261:1: ( ( ruleMinLengthValidator ) )
-            // InternalJDL.g:5262:2: ( ruleMinLengthValidator )
+            // InternalJDL.g:5619:1: ( ( ruleMinLengthValidator ) )
+            // InternalJDL.g:5620:2: ( ruleMinLengthValidator )
             {
-            // InternalJDL.g:5262:2: ( ruleMinLengthValidator )
-            // InternalJDL.g:5263:3: ruleMinLengthValidator
+            // InternalJDL.g:5620:2: ( ruleMinLengthValidator )
+            // InternalJDL.g:5621:3: ruleMinLengthValidator
             {
              before(grammarAccess.getStringValidatorsAccess().getMinLengthMinLengthValidatorParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -16027,17 +17114,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__MaxlengthAssignment_2"
-    // InternalJDL.g:5272:1: rule__StringValidators__MaxlengthAssignment_2 : ( ruleMaxLengthValidator ) ;
+    // InternalJDL.g:5630:1: rule__StringValidators__MaxlengthAssignment_2 : ( ruleMaxLengthValidator ) ;
     public final void rule__StringValidators__MaxlengthAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5276:1: ( ( ruleMaxLengthValidator ) )
-            // InternalJDL.g:5277:2: ( ruleMaxLengthValidator )
+            // InternalJDL.g:5634:1: ( ( ruleMaxLengthValidator ) )
+            // InternalJDL.g:5635:2: ( ruleMaxLengthValidator )
             {
-            // InternalJDL.g:5277:2: ( ruleMaxLengthValidator )
-            // InternalJDL.g:5278:3: ruleMaxLengthValidator
+            // InternalJDL.g:5635:2: ( ruleMaxLengthValidator )
+            // InternalJDL.g:5636:3: ruleMaxLengthValidator
             {
              before(grammarAccess.getStringValidatorsAccess().getMaxlengthMaxLengthValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -16068,17 +17155,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__StringValidators__PatternAssignment_3"
-    // InternalJDL.g:5287:1: rule__StringValidators__PatternAssignment_3 : ( rulePatternValidator ) ;
+    // InternalJDL.g:5645:1: rule__StringValidators__PatternAssignment_3 : ( rulePatternValidator ) ;
     public final void rule__StringValidators__PatternAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5291:1: ( ( rulePatternValidator ) )
-            // InternalJDL.g:5292:2: ( rulePatternValidator )
+            // InternalJDL.g:5649:1: ( ( rulePatternValidator ) )
+            // InternalJDL.g:5650:2: ( rulePatternValidator )
             {
-            // InternalJDL.g:5292:2: ( rulePatternValidator )
-            // InternalJDL.g:5293:3: rulePatternValidator
+            // InternalJDL.g:5650:2: ( rulePatternValidator )
+            // InternalJDL.g:5651:3: rulePatternValidator
             {
              before(grammarAccess.getStringValidatorsAccess().getPatternPatternValidatorParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -16109,17 +17196,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__RequiredAssignment_0"
-    // InternalJDL.g:5302:1: rule__NumericValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5660:1: rule__NumericValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
     public final void rule__NumericValidators__RequiredAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5306:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:5307:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5664:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5665:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:5307:2: ( ruleRequiredValidator )
-            // InternalJDL.g:5308:3: ruleRequiredValidator
+            // InternalJDL.g:5665:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5666:3: ruleRequiredValidator
             {
              before(grammarAccess.getNumericValidatorsAccess().getRequiredRequiredValidatorParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -16150,17 +17237,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__MinlengthAssignment_1"
-    // InternalJDL.g:5317:1: rule__NumericValidators__MinlengthAssignment_1 : ( ruleMinValidator ) ;
+    // InternalJDL.g:5675:1: rule__NumericValidators__MinlengthAssignment_1 : ( ruleMinValidator ) ;
     public final void rule__NumericValidators__MinlengthAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5321:1: ( ( ruleMinValidator ) )
-            // InternalJDL.g:5322:2: ( ruleMinValidator )
+            // InternalJDL.g:5679:1: ( ( ruleMinValidator ) )
+            // InternalJDL.g:5680:2: ( ruleMinValidator )
             {
-            // InternalJDL.g:5322:2: ( ruleMinValidator )
-            // InternalJDL.g:5323:3: ruleMinValidator
+            // InternalJDL.g:5680:2: ( ruleMinValidator )
+            // InternalJDL.g:5681:3: ruleMinValidator
             {
              before(grammarAccess.getNumericValidatorsAccess().getMinlengthMinValidatorParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -16191,17 +17278,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__NumericValidators__MaxlengthAssignment_2"
-    // InternalJDL.g:5332:1: rule__NumericValidators__MaxlengthAssignment_2 : ( ruleMaxValidator ) ;
+    // InternalJDL.g:5690:1: rule__NumericValidators__MaxlengthAssignment_2 : ( ruleMaxValidator ) ;
     public final void rule__NumericValidators__MaxlengthAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5336:1: ( ( ruleMaxValidator ) )
-            // InternalJDL.g:5337:2: ( ruleMaxValidator )
+            // InternalJDL.g:5694:1: ( ( ruleMaxValidator ) )
+            // InternalJDL.g:5695:2: ( ruleMaxValidator )
             {
-            // InternalJDL.g:5337:2: ( ruleMaxValidator )
-            // InternalJDL.g:5338:3: ruleMaxValidator
+            // InternalJDL.g:5695:2: ( ruleMaxValidator )
+            // InternalJDL.g:5696:3: ruleMaxValidator
             {
              before(grammarAccess.getNumericValidatorsAccess().getMaxlengthMaxValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -16232,17 +17319,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__RequiredAssignment_0"
-    // InternalJDL.g:5347:1: rule__BlobValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
+    // InternalJDL.g:5705:1: rule__BlobValidators__RequiredAssignment_0 : ( ruleRequiredValidator ) ;
     public final void rule__BlobValidators__RequiredAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5351:1: ( ( ruleRequiredValidator ) )
-            // InternalJDL.g:5352:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5709:1: ( ( ruleRequiredValidator ) )
+            // InternalJDL.g:5710:2: ( ruleRequiredValidator )
             {
-            // InternalJDL.g:5352:2: ( ruleRequiredValidator )
-            // InternalJDL.g:5353:3: ruleRequiredValidator
+            // InternalJDL.g:5710:2: ( ruleRequiredValidator )
+            // InternalJDL.g:5711:3: ruleRequiredValidator
             {
              before(grammarAccess.getBlobValidatorsAccess().getRequiredRequiredValidatorParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -16273,17 +17360,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__MinbytesAssignment_1"
-    // InternalJDL.g:5362:1: rule__BlobValidators__MinbytesAssignment_1 : ( ruleMinBytesValidator ) ;
+    // InternalJDL.g:5720:1: rule__BlobValidators__MinbytesAssignment_1 : ( ruleMinBytesValidator ) ;
     public final void rule__BlobValidators__MinbytesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5366:1: ( ( ruleMinBytesValidator ) )
-            // InternalJDL.g:5367:2: ( ruleMinBytesValidator )
+            // InternalJDL.g:5724:1: ( ( ruleMinBytesValidator ) )
+            // InternalJDL.g:5725:2: ( ruleMinBytesValidator )
             {
-            // InternalJDL.g:5367:2: ( ruleMinBytesValidator )
-            // InternalJDL.g:5368:3: ruleMinBytesValidator
+            // InternalJDL.g:5725:2: ( ruleMinBytesValidator )
+            // InternalJDL.g:5726:3: ruleMinBytesValidator
             {
              before(grammarAccess.getBlobValidatorsAccess().getMinbytesMinBytesValidatorParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -16314,17 +17401,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__BlobValidators__MaxbytesAssignment_2"
-    // InternalJDL.g:5377:1: rule__BlobValidators__MaxbytesAssignment_2 : ( ruleMaxBytesValidator ) ;
+    // InternalJDL.g:5735:1: rule__BlobValidators__MaxbytesAssignment_2 : ( ruleMaxBytesValidator ) ;
     public final void rule__BlobValidators__MaxbytesAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5381:1: ( ( ruleMaxBytesValidator ) )
-            // InternalJDL.g:5382:2: ( ruleMaxBytesValidator )
+            // InternalJDL.g:5739:1: ( ( ruleMaxBytesValidator ) )
+            // InternalJDL.g:5740:2: ( ruleMaxBytesValidator )
             {
-            // InternalJDL.g:5382:2: ( ruleMaxBytesValidator )
-            // InternalJDL.g:5383:3: ruleMaxBytesValidator
+            // InternalJDL.g:5740:2: ( ruleMaxBytesValidator )
+            // InternalJDL.g:5741:3: ruleMaxBytesValidator
             {
              before(grammarAccess.getBlobValidatorsAccess().getMaxbytesMaxBytesValidatorParserRuleCall_2_0()); 
             pushFollow(FOLLOW_2);
@@ -16355,17 +17442,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__CardinalityAssignment_1"
-    // InternalJDL.g:5392:1: rule__Relationships__CardinalityAssignment_1 : ( ruleCardinality ) ;
+    // InternalJDL.g:5750:1: rule__Relationships__CardinalityAssignment_1 : ( ruleCardinality ) ;
     public final void rule__Relationships__CardinalityAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5396:1: ( ( ruleCardinality ) )
-            // InternalJDL.g:5397:2: ( ruleCardinality )
+            // InternalJDL.g:5754:1: ( ( ruleCardinality ) )
+            // InternalJDL.g:5755:2: ( ruleCardinality )
             {
-            // InternalJDL.g:5397:2: ( ruleCardinality )
-            // InternalJDL.g:5398:3: ruleCardinality
+            // InternalJDL.g:5755:2: ( ruleCardinality )
+            // InternalJDL.g:5756:3: ruleCardinality
             {
              before(grammarAccess.getRelationshipsAccess().getCardinalityCardinalityEnumRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -16396,17 +17483,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationships__RelationshipsAssignment_3"
-    // InternalJDL.g:5407:1: rule__Relationships__RelationshipsAssignment_3 : ( ruleRelationship ) ;
+    // InternalJDL.g:5765:1: rule__Relationships__RelationshipsAssignment_3 : ( ruleRelationship ) ;
     public final void rule__Relationships__RelationshipsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5411:1: ( ( ruleRelationship ) )
-            // InternalJDL.g:5412:2: ( ruleRelationship )
+            // InternalJDL.g:5769:1: ( ( ruleRelationship ) )
+            // InternalJDL.g:5770:2: ( ruleRelationship )
             {
-            // InternalJDL.g:5412:2: ( ruleRelationship )
-            // InternalJDL.g:5413:3: ruleRelationship
+            // InternalJDL.g:5770:2: ( ruleRelationship )
+            // InternalJDL.g:5771:3: ruleRelationship
             {
              before(grammarAccess.getRelationshipsAccess().getRelationshipsRelationshipParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -16437,17 +17524,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__FromEntityAssignment_0"
-    // InternalJDL.g:5422:1: rule__Relationship__FromEntityAssignment_0 : ( ruleEntity ) ;
+    // InternalJDL.g:5780:1: rule__Relationship__FromEntityAssignment_0 : ( ruleEntity ) ;
     public final void rule__Relationship__FromEntityAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5426:1: ( ( ruleEntity ) )
-            // InternalJDL.g:5427:2: ( ruleEntity )
+            // InternalJDL.g:5784:1: ( ( ruleEntity ) )
+            // InternalJDL.g:5785:2: ( ruleEntity )
             {
-            // InternalJDL.g:5427:2: ( ruleEntity )
-            // InternalJDL.g:5428:3: ruleEntity
+            // InternalJDL.g:5785:2: ( ruleEntity )
+            // InternalJDL.g:5786:3: ruleEntity
             {
              before(grammarAccess.getRelationshipAccess().getFromEntityEntityParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -16478,17 +17565,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__FromNameAssignment_1"
-    // InternalJDL.g:5437:1: rule__Relationship__FromNameAssignment_1 : ( ruleRelationshipName ) ;
+    // InternalJDL.g:5795:1: rule__Relationship__FromNameAssignment_1 : ( ruleRelationshipName ) ;
     public final void rule__Relationship__FromNameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5441:1: ( ( ruleRelationshipName ) )
-            // InternalJDL.g:5442:2: ( ruleRelationshipName )
+            // InternalJDL.g:5799:1: ( ( ruleRelationshipName ) )
+            // InternalJDL.g:5800:2: ( ruleRelationshipName )
             {
-            // InternalJDL.g:5442:2: ( ruleRelationshipName )
-            // InternalJDL.g:5443:3: ruleRelationshipName
+            // InternalJDL.g:5800:2: ( ruleRelationshipName )
+            // InternalJDL.g:5801:3: ruleRelationshipName
             {
              before(grammarAccess.getRelationshipAccess().getFromNameRelationshipNameParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -16519,17 +17606,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__ToEntityAssignment_3"
-    // InternalJDL.g:5452:1: rule__Relationship__ToEntityAssignment_3 : ( ruleEntity ) ;
+    // InternalJDL.g:5810:1: rule__Relationship__ToEntityAssignment_3 : ( ruleEntity ) ;
     public final void rule__Relationship__ToEntityAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5456:1: ( ( ruleEntity ) )
-            // InternalJDL.g:5457:2: ( ruleEntity )
+            // InternalJDL.g:5814:1: ( ( ruleEntity ) )
+            // InternalJDL.g:5815:2: ( ruleEntity )
             {
-            // InternalJDL.g:5457:2: ( ruleEntity )
-            // InternalJDL.g:5458:3: ruleEntity
+            // InternalJDL.g:5815:2: ( ruleEntity )
+            // InternalJDL.g:5816:3: ruleEntity
             {
              before(grammarAccess.getRelationshipAccess().getToEntityEntityParserRuleCall_3_0()); 
             pushFollow(FOLLOW_2);
@@ -16560,17 +17647,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Relationship__ToNameAssignment_4"
-    // InternalJDL.g:5467:1: rule__Relationship__ToNameAssignment_4 : ( ruleRelationshipName ) ;
+    // InternalJDL.g:5825:1: rule__Relationship__ToNameAssignment_4 : ( ruleRelationshipName ) ;
     public final void rule__Relationship__ToNameAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5471:1: ( ( ruleRelationshipName ) )
-            // InternalJDL.g:5472:2: ( ruleRelationshipName )
+            // InternalJDL.g:5829:1: ( ( ruleRelationshipName ) )
+            // InternalJDL.g:5830:2: ( ruleRelationshipName )
             {
-            // InternalJDL.g:5472:2: ( ruleRelationshipName )
-            // InternalJDL.g:5473:3: ruleRelationshipName
+            // InternalJDL.g:5830:2: ( ruleRelationshipName )
+            // InternalJDL.g:5831:3: ruleRelationshipName
             {
              before(grammarAccess.getRelationshipAccess().getToNameRelationshipNameParserRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -16601,17 +17688,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__RelationshipName__NameAssignment_1"
-    // InternalJDL.g:5482:1: rule__RelationshipName__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5840:1: rule__RelationshipName__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__RelationshipName__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5486:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5487:2: ( RULE_ID )
+            // InternalJDL.g:5844:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5845:2: ( RULE_ID )
             {
-            // InternalJDL.g:5487:2: ( RULE_ID )
-            // InternalJDL.g:5488:3: RULE_ID
+            // InternalJDL.g:5845:2: ( RULE_ID )
+            // InternalJDL.g:5846:3: RULE_ID
             {
              before(grammarAccess.getRelationshipNameAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16637,18 +17724,129 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__RelationshipName__NameAssignment_1"
 
 
+    // $ANTLR start "rule__EnumType__NameAssignment_1"
+    // InternalJDL.g:5855:1: rule__EnumType__NameAssignment_1 : ( RULE_ID ) ;
+    public final void rule__EnumType__NameAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:5859:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5860:2: ( RULE_ID )
+            {
+            // InternalJDL.g:5860:2: ( RULE_ID )
+            // InternalJDL.g:5861:3: RULE_ID
+            {
+             before(grammarAccess.getEnumTypeAccess().getNameIDTerminalRuleCall_1_0()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getNameIDTerminalRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__NameAssignment_1"
+
+
+    // $ANTLR start "rule__EnumType__ValuesAssignment_3"
+    // InternalJDL.g:5870:1: rule__EnumType__ValuesAssignment_3 : ( RULE_ID ) ;
+    public final void rule__EnumType__ValuesAssignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:5874:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5875:2: ( RULE_ID )
+            {
+            // InternalJDL.g:5875:2: ( RULE_ID )
+            // InternalJDL.g:5876:3: RULE_ID
+            {
+             before(grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_3_0()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_3_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__ValuesAssignment_3"
+
+
+    // $ANTLR start "rule__EnumType__ValuesAssignment_4_1"
+    // InternalJDL.g:5885:1: rule__EnumType__ValuesAssignment_4_1 : ( RULE_ID ) ;
+    public final void rule__EnumType__ValuesAssignment_4_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalJDL.g:5889:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5890:2: ( RULE_ID )
+            {
+            // InternalJDL.g:5890:2: ( RULE_ID )
+            // InternalJDL.g:5891:3: RULE_ID
+            {
+             before(grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_4_1_0()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_4_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__EnumType__ValuesAssignment_4_1"
+
+
     // $ANTLR start "rule__ServiceGenerationSetting__EntitiesAssignment_1"
-    // InternalJDL.g:5497:1: rule__ServiceGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5900:1: rule__ServiceGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
     public final void rule__ServiceGenerationSetting__EntitiesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5501:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5502:2: ( RULE_ID )
+            // InternalJDL.g:5904:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5905:2: ( RULE_ID )
             {
-            // InternalJDL.g:5502:2: ( RULE_ID )
-            // InternalJDL.g:5503:3: RULE_ID
+            // InternalJDL.g:5905:2: ( RULE_ID )
+            // InternalJDL.g:5906:3: RULE_ID
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16675,17 +17873,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__EntitiesAssignment_2_1"
-    // InternalJDL.g:5512:1: rule__ServiceGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5915:1: rule__ServiceGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__ServiceGenerationSetting__EntitiesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5516:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5517:2: ( RULE_ID )
+            // InternalJDL.g:5919:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5920:2: ( RULE_ID )
             {
-            // InternalJDL.g:5517:2: ( RULE_ID )
-            // InternalJDL.g:5518:3: RULE_ID
+            // InternalJDL.g:5920:2: ( RULE_ID )
+            // InternalJDL.g:5921:3: RULE_ID
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16712,17 +17910,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ServiceGenerationSetting__ServiceTypeAssignment_4"
-    // InternalJDL.g:5527:1: rule__ServiceGenerationSetting__ServiceTypeAssignment_4 : ( ruleServiceType ) ;
+    // InternalJDL.g:5930:1: rule__ServiceGenerationSetting__ServiceTypeAssignment_4 : ( ruleServiceType ) ;
     public final void rule__ServiceGenerationSetting__ServiceTypeAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5531:1: ( ( ruleServiceType ) )
-            // InternalJDL.g:5532:2: ( ruleServiceType )
+            // InternalJDL.g:5934:1: ( ( ruleServiceType ) )
+            // InternalJDL.g:5935:2: ( ruleServiceType )
             {
-            // InternalJDL.g:5532:2: ( ruleServiceType )
-            // InternalJDL.g:5533:3: ruleServiceType
+            // InternalJDL.g:5935:2: ( ruleServiceType )
+            // InternalJDL.g:5936:3: ruleServiceType
             {
              before(grammarAccess.getServiceGenerationSettingAccess().getServiceTypeServiceTypeEnumRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -16753,17 +17951,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__EntitiesAssignment_1"
-    // InternalJDL.g:5542:1: rule__DTOGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5945:1: rule__DTOGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
     public final void rule__DTOGenerationSetting__EntitiesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5546:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5547:2: ( RULE_ID )
+            // InternalJDL.g:5949:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5950:2: ( RULE_ID )
             {
-            // InternalJDL.g:5547:2: ( RULE_ID )
-            // InternalJDL.g:5548:3: RULE_ID
+            // InternalJDL.g:5950:2: ( RULE_ID )
+            // InternalJDL.g:5951:3: RULE_ID
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16790,17 +17988,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__EntitiesAssignment_2_1"
-    // InternalJDL.g:5557:1: rule__DTOGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5960:1: rule__DTOGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__DTOGenerationSetting__EntitiesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5561:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5562:2: ( RULE_ID )
+            // InternalJDL.g:5964:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5965:2: ( RULE_ID )
             {
-            // InternalJDL.g:5562:2: ( RULE_ID )
-            // InternalJDL.g:5563:3: RULE_ID
+            // InternalJDL.g:5965:2: ( RULE_ID )
+            // InternalJDL.g:5966:3: RULE_ID
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16827,17 +18025,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DTOGenerationSetting__DtoTypeAssignment_4"
-    // InternalJDL.g:5572:1: rule__DTOGenerationSetting__DtoTypeAssignment_4 : ( ruleDTOType ) ;
+    // InternalJDL.g:5975:1: rule__DTOGenerationSetting__DtoTypeAssignment_4 : ( ruleDTOType ) ;
     public final void rule__DTOGenerationSetting__DtoTypeAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5576:1: ( ( ruleDTOType ) )
-            // InternalJDL.g:5577:2: ( ruleDTOType )
+            // InternalJDL.g:5979:1: ( ( ruleDTOType ) )
+            // InternalJDL.g:5980:2: ( ruleDTOType )
             {
-            // InternalJDL.g:5577:2: ( ruleDTOType )
-            // InternalJDL.g:5578:3: ruleDTOType
+            // InternalJDL.g:5980:2: ( ruleDTOType )
+            // InternalJDL.g:5981:3: ruleDTOType
             {
              before(grammarAccess.getDTOGenerationSettingAccess().getDtoTypeDTOTypeEnumRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -16868,17 +18066,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__EntitiesAssignment_1"
-    // InternalJDL.g:5587:1: rule__PaginateGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:5990:1: rule__PaginateGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
     public final void rule__PaginateGenerationSetting__EntitiesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5591:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5592:2: ( RULE_ID )
+            // InternalJDL.g:5994:1: ( ( RULE_ID ) )
+            // InternalJDL.g:5995:2: ( RULE_ID )
             {
-            // InternalJDL.g:5592:2: ( RULE_ID )
-            // InternalJDL.g:5593:3: RULE_ID
+            // InternalJDL.g:5995:2: ( RULE_ID )
+            // InternalJDL.g:5996:3: RULE_ID
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16905,17 +18103,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__EntitiesAssignment_2_1"
-    // InternalJDL.g:5602:1: rule__PaginateGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
+    // InternalJDL.g:6005:1: rule__PaginateGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__PaginateGenerationSetting__EntitiesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5606:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5607:2: ( RULE_ID )
+            // InternalJDL.g:6009:1: ( ( RULE_ID ) )
+            // InternalJDL.g:6010:2: ( RULE_ID )
             {
-            // InternalJDL.g:5607:2: ( RULE_ID )
-            // InternalJDL.g:5608:3: RULE_ID
+            // InternalJDL.g:6010:2: ( RULE_ID )
+            // InternalJDL.g:6011:3: RULE_ID
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -16942,17 +18140,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__PaginateGenerationSetting__PaginateTypeAssignment_4"
-    // InternalJDL.g:5617:1: rule__PaginateGenerationSetting__PaginateTypeAssignment_4 : ( rulePaginateType ) ;
+    // InternalJDL.g:6020:1: rule__PaginateGenerationSetting__PaginateTypeAssignment_4 : ( rulePaginateType ) ;
     public final void rule__PaginateGenerationSetting__PaginateTypeAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5621:1: ( ( rulePaginateType ) )
-            // InternalJDL.g:5622:2: ( rulePaginateType )
+            // InternalJDL.g:6024:1: ( ( rulePaginateType ) )
+            // InternalJDL.g:6025:2: ( rulePaginateType )
             {
-            // InternalJDL.g:5622:2: ( rulePaginateType )
-            // InternalJDL.g:5623:3: rulePaginateType
+            // InternalJDL.g:6025:2: ( rulePaginateType )
+            // InternalJDL.g:6026:3: rulePaginateType
             {
              before(grammarAccess.getPaginateGenerationSettingAccess().getPaginateTypePaginateTypeEnumRuleCall_4_0()); 
             pushFollow(FOLLOW_2);
@@ -16983,17 +18181,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__EntitiesAssignment_1"
-    // InternalJDL.g:5632:1: rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
+    // InternalJDL.g:6035:1: rule__AngularSuffixGenerationSetting__EntitiesAssignment_1 : ( RULE_ID ) ;
     public final void rule__AngularSuffixGenerationSetting__EntitiesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5636:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5637:2: ( RULE_ID )
+            // InternalJDL.g:6039:1: ( ( RULE_ID ) )
+            // InternalJDL.g:6040:2: ( RULE_ID )
             {
-            // InternalJDL.g:5637:2: ( RULE_ID )
-            // InternalJDL.g:5638:3: RULE_ID
+            // InternalJDL.g:6040:2: ( RULE_ID )
+            // InternalJDL.g:6041:3: RULE_ID
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -17020,17 +18218,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1"
-    // InternalJDL.g:5647:1: rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
+    // InternalJDL.g:6050:1: rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1 : ( RULE_ID ) ;
     public final void rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5651:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5652:2: ( RULE_ID )
+            // InternalJDL.g:6054:1: ( ( RULE_ID ) )
+            // InternalJDL.g:6055:2: ( RULE_ID )
             {
-            // InternalJDL.g:5652:2: ( RULE_ID )
-            // InternalJDL.g:5653:3: RULE_ID
+            // InternalJDL.g:6055:2: ( RULE_ID )
+            // InternalJDL.g:6056:3: RULE_ID
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -17057,17 +18255,17 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__AngularSuffixGenerationSetting__IdAssignment_4"
-    // InternalJDL.g:5662:1: rule__AngularSuffixGenerationSetting__IdAssignment_4 : ( RULE_ID ) ;
+    // InternalJDL.g:6065:1: rule__AngularSuffixGenerationSetting__IdAssignment_4 : ( RULE_ID ) ;
     public final void rule__AngularSuffixGenerationSetting__IdAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalJDL.g:5666:1: ( ( RULE_ID ) )
-            // InternalJDL.g:5667:2: ( RULE_ID )
+            // InternalJDL.g:6069:1: ( ( RULE_ID ) )
+            // InternalJDL.g:6070:2: ( RULE_ID )
             {
-            // InternalJDL.g:5667:2: ( RULE_ID )
-            // InternalJDL.g:5668:3: RULE_ID
+            // InternalJDL.g:6070:2: ( RULE_ID )
+            // InternalJDL.g:6071:3: RULE_ID
             {
              before(grammarAccess.getAngularSuffixGenerationSettingAccess().getIdIDTerminalRuleCall_4_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -17099,13 +18297,13 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000EA00000100002L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x001DA00000100002L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000200000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000C00000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000800002L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0010000000000000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000001000000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000002000000L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000004000000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000008000000L});
@@ -17130,7 +18328,7 @@ public class InternalJDLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000400000200000L});
     public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0001000000800000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0002000000800000L});
     public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000030000L});
     public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000800L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x00000000000C0000L});

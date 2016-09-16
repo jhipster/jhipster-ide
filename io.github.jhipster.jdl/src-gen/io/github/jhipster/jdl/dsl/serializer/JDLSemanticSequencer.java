@@ -312,21 +312,16 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     EnumField returns EnumField
 	 *
 	 * Constraint:
-	 *     enumType=[EnumType|ID]
+	 *     (name=ID enumType=[EnumType|ID] validators=RequiredValidator?)
 	 */
 	protected void sequence_EnumField(ISerializationContext context, EnumField semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JdlPackage.Literals.ENUM_FIELD__ENUM_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JdlPackage.Literals.ENUM_FIELD__ENUM_TYPE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_0_1(), semanticObject.getEnumType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
 	/**
 	 * Contexts:
+	 *     Elements returns EnumType
 	 *     EnumType returns EnumType
 	 *
 	 * Constraint:

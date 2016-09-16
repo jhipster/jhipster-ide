@@ -123,20 +123,29 @@ ruleElements returns [EObject current=null]
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_1());
+			newCompositeNode(grammarAccess.getElementsAccess().getEnumTypeParserRuleCall_1());
 		}
-		this_Relationships_1=ruleRelationships
+		this_EnumType_1=ruleEnumType
 		{
-			$current = $this_Relationships_1.current;
+			$current = $this_EnumType_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_2());
+			newCompositeNode(grammarAccess.getElementsAccess().getRelationshipsParserRuleCall_2());
 		}
-		this_GenerationSetting_2=ruleGenerationSetting
+		this_Relationships_2=ruleRelationships
 		{
-			$current = $this_GenerationSetting_2.current;
+			$current = $this_Relationships_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getElementsAccess().getGenerationSettingParserRuleCall_3());
+		}
+		this_GenerationSetting_3=ruleGenerationSetting
+		{
+			$current = $this_GenerationSetting_3.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -324,16 +333,55 @@ ruleEnumField returns [EObject current=null]
 }:
 	(
 		(
-			{
-				if ($current==null) {
-					$current = createModelElement(grammarAccess.getEnumFieldRule());
+			(
+				lv_name_0_0=RULE_ID
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getEnumFieldAccess().getNameIDTerminalRuleCall_0_0());
 				}
-			}
-			otherlv_0=RULE_ID
-			{
-				newLeafNode(otherlv_0, grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_0());
-			}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEnumFieldRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_0_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
 		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEnumFieldRule());
+					}
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_1_0());
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getEnumFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0());
+				}
+				lv_validators_2_0=ruleRequiredValidator
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getEnumFieldRule());
+					}
+					set(
+						$current,
+						"validators",
+						lv_validators_2_0,
+						"io.github.jhipster.jdl.dsl.JDL.RequiredValidator");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
 	)
 ;
 
@@ -2031,6 +2079,97 @@ ruleRelationshipName returns [EObject current=null]
 		otherlv_2='}'
 		{
 			newLeafNode(otherlv_2, grammarAccess.getRelationshipNameAccess().getRightCurlyBracketKeyword_2());
+		}
+	)
+;
+
+// Entry rule entryRuleEnumType
+entryRuleEnumType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getEnumTypeRule()); }
+	iv_ruleEnumType=ruleEnumType
+	{ $current=$iv_ruleEnumType.current; }
+	EOF;
+
+// Rule EnumType
+ruleEnumType returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='enum'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getEnumTypeAccess().getEnumKeyword_0());
+		}
+		(
+			(
+				lv_name_1_0=RULE_ID
+				{
+					newLeafNode(lv_name_1_0, grammarAccess.getEnumTypeAccess().getNameIDTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEnumTypeRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"name",
+						lv_name_1_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		otherlv_2='{'
+		{
+			newLeafNode(otherlv_2, grammarAccess.getEnumTypeAccess().getLeftCurlyBracketKeyword_2());
+		}
+		(
+			(
+				lv_values_3_0=RULE_ID
+				{
+					newLeafNode(lv_values_3_0, grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_3_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getEnumTypeRule());
+					}
+					addWithLastConsumed(
+						$current,
+						"values",
+						lv_values_3_0,
+						"org.eclipse.xtext.common.Terminals.ID");
+				}
+			)
+		)
+		(
+			otherlv_4=','
+			{
+				newLeafNode(otherlv_4, grammarAccess.getEnumTypeAccess().getCommaKeyword_4_0());
+			}
+			(
+				(
+					lv_values_5_0=RULE_ID
+					{
+						newLeafNode(lv_values_5_0, grammarAccess.getEnumTypeAccess().getValuesIDTerminalRuleCall_4_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getEnumTypeRule());
+						}
+						addWithLastConsumed(
+							$current,
+							"values",
+							lv_values_5_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+		)*
+		otherlv_6='}'
+		{
+			newLeafNode(otherlv_6, grammarAccess.getEnumTypeAccess().getRightCurlyBracketKeyword_5());
 		}
 	)
 ;

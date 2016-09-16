@@ -512,6 +512,16 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getField_Name()
+  {
+    return (EAttribute)fieldEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEnumField()
   {
     return enumFieldEClass;
@@ -532,6 +542,16 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getEnumField_Validators()
+  {
+    return (EReference)enumFieldEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getStringField()
   {
     return stringFieldEClass;
@@ -542,19 +562,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStringField_Name()
-  {
-    return (EAttribute)stringFieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getStringField_Validators()
   {
-    return (EReference)stringFieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)stringFieldEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -572,19 +582,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNumericField_Name()
-  {
-    return (EAttribute)numericFieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getNumericField_Validators()
   {
-    return (EReference)numericFieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)numericFieldEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -652,19 +652,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBooleanField_Name()
-  {
-    return (EAttribute)booleanFieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getBooleanField_Validators()
   {
-    return (EReference)booleanFieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)booleanFieldEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -682,19 +672,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDateField_Name()
-  {
-    return (EAttribute)dateFieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getDateField_Validators()
   {
-    return (EReference)dateFieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)dateFieldEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -732,19 +712,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getBinaryLargeObjectField_Name()
-  {
-    return (EAttribute)binaryLargeObjectFieldEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getBinaryLargeObjectField_Validators()
   {
-    return (EReference)binaryLargeObjectFieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)binaryLargeObjectFieldEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1377,16 +1347,16 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     createEReference(entityEClass, ENTITY__FIELDS);
 
     fieldEClass = createEClass(FIELD);
+    createEAttribute(fieldEClass, FIELD__NAME);
 
     enumFieldEClass = createEClass(ENUM_FIELD);
     createEReference(enumFieldEClass, ENUM_FIELD__ENUM_TYPE);
+    createEReference(enumFieldEClass, ENUM_FIELD__VALIDATORS);
 
     stringFieldEClass = createEClass(STRING_FIELD);
-    createEAttribute(stringFieldEClass, STRING_FIELD__NAME);
     createEReference(stringFieldEClass, STRING_FIELD__VALIDATORS);
 
     numericFieldEClass = createEClass(NUMERIC_FIELD);
-    createEAttribute(numericFieldEClass, NUMERIC_FIELD__NAME);
     createEReference(numericFieldEClass, NUMERIC_FIELD__VALIDATORS);
 
     integerFieldEClass = createEClass(INTEGER_FIELD);
@@ -1400,11 +1370,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     doubleFieldEClass = createEClass(DOUBLE_FIELD);
 
     booleanFieldEClass = createEClass(BOOLEAN_FIELD);
-    createEAttribute(booleanFieldEClass, BOOLEAN_FIELD__NAME);
     createEReference(booleanFieldEClass, BOOLEAN_FIELD__VALIDATORS);
 
     dateFieldEClass = createEClass(DATE_FIELD);
-    createEAttribute(dateFieldEClass, DATE_FIELD__NAME);
     createEReference(dateFieldEClass, DATE_FIELD__VALIDATORS);
 
     localDateFieldEClass = createEClass(LOCAL_DATE_FIELD);
@@ -1412,7 +1380,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     zonedDateTimeFieldEClass = createEClass(ZONED_DATE_TIME_FIELD);
 
     binaryLargeObjectFieldEClass = createEClass(BINARY_LARGE_OBJECT_FIELD);
-    createEAttribute(binaryLargeObjectFieldEClass, BINARY_LARGE_OBJECT_FIELD__NAME);
     createEReference(binaryLargeObjectFieldEClass, BINARY_LARGE_OBJECT_FIELD__VALIDATORS);
 
     blobFieldEClass = createEClass(BLOB_FIELD);
@@ -1547,6 +1514,7 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     anyBlobFieldEClass.getESuperTypes().add(this.getBinaryLargeObjectField());
     imageBlobFieldEClass.getESuperTypes().add(this.getBinaryLargeObjectField());
     relationshipsEClass.getESuperTypes().add(this.getElements());
+    enumTypeEClass.getESuperTypes().add(this.getElements());
     generationSettingEClass.getESuperTypes().add(this.getElements());
     serviceGenerationSettingEClass.getESuperTypes().add(this.getGenerationSetting());
     dtoGenerationSettingEClass.getESuperTypes().add(this.getGenerationSetting());
@@ -1564,16 +1532,16 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     initEReference(getEntity_Fields(), this.getField(), null, "fields", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getField_Name(), ecorePackage.getEString(), "name", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumFieldEClass, EnumField.class, "EnumField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEnumField_EnumType(), this.getEnumType(), null, "enumType", null, 0, 1, EnumField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEnumField_Validators(), this.getRequiredValidator(), null, "validators", null, 0, 1, EnumField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(stringFieldEClass, StringField.class, "StringField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringField_Name(), ecorePackage.getEString(), "name", null, 0, 1, StringField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStringField_Validators(), this.getStringValidators(), null, "validators", null, 0, 1, StringField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(numericFieldEClass, NumericField.class, "NumericField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getNumericField_Name(), ecorePackage.getEString(), "name", null, 0, 1, NumericField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNumericField_Validators(), this.getNumericValidators(), null, "validators", null, 0, 1, NumericField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(integerFieldEClass, IntegerField.class, "IntegerField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1587,11 +1555,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     initEClass(doubleFieldEClass, DoubleField.class, "DoubleField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(booleanFieldEClass, BooleanField.class, "BooleanField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBooleanField_Name(), ecorePackage.getEString(), "name", null, 0, 1, BooleanField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBooleanField_Validators(), this.getRequiredValidator(), null, "validators", null, 0, 1, BooleanField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(dateFieldEClass, DateField.class, "DateField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getDateField_Name(), ecorePackage.getEString(), "name", null, 0, 1, DateField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDateField_Validators(), this.getRequiredValidator(), null, "validators", null, 0, 1, DateField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localDateFieldEClass, LocalDateField.class, "LocalDateField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1599,7 +1565,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     initEClass(zonedDateTimeFieldEClass, ZonedDateTimeField.class, "ZonedDateTimeField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(binaryLargeObjectFieldEClass, BinaryLargeObjectField.class, "BinaryLargeObjectField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getBinaryLargeObjectField_Name(), ecorePackage.getEString(), "name", null, 0, 1, BinaryLargeObjectField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBinaryLargeObjectField_Validators(), this.getBlobValidators(), null, "validators", null, 0, 1, BinaryLargeObjectField.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(blobFieldEClass, BlobField.class, "BlobField", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

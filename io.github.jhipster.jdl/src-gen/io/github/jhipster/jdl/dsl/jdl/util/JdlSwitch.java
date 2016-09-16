@@ -343,6 +343,7 @@ public class JdlSwitch<T> extends Switch<T>
       {
         EnumType enumType = (EnumType)theEObject;
         T result = caseEnumType(enumType);
+        if (result == null) result = caseElements(enumType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

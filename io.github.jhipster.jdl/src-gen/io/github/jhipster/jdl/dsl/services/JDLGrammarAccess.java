@@ -45,24 +45,28 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.Elements");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cEntityParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cRelationshipsParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cGenerationSettingParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cEnumTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cRelationshipsParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cGenerationSettingParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Elements:
-		//	Entity | Relationships | GenerationSetting;
+		//	Entity | EnumType | Relationships | GenerationSetting;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Entity | Relationships | GenerationSetting
+		//Entity | EnumType | Relationships | GenerationSetting
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Entity
 		public RuleCall getEntityParserRuleCall_0() { return cEntityParserRuleCall_0; }
 		
+		//EnumType
+		public RuleCall getEnumTypeParserRuleCall_1() { return cEnumTypeParserRuleCall_1; }
+		
 		//Relationships
-		public RuleCall getRelationshipsParserRuleCall_1() { return cRelationshipsParserRuleCall_1; }
+		public RuleCall getRelationshipsParserRuleCall_2() { return cRelationshipsParserRuleCall_2; }
 		
 		//GenerationSetting
-		public RuleCall getGenerationSettingParserRuleCall_2() { return cGenerationSettingParserRuleCall_2; }
+		public RuleCall getGenerationSettingParserRuleCall_3() { return cGenerationSettingParserRuleCall_3; }
 	}
 	public class EntityElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.Entity");
@@ -160,22 +164,42 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class EnumFieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.EnumField");
-		private final Assignment cEnumTypeAssignment = (Assignment)rule.eContents().get(1);
-		private final CrossReference cEnumTypeEnumTypeCrossReference_0 = (CrossReference)cEnumTypeAssignment.eContents().get(0);
-		private final RuleCall cEnumTypeEnumTypeIDTerminalRuleCall_0_1 = (RuleCall)cEnumTypeEnumTypeCrossReference_0.eContents().get(1);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Assignment cEnumTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cEnumTypeEnumTypeCrossReference_1_0 = (CrossReference)cEnumTypeAssignment_1.eContents().get(0);
+		private final RuleCall cEnumTypeEnumTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cEnumTypeEnumTypeCrossReference_1_0.eContents().get(1);
+		private final Assignment cValidatorsAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValidatorsRequiredValidatorParserRuleCall_2_0 = (RuleCall)cValidatorsAssignment_2.eContents().get(0);
 		
 		//EnumField:
-		//	enumType=[EnumType];
+		//	name=ID enumType=[EnumType] validators=RequiredValidator?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//enumType=[EnumType]
-		public Assignment getEnumTypeAssignment() { return cEnumTypeAssignment; }
+		//name=ID enumType=[EnumType] validators=RequiredValidator?
+		public Group getGroup() { return cGroup; }
 		
-		//[EnumType]
-		public CrossReference getEnumTypeEnumTypeCrossReference_0() { return cEnumTypeEnumTypeCrossReference_0; }
+		//name=ID
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//ID
-		public RuleCall getEnumTypeEnumTypeIDTerminalRuleCall_0_1() { return cEnumTypeEnumTypeIDTerminalRuleCall_0_1; }
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//enumType=[EnumType]
+		public Assignment getEnumTypeAssignment_1() { return cEnumTypeAssignment_1; }
+		
+		//[EnumType]
+		public CrossReference getEnumTypeEnumTypeCrossReference_1_0() { return cEnumTypeEnumTypeCrossReference_1_0; }
+		
+		//ID
+		public RuleCall getEnumTypeEnumTypeIDTerminalRuleCall_1_0_1() { return cEnumTypeEnumTypeIDTerminalRuleCall_1_0_1; }
+		
+		//validators=RequiredValidator?
+		public Assignment getValidatorsAssignment_2() { return cValidatorsAssignment_2; }
+		
+		//RequiredValidator
+		public RuleCall getValidatorsRequiredValidatorParserRuleCall_2_0() { return cValidatorsRequiredValidatorParserRuleCall_2_0; }
 	}
 	public class StringFieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.StringField");
@@ -1631,7 +1655,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Elements:
-	//	Entity | Relationships | GenerationSetting;
+	//	Entity | EnumType | Relationships | GenerationSetting;
 	public ElementsElements getElementsAccess() {
 		return pElements;
 	}
@@ -1665,7 +1689,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//EnumField:
-	//	enumType=[EnumType];
+	//	name=ID enumType=[EnumType] validators=RequiredValidator?;
 	public EnumFieldElements getEnumFieldAccess() {
 		return pEnumField;
 	}

@@ -20,15 +20,13 @@ Field:
 	StringField | NumericField | BooleanField | DateField | BinaryLargeObjectField | EnumField;
 
 EnumField:
-	enumType=[EnumType]
-;
+	name=ID enumType=[EnumType] validators=RequiredValidator?;
 
 StringField:
 	name=ID 'String' validators=StringValidators?;
 
 NumericField:
-	IntegerField | LongField | BigDecimalField | FloatField | DoubleField
-;
+	IntegerField | LongField | BigDecimalField | FloatField | DoubleField;
 
 IntegerField:
 	name=ID 'Integer' validators=NumericValidators?;
@@ -49,8 +47,7 @@ BooleanField:
 	name=ID 'Boolean' validators=RequiredValidator?;
 	
 DateField:
-	LocalDateField | ZonedDateTimeField
-;
+	LocalDateField | ZonedDateTimeField;
 
 LocalDateField:
 	name=ID 'LocalDate' validators=RequiredValidator?;
@@ -59,8 +56,7 @@ ZonedDateTimeField:
 	name=ID 'ZonedDateTime' validators=RequiredValidator?;
 
 BinaryLargeObjectField:
-	BlobField | AnyBlobField | ImageBlobField	
-;
+	BlobField | AnyBlobField | ImageBlobField;
 
 BlobField:
 	name=ID 'Blob' validators=BlobValidators?;
@@ -108,7 +104,6 @@ NumericValidators:
 
 BlobValidators:
 	(required=RequiredValidator) (minbytes=MinBytesValidator)? (maxbytes=MaxBytesValidator)?;
-
 
 /* =========================================================================
  * RELATIONSHIP

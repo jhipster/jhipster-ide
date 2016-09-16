@@ -153,13 +153,22 @@ public interface JdlPackage extends EPackage
   int FIELD = 3;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD__NAME = 0;
+
+  /**
    * The number of structural features of the '<em>Field</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD_FEATURE_COUNT = 0;
+  int FIELD_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumFieldImpl <em>Enum Field</em>}' class.
@@ -172,6 +181,15 @@ public interface JdlPackage extends EPackage
   int ENUM_FIELD = 4;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUM_FIELD__NAME = FIELD__NAME;
+
+  /**
    * The feature id for the '<em><b>Enum Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -181,13 +199,22 @@ public interface JdlPackage extends EPackage
   int ENUM_FIELD__ENUM_TYPE = FIELD_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Validators</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUM_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Enum Field</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENUM_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
+  int ENUM_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.StringFieldImpl <em>String Field</em>}' class.
@@ -206,7 +233,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_FIELD__NAME = FIELD_FEATURE_COUNT + 0;
+  int STRING_FIELD__NAME = FIELD__NAME;
 
   /**
    * The feature id for the '<em><b>Validators</b></em>' containment reference.
@@ -215,7 +242,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+  int STRING_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>String Field</em>' class.
@@ -224,7 +251,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRING_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
+  int STRING_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.NumericFieldImpl <em>Numeric Field</em>}' class.
@@ -243,7 +270,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUMERIC_FIELD__NAME = FIELD_FEATURE_COUNT + 0;
+  int NUMERIC_FIELD__NAME = FIELD__NAME;
 
   /**
    * The feature id for the '<em><b>Validators</b></em>' containment reference.
@@ -252,7 +279,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUMERIC_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+  int NUMERIC_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Numeric Field</em>' class.
@@ -261,7 +288,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int NUMERIC_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
+  int NUMERIC_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.IntegerFieldImpl <em>Integer Field</em>}' class.
@@ -465,7 +492,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_FIELD__NAME = FIELD_FEATURE_COUNT + 0;
+  int BOOLEAN_FIELD__NAME = FIELD__NAME;
 
   /**
    * The feature id for the '<em><b>Validators</b></em>' containment reference.
@@ -474,7 +501,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+  int BOOLEAN_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Boolean Field</em>' class.
@@ -483,7 +510,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BOOLEAN_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
+  int BOOLEAN_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.DateFieldImpl <em>Date Field</em>}' class.
@@ -502,7 +529,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATE_FIELD__NAME = FIELD_FEATURE_COUNT + 0;
+  int DATE_FIELD__NAME = FIELD__NAME;
 
   /**
    * The feature id for the '<em><b>Validators</b></em>' containment reference.
@@ -511,7 +538,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATE_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+  int DATE_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Date Field</em>' class.
@@ -520,7 +547,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DATE_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
+  int DATE_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.LocalDateFieldImpl <em>Local Date Field</em>}' class.
@@ -613,7 +640,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY_LARGE_OBJECT_FIELD__NAME = FIELD_FEATURE_COUNT + 0;
+  int BINARY_LARGE_OBJECT_FIELD__NAME = FIELD__NAME;
 
   /**
    * The feature id for the '<em><b>Validators</b></em>' containment reference.
@@ -622,7 +649,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY_LARGE_OBJECT_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 1;
+  int BINARY_LARGE_OBJECT_FIELD__VALIDATORS = FIELD_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Binary Large Object Field</em>' class.
@@ -631,7 +658,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BINARY_LARGE_OBJECT_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 2;
+  int BINARY_LARGE_OBJECT_FIELD_FEATURE_COUNT = FIELD_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.BlobFieldImpl <em>Blob Field</em>}' class.
@@ -1252,7 +1279,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_TYPE__NAME = 0;
+  int ENUM_TYPE__NAME = ELEMENTS_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' attribute list.
@@ -1261,7 +1288,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_TYPE__VALUES = 1;
+  int ENUM_TYPE__VALUES = ELEMENTS_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Enum Type</em>' class.
@@ -1270,7 +1297,7 @@ public interface JdlPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENUM_TYPE_FEATURE_COUNT = 2;
+  int ENUM_TYPE_FEATURE_COUNT = ELEMENTS_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.GenerationSettingImpl <em>Generation Setting</em>}' class.
@@ -1563,6 +1590,17 @@ public interface JdlPackage extends EPackage
   EClass getField();
 
   /**
+   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.Field#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.Field#getName()
+   * @see #getField()
+   * @generated
+   */
+  EAttribute getField_Name();
+
+  /**
    * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.EnumField <em>Enum Field</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1584,6 +1622,17 @@ public interface JdlPackage extends EPackage
   EReference getEnumField_EnumType();
 
   /**
+   * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.EnumField#getValidators <em>Validators</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Validators</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.EnumField#getValidators()
+   * @see #getEnumField()
+   * @generated
+   */
+  EReference getEnumField_Validators();
+
+  /**
    * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.StringField <em>String Field</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1592,17 +1641,6 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EClass getStringField();
-
-  /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.StringField#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.StringField#getName()
-   * @see #getStringField()
-   * @generated
-   */
-  EAttribute getStringField_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.StringField#getValidators <em>Validators</em>}'.
@@ -1624,17 +1662,6 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EClass getNumericField();
-
-  /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.NumericField#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.NumericField#getName()
-   * @see #getNumericField()
-   * @generated
-   */
-  EAttribute getNumericField_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.NumericField#getValidators <em>Validators</em>}'.
@@ -1708,17 +1735,6 @@ public interface JdlPackage extends EPackage
   EClass getBooleanField();
 
   /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.BooleanField#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.BooleanField#getName()
-   * @see #getBooleanField()
-   * @generated
-   */
-  EAttribute getBooleanField_Name();
-
-  /**
    * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.BooleanField#getValidators <em>Validators</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1738,17 +1754,6 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EClass getDateField();
-
-  /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.DateField#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.DateField#getName()
-   * @see #getDateField()
-   * @generated
-   */
-  EAttribute getDateField_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.DateField#getValidators <em>Validators</em>}'.
@@ -1790,17 +1795,6 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EClass getBinaryLargeObjectField();
-
-  /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.BinaryLargeObjectField#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.BinaryLargeObjectField#getName()
-   * @see #getBinaryLargeObjectField()
-   * @generated
-   */
-  EAttribute getBinaryLargeObjectField_Name();
 
   /**
    * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.BinaryLargeObjectField#getValidators <em>Validators</em>}'.
@@ -2523,6 +2517,14 @@ public interface JdlPackage extends EPackage
     EClass FIELD = eINSTANCE.getField();
 
     /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FIELD__NAME = eINSTANCE.getField_Name();
+
+    /**
      * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumFieldImpl <em>Enum Field</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2541,6 +2543,14 @@ public interface JdlPackage extends EPackage
     EReference ENUM_FIELD__ENUM_TYPE = eINSTANCE.getEnumField_EnumType();
 
     /**
+     * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENUM_FIELD__VALIDATORS = eINSTANCE.getEnumField_Validators();
+
+    /**
      * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.StringFieldImpl <em>String Field</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2549,14 +2559,6 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EClass STRING_FIELD = eINSTANCE.getStringField();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_FIELD__NAME = eINSTANCE.getStringField_Name();
 
     /**
      * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.
@@ -2575,14 +2577,6 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EClass NUMERIC_FIELD = eINSTANCE.getNumericField();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute NUMERIC_FIELD__NAME = eINSTANCE.getNumericField_Name();
 
     /**
      * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.
@@ -2653,14 +2647,6 @@ public interface JdlPackage extends EPackage
     EClass BOOLEAN_FIELD = eINSTANCE.getBooleanField();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BOOLEAN_FIELD__NAME = eINSTANCE.getBooleanField_Name();
-
-    /**
      * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2677,14 +2663,6 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EClass DATE_FIELD = eINSTANCE.getDateField();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute DATE_FIELD__NAME = eINSTANCE.getDateField_Name();
 
     /**
      * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.
@@ -2723,14 +2701,6 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EClass BINARY_LARGE_OBJECT_FIELD = eINSTANCE.getBinaryLargeObjectField();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute BINARY_LARGE_OBJECT_FIELD__NAME = eINSTANCE.getBinaryLargeObjectField_Name();
 
     /**
      * The meta object literal for the '<em><b>Validators</b></em>' containment reference feature.

@@ -96,20 +96,29 @@ ruleElements returns [Boolean current=false]
 		}
 		    |
 		{
-			markComposite(elementTypeProvider.getElements_RelationshipsParserRuleCall_1ElementType());
+			markComposite(elementTypeProvider.getElements_EnumTypeParserRuleCall_1ElementType());
 		}
-		this_Relationships_1=ruleRelationships
+		this_EnumType_1=ruleEnumType
 		{
-			$current = $this_Relationships_1.current;
+			$current = $this_EnumType_1.current;
 			doneComposite();
 		}
 		    |
 		{
-			markComposite(elementTypeProvider.getElements_GenerationSettingParserRuleCall_2ElementType());
+			markComposite(elementTypeProvider.getElements_RelationshipsParserRuleCall_2ElementType());
 		}
-		this_GenerationSetting_2=ruleGenerationSetting
+		this_Relationships_2=ruleRelationships
 		{
-			$current = $this_GenerationSetting_2.current;
+			$current = $this_Relationships_2.current;
+			doneComposite();
+		}
+		    |
+		{
+			markComposite(elementTypeProvider.getElements_GenerationSettingParserRuleCall_3ElementType());
+		}
+		this_GenerationSetting_3=ruleGenerationSetting
+		{
+			$current = $this_GenerationSetting_3.current;
 			doneComposite();
 		}
 	)
@@ -285,20 +294,54 @@ ruleEnumField returns [Boolean current=false]
 :
 	(
 		(
-			{
-				if (!$current) {
-					associateWithSemanticElement();
-					$current = true;
+			(
+				{
+					markLeaf(elementTypeProvider.getEnumField_NameIDTerminalRuleCall_0_0ElementType());
 				}
-			}
-			{
-				markLeaf(elementTypeProvider.getEnumField_EnumTypeEnumTypeCrossReference_0ElementType());
-			}
-			otherlv_0=RULE_ID
-			{
-				doneLeaf(otherlv_0);
-			}
+				lv_name_0_0=RULE_ID
+				{
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					doneLeaf(lv_name_0_0);
+				}
+			)
 		)
+		(
+			(
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					markLeaf(elementTypeProvider.getEnumField_EnumTypeEnumTypeCrossReference_1_0ElementType());
+				}
+				otherlv_1=RULE_ID
+				{
+					doneLeaf(otherlv_1);
+				}
+			)
+		)
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getEnumField_ValidatorsRequiredValidatorParserRuleCall_2_0ElementType());
+				}
+				lv_validators_2_0=ruleRequiredValidator
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)?
 	)
 ;
 
@@ -1839,6 +1882,101 @@ ruleRelationshipName returns [Boolean current=false]
 		otherlv_2='}'
 		{
 			doneLeaf(otherlv_2);
+		}
+	)
+;
+
+//Entry rule entryRuleEnumType
+entryRuleEnumType returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getEnumTypeElementType()); }
+	iv_ruleEnumType=ruleEnumType
+	{ $current=$iv_ruleEnumType.current; }
+	EOF;
+
+// Rule EnumType
+ruleEnumType returns [Boolean current=false]
+:
+	(
+		{
+			markLeaf(elementTypeProvider.getEnumType_EnumKeyword_0ElementType());
+		}
+		otherlv_0='enum'
+		{
+			doneLeaf(otherlv_0);
+		}
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getEnumType_NameIDTerminalRuleCall_1_0ElementType());
+				}
+				lv_name_1_0=RULE_ID
+				{
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					doneLeaf(lv_name_1_0);
+				}
+			)
+		)
+		{
+			markLeaf(elementTypeProvider.getEnumType_LeftCurlyBracketKeyword_2ElementType());
+		}
+		otherlv_2='{'
+		{
+			doneLeaf(otherlv_2);
+		}
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getEnumType_ValuesIDTerminalRuleCall_3_0ElementType());
+				}
+				lv_values_3_0=RULE_ID
+				{
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+				{
+					doneLeaf(lv_values_3_0);
+				}
+			)
+		)
+		(
+			{
+				markLeaf(elementTypeProvider.getEnumType_CommaKeyword_4_0ElementType());
+			}
+			otherlv_4=','
+			{
+				doneLeaf(otherlv_4);
+			}
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getEnumType_ValuesIDTerminalRuleCall_4_1_0ElementType());
+					}
+					lv_values_5_0=RULE_ID
+					{
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+					{
+						doneLeaf(lv_values_5_0);
+					}
+				)
+			)
+		)*
+		{
+			markLeaf(elementTypeProvider.getEnumType_RightCurlyBracketKeyword_5ElementType());
+		}
+		otherlv_6='}'
+		{
+			doneLeaf(otherlv_6);
 		}
 	)
 ;

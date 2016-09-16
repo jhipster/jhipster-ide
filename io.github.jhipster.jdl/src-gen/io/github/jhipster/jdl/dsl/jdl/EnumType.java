@@ -5,8 +5,6 @@ package io.github.jhipster.jdl.dsl.jdl;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Enum Type</b></em>'.
@@ -24,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface EnumType extends EObject
+public interface EnumType extends Elements
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

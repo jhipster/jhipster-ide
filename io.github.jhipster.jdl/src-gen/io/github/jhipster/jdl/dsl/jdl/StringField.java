@@ -13,7 +13,6 @@ package io.github.jhipster.jdl.dsl.jdl;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link io.github.jhipster.jdl.dsl.jdl.StringField#getName <em>Name</em>}</li>
  *   <li>{@link io.github.jhipster.jdl.dsl.jdl.StringField#getValidators <em>Validators</em>}</li>
  * </ul>
  *
@@ -23,32 +22,6 @@ package io.github.jhipster.jdl.dsl.jdl;
  */
 public interface StringField extends Field
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getStringField_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.StringField#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Validators</b></em>' containment reference.
    * <!-- begin-user-doc -->

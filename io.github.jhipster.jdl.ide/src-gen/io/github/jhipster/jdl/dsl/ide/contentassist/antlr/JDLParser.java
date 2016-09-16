@@ -46,6 +46,7 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPaginateTypeAccess().getAlternatives(), "rule__PaginateType__Alternatives");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 					put(grammarAccess.getEntityAccess().getGroup_4(), "rule__Entity__Group_4__0");
+					put(grammarAccess.getEnumFieldAccess().getGroup(), "rule__EnumField__Group__0");
 					put(grammarAccess.getStringFieldAccess().getGroup(), "rule__StringField__Group__0");
 					put(grammarAccess.getIntegerFieldAccess().getGroup(), "rule__IntegerField__Group__0");
 					put(grammarAccess.getLongFieldAccess().getGroup(), "rule__LongField__Group__0");
@@ -85,7 +86,9 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getEntityAccess().getNameAssignment_1(), "rule__Entity__NameAssignment_1");
 					put(grammarAccess.getEntityAccess().getFieldsAssignment_3(), "rule__Entity__FieldsAssignment_3");
 					put(grammarAccess.getEntityAccess().getFieldsAssignment_4_1(), "rule__Entity__FieldsAssignment_4_1");
-					put(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment(), "rule__EnumField__EnumTypeAssignment");
+					put(grammarAccess.getEnumFieldAccess().getNameAssignment_0(), "rule__EnumField__NameAssignment_0");
+					put(grammarAccess.getEnumFieldAccess().getEnumTypeAssignment_1(), "rule__EnumField__EnumTypeAssignment_1");
+					put(grammarAccess.getEnumFieldAccess().getValidatorsAssignment_2(), "rule__EnumField__ValidatorsAssignment_2");
 					put(grammarAccess.getStringFieldAccess().getNameAssignment_0(), "rule__StringField__NameAssignment_0");
 					put(grammarAccess.getStringFieldAccess().getValidatorsAssignment_2(), "rule__StringField__ValidatorsAssignment_2");
 					put(grammarAccess.getIntegerFieldAccess().getNameAssignment_0(), "rule__IntegerField__NameAssignment_0");

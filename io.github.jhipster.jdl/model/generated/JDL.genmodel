@@ -31,16 +31,17 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//Entity/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Entity/fields"/>
     </genClasses>
-    <genClasses ecoreClass="JDL.ecore#//Field"/>
+    <genClasses ecoreClass="JDL.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//Field/name"/>
+    </genClasses>
     <genClasses ecoreClass="JDL.ecore#//EnumField">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JDL.ecore#//EnumField/enumType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//EnumField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//StringField">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//StringField/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//StringField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//NumericField">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//NumericField/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//NumericField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//IntegerField"/>
@@ -49,17 +50,14 @@
     <genClasses ecoreClass="JDL.ecore#//FloatField"/>
     <genClasses ecoreClass="JDL.ecore#//DoubleField"/>
     <genClasses ecoreClass="JDL.ecore#//BooleanField">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//BooleanField/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//BooleanField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//DateField">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//DateField/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//DateField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//LocalDateField"/>
     <genClasses ecoreClass="JDL.ecore#//ZonedDateTimeField"/>
     <genClasses ecoreClass="JDL.ecore#//BinaryLargeObjectField">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//BinaryLargeObjectField/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//BinaryLargeObjectField/validators"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//BlobField"/>

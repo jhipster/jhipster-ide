@@ -6,8 +6,10 @@ package io.github.jhipster.jdl.dsl.jdl.impl;
 import io.github.jhipster.jdl.dsl.jdl.EnumField;
 import io.github.jhipster.jdl.dsl.jdl.EnumType;
 import io.github.jhipster.jdl.dsl.jdl.JdlPackage;
+import io.github.jhipster.jdl.dsl.jdl.RequiredValidator;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -23,6 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumFieldImpl#getEnumType <em>Enum Type</em>}</li>
+ *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumFieldImpl#getValidators <em>Validators</em>}</li>
  * </ul>
  *
  * @generated
@@ -38,6 +41,16 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
    * @ordered
    */
   protected EnumType enumType;
+
+  /**
+   * The cached value of the '{@link #getValidators() <em>Validators</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValidators()
+   * @generated
+   * @ordered
+   */
+  protected RequiredValidator validators;
 
   /**
    * <!-- begin-user-doc -->
@@ -108,6 +121,70 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
    * <!-- end-user-doc -->
    * @generated
    */
+  public RequiredValidator getValidators()
+  {
+    return validators;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValidators(RequiredValidator newValidators, NotificationChain msgs)
+  {
+    RequiredValidator oldValidators = validators;
+    validators = newValidators;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JdlPackage.ENUM_FIELD__VALIDATORS, oldValidators, newValidators);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setValidators(RequiredValidator newValidators)
+  {
+    if (newValidators != validators)
+    {
+      NotificationChain msgs = null;
+      if (validators != null)
+        msgs = ((InternalEObject)validators).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JdlPackage.ENUM_FIELD__VALIDATORS, null, msgs);
+      if (newValidators != null)
+        msgs = ((InternalEObject)newValidators).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JdlPackage.ENUM_FIELD__VALIDATORS, null, msgs);
+      msgs = basicSetValidators(newValidators, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.ENUM_FIELD__VALIDATORS, newValidators, newValidators));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case JdlPackage.ENUM_FIELD__VALIDATORS:
+        return basicSetValidators(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
@@ -116,6 +193,8 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
       case JdlPackage.ENUM_FIELD__ENUM_TYPE:
         if (resolve) return getEnumType();
         return basicGetEnumType();
+      case JdlPackage.ENUM_FIELD__VALIDATORS:
+        return getValidators();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -132,6 +211,9 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
     {
       case JdlPackage.ENUM_FIELD__ENUM_TYPE:
         setEnumType((EnumType)newValue);
+        return;
+      case JdlPackage.ENUM_FIELD__VALIDATORS:
+        setValidators((RequiredValidator)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -150,6 +232,9 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
       case JdlPackage.ENUM_FIELD__ENUM_TYPE:
         setEnumType((EnumType)null);
         return;
+      case JdlPackage.ENUM_FIELD__VALIDATORS:
+        setValidators((RequiredValidator)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -166,6 +251,8 @@ public class EnumFieldImpl extends FieldImpl implements EnumField
     {
       case JdlPackage.ENUM_FIELD__ENUM_TYPE:
         return enumType != null;
+      case JdlPackage.ENUM_FIELD__VALIDATORS:
+        return validators != null;
     }
     return super.eIsSet(featureID);
   }

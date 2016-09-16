@@ -55,11 +55,14 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createElements_EntityParserRuleCall_0ElementType() {
 			return new IGrammarAwareElementType("Elements_EntityParserRuleCall_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getEntityParserRuleCall_0());
 		}
-		public static IGrammarAwareElementType createElements_RelationshipsParserRuleCall_1ElementType() {
-			return new IGrammarAwareElementType("Elements_RelationshipsParserRuleCall_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getRelationshipsParserRuleCall_1());
+		public static IGrammarAwareElementType createElements_EnumTypeParserRuleCall_1ElementType() {
+			return new IGrammarAwareElementType("Elements_EnumTypeParserRuleCall_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getEnumTypeParserRuleCall_1());
 		}
-		public static IGrammarAwareElementType createElements_GenerationSettingParserRuleCall_2ElementType() {
-			return new IGrammarAwareElementType("Elements_GenerationSettingParserRuleCall_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getGenerationSettingParserRuleCall_2());
+		public static IGrammarAwareElementType createElements_RelationshipsParserRuleCall_2ElementType() {
+			return new IGrammarAwareElementType("Elements_RelationshipsParserRuleCall_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getRelationshipsParserRuleCall_2());
+		}
+		public static IGrammarAwareElementType createElements_GenerationSettingParserRuleCall_3ElementType() {
+			return new IGrammarAwareElementType("Elements_GenerationSettingParserRuleCall_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getElementsAccess().getGenerationSettingParserRuleCall_3());
 		}
 	}
 
@@ -69,9 +72,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType Elements_EntityParserRuleCall_0_ELEMENT_TYPE = associate(ElementsFactory.createElements_EntityParserRuleCall_0ElementType());
 
-	public static final IGrammarAwareElementType Elements_RelationshipsParserRuleCall_1_ELEMENT_TYPE = associate(ElementsFactory.createElements_RelationshipsParserRuleCall_1ElementType());
+	public static final IGrammarAwareElementType Elements_EnumTypeParserRuleCall_1_ELEMENT_TYPE = associate(ElementsFactory.createElements_EnumTypeParserRuleCall_1ElementType());
 
-	public static final IGrammarAwareElementType Elements_GenerationSettingParserRuleCall_2_ELEMENT_TYPE = associate(ElementsFactory.createElements_GenerationSettingParserRuleCall_2ElementType());
+	public static final IGrammarAwareElementType Elements_RelationshipsParserRuleCall_2_ELEMENT_TYPE = associate(ElementsFactory.createElements_RelationshipsParserRuleCall_2ElementType());
+
+	public static final IGrammarAwareElementType Elements_GenerationSettingParserRuleCall_3_ELEMENT_TYPE = associate(ElementsFactory.createElements_GenerationSettingParserRuleCall_3ElementType());
 
 	private static class EntityFactory {
 		public static IGrammarAwareElementType createEntityElementType() {
@@ -188,24 +193,49 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createEnumFieldElementType() {
 			return new IGrammarAwareElementType("EnumField_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldRule());
 		}
-		public static IGrammarAwareElementType createEnumField_EnumTypeAssignmentElementType() {
-			return new IGrammarAwareElementType("EnumField_EnumTypeAssignment_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeAssignment());
+		public static IGrammarAwareElementType createEnumField_GroupElementType() {
+			return new IGrammarAwareElementType("EnumField_Group_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createEnumField_EnumTypeEnumTypeCrossReference_0ElementType() {
-			return new IGrammarAwareElementType("EnumField_EnumTypeEnumTypeCrossReference_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_0());
+		public static IGrammarAwareElementType createEnumField_NameAssignment_0ElementType() {
+			return new IGrammarAwareElementType("EnumField_NameAssignment_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getNameAssignment_0());
 		}
-		public static IGrammarAwareElementType createEnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1ElementType() {
-			return new IGrammarAwareElementType("EnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_0_1());
+		public static IGrammarAwareElementType createEnumField_NameIDTerminalRuleCall_0_0ElementType() {
+			return new IGrammarAwareElementType("EnumField_NameIDTerminalRuleCall_0_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getNameIDTerminalRuleCall_0_0());
+		}
+		public static IGrammarAwareElementType createEnumField_EnumTypeAssignment_1ElementType() {
+			return new IGrammarAwareElementType("EnumField_EnumTypeAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeAssignment_1());
+		}
+		public static IGrammarAwareElementType createEnumField_EnumTypeEnumTypeCrossReference_1_0ElementType() {
+			return new IGrammarAwareElementType("EnumField_EnumTypeEnumTypeCrossReference_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeEnumTypeCrossReference_1_0());
+		}
+		public static IGrammarAwareElementType createEnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1ElementType() {
+			return new IGrammarAwareElementType("EnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getEnumTypeEnumTypeIDTerminalRuleCall_1_0_1());
+		}
+		public static IGrammarAwareElementType createEnumField_ValidatorsAssignment_2ElementType() {
+			return new IGrammarAwareElementType("EnumField_ValidatorsAssignment_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getValidatorsAssignment_2());
+		}
+		public static IGrammarAwareElementType createEnumField_ValidatorsRequiredValidatorParserRuleCall_2_0ElementType() {
+			return new IGrammarAwareElementType("EnumField_ValidatorsRequiredValidatorParserRuleCall_2_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumFieldAccess().getValidatorsRequiredValidatorParserRuleCall_2_0());
 		}
 	}
 
 	public static final IGrammarAwareElementType EnumField_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumFieldElementType());
 
-	public static final IGrammarAwareElementType EnumField_EnumTypeAssignment_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeAssignmentElementType());
+	public static final IGrammarAwareElementType EnumField_Group_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_GroupElementType());
 
-	public static final IGrammarAwareElementType EnumField_EnumTypeEnumTypeCrossReference_0_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeEnumTypeCrossReference_0ElementType());
+	public static final IGrammarAwareElementType EnumField_NameAssignment_0_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_NameAssignment_0ElementType());
 
-	public static final IGrammarAwareElementType EnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1ElementType());
+	public static final IGrammarAwareElementType EnumField_NameIDTerminalRuleCall_0_0_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_NameIDTerminalRuleCall_0_0ElementType());
+
+	public static final IGrammarAwareElementType EnumField_EnumTypeAssignment_1_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeAssignment_1ElementType());
+
+	public static final IGrammarAwareElementType EnumField_EnumTypeEnumTypeCrossReference_1_0_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeEnumTypeCrossReference_1_0ElementType());
+
+	public static final IGrammarAwareElementType EnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1ElementType());
+
+	public static final IGrammarAwareElementType EnumField_ValidatorsAssignment_2_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_ValidatorsAssignment_2ElementType());
+
+	public static final IGrammarAwareElementType EnumField_ValidatorsRequiredValidatorParserRuleCall_2_0_ELEMENT_TYPE = associate(EnumFieldFactory.createEnumField_ValidatorsRequiredValidatorParserRuleCall_2_0ElementType());
 
 	private static class StringFieldFactory {
 		public static IGrammarAwareElementType createStringFieldElementType() {
@@ -1838,12 +1868,16 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return Elements_EntityParserRuleCall_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getElements_RelationshipsParserRuleCall_1ElementType() {
-		return Elements_RelationshipsParserRuleCall_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getElements_EnumTypeParserRuleCall_1ElementType() {
+		return Elements_EnumTypeParserRuleCall_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getElements_GenerationSettingParserRuleCall_2ElementType() {
-		return Elements_GenerationSettingParserRuleCall_2_ELEMENT_TYPE;
+	public IGrammarAwareElementType getElements_RelationshipsParserRuleCall_2ElementType() {
+		return Elements_RelationshipsParserRuleCall_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getElements_GenerationSettingParserRuleCall_3ElementType() {
+		return Elements_GenerationSettingParserRuleCall_3_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getEntityElementType() {
@@ -1934,16 +1968,36 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return EnumField_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getEnumField_EnumTypeAssignmentElementType() {
-		return EnumField_EnumTypeAssignment_ELEMENT_TYPE;
+	public IGrammarAwareElementType getEnumField_GroupElementType() {
+		return EnumField_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getEnumField_EnumTypeEnumTypeCrossReference_0ElementType() {
-		return EnumField_EnumTypeEnumTypeCrossReference_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getEnumField_NameAssignment_0ElementType() {
+		return EnumField_NameAssignment_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getEnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1ElementType() {
-		return EnumField_EnumTypeEnumTypeIDTerminalRuleCall_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getEnumField_NameIDTerminalRuleCall_0_0ElementType() {
+		return EnumField_NameIDTerminalRuleCall_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getEnumField_EnumTypeAssignment_1ElementType() {
+		return EnumField_EnumTypeAssignment_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getEnumField_EnumTypeEnumTypeCrossReference_1_0ElementType() {
+		return EnumField_EnumTypeEnumTypeCrossReference_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getEnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1ElementType() {
+		return EnumField_EnumTypeEnumTypeIDTerminalRuleCall_1_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getEnumField_ValidatorsAssignment_2ElementType() {
+		return EnumField_ValidatorsAssignment_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getEnumField_ValidatorsRequiredValidatorParserRuleCall_2_0ElementType() {
+		return EnumField_ValidatorsRequiredValidatorParserRuleCall_2_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getStringFieldElementType() {

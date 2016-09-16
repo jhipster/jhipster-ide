@@ -23,7 +23,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.StringFieldImpl#getName <em>Name</em>}</li>
  *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.StringFieldImpl#getValidators <em>Validators</em>}</li>
  * </ul>
  *
@@ -31,26 +30,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class StringFieldImpl extends FieldImpl implements StringField
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getValidators() <em>Validators</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -80,29 +59,6 @@ public class StringFieldImpl extends FieldImpl implements StringField
   protected EClass eStaticClass()
   {
     return JdlPackage.Literals.STRING_FIELD;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.STRING_FIELD__NAME, oldName, name));
   }
 
   /**
@@ -179,8 +135,6 @@ public class StringFieldImpl extends FieldImpl implements StringField
   {
     switch (featureID)
     {
-      case JdlPackage.STRING_FIELD__NAME:
-        return getName();
       case JdlPackage.STRING_FIELD__VALIDATORS:
         return getValidators();
     }
@@ -197,9 +151,6 @@ public class StringFieldImpl extends FieldImpl implements StringField
   {
     switch (featureID)
     {
-      case JdlPackage.STRING_FIELD__NAME:
-        setName((String)newValue);
-        return;
       case JdlPackage.STRING_FIELD__VALIDATORS:
         setValidators((StringValidators)newValue);
         return;
@@ -217,9 +168,6 @@ public class StringFieldImpl extends FieldImpl implements StringField
   {
     switch (featureID)
     {
-      case JdlPackage.STRING_FIELD__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case JdlPackage.STRING_FIELD__VALIDATORS:
         setValidators((StringValidators)null);
         return;
@@ -237,29 +185,10 @@ public class StringFieldImpl extends FieldImpl implements StringField
   {
     switch (featureID)
     {
-      case JdlPackage.STRING_FIELD__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case JdlPackage.STRING_FIELD__VALIDATORS:
         return validators != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //StringFieldImpl

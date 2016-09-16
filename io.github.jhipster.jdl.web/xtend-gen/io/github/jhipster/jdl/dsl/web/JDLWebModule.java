@@ -14,7 +14,7 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class JDLWebModule extends AbstractJDLWebModule {
-  public JDLWebModule(final Provider<ExecutorService> executorServiceProvider) {
-    super(executorServiceProvider);
+  public JDLWebModule(final Provider<ExecutorService> arg0) {
+    super(arg0);
   }
 }

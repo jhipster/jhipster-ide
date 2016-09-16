@@ -44,23 +44,26 @@ public class JDLParserDefinition extends AbstractXtextParserDefinition {
 			if (elementType == elementTypeProvider.getElements_EntityParserRuleCall_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getElements_RelationshipsParserRuleCall_1ElementType()) {
+			if (elementType == elementTypeProvider.getElements_EnumTypeParserRuleCall_1ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getElements_RelationshipsParserRuleCall_2ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getElements_GenerationSettingParserRuleCall_2ElementType()) {
+			if (elementType == elementTypeProvider.getElements_GenerationSettingParserRuleCall_3ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEntityElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEntity_FieldsFieldParserRuleCall_3_0ElementType()) {
-				return new PsiEObjectImpl(node) {};
+				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEntity_FieldsFieldParserRuleCall_4_1_0ElementType()) {
-				return new PsiEObjectImpl(node) {};
+				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getFieldElementType()) {
-				return new PsiEObjectImpl(node) {};
+				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getField_StringFieldParserRuleCall_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
@@ -78,9 +81,12 @@ public class JDLParserDefinition extends AbstractXtextParserDefinition {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getField_EnumFieldParserRuleCall_5ElementType()) {
-				return new PsiEObjectImpl(node) {};
+				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumFieldElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getEnumField_ValidatorsRequiredValidatorParserRuleCall_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getStringFieldElementType()) {
