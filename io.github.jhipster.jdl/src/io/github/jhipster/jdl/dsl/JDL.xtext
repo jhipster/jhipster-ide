@@ -110,7 +110,7 @@ BlobValidators:
  * ========================================================================= */
 Relationships:
 	'relationship' cardinality=Cardinality '{'
-		relationships+=Relationship*
+		relationships+=Relationship* (',' relationships+=Relationship)*
 	'}';
 
 Relationship:
@@ -137,22 +137,23 @@ GenerationSetting:
 	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting;
 
 ServiceGenerationSetting:
-	'service' entities+=[Entity] (',' entities+=[Entity])* 'with' serviceType=ServiceType;
+	'service' (all?='all' | entities+=[Entity] (',' entities+=[Entity])*) 'with' serviceType=ServiceType 
+	('except' excludedEntities+=[Entity] (',' excludedEntities+=[Entity])*);
 
 enum ServiceType:
 	serviceClass | serviceImpl;
 
 DTOGenerationSetting:
-	'dto' entities+=[Entity] (',' entities+=[Entity])* 'with' dtoType=DTOType;
+	'dto' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' dtoType=DTOType;
 
 enum DTOType:
 	mapstruct;
 
 PaginateGenerationSetting:
-	'paginate' entities+=[Entity] (',' entities+=[Entity])* 'with' paginateType=PaginateType;
+	'paginate' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' paginateType=PaginateType;
 
 PaginateType:
 	pagination?='pagination' | infiniteScroll?='infinite-scroll';
 
 AngularSuffixGenerationSetting:
-	'angularSuffix' entities+=[Entity] (',' entities+=[Entity])* 'with' id=ID;
+	'angularSuffix' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' id=ID;

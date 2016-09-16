@@ -3,3 +3,4 @@ src-gen/
 xtend-gen/
 xtext-gen/
 model/
+.antlr*.jar
