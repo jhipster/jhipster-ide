@@ -2,70 +2,49 @@ grammar io.github.jhipster.jdl.dsl.JDL with org.eclipse.xtext.common.Terminals
 
 generate jdl 'http://www.github.io/jhipster/jdl/dsl/JDL'
 
-DomainModel:
-	elements+=Elements*;
+JdlDomainModel:
+	features+=JdlFeature*;
 
-Elements:
-	Entity | EnumType | Relationships | GenerationSetting;
+JdlFeature:
+	JdlEntity | EnumType | Relationships | GenerationSetting;
 
 /* =========================================================================
  * ENTITY
  * ========================================================================= */
-Entity:
-	'entity' name=ID '{'
-		fields+=Field (',' fields+=Field)*
-	'}';
+JdlEntity:
+	'entity' name=ID ('{'
+		(fields+=JdlEntityField (',' fields+=JdlEntityField)*)?
+	'}')?;
 
-Field:
-	StringField | NumericField | BooleanField | DateField | BinaryLargeObjectField | EnumField;
+JdlEntityField:
+	name=ID type=JdlFieldType;
 
-EnumField:
-	name=ID enumType=[EnumType] validators=RequiredValidator?;
+JdlFieldType:
+	JdlEnumField | JdlStringField | JdlNumericField | JdlBooleanField | JdlDateField | JdlBlobField;
 
-StringField:
-	name=ID 'String' validators=StringValidators?;
+JdlEnumField returns JdlEntityField:
+	enumType=[EnumType] validators=RequiredValidator?;
 
-NumericField:
-	IntegerField | LongField | BigDecimalField | FloatField | DoubleField;
+JdlStringField returns JdlEntityField:
+	stringField?='String' validators=StringValidators?;
 
-IntegerField:
-	name=ID 'Integer' validators=NumericValidators?;
+JdlNumericField returns JdlEntityField:
+	numericFieldType=NumericFieldType validators=NumericValidators?;
 
-LongField:
-	name=ID 'Long' validators=NumericValidators?;
+enum NumericFieldType:
+	Integer | Long | BigDecimal | Float | Double;
 
-BigDecimalField:
-	name=ID 'BigDecimal' validators=NumericValidators?;
-
-FloatField:
-	name=ID 'Float' validators=NumericValidators?;
-
-DoubleField:
-	name=ID 'Double' validators=NumericValidators?;
-
-BooleanField:
-	name=ID 'Boolean' validators=RequiredValidator?;
+JdlBooleanField returns JdlEntityField:
+	booleanField?='Boolean' validators=RequiredValidator?;
 	
-DateField:
-	LocalDateField | ZonedDateTimeField;
+JdlDateField returns JdlEntityField:
+	(localDateField?='LocalDate' | zonedDateTimeField?='ZonedDateTime') validators=RequiredValidator?;
 
-LocalDateField:
-	name=ID 'LocalDate' validators=RequiredValidator?;
+JdlBlobField returns JdlFieldType:
+	blobFieldType=BlobFieldType validators=BlobValidators?;
 
-ZonedDateTimeField:
-	name=ID 'ZonedDateTime' validators=RequiredValidator?;
-
-BinaryLargeObjectField:
-	BlobField | AnyBlobField | ImageBlobField;
-
-BlobField:
-	name=ID 'Blob' validators=BlobValidators?;
-
-AnyBlobField:
-	name=ID 'AnyBlob' validators=BlobValidators?;
-
-ImageBlobField:
-	name=ID 'ImageBlob' validators=BlobValidators?;
+enum BlobFieldType:
+	Blob | AnyBlob | ImageBlob;
 
 /* =========================================================================
  * VALIDATORS
@@ -114,7 +93,7 @@ Relationships:
 	'}';
 
 Relationship:
-	fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?;
+	fromEntity=[JdlEntity] fromName=RelationshipName? 'to' toEntity=[JdlEntity] toName=RelationshipName?;
 
 RelationshipName:
 	'{' name=ID ('(' role=ID ')')? '}';
@@ -134,26 +113,48 @@ EnumType:
  * GENERATION SETTING
  * ========================================================================= */
 GenerationSetting:
-	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting;
+	setting=GenerationSettingType (excludes=EntityExclusion)?;
 
-ServiceGenerationSetting:
-	'service' (all?='all' | entities+=[Entity] (',' entities+=[Entity])*) 'with' serviceType=ServiceType 
-	('except' excludedEntities+=[Entity] (',' excludedEntities+=[Entity])*);
+GenerationSettingType:
+	ServiceGenerationSetting | MicroserviceGenerationSetting | SearchGenerationSetting | 
+	DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting;
+
+ServiceGenerationSetting returns GenerationSetting:
+	serviceGenerationSetting?='service' includes=EntityInclusion serviceType=ServiceType;
+
+MicroserviceGenerationSetting returns GenerationSetting:
+	microserviceGenerationSetting?='microservice' includes=EntityInclusion appname=ID;
+
+SearchGenerationSetting returns GenerationSetting:
+	searchGenerationSetting?='search' includes=EntityInclusion service=ID;
+
+DTOGenerationSetting returns GenerationSetting:
+	dtoGenerationSetting?='dto' includes=EntityInclusion dtoType=DTOType;
+
+PaginateGenerationSetting returns GenerationSetting:
+	paginateGenerationSetting?='paginate' includes=EntityInclusion paginateType=PaginateType;
+
+AngularSuffixGenerationSetting returns GenerationSetting:
+	angularSuffixGenerationSetting?='angularSuffix' includes=EntityInclusion id=ID;
+
+EntityInclusion:
+	(predicate=WildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*)  'with';
+
+EntityExclusion:
+	'except' entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
+
+WildcardPredicate:
+	wildcard?='*' | all?='all';
 
 enum ServiceType:
 	serviceClass | serviceImpl;
 
-DTOGenerationSetting:
-	'dto' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' dtoType=DTOType;
-
 enum DTOType:
 	mapstruct;
-
-PaginateGenerationSetting:
-	'paginate' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' paginateType=PaginateType;
 
 PaginateType:
 	pagination?='pagination' | infiniteScroll?='infinite-scroll';
 
-AngularSuffixGenerationSetting:
-	'angularSuffix' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' id=ID;
+/* =========================================================================
+ * END OF GRAMMAR
+ * ========================================================================= */

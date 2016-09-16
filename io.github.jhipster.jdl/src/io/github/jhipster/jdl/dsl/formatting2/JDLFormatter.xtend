@@ -4,10 +4,10 @@
 package io.github.jhipster.jdl.dsl.formatting2
 
 import com.google.inject.Inject
-import io.github.jhipster.jdl.dsl.jdl.DomainModel
-import io.github.jhipster.jdl.dsl.jdl.Elements
-import io.github.jhipster.jdl.dsl.jdl.Entity
-import io.github.jhipster.jdl.dsl.jdl.Field
+import io.github.jhipster.jdl.dsl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.dsl.jdl.JdlEntity
+import io.github.jhipster.jdl.dsl.jdl.JdlEntityField
+import io.github.jhipster.jdl.dsl.jdl.JdlFeature
 import io.github.jhipster.jdl.dsl.services.JDLGrammarAccess
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
@@ -16,16 +16,16 @@ class JDLFormatter extends AbstractFormatter2 {
 	
 	@Inject extension JDLGrammarAccess
 
-	def dispatch void format(DomainModel domainModel, extension IFormattableDocument document) {
+	def dispatch void format(JdlDomainModel domainModel, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (Elements elements : domainModel.getElements()) {
-			elements.format;
+		for (JdlFeature feature : domainModel.features) {
+			feature.format;
 		}
 	}
 
-	def dispatch void format(Entity entity, extension IFormattableDocument document) {
+	def dispatch void format(JdlEntity entity, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
-		for (Field fields : entity.getFields()) {
+		for (JdlEntityField fields : entity.getFields()) {
 			fields.format;
 		}
 	}
