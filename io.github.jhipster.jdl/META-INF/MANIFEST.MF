@@ -7,5 +7,24 @@ Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: io.github.jhipster.jdl.dsl.jdl.impl,
+ io.github.jhipster.jdl.dsl.validation,
+ io.github.jhipster.jdl.dsl.jdl,
+ io.github.jhipster.jdl.dsl.jdl.util,
+ io.github.jhipster.jdl.dsl.scoping,
+ io.github.jhipster.jdl.dsl.services,
+ io.github.jhipster.jdl.dsl.serializer,
+ io.github.jhipster.jdl.dsl.parser.antlr.internal,
+ io.github.jhipster.jdl.dsl,
+ io.github.jhipster.jdl.dsl.parser.antlr,
+ io.github.jhipster.jdl.dsl.generator,
+ io.github.jhipster.jdl.dsl.formatting2
+Import-Package: org.apache.log4j

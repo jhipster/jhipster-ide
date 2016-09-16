@@ -37,7 +37,9 @@ Workflow {
 		language = StandardLanguage {
 			name = "io.github.jhipster.jdl.dsl.JDL"
 			fileExtensions = "jh"
-
+			formatter = formatting.Formatter2Fragment2 {
+				generateStub = true
+			}
 			serializer = {
 				generateStub = false
 			}

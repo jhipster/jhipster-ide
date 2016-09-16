@@ -1,105 +1,159 @@
 grammar io.github.jhipster.jdl.dsl.JDL with org.eclipse.xtext.common.Terminals
 
-generate jdl "http://www.github.io/jhipster/jdl/dsl/JDL"
+generate jdl 'http://www.github.io/jhipster/jdl/dsl/JDL'
 
 DomainModel:
 	elements+=Elements*;
 
 Elements:
-	Entity | Relationships | GenerationSetting
-;
+	Entity | EnumType | Relationships | GenerationSetting;
 
 /* =========================================================================
  * ENTITY
  * ========================================================================= */
 Entity:
-	"entity" name=ID "{"
-		fields+=Field ("," fields+=Field)*
-	"}";
+	'entity' name=ID '{'
+		fields+=Field (',' fields+=Field)*
+	'}';
 
 Field:
-	StringField | IntegerField;
+	StringField | NumericField | BooleanField | DateField | BinaryLargeObjectField | EnumField;
+
+EnumField:
+	name=ID enumType=[EnumType] validators=RequiredValidator?;
 
 StringField:
-	name=ID "String" validators?=StringValidators;
+	name=ID 'String' validators=StringValidators?;
+
+NumericField:
+	IntegerField | LongField | BigDecimalField | FloatField | DoubleField;
 
 IntegerField:
-	name=ID "Integer" validators?=IntegerValidators;
+	name=ID 'Integer' validators=NumericValidators?;
+
+LongField:
+	name=ID 'Long' validators=NumericValidators?;
+
+BigDecimalField:
+	name=ID 'BigDecimal' validators=NumericValidators?;
+
+FloatField:
+	name=ID 'Float' validators=NumericValidators?;
+
+DoubleField:
+	name=ID 'Double' validators=NumericValidators?;
+
+BooleanField:
+	name=ID 'Boolean' validators=RequiredValidator?;
+	
+DateField:
+	LocalDateField | ZonedDateTimeField;
+
+LocalDateField:
+	name=ID 'LocalDate' validators=RequiredValidator?;
+
+ZonedDateTimeField:
+	name=ID 'ZonedDateTime' validators=RequiredValidator?;
+
+BinaryLargeObjectField:
+	BlobField | AnyBlobField | ImageBlobField;
+
+BlobField:
+	name=ID 'Blob' validators=BlobValidators?;
+
+AnyBlobField:
+	name=ID 'AnyBlob' validators=BlobValidators?;
+
+ImageBlobField:
+	name=ID 'ImageBlob' validators=BlobValidators?;
+
+/* =========================================================================
+ * VALIDATORS
+ * ========================================================================= */
 
 RequiredValidator:
-	"required";
-	
+	required?='required';
+
 MinLengthValidator:
-	"minlength("value=INT")";
-	
+	'minlength' '(' value=INT ')';
+
 MaxLengthValidator:
-	"maxlength("value=INT")";
-	
+	'maxlength' '(' value=INT ')';
+
 PatternValidator:
-	"pattern("value=STRING")";
+	'pattern' '(' value=STRING ')';
 
 MinValidator:
-	"min("value=INT")";
+	'min' '(' value=INT ')';
 
 MaxValidator:
-	"max("value=INT")";
-		
-StringValidators:
-	(required?=RequiredValidator) (minLength?=MinLengthValidator) (maxlength?=MaxLengthValidator) (pattern?=PatternValidator)
-;
+	'max' '(' value=INT ')';
 
-IntegerValidators:
-	(required?=RequiredValidator) (minLength?=MinValidator) (maxlength?=MaxValidator);
-	
+MinBytesValidator:
+	'minbytes' '(' value=INT ')';
+
+MaxBytesValidator:
+	'maxbytes' '(' value=INT ')';
+
+StringValidators:
+	(required=RequiredValidator) (minLength=MinLengthValidator)? 
+	(maxlength=MaxLengthValidator)? (pattern=PatternValidator)?;
+
+NumericValidators:
+	(required=RequiredValidator) (minlength=MinValidator)? (maxlength=MaxValidator)?;
+
+BlobValidators:
+	(required=RequiredValidator) (minbytes=MinBytesValidator)? (maxbytes=MaxBytesValidator)?;
+
 /* =========================================================================
  * RELATIONSHIP
  * ========================================================================= */
 Relationships:
-	"relationship" cardinality=Cardinality "{"
-		relationships+=Relationship*
-	"}";
+	'relationship' cardinality=Cardinality '{'
+		relationships+=Relationship* (',' relationships+=Relationship)*
+	'}';
 
 Relationship:
-	fromEntity=Entity fromName=RelationshipName?  "to" toEntity=Entity toName=RelationshipName?;
-	
+	fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?;
+
 RelationshipName:
-	"{" name=ID "}";
-	
+	'{' name=ID ('(' role=ID ')')? '}';
+
 enum Cardinality:
-	OneToMany | ManyToOne| OneToOne | ManyToMany;
+	OneToMany | ManyToOne | OneToOne | ManyToMany;
 
 /* =========================================================================
  * ENUM
  * ========================================================================= */
-Enum:
-	"enum" name=ID "{"
-		values+=ID ("," values+=ID)*
-	"}";
+EnumType:
+	'enum' name=ID '{'
+		values+=ID (',' values+=ID)*
+	'}';
 
 /* =========================================================================
  * GENERATION SETTING
  * ========================================================================= */
-GenerationSetting: 
-	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting
-;
+GenerationSetting:
+	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting;
 
 ServiceGenerationSetting:
-	"service" entities+=ID ("," entities+=ID)* "with" serviceType=ServiceType;
+	'service' (all?='all' | entities+=[Entity] (',' entities+=[Entity])*) 'with' serviceType=ServiceType 
+	('except' excludedEntities+=[Entity] (',' excludedEntities+=[Entity])*);
 
 enum ServiceType:
 	serviceClass | serviceImpl;
-	
+
 DTOGenerationSetting:
-	"dto" entities+=ID ("," entities+=ID)* "with" dtoType=DTOType;
+	'dto' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' dtoType=DTOType;
 
 enum DTOType:
 	mapstruct;
 
 PaginateGenerationSetting:
-	"paginate" entities+=ID ("," entities+=ID)* "with" paginateType=PaginateType;
+	'paginate' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' paginateType=PaginateType;
 
-enum PaginateType:
-	pagination | infiniteScroll;
+PaginateType:
+	pagination?='pagination' | infiniteScroll?='infinite-scroll';
 
 AngularSuffixGenerationSetting:
-	"angularSuffix" entities+=ID ("," entities+=ID)* "with" id=ID;
+	'angularSuffix' (wildcard?='*' | entities+=[Entity] (',' entities+=[Entity])*) 'with' id=ID;
