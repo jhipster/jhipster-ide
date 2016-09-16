@@ -8,8 +8,10 @@ import io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting;
 import io.github.jhipster.jdl.dsl.jdl.PaginateType;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -29,24 +31,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class PaginateGenerationSettingImpl extends GenerationSettingImpl implements PaginateGenerationSetting
 {
   /**
-   * The default value of the '{@link #getPaginateType() <em>Paginate Type</em>}' attribute.
+   * The cached value of the '{@link #getPaginateType() <em>Paginate Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPaginateType()
    * @generated
    * @ordered
    */
-  protected static final PaginateType PAGINATE_TYPE_EDEFAULT = PaginateType.PAGINATION;
-
-  /**
-   * The cached value of the '{@link #getPaginateType() <em>Paginate Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPaginateType()
-   * @generated
-   * @ordered
-   */
-  protected PaginateType paginateType = PAGINATE_TYPE_EDEFAULT;
+  protected PaginateType paginateType;
 
   /**
    * <!-- begin-user-doc -->
@@ -84,12 +76,53 @@ public class PaginateGenerationSettingImpl extends GenerationSettingImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPaginateType(PaginateType newPaginateType)
+  public NotificationChain basicSetPaginateType(PaginateType newPaginateType, NotificationChain msgs)
   {
     PaginateType oldPaginateType = paginateType;
-    paginateType = newPaginateType == null ? PAGINATE_TYPE_EDEFAULT : newPaginateType;
+    paginateType = newPaginateType;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE, oldPaginateType, paginateType));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE, oldPaginateType, newPaginateType);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPaginateType(PaginateType newPaginateType)
+  {
+    if (newPaginateType != paginateType)
+    {
+      NotificationChain msgs = null;
+      if (paginateType != null)
+        msgs = ((InternalEObject)paginateType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE, null, msgs);
+      if (newPaginateType != null)
+        msgs = ((InternalEObject)newPaginateType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE, null, msgs);
+      msgs = basicSetPaginateType(newPaginateType, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE, newPaginateType, newPaginateType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE:
+        return basicSetPaginateType(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -136,7 +169,7 @@ public class PaginateGenerationSettingImpl extends GenerationSettingImpl impleme
     switch (featureID)
     {
       case JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE:
-        setPaginateType(PAGINATE_TYPE_EDEFAULT);
+        setPaginateType((PaginateType)null);
         return;
     }
     super.eUnset(featureID);
@@ -153,26 +186,9 @@ public class PaginateGenerationSettingImpl extends GenerationSettingImpl impleme
     switch (featureID)
     {
       case JdlPackage.PAGINATE_GENERATION_SETTING__PAGINATE_TYPE:
-        return paginateType != PAGINATE_TYPE_EDEFAULT;
+        return paginateType != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (paginateType: ");
-    result.append(paginateType);
-    result.append(')');
-    return result.toString();
   }
 
 } //PaginateGenerationSettingImpl

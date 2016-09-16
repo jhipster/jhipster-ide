@@ -24,19 +24,19 @@ import org.eclipse.emf.common.util.EList;
 public interface GenerationSetting extends Elements
 {
   /**
-   * Returns the value of the '<em><b>Entities</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Entities</b></em>' reference list.
+   * The list contents are of type {@link io.github.jhipster.jdl.dsl.jdl.Entity}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Entities</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Entities</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Entities</em>' attribute list.
+   * @return the value of the '<em>Entities</em>' reference list.
    * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getGenerationSetting_Entities()
-   * @model unique="false"
+   * @model
    * @generated
    */
-  EList<String> getEntities();
+  EList<Entity> getEntities();
 
 } // GenerationSetting

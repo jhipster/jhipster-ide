@@ -105,17 +105,16 @@
         eType="#//Relationship" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Relationship">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="fromEntity" eType="#//Entity"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromEntity" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="fromName" eType="#//RelationshipName"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="toEntity" eType="#//Entity"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toEntity" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toName" eType="#//RelationshipName"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RelationshipName">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Cardinality">
     <eLiterals name="OneToMany" literal="OneToMany"/>
@@ -129,8 +128,8 @@
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GenerationSetting" eSuperTypes="#//Elements">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entities" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" unique="false"
+        upperBound="-1" eType="#//Entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ServiceGenerationSetting" eSuperTypes="#//GenerationSetting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceType" eType="#//ServiceType"/>
@@ -146,11 +145,12 @@
     <eLiterals name="mapstruct" literal="mapstruct"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PaginateGenerationSetting" eSuperTypes="#//GenerationSetting">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paginateType" eType="#//PaginateType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paginateType" eType="#//PaginateType"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EEnum" name="PaginateType">
-    <eLiterals name="pagination" literal="pagination"/>
-    <eLiterals name="infiniteScroll" value="1" literal="infiniteScroll"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PaginateType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pagination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="infiniteScroll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AngularSuffixGenerationSetting" eSuperTypes="#//GenerationSetting">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

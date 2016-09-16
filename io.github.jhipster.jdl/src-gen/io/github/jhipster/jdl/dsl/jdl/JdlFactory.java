@@ -375,6 +375,15 @@ public interface JdlFactory extends EFactory
   PaginateGenerationSetting createPaginateGenerationSetting();
 
   /**
+   * Returns a new object of class '<em>Paginate Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Paginate Type</em>'.
+   * @generated
+   */
+  PaginateType createPaginateType();
+
+  /**
    * Returns a new object of class '<em>Angular Suffix Generation Setting</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

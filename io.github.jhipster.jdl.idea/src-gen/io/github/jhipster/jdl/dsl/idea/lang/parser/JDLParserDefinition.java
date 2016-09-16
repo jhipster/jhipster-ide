@@ -272,13 +272,7 @@ public class JDLParserDefinition extends AbstractXtextParserDefinition {
 			if (elementType == elementTypeProvider.getRelationshipElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getRelationship_FromEntityEntityParserRuleCall_0_0ElementType()) {
-				return new PsiNamedEObjectImpl(node) {};
-			}
 			if (elementType == elementTypeProvider.getRelationship_FromNameRelationshipNameParserRuleCall_1_0ElementType()) {
-				return new PsiNamedEObjectImpl(node) {};
-			}
-			if (elementType == elementTypeProvider.getRelationship_ToEntityEntityParserRuleCall_3_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getRelationship_ToNameRelationshipNameParserRuleCall_4_0ElementType()) {
@@ -312,6 +306,12 @@ public class JDLParserDefinition extends AbstractXtextParserDefinition {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPaginateGenerationSettingElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPaginateTypeElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getAngularSuffixGenerationSettingElementType()) {

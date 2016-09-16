@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'entity'", "'{'", "','", "'}'", "'String'", "'Integer'", "'Long'", "'BigDecimal'", "'Float'", "'Double'", "'Boolean'", "'LocalDate'", "'ZonedDateTime'", "'Blob'", "'AnyBlob'", "'ImageBlob'", "'required'", "'minlength'", "'('", "')'", "'maxlength'", "'pattern'", "'min'", "'max'", "'minbytes'", "'maxbytes'", "'relationship'", "'to'", "'enum'", "'service'", "'with'", "'dto'", "'paginate'", "'angularSuffix'", "'OneToMany'", "'ManyToOne'", "'OneToOne'", "'ManyToMany'", "'serviceClass'", "'serviceImpl'", "'mapstruct'", "'pagination'", "'infiniteScroll'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'entity'", "'{'", "','", "'}'", "'String'", "'Integer'", "'Long'", "'BigDecimal'", "'Float'", "'Double'", "'Boolean'", "'LocalDate'", "'ZonedDateTime'", "'Blob'", "'AnyBlob'", "'ImageBlob'", "'required'", "'minlength'", "'('", "')'", "'maxlength'", "'pattern'", "'min'", "'max'", "'minbytes'", "'maxbytes'", "'relationship'", "'to'", "'enum'", "'service'", "'with'", "'dto'", "'paginate'", "'pagination'", "'infinite-scroll'", "'angularSuffix'", "'OneToMany'", "'ManyToOne'", "'OneToOne'", "'ManyToMany'", "'serviceClass'", "'serviceImpl'", "'mapstruct'"
     };
     public static final int T__50=50;
     public static final int T__19=19;
@@ -162,7 +162,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==11||LA1_0==37||(LA1_0>=39 && LA1_0<=40)||(LA1_0>=42 && LA1_0<=44)) ) {
+                if ( (LA1_0==11||LA1_0==37||(LA1_0>=39 && LA1_0<=40)||(LA1_0>=42 && LA1_0<=43)||LA1_0==46) ) {
                     alt1=1;
                 }
 
@@ -290,7 +290,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             case 40:
             case 42:
             case 43:
-            case 44:
+            case 46:
                 {
                 alt2=4;
                 }
@@ -662,11 +662,6 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             if ( (LA4_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
-                case RULE_ID:
-                    {
-                    alt4=6;
-                    }
-                    break;
                 case 16:
                 case 17:
                 case 18:
@@ -683,15 +678,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     alt4=5;
                     }
                     break;
-                case 22:
-                case 23:
+                case RULE_ID:
                     {
-                    alt4=4;
+                    alt4=6;
                     }
                     break;
                 case 15:
                     {
                     alt4=1;
+                    }
+                    break;
+                case 22:
+                case 23:
+                    {
+                    alt4=4;
                     }
                     break;
                 case 21:
@@ -1199,6 +1199,16 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             if ( (LA7_0==RULE_ID) ) {
                 switch ( input.LA(2) ) {
+                case 19:
+                    {
+                    alt7=4;
+                    }
+                    break;
+                case 18:
+                    {
+                    alt7=3;
+                    }
+                    break;
                 case 17:
                     {
                     alt7=2;
@@ -1212,16 +1222,6 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                 case 20:
                     {
                     alt7=5;
-                    }
-                    break;
-                case 19:
-                    {
-                    alt7=4;
-                    }
-                    break;
-                case 18:
-                    {
-                    alt7=3;
                     }
                     break;
                 default:
@@ -4741,7 +4741,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                 int alt28=2;
                 int LA28_0 = input.LA(1);
 
-                if ( (LA28_0==11) ) {
+                if ( (LA28_0==RULE_ID) ) {
                     alt28=1;
                 }
 
@@ -4841,55 +4841,51 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleRelationship"
-    // PsiInternalJDL.g:1771:1: ruleRelationship returns [Boolean current=false] : ( ( (lv_fromEntity_0_0= ruleEntity ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (lv_toEntity_3_0= ruleEntity ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? ) ;
+    // PsiInternalJDL.g:1771:1: ruleRelationship returns [Boolean current=false] : ( ( (otherlv_0= RULE_ID ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (otherlv_3= RULE_ID ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? ) ;
     public final Boolean ruleRelationship() throws RecognitionException {
         Boolean current = false;
 
+        Token otherlv_0=null;
         Token otherlv_2=null;
-        Boolean lv_fromEntity_0_0 = null;
-
+        Token otherlv_3=null;
         Boolean lv_fromName_1_0 = null;
-
-        Boolean lv_toEntity_3_0 = null;
 
         Boolean lv_toName_4_0 = null;
 
 
         try {
-            // PsiInternalJDL.g:1772:1: ( ( ( (lv_fromEntity_0_0= ruleEntity ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (lv_toEntity_3_0= ruleEntity ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? ) )
-            // PsiInternalJDL.g:1773:2: ( ( (lv_fromEntity_0_0= ruleEntity ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (lv_toEntity_3_0= ruleEntity ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? )
+            // PsiInternalJDL.g:1772:1: ( ( ( (otherlv_0= RULE_ID ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (otherlv_3= RULE_ID ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? ) )
+            // PsiInternalJDL.g:1773:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (otherlv_3= RULE_ID ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? )
             {
-            // PsiInternalJDL.g:1773:2: ( ( (lv_fromEntity_0_0= ruleEntity ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (lv_toEntity_3_0= ruleEntity ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? )
-            // PsiInternalJDL.g:1774:3: ( (lv_fromEntity_0_0= ruleEntity ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (lv_toEntity_3_0= ruleEntity ) ) ( (lv_toName_4_0= ruleRelationshipName ) )?
+            // PsiInternalJDL.g:1773:2: ( ( (otherlv_0= RULE_ID ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (otherlv_3= RULE_ID ) ) ( (lv_toName_4_0= ruleRelationshipName ) )? )
+            // PsiInternalJDL.g:1774:3: ( (otherlv_0= RULE_ID ) ) ( (lv_fromName_1_0= ruleRelationshipName ) )? otherlv_2= 'to' ( (otherlv_3= RULE_ID ) ) ( (lv_toName_4_0= ruleRelationshipName ) )?
             {
-            // PsiInternalJDL.g:1774:3: ( (lv_fromEntity_0_0= ruleEntity ) )
-            // PsiInternalJDL.g:1775:4: (lv_fromEntity_0_0= ruleEntity )
+            // PsiInternalJDL.g:1774:3: ( (otherlv_0= RULE_ID ) )
+            // PsiInternalJDL.g:1775:4: (otherlv_0= RULE_ID )
             {
-            // PsiInternalJDL.g:1775:4: (lv_fromEntity_0_0= ruleEntity )
-            // PsiInternalJDL.g:1776:5: lv_fromEntity_0_0= ruleEntity
+            // PsiInternalJDL.g:1775:4: (otherlv_0= RULE_ID )
+            // PsiInternalJDL.g:1776:5: otherlv_0= RULE_ID
             {
 
-            					markComposite(elementTypeProvider.getRelationship_FromEntityEntityParserRuleCall_0_0ElementType());
-            				
-            pushFollow(FOLLOW_33);
-            lv_fromEntity_0_0=ruleEntity();
-
-            state._fsp--;
-
-
-            					doneComposite();
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
+            					markLeaf(elementTypeProvider.getRelationship_FromEntityEntityCrossReference_0_0ElementType());
+            				
+            otherlv_0=(Token)match(input,RULE_ID,FOLLOW_33); 
+
+            					doneLeaf(otherlv_0);
+            				
+
             }
 
 
             }
 
-            // PsiInternalJDL.g:1789:3: ( (lv_fromName_1_0= ruleRelationshipName ) )?
+            // PsiInternalJDL.g:1791:3: ( (lv_fromName_1_0= ruleRelationshipName ) )?
             int alt29=2;
             int LA29_0 = input.LA(1);
 
@@ -4898,10 +4894,10 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             }
             switch (alt29) {
                 case 1 :
-                    // PsiInternalJDL.g:1790:4: (lv_fromName_1_0= ruleRelationshipName )
+                    // PsiInternalJDL.g:1792:4: (lv_fromName_1_0= ruleRelationshipName )
                     {
-                    // PsiInternalJDL.g:1790:4: (lv_fromName_1_0= ruleRelationshipName )
-                    // PsiInternalJDL.g:1791:5: lv_fromName_1_0= ruleRelationshipName
+                    // PsiInternalJDL.g:1792:4: (lv_fromName_1_0= ruleRelationshipName )
+                    // PsiInternalJDL.g:1793:5: lv_fromName_1_0= ruleRelationshipName
                     {
 
                     					markComposite(elementTypeProvider.getRelationship_FromNameRelationshipNameParserRuleCall_1_0ElementType());
@@ -4930,38 +4926,36 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			markLeaf(elementTypeProvider.getRelationship_ToKeyword_2ElementType());
             		
-            otherlv_2=(Token)match(input,38,FOLLOW_35); 
+            otherlv_2=(Token)match(input,38,FOLLOW_4); 
 
             			doneLeaf(otherlv_2);
             		
-            // PsiInternalJDL.g:1811:3: ( (lv_toEntity_3_0= ruleEntity ) )
-            // PsiInternalJDL.g:1812:4: (lv_toEntity_3_0= ruleEntity )
+            // PsiInternalJDL.g:1813:3: ( (otherlv_3= RULE_ID ) )
+            // PsiInternalJDL.g:1814:4: (otherlv_3= RULE_ID )
             {
-            // PsiInternalJDL.g:1812:4: (lv_toEntity_3_0= ruleEntity )
-            // PsiInternalJDL.g:1813:5: lv_toEntity_3_0= ruleEntity
+            // PsiInternalJDL.g:1814:4: (otherlv_3= RULE_ID )
+            // PsiInternalJDL.g:1815:5: otherlv_3= RULE_ID
             {
 
-            					markComposite(elementTypeProvider.getRelationship_ToEntityEntityParserRuleCall_3_0ElementType());
-            				
-            pushFollow(FOLLOW_36);
-            lv_toEntity_3_0=ruleEntity();
-
-            state._fsp--;
-
-
-            					doneComposite();
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
+            					markLeaf(elementTypeProvider.getRelationship_ToEntityEntityCrossReference_3_0ElementType());
+            				
+            otherlv_3=(Token)match(input,RULE_ID,FOLLOW_35); 
+
+            					doneLeaf(otherlv_3);
+            				
+
             }
 
 
             }
 
-            // PsiInternalJDL.g:1826:3: ( (lv_toName_4_0= ruleRelationshipName ) )?
+            // PsiInternalJDL.g:1830:3: ( (lv_toName_4_0= ruleRelationshipName ) )?
             int alt30=2;
             int LA30_0 = input.LA(1);
 
@@ -4970,10 +4964,10 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             }
             switch (alt30) {
                 case 1 :
-                    // PsiInternalJDL.g:1827:4: (lv_toName_4_0= ruleRelationshipName )
+                    // PsiInternalJDL.g:1831:4: (lv_toName_4_0= ruleRelationshipName )
                     {
-                    // PsiInternalJDL.g:1827:4: (lv_toName_4_0= ruleRelationshipName )
-                    // PsiInternalJDL.g:1828:5: lv_toName_4_0= ruleRelationshipName
+                    // PsiInternalJDL.g:1831:4: (lv_toName_4_0= ruleRelationshipName )
+                    // PsiInternalJDL.g:1832:5: lv_toName_4_0= ruleRelationshipName
                     {
 
                     					markComposite(elementTypeProvider.getRelationship_ToNameRelationshipNameParserRuleCall_4_0ElementType());
@@ -5018,7 +5012,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRuleRelationshipName"
-    // PsiInternalJDL.g:1845:1: entryRuleRelationshipName returns [Boolean current=false] : iv_ruleRelationshipName= ruleRelationshipName EOF ;
+    // PsiInternalJDL.g:1849:1: entryRuleRelationshipName returns [Boolean current=false] : iv_ruleRelationshipName= ruleRelationshipName EOF ;
     public final Boolean entryRuleRelationshipName() throws RecognitionException {
         Boolean current = false;
 
@@ -5026,8 +5020,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:1845:58: (iv_ruleRelationshipName= ruleRelationshipName EOF )
-            // PsiInternalJDL.g:1846:2: iv_ruleRelationshipName= ruleRelationshipName EOF
+            // PsiInternalJDL.g:1849:58: (iv_ruleRelationshipName= ruleRelationshipName EOF )
+            // PsiInternalJDL.g:1850:2: iv_ruleRelationshipName= ruleRelationshipName EOF
             {
              markComposite(elementTypeProvider.getRelationshipNameElementType()); 
             pushFollow(FOLLOW_1);
@@ -5053,20 +5047,23 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleRelationshipName"
-    // PsiInternalJDL.g:1852:1: ruleRelationshipName returns [Boolean current=false] : (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '}' ) ;
+    // PsiInternalJDL.g:1856:1: ruleRelationshipName returns [Boolean current=false] : (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )? otherlv_5= '}' ) ;
     public final Boolean ruleRelationshipName() throws RecognitionException {
         Boolean current = false;
 
         Token otherlv_0=null;
         Token lv_name_1_0=null;
         Token otherlv_2=null;
+        Token lv_role_3_0=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
 
         try {
-            // PsiInternalJDL.g:1853:1: ( (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '}' ) )
-            // PsiInternalJDL.g:1854:2: (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '}' )
+            // PsiInternalJDL.g:1857:1: ( (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )? otherlv_5= '}' ) )
+            // PsiInternalJDL.g:1858:2: (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )? otherlv_5= '}' )
             {
-            // PsiInternalJDL.g:1854:2: (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '}' )
-            // PsiInternalJDL.g:1855:3: otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '}'
+            // PsiInternalJDL.g:1858:2: (otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )? otherlv_5= '}' )
+            // PsiInternalJDL.g:1859:3: otherlv_0= '{' ( (lv_name_1_0= RULE_ID ) ) (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )? otherlv_5= '}'
             {
 
             			markLeaf(elementTypeProvider.getRelationshipName_LeftCurlyBracketKeyword_0ElementType());
@@ -5075,16 +5072,16 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:1862:3: ( (lv_name_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:1863:4: (lv_name_1_0= RULE_ID )
+            // PsiInternalJDL.g:1866:3: ( (lv_name_1_0= RULE_ID ) )
+            // PsiInternalJDL.g:1867:4: (lv_name_1_0= RULE_ID )
             {
-            // PsiInternalJDL.g:1863:4: (lv_name_1_0= RULE_ID )
-            // PsiInternalJDL.g:1864:5: lv_name_1_0= RULE_ID
+            // PsiInternalJDL.g:1867:4: (lv_name_1_0= RULE_ID )
+            // PsiInternalJDL.g:1868:5: lv_name_1_0= RULE_ID
             {
 
             					markLeaf(elementTypeProvider.getRelationshipName_NameIDTerminalRuleCall_1_0ElementType());
             				
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_37); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_36); 
 
             					if(!current) {
             						associateWithSemanticElement();
@@ -5100,12 +5097,68 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
+            // PsiInternalJDL.g:1883:3: (otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')' )?
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            			markLeaf(elementTypeProvider.getRelationshipName_RightCurlyBracketKeyword_2ElementType());
+            if ( (LA31_0==29) ) {
+                alt31=1;
+            }
+            switch (alt31) {
+                case 1 :
+                    // PsiInternalJDL.g:1884:4: otherlv_2= '(' ( (lv_role_3_0= RULE_ID ) ) otherlv_4= ')'
+                    {
+
+                    				markLeaf(elementTypeProvider.getRelationshipName_LeftParenthesisKeyword_2_0ElementType());
+                    			
+                    otherlv_2=(Token)match(input,29,FOLLOW_4); 
+
+                    				doneLeaf(otherlv_2);
+                    			
+                    // PsiInternalJDL.g:1891:4: ( (lv_role_3_0= RULE_ID ) )
+                    // PsiInternalJDL.g:1892:5: (lv_role_3_0= RULE_ID )
+                    {
+                    // PsiInternalJDL.g:1892:5: (lv_role_3_0= RULE_ID )
+                    // PsiInternalJDL.g:1893:6: lv_role_3_0= RULE_ID
+                    {
+
+                    						markLeaf(elementTypeProvider.getRelationshipName_RoleIDTerminalRuleCall_2_1_0ElementType());
+                    					
+                    lv_role_3_0=(Token)match(input,RULE_ID,FOLLOW_22); 
+
+                    						if(!current) {
+                    							associateWithSemanticElement();
+                    							current = true;
+                    						}
+                    					
+
+                    						doneLeaf(lv_role_3_0);
+                    					
+
+                    }
+
+
+                    }
+
+
+                    				markLeaf(elementTypeProvider.getRelationshipName_RightParenthesisKeyword_2_2ElementType());
+                    			
+                    otherlv_4=(Token)match(input,30,FOLLOW_37); 
+
+                    				doneLeaf(otherlv_4);
+                    			
+
+                    }
+                    break;
+
+            }
+
+
+            			markLeaf(elementTypeProvider.getRelationshipName_RightCurlyBracketKeyword_3ElementType());
             		
-            otherlv_2=(Token)match(input,14,FOLLOW_2); 
+            otherlv_5=(Token)match(input,14,FOLLOW_2); 
 
-            			doneLeaf(otherlv_2);
+            			doneLeaf(otherlv_5);
             		
 
             }
@@ -5126,7 +5179,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRuleEnumType"
-    // PsiInternalJDL.g:1890:1: entryRuleEnumType returns [Boolean current=false] : iv_ruleEnumType= ruleEnumType EOF ;
+    // PsiInternalJDL.g:1927:1: entryRuleEnumType returns [Boolean current=false] : iv_ruleEnumType= ruleEnumType EOF ;
     public final Boolean entryRuleEnumType() throws RecognitionException {
         Boolean current = false;
 
@@ -5134,8 +5187,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:1890:50: (iv_ruleEnumType= ruleEnumType EOF )
-            // PsiInternalJDL.g:1891:2: iv_ruleEnumType= ruleEnumType EOF
+            // PsiInternalJDL.g:1927:50: (iv_ruleEnumType= ruleEnumType EOF )
+            // PsiInternalJDL.g:1928:2: iv_ruleEnumType= ruleEnumType EOF
             {
              markComposite(elementTypeProvider.getEnumTypeElementType()); 
             pushFollow(FOLLOW_1);
@@ -5161,7 +5214,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleEnumType"
-    // PsiInternalJDL.g:1897:1: ruleEnumType returns [Boolean current=false] : (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' ) ;
+    // PsiInternalJDL.g:1934:1: ruleEnumType returns [Boolean current=false] : (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' ) ;
     public final Boolean ruleEnumType() throws RecognitionException {
         Boolean current = false;
 
@@ -5174,11 +5227,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
         Token otherlv_6=null;
 
         try {
-            // PsiInternalJDL.g:1898:1: ( (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' ) )
-            // PsiInternalJDL.g:1899:2: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' )
+            // PsiInternalJDL.g:1935:1: ( (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' ) )
+            // PsiInternalJDL.g:1936:2: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' )
             {
-            // PsiInternalJDL.g:1899:2: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' )
-            // PsiInternalJDL.g:1900:3: otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}'
+            // PsiInternalJDL.g:1936:2: (otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}' )
+            // PsiInternalJDL.g:1937:3: otherlv_0= 'enum' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '{' ( (lv_values_3_0= RULE_ID ) ) (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )* otherlv_6= '}'
             {
 
             			markLeaf(elementTypeProvider.getEnumType_EnumKeyword_0ElementType());
@@ -5187,11 +5240,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:1907:3: ( (lv_name_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:1908:4: (lv_name_1_0= RULE_ID )
+            // PsiInternalJDL.g:1944:3: ( (lv_name_1_0= RULE_ID ) )
+            // PsiInternalJDL.g:1945:4: (lv_name_1_0= RULE_ID )
             {
-            // PsiInternalJDL.g:1908:4: (lv_name_1_0= RULE_ID )
-            // PsiInternalJDL.g:1909:5: lv_name_1_0= RULE_ID
+            // PsiInternalJDL.g:1945:4: (lv_name_1_0= RULE_ID )
+            // PsiInternalJDL.g:1946:5: lv_name_1_0= RULE_ID
             {
 
             					markLeaf(elementTypeProvider.getEnumType_NameIDTerminalRuleCall_1_0ElementType());
@@ -5219,11 +5272,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_2);
             		
-            // PsiInternalJDL.g:1931:3: ( (lv_values_3_0= RULE_ID ) )
-            // PsiInternalJDL.g:1932:4: (lv_values_3_0= RULE_ID )
+            // PsiInternalJDL.g:1968:3: ( (lv_values_3_0= RULE_ID ) )
+            // PsiInternalJDL.g:1969:4: (lv_values_3_0= RULE_ID )
             {
-            // PsiInternalJDL.g:1932:4: (lv_values_3_0= RULE_ID )
-            // PsiInternalJDL.g:1933:5: lv_values_3_0= RULE_ID
+            // PsiInternalJDL.g:1969:4: (lv_values_3_0= RULE_ID )
+            // PsiInternalJDL.g:1970:5: lv_values_3_0= RULE_ID
             {
 
             					markLeaf(elementTypeProvider.getEnumType_ValuesIDTerminalRuleCall_3_0ElementType());
@@ -5244,20 +5297,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
-            // PsiInternalJDL.g:1948:3: (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )*
-            loop31:
+            // PsiInternalJDL.g:1985:3: (otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) ) )*
+            loop32:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( (LA31_0==13) ) {
-                    alt31=1;
+                if ( (LA32_0==13) ) {
+                    alt32=1;
                 }
 
 
-                switch (alt31) {
+                switch (alt32) {
             	case 1 :
-            	    // PsiInternalJDL.g:1949:4: otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:1986:4: otherlv_4= ',' ( (lv_values_5_0= RULE_ID ) )
             	    {
 
             	    				markLeaf(elementTypeProvider.getEnumType_CommaKeyword_4_0ElementType());
@@ -5266,11 +5319,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             	    				doneLeaf(otherlv_4);
             	    			
-            	    // PsiInternalJDL.g:1956:4: ( (lv_values_5_0= RULE_ID ) )
-            	    // PsiInternalJDL.g:1957:5: (lv_values_5_0= RULE_ID )
+            	    // PsiInternalJDL.g:1993:4: ( (lv_values_5_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:1994:5: (lv_values_5_0= RULE_ID )
             	    {
-            	    // PsiInternalJDL.g:1957:5: (lv_values_5_0= RULE_ID )
-            	    // PsiInternalJDL.g:1958:6: lv_values_5_0= RULE_ID
+            	    // PsiInternalJDL.g:1994:5: (lv_values_5_0= RULE_ID )
+            	    // PsiInternalJDL.g:1995:6: lv_values_5_0= RULE_ID
             	    {
 
             	    						markLeaf(elementTypeProvider.getEnumType_ValuesIDTerminalRuleCall_4_1_0ElementType());
@@ -5296,7 +5349,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop32;
                 }
             } while (true);
 
@@ -5326,7 +5379,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRuleGenerationSetting"
-    // PsiInternalJDL.g:1985:1: entryRuleGenerationSetting returns [Boolean current=false] : iv_ruleGenerationSetting= ruleGenerationSetting EOF ;
+    // PsiInternalJDL.g:2022:1: entryRuleGenerationSetting returns [Boolean current=false] : iv_ruleGenerationSetting= ruleGenerationSetting EOF ;
     public final Boolean entryRuleGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -5334,8 +5387,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:1985:59: (iv_ruleGenerationSetting= ruleGenerationSetting EOF )
-            // PsiInternalJDL.g:1986:2: iv_ruleGenerationSetting= ruleGenerationSetting EOF
+            // PsiInternalJDL.g:2022:59: (iv_ruleGenerationSetting= ruleGenerationSetting EOF )
+            // PsiInternalJDL.g:2023:2: iv_ruleGenerationSetting= ruleGenerationSetting EOF
             {
              markComposite(elementTypeProvider.getGenerationSettingElementType()); 
             pushFollow(FOLLOW_1);
@@ -5361,7 +5414,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleGenerationSetting"
-    // PsiInternalJDL.g:1992:1: ruleGenerationSetting returns [Boolean current=false] : (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting ) ;
+    // PsiInternalJDL.g:2029:1: ruleGenerationSetting returns [Boolean current=false] : (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting ) ;
     public final Boolean ruleGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -5375,42 +5428,42 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:1993:1: ( (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting ) )
-            // PsiInternalJDL.g:1994:2: (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting )
+            // PsiInternalJDL.g:2030:1: ( (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting ) )
+            // PsiInternalJDL.g:2031:2: (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting )
             {
-            // PsiInternalJDL.g:1994:2: (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting )
-            int alt32=4;
+            // PsiInternalJDL.g:2031:2: (this_ServiceGenerationSetting_0= ruleServiceGenerationSetting | this_DTOGenerationSetting_1= ruleDTOGenerationSetting | this_PaginateGenerationSetting_2= rulePaginateGenerationSetting | this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting )
+            int alt33=4;
             switch ( input.LA(1) ) {
             case 40:
                 {
-                alt32=1;
+                alt33=1;
                 }
                 break;
             case 42:
                 {
-                alt32=2;
+                alt33=2;
                 }
                 break;
             case 43:
                 {
-                alt32=3;
+                alt33=3;
                 }
                 break;
-            case 44:
+            case 46:
                 {
-                alt32=4;
+                alt33=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 32, 0, input);
+                    new NoViableAltException("", 33, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt32) {
+            switch (alt33) {
                 case 1 :
-                    // PsiInternalJDL.g:1995:3: this_ServiceGenerationSetting_0= ruleServiceGenerationSetting
+                    // PsiInternalJDL.g:2032:3: this_ServiceGenerationSetting_0= ruleServiceGenerationSetting
                     {
 
                     			markComposite(elementTypeProvider.getGenerationSetting_ServiceGenerationSettingParserRuleCall_0ElementType());
@@ -5428,7 +5481,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 2 :
-                    // PsiInternalJDL.g:2004:3: this_DTOGenerationSetting_1= ruleDTOGenerationSetting
+                    // PsiInternalJDL.g:2041:3: this_DTOGenerationSetting_1= ruleDTOGenerationSetting
                     {
 
                     			markComposite(elementTypeProvider.getGenerationSetting_DTOGenerationSettingParserRuleCall_1ElementType());
@@ -5446,7 +5499,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 3 :
-                    // PsiInternalJDL.g:2013:3: this_PaginateGenerationSetting_2= rulePaginateGenerationSetting
+                    // PsiInternalJDL.g:2050:3: this_PaginateGenerationSetting_2= rulePaginateGenerationSetting
                     {
 
                     			markComposite(elementTypeProvider.getGenerationSetting_PaginateGenerationSettingParserRuleCall_2ElementType());
@@ -5464,7 +5517,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 4 :
-                    // PsiInternalJDL.g:2022:3: this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting
+                    // PsiInternalJDL.g:2059:3: this_AngularSuffixGenerationSetting_3= ruleAngularSuffixGenerationSetting
                     {
 
                     			markComposite(elementTypeProvider.getGenerationSetting_AngularSuffixGenerationSettingParserRuleCall_3ElementType());
@@ -5500,7 +5553,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRuleServiceGenerationSetting"
-    // PsiInternalJDL.g:2034:1: entryRuleServiceGenerationSetting returns [Boolean current=false] : iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF ;
+    // PsiInternalJDL.g:2071:1: entryRuleServiceGenerationSetting returns [Boolean current=false] : iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF ;
     public final Boolean entryRuleServiceGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -5508,8 +5561,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:2034:66: (iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF )
-            // PsiInternalJDL.g:2035:2: iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF
+            // PsiInternalJDL.g:2071:66: (iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF )
+            // PsiInternalJDL.g:2072:2: iv_ruleServiceGenerationSetting= ruleServiceGenerationSetting EOF
             {
              markComposite(elementTypeProvider.getServiceGenerationSettingElementType()); 
             pushFollow(FOLLOW_1);
@@ -5535,24 +5588,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleServiceGenerationSetting"
-    // PsiInternalJDL.g:2041:1: ruleServiceGenerationSetting returns [Boolean current=false] : (otherlv_0= 'service' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) ) ;
+    // PsiInternalJDL.g:2078:1: ruleServiceGenerationSetting returns [Boolean current=false] : (otherlv_0= 'service' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) ) ;
     public final Boolean ruleServiceGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
         Token otherlv_0=null;
-        Token lv_entities_1_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        Token lv_entities_3_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Boolean lv_serviceType_5_0 = null;
 
 
         try {
-            // PsiInternalJDL.g:2042:1: ( (otherlv_0= 'service' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) ) )
-            // PsiInternalJDL.g:2043:2: (otherlv_0= 'service' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) )
+            // PsiInternalJDL.g:2079:1: ( (otherlv_0= 'service' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) ) )
+            // PsiInternalJDL.g:2080:2: (otherlv_0= 'service' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) )
             {
-            // PsiInternalJDL.g:2043:2: (otherlv_0= 'service' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) )
-            // PsiInternalJDL.g:2044:3: otherlv_0= 'service' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) )
+            // PsiInternalJDL.g:2080:2: (otherlv_0= 'service' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) ) )
+            // PsiInternalJDL.g:2081:3: otherlv_0= 'service' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_serviceType_5_0= ruleServiceType ) )
             {
 
             			markLeaf(elementTypeProvider.getServiceGenerationSetting_ServiceKeyword_0ElementType());
@@ -5561,24 +5614,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:2051:3: ( (lv_entities_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:2052:4: (lv_entities_1_0= RULE_ID )
+            // PsiInternalJDL.g:2088:3: ( (otherlv_1= RULE_ID ) )
+            // PsiInternalJDL.g:2089:4: (otherlv_1= RULE_ID )
             {
-            // PsiInternalJDL.g:2052:4: (lv_entities_1_0= RULE_ID )
-            // PsiInternalJDL.g:2053:5: lv_entities_1_0= RULE_ID
+            // PsiInternalJDL.g:2089:4: (otherlv_1= RULE_ID )
+            // PsiInternalJDL.g:2090:5: otherlv_1= RULE_ID
             {
 
-            					markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-            				
-            lv_entities_1_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
-            					doneLeaf(lv_entities_1_0);
+            					markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+            				
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            					doneLeaf(otherlv_1);
             				
 
             }
@@ -5586,20 +5639,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
-            // PsiInternalJDL.g:2068:3: (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )*
-            loop33:
+            // PsiInternalJDL.g:2105:3: (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )*
+            loop34:
             do {
-                int alt33=2;
-                int LA33_0 = input.LA(1);
+                int alt34=2;
+                int LA34_0 = input.LA(1);
 
-                if ( (LA33_0==13) ) {
-                    alt33=1;
+                if ( (LA34_0==13) ) {
+                    alt34=1;
                 }
 
 
-                switch (alt33) {
+                switch (alt34) {
             	case 1 :
-            	    // PsiInternalJDL.g:2069:4: otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:2106:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
             	    {
 
             	    				markLeaf(elementTypeProvider.getServiceGenerationSetting_CommaKeyword_2_0ElementType());
@@ -5608,24 +5661,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             	    				doneLeaf(otherlv_2);
             	    			
-            	    // PsiInternalJDL.g:2076:4: ( (lv_entities_3_0= RULE_ID ) )
-            	    // PsiInternalJDL.g:2077:5: (lv_entities_3_0= RULE_ID )
+            	    // PsiInternalJDL.g:2113:4: ( (otherlv_3= RULE_ID ) )
+            	    // PsiInternalJDL.g:2114:5: (otherlv_3= RULE_ID )
             	    {
-            	    // PsiInternalJDL.g:2077:5: (lv_entities_3_0= RULE_ID )
-            	    // PsiInternalJDL.g:2078:6: lv_entities_3_0= RULE_ID
+            	    // PsiInternalJDL.g:2114:5: (otherlv_3= RULE_ID )
+            	    // PsiInternalJDL.g:2115:6: otherlv_3= RULE_ID
             	    {
 
-            	    						markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-            	    					
-            	    lv_entities_3_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            	    						if(!current) {
+            	    						if (!current) {
             	    							associateWithSemanticElement();
             	    							current = true;
             	    						}
             	    					
 
-            	    						doneLeaf(lv_entities_3_0);
+            	    						markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+            	    					
+            	    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            	    						doneLeaf(otherlv_3);
             	    					
 
             	    }
@@ -5638,7 +5691,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             	    break;
 
             	default :
-            	    break loop33;
+            	    break loop34;
                 }
             } while (true);
 
@@ -5649,11 +5702,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_4);
             		
-            // PsiInternalJDL.g:2101:3: ( (lv_serviceType_5_0= ruleServiceType ) )
-            // PsiInternalJDL.g:2102:4: (lv_serviceType_5_0= ruleServiceType )
+            // PsiInternalJDL.g:2138:3: ( (lv_serviceType_5_0= ruleServiceType ) )
+            // PsiInternalJDL.g:2139:4: (lv_serviceType_5_0= ruleServiceType )
             {
-            // PsiInternalJDL.g:2102:4: (lv_serviceType_5_0= ruleServiceType )
-            // PsiInternalJDL.g:2103:5: lv_serviceType_5_0= ruleServiceType
+            // PsiInternalJDL.g:2139:4: (lv_serviceType_5_0= ruleServiceType )
+            // PsiInternalJDL.g:2140:5: lv_serviceType_5_0= ruleServiceType
             {
 
             					markComposite(elementTypeProvider.getServiceGenerationSetting_ServiceTypeServiceTypeEnumRuleCall_4_0ElementType());
@@ -5695,7 +5748,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRuleDTOGenerationSetting"
-    // PsiInternalJDL.g:2120:1: entryRuleDTOGenerationSetting returns [Boolean current=false] : iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF ;
+    // PsiInternalJDL.g:2157:1: entryRuleDTOGenerationSetting returns [Boolean current=false] : iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF ;
     public final Boolean entryRuleDTOGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -5703,8 +5756,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:2120:62: (iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF )
-            // PsiInternalJDL.g:2121:2: iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF
+            // PsiInternalJDL.g:2157:62: (iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF )
+            // PsiInternalJDL.g:2158:2: iv_ruleDTOGenerationSetting= ruleDTOGenerationSetting EOF
             {
              markComposite(elementTypeProvider.getDTOGenerationSettingElementType()); 
             pushFollow(FOLLOW_1);
@@ -5730,24 +5783,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleDTOGenerationSetting"
-    // PsiInternalJDL.g:2127:1: ruleDTOGenerationSetting returns [Boolean current=false] : (otherlv_0= 'dto' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) ) ;
+    // PsiInternalJDL.g:2164:1: ruleDTOGenerationSetting returns [Boolean current=false] : (otherlv_0= 'dto' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) ) ;
     public final Boolean ruleDTOGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
         Token otherlv_0=null;
-        Token lv_entities_1_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        Token lv_entities_3_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Boolean lv_dtoType_5_0 = null;
 
 
         try {
-            // PsiInternalJDL.g:2128:1: ( (otherlv_0= 'dto' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) ) )
-            // PsiInternalJDL.g:2129:2: (otherlv_0= 'dto' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) )
+            // PsiInternalJDL.g:2165:1: ( (otherlv_0= 'dto' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) ) )
+            // PsiInternalJDL.g:2166:2: (otherlv_0= 'dto' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) )
             {
-            // PsiInternalJDL.g:2129:2: (otherlv_0= 'dto' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) )
-            // PsiInternalJDL.g:2130:3: otherlv_0= 'dto' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) )
+            // PsiInternalJDL.g:2166:2: (otherlv_0= 'dto' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) ) )
+            // PsiInternalJDL.g:2167:3: otherlv_0= 'dto' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_dtoType_5_0= ruleDTOType ) )
             {
 
             			markLeaf(elementTypeProvider.getDTOGenerationSetting_DtoKeyword_0ElementType());
@@ -5756,24 +5809,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:2137:3: ( (lv_entities_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:2138:4: (lv_entities_1_0= RULE_ID )
+            // PsiInternalJDL.g:2174:3: ( (otherlv_1= RULE_ID ) )
+            // PsiInternalJDL.g:2175:4: (otherlv_1= RULE_ID )
             {
-            // PsiInternalJDL.g:2138:4: (lv_entities_1_0= RULE_ID )
-            // PsiInternalJDL.g:2139:5: lv_entities_1_0= RULE_ID
+            // PsiInternalJDL.g:2175:4: (otherlv_1= RULE_ID )
+            // PsiInternalJDL.g:2176:5: otherlv_1= RULE_ID
             {
 
-            					markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-            				
-            lv_entities_1_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
-            					doneLeaf(lv_entities_1_0);
+            					markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+            				
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            					doneLeaf(otherlv_1);
             				
 
             }
@@ -5781,20 +5834,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
-            // PsiInternalJDL.g:2154:3: (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )*
-            loop34:
+            // PsiInternalJDL.g:2191:3: (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )*
+            loop35:
             do {
-                int alt34=2;
-                int LA34_0 = input.LA(1);
+                int alt35=2;
+                int LA35_0 = input.LA(1);
 
-                if ( (LA34_0==13) ) {
-                    alt34=1;
+                if ( (LA35_0==13) ) {
+                    alt35=1;
                 }
 
 
-                switch (alt34) {
+                switch (alt35) {
             	case 1 :
-            	    // PsiInternalJDL.g:2155:4: otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:2192:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
             	    {
 
             	    				markLeaf(elementTypeProvider.getDTOGenerationSetting_CommaKeyword_2_0ElementType());
@@ -5803,24 +5856,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             	    				doneLeaf(otherlv_2);
             	    			
-            	    // PsiInternalJDL.g:2162:4: ( (lv_entities_3_0= RULE_ID ) )
-            	    // PsiInternalJDL.g:2163:5: (lv_entities_3_0= RULE_ID )
+            	    // PsiInternalJDL.g:2199:4: ( (otherlv_3= RULE_ID ) )
+            	    // PsiInternalJDL.g:2200:5: (otherlv_3= RULE_ID )
             	    {
-            	    // PsiInternalJDL.g:2163:5: (lv_entities_3_0= RULE_ID )
-            	    // PsiInternalJDL.g:2164:6: lv_entities_3_0= RULE_ID
+            	    // PsiInternalJDL.g:2200:5: (otherlv_3= RULE_ID )
+            	    // PsiInternalJDL.g:2201:6: otherlv_3= RULE_ID
             	    {
 
-            	    						markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-            	    					
-            	    lv_entities_3_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            	    						if(!current) {
+            	    						if (!current) {
             	    							associateWithSemanticElement();
             	    							current = true;
             	    						}
             	    					
 
-            	    						doneLeaf(lv_entities_3_0);
+            	    						markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+            	    					
+            	    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            	    						doneLeaf(otherlv_3);
             	    					
 
             	    }
@@ -5833,7 +5886,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             	    break;
 
             	default :
-            	    break loop34;
+            	    break loop35;
                 }
             } while (true);
 
@@ -5844,11 +5897,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_4);
             		
-            // PsiInternalJDL.g:2187:3: ( (lv_dtoType_5_0= ruleDTOType ) )
-            // PsiInternalJDL.g:2188:4: (lv_dtoType_5_0= ruleDTOType )
+            // PsiInternalJDL.g:2224:3: ( (lv_dtoType_5_0= ruleDTOType ) )
+            // PsiInternalJDL.g:2225:4: (lv_dtoType_5_0= ruleDTOType )
             {
-            // PsiInternalJDL.g:2188:4: (lv_dtoType_5_0= ruleDTOType )
-            // PsiInternalJDL.g:2189:5: lv_dtoType_5_0= ruleDTOType
+            // PsiInternalJDL.g:2225:4: (lv_dtoType_5_0= ruleDTOType )
+            // PsiInternalJDL.g:2226:5: lv_dtoType_5_0= ruleDTOType
             {
 
             					markComposite(elementTypeProvider.getDTOGenerationSetting_DtoTypeDTOTypeEnumRuleCall_4_0ElementType());
@@ -5890,7 +5943,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "entryRulePaginateGenerationSetting"
-    // PsiInternalJDL.g:2206:1: entryRulePaginateGenerationSetting returns [Boolean current=false] : iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF ;
+    // PsiInternalJDL.g:2243:1: entryRulePaginateGenerationSetting returns [Boolean current=false] : iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF ;
     public final Boolean entryRulePaginateGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -5898,8 +5951,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:2206:67: (iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF )
-            // PsiInternalJDL.g:2207:2: iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF
+            // PsiInternalJDL.g:2243:67: (iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF )
+            // PsiInternalJDL.g:2244:2: iv_rulePaginateGenerationSetting= rulePaginateGenerationSetting EOF
             {
              markComposite(elementTypeProvider.getPaginateGenerationSettingElementType()); 
             pushFollow(FOLLOW_1);
@@ -5925,24 +5978,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "rulePaginateGenerationSetting"
-    // PsiInternalJDL.g:2213:1: rulePaginateGenerationSetting returns [Boolean current=false] : (otherlv_0= 'paginate' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) ) ;
+    // PsiInternalJDL.g:2250:1: rulePaginateGenerationSetting returns [Boolean current=false] : (otherlv_0= 'paginate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) ) ;
     public final Boolean rulePaginateGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
         Token otherlv_0=null;
-        Token lv_entities_1_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        Token lv_entities_3_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Boolean lv_paginateType_5_0 = null;
 
 
         try {
-            // PsiInternalJDL.g:2214:1: ( (otherlv_0= 'paginate' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) ) )
-            // PsiInternalJDL.g:2215:2: (otherlv_0= 'paginate' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) )
+            // PsiInternalJDL.g:2251:1: ( (otherlv_0= 'paginate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) ) )
+            // PsiInternalJDL.g:2252:2: (otherlv_0= 'paginate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) )
             {
-            // PsiInternalJDL.g:2215:2: (otherlv_0= 'paginate' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) )
-            // PsiInternalJDL.g:2216:3: otherlv_0= 'paginate' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) )
+            // PsiInternalJDL.g:2252:2: (otherlv_0= 'paginate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) ) )
+            // PsiInternalJDL.g:2253:3: otherlv_0= 'paginate' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_paginateType_5_0= rulePaginateType ) )
             {
 
             			markLeaf(elementTypeProvider.getPaginateGenerationSetting_PaginateKeyword_0ElementType());
@@ -5951,24 +6004,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:2223:3: ( (lv_entities_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:2224:4: (lv_entities_1_0= RULE_ID )
+            // PsiInternalJDL.g:2260:3: ( (otherlv_1= RULE_ID ) )
+            // PsiInternalJDL.g:2261:4: (otherlv_1= RULE_ID )
             {
-            // PsiInternalJDL.g:2224:4: (lv_entities_1_0= RULE_ID )
-            // PsiInternalJDL.g:2225:5: lv_entities_1_0= RULE_ID
+            // PsiInternalJDL.g:2261:4: (otherlv_1= RULE_ID )
+            // PsiInternalJDL.g:2262:5: otherlv_1= RULE_ID
             {
 
-            					markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-            				
-            lv_entities_1_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
-            					doneLeaf(lv_entities_1_0);
+            					markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+            				
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            					doneLeaf(otherlv_1);
             				
 
             }
@@ -5976,20 +6029,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
-            // PsiInternalJDL.g:2240:3: (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )*
-            loop35:
+            // PsiInternalJDL.g:2277:3: (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )*
+            loop36:
             do {
-                int alt35=2;
-                int LA35_0 = input.LA(1);
+                int alt36=2;
+                int LA36_0 = input.LA(1);
 
-                if ( (LA35_0==13) ) {
-                    alt35=1;
+                if ( (LA36_0==13) ) {
+                    alt36=1;
                 }
 
 
-                switch (alt35) {
+                switch (alt36) {
             	case 1 :
-            	    // PsiInternalJDL.g:2241:4: otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:2278:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
             	    {
 
             	    				markLeaf(elementTypeProvider.getPaginateGenerationSetting_CommaKeyword_2_0ElementType());
@@ -5998,24 +6051,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             	    				doneLeaf(otherlv_2);
             	    			
-            	    // PsiInternalJDL.g:2248:4: ( (lv_entities_3_0= RULE_ID ) )
-            	    // PsiInternalJDL.g:2249:5: (lv_entities_3_0= RULE_ID )
+            	    // PsiInternalJDL.g:2285:4: ( (otherlv_3= RULE_ID ) )
+            	    // PsiInternalJDL.g:2286:5: (otherlv_3= RULE_ID )
             	    {
-            	    // PsiInternalJDL.g:2249:5: (lv_entities_3_0= RULE_ID )
-            	    // PsiInternalJDL.g:2250:6: lv_entities_3_0= RULE_ID
+            	    // PsiInternalJDL.g:2286:5: (otherlv_3= RULE_ID )
+            	    // PsiInternalJDL.g:2287:6: otherlv_3= RULE_ID
             	    {
 
-            	    						markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-            	    					
-            	    lv_entities_3_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            	    						if(!current) {
+            	    						if (!current) {
             	    							associateWithSemanticElement();
             	    							current = true;
             	    						}
             	    					
 
-            	    						doneLeaf(lv_entities_3_0);
+            	    						markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+            	    					
+            	    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            	    						doneLeaf(otherlv_3);
             	    					
 
             	    }
@@ -6028,7 +6081,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             	    break;
 
             	default :
-            	    break loop35;
+            	    break loop36;
                 }
             } while (true);
 
@@ -6039,14 +6092,14 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_4);
             		
-            // PsiInternalJDL.g:2273:3: ( (lv_paginateType_5_0= rulePaginateType ) )
-            // PsiInternalJDL.g:2274:4: (lv_paginateType_5_0= rulePaginateType )
+            // PsiInternalJDL.g:2310:3: ( (lv_paginateType_5_0= rulePaginateType ) )
+            // PsiInternalJDL.g:2311:4: (lv_paginateType_5_0= rulePaginateType )
             {
-            // PsiInternalJDL.g:2274:4: (lv_paginateType_5_0= rulePaginateType )
-            // PsiInternalJDL.g:2275:5: lv_paginateType_5_0= rulePaginateType
+            // PsiInternalJDL.g:2311:4: (lv_paginateType_5_0= rulePaginateType )
+            // PsiInternalJDL.g:2312:5: lv_paginateType_5_0= rulePaginateType
             {
 
-            					markComposite(elementTypeProvider.getPaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0ElementType());
+            					markComposite(elementTypeProvider.getPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType());
             				
             pushFollow(FOLLOW_2);
             lv_paginateType_5_0=rulePaginateType();
@@ -6084,8 +6137,152 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
     // $ANTLR end "rulePaginateGenerationSetting"
 
 
+    // $ANTLR start "entryRulePaginateType"
+    // PsiInternalJDL.g:2329:1: entryRulePaginateType returns [Boolean current=false] : iv_rulePaginateType= rulePaginateType EOF ;
+    public final Boolean entryRulePaginateType() throws RecognitionException {
+        Boolean current = false;
+
+        Boolean iv_rulePaginateType = null;
+
+
+        try {
+            // PsiInternalJDL.g:2329:54: (iv_rulePaginateType= rulePaginateType EOF )
+            // PsiInternalJDL.g:2330:2: iv_rulePaginateType= rulePaginateType EOF
+            {
+             markComposite(elementTypeProvider.getPaginateTypeElementType()); 
+            pushFollow(FOLLOW_1);
+            iv_rulePaginateType=rulePaginateType();
+
+            state._fsp--;
+
+             current =iv_rulePaginateType; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRulePaginateType"
+
+
+    // $ANTLR start "rulePaginateType"
+    // PsiInternalJDL.g:2336:1: rulePaginateType returns [Boolean current=false] : ( ( (lv_pagination_0_0= 'pagination' ) ) | ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) ) ) ;
+    public final Boolean rulePaginateType() throws RecognitionException {
+        Boolean current = false;
+
+        Token lv_pagination_0_0=null;
+        Token lv_infiniteScroll_1_0=null;
+
+        try {
+            // PsiInternalJDL.g:2337:1: ( ( ( (lv_pagination_0_0= 'pagination' ) ) | ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) ) ) )
+            // PsiInternalJDL.g:2338:2: ( ( (lv_pagination_0_0= 'pagination' ) ) | ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) ) )
+            {
+            // PsiInternalJDL.g:2338:2: ( ( (lv_pagination_0_0= 'pagination' ) ) | ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) ) )
+            int alt37=2;
+            int LA37_0 = input.LA(1);
+
+            if ( (LA37_0==44) ) {
+                alt37=1;
+            }
+            else if ( (LA37_0==45) ) {
+                alt37=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 37, 0, input);
+
+                throw nvae;
+            }
+            switch (alt37) {
+                case 1 :
+                    // PsiInternalJDL.g:2339:3: ( (lv_pagination_0_0= 'pagination' ) )
+                    {
+                    // PsiInternalJDL.g:2339:3: ( (lv_pagination_0_0= 'pagination' ) )
+                    // PsiInternalJDL.g:2340:4: (lv_pagination_0_0= 'pagination' )
+                    {
+                    // PsiInternalJDL.g:2340:4: (lv_pagination_0_0= 'pagination' )
+                    // PsiInternalJDL.g:2341:5: lv_pagination_0_0= 'pagination'
+                    {
+
+                    					markLeaf(elementTypeProvider.getPaginateType_PaginationPaginationKeyword_0_0ElementType());
+                    				
+                    lv_pagination_0_0=(Token)match(input,44,FOLLOW_2); 
+
+                    					doneLeaf(lv_pagination_0_0);
+                    				
+
+                    					if (!current) {
+                    						associateWithSemanticElement();
+                    						current = true;
+                    					}
+                    				
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // PsiInternalJDL.g:2357:3: ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) )
+                    {
+                    // PsiInternalJDL.g:2357:3: ( (lv_infiniteScroll_1_0= 'infinite-scroll' ) )
+                    // PsiInternalJDL.g:2358:4: (lv_infiniteScroll_1_0= 'infinite-scroll' )
+                    {
+                    // PsiInternalJDL.g:2358:4: (lv_infiniteScroll_1_0= 'infinite-scroll' )
+                    // PsiInternalJDL.g:2359:5: lv_infiniteScroll_1_0= 'infinite-scroll'
+                    {
+
+                    					markLeaf(elementTypeProvider.getPaginateType_InfiniteScrollInfiniteScrollKeyword_1_0ElementType());
+                    				
+                    lv_infiniteScroll_1_0=(Token)match(input,45,FOLLOW_2); 
+
+                    					doneLeaf(lv_infiniteScroll_1_0);
+                    				
+
+                    					if (!current) {
+                    						associateWithSemanticElement();
+                    						current = true;
+                    					}
+                    				
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "rulePaginateType"
+
+
     // $ANTLR start "entryRuleAngularSuffixGenerationSetting"
-    // PsiInternalJDL.g:2292:1: entryRuleAngularSuffixGenerationSetting returns [Boolean current=false] : iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF ;
+    // PsiInternalJDL.g:2378:1: entryRuleAngularSuffixGenerationSetting returns [Boolean current=false] : iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF ;
     public final Boolean entryRuleAngularSuffixGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
@@ -6093,8 +6290,8 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
         try {
-            // PsiInternalJDL.g:2292:72: (iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF )
-            // PsiInternalJDL.g:2293:2: iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF
+            // PsiInternalJDL.g:2378:72: (iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF )
+            // PsiInternalJDL.g:2379:2: iv_ruleAngularSuffixGenerationSetting= ruleAngularSuffixGenerationSetting EOF
             {
              markComposite(elementTypeProvider.getAngularSuffixGenerationSettingElementType()); 
             pushFollow(FOLLOW_1);
@@ -6120,49 +6317,49 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleAngularSuffixGenerationSetting"
-    // PsiInternalJDL.g:2299:1: ruleAngularSuffixGenerationSetting returns [Boolean current=false] : (otherlv_0= 'angularSuffix' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) ) ;
+    // PsiInternalJDL.g:2385:1: ruleAngularSuffixGenerationSetting returns [Boolean current=false] : (otherlv_0= 'angularSuffix' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) ) ;
     public final Boolean ruleAngularSuffixGenerationSetting() throws RecognitionException {
         Boolean current = false;
 
         Token otherlv_0=null;
-        Token lv_entities_1_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        Token lv_entities_3_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Token lv_id_5_0=null;
 
         try {
-            // PsiInternalJDL.g:2300:1: ( (otherlv_0= 'angularSuffix' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) ) )
-            // PsiInternalJDL.g:2301:2: (otherlv_0= 'angularSuffix' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) )
+            // PsiInternalJDL.g:2386:1: ( (otherlv_0= 'angularSuffix' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) ) )
+            // PsiInternalJDL.g:2387:2: (otherlv_0= 'angularSuffix' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) )
             {
-            // PsiInternalJDL.g:2301:2: (otherlv_0= 'angularSuffix' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) )
-            // PsiInternalJDL.g:2302:3: otherlv_0= 'angularSuffix' ( (lv_entities_1_0= RULE_ID ) ) (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) )
+            // PsiInternalJDL.g:2387:2: (otherlv_0= 'angularSuffix' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) ) )
+            // PsiInternalJDL.g:2388:3: otherlv_0= 'angularSuffix' ( (otherlv_1= RULE_ID ) ) (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )* otherlv_4= 'with' ( (lv_id_5_0= RULE_ID ) )
             {
 
             			markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_AngularSuffixKeyword_0ElementType());
             		
-            otherlv_0=(Token)match(input,44,FOLLOW_4); 
+            otherlv_0=(Token)match(input,46,FOLLOW_4); 
 
             			doneLeaf(otherlv_0);
             		
-            // PsiInternalJDL.g:2309:3: ( (lv_entities_1_0= RULE_ID ) )
-            // PsiInternalJDL.g:2310:4: (lv_entities_1_0= RULE_ID )
+            // PsiInternalJDL.g:2395:3: ( (otherlv_1= RULE_ID ) )
+            // PsiInternalJDL.g:2396:4: (otherlv_1= RULE_ID )
             {
-            // PsiInternalJDL.g:2310:4: (lv_entities_1_0= RULE_ID )
-            // PsiInternalJDL.g:2311:5: lv_entities_1_0= RULE_ID
+            // PsiInternalJDL.g:2396:4: (otherlv_1= RULE_ID )
+            // PsiInternalJDL.g:2397:5: otherlv_1= RULE_ID
             {
 
-            					markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-            				
-            lv_entities_1_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            					if(!current) {
+            					if (!current) {
             						associateWithSemanticElement();
             						current = true;
             					}
             				
 
-            					doneLeaf(lv_entities_1_0);
+            					markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+            				
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            					doneLeaf(otherlv_1);
             				
 
             }
@@ -6170,20 +6367,20 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             }
 
-            // PsiInternalJDL.g:2326:3: (otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) ) )*
-            loop36:
+            // PsiInternalJDL.g:2412:3: (otherlv_2= ',' ( (otherlv_3= RULE_ID ) ) )*
+            loop38:
             do {
-                int alt36=2;
-                int LA36_0 = input.LA(1);
+                int alt38=2;
+                int LA38_0 = input.LA(1);
 
-                if ( (LA36_0==13) ) {
-                    alt36=1;
+                if ( (LA38_0==13) ) {
+                    alt38=1;
                 }
 
 
-                switch (alt36) {
+                switch (alt38) {
             	case 1 :
-            	    // PsiInternalJDL.g:2327:4: otherlv_2= ',' ( (lv_entities_3_0= RULE_ID ) )
+            	    // PsiInternalJDL.g:2413:4: otherlv_2= ',' ( (otherlv_3= RULE_ID ) )
             	    {
 
             	    				markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_CommaKeyword_2_0ElementType());
@@ -6192,24 +6389,24 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             	    				doneLeaf(otherlv_2);
             	    			
-            	    // PsiInternalJDL.g:2334:4: ( (lv_entities_3_0= RULE_ID ) )
-            	    // PsiInternalJDL.g:2335:5: (lv_entities_3_0= RULE_ID )
+            	    // PsiInternalJDL.g:2420:4: ( (otherlv_3= RULE_ID ) )
+            	    // PsiInternalJDL.g:2421:5: (otherlv_3= RULE_ID )
             	    {
-            	    // PsiInternalJDL.g:2335:5: (lv_entities_3_0= RULE_ID )
-            	    // PsiInternalJDL.g:2336:6: lv_entities_3_0= RULE_ID
+            	    // PsiInternalJDL.g:2421:5: (otherlv_3= RULE_ID )
+            	    // PsiInternalJDL.g:2422:6: otherlv_3= RULE_ID
             	    {
 
-            	    						markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-            	    					
-            	    lv_entities_3_0=(Token)match(input,RULE_ID,FOLLOW_38); 
-
-            	    						if(!current) {
+            	    						if (!current) {
             	    							associateWithSemanticElement();
             	    							current = true;
             	    						}
             	    					
 
-            	    						doneLeaf(lv_entities_3_0);
+            	    						markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+            	    					
+            	    otherlv_3=(Token)match(input,RULE_ID,FOLLOW_38); 
+
+            	    						doneLeaf(otherlv_3);
             	    					
 
             	    }
@@ -6222,7 +6419,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
             	    break;
 
             	default :
-            	    break loop36;
+            	    break loop38;
                 }
             } while (true);
 
@@ -6233,11 +6430,11 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
             			doneLeaf(otherlv_4);
             		
-            // PsiInternalJDL.g:2359:3: ( (lv_id_5_0= RULE_ID ) )
-            // PsiInternalJDL.g:2360:4: (lv_id_5_0= RULE_ID )
+            // PsiInternalJDL.g:2445:3: ( (lv_id_5_0= RULE_ID ) )
+            // PsiInternalJDL.g:2446:4: (lv_id_5_0= RULE_ID )
             {
-            // PsiInternalJDL.g:2360:4: (lv_id_5_0= RULE_ID )
-            // PsiInternalJDL.g:2361:5: lv_id_5_0= RULE_ID
+            // PsiInternalJDL.g:2446:4: (lv_id_5_0= RULE_ID )
+            // PsiInternalJDL.g:2447:5: lv_id_5_0= RULE_ID
             {
 
             					markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_IdIDTerminalRuleCall_4_0ElementType());
@@ -6277,7 +6474,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleCardinality"
-    // PsiInternalJDL.g:2380:1: ruleCardinality returns [Boolean current=false] : ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) ) ;
+    // PsiInternalJDL.g:2466:1: ruleCardinality returns [Boolean current=false] : ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) ) ;
     public final Boolean ruleCardinality() throws RecognitionException {
         Boolean current = false;
 
@@ -6287,50 +6484,50 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
         Token enumLiteral_3=null;
 
         try {
-            // PsiInternalJDL.g:2381:1: ( ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) ) )
-            // PsiInternalJDL.g:2382:2: ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) )
+            // PsiInternalJDL.g:2467:1: ( ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) ) )
+            // PsiInternalJDL.g:2468:2: ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) )
             {
-            // PsiInternalJDL.g:2382:2: ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) )
-            int alt37=4;
+            // PsiInternalJDL.g:2468:2: ( (enumLiteral_0= 'OneToMany' ) | (enumLiteral_1= 'ManyToOne' ) | (enumLiteral_2= 'OneToOne' ) | (enumLiteral_3= 'ManyToMany' ) )
+            int alt39=4;
             switch ( input.LA(1) ) {
-            case 45:
-                {
-                alt37=1;
-                }
-                break;
-            case 46:
-                {
-                alt37=2;
-                }
-                break;
             case 47:
                 {
-                alt37=3;
+                alt39=1;
                 }
                 break;
             case 48:
                 {
-                alt37=4;
+                alt39=2;
+                }
+                break;
+            case 49:
+                {
+                alt39=3;
+                }
+                break;
+            case 50:
+                {
+                alt39=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 37, 0, input);
+                    new NoViableAltException("", 39, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt37) {
+            switch (alt39) {
                 case 1 :
-                    // PsiInternalJDL.g:2383:3: (enumLiteral_0= 'OneToMany' )
+                    // PsiInternalJDL.g:2469:3: (enumLiteral_0= 'OneToMany' )
                     {
-                    // PsiInternalJDL.g:2383:3: (enumLiteral_0= 'OneToMany' )
-                    // PsiInternalJDL.g:2384:4: enumLiteral_0= 'OneToMany'
+                    // PsiInternalJDL.g:2469:3: (enumLiteral_0= 'OneToMany' )
+                    // PsiInternalJDL.g:2470:4: enumLiteral_0= 'OneToMany'
                     {
 
                     				markLeaf(elementTypeProvider.getCardinality_OneToManyEnumLiteralDeclaration_0ElementType());
                     			
-                    enumLiteral_0=(Token)match(input,45,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,47,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_0);
                     			
@@ -6341,15 +6538,15 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 2 :
-                    // PsiInternalJDL.g:2393:3: (enumLiteral_1= 'ManyToOne' )
+                    // PsiInternalJDL.g:2479:3: (enumLiteral_1= 'ManyToOne' )
                     {
-                    // PsiInternalJDL.g:2393:3: (enumLiteral_1= 'ManyToOne' )
-                    // PsiInternalJDL.g:2394:4: enumLiteral_1= 'ManyToOne'
+                    // PsiInternalJDL.g:2479:3: (enumLiteral_1= 'ManyToOne' )
+                    // PsiInternalJDL.g:2480:4: enumLiteral_1= 'ManyToOne'
                     {
 
                     				markLeaf(elementTypeProvider.getCardinality_ManyToOneEnumLiteralDeclaration_1ElementType());
                     			
-                    enumLiteral_1=(Token)match(input,46,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,48,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_1);
                     			
@@ -6360,15 +6557,15 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 3 :
-                    // PsiInternalJDL.g:2403:3: (enumLiteral_2= 'OneToOne' )
+                    // PsiInternalJDL.g:2489:3: (enumLiteral_2= 'OneToOne' )
                     {
-                    // PsiInternalJDL.g:2403:3: (enumLiteral_2= 'OneToOne' )
-                    // PsiInternalJDL.g:2404:4: enumLiteral_2= 'OneToOne'
+                    // PsiInternalJDL.g:2489:3: (enumLiteral_2= 'OneToOne' )
+                    // PsiInternalJDL.g:2490:4: enumLiteral_2= 'OneToOne'
                     {
 
                     				markLeaf(elementTypeProvider.getCardinality_OneToOneEnumLiteralDeclaration_2ElementType());
                     			
-                    enumLiteral_2=(Token)match(input,47,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,49,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_2);
                     			
@@ -6379,15 +6576,15 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 4 :
-                    // PsiInternalJDL.g:2413:3: (enumLiteral_3= 'ManyToMany' )
+                    // PsiInternalJDL.g:2499:3: (enumLiteral_3= 'ManyToMany' )
                     {
-                    // PsiInternalJDL.g:2413:3: (enumLiteral_3= 'ManyToMany' )
-                    // PsiInternalJDL.g:2414:4: enumLiteral_3= 'ManyToMany'
+                    // PsiInternalJDL.g:2499:3: (enumLiteral_3= 'ManyToMany' )
+                    // PsiInternalJDL.g:2500:4: enumLiteral_3= 'ManyToMany'
                     {
 
                     				markLeaf(elementTypeProvider.getCardinality_ManyToManyEnumLiteralDeclaration_3ElementType());
                     			
-                    enumLiteral_3=(Token)match(input,48,FOLLOW_2); 
+                    enumLiteral_3=(Token)match(input,50,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_3);
                     			
@@ -6416,7 +6613,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleServiceType"
-    // PsiInternalJDL.g:2426:1: ruleServiceType returns [Boolean current=false] : ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) ) ;
+    // PsiInternalJDL.g:2512:1: ruleServiceType returns [Boolean current=false] : ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) ) ;
     public final Boolean ruleServiceType() throws RecognitionException {
         Boolean current = false;
 
@@ -6424,36 +6621,36 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
         Token enumLiteral_1=null;
 
         try {
-            // PsiInternalJDL.g:2427:1: ( ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) ) )
-            // PsiInternalJDL.g:2428:2: ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) )
+            // PsiInternalJDL.g:2513:1: ( ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) ) )
+            // PsiInternalJDL.g:2514:2: ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) )
             {
-            // PsiInternalJDL.g:2428:2: ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) )
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // PsiInternalJDL.g:2514:2: ( (enumLiteral_0= 'serviceClass' ) | (enumLiteral_1= 'serviceImpl' ) )
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( (LA38_0==49) ) {
-                alt38=1;
+            if ( (LA40_0==51) ) {
+                alt40=1;
             }
-            else if ( (LA38_0==50) ) {
-                alt38=2;
+            else if ( (LA40_0==52) ) {
+                alt40=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 38, 0, input);
+                    new NoViableAltException("", 40, 0, input);
 
                 throw nvae;
             }
-            switch (alt38) {
+            switch (alt40) {
                 case 1 :
-                    // PsiInternalJDL.g:2429:3: (enumLiteral_0= 'serviceClass' )
+                    // PsiInternalJDL.g:2515:3: (enumLiteral_0= 'serviceClass' )
                     {
-                    // PsiInternalJDL.g:2429:3: (enumLiteral_0= 'serviceClass' )
-                    // PsiInternalJDL.g:2430:4: enumLiteral_0= 'serviceClass'
+                    // PsiInternalJDL.g:2515:3: (enumLiteral_0= 'serviceClass' )
+                    // PsiInternalJDL.g:2516:4: enumLiteral_0= 'serviceClass'
                     {
 
                     				markLeaf(elementTypeProvider.getServiceType_ServiceClassEnumLiteralDeclaration_0ElementType());
                     			
-                    enumLiteral_0=(Token)match(input,49,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,51,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_0);
                     			
@@ -6464,15 +6661,15 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
                     }
                     break;
                 case 2 :
-                    // PsiInternalJDL.g:2439:3: (enumLiteral_1= 'serviceImpl' )
+                    // PsiInternalJDL.g:2525:3: (enumLiteral_1= 'serviceImpl' )
                     {
-                    // PsiInternalJDL.g:2439:3: (enumLiteral_1= 'serviceImpl' )
-                    // PsiInternalJDL.g:2440:4: enumLiteral_1= 'serviceImpl'
+                    // PsiInternalJDL.g:2525:3: (enumLiteral_1= 'serviceImpl' )
+                    // PsiInternalJDL.g:2526:4: enumLiteral_1= 'serviceImpl'
                     {
 
                     				markLeaf(elementTypeProvider.getServiceType_ServiceImplEnumLiteralDeclaration_1ElementType());
                     			
-                    enumLiteral_1=(Token)match(input,50,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,52,FOLLOW_2); 
 
                     				doneLeaf(enumLiteral_1);
                     			
@@ -6501,23 +6698,23 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
 
     // $ANTLR start "ruleDTOType"
-    // PsiInternalJDL.g:2452:1: ruleDTOType returns [Boolean current=false] : (enumLiteral_0= 'mapstruct' ) ;
+    // PsiInternalJDL.g:2538:1: ruleDTOType returns [Boolean current=false] : (enumLiteral_0= 'mapstruct' ) ;
     public final Boolean ruleDTOType() throws RecognitionException {
         Boolean current = false;
 
         Token enumLiteral_0=null;
 
         try {
-            // PsiInternalJDL.g:2453:1: ( (enumLiteral_0= 'mapstruct' ) )
-            // PsiInternalJDL.g:2454:2: (enumLiteral_0= 'mapstruct' )
+            // PsiInternalJDL.g:2539:1: ( (enumLiteral_0= 'mapstruct' ) )
+            // PsiInternalJDL.g:2540:2: (enumLiteral_0= 'mapstruct' )
             {
-            // PsiInternalJDL.g:2454:2: (enumLiteral_0= 'mapstruct' )
-            // PsiInternalJDL.g:2455:3: enumLiteral_0= 'mapstruct'
+            // PsiInternalJDL.g:2540:2: (enumLiteral_0= 'mapstruct' )
+            // PsiInternalJDL.g:2541:3: enumLiteral_0= 'mapstruct'
             {
 
             			markLeaf(elementTypeProvider.getDTOType_MapstructEnumLiteralDeclarationElementType());
             		
-            enumLiteral_0=(Token)match(input,51,FOLLOW_2); 
+            enumLiteral_0=(Token)match(input,53,FOLLOW_2); 
 
             			doneLeaf(enumLiteral_0);
             		
@@ -6538,91 +6735,6 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
     }
     // $ANTLR end "ruleDTOType"
 
-
-    // $ANTLR start "rulePaginateType"
-    // PsiInternalJDL.g:2466:1: rulePaginateType returns [Boolean current=false] : ( (enumLiteral_0= 'pagination' ) | (enumLiteral_1= 'infiniteScroll' ) ) ;
-    public final Boolean rulePaginateType() throws RecognitionException {
-        Boolean current = false;
-
-        Token enumLiteral_0=null;
-        Token enumLiteral_1=null;
-
-        try {
-            // PsiInternalJDL.g:2467:1: ( ( (enumLiteral_0= 'pagination' ) | (enumLiteral_1= 'infiniteScroll' ) ) )
-            // PsiInternalJDL.g:2468:2: ( (enumLiteral_0= 'pagination' ) | (enumLiteral_1= 'infiniteScroll' ) )
-            {
-            // PsiInternalJDL.g:2468:2: ( (enumLiteral_0= 'pagination' ) | (enumLiteral_1= 'infiniteScroll' ) )
-            int alt39=2;
-            int LA39_0 = input.LA(1);
-
-            if ( (LA39_0==52) ) {
-                alt39=1;
-            }
-            else if ( (LA39_0==53) ) {
-                alt39=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 39, 0, input);
-
-                throw nvae;
-            }
-            switch (alt39) {
-                case 1 :
-                    // PsiInternalJDL.g:2469:3: (enumLiteral_0= 'pagination' )
-                    {
-                    // PsiInternalJDL.g:2469:3: (enumLiteral_0= 'pagination' )
-                    // PsiInternalJDL.g:2470:4: enumLiteral_0= 'pagination'
-                    {
-
-                    				markLeaf(elementTypeProvider.getPaginateType_PaginationEnumLiteralDeclaration_0ElementType());
-                    			
-                    enumLiteral_0=(Token)match(input,52,FOLLOW_2); 
-
-                    				doneLeaf(enumLiteral_0);
-                    			
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // PsiInternalJDL.g:2479:3: (enumLiteral_1= 'infiniteScroll' )
-                    {
-                    // PsiInternalJDL.g:2479:3: (enumLiteral_1= 'infiniteScroll' )
-                    // PsiInternalJDL.g:2480:4: enumLiteral_1= 'infiniteScroll'
-                    {
-
-                    				markLeaf(elementTypeProvider.getPaginateType_InfiniteScrollEnumLiteralDeclaration_1ElementType());
-                    			
-                    enumLiteral_1=(Token)match(input,53,FOLLOW_2); 
-
-                    				doneLeaf(enumLiteral_1);
-                    			
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "rulePaginateType"
-
     // Delegated rules
 
 
@@ -6630,7 +6742,7 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00001DA000000802L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x00004DA000000802L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000006000L});
@@ -6658,16 +6770,16 @@ public class PsiInternalJDLParser extends AbstractPsiAntlrParser {
     public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000400000002L});
     public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000001800000002L});
     public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000001000000002L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0001E00000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000004800L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0007800000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000000004010L});
     public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000004000001000L});
     public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0000004000000000L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000001002L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000020004000L});
     public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000004000L});
     public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000020000002000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0006000000000000L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0008000000000000L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0030000000000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0018000000000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0020000000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000300000000000L});
 
 }

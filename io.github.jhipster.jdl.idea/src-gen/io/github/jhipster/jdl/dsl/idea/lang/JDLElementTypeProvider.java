@@ -1263,8 +1263,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createRelationship_FromEntityAssignment_0ElementType() {
 			return new IGrammarAwareElementType("Relationship_FromEntityAssignment_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getFromEntityAssignment_0());
 		}
-		public static IGrammarAwareElementType createRelationship_FromEntityEntityParserRuleCall_0_0ElementType() {
-			return new IGrammarAwareElementType("Relationship_FromEntityEntityParserRuleCall_0_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getFromEntityEntityParserRuleCall_0_0());
+		public static IGrammarAwareElementType createRelationship_FromEntityEntityCrossReference_0_0ElementType() {
+			return new IGrammarAwareElementType("Relationship_FromEntityEntityCrossReference_0_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getFromEntityEntityCrossReference_0_0());
+		}
+		public static IGrammarAwareElementType createRelationship_FromEntityEntityIDTerminalRuleCall_0_0_1ElementType() {
+			return new IGrammarAwareElementType("Relationship_FromEntityEntityIDTerminalRuleCall_0_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getFromEntityEntityIDTerminalRuleCall_0_0_1());
 		}
 		public static IGrammarAwareElementType createRelationship_FromNameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("Relationship_FromNameAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getFromNameAssignment_1());
@@ -1278,8 +1281,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createRelationship_ToEntityAssignment_3ElementType() {
 			return new IGrammarAwareElementType("Relationship_ToEntityAssignment_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getToEntityAssignment_3());
 		}
-		public static IGrammarAwareElementType createRelationship_ToEntityEntityParserRuleCall_3_0ElementType() {
-			return new IGrammarAwareElementType("Relationship_ToEntityEntityParserRuleCall_3_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getToEntityEntityParserRuleCall_3_0());
+		public static IGrammarAwareElementType createRelationship_ToEntityEntityCrossReference_3_0ElementType() {
+			return new IGrammarAwareElementType("Relationship_ToEntityEntityCrossReference_3_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getToEntityEntityCrossReference_3_0());
+		}
+		public static IGrammarAwareElementType createRelationship_ToEntityEntityIDTerminalRuleCall_3_0_1ElementType() {
+			return new IGrammarAwareElementType("Relationship_ToEntityEntityIDTerminalRuleCall_3_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getToEntityEntityIDTerminalRuleCall_3_0_1());
 		}
 		public static IGrammarAwareElementType createRelationship_ToNameAssignment_4ElementType() {
 			return new IGrammarAwareElementType("Relationship_ToNameAssignment_4_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipAccess().getToNameAssignment_4());
@@ -1295,7 +1301,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType Relationship_FromEntityAssignment_0_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_FromEntityAssignment_0ElementType());
 
-	public static final IGrammarAwareElementType Relationship_FromEntityEntityParserRuleCall_0_0_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_FromEntityEntityParserRuleCall_0_0ElementType());
+	public static final IGrammarAwareElementType Relationship_FromEntityEntityCrossReference_0_0_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_FromEntityEntityCrossReference_0_0ElementType());
+
+	public static final IGrammarAwareElementType Relationship_FromEntityEntityIDTerminalRuleCall_0_0_1_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_FromEntityEntityIDTerminalRuleCall_0_0_1ElementType());
 
 	public static final IGrammarAwareElementType Relationship_FromNameAssignment_1_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_FromNameAssignment_1ElementType());
 
@@ -1305,7 +1313,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType Relationship_ToEntityAssignment_3_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_ToEntityAssignment_3ElementType());
 
-	public static final IGrammarAwareElementType Relationship_ToEntityEntityParserRuleCall_3_0_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_ToEntityEntityParserRuleCall_3_0ElementType());
+	public static final IGrammarAwareElementType Relationship_ToEntityEntityCrossReference_3_0_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_ToEntityEntityCrossReference_3_0ElementType());
+
+	public static final IGrammarAwareElementType Relationship_ToEntityEntityIDTerminalRuleCall_3_0_1_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_ToEntityEntityIDTerminalRuleCall_3_0_1ElementType());
 
 	public static final IGrammarAwareElementType Relationship_ToNameAssignment_4_ELEMENT_TYPE = associate(RelationshipFactory.createRelationship_ToNameAssignment_4ElementType());
 
@@ -1327,8 +1337,23 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createRelationshipName_NameIDTerminalRuleCall_1_0ElementType() {
 			return new IGrammarAwareElementType("RelationshipName_NameIDTerminalRuleCall_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getNameIDTerminalRuleCall_1_0());
 		}
-		public static IGrammarAwareElementType createRelationshipName_RightCurlyBracketKeyword_2ElementType() {
-			return new IGrammarAwareElementType("RelationshipName_RightCurlyBracketKeyword_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getRightCurlyBracketKeyword_2());
+		public static IGrammarAwareElementType createRelationshipName_Group_2ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_Group_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getGroup_2());
+		}
+		public static IGrammarAwareElementType createRelationshipName_LeftParenthesisKeyword_2_0ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_LeftParenthesisKeyword_2_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getLeftParenthesisKeyword_2_0());
+		}
+		public static IGrammarAwareElementType createRelationshipName_RoleAssignment_2_1ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_RoleAssignment_2_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getRoleAssignment_2_1());
+		}
+		public static IGrammarAwareElementType createRelationshipName_RoleIDTerminalRuleCall_2_1_0ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_RoleIDTerminalRuleCall_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getRoleIDTerminalRuleCall_2_1_0());
+		}
+		public static IGrammarAwareElementType createRelationshipName_RightParenthesisKeyword_2_2ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_RightParenthesisKeyword_2_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getRightParenthesisKeyword_2_2());
+		}
+		public static IGrammarAwareElementType createRelationshipName_RightCurlyBracketKeyword_3ElementType() {
+			return new IGrammarAwareElementType("RelationshipName_RightCurlyBracketKeyword_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getRelationshipNameAccess().getRightCurlyBracketKeyword_3());
 		}
 	}
 
@@ -1342,7 +1367,17 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType RelationshipName_NameIDTerminalRuleCall_1_0_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_NameIDTerminalRuleCall_1_0ElementType());
 
-	public static final IGrammarAwareElementType RelationshipName_RightCurlyBracketKeyword_2_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_RightCurlyBracketKeyword_2ElementType());
+	public static final IGrammarAwareElementType RelationshipName_Group_2_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_Group_2ElementType());
+
+	public static final IGrammarAwareElementType RelationshipName_LeftParenthesisKeyword_2_0_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_LeftParenthesisKeyword_2_0ElementType());
+
+	public static final IGrammarAwareElementType RelationshipName_RoleAssignment_2_1_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_RoleAssignment_2_1ElementType());
+
+	public static final IGrammarAwareElementType RelationshipName_RoleIDTerminalRuleCall_2_1_0_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_RoleIDTerminalRuleCall_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType RelationshipName_RightParenthesisKeyword_2_2_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_RightParenthesisKeyword_2_2ElementType());
+
+	public static final IGrammarAwareElementType RelationshipName_RightCurlyBracketKeyword_3_ELEMENT_TYPE = associate(RelationshipNameFactory.createRelationshipName_RightCurlyBracketKeyword_3ElementType());
 
 	private static class CardinalityFactory {
 		public static IGrammarAwareElementType createCardinalityElementType() {
@@ -1511,8 +1546,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesAssignment_1ElementType() {
 			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesAssignment_1());
 		}
-		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
+		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
+		}
+		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_1_0_1());
 		}
 		public static IGrammarAwareElementType createServiceGenerationSetting_Group_2ElementType() {
 			return new IGrammarAwareElementType("ServiceGenerationSetting_Group_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getGroup_2());
@@ -1523,8 +1561,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesAssignment_2_1ElementType() {
 			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesAssignment_2_1());
 		}
-		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
+		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
+		}
+		public static IGrammarAwareElementType createServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+			return new IGrammarAwareElementType("ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_2_1_0_1());
 		}
 		public static IGrammarAwareElementType createServiceGenerationSetting_WithKeyword_3ElementType() {
 			return new IGrammarAwareElementType("ServiceGenerationSetting_WithKeyword_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getServiceGenerationSettingAccess().getWithKeyword_3());
@@ -1545,7 +1586,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesAssignment_1ElementType());
 
-	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
+	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+
+	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType ServiceGenerationSetting_Group_2_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_Group_2ElementType());
 
@@ -1553,7 +1596,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesAssignment_2_1ElementType());
 
-	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
+	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType ServiceGenerationSetting_WithKeyword_3_ELEMENT_TYPE = associate(ServiceGenerationSettingFactory.createServiceGenerationSetting_WithKeyword_3ElementType());
 
@@ -1607,8 +1652,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesAssignment_1ElementType() {
 			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesAssignment_1());
 		}
-		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
+		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
+		}
+		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_1_0_1());
 		}
 		public static IGrammarAwareElementType createDTOGenerationSetting_Group_2ElementType() {
 			return new IGrammarAwareElementType("DTOGenerationSetting_Group_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getGroup_2());
@@ -1619,8 +1667,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesAssignment_2_1ElementType() {
 			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesAssignment_2_1());
 		}
-		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
+		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
+		}
+		public static IGrammarAwareElementType createDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+			return new IGrammarAwareElementType("DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_2_1_0_1());
 		}
 		public static IGrammarAwareElementType createDTOGenerationSetting_WithKeyword_3ElementType() {
 			return new IGrammarAwareElementType("DTOGenerationSetting_WithKeyword_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getDTOGenerationSettingAccess().getWithKeyword_3());
@@ -1641,7 +1692,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesAssignment_1ElementType());
 
-	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
+	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+
+	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType DTOGenerationSetting_Group_2_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_Group_2ElementType());
 
@@ -1649,7 +1702,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesAssignment_2_1ElementType());
 
-	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
+	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType DTOGenerationSetting_WithKeyword_3_ELEMENT_TYPE = associate(DTOGenerationSettingFactory.createDTOGenerationSetting_WithKeyword_3ElementType());
 
@@ -1688,8 +1743,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesAssignment_1ElementType() {
 			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesAssignment_1());
 		}
-		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
+		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
+		}
+		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_1_0_1());
 		}
 		public static IGrammarAwareElementType createPaginateGenerationSetting_Group_2ElementType() {
 			return new IGrammarAwareElementType("PaginateGenerationSetting_Group_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getGroup_2());
@@ -1700,8 +1758,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesAssignment_2_1ElementType() {
 			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesAssignment_2_1());
 		}
-		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
+		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
+		}
+		public static IGrammarAwareElementType createPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+			return new IGrammarAwareElementType("PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_2_1_0_1());
 		}
 		public static IGrammarAwareElementType createPaginateGenerationSetting_WithKeyword_3ElementType() {
 			return new IGrammarAwareElementType("PaginateGenerationSetting_WithKeyword_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getWithKeyword_3());
@@ -1709,8 +1770,8 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPaginateGenerationSetting_PaginateTypeAssignment_4ElementType() {
 			return new IGrammarAwareElementType("PaginateGenerationSetting_PaginateTypeAssignment_4_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getPaginateTypeAssignment_4());
 		}
-		public static IGrammarAwareElementType createPaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0ElementType() {
-			return new IGrammarAwareElementType("PaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getPaginateTypePaginateTypeEnumRuleCall_4_0());
+		public static IGrammarAwareElementType createPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType() {
+			return new IGrammarAwareElementType("PaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateGenerationSettingAccess().getPaginateTypePaginateTypeParserRuleCall_4_0());
 		}
 	}
 
@@ -1722,7 +1783,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesAssignment_1ElementType());
 
-	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
+	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+
+	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType PaginateGenerationSetting_Group_2_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_Group_2ElementType());
 
@@ -1730,13 +1793,15 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesAssignment_2_1ElementType());
 
-	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
+	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType PaginateGenerationSetting_WithKeyword_3_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_WithKeyword_3ElementType());
 
 	public static final IGrammarAwareElementType PaginateGenerationSetting_PaginateTypeAssignment_4_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_PaginateTypeAssignment_4ElementType());
 
-	public static final IGrammarAwareElementType PaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0ElementType());
+	public static final IGrammarAwareElementType PaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0_ELEMENT_TYPE = associate(PaginateGenerationSettingFactory.createPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType());
 
 	private static class PaginateTypeFactory {
 		public static IGrammarAwareElementType createPaginateTypeElementType() {
@@ -1745,14 +1810,14 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPaginateType_AlternativesElementType() {
 			return new IGrammarAwareElementType("PaginateType_Alternatives_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getAlternatives());
 		}
-		public static IGrammarAwareElementType createPaginateType_PaginationEnumLiteralDeclaration_0ElementType() {
-			return new IGrammarAwareElementType("PaginateType_PaginationEnumLiteralDeclaration_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getPaginationEnumLiteralDeclaration_0());
+		public static IGrammarAwareElementType createPaginateType_PaginationAssignment_0ElementType() {
+			return new IGrammarAwareElementType("PaginateType_PaginationAssignment_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getPaginationAssignment_0());
 		}
 		public static IGrammarAwareElementType createPaginateType_PaginationPaginationKeyword_0_0ElementType() {
 			return new IGrammarAwareElementType("PaginateType_PaginationPaginationKeyword_0_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getPaginationPaginationKeyword_0_0());
 		}
-		public static IGrammarAwareElementType createPaginateType_InfiniteScrollEnumLiteralDeclaration_1ElementType() {
-			return new IGrammarAwareElementType("PaginateType_InfiniteScrollEnumLiteralDeclaration_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getInfiniteScrollEnumLiteralDeclaration_1());
+		public static IGrammarAwareElementType createPaginateType_InfiniteScrollAssignment_1ElementType() {
+			return new IGrammarAwareElementType("PaginateType_InfiniteScrollAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getInfiniteScrollAssignment_1());
 		}
 		public static IGrammarAwareElementType createPaginateType_InfiniteScrollInfiniteScrollKeyword_1_0ElementType() {
 			return new IGrammarAwareElementType("PaginateType_InfiniteScrollInfiniteScrollKeyword_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getPaginateTypeAccess().getInfiniteScrollInfiniteScrollKeyword_1_0());
@@ -1763,11 +1828,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PaginateType_Alternatives_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_AlternativesElementType());
 
-	public static final IGrammarAwareElementType PaginateType_PaginationEnumLiteralDeclaration_0_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_PaginationEnumLiteralDeclaration_0ElementType());
+	public static final IGrammarAwareElementType PaginateType_PaginationAssignment_0_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_PaginationAssignment_0ElementType());
 
 	public static final IGrammarAwareElementType PaginateType_PaginationPaginationKeyword_0_0_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_PaginationPaginationKeyword_0_0ElementType());
 
-	public static final IGrammarAwareElementType PaginateType_InfiniteScrollEnumLiteralDeclaration_1_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_InfiniteScrollEnumLiteralDeclaration_1ElementType());
+	public static final IGrammarAwareElementType PaginateType_InfiniteScrollAssignment_1_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_InfiniteScrollAssignment_1ElementType());
 
 	public static final IGrammarAwareElementType PaginateType_InfiniteScrollInfiniteScrollKeyword_1_0_ELEMENT_TYPE = associate(PaginateTypeFactory.createPaginateType_InfiniteScrollInfiniteScrollKeyword_1_0ElementType());
 
@@ -1784,8 +1849,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesAssignment_1ElementType() {
 			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_1());
 		}
-		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
+		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
+		}
+		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_1_0_1());
 		}
 		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_Group_2ElementType() {
 			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_Group_2_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getGroup_2());
@@ -1796,8 +1864,11 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesAssignment_2_1ElementType() {
 			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_2_1());
 		}
-		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
+		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
+		}
+		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getEntitiesEntityIDTerminalRuleCall_2_1_0_1());
 		}
 		public static IGrammarAwareElementType createAngularSuffixGenerationSetting_WithKeyword_3ElementType() {
 			return new IGrammarAwareElementType("AngularSuffixGenerationSetting_WithKeyword_3_ELEMENT_TYPE", JDLLanguage.INSTANCE, GRAMMAR_ACCESS.getAngularSuffixGenerationSettingAccess().getWithKeyword_3());
@@ -1818,7 +1889,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesAssignment_1ElementType());
 
-	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
+	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+
+	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_Group_2_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_Group_2ElementType());
 
@@ -1826,7 +1899,9 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesAssignment_2_1ElementType());
 
-	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
+	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType());
 
 	public static final IGrammarAwareElementType AngularSuffixGenerationSetting_WithKeyword_3_ELEMENT_TYPE = associate(AngularSuffixGenerationSettingFactory.createAngularSuffixGenerationSetting_WithKeyword_3ElementType());
 
@@ -2760,8 +2835,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return Relationship_FromEntityAssignment_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getRelationship_FromEntityEntityParserRuleCall_0_0ElementType() {
-		return Relationship_FromEntityEntityParserRuleCall_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getRelationship_FromEntityEntityCrossReference_0_0ElementType() {
+		return Relationship_FromEntityEntityCrossReference_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationship_FromEntityEntityIDTerminalRuleCall_0_0_1ElementType() {
+		return Relationship_FromEntityEntityIDTerminalRuleCall_0_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getRelationship_FromNameAssignment_1ElementType() {
@@ -2780,8 +2859,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return Relationship_ToEntityAssignment_3_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getRelationship_ToEntityEntityParserRuleCall_3_0ElementType() {
-		return Relationship_ToEntityEntityParserRuleCall_3_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getRelationship_ToEntityEntityCrossReference_3_0ElementType() {
+		return Relationship_ToEntityEntityCrossReference_3_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationship_ToEntityEntityIDTerminalRuleCall_3_0_1ElementType() {
+		return Relationship_ToEntityEntityIDTerminalRuleCall_3_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getRelationship_ToNameAssignment_4ElementType() {
@@ -2812,8 +2895,28 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return RelationshipName_NameIDTerminalRuleCall_1_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getRelationshipName_RightCurlyBracketKeyword_2ElementType() {
-		return RelationshipName_RightCurlyBracketKeyword_2_ELEMENT_TYPE;
+	public IGrammarAwareElementType getRelationshipName_Group_2ElementType() {
+		return RelationshipName_Group_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationshipName_LeftParenthesisKeyword_2_0ElementType() {
+		return RelationshipName_LeftParenthesisKeyword_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationshipName_RoleAssignment_2_1ElementType() {
+		return RelationshipName_RoleAssignment_2_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationshipName_RoleIDTerminalRuleCall_2_1_0ElementType() {
+		return RelationshipName_RoleIDTerminalRuleCall_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationshipName_RightParenthesisKeyword_2_2ElementType() {
+		return RelationshipName_RightParenthesisKeyword_2_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getRelationshipName_RightCurlyBracketKeyword_3ElementType() {
+		return RelationshipName_RightCurlyBracketKeyword_3_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getCardinalityElementType() {
@@ -2948,8 +3051,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return ServiceGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-		return ServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+		return ServiceGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+		return ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getServiceGenerationSetting_Group_2ElementType() {
@@ -2964,8 +3071,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return ServiceGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-		return ServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+		return ServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+		return ServiceGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getServiceGenerationSetting_WithKeyword_3ElementType() {
@@ -3020,8 +3131,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return DTOGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-		return DTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+		return DTOGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+		return DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getDTOGenerationSetting_Group_2ElementType() {
@@ -3036,8 +3151,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return DTOGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-		return DTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+		return DTOGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getDTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+		return DTOGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getDTOGenerationSetting_WithKeyword_3ElementType() {
@@ -3080,8 +3199,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return PaginateGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-		return PaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+		return PaginateGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+		return PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPaginateGenerationSetting_Group_2ElementType() {
@@ -3096,8 +3219,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return PaginateGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-		return PaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+		return PaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+		return PaginateGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPaginateGenerationSetting_WithKeyword_3ElementType() {
@@ -3108,8 +3235,8 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return PaginateGenerationSetting_PaginateTypeAssignment_4_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0ElementType() {
-		return PaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType() {
+		return PaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPaginateTypeElementType() {
@@ -3120,16 +3247,16 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return PaginateType_Alternatives_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPaginateType_PaginationEnumLiteralDeclaration_0ElementType() {
-		return PaginateType_PaginationEnumLiteralDeclaration_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPaginateType_PaginationAssignment_0ElementType() {
+		return PaginateType_PaginationAssignment_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPaginateType_PaginationPaginationKeyword_0_0ElementType() {
 		return PaginateType_PaginationPaginationKeyword_0_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPaginateType_InfiniteScrollEnumLiteralDeclaration_1ElementType() {
-		return PaginateType_InfiniteScrollEnumLiteralDeclaration_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPaginateType_InfiniteScrollAssignment_1ElementType() {
+		return PaginateType_InfiniteScrollAssignment_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPaginateType_InfiniteScrollInfiniteScrollKeyword_1_0ElementType() {
@@ -3152,8 +3279,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return AngularSuffixGenerationSetting_EntitiesAssignment_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType() {
-		return AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0ElementType() {
+		return AngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1ElementType() {
+		return AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getAngularSuffixGenerationSetting_Group_2ElementType() {
@@ -3168,8 +3299,12 @@ public class JDLElementTypeProvider implements IElementTypeProvider {
 		return AngularSuffixGenerationSetting_EntitiesAssignment_2_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType() {
-		return AngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType() {
+		return AngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1ElementType() {
+		return AngularSuffixGenerationSetting_EntitiesEntityIDTerminalRuleCall_2_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getAngularSuffixGenerationSetting_WithKeyword_3ElementType() {

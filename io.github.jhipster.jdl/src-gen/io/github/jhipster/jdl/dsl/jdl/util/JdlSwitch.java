@@ -382,6 +382,13 @@ public class JdlSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case JdlPackage.PAGINATE_TYPE:
+      {
+        PaginateType paginateType = (PaginateType)theEObject;
+        T result = casePaginateType(paginateType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case JdlPackage.ANGULAR_SUFFIX_GENERATION_SETTING:
       {
         AngularSuffixGenerationSetting angularSuffixGenerationSetting = (AngularSuffixGenerationSetting)theEObject;
@@ -1015,6 +1022,22 @@ public class JdlSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePaginateGenerationSetting(PaginateGenerationSetting object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Paginate Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Paginate Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePaginateType(PaginateType object)
   {
     return null;
   }

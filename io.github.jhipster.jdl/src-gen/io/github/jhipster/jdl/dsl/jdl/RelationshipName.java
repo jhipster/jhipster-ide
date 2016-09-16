@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link io.github.jhipster.jdl.dsl.jdl.RelationshipName#getName <em>Name</em>}</li>
+ *   <li>{@link io.github.jhipster.jdl.dsl.jdl.RelationshipName#getRole <em>Role</em>}</li>
  * </ul>
  *
  * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getRelationshipName()
@@ -48,5 +49,31 @@ public interface RelationshipName extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Role</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Role</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Role</em>' attribute.
+   * @see #setRole(String)
+   * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getRelationshipName_Role()
+   * @model
+   * @generated
+   */
+  String getRole();
+
+  /**
+   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.RelationshipName#getRole <em>Role</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Role</em>' attribute.
+   * @see #getRole()
+   * @generated
+   */
+  void setRole(String value);
 
 } // RelationshipName

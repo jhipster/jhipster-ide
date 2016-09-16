@@ -30,6 +30,7 @@ import io.github.jhipster.jdl.dsl.jdl.MinLengthValidator;
 import io.github.jhipster.jdl.dsl.jdl.MinValidator;
 import io.github.jhipster.jdl.dsl.jdl.NumericValidators;
 import io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting;
+import io.github.jhipster.jdl.dsl.jdl.PaginateType;
 import io.github.jhipster.jdl.dsl.jdl.PatternValidator;
 import io.github.jhipster.jdl.dsl.jdl.Relationship;
 import io.github.jhipster.jdl.dsl.jdl.RelationshipName;
@@ -140,6 +141,9 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case JdlPackage.PAGINATE_GENERATION_SETTING:
 				sequence_PaginateGenerationSetting(context, (PaginateGenerationSetting) semanticObject); 
 				return; 
+			case JdlPackage.PAGINATE_TYPE:
+				sequence_PaginateType(context, (PaginateType) semanticObject); 
+				return; 
 			case JdlPackage.PATTERN_VALIDATOR:
 				sequence_PatternValidator(context, (PatternValidator) semanticObject); 
 				return; 
@@ -179,7 +183,7 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     AngularSuffixGenerationSetting returns AngularSuffixGenerationSetting
 	 *
 	 * Constraint:
-	 *     (entities+=ID entities+=ID* id=ID)
+	 *     (entities+=[Entity|ID] entities+=[Entity|ID]* id=ID)
 	 */
 	protected void sequence_AngularSuffixGenerationSetting(ISerializationContext context, AngularSuffixGenerationSetting semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -260,7 +264,7 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     DTOGenerationSetting returns DTOGenerationSetting
 	 *
 	 * Constraint:
-	 *     (entities+=ID entities+=ID* dtoType=DTOType)
+	 *     (entities+=[Entity|ID] entities+=[Entity|ID]* dtoType=DTOType)
 	 */
 	protected void sequence_DTOGenerationSetting(ISerializationContext context, DTOGenerationSetting semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -529,9 +533,21 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PaginateGenerationSetting returns PaginateGenerationSetting
 	 *
 	 * Constraint:
-	 *     (entities+=ID entities+=ID* paginateType=PaginateType)
+	 *     (entities+=[Entity|ID] entities+=[Entity|ID]* paginateType=PaginateType)
 	 */
 	protected void sequence_PaginateGenerationSetting(ISerializationContext context, PaginateGenerationSetting semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     PaginateType returns PaginateType
+	 *
+	 * Constraint:
+	 *     (pagination?='pagination' | infiniteScroll?='infinite-scroll')
+	 */
+	protected void sequence_PaginateType(ISerializationContext context, PaginateType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -559,16 +575,10 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     RelationshipName returns RelationshipName
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID role=ID?)
 	 */
 	protected void sequence_RelationshipName(ISerializationContext context, RelationshipName semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, JdlPackage.Literals.RELATIONSHIP_NAME__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, JdlPackage.Literals.RELATIONSHIP_NAME__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRelationshipNameAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -577,7 +587,7 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Relationship returns Relationship
 	 *
 	 * Constraint:
-	 *     (fromEntity=Entity fromName=RelationshipName? toEntity=Entity toName=RelationshipName?)
+	 *     (fromEntity=[Entity|ID] fromName=RelationshipName? toEntity=[Entity|ID] toName=RelationshipName?)
 	 */
 	protected void sequence_Relationship(ISerializationContext context, Relationship semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -622,7 +632,7 @@ public class JDLSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ServiceGenerationSetting returns ServiceGenerationSetting
 	 *
 	 * Constraint:
-	 *     (entities+=ID entities+=ID* serviceType=ServiceType)
+	 *     (entities+=[Entity|ID] entities+=[Entity|ID]* serviceType=ServiceType)
 	 */
 	protected void sequence_ServiceGenerationSetting(ISerializationContext context, ServiceGenerationSetting semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

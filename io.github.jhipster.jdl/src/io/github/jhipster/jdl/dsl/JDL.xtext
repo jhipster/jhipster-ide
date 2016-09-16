@@ -114,10 +114,10 @@ Relationships:
 	'}';
 
 Relationship:
-	fromEntity=Entity fromName=RelationshipName? 'to' toEntity=Entity toName=RelationshipName?;
+	fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?;
 
 RelationshipName:
-	'{' name=ID '}';
+	'{' name=ID ('(' role=ID ')')? '}';
 
 enum Cardinality:
 	OneToMany | ManyToOne | OneToOne | ManyToMany;
@@ -137,22 +137,22 @@ GenerationSetting:
 	ServiceGenerationSetting | DTOGenerationSetting | PaginateGenerationSetting | AngularSuffixGenerationSetting;
 
 ServiceGenerationSetting:
-	'service' entities+=ID (',' entities+=ID)* 'with' serviceType=ServiceType;
+	'service' entities+=[Entity] (',' entities+=[Entity])* 'with' serviceType=ServiceType;
 
 enum ServiceType:
 	serviceClass | serviceImpl;
 
 DTOGenerationSetting:
-	'dto' entities+=ID (',' entities+=ID)* 'with' dtoType=DTOType;
+	'dto' entities+=[Entity] (',' entities+=[Entity])* 'with' dtoType=DTOType;
 
 enum DTOType:
 	mapstruct;
 
 PaginateGenerationSetting:
-	'paginate' entities+=ID (',' entities+=ID)* 'with' paginateType=PaginateType;
+	'paginate' entities+=[Entity] (',' entities+=[Entity])* 'with' paginateType=PaginateType;
 
-enum PaginateType:
-	pagination | infiniteScroll;
+PaginateType:
+	pagination?='pagination' | infiniteScroll?='infinite-scroll';
 
 AngularSuffixGenerationSetting:
-	'angularSuffix' entities+=ID (',' entities+=ID)* 'with' id=ID;
+	'angularSuffix' entities+=[Entity] (',' entities+=[Entity])* 'with' id=ID;

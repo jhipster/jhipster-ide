@@ -4,7 +4,7 @@
 package io.github.jhipster.jdl.dsl.jdl.impl;
 
 import io.github.jhipster.jdl.dsl.jdl.JdlPackage;
-import io.github.jhipster.jdl.dsl.jdl.RelationshipName;
+import io.github.jhipster.jdl.dsl.jdl.PaginateType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -15,66 +15,66 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Relationship Name</b></em>'.
+ * An implementation of the model object '<em><b>Paginate Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.RelationshipNameImpl#getName <em>Name</em>}</li>
- *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.RelationshipNameImpl#getRole <em>Role</em>}</li>
+ *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl#isPagination <em>Pagination</em>}</li>
+ *   <li>{@link io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl#isInfiniteScroll <em>Infinite Scroll</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RelationshipNameImpl extends MinimalEObjectImpl.Container implements RelationshipName
+public class PaginateTypeImpl extends MinimalEObjectImpl.Container implements PaginateType
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #isPagination() <em>Pagination</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #isPagination()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final boolean PAGINATION_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #isPagination() <em>Pagination</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #isPagination()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected boolean pagination = PAGINATION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRole() <em>Role</em>}' attribute.
+   * The default value of the '{@link #isInfiniteScroll() <em>Infinite Scroll</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRole()
+   * @see #isInfiniteScroll()
    * @generated
    * @ordered
    */
-  protected static final String ROLE_EDEFAULT = null;
+  protected static final boolean INFINITE_SCROLL_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getRole() <em>Role</em>}' attribute.
+   * The cached value of the '{@link #isInfiniteScroll() <em>Infinite Scroll</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRole()
+   * @see #isInfiniteScroll()
    * @generated
    * @ordered
    */
-  protected String role = ROLE_EDEFAULT;
+  protected boolean infiniteScroll = INFINITE_SCROLL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected RelationshipNameImpl()
+  protected PaginateTypeImpl()
   {
     super();
   }
@@ -87,7 +87,7 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
   @Override
   protected EClass eStaticClass()
   {
-    return JdlPackage.Literals.RELATIONSHIP_NAME;
+    return JdlPackage.Literals.PAGINATE_TYPE;
   }
 
   /**
@@ -95,9 +95,9 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public boolean isPagination()
   {
-    return name;
+    return pagination;
   }
 
   /**
@@ -105,12 +105,12 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setPagination(boolean newPagination)
   {
-    String oldName = name;
-    name = newName;
+    boolean oldPagination = pagination;
+    pagination = newPagination;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP_NAME__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.PAGINATE_TYPE__PAGINATION, oldPagination, pagination));
   }
 
   /**
@@ -118,9 +118,9 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRole()
+  public boolean isInfiniteScroll()
   {
-    return role;
+    return infiniteScroll;
   }
 
   /**
@@ -128,12 +128,12 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRole(String newRole)
+  public void setInfiniteScroll(boolean newInfiniteScroll)
   {
-    String oldRole = role;
-    role = newRole;
+    boolean oldInfiniteScroll = infiniteScroll;
+    infiniteScroll = newInfiniteScroll;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP_NAME__ROLE, oldRole, role));
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.PAGINATE_TYPE__INFINITE_SCROLL, oldInfiniteScroll, infiniteScroll));
   }
 
   /**
@@ -146,10 +146,10 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case JdlPackage.RELATIONSHIP_NAME__NAME:
-        return getName();
-      case JdlPackage.RELATIONSHIP_NAME__ROLE:
-        return getRole();
+      case JdlPackage.PAGINATE_TYPE__PAGINATION:
+        return isPagination();
+      case JdlPackage.PAGINATE_TYPE__INFINITE_SCROLL:
+        return isInfiniteScroll();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -164,11 +164,11 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case JdlPackage.RELATIONSHIP_NAME__NAME:
-        setName((String)newValue);
+      case JdlPackage.PAGINATE_TYPE__PAGINATION:
+        setPagination((Boolean)newValue);
         return;
-      case JdlPackage.RELATIONSHIP_NAME__ROLE:
-        setRole((String)newValue);
+      case JdlPackage.PAGINATE_TYPE__INFINITE_SCROLL:
+        setInfiniteScroll((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -184,11 +184,11 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case JdlPackage.RELATIONSHIP_NAME__NAME:
-        setName(NAME_EDEFAULT);
+      case JdlPackage.PAGINATE_TYPE__PAGINATION:
+        setPagination(PAGINATION_EDEFAULT);
         return;
-      case JdlPackage.RELATIONSHIP_NAME__ROLE:
-        setRole(ROLE_EDEFAULT);
+      case JdlPackage.PAGINATE_TYPE__INFINITE_SCROLL:
+        setInfiniteScroll(INFINITE_SCROLL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -204,10 +204,10 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
   {
     switch (featureID)
     {
-      case JdlPackage.RELATIONSHIP_NAME__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case JdlPackage.RELATIONSHIP_NAME__ROLE:
-        return ROLE_EDEFAULT == null ? role != null : !ROLE_EDEFAULT.equals(role);
+      case JdlPackage.PAGINATE_TYPE__PAGINATION:
+        return pagination != PAGINATION_EDEFAULT;
+      case JdlPackage.PAGINATE_TYPE__INFINITE_SCROLL:
+        return infiniteScroll != INFINITE_SCROLL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -223,12 +223,12 @@ public class RelationshipNameImpl extends MinimalEObjectImpl.Container implement
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", role: ");
-    result.append(role);
+    result.append(" (pagination: ");
+    result.append(pagination);
+    result.append(", infiniteScroll: ");
+    result.append(infiniteScroll);
     result.append(')');
     return result.toString();
   }
 
-} //RelationshipNameImpl
+} //PaginateTypeImpl

@@ -1774,15 +1774,17 @@ ruleRelationship returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getRelationship_FromEntityEntityParserRuleCall_0_0ElementType());
-				}
-				lv_fromEntity_0_0=ruleEntity
-				{
-					doneComposite();
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
+				}
+				{
+					markLeaf(elementTypeProvider.getRelationship_FromEntityEntityCrossReference_0_0ElementType());
+				}
+				otherlv_0=RULE_ID
+				{
+					doneLeaf(otherlv_0);
 				}
 			)
 		)
@@ -1811,15 +1813,17 @@ ruleRelationship returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getRelationship_ToEntityEntityParserRuleCall_3_0ElementType());
-				}
-				lv_toEntity_3_0=ruleEntity
-				{
-					doneComposite();
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
+				}
+				{
+					markLeaf(elementTypeProvider.getRelationship_ToEntityEntityCrossReference_3_0ElementType());
+				}
+				otherlv_3=RULE_ID
+				{
+					doneLeaf(otherlv_3);
 				}
 			)
 		)
@@ -1876,12 +1880,45 @@ ruleRelationshipName returns [Boolean current=false]
 				}
 			)
 		)
+		(
+			{
+				markLeaf(elementTypeProvider.getRelationshipName_LeftParenthesisKeyword_2_0ElementType());
+			}
+			otherlv_2='('
+			{
+				doneLeaf(otherlv_2);
+			}
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getRelationshipName_RoleIDTerminalRuleCall_2_1_0ElementType());
+					}
+					lv_role_3_0=RULE_ID
+					{
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+					{
+						doneLeaf(lv_role_3_0);
+					}
+				)
+			)
+			{
+				markLeaf(elementTypeProvider.getRelationshipName_RightParenthesisKeyword_2_2ElementType());
+			}
+			otherlv_4=')'
+			{
+				doneLeaf(otherlv_4);
+			}
+		)?
 		{
-			markLeaf(elementTypeProvider.getRelationshipName_RightCurlyBracketKeyword_2ElementType());
+			markLeaf(elementTypeProvider.getRelationshipName_RightCurlyBracketKeyword_3ElementType());
 		}
-		otherlv_2='}'
+		otherlv_5='}'
 		{
-			doneLeaf(otherlv_2);
+			doneLeaf(otherlv_5);
 		}
 	)
 ;
@@ -2051,17 +2088,17 @@ ruleServiceGenerationSetting returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-				}
-				lv_entities_1_0=RULE_ID
-				{
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
 				}
 				{
-					doneLeaf(lv_entities_1_0);
+					markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+				}
+				otherlv_1=RULE_ID
+				{
+					doneLeaf(otherlv_1);
 				}
 			)
 		)
@@ -2076,17 +2113,17 @@ ruleServiceGenerationSetting returns [Boolean current=false]
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-					}
-					lv_entities_3_0=RULE_ID
-					{
-						if(!$current) {
+						if (!$current) {
 							associateWithSemanticElement();
 							$current = true;
 						}
 					}
 					{
-						doneLeaf(lv_entities_3_0);
+						markLeaf(elementTypeProvider.getServiceGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+					}
+					otherlv_3=RULE_ID
+					{
+						doneLeaf(otherlv_3);
 					}
 				)
 			)
@@ -2137,17 +2174,17 @@ ruleDTOGenerationSetting returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-				}
-				lv_entities_1_0=RULE_ID
-				{
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
 				}
 				{
-					doneLeaf(lv_entities_1_0);
+					markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+				}
+				otherlv_1=RULE_ID
+				{
+					doneLeaf(otherlv_1);
 				}
 			)
 		)
@@ -2162,17 +2199,17 @@ ruleDTOGenerationSetting returns [Boolean current=false]
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-					}
-					lv_entities_3_0=RULE_ID
-					{
-						if(!$current) {
+						if (!$current) {
 							associateWithSemanticElement();
 							$current = true;
 						}
 					}
 					{
-						doneLeaf(lv_entities_3_0);
+						markLeaf(elementTypeProvider.getDTOGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+					}
+					otherlv_3=RULE_ID
+					{
+						doneLeaf(otherlv_3);
 					}
 				)
 			)
@@ -2223,17 +2260,17 @@ rulePaginateGenerationSetting returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-				}
-				lv_entities_1_0=RULE_ID
-				{
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
 				}
 				{
-					doneLeaf(lv_entities_1_0);
+					markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+				}
+				otherlv_1=RULE_ID
+				{
+					doneLeaf(otherlv_1);
 				}
 			)
 		)
@@ -2248,17 +2285,17 @@ rulePaginateGenerationSetting returns [Boolean current=false]
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-					}
-					lv_entities_3_0=RULE_ID
-					{
-						if(!$current) {
+						if (!$current) {
 							associateWithSemanticElement();
 							$current = true;
 						}
 					}
 					{
-						doneLeaf(lv_entities_3_0);
+						markLeaf(elementTypeProvider.getPaginateGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+					}
+					otherlv_3=RULE_ID
+					{
+						doneLeaf(otherlv_3);
 					}
 				)
 			)
@@ -2273,12 +2310,61 @@ rulePaginateGenerationSetting returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPaginateGenerationSetting_PaginateTypePaginateTypeEnumRuleCall_4_0ElementType());
+					markComposite(elementTypeProvider.getPaginateGenerationSetting_PaginateTypePaginateTypeParserRuleCall_4_0ElementType());
 				}
 				lv_paginateType_5_0=rulePaginateType
 				{
 					doneComposite();
 					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)
+	)
+;
+
+//Entry rule entryRulePaginateType
+entryRulePaginateType returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getPaginateTypeElementType()); }
+	iv_rulePaginateType=rulePaginateType
+	{ $current=$iv_rulePaginateType.current; }
+	EOF;
+
+// Rule PaginateType
+rulePaginateType returns [Boolean current=false]
+:
+	(
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getPaginateType_PaginationPaginationKeyword_0_0ElementType());
+				}
+				lv_pagination_0_0='pagination'
+				{
+					doneLeaf(lv_pagination_0_0);
+				}
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)
+		    |
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getPaginateType_InfiniteScrollInfiniteScrollKeyword_1_0ElementType());
+				}
+				lv_infiniteScroll_1_0='infinite-scroll'
+				{
+					doneLeaf(lv_infiniteScroll_1_0);
+				}
+				{
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
@@ -2309,17 +2395,17 @@ ruleAngularSuffixGenerationSetting returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_1_0ElementType());
-				}
-				lv_entities_1_0=RULE_ID
-				{
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
 				}
 				{
-					doneLeaf(lv_entities_1_0);
+					markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_1_0ElementType());
+				}
+				otherlv_1=RULE_ID
+				{
+					doneLeaf(otherlv_1);
 				}
 			)
 		)
@@ -2334,17 +2420,17 @@ ruleAngularSuffixGenerationSetting returns [Boolean current=false]
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesIDTerminalRuleCall_2_1_0ElementType());
-					}
-					lv_entities_3_0=RULE_ID
-					{
-						if(!$current) {
+						if (!$current) {
 							associateWithSemanticElement();
 							$current = true;
 						}
 					}
 					{
-						doneLeaf(lv_entities_3_0);
+						markLeaf(elementTypeProvider.getAngularSuffixGenerationSetting_EntitiesEntityCrossReference_2_1_0ElementType());
+					}
+					otherlv_3=RULE_ID
+					{
+						doneLeaf(otherlv_3);
 					}
 				)
 			)
@@ -2459,32 +2545,6 @@ ruleDTOType returns [Boolean current=false]
 		{
 			doneLeaf(enumLiteral_0);
 		}
-	)
-;
-
-// Rule PaginateType
-rulePaginateType returns [Boolean current=false]
-:
-	(
-		(
-			{
-				markLeaf(elementTypeProvider.getPaginateType_PaginationEnumLiteralDeclaration_0ElementType());
-			}
-			enumLiteral_0='pagination'
-			{
-				doneLeaf(enumLiteral_0);
-			}
-		)
-		    |
-		(
-			{
-				markLeaf(elementTypeProvider.getPaginateType_InfiniteScrollEnumLiteralDeclaration_1ElementType());
-			}
-			enumLiteral_1='infiniteScroll'
-			{
-				doneLeaf(enumLiteral_1);
-			}
-		)
 	)
 ;
 

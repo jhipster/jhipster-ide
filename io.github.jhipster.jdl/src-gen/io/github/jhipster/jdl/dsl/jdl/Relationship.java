@@ -27,26 +27,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Relationship extends EObject
 {
   /**
-   * Returns the value of the '<em><b>From Entity</b></em>' containment reference.
+   * Returns the value of the '<em><b>From Entity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>From Entity</em>' containment reference isn't clear,
+   * If the meaning of the '<em>From Entity</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>From Entity</em>' containment reference.
+   * @return the value of the '<em>From Entity</em>' reference.
    * @see #setFromEntity(Entity)
    * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getRelationship_FromEntity()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Entity getFromEntity();
 
   /**
-   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getFromEntity <em>From Entity</em>}' containment reference.
+   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getFromEntity <em>From Entity</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>From Entity</em>' containment reference.
+   * @param value the new value of the '<em>From Entity</em>' reference.
    * @see #getFromEntity()
    * @generated
    */
@@ -79,26 +79,26 @@ public interface Relationship extends EObject
   void setFromName(RelationshipName value);
 
   /**
-   * Returns the value of the '<em><b>To Entity</b></em>' containment reference.
+   * Returns the value of the '<em><b>To Entity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>To Entity</em>' containment reference isn't clear,
+   * If the meaning of the '<em>To Entity</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>To Entity</em>' containment reference.
+   * @return the value of the '<em>To Entity</em>' reference.
    * @see #setToEntity(Entity)
    * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getRelationship_ToEntity()
-   * @model containment="true"
+   * @model
    * @generated
    */
   Entity getToEntity();
 
   /**
-   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getToEntity <em>To Entity</em>}' containment reference.
+   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getToEntity <em>To Entity</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>To Entity</em>' containment reference.
+   * @param value the new value of the '<em>To Entity</em>' reference.
    * @see #getToEntity()
    * @generated
    */

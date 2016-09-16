@@ -105,6 +105,7 @@ public class JdlFactoryImpl extends EFactoryImpl implements JdlFactory
       case JdlPackage.SERVICE_GENERATION_SETTING: return createServiceGenerationSetting();
       case JdlPackage.DTO_GENERATION_SETTING: return createDTOGenerationSetting();
       case JdlPackage.PAGINATE_GENERATION_SETTING: return createPaginateGenerationSetting();
+      case JdlPackage.PAGINATE_TYPE: return createPaginateType();
       case JdlPackage.ANGULAR_SUFFIX_GENERATION_SETTING: return createAngularSuffixGenerationSetting();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -127,8 +128,6 @@ public class JdlFactoryImpl extends EFactoryImpl implements JdlFactory
         return createServiceTypeFromString(eDataType, initialValue);
       case JdlPackage.DTO_TYPE:
         return createDTOTypeFromString(eDataType, initialValue);
-      case JdlPackage.PAGINATE_TYPE:
-        return createPaginateTypeFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -150,8 +149,6 @@ public class JdlFactoryImpl extends EFactoryImpl implements JdlFactory
         return convertServiceTypeToString(eDataType, instanceValue);
       case JdlPackage.DTO_TYPE:
         return convertDTOTypeToString(eDataType, instanceValue);
-      case JdlPackage.PAGINATE_TYPE:
-        return convertPaginateTypeToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -591,6 +588,17 @@ public class JdlFactoryImpl extends EFactoryImpl implements JdlFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public PaginateType createPaginateType()
+  {
+    PaginateTypeImpl paginateType = new PaginateTypeImpl();
+    return paginateType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public AngularSuffixGenerationSetting createAngularSuffixGenerationSetting()
   {
     AngularSuffixGenerationSettingImpl angularSuffixGenerationSetting = new AngularSuffixGenerationSettingImpl();
@@ -659,28 +667,6 @@ public class JdlFactoryImpl extends EFactoryImpl implements JdlFactory
    * @generated
    */
   public String convertDTOTypeToString(EDataType eDataType, Object instanceValue)
-  {
-    return instanceValue == null ? null : instanceValue.toString();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PaginateType createPaginateTypeFromString(EDataType eDataType, String initialValue)
-  {
-    PaginateType result = PaginateType.get(initialValue);
-    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-    return result;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertPaginateTypeToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

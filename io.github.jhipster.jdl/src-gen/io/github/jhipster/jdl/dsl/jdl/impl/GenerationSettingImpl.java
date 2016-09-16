@@ -3,6 +3,7 @@
  */
 package io.github.jhipster.jdl.dsl.jdl.impl;
 
+import io.github.jhipster.jdl.dsl.jdl.Entity;
 import io.github.jhipster.jdl.dsl.jdl.GenerationSetting;
 import io.github.jhipster.jdl.dsl.jdl.JdlPackage;
 
@@ -12,7 +13,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -30,14 +31,14 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 public class GenerationSettingImpl extends ElementsImpl implements GenerationSetting
 {
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' attribute list.
+   * The cached value of the '{@link #getEntities() <em>Entities</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getEntities()
    * @generated
    * @ordered
    */
-  protected EList<String> entities;
+  protected EList<Entity> entities;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,11 +66,11 @@ public class GenerationSettingImpl extends ElementsImpl implements GenerationSet
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getEntities()
+  public EList<Entity> getEntities()
   {
     if (entities == null)
     {
-      entities = new EDataTypeEList<String>(String.class, this, JdlPackage.GENERATION_SETTING__ENTITIES);
+      entities = new EObjectResolvingEList<Entity>(Entity.class, this, JdlPackage.GENERATION_SETTING__ENTITIES);
     }
     return entities;
   }
@@ -103,7 +104,7 @@ public class GenerationSettingImpl extends ElementsImpl implements GenerationSet
     {
       case JdlPackage.GENERATION_SETTING__ENTITIES:
         getEntities().clear();
-        getEntities().addAll((Collection<? extends String>)newValue);
+        getEntities().addAll((Collection<? extends Entity>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -140,23 +141,6 @@ public class GenerationSettingImpl extends ElementsImpl implements GenerationSet
         return entities != null && !entities.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (entities: ");
-    result.append(entities);
-    result.append(')');
-    return result.toString();
   }
 
 } //GenerationSettingImpl

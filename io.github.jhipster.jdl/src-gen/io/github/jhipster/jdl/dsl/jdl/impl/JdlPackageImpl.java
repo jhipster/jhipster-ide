@@ -344,6 +344,13 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass paginateTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass angularSuffixGenerationSettingEClass = null;
 
   /**
@@ -366,13 +373,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * @generated
    */
   private EEnum dtoTypeEEnum = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EEnum paginateTypeEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -1142,6 +1142,16 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getRelationshipName_Role()
+  {
+    return (EAttribute)relationshipNameEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getEnumType()
   {
     return enumTypeEClass;
@@ -1182,9 +1192,9 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGenerationSetting_Entities()
+  public EReference getGenerationSetting_Entities()
   {
-    return (EAttribute)generationSettingEClass.getEStructuralFeatures().get(0);
+    return (EReference)generationSettingEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1242,9 +1252,39 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPaginateGenerationSetting_PaginateType()
+  public EReference getPaginateGenerationSetting_PaginateType()
   {
-    return (EAttribute)paginateGenerationSettingEClass.getEStructuralFeatures().get(0);
+    return (EReference)paginateGenerationSettingEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getPaginateType()
+  {
+    return paginateTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPaginateType_Pagination()
+  {
+    return (EAttribute)paginateTypeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPaginateType_InfiniteScroll()
+  {
+    return (EAttribute)paginateTypeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1295,16 +1335,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
   public EEnum getDTOType()
   {
     return dtoTypeEEnum;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EEnum getPaginateType()
-  {
-    return paginateTypeEEnum;
   }
 
   /**
@@ -1440,13 +1470,14 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
 
     relationshipNameEClass = createEClass(RELATIONSHIP_NAME);
     createEAttribute(relationshipNameEClass, RELATIONSHIP_NAME__NAME);
+    createEAttribute(relationshipNameEClass, RELATIONSHIP_NAME__ROLE);
 
     enumTypeEClass = createEClass(ENUM_TYPE);
     createEAttribute(enumTypeEClass, ENUM_TYPE__NAME);
     createEAttribute(enumTypeEClass, ENUM_TYPE__VALUES);
 
     generationSettingEClass = createEClass(GENERATION_SETTING);
-    createEAttribute(generationSettingEClass, GENERATION_SETTING__ENTITIES);
+    createEReference(generationSettingEClass, GENERATION_SETTING__ENTITIES);
 
     serviceGenerationSettingEClass = createEClass(SERVICE_GENERATION_SETTING);
     createEAttribute(serviceGenerationSettingEClass, SERVICE_GENERATION_SETTING__SERVICE_TYPE);
@@ -1455,7 +1486,11 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     createEAttribute(dtoGenerationSettingEClass, DTO_GENERATION_SETTING__DTO_TYPE);
 
     paginateGenerationSettingEClass = createEClass(PAGINATE_GENERATION_SETTING);
-    createEAttribute(paginateGenerationSettingEClass, PAGINATE_GENERATION_SETTING__PAGINATE_TYPE);
+    createEReference(paginateGenerationSettingEClass, PAGINATE_GENERATION_SETTING__PAGINATE_TYPE);
+
+    paginateTypeEClass = createEClass(PAGINATE_TYPE);
+    createEAttribute(paginateTypeEClass, PAGINATE_TYPE__PAGINATION);
+    createEAttribute(paginateTypeEClass, PAGINATE_TYPE__INFINITE_SCROLL);
 
     angularSuffixGenerationSettingEClass = createEClass(ANGULAR_SUFFIX_GENERATION_SETTING);
     createEAttribute(angularSuffixGenerationSettingEClass, ANGULAR_SUFFIX_GENERATION_SETTING__ID);
@@ -1464,7 +1499,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     cardinalityEEnum = createEEnum(CARDINALITY);
     serviceTypeEEnum = createEEnum(SERVICE_TYPE);
     dtoTypeEEnum = createEEnum(DTO_TYPE);
-    paginateTypeEEnum = createEEnum(PAGINATE_TYPE);
   }
 
   /**
@@ -1618,20 +1652,21 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     initEReference(getRelationships_Relationships(), this.getRelationship(), null, "relationships", null, 0, -1, Relationships.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRelationship_FromEntity(), this.getEntity(), null, "fromEntity", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRelationship_FromEntity(), this.getEntity(), null, "fromEntity", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRelationship_FromName(), this.getRelationshipName(), null, "fromName", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getRelationship_ToEntity(), this.getEntity(), null, "toEntity", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRelationship_ToEntity(), this.getEntity(), null, "toEntity", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRelationship_ToName(), this.getRelationshipName(), null, "toName", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(relationshipNameEClass, RelationshipName.class, "RelationshipName", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRelationshipName_Name(), ecorePackage.getEString(), "name", null, 0, 1, RelationshipName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getRelationshipName_Role(), ecorePackage.getEString(), "role", null, 0, 1, RelationshipName.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(enumTypeEClass, EnumType.class, "EnumType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEnumType_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEnumType_Values(), ecorePackage.getEString(), "values", null, 0, -1, EnumType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(generationSettingEClass, GenerationSetting.class, "GenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGenerationSetting_Entities(), ecorePackage.getEString(), "entities", null, 0, -1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGenerationSetting_Entities(), this.getEntity(), null, "entities", null, 0, -1, GenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(serviceGenerationSettingEClass, ServiceGenerationSetting.class, "ServiceGenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getServiceGenerationSetting_ServiceType(), this.getServiceType(), "serviceType", null, 0, 1, ServiceGenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1640,7 +1675,11 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
     initEAttribute(getDTOGenerationSetting_DtoType(), this.getDTOType(), "dtoType", null, 0, 1, DTOGenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(paginateGenerationSettingEClass, PaginateGenerationSetting.class, "PaginateGenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPaginateGenerationSetting_PaginateType(), this.getPaginateType(), "paginateType", null, 0, 1, PaginateGenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPaginateGenerationSetting_PaginateType(), this.getPaginateType(), null, "paginateType", null, 0, 1, PaginateGenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(paginateTypeEClass, PaginateType.class, "PaginateType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPaginateType_Pagination(), ecorePackage.getEBoolean(), "pagination", null, 0, 1, PaginateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPaginateType_InfiniteScroll(), ecorePackage.getEBoolean(), "infiniteScroll", null, 0, 1, PaginateType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(angularSuffixGenerationSettingEClass, AngularSuffixGenerationSetting.class, "AngularSuffixGenerationSetting", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAngularSuffixGenerationSetting_Id(), ecorePackage.getEString(), "id", null, 0, 1, AngularSuffixGenerationSetting.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1658,10 +1697,6 @@ public class JdlPackageImpl extends EPackageImpl implements JdlPackage
 
     initEEnum(dtoTypeEEnum, DTOType.class, "DTOType");
     addEEnumLiteral(dtoTypeEEnum, DTOType.MAPSTRUCT);
-
-    initEEnum(paginateTypeEEnum, PaginateType.class, "PaginateType");
-    addEEnumLiteral(paginateTypeEEnum, PaginateType.PAGINATION);
-    addEEnumLiteral(paginateTypeEEnum, PaginateType.INFINITE_SCROLL);
 
     // Create resource
     createResource(eNS_URI);

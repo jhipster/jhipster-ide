@@ -41,9 +41,9 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDateFieldAccess().getAlternatives(), "rule__DateField__Alternatives");
 					put(grammarAccess.getBinaryLargeObjectFieldAccess().getAlternatives(), "rule__BinaryLargeObjectField__Alternatives");
 					put(grammarAccess.getGenerationSettingAccess().getAlternatives(), "rule__GenerationSetting__Alternatives");
+					put(grammarAccess.getPaginateTypeAccess().getAlternatives(), "rule__PaginateType__Alternatives");
 					put(grammarAccess.getCardinalityAccess().getAlternatives(), "rule__Cardinality__Alternatives");
 					put(grammarAccess.getServiceTypeAccess().getAlternatives(), "rule__ServiceType__Alternatives");
-					put(grammarAccess.getPaginateTypeAccess().getAlternatives(), "rule__PaginateType__Alternatives");
 					put(grammarAccess.getEntityAccess().getGroup(), "rule__Entity__Group__0");
 					put(grammarAccess.getEntityAccess().getGroup_4(), "rule__Entity__Group_4__0");
 					put(grammarAccess.getEnumFieldAccess().getGroup(), "rule__EnumField__Group__0");
@@ -72,6 +72,7 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRelationshipsAccess().getGroup(), "rule__Relationships__Group__0");
 					put(grammarAccess.getRelationshipAccess().getGroup(), "rule__Relationship__Group__0");
 					put(grammarAccess.getRelationshipNameAccess().getGroup(), "rule__RelationshipName__Group__0");
+					put(grammarAccess.getRelationshipNameAccess().getGroup_2(), "rule__RelationshipName__Group_2__0");
 					put(grammarAccess.getEnumTypeAccess().getGroup(), "rule__EnumType__Group__0");
 					put(grammarAccess.getEnumTypeAccess().getGroup_4(), "rule__EnumType__Group_4__0");
 					put(grammarAccess.getServiceGenerationSettingAccess().getGroup(), "rule__ServiceGenerationSetting__Group__0");
@@ -138,6 +139,7 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRelationshipAccess().getToEntityAssignment_3(), "rule__Relationship__ToEntityAssignment_3");
 					put(grammarAccess.getRelationshipAccess().getToNameAssignment_4(), "rule__Relationship__ToNameAssignment_4");
 					put(grammarAccess.getRelationshipNameAccess().getNameAssignment_1(), "rule__RelationshipName__NameAssignment_1");
+					put(grammarAccess.getRelationshipNameAccess().getRoleAssignment_2_1(), "rule__RelationshipName__RoleAssignment_2_1");
 					put(grammarAccess.getEnumTypeAccess().getNameAssignment_1(), "rule__EnumType__NameAssignment_1");
 					put(grammarAccess.getEnumTypeAccess().getValuesAssignment_3(), "rule__EnumType__ValuesAssignment_3");
 					put(grammarAccess.getEnumTypeAccess().getValuesAssignment_4_1(), "rule__EnumType__ValuesAssignment_4_1");
@@ -150,6 +152,8 @@ public class JDLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesAssignment_1(), "rule__PaginateGenerationSetting__EntitiesAssignment_1");
 					put(grammarAccess.getPaginateGenerationSettingAccess().getEntitiesAssignment_2_1(), "rule__PaginateGenerationSetting__EntitiesAssignment_2_1");
 					put(grammarAccess.getPaginateGenerationSettingAccess().getPaginateTypeAssignment_4(), "rule__PaginateGenerationSetting__PaginateTypeAssignment_4");
+					put(grammarAccess.getPaginateTypeAccess().getPaginationAssignment_0(), "rule__PaginateType__PaginationAssignment_0");
+					put(grammarAccess.getPaginateTypeAccess().getInfiniteScrollAssignment_1(), "rule__PaginateType__InfiniteScrollAssignment_1");
 					put(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_1(), "rule__AngularSuffixGenerationSetting__EntitiesAssignment_1");
 					put(grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesAssignment_2_1(), "rule__AngularSuffixGenerationSetting__EntitiesAssignment_2_1");
 					put(grammarAccess.getAngularSuffixGenerationSettingAccess().getIdAssignment_4(), "rule__AngularSuffixGenerationSetting__IdAssignment_4");

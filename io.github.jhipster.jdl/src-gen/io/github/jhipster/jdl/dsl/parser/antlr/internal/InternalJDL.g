@@ -1958,19 +1958,13 @@ ruleRelationship returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRelationshipAccess().getFromEntityEntityParserRuleCall_0_0());
-				}
-				lv_fromEntity_0_0=ruleEntity
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRelationshipRule());
+						$current = createModelElement(grammarAccess.getRelationshipRule());
 					}
-					set(
-						$current,
-						"fromEntity",
-						lv_fromEntity_0_0,
-						"io.github.jhipster.jdl.dsl.JDL.Entity");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_0=RULE_ID
+				{
+					newLeafNode(otherlv_0, grammarAccess.getRelationshipAccess().getFromEntityEntityCrossReference_0_0());
 				}
 			)
 		)
@@ -2000,19 +1994,13 @@ ruleRelationship returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getRelationshipAccess().getToEntityEntityParserRuleCall_3_0());
-				}
-				lv_toEntity_3_0=ruleEntity
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getRelationshipRule());
+						$current = createModelElement(grammarAccess.getRelationshipRule());
 					}
-					set(
-						$current,
-						"toEntity",
-						lv_toEntity_3_0,
-						"io.github.jhipster.jdl.dsl.JDL.Entity");
-					afterParserOrEnumRuleCall();
+				}
+				otherlv_3=RULE_ID
+				{
+					newLeafNode(otherlv_3, grammarAccess.getRelationshipAccess().getToEntityEntityCrossReference_3_0());
 				}
 			)
 		)
@@ -2076,9 +2064,37 @@ ruleRelationshipName returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2='}'
+		(
+			otherlv_2='('
+			{
+				newLeafNode(otherlv_2, grammarAccess.getRelationshipNameAccess().getLeftParenthesisKeyword_2_0());
+			}
+			(
+				(
+					lv_role_3_0=RULE_ID
+					{
+						newLeafNode(lv_role_3_0, grammarAccess.getRelationshipNameAccess().getRoleIDTerminalRuleCall_2_1_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getRelationshipNameRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"role",
+							lv_role_3_0,
+							"org.eclipse.xtext.common.Terminals.ID");
+					}
+				)
+			)
+			otherlv_4=')'
+			{
+				newLeafNode(otherlv_4, grammarAccess.getRelationshipNameAccess().getRightParenthesisKeyword_2_2());
+			}
+		)?
+		otherlv_5='}'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getRelationshipNameAccess().getRightCurlyBracketKeyword_2());
+			newLeafNode(otherlv_5, grammarAccess.getRelationshipNameAccess().getRightCurlyBracketKeyword_3());
 		}
 	)
 ;
@@ -2250,19 +2266,14 @@ ruleServiceGenerationSetting returns [EObject current=null]
 		}
 		(
 			(
-				lv_entities_1_0=RULE_ID
-				{
-					newLeafNode(lv_entities_1_0, grammarAccess.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getServiceGenerationSettingRule());
 					}
-					addWithLastConsumed(
-						$current,
-						"entities",
-						lv_entities_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getServiceGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
 				}
 			)
 		)
@@ -2273,19 +2284,14 @@ ruleServiceGenerationSetting returns [EObject current=null]
 			}
 			(
 				(
-					lv_entities_3_0=RULE_ID
-					{
-						newLeafNode(lv_entities_3_0, grammarAccess.getServiceGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
-					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getServiceGenerationSettingRule());
 						}
-						addWithLastConsumed(
-							$current,
-							"entities",
-							lv_entities_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getServiceGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
 					}
 				)
 			)
@@ -2338,19 +2344,14 @@ ruleDTOGenerationSetting returns [EObject current=null]
 		}
 		(
 			(
-				lv_entities_1_0=RULE_ID
-				{
-					newLeafNode(lv_entities_1_0, grammarAccess.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getDTOGenerationSettingRule());
 					}
-					addWithLastConsumed(
-						$current,
-						"entities",
-						lv_entities_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getDTOGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
 				}
 			)
 		)
@@ -2361,19 +2362,14 @@ ruleDTOGenerationSetting returns [EObject current=null]
 			}
 			(
 				(
-					lv_entities_3_0=RULE_ID
-					{
-						newLeafNode(lv_entities_3_0, grammarAccess.getDTOGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
-					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getDTOGenerationSettingRule());
 						}
-						addWithLastConsumed(
-							$current,
-							"entities",
-							lv_entities_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getDTOGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
 					}
 				)
 			)
@@ -2426,19 +2422,14 @@ rulePaginateGenerationSetting returns [EObject current=null]
 		}
 		(
 			(
-				lv_entities_1_0=RULE_ID
-				{
-					newLeafNode(lv_entities_1_0, grammarAccess.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getPaginateGenerationSettingRule());
 					}
-					addWithLastConsumed(
-						$current,
-						"entities",
-						lv_entities_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getPaginateGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
 				}
 			)
 		)
@@ -2449,19 +2440,14 @@ rulePaginateGenerationSetting returns [EObject current=null]
 			}
 			(
 				(
-					lv_entities_3_0=RULE_ID
-					{
-						newLeafNode(lv_entities_3_0, grammarAccess.getPaginateGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
-					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getPaginateGenerationSettingRule());
 						}
-						addWithLastConsumed(
-							$current,
-							"entities",
-							lv_entities_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getPaginateGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
 					}
 				)
 			)
@@ -2473,7 +2459,7 @@ rulePaginateGenerationSetting returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getPaginateGenerationSettingAccess().getPaginateTypePaginateTypeEnumRuleCall_4_0());
+					newCompositeNode(grammarAccess.getPaginateGenerationSettingAccess().getPaginateTypePaginateTypeParserRuleCall_4_0());
 				}
 				lv_paginateType_5_0=rulePaginateType
 				{
@@ -2486,6 +2472,54 @@ rulePaginateGenerationSetting returns [EObject current=null]
 						lv_paginateType_5_0,
 						"io.github.jhipster.jdl.dsl.JDL.PaginateType");
 					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+	)
+;
+
+// Entry rule entryRulePaginateType
+entryRulePaginateType returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getPaginateTypeRule()); }
+	iv_rulePaginateType=rulePaginateType
+	{ $current=$iv_rulePaginateType.current; }
+	EOF;
+
+// Rule PaginateType
+rulePaginateType returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_pagination_0_0='pagination'
+				{
+					newLeafNode(lv_pagination_0_0, grammarAccess.getPaginateTypeAccess().getPaginationPaginationKeyword_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPaginateTypeRule());
+					}
+					setWithLastConsumed($current, "pagination", true, "pagination");
+				}
+			)
+		)
+		    |
+		(
+			(
+				lv_infiniteScroll_1_0='infinite-scroll'
+				{
+					newLeafNode(lv_infiniteScroll_1_0, grammarAccess.getPaginateTypeAccess().getInfiniteScrollInfiniteScrollKeyword_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPaginateTypeRule());
+					}
+					setWithLastConsumed($current, "infiniteScroll", true, "infinite-scroll");
 				}
 			)
 		)
@@ -2514,19 +2548,14 @@ ruleAngularSuffixGenerationSetting returns [EObject current=null]
 		}
 		(
 			(
-				lv_entities_1_0=RULE_ID
-				{
-					newLeafNode(lv_entities_1_0, grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_1_0());
-				}
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getAngularSuffixGenerationSettingRule());
 					}
-					addWithLastConsumed(
-						$current,
-						"entities",
-						lv_entities_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+				}
+				otherlv_1=RULE_ID
+				{
+					newLeafNode(otherlv_1, grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesEntityCrossReference_1_0());
 				}
 			)
 		)
@@ -2537,19 +2566,14 @@ ruleAngularSuffixGenerationSetting returns [EObject current=null]
 			}
 			(
 				(
-					lv_entities_3_0=RULE_ID
-					{
-						newLeafNode(lv_entities_3_0, grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesIDTerminalRuleCall_2_1_0());
-					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getAngularSuffixGenerationSettingRule());
 						}
-						addWithLastConsumed(
-							$current,
-							"entities",
-							lv_entities_3_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+					}
+					otherlv_3=RULE_ID
+					{
+						newLeafNode(otherlv_3, grammarAccess.getAngularSuffixGenerationSettingAccess().getEntitiesEntityCrossReference_2_1_0());
 					}
 				)
 			)
@@ -2663,33 +2687,6 @@ ruleDTOType returns [Enumerator current=null]
 			$current = grammarAccess.getDTOTypeAccess().getMapstructEnumLiteralDeclaration().getEnumLiteral().getInstance();
 			newLeafNode(enumLiteral_0, grammarAccess.getDTOTypeAccess().getMapstructEnumLiteralDeclaration());
 		}
-	)
-;
-
-// Rule PaginateType
-rulePaginateType returns [Enumerator current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		(
-			enumLiteral_0='pagination'
-			{
-				$current = grammarAccess.getPaginateTypeAccess().getPaginationEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_0, grammarAccess.getPaginateTypeAccess().getPaginationEnumLiteralDeclaration_0());
-			}
-		)
-		    |
-		(
-			enumLiteral_1='infiniteScroll'
-			{
-				$current = grammarAccess.getPaginateTypeAccess().getInfiniteScrollEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getPaginateTypeAccess().getInfiniteScrollEnumLiteralDeclaration_1());
-			}
-		)
 	)
 ;
 

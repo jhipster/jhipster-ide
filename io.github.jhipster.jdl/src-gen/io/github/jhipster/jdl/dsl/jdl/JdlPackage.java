@@ -1190,7 +1190,7 @@ public interface JdlPackage extends EPackage
   int RELATIONSHIP = 32;
 
   /**
-   * The feature id for the '<em><b>From Entity</b></em>' containment reference.
+   * The feature id for the '<em><b>From Entity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1208,7 +1208,7 @@ public interface JdlPackage extends EPackage
   int RELATIONSHIP__FROM_NAME = 1;
 
   /**
-   * The feature id for the '<em><b>To Entity</b></em>' containment reference.
+   * The feature id for the '<em><b>To Entity</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1254,13 +1254,22 @@ public interface JdlPackage extends EPackage
   int RELATIONSHIP_NAME__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Role</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELATIONSHIP_NAME__ROLE = 1;
+
+  /**
    * The number of structural features of the '<em>Relationship Name</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int RELATIONSHIP_NAME_FEATURE_COUNT = 1;
+  int RELATIONSHIP_NAME_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumTypeImpl <em>Enum Type</em>}' class.
@@ -1310,7 +1319,7 @@ public interface JdlPackage extends EPackage
   int GENERATION_SETTING = 35;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' attribute list.
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1338,7 +1347,7 @@ public interface JdlPackage extends EPackage
   int SERVICE_GENERATION_SETTING = 36;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' attribute list.
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1375,7 +1384,7 @@ public interface JdlPackage extends EPackage
   int DTO_GENERATION_SETTING = 37;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' attribute list.
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1412,7 +1421,7 @@ public interface JdlPackage extends EPackage
   int PAGINATE_GENERATION_SETTING = 38;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' attribute list.
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1421,7 +1430,7 @@ public interface JdlPackage extends EPackage
   int PAGINATE_GENERATION_SETTING__ENTITIES = GENERATION_SETTING__ENTITIES;
 
   /**
-   * The feature id for the '<em><b>Paginate Type</b></em>' attribute.
+   * The feature id for the '<em><b>Paginate Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1439,6 +1448,43 @@ public interface JdlPackage extends EPackage
   int PAGINATE_GENERATION_SETTING_FEATURE_COUNT = GENERATION_SETTING_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl <em>Paginate Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl
+   * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getPaginateType()
+   * @generated
+   */
+  int PAGINATE_TYPE = 39;
+
+  /**
+   * The feature id for the '<em><b>Pagination</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PAGINATE_TYPE__PAGINATION = 0;
+
+  /**
+   * The feature id for the '<em><b>Infinite Scroll</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PAGINATE_TYPE__INFINITE_SCROLL = 1;
+
+  /**
+   * The number of structural features of the '<em>Paginate Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PAGINATE_TYPE_FEATURE_COUNT = 2;
+
+  /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.AngularSuffixGenerationSettingImpl <em>Angular Suffix Generation Setting</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1446,10 +1492,10 @@ public interface JdlPackage extends EPackage
    * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getAngularSuffixGenerationSetting()
    * @generated
    */
-  int ANGULAR_SUFFIX_GENERATION_SETTING = 39;
+  int ANGULAR_SUFFIX_GENERATION_SETTING = 40;
 
   /**
-   * The feature id for the '<em><b>Entities</b></em>' attribute list.
+   * The feature id for the '<em><b>Entities</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1483,7 +1529,7 @@ public interface JdlPackage extends EPackage
    * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getCardinality()
    * @generated
    */
-  int CARDINALITY = 40;
+  int CARDINALITY = 41;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.ServiceType <em>Service Type</em>}' enum.
@@ -1493,7 +1539,7 @@ public interface JdlPackage extends EPackage
    * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getServiceType()
    * @generated
    */
-  int SERVICE_TYPE = 41;
+  int SERVICE_TYPE = 42;
 
   /**
    * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.DTOType <em>DTO Type</em>}' enum.
@@ -1503,17 +1549,7 @@ public interface JdlPackage extends EPackage
    * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getDTOType()
    * @generated
    */
-  int DTO_TYPE = 42;
-
-  /**
-   * The meta object id for the '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType <em>Paginate Type</em>}' enum.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
-   * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getPaginateType()
-   * @generated
-   */
-  int PAGINATE_TYPE = 43;
+  int DTO_TYPE = 43;
 
 
   /**
@@ -2188,10 +2224,10 @@ public interface JdlPackage extends EPackage
   EClass getRelationship();
 
   /**
-   * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getFromEntity <em>From Entity</em>}'.
+   * Returns the meta object for the reference '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getFromEntity <em>From Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>From Entity</em>'.
+   * @return the meta object for the reference '<em>From Entity</em>'.
    * @see io.github.jhipster.jdl.dsl.jdl.Relationship#getFromEntity()
    * @see #getRelationship()
    * @generated
@@ -2210,10 +2246,10 @@ public interface JdlPackage extends EPackage
   EReference getRelationship_FromName();
 
   /**
-   * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getToEntity <em>To Entity</em>}'.
+   * Returns the meta object for the reference '{@link io.github.jhipster.jdl.dsl.jdl.Relationship#getToEntity <em>To Entity</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>To Entity</em>'.
+   * @return the meta object for the reference '<em>To Entity</em>'.
    * @see io.github.jhipster.jdl.dsl.jdl.Relationship#getToEntity()
    * @see #getRelationship()
    * @generated
@@ -2251,6 +2287,17 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EAttribute getRelationshipName_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.RelationshipName#getRole <em>Role</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Role</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.RelationshipName#getRole()
+   * @see #getRelationshipName()
+   * @generated
+   */
+  EAttribute getRelationshipName_Role();
 
   /**
    * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.EnumType <em>Enum Type</em>}'.
@@ -2295,15 +2342,15 @@ public interface JdlPackage extends EPackage
   EClass getGenerationSetting();
 
   /**
-   * Returns the meta object for the attribute list '{@link io.github.jhipster.jdl.dsl.jdl.GenerationSetting#getEntities <em>Entities</em>}'.
+   * Returns the meta object for the reference list '{@link io.github.jhipster.jdl.dsl.jdl.GenerationSetting#getEntities <em>Entities</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Entities</em>'.
+   * @return the meta object for the reference list '<em>Entities</em>'.
    * @see io.github.jhipster.jdl.dsl.jdl.GenerationSetting#getEntities()
    * @see #getGenerationSetting()
    * @generated
    */
-  EAttribute getGenerationSetting_Entities();
+  EReference getGenerationSetting_Entities();
 
   /**
    * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.ServiceGenerationSetting <em>Service Generation Setting</em>}'.
@@ -2358,15 +2405,47 @@ public interface JdlPackage extends EPackage
   EClass getPaginateGenerationSetting();
 
   /**
-   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting#getPaginateType <em>Paginate Type</em>}'.
+   * Returns the meta object for the containment reference '{@link io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting#getPaginateType <em>Paginate Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Paginate Type</em>'.
+   * @return the meta object for the containment reference '<em>Paginate Type</em>'.
    * @see io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting#getPaginateType()
    * @see #getPaginateGenerationSetting()
    * @generated
    */
-  EAttribute getPaginateGenerationSetting_PaginateType();
+  EReference getPaginateGenerationSetting_PaginateType();
+
+  /**
+   * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType <em>Paginate Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Paginate Type</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
+   * @generated
+   */
+  EClass getPaginateType();
+
+  /**
+   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType#isPagination <em>Pagination</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Pagination</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType#isPagination()
+   * @see #getPaginateType()
+   * @generated
+   */
+  EAttribute getPaginateType_Pagination();
+
+  /**
+   * Returns the meta object for the attribute '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType#isInfiniteScroll <em>Infinite Scroll</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Infinite Scroll</em>'.
+   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType#isInfiniteScroll()
+   * @see #getPaginateType()
+   * @generated
+   */
+  EAttribute getPaginateType_InfiniteScroll();
 
   /**
    * Returns the meta object for class '{@link io.github.jhipster.jdl.dsl.jdl.AngularSuffixGenerationSetting <em>Angular Suffix Generation Setting</em>}'.
@@ -2418,16 +2497,6 @@ public interface JdlPackage extends EPackage
    * @generated
    */
   EEnum getDTOType();
-
-  /**
-   * Returns the meta object for enum '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType <em>Paginate Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for enum '<em>Paginate Type</em>'.
-   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
-   * @generated
-   */
-  EEnum getPaginateType();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -3031,7 +3100,7 @@ public interface JdlPackage extends EPackage
     EClass RELATIONSHIP = eINSTANCE.getRelationship();
 
     /**
-     * The meta object literal for the '<em><b>From Entity</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>From Entity</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3047,7 +3116,7 @@ public interface JdlPackage extends EPackage
     EReference RELATIONSHIP__FROM_NAME = eINSTANCE.getRelationship_FromName();
 
     /**
-     * The meta object literal for the '<em><b>To Entity</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>To Entity</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -3079,6 +3148,14 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EAttribute RELATIONSHIP_NAME__NAME = eINSTANCE.getRelationshipName_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Role</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute RELATIONSHIP_NAME__ROLE = eINSTANCE.getRelationshipName_Role();
 
     /**
      * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.EnumTypeImpl <em>Enum Type</em>}' class.
@@ -3117,12 +3194,12 @@ public interface JdlPackage extends EPackage
     EClass GENERATION_SETTING = eINSTANCE.getGenerationSetting();
 
     /**
-     * The meta object literal for the '<em><b>Entities</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Entities</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GENERATION_SETTING__ENTITIES = eINSTANCE.getGenerationSetting_Entities();
+    EReference GENERATION_SETTING__ENTITIES = eINSTANCE.getGenerationSetting_Entities();
 
     /**
      * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.ServiceGenerationSettingImpl <em>Service Generation Setting</em>}' class.
@@ -3171,12 +3248,38 @@ public interface JdlPackage extends EPackage
     EClass PAGINATE_GENERATION_SETTING = eINSTANCE.getPaginateGenerationSetting();
 
     /**
-     * The meta object literal for the '<em><b>Paginate Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Paginate Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PAGINATE_GENERATION_SETTING__PAGINATE_TYPE = eINSTANCE.getPaginateGenerationSetting_PaginateType();
+    EReference PAGINATE_GENERATION_SETTING__PAGINATE_TYPE = eINSTANCE.getPaginateGenerationSetting_PaginateType();
+
+    /**
+     * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl <em>Paginate Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see io.github.jhipster.jdl.dsl.jdl.impl.PaginateTypeImpl
+     * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getPaginateType()
+     * @generated
+     */
+    EClass PAGINATE_TYPE = eINSTANCE.getPaginateType();
+
+    /**
+     * The meta object literal for the '<em><b>Pagination</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PAGINATE_TYPE__PAGINATION = eINSTANCE.getPaginateType_Pagination();
+
+    /**
+     * The meta object literal for the '<em><b>Infinite Scroll</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PAGINATE_TYPE__INFINITE_SCROLL = eINSTANCE.getPaginateType_InfiniteScroll();
 
     /**
      * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.impl.AngularSuffixGenerationSettingImpl <em>Angular Suffix Generation Setting</em>}' class.
@@ -3225,16 +3328,6 @@ public interface JdlPackage extends EPackage
      * @generated
      */
     EEnum DTO_TYPE = eINSTANCE.getDTOType();
-
-    /**
-     * The meta object literal for the '{@link io.github.jhipster.jdl.dsl.jdl.PaginateType <em>Paginate Type</em>}' enum.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
-     * @see io.github.jhipster.jdl.dsl.jdl.impl.JdlPackageImpl#getPaginateType()
-     * @generated
-     */
-    EEnum PAGINATE_TYPE = eINSTANCE.getPaginateType();
 
   }
 

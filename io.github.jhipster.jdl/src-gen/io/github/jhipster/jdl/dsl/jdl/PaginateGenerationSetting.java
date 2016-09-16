@@ -23,29 +23,26 @@ package io.github.jhipster.jdl.dsl.jdl;
 public interface PaginateGenerationSetting extends GenerationSetting
 {
   /**
-   * Returns the value of the '<em><b>Paginate Type</b></em>' attribute.
-   * The literals are from the enumeration {@link io.github.jhipster.jdl.dsl.jdl.PaginateType}.
+   * Returns the value of the '<em><b>Paginate Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Paginate Type</em>' attribute isn't clear,
+   * If the meaning of the '<em>Paginate Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Paginate Type</em>' attribute.
-   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
+   * @return the value of the '<em>Paginate Type</em>' containment reference.
    * @see #setPaginateType(PaginateType)
    * @see io.github.jhipster.jdl.dsl.jdl.JdlPackage#getPaginateGenerationSetting_PaginateType()
-   * @model
+   * @model containment="true"
    * @generated
    */
   PaginateType getPaginateType();
 
   /**
-   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting#getPaginateType <em>Paginate Type</em>}' attribute.
+   * Sets the value of the '{@link io.github.jhipster.jdl.dsl.jdl.PaginateGenerationSetting#getPaginateType <em>Paginate Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Paginate Type</em>' attribute.
-   * @see io.github.jhipster.jdl.dsl.jdl.PaginateType
+   * @param value the new value of the '<em>Paginate Type</em>' containment reference.
    * @see #getPaginateType()
    * @generated
    */

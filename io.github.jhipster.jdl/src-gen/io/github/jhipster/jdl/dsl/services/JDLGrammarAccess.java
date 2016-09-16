@@ -1041,27 +1041,32 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.Relationship");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cFromEntityAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cFromEntityEntityParserRuleCall_0_0 = (RuleCall)cFromEntityAssignment_0.eContents().get(0);
+		private final CrossReference cFromEntityEntityCrossReference_0_0 = (CrossReference)cFromEntityAssignment_0.eContents().get(0);
+		private final RuleCall cFromEntityEntityIDTerminalRuleCall_0_0_1 = (RuleCall)cFromEntityEntityCrossReference_0_0.eContents().get(1);
 		private final Assignment cFromNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cFromNameRelationshipNameParserRuleCall_1_0 = (RuleCall)cFromNameAssignment_1.eContents().get(0);
 		private final Keyword cToKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cToEntityAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cToEntityEntityParserRuleCall_3_0 = (RuleCall)cToEntityAssignment_3.eContents().get(0);
+		private final CrossReference cToEntityEntityCrossReference_3_0 = (CrossReference)cToEntityAssignment_3.eContents().get(0);
+		private final RuleCall cToEntityEntityIDTerminalRuleCall_3_0_1 = (RuleCall)cToEntityEntityCrossReference_3_0.eContents().get(1);
 		private final Assignment cToNameAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cToNameRelationshipNameParserRuleCall_4_0 = (RuleCall)cToNameAssignment_4.eContents().get(0);
 		
 		//Relationship:
-		//	fromEntity=Entity fromName=RelationshipName? 'to' toEntity=Entity toName=RelationshipName?;
+		//	fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//fromEntity=Entity fromName=RelationshipName? 'to' toEntity=Entity toName=RelationshipName?
+		//fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?
 		public Group getGroup() { return cGroup; }
 		
-		//fromEntity=Entity
+		//fromEntity=[Entity]
 		public Assignment getFromEntityAssignment_0() { return cFromEntityAssignment_0; }
 		
-		//Entity
-		public RuleCall getFromEntityEntityParserRuleCall_0_0() { return cFromEntityEntityParserRuleCall_0_0; }
+		//[Entity]
+		public CrossReference getFromEntityEntityCrossReference_0_0() { return cFromEntityEntityCrossReference_0_0; }
+		
+		//ID
+		public RuleCall getFromEntityEntityIDTerminalRuleCall_0_0_1() { return cFromEntityEntityIDTerminalRuleCall_0_0_1; }
 		
 		//fromName=RelationshipName?
 		public Assignment getFromNameAssignment_1() { return cFromNameAssignment_1; }
@@ -1072,11 +1077,14 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		//'to'
 		public Keyword getToKeyword_2() { return cToKeyword_2; }
 		
-		//toEntity=Entity
+		//toEntity=[Entity]
 		public Assignment getToEntityAssignment_3() { return cToEntityAssignment_3; }
 		
-		//Entity
-		public RuleCall getToEntityEntityParserRuleCall_3_0() { return cToEntityEntityParserRuleCall_3_0; }
+		//[Entity]
+		public CrossReference getToEntityEntityCrossReference_3_0() { return cToEntityEntityCrossReference_3_0; }
+		
+		//ID
+		public RuleCall getToEntityEntityIDTerminalRuleCall_3_0_1() { return cToEntityEntityIDTerminalRuleCall_3_0_1; }
 		
 		//toName=RelationshipName?
 		public Assignment getToNameAssignment_4() { return cToNameAssignment_4; }
@@ -1090,13 +1098,18 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cRoleAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cRoleIDTerminalRuleCall_2_1_0 = (RuleCall)cRoleAssignment_2_1.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//RelationshipName:
-		//	'{' name=ID '}';
+		//	'{' name=ID ('(' role=ID ')')? '}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'{' name=ID '}'
+		//'{' name=ID ('(' role=ID ')')? '}'
 		public Group getGroup() { return cGroup; }
 		
 		//'{'
@@ -1108,8 +1121,23 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
+		//('(' role=ID ')')?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'('
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
+		
+		//role=ID
+		public Assignment getRoleAssignment_2_1() { return cRoleAssignment_2_1; }
+		
+		//ID
+		public RuleCall getRoleIDTerminalRuleCall_2_1_0() { return cRoleIDTerminalRuleCall_2_1_0; }
+		
+		//')'
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
+		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	public class EnumTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.EnumType");
@@ -1204,42 +1232,50 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cServiceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cEntitiesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_1_0 = (RuleCall)cEntitiesAssignment_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_1_0 = (CrossReference)cEntitiesAssignment_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cEntitiesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_2_1_0 = (RuleCall)cEntitiesAssignment_2_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_2_1_0 = (CrossReference)cEntitiesAssignment_2_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_2_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_2_1_0.eContents().get(1);
 		private final Keyword cWithKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cServiceTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cServiceTypeServiceTypeEnumRuleCall_4_0 = (RuleCall)cServiceTypeAssignment_4.eContents().get(0);
 		
 		//ServiceGenerationSetting:
-		//	'service' entities+=ID (',' entities+=ID)* 'with' serviceType=ServiceType;
+		//	'service' entities+=[Entity] (',' entities+=[Entity])* 'with' serviceType=ServiceType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'service' entities+=ID (',' entities+=ID)* 'with' serviceType=ServiceType
+		//'service' entities+=[Entity] (',' entities+=[Entity])* 'with' serviceType=ServiceType
 		public Group getGroup() { return cGroup; }
 		
 		//'service'
 		public Keyword getServiceKeyword_0() { return cServiceKeyword_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_1() { return cEntitiesAssignment_1; }
 		
-		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_1_0() { return cEntitiesIDTerminalRuleCall_1_0; }
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_1_0() { return cEntitiesEntityCrossReference_1_0; }
 		
-		//(',' entities+=ID)*
+		//ID
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_1_0_1; }
+		
+		//(',' entities+=[Entity])*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_2_1() { return cEntitiesAssignment_2_1; }
 		
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_2_1_0() { return cEntitiesEntityCrossReference_2_1_0; }
+		
 		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_2_1_0() { return cEntitiesIDTerminalRuleCall_2_1_0; }
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_2_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_2_1_0_1; }
 		
 		//'with'
 		public Keyword getWithKeyword_3() { return cWithKeyword_3; }
@@ -1255,42 +1291,50 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDtoKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cEntitiesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_1_0 = (RuleCall)cEntitiesAssignment_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_1_0 = (CrossReference)cEntitiesAssignment_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cEntitiesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_2_1_0 = (RuleCall)cEntitiesAssignment_2_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_2_1_0 = (CrossReference)cEntitiesAssignment_2_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_2_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_2_1_0.eContents().get(1);
 		private final Keyword cWithKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cDtoTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cDtoTypeDTOTypeEnumRuleCall_4_0 = (RuleCall)cDtoTypeAssignment_4.eContents().get(0);
 		
 		//DTOGenerationSetting:
-		//	'dto' entities+=ID (',' entities+=ID)* 'with' dtoType=DTOType;
+		//	'dto' entities+=[Entity] (',' entities+=[Entity])* 'with' dtoType=DTOType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'dto' entities+=ID (',' entities+=ID)* 'with' dtoType=DTOType
+		//'dto' entities+=[Entity] (',' entities+=[Entity])* 'with' dtoType=DTOType
 		public Group getGroup() { return cGroup; }
 		
 		//'dto'
 		public Keyword getDtoKeyword_0() { return cDtoKeyword_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_1() { return cEntitiesAssignment_1; }
 		
-		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_1_0() { return cEntitiesIDTerminalRuleCall_1_0; }
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_1_0() { return cEntitiesEntityCrossReference_1_0; }
 		
-		//(',' entities+=ID)*
+		//ID
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_1_0_1; }
+		
+		//(',' entities+=[Entity])*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_2_1() { return cEntitiesAssignment_2_1; }
 		
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_2_1_0() { return cEntitiesEntityCrossReference_2_1_0; }
+		
 		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_2_1_0() { return cEntitiesIDTerminalRuleCall_2_1_0; }
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_2_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_2_1_0_1; }
 		
 		//'with'
 		public Keyword getWithKeyword_3() { return cWithKeyword_3; }
@@ -1306,42 +1350,50 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPaginateKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cEntitiesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_1_0 = (RuleCall)cEntitiesAssignment_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_1_0 = (CrossReference)cEntitiesAssignment_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cEntitiesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_2_1_0 = (RuleCall)cEntitiesAssignment_2_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_2_1_0 = (CrossReference)cEntitiesAssignment_2_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_2_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_2_1_0.eContents().get(1);
 		private final Keyword cWithKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cPaginateTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPaginateTypePaginateTypeEnumRuleCall_4_0 = (RuleCall)cPaginateTypeAssignment_4.eContents().get(0);
+		private final RuleCall cPaginateTypePaginateTypeParserRuleCall_4_0 = (RuleCall)cPaginateTypeAssignment_4.eContents().get(0);
 		
 		//PaginateGenerationSetting:
-		//	'paginate' entities+=ID (',' entities+=ID)* 'with' paginateType=PaginateType;
+		//	'paginate' entities+=[Entity] (',' entities+=[Entity])* 'with' paginateType=PaginateType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'paginate' entities+=ID (',' entities+=ID)* 'with' paginateType=PaginateType
+		//'paginate' entities+=[Entity] (',' entities+=[Entity])* 'with' paginateType=PaginateType
 		public Group getGroup() { return cGroup; }
 		
 		//'paginate'
 		public Keyword getPaginateKeyword_0() { return cPaginateKeyword_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_1() { return cEntitiesAssignment_1; }
 		
-		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_1_0() { return cEntitiesIDTerminalRuleCall_1_0; }
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_1_0() { return cEntitiesEntityCrossReference_1_0; }
 		
-		//(',' entities+=ID)*
+		//ID
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_1_0_1; }
+		
+		//(',' entities+=[Entity])*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_2_1() { return cEntitiesAssignment_2_1; }
 		
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_2_1_0() { return cEntitiesEntityCrossReference_2_1_0; }
+		
 		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_2_1_0() { return cEntitiesIDTerminalRuleCall_2_1_0; }
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_2_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_2_1_0_1; }
 		
 		//'with'
 		public Keyword getWithKeyword_3() { return cWithKeyword_3; }
@@ -1350,49 +1402,84 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		public Assignment getPaginateTypeAssignment_4() { return cPaginateTypeAssignment_4; }
 		
 		//PaginateType
-		public RuleCall getPaginateTypePaginateTypeEnumRuleCall_4_0() { return cPaginateTypePaginateTypeEnumRuleCall_4_0; }
+		public RuleCall getPaginateTypePaginateTypeParserRuleCall_4_0() { return cPaginateTypePaginateTypeParserRuleCall_4_0; }
+	}
+	public class PaginateTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.PaginateType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cPaginationAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Keyword cPaginationPaginationKeyword_0_0 = (Keyword)cPaginationAssignment_0.eContents().get(0);
+		private final Assignment cInfiniteScrollAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final Keyword cInfiniteScrollInfiniteScrollKeyword_1_0 = (Keyword)cInfiniteScrollAssignment_1.eContents().get(0);
+		
+		//PaginateType:
+		//	pagination?='pagination' | infiniteScroll?='infinite-scroll';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//pagination?='pagination' | infiniteScroll?='infinite-scroll'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//pagination?='pagination'
+		public Assignment getPaginationAssignment_0() { return cPaginationAssignment_0; }
+		
+		//'pagination'
+		public Keyword getPaginationPaginationKeyword_0_0() { return cPaginationPaginationKeyword_0_0; }
+		
+		//infiniteScroll?='infinite-scroll'
+		public Assignment getInfiniteScrollAssignment_1() { return cInfiniteScrollAssignment_1; }
+		
+		//'infinite-scroll'
+		public Keyword getInfiniteScrollInfiniteScrollKeyword_1_0() { return cInfiniteScrollInfiniteScrollKeyword_1_0; }
 	}
 	public class AngularSuffixGenerationSettingElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.AngularSuffixGenerationSetting");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAngularSuffixKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cEntitiesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_1_0 = (RuleCall)cEntitiesAssignment_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_1_0 = (CrossReference)cEntitiesAssignment_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_1_0.eContents().get(1);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cEntitiesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cEntitiesIDTerminalRuleCall_2_1_0 = (RuleCall)cEntitiesAssignment_2_1.eContents().get(0);
+		private final CrossReference cEntitiesEntityCrossReference_2_1_0 = (CrossReference)cEntitiesAssignment_2_1.eContents().get(0);
+		private final RuleCall cEntitiesEntityIDTerminalRuleCall_2_1_0_1 = (RuleCall)cEntitiesEntityCrossReference_2_1_0.eContents().get(1);
 		private final Keyword cWithKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cIdAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cIdIDTerminalRuleCall_4_0 = (RuleCall)cIdAssignment_4.eContents().get(0);
 		
 		//AngularSuffixGenerationSetting:
-		//	'angularSuffix' entities+=ID (',' entities+=ID)* 'with' id=ID;
+		//	'angularSuffix' entities+=[Entity] (',' entities+=[Entity])* 'with' id=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'angularSuffix' entities+=ID (',' entities+=ID)* 'with' id=ID
+		//'angularSuffix' entities+=[Entity] (',' entities+=[Entity])* 'with' id=ID
 		public Group getGroup() { return cGroup; }
 		
 		//'angularSuffix'
 		public Keyword getAngularSuffixKeyword_0() { return cAngularSuffixKeyword_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_1() { return cEntitiesAssignment_1; }
 		
-		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_1_0() { return cEntitiesIDTerminalRuleCall_1_0; }
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_1_0() { return cEntitiesEntityCrossReference_1_0; }
 		
-		//(',' entities+=ID)*
+		//ID
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_1_0_1; }
+		
+		//(',' entities+=[Entity])*
 		public Group getGroup_2() { return cGroup_2; }
 		
 		//','
 		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 		
-		//entities+=ID
+		//entities+=[Entity]
 		public Assignment getEntitiesAssignment_2_1() { return cEntitiesAssignment_2_1; }
 		
+		//[Entity]
+		public CrossReference getEntitiesEntityCrossReference_2_1_0() { return cEntitiesEntityCrossReference_2_1_0; }
+		
 		//ID
-		public RuleCall getEntitiesIDTerminalRuleCall_2_1_0() { return cEntitiesIDTerminalRuleCall_2_1_0; }
+		public RuleCall getEntitiesEntityIDTerminalRuleCall_2_1_0_1() { return cEntitiesEntityIDTerminalRuleCall_2_1_0_1; }
 		
 		//'with'
 		public Keyword getWithKeyword_3() { return cWithKeyword_3; }
@@ -1489,33 +1576,6 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		//"mapstruct"
 		public Keyword getMapstructMapstructKeyword_0() { return cMapstructMapstructKeyword_0; }
 	}
-	public class PaginateTypeElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "io.github.jhipster.jdl.dsl.JDL.PaginateType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final EnumLiteralDeclaration cPaginationEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
-		private final Keyword cPaginationPaginationKeyword_0_0 = (Keyword)cPaginationEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cInfiniteScrollEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cInfiniteScrollInfiniteScrollKeyword_1_0 = (Keyword)cInfiniteScrollEnumLiteralDeclaration_1.eContents().get(0);
-		
-		//enum PaginateType:
-		//	pagination | infiniteScroll;
-		public EnumRule getRule() { return rule; }
-		
-		//pagination | infiniteScroll
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//pagination
-		public EnumLiteralDeclaration getPaginationEnumLiteralDeclaration_0() { return cPaginationEnumLiteralDeclaration_0; }
-		
-		//"pagination"
-		public Keyword getPaginationPaginationKeyword_0_0() { return cPaginationPaginationKeyword_0_0; }
-		
-		//infiniteScroll
-		public EnumLiteralDeclaration getInfiniteScrollEnumLiteralDeclaration_1() { return cInfiniteScrollEnumLiteralDeclaration_1; }
-		
-		//"infiniteScroll"
-		public Keyword getInfiniteScrollInfiniteScrollKeyword_1_0() { return cInfiniteScrollInfiniteScrollKeyword_1_0; }
-	}
 	
 	private final DomainModelElements pDomainModel;
 	private final ElementsElements pElements;
@@ -1559,7 +1619,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	private final DTOGenerationSettingElements pDTOGenerationSetting;
 	private final DTOTypeElements eDTOType;
 	private final PaginateGenerationSettingElements pPaginateGenerationSetting;
-	private final PaginateTypeElements ePaginateType;
+	private final PaginateTypeElements pPaginateType;
 	private final AngularSuffixGenerationSettingElements pAngularSuffixGenerationSetting;
 	
 	private final Grammar grammar;
@@ -1613,7 +1673,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		this.pDTOGenerationSetting = new DTOGenerationSettingElements();
 		this.eDTOType = new DTOTypeElements();
 		this.pPaginateGenerationSetting = new PaginateGenerationSettingElements();
-		this.ePaginateType = new PaginateTypeElements();
+		this.pPaginateType = new PaginateTypeElements();
 		this.pAngularSuffixGenerationSetting = new AngularSuffixGenerationSettingElements();
 	}
 	
@@ -1976,7 +2036,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Relationship:
-	//	fromEntity=Entity fromName=RelationshipName? 'to' toEntity=Entity toName=RelationshipName?;
+	//	fromEntity=[Entity] fromName=RelationshipName? 'to' toEntity=[Entity] toName=RelationshipName?;
 	public RelationshipElements getRelationshipAccess() {
 		return pRelationship;
 	}
@@ -1986,7 +2046,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//RelationshipName:
-	//	'{' name=ID '}';
+	//	'{' name=ID ('(' role=ID ')')? '}';
 	public RelationshipNameElements getRelationshipNameAccess() {
 		return pRelationshipName;
 	}
@@ -2032,7 +2092,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ServiceGenerationSetting:
-	//	'service' entities+=ID (',' entities+=ID)* 'with' serviceType=ServiceType;
+	//	'service' entities+=[Entity] (',' entities+=[Entity])* 'with' serviceType=ServiceType;
 	public ServiceGenerationSettingElements getServiceGenerationSettingAccess() {
 		return pServiceGenerationSetting;
 	}
@@ -2052,7 +2112,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//DTOGenerationSetting:
-	//	'dto' entities+=ID (',' entities+=ID)* 'with' dtoType=DTOType;
+	//	'dto' entities+=[Entity] (',' entities+=[Entity])* 'with' dtoType=DTOType;
 	public DTOGenerationSettingElements getDTOGenerationSettingAccess() {
 		return pDTOGenerationSetting;
 	}
@@ -2072,7 +2132,7 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PaginateGenerationSetting:
-	//	'paginate' entities+=ID (',' entities+=ID)* 'with' paginateType=PaginateType;
+	//	'paginate' entities+=[Entity] (',' entities+=[Entity])* 'with' paginateType=PaginateType;
 	public PaginateGenerationSettingElements getPaginateGenerationSettingAccess() {
 		return pPaginateGenerationSetting;
 	}
@@ -2081,18 +2141,18 @@ public class JDLGrammarAccess extends AbstractGrammarElementFinder {
 		return getPaginateGenerationSettingAccess().getRule();
 	}
 	
-	//enum PaginateType:
-	//	pagination | infiniteScroll;
+	//PaginateType:
+	//	pagination?='pagination' | infiniteScroll?='infinite-scroll';
 	public PaginateTypeElements getPaginateTypeAccess() {
-		return ePaginateType;
+		return pPaginateType;
 	}
 	
-	public EnumRule getPaginateTypeRule() {
+	public ParserRule getPaginateTypeRule() {
 		return getPaginateTypeAccess().getRule();
 	}
 	
 	//AngularSuffixGenerationSetting:
-	//	'angularSuffix' entities+=ID (',' entities+=ID)* 'with' id=ID;
+	//	'angularSuffix' entities+=[Entity] (',' entities+=[Entity])* 'with' id=ID;
 	public AngularSuffixGenerationSettingElements getAngularSuffixGenerationSettingAccess() {
 		return pAngularSuffixGenerationSetting;
 	}

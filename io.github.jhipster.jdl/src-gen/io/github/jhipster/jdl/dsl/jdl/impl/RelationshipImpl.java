@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class RelationshipImpl extends MinimalEObjectImpl.Container implements Relationship
 {
   /**
-   * The cached value of the '{@link #getFromEntity() <em>From Entity</em>}' containment reference.
+   * The cached value of the '{@link #getFromEntity() <em>From Entity</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getFromEntity()
@@ -56,7 +56,7 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
   protected RelationshipName fromName;
 
   /**
-   * The cached value of the '{@link #getToEntity() <em>To Entity</em>}' containment reference.
+   * The cached value of the '{@link #getToEntity() <em>To Entity</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getToEntity()
@@ -103,6 +103,16 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    */
   public Entity getFromEntity()
   {
+    if (fromEntity != null && fromEntity.eIsProxy())
+    {
+      InternalEObject oldFromEntity = (InternalEObject)fromEntity;
+      fromEntity = (Entity)eResolveProxy(oldFromEntity);
+      if (fromEntity != oldFromEntity)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, JdlPackage.RELATIONSHIP__FROM_ENTITY, oldFromEntity, fromEntity));
+      }
+    }
     return fromEntity;
   }
 
@@ -111,16 +121,9 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFromEntity(Entity newFromEntity, NotificationChain msgs)
+  public Entity basicGetFromEntity()
   {
-    Entity oldFromEntity = fromEntity;
-    fromEntity = newFromEntity;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__FROM_ENTITY, oldFromEntity, newFromEntity);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return fromEntity;
   }
 
   /**
@@ -130,18 +133,10 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    */
   public void setFromEntity(Entity newFromEntity)
   {
-    if (newFromEntity != fromEntity)
-    {
-      NotificationChain msgs = null;
-      if (fromEntity != null)
-        msgs = ((InternalEObject)fromEntity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JdlPackage.RELATIONSHIP__FROM_ENTITY, null, msgs);
-      if (newFromEntity != null)
-        msgs = ((InternalEObject)newFromEntity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JdlPackage.RELATIONSHIP__FROM_ENTITY, null, msgs);
-      msgs = basicSetFromEntity(newFromEntity, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__FROM_ENTITY, newFromEntity, newFromEntity));
+    Entity oldFromEntity = fromEntity;
+    fromEntity = newFromEntity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__FROM_ENTITY, oldFromEntity, fromEntity));
   }
 
   /**
@@ -199,6 +194,16 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    */
   public Entity getToEntity()
   {
+    if (toEntity != null && toEntity.eIsProxy())
+    {
+      InternalEObject oldToEntity = (InternalEObject)toEntity;
+      toEntity = (Entity)eResolveProxy(oldToEntity);
+      if (toEntity != oldToEntity)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, JdlPackage.RELATIONSHIP__TO_ENTITY, oldToEntity, toEntity));
+      }
+    }
     return toEntity;
   }
 
@@ -207,16 +212,9 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetToEntity(Entity newToEntity, NotificationChain msgs)
+  public Entity basicGetToEntity()
   {
-    Entity oldToEntity = toEntity;
-    toEntity = newToEntity;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__TO_ENTITY, oldToEntity, newToEntity);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+    return toEntity;
   }
 
   /**
@@ -226,18 +224,10 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
    */
   public void setToEntity(Entity newToEntity)
   {
-    if (newToEntity != toEntity)
-    {
-      NotificationChain msgs = null;
-      if (toEntity != null)
-        msgs = ((InternalEObject)toEntity).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - JdlPackage.RELATIONSHIP__TO_ENTITY, null, msgs);
-      if (newToEntity != null)
-        msgs = ((InternalEObject)newToEntity).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - JdlPackage.RELATIONSHIP__TO_ENTITY, null, msgs);
-      msgs = basicSetToEntity(newToEntity, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__TO_ENTITY, newToEntity, newToEntity));
+    Entity oldToEntity = toEntity;
+    toEntity = newToEntity;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, JdlPackage.RELATIONSHIP__TO_ENTITY, oldToEntity, toEntity));
   }
 
   /**
@@ -298,12 +288,8 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
   {
     switch (featureID)
     {
-      case JdlPackage.RELATIONSHIP__FROM_ENTITY:
-        return basicSetFromEntity(null, msgs);
       case JdlPackage.RELATIONSHIP__FROM_NAME:
         return basicSetFromName(null, msgs);
-      case JdlPackage.RELATIONSHIP__TO_ENTITY:
-        return basicSetToEntity(null, msgs);
       case JdlPackage.RELATIONSHIP__TO_NAME:
         return basicSetToName(null, msgs);
     }
@@ -321,11 +307,13 @@ public class RelationshipImpl extends MinimalEObjectImpl.Container implements Re
     switch (featureID)
     {
       case JdlPackage.RELATIONSHIP__FROM_ENTITY:
-        return getFromEntity();
+        if (resolve) return getFromEntity();
+        return basicGetFromEntity();
       case JdlPackage.RELATIONSHIP__FROM_NAME:
         return getFromName();
       case JdlPackage.RELATIONSHIP__TO_ENTITY:
-        return getToEntity();
+        if (resolve) return getToEntity();
+        return basicGetToEntity();
       case JdlPackage.RELATIONSHIP__TO_NAME:
         return getToName();
     }

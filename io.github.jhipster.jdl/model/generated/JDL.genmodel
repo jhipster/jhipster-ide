@@ -19,10 +19,6 @@
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDL.ecore#//DTOType">
       <genEnumLiterals ecoreEnumLiteral="JDL.ecore#//DTOType/mapstruct"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="JDL.ecore#//PaginateType">
-      <genEnumLiterals ecoreEnumLiteral="JDL.ecore#//PaginateType/pagination"/>
-      <genEnumLiterals ecoreEnumLiteral="JDL.ecore#//PaginateType/infiniteScroll"/>
-    </genEnums>
     <genClasses ecoreClass="JDL.ecore#//DomainModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//DomainModel/elements"/>
     </genClasses>
@@ -108,20 +104,21 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationships/relationships"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//Relationship">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/fromEntity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/fromEntity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/fromName"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/toEntity"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/toEntity"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//Relationship/toName"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//RelationshipName">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//RelationshipName/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//RelationshipName/role"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//EnumType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//EnumType/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//EnumType/values"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//GenerationSetting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//GenerationSetting/entities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference JDL.ecore#//GenerationSetting/entities"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//ServiceGenerationSetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//ServiceGenerationSetting/serviceType"/>
@@ -130,7 +127,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//DTOGenerationSetting/dtoType"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//PaginateGenerationSetting">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//PaginateGenerationSetting/paginateType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference JDL.ecore#//PaginateGenerationSetting/paginateType"/>
+    </genClasses>
+    <genClasses ecoreClass="JDL.ecore#//PaginateType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//PaginateType/pagination"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//PaginateType/infiniteScroll"/>
     </genClasses>
     <genClasses ecoreClass="JDL.ecore#//AngularSuffixGenerationSetting">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute JDL.ecore#//AngularSuffixGenerationSetting/id"/>
