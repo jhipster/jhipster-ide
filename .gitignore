@@ -1,0 +1,5 @@
+target/
+src-gen/
+xtend-gen/
+xtext-gen/
+model/
