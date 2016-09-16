@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.github.io/jhipster/jdl/dsl/JDL"
+			class="io.github.jhipster.jdl.dsl.jdl.JdlPackage"
+		/>
+		<resourceFactory 
+			type="jh"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="jh"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+		/>
+
+		<lang.setup
+			language="io.github.jhipster.jdl.dsl.JDL"
+			implementationClass="io.github.jhipster.jdl.dsl.idea.JDLIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="io.github.jhipster.jdl.dsl.idea.lang.psi.JDLCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="io.github.jhipster.jdl.dsl.idea.lang.JDLFileTypeFactory"/>
+		<stubElementTypeHolder class="io.github.jhipster.jdl.dsl.idea.lang.JDLElementTypeProvider"/>
+		<lang.ast.factory 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="io.github.jhipster.jdl.dsl.idea.lang.parser.JDLParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="io.github.jhipster.jdl.dsl.JDL" implementationClass="io.github.jhipster.jdl.dsl.idea.highlighting.JDLSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="io.github.jhipster.jdl.dsl.JDL" implementationClass="io.github.jhipster.jdl.dsl.idea.completion.JDLCompletionContributor"/>
+		<pom.declarationSearcher implementation="io.github.jhipster.jdl.dsl.idea.lang.pom.JDLPomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="io.github.jhipster.jdl.dsl.idea.facet.JDLFacetType"/>
+		<lang.documentationProvider 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+		/>
+		<colorSettingsPage implementation="io.github.jhipster.jdl.dsl.idea.highlighting.JDLColorSettingsPage"/>
+		<highlightVisitor implementation="io.github.jhipster.jdl.dsl.idea.highlighting.JDLSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="io.github.jhipster.jdl.dsl.JDL"
+			factoryClass="io.github.jhipster.jdl.dsl.idea.JDLExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>
