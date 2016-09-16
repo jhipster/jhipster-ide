@@ -1,2 +1,2 @@
-# jdl
-An Xtext DSL for the JHipster Domain Language
+# JDL
+An Xtext based exitor for the JHipster Domain Language
