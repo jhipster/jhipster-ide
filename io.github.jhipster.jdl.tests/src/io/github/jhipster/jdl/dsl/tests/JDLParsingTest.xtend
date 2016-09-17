@@ -4,7 +4,7 @@
 package io.github.jhipster.jdl.dsl.tests
 
 import com.google.inject.Inject
-import io.github.jhipster.jdl.dsl.jdl.DomainModel
+import io.github.jhipster.jdl.dsl.jdl.JdlDomainModel
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith
 class JDLParsingTest{
 
 	@Inject
-	ParseHelper<DomainModel> parseHelper
+	ParseHelper<JdlDomainModel> parseHelper
 
 	@Test 
 	def void loadModel() {
