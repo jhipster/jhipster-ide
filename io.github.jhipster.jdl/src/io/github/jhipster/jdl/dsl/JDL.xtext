@@ -38,9 +38,9 @@ JdlStringField returns JdlEntityField:
 	stringType?='String' validators=JdlStringValidators?;
 
 JdlNumericField returns JdlEntityField:
-	numericFieldType=NumericFieldType validators=JdlNumericValidators?;
+	numericFieldType=JdlNumericFieldType validators=JdlNumericValidators?;
 
-enum NumericFieldType:
+enum JdlNumericFieldType:
 	Integer | Long | BigDecimal | Float | Double;
 
 JdlBooleanField returns JdlEntityField:
@@ -60,7 +60,7 @@ enum JdlBlobFieldType:
  * ========================================================================= */
 
 JdlStringValidators:
-	(required=JdlRequiredValidator) (minLength=JdlMinLengthValidator)? 
+	(required?=JdlRequiredValidator) (minLength=JdlMinLengthValidator)?
 	(maxlength=JdlMaxLengthValidator)? (pattern=JdlPatternValidator)?;
 
 JdlNumericValidators:
