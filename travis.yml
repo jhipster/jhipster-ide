@@ -1,3 +1,5 @@
 language: java
 script:
-- mvn clean install
+  - mvn clean install
+after_failure:
+  - cat /home/travis/build/jbadeau/jdl/io.github.jhipster.jdl.tests/target/work/configuration/*.log
