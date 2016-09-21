@@ -18,7 +18,7 @@ Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.xtend.lib;resolution:=optional,
  org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: io.github.jhipster.jdl.dsl.ui.contentassist,
  io.github.jhipster.jdl.dsl.ui.quickfix,
  io.github.jhipster.jdl.ui.internal

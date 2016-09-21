@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: io.github.jhipster.jdl.dsl.jdl.impl,
  io.github.jhipster.jdl.dsl.validation,
  io.github.jhipster.jdl.dsl.jdl,
