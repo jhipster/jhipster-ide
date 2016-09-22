@@ -1,6 +1,38 @@
-target/
-src-gen/
-xtend-gen/
-xtext-gen/
-model/
-.antlr*.jar
+# javadoc
+docs.tar
+
+# Ant
+build
+
+# Maven
+target
+bin
+
+# IntelliJ IDEA
+*.iws
+*.iml
+*.ipr
+.idea/
+
+# Eclipse
+.classpath
+.project
+.settings
+.buildpath
+.externalToolBuilders
+
+# Xtext
+java-gen
+xtext-gen
+xtend-gen
+
+# Mac OS X
+.DS_Store
+Icon?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db 
+Desktop.ini
