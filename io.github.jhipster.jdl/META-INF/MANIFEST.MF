@@ -15,16 +15,15 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: io.github.jhipster.jdl.dsl.jdl.impl,
- io.github.jhipster.jdl.dsl.validation,
- io.github.jhipster.jdl.dsl.jdl,
- io.github.jhipster.jdl.dsl.jdl.util,
- io.github.jhipster.jdl.dsl.scoping,
- io.github.jhipster.jdl.dsl.services,
- io.github.jhipster.jdl.dsl.serializer,
- io.github.jhipster.jdl.dsl.parser.antlr.internal,
- io.github.jhipster.jdl.dsl,
- io.github.jhipster.jdl.dsl.parser.antlr,
- io.github.jhipster.jdl.dsl.generator,
- io.github.jhipster.jdl.dsl.formatting2
+Export-Package: io.github.jhipster.jdl.services,
+ io.github.jhipster.jdl.validation,
+ io.github.jhipster.jdl.parser.antlr,
+ io.github.jhipster.jdl,
+ io.github.jhipster.jdl.serializer,
+ io.github.jhipster.jdl.jdl.util,
+ io.github.jhipster.jdl.generator,
+ io.github.jhipster.jdl.jdl,
+ io.github.jhipster.jdl.parser.antlr.internal,
+ io.github.jhipster.jdl.scoping,
+ io.github.jhipster.jdl.jdl.impl
 Import-Package: org.apache.log4j

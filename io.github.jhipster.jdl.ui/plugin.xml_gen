@@ -4,48 +4,48 @@
 	<extension
 		point="org.eclipse.ui.editors">
 		<editor
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="jh"
-			id="io.github.jhipster.jdl.dsl.JDL"
+			id="io.github.jhipster.jdl.JDL"
 			name="JDL Editor">
 		</editor>
 	</extension>
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
 			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
 			<activeWhen>
 				<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-			commandId="io.github.jhipster.jdl.dsl.JDL.validate">
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="io.github.jhipster.jdl.JDL.validate">
 		<activeWhen>
 			<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 			</reference>
 		</activeWhen>
 		</handler>
 		<!-- copy qualified name -->
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
 			<activeWhen>
-				<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened" />
+				<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened" />
 			</activeWhen>
 		</handler>
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
 			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
 			<activeWhen>
 				<and>
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.XtextEditor.opened" />
+					<reference definitionId="io.github.jhipster.jdl.JDL.XtextEditor.opened" />
 					<iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -54,22 +54,22 @@
 		</handler>
 	</extension>
 	<extension point="org.eclipse.core.expressions.definitions">
-		<definition id="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+		<definition id="io.github.jhipster.jdl.JDL.Editor.opened">
 			<and>
 				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="io.github.jhipster.jdl.dsl.JDL" 
+						value="io.github.jhipster.jdl.JDL" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>
 		</definition>
-		<definition id="io.github.jhipster.jdl.dsl.JDL.XtextEditor.opened">
+		<definition id="io.github.jhipster.jdl.JDL.XtextEditor.opened">
 			<and>
 				<reference definitionId="isXtextEditorActive"/>
 				<with variable="activeEditor">
 					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-						value="io.github.jhipster.jdl.dsl.JDL" 
+						value="io.github.jhipster.jdl.JDL" 
 						forcePluginActivation="true"/>
 				</with>		
 			</and>
@@ -78,33 +78,33 @@
 	<extension
 			point="org.eclipse.ui.preferencePages">
 		<page
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.jhipster.jdl.JDL"
 			name="JDL">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 		<page
-			category="io.github.jhipster.jdl.dsl.JDL"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL.coloring"
+			category="io.github.jhipster.jdl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="io.github.jhipster.jdl.JDL.coloring"
 			name="Syntax Coloring">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 		<page
-			category="io.github.jhipster.jdl.dsl.JDL"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL.templates"
+			category="io.github.jhipster.jdl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="io.github.jhipster.jdl.JDL.templates"
 			name="Templates">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.jhipster.jdl.JDL"
 			name="JDL">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -114,14 +114,14 @@
 	<extension
 		point="org.eclipse.ui.keywords">
 		<keyword
-			id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"
+			id="io.github.jhipster.jdl.ui.keyword_JDL"
 			label="JDL"/>
 	</extension>
 	<extension
 		point="org.eclipse.ui.commands">
 	<command
 			description="Trigger expensive validation"
-			id="io.github.jhipster.jdl.dsl.JDL.validate"
+			id="io.github.jhipster.jdl.JDL.validate"
 			name="Validate">
 	</command>
 	<!-- copy qualified name -->
@@ -142,12 +142,12 @@
 		<menuContribution
 			locationURI="popup:#TextEditorContext?after=group.edit">
 			 <command
-				 commandId="io.github.jhipster.jdl.dsl.JDL.validate"
+				 commandId="io.github.jhipster.jdl.JDL.validate"
 				 style="push"
 				 tooltip="Trigger expensive validation">
 			<visibleWhen checkEnabled="false">
 				<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 				</reference>
 			</visibleWhen>
 		</command>
@@ -157,7 +157,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened" />
+					<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -165,7 +165,7 @@
 			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened" />
+					<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
@@ -174,7 +174,7 @@
 				style="push" tooltip="Copy Qualified Name">
 				<visibleWhen checkEnabled="false">
 					<and>
-						<reference definitionId="io.github.jhipster.jdl.dsl.JDL.XtextEditor.opened" />
+						<reference definitionId="io.github.jhipster.jdl.JDL.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -187,7 +187,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -195,11 +195,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
 			commandId="org.eclipse.xtext.ui.editor.FindReferences">
 			<activeWhen>
 				<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -208,17 +208,17 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="jh">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
 			uriExtension="jh">
 		</resourceServiceProvider>
 	</extension>
-	<!-- marker definitions for io.github.jhipster.jdl.dsl.JDL -->
+	<!-- marker definitions for io.github.jhipster.jdl.JDL -->
 	<extension
 			id="jdl.check.fast"
 			name="JDL Problem"
@@ -242,25 +242,25 @@
 	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
 			fileExtensions="jh"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="io.github.jhipster.jdl.dsl.JDL"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL.compiler.preferencePage"
+			category="io.github.jhipster.jdl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.jhipster.jdl.JDL.compiler.preferencePage"
 			name="Compiler">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.ui.propertyPages">
 		<page
-			category="io.github.jhipster.jdl.dsl.JDL"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL.compiler.propertyPage"
+			category="io.github.jhipster.jdl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.jhipster.jdl.JDL.compiler.propertyPage"
 			name="Compiler">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -271,20 +271,20 @@
 		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
 			<command
 				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
-				id="io.github.jhipster.jdl.dsl.JDL.OpenGeneratedCode"
+				id="io.github.jhipster.jdl.JDL.OpenGeneratedCode"
 				style="push">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened" />
+					<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened" />
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 		<handler
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
 			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
 			<activeWhen>
-				<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened" />
+				<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened" />
 			</activeWhen>
 		</handler>
 	</extension>
@@ -292,11 +292,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -316,16 +316,16 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened"/>
+					<reference definitionId="io.github.jhipster.jdl.JDL.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-	<!-- quickfix marker resolution generator for io.github.jhipster.jdl.dsl.JDL -->
+	<!-- quickfix marker resolution generator for io.github.jhipster.jdl.JDL -->
 	<extension
 			point="org.eclipse.ui.ide.markerResolution">
 		<markerResolutionGenerator
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="io.github.jhipster.jdl.ui.jdl.check.fast">
 			<attribute
 				name="FIXABLE_KEY"
@@ -333,7 +333,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="io.github.jhipster.jdl.ui.jdl.check.normal">
 			<attribute
 				name="FIXABLE_KEY"
@@ -341,7 +341,7 @@
 			</attribute>
 		</markerResolutionGenerator>
 		<markerResolutionGenerator
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
 			markerType="io.github.jhipster.jdl.ui.jdl.check.expensive">
 			<attribute
 				name="FIXABLE_KEY"
@@ -352,11 +352,11 @@
 	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+					definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -368,7 +368,7 @@
 				style="push">
 				<visibleWhen checkEnabled="false">
 					<reference
-						definitionId="io.github.jhipster.jdl.dsl.JDL.Editor.opened">
+						definitionId="io.github.jhipster.jdl.JDL.Editor.opened">
 					</reference>
 				</visibleWhen>
 			</command>
@@ -376,28 +376,28 @@
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
-			category="io.github.jhipster.jdl.dsl.JDL"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-			id="io.github.jhipster.jdl.dsl.JDL.refactoring"
+			category="io.github.jhipster.jdl.JDL"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="io.github.jhipster.jdl.JDL.refactoring"
 			name="Refactoring">
-			<keywordReference id="io.github.jhipster.jdl.dsl.ui.keyword_JDL"/>
+			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 	</extension>
 	<extension point="org.eclipse.compare.contentViewers">
-		<viewer id="io.github.jhipster.jdl.dsl.JDL.compare.contentViewers"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="io.github.jhipster.jdl.JDL.compare.contentViewers"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="jh">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
-		<viewer id="io.github.jhipster.jdl.dsl.JDL.compare.contentMergeViewers"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+		<viewer id="io.github.jhipster.jdl.JDL.compare.contentMergeViewers"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="jh" label="JDL Compare">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
-		<provider id="io.github.jhipster.jdl.dsl.JDL.editors.documentProviders"
-			class="io.github.jhipster.jdl.dsl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+		<provider id="io.github.jhipster.jdl.JDL.editors.documentProviders"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
 			extensions="jh">
 		</provider>
 	</extension>

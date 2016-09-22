@@ -1,14 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
 		<groupId>io.github.jhipster.jdl</groupId>
-		<artifactId>jdl</artifactId>
+		<artifactId>io.github.jhipster.jdl.parent</artifactId>
 		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
-	
 	<artifactId>io.github.jhipster.jdl</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
@@ -30,7 +27,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/io/github/jhipster/jdl/dsl/GenerateJDL.mwe2</argument>
+						<argument>/${project.basedir}/src/io/github/jhipster/jdl/GenerateJDL.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>

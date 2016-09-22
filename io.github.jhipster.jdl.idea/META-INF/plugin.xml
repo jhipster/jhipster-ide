@@ -1,5 +1,5 @@
 <idea-plugin version="2" xmlns:xi="http://www.w3.org/2001/XInclude">
-	<id>io.github.jhipster.jdl.dsl.idea</id>
+	<id>io.github.jhipster.jdl.idea</id>
 	<name>JDL Support</name>
 	<description>
 		This plugin enables smart editing of JDL files.

@@ -12,7 +12,7 @@ Require-Bundle: io.github.jhipster.jdl.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: io.github.jhipster.jdl.dsl.ui.tests
+Export-Package: io.github.jhipster.jdl.ui.tests
 Import-Package: org.hamcrest.core,
  org.junit;version="4.5.0",
  org.junit.runners.model;version="4.5.0",
