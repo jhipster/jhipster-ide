@@ -1,7 +1,6 @@
 sudo: false
 
 language: java
-jdk: oraclejdk8
 
 cache:
   directories:
@@ -9,6 +8,6 @@ cache:
 
 install: /bin/true
 script:
-  - mvn clean install
+  - mvn clean install -X
 after_failure:
   - cat /home/travis/build/jbadeau/jdl/io.github.jhipster.jdl.ui.tests/target/work/data/.metadata/.log
