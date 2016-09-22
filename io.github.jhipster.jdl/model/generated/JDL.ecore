@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="jdl" nsURI="http://www.github.io/jhipster/jdl/JDL" nsPrefix="jdl">
+  <eClassifiers xsi:type="ecore:EClass" name="JdlDomainModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//JdlFeature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlFeature"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlEntity" eSuperTypes="#//JdlFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//JdlEntityField" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlEntityField" eSuperTypes="#//JdlFieldType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//JdlFieldType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumType" eType="#//JdlEnumType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="numericFieldType" eType="#//JdlNumericFieldType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booleanType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localDateType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="zonedDateTimeType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlFieldType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blobFieldType" eType="#//JdlBlobFieldType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validators" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JdlNumericFieldType">
+    <eLiterals name="Integer" literal="Integer"/>
+    <eLiterals name="Long" value="1" literal="Long"/>
+    <eLiterals name="BigDecimal" value="2" literal="BigDecimal"/>
+    <eLiterals name="Float" value="3" literal="Float"/>
+    <eLiterals name="Double" value="4" literal="Double"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JdlBlobFieldType">
+    <eLiterals name="Blob" literal="Blob"/>
+    <eLiterals name="AnyBlob" value="1" literal="AnyBlob"/>
+    <eLiterals name="ImageBlob" value="2" literal="ImageBlob"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlStringValidators">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minLength" eType="#//JdlMinLengthValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxlength" eType="#//JdlMaxLengthValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pattern" eType="#//JdlPatternValidator"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlNumericValidators">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="required" eType="#//JdlRequiredValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minlength" eType="#//JdlMinValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxlength" eType="#//JdlMaxValidator"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlBlobValidators">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="required" eType="#//JdlRequiredValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="minbytes" eType="#//JdlMinBytesValidator"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxbytes" eType="#//JdlMaxBytesValidator"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlRequiredValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="required" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMinLengthValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMaxLengthValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlPatternValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMinValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMaxValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMinBytesValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlMaxBytesValidator">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlRelationships" eSuperTypes="#//JdlFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="#//JdlCardinality"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationships" upperBound="-1"
+        eType="#//JdlRelationship" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlRelationship">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromEntity" eType="#//JdlEntity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fromName" eType="#//JdlRelationshipName"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toEntity" eType="#//JdlEntity"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="toName" eType="#//JdlRelationshipName"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlRelationshipName">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JdlCardinality">
+    <eLiterals name="OneToMany" literal="OneToMany"/>
+    <eLiterals name="ManyToOne" value="1" literal="ManyToOne"/>
+    <eLiterals name="OneToOne" value="2" literal="OneToOne"/>
+    <eLiterals name="ManyToMany" value="3" literal="ManyToMany"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlEnumType" eSuperTypes="#//JdlFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlGenerationSetting" eSuperTypes="#//JdlFeature #//JdlGenerationSettingType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="setting" eType="#//JdlGenerationSettingType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="excludes" eType="#//JdlEntityExclusion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceGenerationSetting"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" eType="#//JdlEntityInclusion"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="serviceType" eType="#//JdlServiceType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="microserviceGenerationSetting"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="searchGenerationSetting"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="service" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dtoGenerationSetting" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dtoType" eType="#//JdlDtoType"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="paginateGenerationSetting"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="paginateType" eType="#//JdlPaginateType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="angularSuffixGenerationSetting"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlGenerationSettingType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlEntityInclusion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predicate" eType="#//JdlWildcardPredicate"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" unique="false"
+        upperBound="-1" eType="#//JdlEntity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlEntityExclusion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entities" unique="false"
+        upperBound="-1" eType="#//JdlEntity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlWildcardPredicate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="wildcard" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="all" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JdlServiceType">
+    <eLiterals name="serviceClass" literal="serviceClass"/>
+    <eLiterals name="serviceImpl" value="1" literal="serviceImpl"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="JdlDtoType">
+    <eLiterals name="mapstruct" literal="mapstruct"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="JdlPaginateType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pagination" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="infiniteScroll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,14 @@
+sudo: false
+
+language: java
+jdk: oraclejdk8
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+
+install: /bin/true
+script:
+  - mvn clean install
+after_failure:
+  - cat /home/travis/build/jbadeau/jdl/io.github.jhipster.jdl.ui.tests/target/work/data/.metadata/.log
