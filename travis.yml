@@ -8,6 +8,6 @@ cache:
 
 install: /bin/true
 script:
-  - mvn clean install --X
+  - mvn clean install -Dmaven.test.skip=true
 after_failure:
   - cat /home/travis/build/jbadeau/jdl/io.github.jhipster.jdl.ui.tests/target/work/data/.metadata/.log
