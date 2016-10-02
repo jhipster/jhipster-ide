@@ -9,7 +9,7 @@ JdlDomainModel:
 	features+=JdlFeature*;
 
 JdlFeature:
-	JdlEntity | JdlEnumType | JdlRelationships | JdlGenerationSetting;
+	JdlEntity | JdlEnum | JdlRelationships | JdlOption;
 
 /* =========================================================================
  * ENTITY
@@ -26,7 +26,7 @@ JdlFieldType:
 	JdlEnumField | JdlStringField | JdlNumericField | JdlBooleanField | JdlDateField | JdlBlobField;
 
 JdlEnumField returns JdlEntityField:
-	enumType=[JdlEnumType] validators=JdlRequiredValidator?;
+	enumType=[JdlEnum] validators=JdlRequiredValidator?;
 
 JdlStringField returns JdlEntityField:
 	stringType?='String' validators=JdlStringValidators?;
@@ -41,14 +41,20 @@ JdlBooleanField returns JdlEntityField:
 	booleanType?='Boolean' validators=JdlRequiredValidator?;
 
 JdlDateField returns JdlEntityField:
-	(localDateType?='LocalDate' | zonedDateTimeType?='ZonedDateTime') validators=JdlRequiredValidator?;
+	dateFieldType=JdlDateFieldType validators=JdlRequiredValidator?;
 
+enum JdlDateFieldType:
+	LocalDate | ZonedDateTime;
+	
 JdlBlobField returns JdlFieldType:
 	blobFieldType=JdlBlobFieldType validators=JdlBlobValidators?;
 
 enum JdlBlobFieldType:
 	Blob | AnyBlob | ImageBlob;
 
+/* =========================================================================
+ * VALIDATOR
+ * ========================================================================= */
 JdlStringValidators:
 	(required?=JdlRequiredValidator) (minLength=JdlMinLengthValidator)?
 	(maxlength=JdlMaxLengthValidator)? (pattern=JdlPatternValidator)?;
@@ -103,27 +109,27 @@ enum JdlCardinality:
 /* =========================================================================
  * ENUM
  * ========================================================================= */
-JdlEnumType:
+JdlEnum:
 	'enum' name=ID '{'
 	values+=ID (',' values+=ID)*
 	'}';
 
 /* =========================================================================
- * GENERATION SETTTINGS
+ * OPTION 
  * ========================================================================= */
-JdlGenerationSetting:
-	setting=JdlGenerationSettingType (excludes=JdlEntityExclusion)?;
+JdlOption:
+	setting=JdlOptionType (excludes=JdlEntityExclusion)?;
 
-JdlGenerationSettingType:
-	JdlDtoGenerationSetting |
-	JdlPaginateGenerationSetting |
-	JdlServiceGenerationSetting |
-	JdlMicroserviceGenerationSetting |
-	JdlSearchGenerationSetting |
-	JdlSkipClientGenerationSetting |
-	JdlSkipServerGenerationSetting |
-	JdlAngularSuffixGenerationSetting |
-	JdlNoFluentMethodGenerationSetting;
+JdlOptionType:
+	JdlDtoOption |
+	JdlPaginateOption |
+	JdlServiceOption |
+	JdlMicroserviceOption |
+	JdlSearchOption |
+	JdlSkipClientOption |
+	JdlSkipServerOption |
+	JdlAngularSuffixOption |
+	JdlNoFluentMethodOption;
 
 JdlWithEntityInclusion:
 	(predicate=JdlWildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*) 'with';
@@ -138,68 +144,68 @@ JdlEntityExclusion:
 	'except' entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
 
 /* =========================================================================
- * DTO GENERATION SETTTINGS
+ * DTO OPTION 
  * ========================================================================= */
-JdlDtoGenerationSetting returns JdlGenerationSetting:
-	dtoGenerationSetting?='dto' includes=JdlWithEntityInclusion dtoType=JdlDtoType;
+JdlDtoOption returns JdlOption:
+	dtoOption?='dto' includes=JdlWithEntityInclusion dtoType=JdlDtoType;
 
 enum JdlDtoType:
 	mapstruct;
 
 /* =========================================================================
- * PAGINATION GENERATION SETTTINGS
+ * PAGINATION OPTION 
  * ========================================================================= */
-JdlPaginateGenerationSetting returns JdlGenerationSetting:
-	paginateGenerationSetting?='paginate' includes=JdlWithEntityInclusion paginateType=JdlPaginateType;
+JdlPaginateOption returns JdlOption:
+	paginateOption?='paginate' includes=JdlWithEntityInclusion paginateType=JdlPaginateType;
 
 JdlPaginateType:
 	pagination?=('pager' | 'pagination') | infiniteScroll?='infinite-scroll';
 
 /* =========================================================================
- * SERVICE GENERATION SETTTINGS
+ * SERVICE OPTION 
  * ========================================================================= */
-JdlServiceGenerationSetting returns JdlGenerationSetting:
-	serviceGenerationSetting?='service' includes=JdlWithEntityInclusion serviceType=JdlServiceType;
+JdlServiceOption returns JdlOption:
+	serviceOption?='service' includes=JdlWithEntityInclusion serviceType=JdlServiceType;
 
 enum JdlServiceType:
 	serviceClass | serviceImpl;
 
 /* =========================================================================
- * MICRO SERVICE GENERATION SETTTINGS
+ * MICRO SERVICE OPTION 
  * ========================================================================= */
-JdlMicroserviceGenerationSetting returns JdlGenerationSetting:
-	microserviceGenerationSetting?='microservice' includes=JdlWithEntityInclusion appname=ID;
+JdlMicroserviceOption returns JdlOption:
+	microserviceOption?='microservice' includes=JdlWithEntityInclusion appname=ID;
 
 /* =========================================================================
- * SEARCH GENERATION SETTTINGS
+ * SEARCH OPTION 
  * ========================================================================= */
-JdlSearchGenerationSetting returns JdlGenerationSetting:
-	searchGenerationSetting?='search' includes=JdlWithEntityInclusion searchType=JdlSearchType;
+JdlSearchOption returns JdlOption:
+	searchOption?='search' includes=JdlWithEntityInclusion searchType=JdlSearchType;
 
 enum JdlSearchType:
 	elasticsearch;
 
 /* =========================================================================
- * SKIP CLIENT GENERATION SETTTINGS
+ * SKIP CLIENT OPTION 
  * ========================================================================= */
-JdlSkipClientGenerationSetting returns JdlGenerationSetting:
-	skipClienGenerationSetting?='skipClient' includes=JdlForEntityInclusion;
+JdlSkipClientOption returns JdlOption:
+	skipClienOption?='skipClient' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * SKIP SERVER GENERATION SETTTINGS
+ * SKIP SERVER OPTION 
  * ========================================================================= */
-JdlSkipServerGenerationSetting returns JdlGenerationSetting:
-	skipServerGenerationSetting?='skipServer' includes=JdlForEntityInclusion;
+JdlSkipServerOption returns JdlOption:
+	skipServerOption?='skipServer' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * ANGULAR SUFFIX GENERATION SETTTINGS
+ * ANGULAR SUFFIX OPTION 
  * ========================================================================= */
-JdlAngularSuffixGenerationSetting returns JdlGenerationSetting:
-	angularSuffixGenerationSetting?='angularSuffix' includes=JdlWithEntityInclusion id=ID;
+JdlAngularSuffixOption returns JdlOption:
+	angularSuffixOption?='angularSuffix' includes=JdlWithEntityInclusion id=ID;
 
 /* =========================================================================
- * NO FLUENT METHOD GENERATION SETTTINGS
+ * NO FLUENT METHOD OPTION 
  * ========================================================================= */
-JdlNoFluentMethodGenerationSetting returns JdlGenerationSetting:
-	noFluentMethodGenerationSetting?='noFluentMethod' includes=JdlForEntityInclusion;
+JdlNoFluentMethodOption returns JdlOption:
+	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
