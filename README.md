@@ -24,7 +24,7 @@ Hello, this is [JDL-IDE](https://jhipster.github.io/jdl-ide/), a collection of e
 - Type Hierarchy	
 - Folding
 
-Created by [jbaceau](https://github.com/jbadeau) and [colameo](https://github.com/colameo).
+Created by [jbadeau](https://github.com/jbadeau) and [colameo](https://github.com/colameo).
 
 ### JDL-IDE was made possible by these cool projects
 
