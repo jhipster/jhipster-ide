@@ -3,7 +3,7 @@ grammar io.github.jhipster.jdl.JDL with org.eclipse.xtext.common.Terminals
 generate jdl "http://www.github.io/jhipster/jdl/JDL"
 
 /* =========================================================================
- * ROOT ELEMENTS
+ * ROOT
  * ========================================================================= */
 
 JdlDomainModel:
@@ -50,10 +50,6 @@ JdlBlobField returns JdlFieldType:
 
 enum JdlBlobFieldType:
 	Blob | AnyBlob | ImageBlob;
-
-/* =========================================================================
- * VALIDATORS
- * ========================================================================= */
 
 JdlStringValidators:
 	(required?=JdlRequiredValidator) (minLength=JdlMinLengthValidator)?
@@ -117,52 +113,105 @@ JdlEnumType:
 	'}';
 
 /* =========================================================================
- * GENERATION SETTING
+ * GENERATION SETTTINGS
  * ========================================================================= */
-
 JdlGenerationSetting:
 	setting=JdlGenerationSettingType (excludes=JdlEntityExclusion)?;
 
 JdlGenerationSettingType:
-	JdlServiceGenerationSetting | JdlMicroserviceGenerationSetting | JdlSearchGenerationSetting | 
-	JdlDtoGenerationSetting | JdlPaginateGenerationSetting | JdlAngularSuffixGenerationSetting;
+	JdlDtoGenerationSetting |
+	JdlPaginateGenerationSetting | 
+	JdlServiceGenerationSetting | 
+	JdlMicroserviceGenerationSetting | 
+	JdlSearchGenerationSetting |  
+	JdlSkipClientGenerationSetting |
+	JdlSkipServerGenerationSetting |
+	JdlAngularSuffixGenerationSetting |
+	JdlNoFluentMethodGenerationSetting;
 
-JdlServiceGenerationSetting returns JdlGenerationSetting:
-	serviceGenerationSetting?='service' includes=JdlEntityInclusion serviceType=JdlServiceType;
-
-JdlMicroserviceGenerationSetting returns JdlGenerationSetting:
-	microserviceGenerationSetting?='microservice' includes=JdlEntityInclusion appname=ID;
-
-JdlSearchGenerationSetting returns JdlGenerationSetting:
-	searchGenerationSetting?='search' includes=JdlEntityInclusion service=ID;
-
-JdlDtoGenerationSetting returns JdlGenerationSetting:
-	dtoGenerationSetting?='dto' includes=JdlEntityInclusion dtoType=JdlDtoType;
-
-JdlPaginateGenerationSetting returns JdlGenerationSetting:
-	paginateGenerationSetting?='paginate' includes=JdlEntityInclusion paginateType=JdlPaginateType;
-
-JdlAngularSuffixGenerationSetting returns JdlGenerationSetting:
-	angularSuffixGenerationSetting?='angularSuffix' includes=JdlEntityInclusion id=ID;
-
-JdlEntityInclusion:
+JdlWithEntityInclusion:
 	(predicate=JdlWildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*)  'with';
 
-JdlEntityExclusion:
-	'except' entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
-
+JdlForEntityInclusion:
+	'for' (predicate=JdlWildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*);
+	
 JdlWildcardPredicate:
 	wildcard?='*' | all?='all';
+	
+JdlEntityExclusion:
+	'except' entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
+	
+/* =========================================================================
+ * DTO GENERATION SETTTINGS
+ * ========================================================================= */
 
-enum JdlServiceType:
-	serviceClass | serviceImpl;
+JdlDtoGenerationSetting returns JdlGenerationSetting:
+	dtoGenerationSetting?='dto' includes=JdlWithEntityInclusion dtoType=JdlDtoType;
 
 enum JdlDtoType:
 	mapstruct;
+	
+/* =========================================================================
+ * PAGINATION GENERATION SETTTINGS
+ * ========================================================================= */
+ 
+JdlPaginateGenerationSetting returns JdlGenerationSetting:
+	paginateGenerationSetting?='paginate' includes=JdlWithEntityInclusion paginateType=JdlPaginateType;
 
 JdlPaginateType:
 	pagination?=('pager'|'pagination') | infiniteScroll?='infinite-scroll';
+		
+/* =========================================================================
+ * SERVICE GENERATION SETTTINGS
+ * ========================================================================= */
+
+JdlServiceGenerationSetting returns JdlGenerationSetting:
+	serviceGenerationSetting?='service' includes=JdlWithEntityInclusion serviceType=JdlServiceType;
+
+enum JdlServiceType:
+	serviceClass | serviceImpl;
+	
+ /* =========================================================================
+ * MICRO SERVICE GENERATION SETTTINGS
+ * ========================================================================= */
+
+JdlMicroserviceGenerationSetting returns JdlGenerationSetting:
+	microserviceGenerationSetting?='microservice' includes=JdlWithEntityInclusion appname=ID;
+ 
+ /* =========================================================================
+ * SEARCH GENERATION SETTTINGS
+ * ========================================================================= */
+
+JdlSearchGenerationSetting returns JdlGenerationSetting:
+	searchGenerationSetting?='search' includes=JdlWithEntityInclusion searchType=JdlSearchType;
+
+enum JdlSearchType:
+	elasticsearch;
+	
+ /* =========================================================================
+ * SKIP CLIENT GENERATION SETTTINGS
+ * ========================================================================= */
+ 
+ JdlSkipClientGenerationSetting returns JdlGenerationSetting:
+	skipClienGenerationSetting?='skipClient' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * END OF GRAMMAR
+ * SKIP SERVER GENERATION SETTTINGS
  * ========================================================================= */
+
+ JdlSkipServerGenerationSetting returns JdlGenerationSetting:
+	skipServerGenerationSetting?='skipServer' includes=JdlForEntityInclusion;
+	 
+/* =========================================================================
+ * ANGULAR SUFFIX GENERATION SETTTINGS
+ * ========================================================================= */
+
+JdlAngularSuffixGenerationSetting returns JdlGenerationSetting:
+	angularSuffixGenerationSetting?='angularSuffix' includes=JdlWithEntityInclusion id=ID;
+
+/* =========================================================================
+ * NO FLUENT METHOD GENERATION SETTTINGS
+ * ========================================================================= */
+
+  JdlNoFluentMethodGenerationSetting returns JdlGenerationSetting:
+	noFluentMethodGenerationSetting?='noFluentMethod' includes=JdlForEntityInclusion;
