@@ -23,6 +23,7 @@ bin
 
 # Xtext
 java-gen
+src-gen
 xtext-gen
 xtend-gen
 
