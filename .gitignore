@@ -26,6 +26,7 @@ java-gen
 src-gen
 xtext-gen
 xtend-gen
+generated
 
 # Mac OS X
 .DS_Store
