@@ -15,9 +15,9 @@ bin
 .idea/
 
 # Eclipse
-.classpath
-.project
-.settings
+#.classpath
+#.project
+#.settings
 .buildpath
 .externalToolBuilders
 
