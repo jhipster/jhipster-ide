@@ -424,4 +424,10 @@
 			type="text">
 		</fileTypes>
 	</extension>
+	<extension point="net.sourceforge.plantuml.eclipse.diagramTextProvider">
+	   <diagramTextProvider
+	   fileExtensions="jdl,jh"
+	        providerClass="io.github.jhipster.jdl.ui.plantuml.JdlDiagramTextProvider">
+	   </diagramTextProvider>
+	</extension>	
 </plugin>

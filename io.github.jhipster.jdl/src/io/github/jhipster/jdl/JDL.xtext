@@ -16,40 +16,55 @@ JdlFeature:
  * ========================================================================= */
 JdlEntity:
 	'entity' name=ID ('{'
-	(fields+=JdlEntityField (',' fields+=JdlEntityField)*)?
+		(fields+=JdlEntityField (',' fields+=JdlEntityField)*)?
 	'}')?;
 
 JdlEntityField:
 	name=ID type=JdlFieldType;
 
 JdlFieldType:
-	JdlEnumField | JdlStringField | JdlNumericField | JdlBooleanField | JdlDateField | JdlBlobField;
+	  JdlEnumFieldType 
+	| JdlStringFieldType 
+	| JdlNumericFieldType 
+	| JdlBooleanFieldType 
+	| JdlDateFieldType 
+	| JdlBlobFieldType 
+	| JdlEntityType;
 
-JdlEnumField returns JdlEntityField:
-	enumType=[JdlEnum] validators+=JdlRequiredValidator*;
+JdlEntityType:
+	element=JdlEntity;
 
-JdlStringField returns JdlEntityField:
-	stringType?='String' validators+=JdlStringValidators*;
+JdlEnumFieldType:
+	element=[JdlEnum] validators+=JdlRequiredValidator*;
 
-JdlNumericField returns JdlEntityField:
-	numericFieldType=JdlNumericFieldType validators+=JdlNumericValidators*;
+JdlStringFieldType:
+	element=JdlStringType validators+=JdlStringValidators*;
 
-enum JdlNumericFieldType:
+JdlStringType:
+	'String';
+
+JdlNumericFieldType:
+	element=JdlNumericTypes validators+=JdlNumericValidators*;
+
+enum JdlNumericTypes:
 	Integer | Long | BigDecimal | Float | Double;
 
-JdlBooleanField returns JdlEntityField:
-	booleanType?='Boolean' validators+=JdlRequiredValidator*;
+JdlBooleanFieldType:
+	element=JdlBooleanType validators+=JdlRequiredValidator*;
 
-JdlDateField returns JdlEntityField:
-	dateFieldType=JdlDateFieldType validators+=JdlRequiredValidator*;
+JdlBooleanType:
+	'Boolean';
 
-enum JdlDateFieldType:
+JdlDateFieldType:
+	element=JdlDateTypes validators+=JdlRequiredValidator*;
+
+enum JdlDateTypes:
 	LocalDate | ZonedDateTime;
 	
-JdlBlobField returns JdlFieldType:
-	blobFieldType=JdlBlobFieldType validators+=JdlBlobValidators*;
+JdlBlobFieldType:
+	element=JdlBlobTypes validators+=JdlBlobValidators*;
 
-enum JdlBlobFieldType:
+enum JdlBlobTypes:
 	Blob | AnyBlob | ImageBlob;
 
 /* =========================================================================
@@ -100,7 +115,7 @@ JdlMaxBytesValidator:
  * ========================================================================= */
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
-	relationships+=JdlRelationship* (',' relationships+=JdlRelationship)*
+		relationships+=JdlRelationship* (',' relationships+=JdlRelationship)*
 	'}';
 
 JdlRelationship:
@@ -117,7 +132,7 @@ enum JdlCardinality:
  * ========================================================================= */
 JdlEnum:
 	'enum' name=ID '{'
-	values+=ID (',' values+=ID)*
+		values+=ID (',' values+=ID)*
 	'}';
 
 /* =========================================================================
