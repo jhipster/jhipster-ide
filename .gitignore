@@ -21,6 +21,9 @@ bin
 .buildpath
 .externalToolBuilders
 
+#Folders:
+.gradle
+
 # Xtext
 java-gen
 src-gen
