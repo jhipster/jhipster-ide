@@ -37,5 +37,5 @@ subprojects {
 task installServer(type: Copy) {
 	dependsOn(':io.github.jhipster.jdl.ide:installDist')
     from "io.github.jhipster.jdl.ide/build/install/xtext-server-jdl"
-    into "vscode-extension/xtext-server-jdl"
+    into "io.github.jhipster.jdl.vscode/xtext-server-jdl"
 }
