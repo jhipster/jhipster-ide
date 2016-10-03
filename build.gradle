@@ -1,6 +1,7 @@
 buildscript {
 	repositories {
 		jcenter()
+		maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 	}
 	dependencies {
 		classpath 'org.xtext:xtext-gradle-plugin:1.0.2'
@@ -9,9 +10,10 @@ buildscript {
 }
 
 subprojects {
-	ext.xtextVersion = '2.10.0'
+	ext.xtextVersion = '2.11.0-SNAPSHOT'
 	repositories {
 		jcenter()
+		maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
 	}
 	
 	apply plugin: 'java'
@@ -30,4 +32,10 @@ subprojects {
 	configurations.all {
 		exclude group: 'asm'
 	}
+}
+
+task installServer(type: Copy) {
+	dependsOn(':io.github.jhipster.jdl.ide:installDist')
+    from "io.github.jhipster.jdl.ide/build/install/xtext-server-jdl"
+    into "vscode-extension/xtext-server-jdl"
 }

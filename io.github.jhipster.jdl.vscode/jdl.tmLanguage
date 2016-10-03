@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>fileTypes</key>
+	<array>
+		<string>*.jdl</string>
+	</array>
+	<key>name</key>
+	<string>jdl</string>
+	<key>patterns</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>keyword.control.jdl</string>
+			<key>match</key>
+			<string>\b(ManyToMany|ManyToOne|OneToMany|OneToOne|all|angularSuffix|dto|except|infinite-scroll|mapstruct|max|maxbytes|maxlength|microservice|min|minbytes|minlength|pager|paginate|pagination|pattern|relationship|required|search|service|serviceClass|serviceImpl|to|with)\b</string>
+		</dict>
+        <dict>
+			<key>name</key>
+			<string>storage.type.class.jdl</string>
+			<key>match</key>
+			<string>\b(entity|enum)\b</string>
+		</dict>
+        <dict>
+			<key>name</key>
+			<string>comment.line.double-slash.jdl</string>
+            <key>match</key>
+			<string>(//).*$\n?</string>
+		</dict>
+        <dict>
+            <key>match</key>
+			<string>\s*(\w+)\s*(AnyBlob|BigDecimal|Blob|Boolean|Double|Float|ImageBlob|Integer|LocalDate|Long|String|ZonedDateTime),?</string>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+				<dict>
+					<key>name</key>
+					<string>variable.parameter.jdl</string>
+                </dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>storage.type.primitive.jdl</string>
+                </dict>
+            </dict>
+        </dict>
+
+        <dict>
+            <key>begin</key>
+            <string>/\*\*(?!/)</string>
+            <key>end</key>
+            <string>\*/</string>
+            <key>name</key>
+            <string>comment.block.documentation.jdl</string>
+        </dict>
+	</array>
+	<key>scopeName</key>
+	<string>text.jdl</string>
+</dict>
+</plist>
