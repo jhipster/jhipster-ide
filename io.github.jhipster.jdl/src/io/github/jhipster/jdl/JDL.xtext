@@ -26,28 +26,28 @@ JdlFieldType:
 	JdlEnumField | JdlStringField | JdlNumericField | JdlBooleanField | JdlDateField | JdlBlobField;
 
 JdlEnumField returns JdlEntityField:
-	enumType=[JdlEnum] validators=JdlRequiredValidator?;
+	enumType=[JdlEnum] validators+=JdlRequiredValidator*;
 
 JdlStringField returns JdlEntityField:
-	stringType?='String' validators=JdlStringValidators?;
+	stringType?='String' validators+=JdlStringValidators*;
 
 JdlNumericField returns JdlEntityField:
-	numericFieldType=JdlNumericFieldType validators=JdlNumericValidators?;
+	numericFieldType=JdlNumericFieldType validators+=JdlNumericValidators*;
 
 enum JdlNumericFieldType:
 	Integer | Long | BigDecimal | Float | Double;
 
 JdlBooleanField returns JdlEntityField:
-	booleanType?='Boolean' validators=JdlRequiredValidator?;
+	booleanType?='Boolean' validators+=JdlRequiredValidator*;
 
 JdlDateField returns JdlEntityField:
-	dateFieldType=JdlDateFieldType validators=JdlRequiredValidator?;
+	dateFieldType=JdlDateFieldType validators+=JdlRequiredValidator*;
 
 enum JdlDateFieldType:
 	LocalDate | ZonedDateTime;
 	
 JdlBlobField returns JdlFieldType:
-	blobFieldType=JdlBlobFieldType validators=JdlBlobValidators?;
+	blobFieldType=JdlBlobFieldType validators+=JdlBlobValidators*;
 
 enum JdlBlobFieldType:
 	Blob | AnyBlob | ImageBlob;
@@ -56,14 +56,20 @@ enum JdlBlobFieldType:
  * VALIDATOR
  * ========================================================================= */
 JdlStringValidators:
-	(required?=JdlRequiredValidator) (minLength=JdlMinLengthValidator)?
-	(maxlength=JdlMaxLengthValidator)? (pattern=JdlPatternValidator)?;
+	required?=JdlRequiredValidator |
+	minlength=JdlMinLengthValidator |
+	maxlength=JdlMaxLengthValidator |
+	pattern=JdlPatternValidator;
 
 JdlNumericValidators:
-	(required=JdlRequiredValidator) (minlength=JdlMinValidator)? (maxlength=JdlMaxValidator)?;
+	required?=JdlRequiredValidator | 
+	min=JdlMinValidator | 
+	max=JdlMaxValidator;
 
 JdlBlobValidators:
-	(required=JdlRequiredValidator) (minbytes=JdlMinBytesValidator)? (maxbytes=JdlMaxBytesValidator)?;
+	required?=JdlRequiredValidator |
+	minbytes=JdlMinBytesValidator | 
+	maxbytes=JdlMaxBytesValidator;
 
 JdlRequiredValidator:
 	required?='required';
