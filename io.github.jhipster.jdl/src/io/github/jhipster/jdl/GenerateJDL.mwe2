@@ -36,11 +36,16 @@ Workflow {
 		}
 		language = StandardLanguage {
 			name = "io.github.jhipster.jdl.JDL"
-			fileExtensions = "jh"
+			fileExtensions = "jh,jdl"
 
 			serializer = {
 				generateStub = false
 			}
+			
+			formatter = formatting.Formatter2Fragment2 {
+				generateStub = true
+			}			
+			
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}

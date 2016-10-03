@@ -25,5 +25,6 @@ Export-Package: io.github.jhipster.jdl.services,
  io.github.jhipster.jdl.jdl,
  io.github.jhipster.jdl.parser.antlr.internal,
  io.github.jhipster.jdl.scoping,
- io.github.jhipster.jdl.jdl.impl
+ io.github.jhipster.jdl.jdl.impl,
+ io.github.jhipster.jdl.formatting2
 Import-Package: org.apache.log4j

@@ -7,7 +7,7 @@
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="jh"
+			extensions="jh,jdl"
 			id="io.github.jhipster.jdl.JDL"
 			name="JDL Editor">
 		</editor>
@@ -218,6 +218,19 @@
 			uriExtension="jh">
 		</resourceServiceProvider>
 	</extension>
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="jdl">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="jdl">
+		</resourceServiceProvider>
+	</extension>
 	<!-- marker definitions for io.github.jhipster.jdl.JDL -->
 	<extension
 			id="jdl.check.fast"
@@ -243,7 +256,7 @@
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="jh"/>
+			fileExtensions="jh,jdl"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
@@ -386,24 +399,28 @@
 	<extension point="org.eclipse.compare.contentViewers">
 		<viewer id="io.github.jhipster.jdl.JDL.compare.contentViewers"
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="jh">
+			extensions="jh,jdl">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="io.github.jhipster.jdl.JDL.compare.contentMergeViewers"
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="jh" label="JDL Compare">
+			extensions="jh,jdl" label="JDL Compare">
 		</viewer>
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="io.github.jhipster.jdl.JDL.editors.documentProviders"
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="jh">
+			extensions="jh,jdl">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
 			extension="jh"
+			type="text">
+		</fileTypes>
+		<fileTypes
+			extension="jdl"
 			type="text">
 		</fileTypes>
 	</extension>
