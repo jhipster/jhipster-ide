@@ -18,4 +18,12 @@
 		</plugins>
 	</build>
 
+	<dependencies>
+		<dependency>
+			<groupId>net.sourceforge.plantuml</groupId>
+			<artifactId>plantuml</artifactId>
+			<version>8048</version>
+		</dependency>
+	</dependencies>
+
 </project>
