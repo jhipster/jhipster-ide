@@ -1,10 +1,10 @@
 
 [![Build Status](https://travis-ci.org/jbadeau/jdl.svg?branch=master)](https://travis-ci.org/jbadeau/jdl)
 
-JDL-IDE
-=======
+JHipster-IDE
+============
 
-Hello, this is [JDL-IDE](https://jhipster.github.io/jdl-ide/), a collection of eclipse and IDEA plugins for editing files based on the [JDL syntax](https://jhipster.github.io/jdl). It provides the features you would expect from a modern editor like:
+Hello, this is [JHipster-IDE](https://github.com/jhipster/jhipster-ide/), an Xtext DSL which provides texual editing support of [JHipster Domain Language](https://jhipster.github.io/jdl) files for pupular IDEs and editors such as Eclipse, IDEA and Visual Studio Code. Thanx to Xtext, JHipster-IDE provides the features we have come to expect from modern text editors such as:
 
 - Syntax Coloring	
 - Semantic Coloring	
@@ -26,35 +26,25 @@ Hello, this is [JDL-IDE](https://jhipster.github.io/jdl-ide/), a collection of e
 
 Created by [jbadeau](https://github.com/jbadeau) and [colameo](https://github.com/colameo).
 
-### JDL-IDE was made possible by these cool projects
+## JHipster-IDE was made possible by these cool projects
 
 - [xtext](http://www.eclipse.org/Xtext/)
-- [sirius](http://www.eclipse.org/sirius/)
+- [plantuml](http://plantuml.com/)
+- [LSP](https://github.com/Microsoft/language-server-protocol)
 
-## Docker image
+## Eclipse Setup
 
-The official Docker image is available at https://hub.docker.com/r/jhipster/jdl-ide/
+The JHipster-IDE eclipse plugins are located here: 
 
-```
-docker run --rm -it -p 18080:80 jhipster/jdl-ide
-```
-## Eclipse plugin
+## IntelliJ Setup
 
-The JDL-IDE eclipse plugins are located here : 
+The JHipster-IDE IDEA plugins are located here: 
 
-## IDEA plugin
+## Visual Studio Code Setup
 
-The JDL-IDE IDEA plugins are located here : 
+The JHipster-IDE Visual Studio Code plugins are located here: 
 
-### Interaction
+## Coming soon
 
-Coming soon
-
-### syntax
-
-The JDL syntax is described [here](https://jhipster.github.io/jdl)
-
-## Contributing
-
-If you want to contribute to the project more info is available in [CONTRIBUTING.md](CONTRIBUTING.md).
-
+- Visual UML diagrams of your JDL files
+- Support for other tools supporting LSP such as Eclipse Che 
