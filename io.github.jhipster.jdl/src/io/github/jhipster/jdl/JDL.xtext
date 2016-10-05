@@ -139,9 +139,9 @@ JdlEnum:
  * OPTION 
  * ========================================================================= */
 JdlOption:
-	setting=JdlOptionType (excludes=JdlEntityExclusion)?;
+	setting=JdlOptionSetting (excludes=JdlExceptEntityExclusion)?;
 
-JdlOptionType:
+JdlOptionSetting:
 	JdlDtoOption |
 	JdlPaginateOption |
 	JdlServiceOption |
@@ -153,21 +153,24 @@ JdlOptionType:
 	JdlNoFluentMethodOption;
 
 JdlWithEntityInclusion:
-	(predicate=JdlWildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*) 'with';
+	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
 
 JdlForEntityInclusion:
-	'for' (predicate=JdlWildcardPredicate | entities+=[JdlEntity] (',' entities+=[JdlEntity])*);
+	'for' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
+
+JdlExceptEntityExclusion:
+	'except' selection=JdlEntitySelection;
+
+JdlEntitySelection:
+	entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
 
 JdlWildcardPredicate:
 	wildcard?='*' | all?='all';
 
-JdlEntityExclusion:
-	'except' entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
-
 /* =========================================================================
  * DTO OPTION 
  * ========================================================================= */
-JdlDtoOption returns JdlOption:
+JdlDtoOption returns JdlOptionSetting:
 	dtoOption?='dto' includes=JdlWithEntityInclusion dtoType=JdlDtoType;
 
 enum JdlDtoType:
@@ -176,7 +179,7 @@ enum JdlDtoType:
 /* =========================================================================
  * PAGINATION OPTION 
  * ========================================================================= */
-JdlPaginateOption returns JdlOption:
+JdlPaginateOption returns JdlOptionSetting:
 	paginateOption?='paginate' includes=JdlWithEntityInclusion paginateType=JdlPaginateType;
 
 JdlPaginateType:
@@ -185,7 +188,7 @@ JdlPaginateType:
 /* =========================================================================
  * SERVICE OPTION 
  * ========================================================================= */
-JdlServiceOption returns JdlOption:
+JdlServiceOption returns JdlOptionSetting:
 	serviceOption?='service' includes=JdlWithEntityInclusion serviceType=JdlServiceType;
 
 enum JdlServiceType:
@@ -194,13 +197,13 @@ enum JdlServiceType:
 /* =========================================================================
  * MICRO SERVICE OPTION 
  * ========================================================================= */
-JdlMicroserviceOption returns JdlOption:
+JdlMicroserviceOption returns JdlOptionSetting:
 	microserviceOption?='microservice' includes=JdlWithEntityInclusion appname=ID;
 
 /* =========================================================================
  * SEARCH OPTION 
  * ========================================================================= */
-JdlSearchOption returns JdlOption:
+JdlSearchOption returns JdlOptionSetting:
 	searchOption?='search' includes=JdlWithEntityInclusion searchType=JdlSearchType;
 
 enum JdlSearchType:
@@ -209,24 +212,24 @@ enum JdlSearchType:
 /* =========================================================================
  * SKIP CLIENT OPTION 
  * ========================================================================= */
-JdlSkipClientOption returns JdlOption:
-	skipClienOption?='skipClient' includes=JdlForEntityInclusion;
+JdlSkipClientOption returns JdlOptionSetting:
+	skipClientOption?='skipClient' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * SKIP SERVER OPTION 
  * ========================================================================= */
-JdlSkipServerOption returns JdlOption:
+JdlSkipServerOption returns JdlOptionSetting:
 	skipServerOption?='skipServer' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * ANGULAR SUFFIX OPTION 
  * ========================================================================= */
-JdlAngularSuffixOption returns JdlOption:
+JdlAngularSuffixOption returns JdlOptionSetting:
 	angularSuffixOption?='angularSuffix' includes=JdlWithEntityInclusion id=ID;
 
 /* =========================================================================
  * NO FLUENT METHOD OPTION 
  * ========================================================================= */
-JdlNoFluentMethodOption returns JdlOption:
+JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
