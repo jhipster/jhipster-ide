@@ -1,5 +1,4 @@
-
-[![Build Status](https://travis-ci.org/jbadeau/jdl.svg?branch=master)](https://travis-ci.org/jbadeau/jdl)
+[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide)
 
 JHipster-IDE
 ============
