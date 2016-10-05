@@ -20,9 +20,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>net.sourceforge.plantuml</groupId>
-			<artifactId>plantuml</artifactId>
-			<version>8048</version>
+		<groupId>io.github.jhipster.jdl</groupId>
+		<artifactId>io.github.jhipster.jdl.ide</artifactId>
+		<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 
