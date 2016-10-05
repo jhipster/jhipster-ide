@@ -3,7 +3,7 @@
     "displayName": "jdl",
     "description": "JDL VS Code extension",
     "version": "0.0.1",
-    "publisher": "cbornet",
+    "publisher": "jhipster",
     "engines": {
         "vscode": "^1.0.0"
     },
