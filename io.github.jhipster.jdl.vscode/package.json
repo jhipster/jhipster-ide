@@ -8,7 +8,7 @@
         "vscode": "^1.0.0"
     },
     "categories": [
-        "Languages"
+        "Languages", "Snippets"
     ],
     "activationEvents": [
         "onLanguage:jdl"
@@ -25,6 +25,10 @@
             "language": "jdl",
             "scopeName": "text.jdl",
             "path": "./jdl.tmLanguage"
+        }],
+        "snippets": [{
+                "language": "jdl",
+                "path": "./jdl.snippets.json"
         }]
     },
     "scripts": {

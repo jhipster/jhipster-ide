@@ -1,0 +1,138 @@
+{
+
+    "Create a new entity": {
+        "prefix": "entity-create",
+        "body": [
+            "/**",
+            " * The ${Entity:Enter the entity name} entity.",
+            " * @author ${author:A true hipster}",
+            " */",
+            "entity ${Entity} {",
+            "\t/** ${fieldName} */",
+            "\t${fieldName} ${FieldType}",
+            "}"
+        ]
+    },
+    "Create a new enum": {
+        "prefix": "enum-create",
+        "body": [
+            "enum ${EnumName:Enter the enum name} {",
+            "\t${FIRST_VALUE}, ${SECOND_VALUE}",
+            "}"
+        ]
+    },
+    "Create a new bidirectional one-to-one relationship": {
+        "prefix": "relationship-one-to-one-bidirectional",
+        "body": [
+            "relationship OneToOne {",
+            "\t${OwnerEntity}{${ownerField}} to ${OwnedEntity}{${ownedField}}",
+            "}"
+        ]
+    },
+    "Create a new unidirectional one-to-one relationship": {
+        "prefix": "relationship-one-to-one-unidirectional",
+        "body": [
+            "relationship OneToOne {",
+            "\t${OwnerEntity}{${ownerField}} to ${OwnedEntity}",
+            "}"
+        ]
+    },
+    "Create a new one-to-many relationship": {
+        "prefix": "relationship-one-to-many",
+        "body": [
+            "relationship OneToMany {",
+            "\t${OwnerEntity}{${ownerField}} to ${OwnedEntities}{${ownedField}}",
+            "}"
+        ]
+    },
+    "Create a new many-to-one relationship": {
+        "prefix": "relationship-many-to-one",
+        "body": [
+            "relationship ManyToOne {",
+            "\t${OwnerEntities}{${ownerField}} to ${OwnedEntity}",
+            "}"
+        ]
+    },
+    "Create a new many-to-many relationship": {
+        "prefix": "relationship-many-to-many",
+        "body": [
+            "relationship ManyToMany {",
+            "\t${OwnerEntities}{${ownerField}} to ${OwnedEntities}{${ownedField}}",
+            "}"
+        ]
+    },
+    "Paginate entities with standard pagination": {
+        "prefix": "paginate-with-pagination",
+        "body": [
+            "paginate ${*} with pagination"
+        ]
+    },
+    "Paginate entities with a pager": {
+        "prefix": "paginate-with-pager",
+        "body": [
+            "paginate ${*} with pager"
+        ]
+    },
+    "Paginate entities with an infinite scroll": {
+        "prefix": "paginate-with-infinite-scroll",
+        "body": [
+            "paginate ${*} with infinite-scroll"
+        ]
+    },
+    "Use DTOs to domain entities mapping": {
+        "prefix": "dto-entities",
+        "body": [
+            "dto ${*} with mapstruct"
+        ]
+    },
+    "Make entities resources use an intermediate service class": {
+        "prefix": "service-serviceClass",
+        "body": [
+            "service ${*} with serviceClass"
+        ]
+    },
+    "Make entities resources use an intermediate service interface and implementation ": {
+        "prefix": "service-serviceImpl",
+        "body": [
+            "service ${*} with serviceImpl"
+        ]
+    },
+    "Add a search engine for entities": {
+        "prefix": "search-entities",
+        "body": [
+            "search ${*} with elasticsearch"
+        ]
+    },
+    "Add entities to a microservice": {
+        "prefix": "microservice-entities",
+        "body": [
+            "microservice ${*} with ${microserviceName:Enter the name of the microservice app}"
+        ]
+    },
+    "Add a suffix to entities in AngularJS": {
+        "prefix": "angularSuffix-entities",
+        "body": [
+            "angularSuffix ${*} with ${suffix:Enter the suffix to add}"
+        ]
+    },
+    "Skip client generation for entities": {
+        "prefix": "skipClient-entities",
+        "body": [
+            "skipClient for ${*}"
+        ]
+    },
+    "Skip server generation for entities": {
+        "prefix": "skipServer-entities",
+        "body": [
+            "skipServer for ${*}"
+        ]
+    },
+    "Don't generate utility fluent methods in entities domain class'": {
+        "prefix": "noFluentMethod-entities",
+        "body": [
+            "noFluentMethod for ${*}"
+        ]
+    }
+
+}
+
