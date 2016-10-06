@@ -5,4 +5,4 @@ connection.jvm.arguments=
 connection.project.dir=..
 derived.resources=.gradle,build
 eclipse.preferences.version=1
-project.path=\:io.github.jhipster.jdl
+project.path=\:io.github.jhipster.jdl.idea
