@@ -7,8 +7,12 @@ Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ net.sourceforge.plantuml.eclipse;visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: io.github.jhipster.jdl.ide.contentassist.antlr.internal,
- io.github.jhipster.jdl.ide.contentassist.antlr
+Export-Package: io.github.jhipster.jdl.ide,
+ io.github.jhipster.jdl.ide.contentassist.antlr,
+ io.github.jhipster.jdl.ide.contentassist.antlr.internal,
+ io.github.jhipster.jdl.ide.renderer,
+ io.github.jhipster.jdl.ide.renderer.plantuml
 
