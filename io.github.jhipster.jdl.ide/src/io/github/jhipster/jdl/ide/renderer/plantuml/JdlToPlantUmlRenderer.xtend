@@ -21,9 +21,13 @@ import org.eclipse.emf.ecore.EObject
 
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
-	override render(JdlDomainModel model) '''
+	override render(JdlDomainModel jdl) {
+		jdl.toPlantUml
+	}
+
+	def private String toPlantUml(JdlDomainModel model) '''
 		«toPlantUml.apply(
-			model.features.map[
+			if (model != null) model.features.map[
 				renderJdlObject
 			].join
 		)»

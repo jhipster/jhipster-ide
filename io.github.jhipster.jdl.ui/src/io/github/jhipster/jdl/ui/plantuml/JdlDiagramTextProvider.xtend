@@ -18,9 +18,10 @@ class JdlDiagramTextProvider extends AbstractDiagramTextProvider {
 	override protected getDiagramText(IEditorPart editorPart, IEditorInput editorInput) {
 		val document = (editorPart as XtextEditor).documentProvider.getDocument(editorInput) as XtextDocument
 		val model = document?.readOnly [
+			
 			val element = contents.head
 			if (element instanceof JdlDomainModel) element else null
 		]
-		model.render
+		render(model)
 	}
 }

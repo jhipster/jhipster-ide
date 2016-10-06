@@ -23,4 +23,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: io.github.jhipster.jdl.ui.contentassist,
  io.github.jhipster.jdl.ui.quickfix,
  io.github.jhipster.jdl.ui.internal
-Bundle-Activator: io.github.jhipster.jdl.ui.internal.JdlActivator
+Bundle-Activator: io.github.jhipster.jdl.ui.JdlActivator
