@@ -4,6 +4,11 @@
 package io.github.jhipster.jdl.ui.labeling
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlOption
+import io.github.jhipster.jdl.jdl.JdlRelationship
+import io.github.jhipster.jdl.jdl.JdlRelationships
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
@@ -18,14 +23,36 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
-
-	// Labels and icons can be computed like this:
 	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
+	def text(JdlEntity entity) {
+		entity.name
+	}
+
+	def text(JdlRelationships rels) {
+		rels.cardinality.literal
+	}
+
+	def text(JdlRelationship rel) {
+		rel.fromEntity.name + '->' + rel.toEntity.name
+	}
+
+	def text(JdlOption opt) {
+		val it = opt.setting
+		'Option: ' + switch (it) {
+ 			case isAngularSuffixOption : 'AngularSuffix'
+ 			case isDtoOption : 'DTO'
+			case isMicroserviceOption : 'Microservice'
+ 			case isNoFluentMethodOption : 'NoFluentMethod'
+ 			case isPaginateOption : 'Paginate'
+ 			case isSearchOption : 'Search'
+ 			case isServiceOption : 'Service'
+ 			case isSkipServerOption : 'SkipServer'
+ 			case isSkipClientOption : 'SkipClient'
+ 			default : 'Unknown'	
+		}
+ 	}
+ 	
+	def image(EObject eObj) {
+		eObj.eClass.name + '.gif'
+	}
 }

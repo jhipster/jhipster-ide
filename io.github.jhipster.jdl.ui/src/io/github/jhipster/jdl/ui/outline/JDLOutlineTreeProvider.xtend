@@ -3,6 +3,7 @@
  */
 package io.github.jhipster.jdl.ui.outline
 
+import io.github.jhipster.jdl.jdl.JdlOption
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
 
 /**
@@ -11,5 +12,9 @@ import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#outline
  */
 class JDLOutlineTreeProvider extends DefaultOutlineTreeProvider {
+
+	def protected _isLeaf(JdlOption modelElement) {
+		true
+	}
 
 }
