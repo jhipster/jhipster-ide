@@ -122,11 +122,11 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationships rel) '''
-		«rel.relationships.map[renderJdlObject].join»
+		«rel.relationships.map[if (fromEntity != null && toEntity != null) renderJdlObject].join»
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationship rel) '''
-		«rel.fromEntity.name» «relationName(rel.fromName)» -- «relationName(rel.toName)» «rel.toEntity.name»
+		«rel.fromEntity.name» «relationName(rel?.fromName)» -- «relationName(rel?.toName)» «rel.toEntity.name»
 	'''
 	
 	def protected relationName(JdlRelationshipName relName) {
@@ -147,10 +147,21 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 	
 	def dispatch protected renderJdlObject(JdlEntityField field) '''
-		«field.type.element» «field.name»
+		«field.type.elementType» «field.name»
 	'''
 
-	def private dispatch getElement(JdlFieldType type) {
+	/**
+	 * We need to manually dispatch here, as type hierarchy can be inconsistent (e.g. during code completion)
+	 */
+	def private getElementType(EObject type) {
+		switch (type) {
+			JdlEnumFieldType : getElement(type)
+			JdlFieldType : getElement(type)
+			default: "'unknown type'"
+		}
+	}
+
+	def private getElement(JdlFieldType type) {
 		try {
 			type.^class.getMethod('getElement', null).invoke(type, null)
 		} catch (Exception exception) {
@@ -158,7 +169,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		}
 	}
 
-	def private dispatch getElement(JdlEnumFieldType type) {
+	def private getElement(JdlEnumFieldType type) {
 		try {
 			type.element.name
 		} catch (Exception exception) {

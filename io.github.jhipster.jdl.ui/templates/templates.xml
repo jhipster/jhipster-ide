@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+<template autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntity" deleted="false" description="template for an Entity" enabled="true" name="Entity">
+/** 
+ * Entity ${name}
+ */
+entity ${name} {
+	${name} ${element}
+}</template>
+<template autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntityField" deleted="false" description="template for an Entity Field" enabled="true" name="Field">
+${name} ${element}
+</template>
+</templates>

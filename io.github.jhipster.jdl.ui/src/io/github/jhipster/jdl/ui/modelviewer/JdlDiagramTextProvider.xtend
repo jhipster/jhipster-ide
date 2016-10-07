@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.ui.plantuml
+package io.github.jhipster.jdl.ui.modelviewer
 
 import io.github.jhipster.jdl.ide.renderer.IJdlModelViewerRenderer
 import io.github.jhipster.jdl.ide.renderer.JdlModelViewerRenderer
@@ -18,7 +18,6 @@ class JdlDiagramTextProvider extends AbstractDiagramTextProvider {
 	override protected getDiagramText(IEditorPart editorPart, IEditorInput editorInput) {
 		val document = (editorPart as XtextEditor).documentProvider.getDocument(editorInput) as XtextDocument
 		val model = document?.readOnly [
-			
 			val element = contents.head
 			if (element instanceof JdlDomainModel) element else null
 		]

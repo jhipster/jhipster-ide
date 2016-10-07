@@ -17,6 +17,9 @@ class JdlModelViewerRenderer {
 	]
 
 	def static IJdlModelViewerRenderer get(RenderType renderer) {
+		if (!instances.keySet.contains(renderer)) {
+			throw new IllegalArgumentException('''Renderer «renderer» not yet implemented!''')
+		}
 		instances.get(renderer)
 	}
 }
