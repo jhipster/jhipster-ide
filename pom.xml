@@ -12,7 +12,9 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<junit.version>4.11</junit.version>
 	</properties>
+	
 	<modules>
 		<module>io.github.jhipster.jdl</module>
 		<module>io.github.jhipster.jdl.ide</module>
@@ -24,6 +26,7 @@
 		<module>io.github.jhipster.jdl.tests</module>
 		<module>io.github.jhipster.jdl.ui.tests</module>
 	</modules>
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -252,6 +255,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
@@ -265,6 +269,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
@@ -281,4 +286,20 @@
 
 	<dependencies>
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+			    <groupId>junit</groupId>
+			    <artifactId>junit</artifactId>
+			    <version>${junit.version}</version>
+			</dependency>
+			<dependency>
+			    <groupId>junit</groupId>
+			    <artifactId>junit-dep</artifactId>
+			    <version>${junit.version}</version>
+			</dependency>		
+		</dependencies>
+	</dependencyManagement>
+	
 </project>

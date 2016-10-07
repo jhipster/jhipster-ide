@@ -3,9 +3,14 @@
  */
 package io.github.jhipster.jdl
 
+import io.github.jhipster.jdl.generator.JDLGenerator
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class JDLRuntimeModule extends AbstractJDLRuntimeModule {
+
+	override bindIGenerator2() {
+		JDLGenerator
+	}
 }
