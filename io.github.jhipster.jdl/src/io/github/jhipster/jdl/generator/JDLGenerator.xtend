@@ -16,10 +16,11 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class JDLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
+// disabled for the moment		
+//		fsa.generateFile('empty.txt', 'Empty artifact' + 
 //			resource.allContents
-//				.filter(typeof(Greeting))
-//				.map[name]
+//				.filter(typeof(JdlDomainModel))
+//				.map[features.size]
 //				.join(', '))
 	}
 }
