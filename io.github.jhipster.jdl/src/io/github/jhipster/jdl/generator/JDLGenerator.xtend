@@ -3,7 +3,6 @@
  */
 package io.github.jhipster.jdl.generator
 
-import io.github.jhipster.jdl.jdl.JdlDomainModel
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
@@ -17,10 +16,11 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class JDLGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		fsa.generateFile('empty.txt', 'Empty artefact' + 
-			resource.allContents
-				.filter(typeof(JdlDomainModel))
-				.map[features.size]
-				.join(', '))
+// disabled for the moment		
+//		fsa.generateFile('empty.txt', 'Empty artifact' + 
+//			resource.allContents
+//				.filter(typeof(JdlDomainModel))
+//				.map[features.size]
+//				.join(', '))
 	}
 }
