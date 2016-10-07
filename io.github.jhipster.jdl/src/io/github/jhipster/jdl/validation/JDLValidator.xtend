@@ -3,6 +3,15 @@
  */
 package io.github.jhipster.jdl.validation
 
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlPackage
+import org.eclipse.xtext.validation.Check
+import io.github.jhipster.jdl.jdl.JdlEntityField
+import org.eclipse.xtext.validation.ValidationMessageAcceptor
+
+import static io.github.jhipster.jdl.validation.IssueCodes.*
+import io.github.jhipster.jdl.jdl.JdlEnum
+import io.github.jhipster.jdl.jdl.JdlRelationshipName
 
 /**
  * This class contains custom validation rules. 
@@ -10,16 +19,58 @@ package io.github.jhipster.jdl.validation
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class JDLValidator extends AbstractJDLValidator {
+
+	@Check
+	def checkGreetingStartsWithCapital(JdlEntity entity) {
+		if (!Character.isUpperCase(entity.name.charAt(0))) {
+			warning('Entity name should start with a capital', 
+					JdlPackage.Literals.JDL_ENTITY__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					INVALID_TYPE_NAME)
+		}
+	}
+
+	@Check
+	def checkGreetingStartsWithCapital(JdlEnum enumeration) {
+		if (!Character.isUpperCase(enumeration.name.charAt(0))) {
+			warning('Enum name should start with a capital', 
+					JdlPackage.Literals.JDL_ENUM__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					INVALID_TYPE_NAME)
+		}
+		for (v : enumeration.values) {
+			if (Character.isLowerCase(v.charAt(0))) {
+				warning('Enum value name should start with a capital', 
+					JdlPackage.Literals.JDL_ENUM__VALUES,
+					enumeration.values.indexOf(v), INVALID_FEATURE_NAME)
+			}
+		}
+	}
 	
-//	public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					JDLPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
+	@Check
+	def checkGreetingStartsWithCapital(JdlEntityField field) {
+		if (!Character.isLowerCase(field.name.charAt(0))) {
+			warning('Field name should start with a lowercase', 
+					JdlPackage.Literals.JDL_ENTITY_FIELD__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					INVALID_FEATURE_NAME)
+		}
+		val entity = field.eContainer as JdlEntity
+		if (entity.fields.exists[it != field && name.equals(field.name)]) {
+			error('Field with name already defined', 
+					JdlPackage.Literals.JDL_ENTITY_FIELD__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					INVALID_FEATURE_NAME)			
+		}
+	}
 	
+	@Check
+	def checkGreetingStartsWithCapital(JdlRelationshipName rel) {
+		if (!Character.isUpperCase(rel.name.charAt(0))) {
+			warning('Relationship name should start with a capital', 
+					JdlPackage.Literals.JDL_ENTITY__NAME,
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+					INVALID_TYPE_NAME)
+		}
+	}
 }

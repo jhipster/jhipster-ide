@@ -41,7 +41,7 @@ JdlStringFieldType:
 	element=JdlStringType validators+=JdlStringValidators*;
 
 JdlStringType:
-	'String';
+	element='String';
 
 JdlNumericFieldType:
 	element=JdlNumericTypes validators+=JdlNumericValidators*;
@@ -53,13 +53,13 @@ JdlBooleanFieldType:
 	element=JdlBooleanType validators+=JdlRequiredValidator*;
 
 JdlBooleanType:
-	'Boolean';
+	element='Boolean';
 
 JdlDateFieldType:
 	element=JdlDateTypes validators+=JdlRequiredValidator*;
 
 enum JdlDateTypes:
-	LocalDate | ZonedDateTime;
+	Date | LocalDate | ZonedDateTime;
 	
 JdlBlobFieldType:
 	element=JdlBlobTypes validators+=JdlBlobValidators*;
