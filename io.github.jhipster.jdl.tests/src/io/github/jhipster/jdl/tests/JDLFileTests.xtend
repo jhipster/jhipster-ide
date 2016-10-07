@@ -10,7 +10,6 @@ import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.generator.JavaIoFileSystemAccess
-import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 import org.eclipse.xtext.validation.IResourceValidator
@@ -21,7 +20,6 @@ import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameters
 
 @RunWith(Parameterized)
-@InjectWith(JDLInjectorProvider)
 class JDLFileTests {
 	
 	@Inject Provider<ResourceSet> resourceSetProvider;
