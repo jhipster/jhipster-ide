@@ -4,24 +4,31 @@
 package io.github.jhipster.jdl.tests
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlCardinality
 import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlEnum
+import io.github.jhipster.jdl.jdl.JdlOption
+import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
-import org.junit.Assert
+import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
+
+import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(JDLInjectorProvider)
 class JDLParsingTest{
 
-	@Inject
-	ParseHelper<JdlDomainModel> parseHelper
+	@Inject extension ParseHelper<JdlDomainModel> parseHelper
+	@Inject extension ValidationTestHelper
 
 	@Test 
 	def void loadModel() {
-		val result = parseHelper.parse('''
+		val model = '''
 			entity Region {
 				regionName String
 			}
@@ -134,8 +141,68 @@ class JDLParsingTest{
 			service all with serviceImpl except Employee, Job
 			// Set an angular suffix
 			angularSuffix * with mySuffix
-		''')
-		Assert.assertNotNull(result)
+		'''.parse
+		
+		assertNotNull(model)
+		
+		model.features => [
+			filter(JdlEntity) => [
+				assertFalse(isNullOrEmpty)
+				assertTrue(size == 8)
+				last => [
+					assertEquals('JobHistory', name)
+					assertFalse(fields.isNullOrEmpty)
+					assertTrue(fields.size == 3)
+					assertTrue(fields.map[name].containsAll(#['startDate', 'endDate', 'language']))
+				]
+			]
+			filter(JdlEnum) => [
+				assertFalse(isNullOrEmpty)
+				assertTrue(size == 1)
+				last => [
+					assertEquals('Language', name)
+					assertFalse(values.isNullOrEmpty)
+					assertTrue(values.size == 3)
+				]
+			]
+			filter(JdlRelationships) => [
+				assertFalse(isNullOrEmpty)
+				assertTrue(size == 7)
+				assertTrue(filter[cardinality == JdlCardinality.ONE_TO_ONE].size == 4)
+				assertTrue(filter[cardinality == JdlCardinality.MANY_TO_MANY].size == 1)
+				assertTrue(filter[cardinality == JdlCardinality.ONE_TO_MANY].size == 1)
+				assertTrue(filter[cardinality == JdlCardinality.MANY_TO_ONE].size == 1)
+			]
+			filter(JdlOption) => [
+				assertFalse(isNullOrEmpty)
+				assertTrue(size == 5)
+				assertFalse(findFirst[setting.isDtoOption] === null)
+				assertFalse(findFirst[setting.isServiceOption] === null)
+				assertFalse(findFirst[setting.isAngularSuffixOption] === null)
+				assertTrue(filter[setting.isPaginateOption].size == 2)
+			]
+		]
 	}
-
+	
+	@Test
+	def void testParsingAndLinking() {
+		'''
+			entity A
+			entity B {}
+			entity C {
+			  name String required
+			}
+			entity D {
+			  myValue Integer min(42)
+			}
+			
+			relationship OneToOne {
+			  A{a} to B{b},
+			  C{c} to D{d}
+			}
+			
+			dto * with mapstruct except A
+		'''.parse.assertNoErrors
+	}
+	
 }

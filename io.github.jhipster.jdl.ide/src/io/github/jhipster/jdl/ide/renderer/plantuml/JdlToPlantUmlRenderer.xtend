@@ -11,13 +11,14 @@ import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
+import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationship
-import io.github.jhipster.jdl.jdl.JdlRelationshipName
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
 import io.github.jhipster.jdl.jdl.JdlWithEntityInclusion
 import java.util.List
 import org.eclipse.emf.ecore.EObject
+import io.github.jhipster.jdl.jdl.JdlRelationRole
 
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
@@ -122,15 +123,15 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationships rel) '''
-		«rel.relationships.map[if (fromEntity != null && toEntity != null) renderJdlObject].join»
+		«rel.relationships.map[if (source != null && target != null) renderJdlObject].join»
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationship rel) '''
-		«rel.fromEntity.name» «relationName(rel?.fromName)» -- «relationName(rel?.toName)» «rel.toEntity.name»
-	'''
-	
-	def protected relationName(JdlRelationshipName relName) {
-		if (relName != null) '''"«relName?.name»«IF !relName.role.nullOrEmpty»(«relName.role»)«ENDIF»"''' else ''
+		«rel.source.entity.name» «relationRole(rel.source.role)» -- «relationRole(rel.target.role)» «rel.target.entity.name»
+	'''	
+
+	def protected relationRole(JdlRelationRole role) {
+		if (role != null) '''"«role.name»«IF !role.name.nullOrEmpty»(«role.name»)«ENDIF»"''' else ''
 	}
 	
 	// *** Note ***

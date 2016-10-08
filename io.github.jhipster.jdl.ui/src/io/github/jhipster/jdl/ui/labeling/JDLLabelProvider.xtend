@@ -33,7 +33,7 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def text(JdlRelationship rel) {
-		rel.fromEntity.name + '->' + rel.toEntity.name
+		rel.source.role.name + '->' + rel.target.role.name
 	}
 
 	def text(JdlOption opt) {

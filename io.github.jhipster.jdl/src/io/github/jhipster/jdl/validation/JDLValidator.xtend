@@ -4,14 +4,13 @@
 package io.github.jhipster.jdl.validation
 
 import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlEntityField
+import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlPackage
 import org.eclipse.xtext.validation.Check
-import io.github.jhipster.jdl.jdl.JdlEntityField
 import org.eclipse.xtext.validation.ValidationMessageAcceptor
 
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import io.github.jhipster.jdl.jdl.JdlEnum
-import io.github.jhipster.jdl.jdl.JdlRelationshipName
 
 /**
  * This class contains custom validation rules. 
@@ -59,18 +58,18 @@ class JDLValidator extends AbstractJDLValidator {
 		if (entity.fields.exists[it != field && name.equals(field.name)]) {
 			error('Field with name already defined', 
 					JdlPackage.Literals.JDL_ENTITY_FIELD__NAME,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-					INVALID_FEATURE_NAME)			
+					ValidationMessageAcceptor.INSIGNIFICANT_INDEX)			
 		}
 	}
 	
-	@Check
-	def checkGreetingStartsWithCapital(JdlRelationshipName rel) {
-		if (!Character.isUpperCase(rel.name.charAt(0))) {
-			warning('Relationship name should start with a capital', 
-					JdlPackage.Literals.JDL_ENTITY__NAME,
-					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-					INVALID_TYPE_NAME)
-		}
-	}
+// @FIXME
+//	@Check
+//	def checkGreetingStartsWithCapital(JdlRelationRole role) {
+//		if (!Character.isUpperCase(role.name.charAt(0))) {
+//			warning('Relationship name should start with a capital', 
+//					JdlPackage.Literals.JDL_ENTITY__NAME,
+//					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
+//					INVALID_TYPE_NAME)
+//		}
+//	}
 }
