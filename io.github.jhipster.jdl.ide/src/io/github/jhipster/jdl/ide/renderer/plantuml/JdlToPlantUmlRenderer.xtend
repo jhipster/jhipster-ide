@@ -58,7 +58,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	}
 
 	def dispatch protected renderJdlObject(extension JdlOptionSetting setting) '''
-		abstract class «val option = switch (setting) {
+		annotation «val option = switch (setting) {
 				case isAngularSuffixOption : 'AngularSuffix'
 				case isDtoOption : 'DTO'
 				case isMicroserviceOption : 'Microservice'
