@@ -27,8 +27,8 @@ Created by [jbadeau](https://github.com/jbadeau) and [colameo](https://github.co
 
 ## JHipster-IDE was made possible by these cool projects
 
-- [xtext](http://www.eclipse.org/Xtext/)
-- [plantuml](http://plantuml.com/)
+- [Xtext](http://www.eclipse.org/Xtext/)
+- [PlantUML](http://plantuml.com/)
 - [LSP](https://github.com/Microsoft/language-server-protocol)
 
 ## Eclipse Setup
