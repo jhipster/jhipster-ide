@@ -119,9 +119,12 @@ JdlRelationships:
 	'}';
 
 JdlRelationship:
-	fromEntity=[JdlEntity] fromName=JdlRelationshipName? 'to' toEntity=[JdlEntity] toName=JdlRelationshipName?;
+	source=JdlRelation 'to' target=JdlRelation;
 
-JdlRelationshipName:
+JdlRelation:
+	entity=[JdlEntity] role=JdlRelationRole?;
+
+JdlRelationRole:
 	'{' name=ID ('(' role=ID ')')? '}';
 
 enum JdlCardinality:
