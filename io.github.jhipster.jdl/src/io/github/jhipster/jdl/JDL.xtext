@@ -125,7 +125,7 @@ JdlRelation:
 	entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
-	'{' name=ID ('(' role=ID ')')? '}';
+	'{' name=ID ((required?='required')? & ('(' role=ID ')')?) '}';
 
 enum JdlCardinality:
 	OneToMany | ManyToOne | OneToOne | ManyToMany;

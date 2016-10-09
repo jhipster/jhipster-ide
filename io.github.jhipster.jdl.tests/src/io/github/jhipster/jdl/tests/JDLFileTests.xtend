@@ -6,6 +6,7 @@ import com.google.inject.Provider
 import io.github.jhipster.jdl.JDLStandaloneSetup
 import java.io.File
 import java.util.Collection
+import java.util.List
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.generator.IGenerator2
@@ -13,11 +14,15 @@ import org.eclipse.xtext.generator.JavaIoFileSystemAccess
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 import org.eclipse.xtext.validation.IResourceValidator
+import org.junit.AfterClass
 import org.junit.Before
+import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameters
+
+import static org.junit.Assert.*
 
 @RunWith(Parameterized)
 class JDLFileTests {
@@ -31,10 +36,38 @@ class JDLFileTests {
 	var File jdlFile
 	var Injector injector
 	
+	static List<File> jdlReferencedFiles
+	static List<Pair<File, String>> unexpectedIssues
+	
+	val expectedIssues = #[
+		 "complex_jdl.jdl" -> "Couldn't resolve reference to JdlEntity 'User'.",
+		 "invalid_field_type.jdl" -> "Couldn't resolve reference to JdlEnum 'NullPointerException'.",
+		 "invalid_option.jdl" -> "mismatched input 'wrong' expecting 'mapstruct'",
+		 "non_existent_validation.jdl" -> "mismatched input 'min' expecting '}'",
+		 "unexistent_entities_for_relationship.jdl" -> "Couldn't resolve reference to JdlEntity 'B'."
+	]
+	
 	new(File jdlFile) {
 		this.jdlFile = jdlFile
 	}
-		
+
+	@BeforeClass
+	def static void initTestCase()  {
+		unexpectedIssues = newArrayList
+		// put here all JDL definitions which are referenced by other JDLs
+		jdlReferencedFiles = #[
+			new File('./resources/test_files/User.jdl')
+		]
+	}
+
+	@AfterClass
+	def static void reportIssues() {
+		unexpectedIssues.forEach[ issue |
+			System.err.println('''Unexpected issue: «issue.value» in «issue.key» found!''')		
+		]
+		if (unexpectedIssues.isEmpty == false) fail('Unexpected issues found! Check output...')
+	}
+
 	@Before
 	def void setUp() {
 		injector = new JDLStandaloneSetup().createInjectorAndDoEMFRegistration()
@@ -53,11 +86,17 @@ class JDLFileTests {
 
 	@Test
 	def void testJdlFile() {
-		val resource = resourceSet.getResource(URI.createURI(jdlFile.absolutePath), true);
+		jdlReferencedFiles.forEach[
+			resourceSet.getResource(URI.createURI(absoluteFile.toString), true)
+		]
+		val resource = resourceSet.getResource(URI.createURI(jdlFile.absolutePath), true)
 		// validate the resource
 		val issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl)
 		issues?.forEach[ issue |
-			System.err.println(issue)
+			val expected = expectedIssues.findFirst[
+				jdlFile.name.equals(key) && value.equals(issue.message)
+			]
+			if (expected != null ) println('''Expected issue detected: [«issue»]''') else unexpectedIssues += jdlFile -> issue.message
 		]
 		// configure and start the generator
 		fileAccess.setOutputPath("src-gen/");
