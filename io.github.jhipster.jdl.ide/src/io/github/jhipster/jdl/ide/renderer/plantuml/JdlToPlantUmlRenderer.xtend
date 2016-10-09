@@ -139,7 +139,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	// @see https://bugs.eclipse.org/bugs/show_bug.cgi?id=404817
 	// The Xtend Compiler works fine and generates the expected java code correctly
  	def dispatch protected renderJdlObject(JdlEntity entity) '''
-		class «entity.name» {
+		class «entity.name» «IF entity.table.nullOrEmpty == false»<<TABLE {name=«entity.table»}>>«ENDIF» {
 			«entity.fields.map[renderJdlObject].join»
 		}
 		«FOR e: entity.fields.map[type].filter(JdlEnumFieldType)»

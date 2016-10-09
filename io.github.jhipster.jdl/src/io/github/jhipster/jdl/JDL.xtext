@@ -15,7 +15,7 @@ JdlFeature:
  * ENTITY
  * ========================================================================= */
 JdlEntity:
-	'entity' name=ID ('{'
+	'entity' name=ID ('(' table=ID ')')? ('{'
 		(fields+=JdlEntityField (',' fields+=JdlEntityField)*)?
 	'}')?;
 
@@ -125,7 +125,7 @@ JdlRelation:
 	entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
-	'{' name=ID ((required?='required')? & ('(' role=ID ')')?) '}';
+	'{' name=ID ((required?=JdlRequiredValidator)? & ('(' role=ID ')')?) '}';
 
 enum JdlCardinality:
 	OneToMany | ManyToOne | OneToOne | ManyToMany;

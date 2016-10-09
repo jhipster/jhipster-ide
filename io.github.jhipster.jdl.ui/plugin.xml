@@ -8,6 +8,7 @@
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="jh,jdl"
+			icon="icons/JHipster.gif"
 			id="io.github.jhipster.jdl.JDL"
 			name="JDL Editor">
 		</editor>
@@ -430,4 +431,13 @@
 	        providerClass="io.github.jhipster.jdl.ui.modelviewer.JdlDiagramTextProvider">
 	   </diagramTextProvider>
 	</extension>	
+	<extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="io.github.jhipster.jdl.ui.view.JDLPerspective"
+            icon="icons/JHipster.gif"
+            id="io.github.jhipster.jdl.ui.view.JDLPerspective"
+            name="JDL">
+      </perspective>
+   </extension>
 </plugin>

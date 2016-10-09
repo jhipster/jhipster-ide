@@ -1,0 +1,7 @@
+entity Address (T_ADDRESS) {
+	street String,
+	streetNr Integer,
+	zip Integer,
+	city String,
+	country String
+}
