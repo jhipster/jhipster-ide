@@ -1,5 +1,7 @@
 package io.github.jhipster.jdl.ide.renderer.plantuml
 
+import io.github.jhipster.jdl.jdl.JdlBlobFieldType
+import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
@@ -11,14 +13,14 @@ import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
-import io.github.jhipster.jdl.jdl.JdlRelation
+import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
+import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
 import io.github.jhipster.jdl.jdl.JdlWithEntityInclusion
 import java.util.List
 import org.eclipse.emf.ecore.EObject
-import io.github.jhipster.jdl.jdl.JdlRelationRole
 
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
@@ -156,7 +158,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	 */
 	def private getElementType(EObject type) {
 		switch (type) {
-			JdlEnumFieldType : getElement(type)
+			JdlEnumFieldType : type.element.getName
+			JdlStringFieldType : type.element.element
+			JdlBooleanFieldType : type.element.element
+			JdlBlobFieldType : type.element.getName
 			JdlFieldType : getElement(type)
 			default: "'unknown type'"
 		}
@@ -169,12 +174,4 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			"'unknown type'"		
 		}
 	}
-
-	def private getElement(JdlEnumFieldType type) {
-		try {
-			type.element.name
-		} catch (Exception exception) {
-			"'unknown type'"		
-		}
-	}	
 }
