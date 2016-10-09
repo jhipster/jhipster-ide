@@ -25,7 +25,7 @@ import org.junit.runners.Parameterized.Parameters
 import static org.junit.Assert.*
 
 @RunWith(Parameterized)
-class JDLFileTests {
+class JDLFileTest {
 	
 	@Inject Provider<ResourceSet> resourceSetProvider;
 	@Inject IResourceValidator validator;
@@ -87,9 +87,9 @@ class JDLFileTests {
 	@Test
 	def void testJdlFile() {
 		jdlReferencedFiles.forEach[
-			resourceSet.getResource(URI.createURI(absoluteFile.toString), true)
+			resourceSet.getResource(URI.createURI(absoluteFile.toURI.toString), true)
 		]
-		val resource = resourceSet.getResource(URI.createURI(jdlFile.absolutePath), true)
+		val resource = resourceSet.getResource(URI.createURI(jdlFile.toURI.toString), true)
 		// validate the resource
 		val issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl)
 		issues?.forEach[ issue |
