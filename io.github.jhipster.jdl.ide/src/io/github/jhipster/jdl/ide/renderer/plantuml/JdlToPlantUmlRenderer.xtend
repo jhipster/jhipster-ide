@@ -125,11 +125,15 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationships rel) '''
-		«rel.relationships.map[if (source != null && source.entity != null && target != null && target.entity != null) renderJdlObject].join»
+		«rel.relationships.map[
+			if (source != null && source.entity != null && 
+				target != null && target.entity != null
+			) renderJdlObject
+		].join»
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationship it) '''
-		«source.entity.name» «relationRole(source?.role)» -- «relationRole(target?.role)» «target.entity.name»
+		«source.entity.name» «relationRole(source.role)» -- «relationRole(target.role)» «target.entity.name»
 	'''	
 
 	def protected relationRole(JdlRelationRole it) {
