@@ -11,6 +11,7 @@ import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import io.github.jhipster.jdl.jdl.JdlRelation
 
 /**
  * Provides labels for EObjects.
@@ -24,6 +25,7 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 	
+		
 	def text(JdlEntity entity) {
 		entity.name
 	}
@@ -38,6 +40,10 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 		left + '->' + right
 	}
 
+	def getRelationshipName(JdlRelation rel) {
+		return rel.entity.name;	
+	}
+	
 	def text(JdlOption opt) {
 		val it = opt.setting
 		'Option: ' + switch (it) {
@@ -57,4 +63,16 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 	def image(EObject eObj) {
 		eObj.eClass.name + '.gif'
 	}
+	
+	def image(JdlRelationships rels) {
+		val cardinality = rels.cardinality.literal
+		switch (cardinality) {
+ 			case 'OneToMany' : 'one-to-many'
+ 			case 'ManyToOne' : 'many-to-one'
+ 			case 'OneToOne' : 'one-to-one'
+ 			case 'ManyToMany' : 'many-to-many'
+ 			default : 'Unknown'	
+		} +'.gif'
+	}
+	
 }
