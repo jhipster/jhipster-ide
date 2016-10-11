@@ -6,17 +6,17 @@ package io.github.jhipster.jdl.formatting2
 import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
-import io.github.jhipster.jdl.jdl.JdlEntityField
 import io.github.jhipster.jdl.jdl.JdlEntitySelection
+import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlFeature
+import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.services.JDLGrammarAccess
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
-import io.github.jhipster.jdl.jdl.JdlOption
-import io.github.jhipster.jdl.jdl.JdlEnum
+import io.github.jhipster.jdl.jdl.JdlEntityField
 
 class JDLFormatter extends AbstractFormatter2 {
 	
@@ -30,7 +30,7 @@ class JDLFormatter extends AbstractFormatter2 {
 	}
 
 	def dispatch void format(JdlEnum jdlEnum, extension IFormattableDocument document) {
-		val open = jdlEnum.regionFor.keyword('{') 
+		val open = jdlEnum.regionFor.keyword('{')
 		val close = jdlEnum.regionFor.keyword('}')
 		jdlEnum.regionFor.feature(JDL_ENUM__NAME).surround[oneSpace]
 		open.append[newLine]
@@ -38,22 +38,24 @@ class JDLFormatter extends AbstractFormatter2 {
 		jdlEnum.regionFor.keywords(',').forEach[
 			surround[noSpace].append[newLine]
 		]
-		close.prepend[newLine].append[newLines = 2]
+		close.prepend[noSpace; newLine].append[newLines = 2]
 	}
 
 	def dispatch void format(JdlEntity entity, extension IFormattableDocument document) {
 		val open = entity.regionFor.keyword('{') 
 		val close = entity.regionFor.keyword('}')
-		entity.regionFor.feature(JDL_ENTITY__NAME).surround[oneSpace]
+		entity.regionFor.keyword(jdlEntityAccess.entityKeyword_0).append[oneSpace]
 		open.append[newLine]
 		interior(open, close)[indent]
-		for (JdlEntityField field : entity.fields) {
-			field.format
-		}
+		entity.fields.forEach[format]
 		entity.regionFor.keywords(',').forEach[
 			surround[noSpace].append[newLine]
 		]
-		close.prepend[newLine].append[newLines = 2]
+		close.surround[noSpace].prepend[newLine]
+	}
+
+	def dispatch void format(JdlEntityField field, extension IFormattableDocument document) {
+		field.regionFor.assignment(jdlEntityFieldAccess.nameAssignment_0).append[oneSpace]
 	}
 
 	def dispatch void format(JdlRelationships relships, extension IFormattableDocument document) {
@@ -68,8 +70,7 @@ class JDLFormatter extends AbstractFormatter2 {
 	}
 	
 	def dispatch void format(JdlOption option, extension IFormattableDocument document) {
-		option.surround[oneSpace]//.append[newLines = 2]
-		option.append[newLine]
+		option.surround[oneSpace].append[newLine]
 	}
 	
 	def dispatch void format(JdlEntitySelection selection, extension IFormattableDocument document) {
