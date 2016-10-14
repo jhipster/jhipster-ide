@@ -28,11 +28,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
 
 	override render(JdlDomainModel jdl) {
-		init(jdl)
-		jdl.toPlantUml
+		jdl.init.toPlantUml
 	}
 
-	def private void init(JdlDomainModel jdl) {
+	def private JdlDomainModel init(JdlDomainModel jdl) {
 		entiyOptionMap = newHashMap
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
 			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
@@ -59,6 +58,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 				entiyOptionMap.put(entity, options)
 			]
 		]
+		return jdl
 	}
 
 	def private String toPlantUml(JdlDomainModel model) '''
