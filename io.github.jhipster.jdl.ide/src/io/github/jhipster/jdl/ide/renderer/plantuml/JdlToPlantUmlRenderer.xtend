@@ -5,10 +5,9 @@ import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
+import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlEnumFieldType
-import io.github.jhipster.jdl.jdl.JdlExceptEntityExclusion
-import io.github.jhipster.jdl.jdl.JdlFeature
 import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
@@ -19,16 +18,47 @@ import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
 import io.github.jhipster.jdl.jdl.JdlWithEntityInclusion
-import java.util.List
+import java.util.Map
+import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 
-import static org.eclipse.xtext.EcoreUtil2.*
-
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
+	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
+
 	override render(JdlDomainModel jdl) {
+		init(jdl)
 		jdl.toPlantUml
+	}
+
+	def private void init(JdlDomainModel jdl) {
+		entiyOptionMap = newHashMap
+		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
+			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
+				JdlWithEntityInclusion, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
+			}
+			val isSelectAll = predicate != null && (predicate.isWildcard || predicate.isAll)
+			if (isSelectAll) {
+				val entitySelection = jdl.eContents.filter(JdlEntity).filter[!isExcluded(o, it)]
+				entitySelection ?: #[]
+			} else {
+				val entitySelection = if (o.setting?.includes !== null) switch (o.setting.includes) {
+					JdlWithEntityInclusion, JdlForEntityInclusion: {
+						val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
+					 	selection?.entities
+				 	}
+				}
+				entitySelection ?: #[]
+			}
+		]
+		jdl.eContents.filter(JdlOption).toSet.forEach[ option |
+			getEntities.apply(option).forEach[ entity |
+				val options = if (entiyOptionMap.containsKey(entity)) entiyOptionMap.get(entity) else newHashSet 
+				options.add(option)
+				entiyOptionMap.put(entity, options)
+			]
+		]
 	}
 
 	def private String toPlantUml(JdlDomainModel model) '''
@@ -45,28 +75,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		].join»
 	'''
 
-	/**
-	 * Manually dispatch features 
-	 */
-	def dispatch protected renderJdlObject(JdlFeature feature) {
-		switch (feature) {
-			JdlEntity : renderJdlObject(feature as JdlEntity)
-			JdlEnum : renderJdlObject(feature as JdlEnum)
-			JdlRelationships : renderJdlObject(feature as JdlRelationships)
-//			JdlOption : renderJdlObject(feature as JdlOption)
-			default : throw new IllegalArgumentException('''Unknown feature «feature.class»''')
-		}
-	}
-
 	def dispatch protected renderJdlObject(JdlOption opt) {
 		'' // opt.setting.renderJdlObject
 	}
 
-//	def dispatch protected renderJdlObject(extension JdlOptionSetting setting) '''
-//		annotation «val option = setting.getOptionType» «option» <<Option>>
-//	'''
-//		«option.renderJdlObject(setting.includes)»
-	
 	def private getOptionType(extension JdlOptionSetting setting) {
 		 switch (setting) {
 			case isAngularSuffixOption : 'AngularSuffix'
@@ -81,47 +93,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			default : 'Unknown'
 		}		
 	}
-
-//	def protected renderJdlObject(String option, EObject eObj) '''
-//		«switch (eObj) {
-//			JdlWithEntityInclusion : option.renderJdlObject(eObj)
-//			JdlForEntityInclusion : option.renderJdlObject(eObj)
-//			JdlExceptEntityExclusion : option.renderJdlObject(eObj)
-//			default: 'Unknown'
-//		}»
-//	'''
-
-//	def protected renderJdlObject(String option, JdlWithEntityInclusion withInclusion) '''
-//		«IF (withInclusion.selection != null)»
-//			«renderJdlObject(option, withInclusion.selection.entities)»
-//		«ELSEIF (withInclusion.predicate != null)»
-//			«renderJdlObject(option, withInclusion.predicate)»
-//		«ENDIF»
-//	'''
-
-//	def protected renderJdlObject(String option, JdlForEntityInclusion forInclusion) '''
-//		«IF (forInclusion.selection != null)»
-//			«renderJdlObject(option, forInclusion.selection.entities)»
-//		«ELSEIF (forInclusion.predicate != null)»
-//			«renderJdlObject(option, forInclusion.predicate)»
-//		«ENDIF»
-//	'''
-
-//	def protected renderJdlObject(String option, JdlExceptEntityExclusion exclusion) '''
-//		«IF (exclusion.selection != null)»
-//			«renderJdlObject(option, exclusion.selection.entities)»
-//		«ENDIF»
-//	'''
 	
 	def protected renderJdlObject(String option, JdlWildcardPredicate predicate) '''
 		note top of «option» : «option» applies to «IF predicate.isAll || predicate.isWildcard»all«ENDIF»
 	'''
-
-//	def protected renderJdlObject(String option, List<JdlEntity> entities) '''
-//		«FOR e : entities»
-//			«option» --> «e.name»
-//		«ENDFOR»
-//	'''
 
 	def dispatch protected renderJdlObject(JdlEnum _enum) '''
 		enum «_enum.name» {
@@ -160,19 +135,18 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			«entity.name» --> «e.element.name»
 		«ENDFOR»
 	'''
-	
-	def private toOptionStereotype(JdlEntity entity) 
-		'''«var opts=findOptionsOf(entity)»«IF !opts.nullOrEmpty»<<Option {«FOR opt : findOptionsOf(entity) SEPARATOR ','»«getOptionType(opt.setting)»«ENDFOR»}>>«ENDIF»'''
-	
-	def private findOptionsOf(JdlEntity entity) {
-		val (JdlOption, JdlEntity)=>JdlEntity findEntity = [ o, e |  
-			(o.setting.includes as JdlWithEntityInclusion).selection.entities?.findFirst[it === entity]
-		]
-		getContainerOfType(entity, JdlDomainModel).eContents.filter(JdlOption).filter[ option |
-			findEntity.apply(option, entity) != null
-		]
-	}
 
+	def private toOptionStereotype(JdlEntity entity) 
+		'''«var opts=entiyOptionMap.get(entity)?.filter[!isExcluded(entity)]»«IF !opts.nullOrEmpty»<<Option {«FOR it : opts SEPARATOR ','»«getOptionType(setting)»«ENDFOR»}>>«ENDIF»'''
+
+	def private boolean isExcluded(JdlOption opt, JdlEntity entity) {
+		try {
+			(EcoreUtil2.resolve(opt, opt.eResource) as JdlOption).excludes.selection.entities.contains(entity)
+		} catch (Exception exception) {
+			false
+		}
+	}
+	
 	def dispatch protected renderJdlObject(JdlEntityField field) '''
 		«field.type.elementType» «field.name»
 	'''
@@ -181,21 +155,20 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	 * We need to manually dispatch here, as type hierarchy can be inconsistent (e.g. during code completion)
 	 */
 	def private getElementType(EObject type) {
+		val it = valueOf(type, 'getElement')
 		switch (type) {
-			JdlEnumFieldType : type.element.getName
-			JdlStringFieldType : type.element.element
-			JdlBooleanFieldType : type.element.element
-			JdlBlobFieldType : type.element.getName
-			JdlFieldType : getElement(type)
+			JdlStringFieldType, JdlBooleanFieldType : valueOf('getElement')
+			JdlEnumFieldType, JdlBlobFieldType : valueOf('getName')
+			JdlFieldType : it
 			default: "'unknown type'"
 		}
 	}
 
-	def private getElement(JdlFieldType type) {
+	def private valueOf(Object type, String methodName) {
 		try {
-			type.^class.getMethod('getElement', null).invoke(type, null)
+			type.^class.getMethod(methodName, null).invoke(type, null)
 		} catch (Exception exception) {
-			"'unknown type'"		
+			null		
 		}
 	}
 }
