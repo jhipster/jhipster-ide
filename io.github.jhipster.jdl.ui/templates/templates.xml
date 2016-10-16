@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <templates>
-	<template name="Entity" description="template for an Entity" id="io.github.jhipster.jdl.JDL.JdlEntity" autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntity" enabled="true" >
-	/** 
-	 * Entity ${name}
-	 */
-	entity ${name} {
-		${fieldName} ${fieldType}
-		${cursor}
-	}</template>
-	<template name="Field" description="template for an Entity Field" id="io.github.jhipster.jdl.JDL.JdlEntityField" autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntityField" enabled="true" >
-${fieldName} ${fieldType} ${cursor}
-</template>
+	<template name="Entity" description="template for an Entity" id="io.github.jhipster.jdl.JDL.JdlEntity" autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntity" enabled="true">
+/** 
+ * Entity ${name}
+ */
+entity ${name} {
+	${fieldName} ${fieldType}
+	${cursor}
+}</template>
+	<template name="Field" description="template for an Entity Field" id="io.github.jhipster.jdl.JDL.JdlEntityField" 
+	autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntityField" enabled="true">${fieldName} ${fieldType} ${cursor}</template>
 </templates>
