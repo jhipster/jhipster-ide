@@ -35,9 +35,7 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def text(JdlRelationship rel) {
-		val left = rel.source?.entity?.name ?: 'undefined'
-		val right = rel.target?.entity?.name ?: 'undefined'
-		left + '->' + right
+		getRelationshipName(rel.source) + ' - ' + getRelationshipName(rel.target)
 	}
 
 	def getRelationshipName(JdlRelation rel) {
