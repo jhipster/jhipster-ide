@@ -33,6 +33,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
 	def private JdlDomainModel init(JdlDomainModel jdl) {
 		entiyOptionMap = newHashMap
+		if (jdl == null || jdl.eContents.nullOrEmpty) return jdl
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
 			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
 				JdlWithEntityInclusion, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
