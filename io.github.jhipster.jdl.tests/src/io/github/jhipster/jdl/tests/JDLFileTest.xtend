@@ -44,7 +44,11 @@ class JDLFileTest {
 		 "invalid_field_type.jdl" -> "Couldn't resolve reference to JdlEnum 'NullPointerException'.",
 		 "invalid_option.jdl" -> "mismatched input 'wrong' expecting 'mapstruct'",
 		 "non_existent_validation.jdl" -> "mismatched input 'min' expecting '}'",
-		 "unexistent_entities_for_relationship.jdl" -> "Couldn't resolve reference to JdlEntity 'B'."
+		 "unexistent_entities_for_relationship.jdl" -> "Couldn't resolve reference to JdlEntity 'B'.",
+		 "wrong_relationships_jdl.jdl" -> "required (...)+ loop did not match anything at input '}'",
+		 "wrong_required_relationships_jdl.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored",
+		 "wrong_required_relationships_jdl.jdl" -> "Constraint 'required' on a relationship of type ManyToOne will be ignored",
+		 "wrong_required_relationships_jdl.jdl" -> "Constraint 'required' on a relationship of type ManyToMany will be ignored"
 	]
 	
 	new(File jdlFile) {
@@ -56,7 +60,7 @@ class JDLFileTest {
 		unexpectedIssues = newArrayList
 		// put here all JDL definitions which are referenced by other JDLs
 		jdlReferencedFiles = #[
-// non at the moment
+// none at the moment
 //			new File('./resources/test_files/foobar.jdl')
 		]
 	}
@@ -95,7 +99,7 @@ class JDLFileTest {
 		val issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl)
 		issues?.forEach[ issue |
 			val expected = expectedIssues.findFirst[
-				jdlFile.name.equals(key) && value.equals(issue.message)
+				jdlFile.name.equals(key) && value.startsWith(issue.message)
 			]
 			if (expected != null ) println('''Expected issue detected: [«issue»]''') else unexpectedIssues += jdlFile -> issue.message
 		]

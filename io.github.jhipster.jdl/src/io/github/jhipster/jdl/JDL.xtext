@@ -115,7 +115,7 @@ JdlMaxBytesValidator:
  * ========================================================================= */
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
-		relationships+=JdlRelationship* (',' relationships+=JdlRelationship)*
+		relationships+=JdlRelationship+ (',' relationships+=JdlRelationship)*
 	'}';
 
 JdlRelationship:

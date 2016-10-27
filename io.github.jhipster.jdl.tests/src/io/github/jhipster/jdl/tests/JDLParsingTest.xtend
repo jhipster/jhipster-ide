@@ -148,9 +148,9 @@ class JDLParsingTest{
 		model.features => [
 			filter(JdlEntity) => [
 				assertFalse(isNullOrEmpty)
-				assertTrue(size == 8)
-				last => [
-					assertEquals('JobHistory', name)
+				assertTrue(size == 9) // 8 + 1 User (built-in entity)
+				filter[name.equals('JobHistory')].last => [
+					assertNotNull(it)
 					assertFalse(fields.isNullOrEmpty)
 					assertTrue(fields.size == 3)
 					assertTrue(fields.map[name].containsAll(#['startDate', 'endDate', 'language']))
