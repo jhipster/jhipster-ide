@@ -1,0 +1,21 @@
+entity A
+entity B
+entity C
+entity D
+entity E
+
+relationship OneToOne {
+	A{b required} to B{a}
+}
+
+relationship OneToMany {
+	B{c required} to C{b required}
+}
+
+relationship ManyToOne {
+	C{d required} to D{c required}
+}
+
+relationship ManyToMany {
+	D{e required} to E{d required}
+} 
