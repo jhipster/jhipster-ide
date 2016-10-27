@@ -35,4 +35,13 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, 1, firstLetter.toLowerCase)
 		]
 	}
+
+	@Fix(IssueCodes.INVALID_REQUIRED_OPTION)
+	def void fixFeatureName2(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove required', 'Remove required constraint', 'many-to-many.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, '')
+		]
+	}
 }

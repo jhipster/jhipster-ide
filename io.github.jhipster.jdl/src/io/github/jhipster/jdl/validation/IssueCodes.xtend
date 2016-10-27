@@ -13,4 +13,5 @@ interface IssueCodes {
 	String FIELD_NAME_LOWERCASE_MSG = 'Field name should start with a lowercase'
 	String DUPLICATE_FIELD_DEF_MSG = 'Field with name already defined'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
+	String INVALID_REQUIRED_OPTION = PREFIX + 'InvalidRequiredOption'
 }
