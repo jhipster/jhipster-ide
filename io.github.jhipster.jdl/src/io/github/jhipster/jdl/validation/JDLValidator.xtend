@@ -43,7 +43,7 @@ class JDLValidator extends AbstractJDLValidator {
 		}
 		val entity = field.eContainer as JdlEntity
 		if (entity.fields.exists[it != field && name.equals(field.name)]) {
-			error(DUPLICATE_FIELD_DEF_MSG, JDL_ENTITY_FIELD__NAME, INSIGNIFICANT_INDEX)			
+			error(DUPLICATE_FIELD_DEF_MSG, JDL_ENTITY_FIELD__NAME)			
 		}
 	}
 
@@ -59,7 +59,7 @@ class JDLValidator extends AbstractJDLValidator {
 			default : return
 		}
 		roles.filter[isRequired].forEach[ role |
-			warning(REQUIRED_NOT_ALLOWED_MSG.apply(card), role, JDL_RELATION_ROLE__REQUIRED, INSIGNIFICANT_INDEX)			
+			warning(REQUIRED_NOT_ALLOWED_MSG.apply(card), role, JDL_RELATION_ROLE__REQUIRED, INVALID_REQUIRED_OPTION)			
 		]
 	}
 	
