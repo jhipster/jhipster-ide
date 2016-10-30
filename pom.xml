@@ -14,20 +14,34 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<junit.version>4.11</junit.version>
 	</properties>
-	
-	<modules>
-		<module>io.github.jhipster.jdl</module>
-		<module>io.github.jhipster.jdl.ide</module>
-		<module>io.github.jhipster.jdl.ui</module>
-		<module>io.github.jhipster.jdl.web</module>
-		<module>io.github.jhipster.jdl.target</module>
-		<module>io.github.jhipster.jdl.feature</module>
-		<module>io.github.jhipster.jdl.repository</module>
-		<module>io.github.jhipster.jdl.tests</module>
-		<module>io.github.jhipster.jdl.ui.tests</module>
-		<module>io.github.jhipster.jdl.releng</module>
-	</modules>
-	
+
+	<profiles>
+		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+		<profile>
+			<id>product</id>
+			<modules>
+				<module>io.github.jhipster.jdl.releng</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>io.github.jhipster.jdl</module>
+				<module>io.github.jhipster.jdl.ide</module>
+				<module>io.github.jhipster.jdl.ui</module>
+				<module>io.github.jhipster.jdl.web</module>
+				<module>io.github.jhipster.jdl.target</module>
+				<module>io.github.jhipster.jdl.feature</module>
+				<module>io.github.jhipster.jdl.repository</module>
+				<module>io.github.jhipster.jdl.tests</module>
+				<module>io.github.jhipster.jdl.ui.tests</module>
+			</modules>
+		</profile>
+	</profiles>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -242,10 +256,7 @@
 					</configuration>
 				</plugin>
 				<plugin>
-					<!-- 
-						Can be removed after first generator execution
-						https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097
-					-->
+					<!-- Can be removed after first generator execution https://bugs.eclipse.org/bugs/show_bug.cgi?id=480097 -->
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-compiler-plugin</artifactId>
 					<version>${tycho-version}</version>
@@ -256,7 +267,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
@@ -270,7 +281,7 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
@@ -287,20 +298,20 @@
 
 	<dependencies>
 	</dependencies>
-	
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-			    <groupId>junit</groupId>
-			    <artifactId>junit</artifactId>
-			    <version>${junit.version}</version>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
 			</dependency>
 			<dependency>
-			    <groupId>junit</groupId>
-			    <artifactId>junit-dep</artifactId>
-			    <version>${junit.version}</version>
-			</dependency>		
+				<groupId>junit</groupId>
+				<artifactId>junit-dep</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	
+
 </project>
