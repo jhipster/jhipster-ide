@@ -12,6 +12,7 @@ import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
+import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
@@ -32,6 +33,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	}
 
 	def private JdlDomainModel init(JdlDomainModel jdl) {
+		jdl.initEntiyOptionMap
+	}
+	
+	def private JdlDomainModel initEntiyOptionMap(JdlDomainModel jdl) {
 		entiyOptionMap = newHashMap
 		if (jdl == null || jdl.eContents.nullOrEmpty) return jdl
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
@@ -80,19 +85,15 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		'' // opt.setting.renderJdlObject
 	}
 
-	def private getOptionType(extension JdlOptionSetting setting) {
-		 switch (setting) {
-			case isAngularSuffixOption : 'AngularSuffix'
-			case isDtoOption : 'DTO'
-			case isMicroserviceOption : 'Microservice'
-			case isNoFluentMethodOption : 'NoFluentMethod'
-			case isPaginateOption : 'Paginate'
-			case isSearchOption : 'Search'
-			case isServiceOption : 'Service'
-			case isSkipServerOption : 'SkipServer'
-			case isSkipClientOption : 'SkipClient'
-			default : 'Unknown'
-		}		
+	def private getOptionType(JdlOptionSetting setting) {
+		val result = setting.class.methods.filter[
+			name.startsWith('is') && name.endsWith('Option')
+		].filter[
+		 	invoke(setting) as Boolean
+		]
+		if (!result.isNullOrEmpty && result.size == 1) {
+			result.last.name.replaceAll('is|Option', '')
+		}
 	}
 	
 	def protected renderJdlObject(String option, JdlWildcardPredicate predicate) '''
@@ -116,12 +117,25 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 	
 	def dispatch protected renderJdlObject(JdlRelationship it) '''
-		«source.entity.name» «relationRole(source.role)» -- «relationRole(target.role)» «target.entity.name»
+		«source.entity.name» «toCardinality» «target.entity.name»
 	'''	
+	
+	def private String toCardinality(JdlRelationship rs) {
+		val card = (rs?.eContainer as JdlRelationships)?.cardinality
+		
+		return switch (card) {
+			case ONE_TO_ONE: relationRole(rs.source.role, '1') +  '--' + relationRole(rs.target.role, '1')
+			case ONE_TO_MANY: relationRole(rs.source.role, '1') + '--o' + relationRole(rs.target.role, '*')
+			case MANY_TO_ONE: relationRole(rs.source.role, '*') + 'o--' + relationRole(rs.target.role, '1')
+			case MANY_TO_MANY: relationRole(rs.source.role, '*') + 'o--o' + relationRole(rs.target.role, '*')
+			default : '--'
+		}
+	}
 
-	def protected relationRole(JdlRelationRole it) {
-		if (it == null) return ''
-		if (!name.isNullOrEmpty) '''"«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»"''' else ''
+	def protected relationRole(JdlRelationRole it, String card) {
+		if (it == null) return ''' "0..«card» " '''
+		val cardValue = ''' «IF required && card.equals('*')» 1«ELSE»0«ENDIF»..«card» '''
+		if (!name.isNullOrEmpty) ''' "«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»«cardValue»" '''
 	}
 	
 	// *** Note ***
@@ -133,12 +147,12 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			«entity.fields.map[renderJdlObject].join»
 		}
 		«FOR e: entity.fields.map[type].filter(JdlEnumFieldType)»
-			«entity.name» --> «e.element.name»
+			«entity.name» ..> «e.element.name»
 		«ENDFOR»
 	'''
 
 	def private toOptionStereotype(JdlEntity entity) 
-		'''«var opts=entiyOptionMap.get(entity)?.filter[!isExcluded(entity)]»«IF !opts.nullOrEmpty»<<Option {«FOR it : opts SEPARATOR ','»«getOptionType(setting)»«ENDFOR»}>>«ENDIF»'''
+		'''«var opts=entiyOptionMap.get(entity)?.filter[!isExcluded(entity)]»«IF !opts.nullOrEmpty»<<Option {«FOR it : opts SEPARATOR ','»«setting.optionType»«ENDFOR»}>>«ENDIF»'''
 
 	def private boolean isExcluded(JdlOption opt, JdlEntity entity) {
 		try {
