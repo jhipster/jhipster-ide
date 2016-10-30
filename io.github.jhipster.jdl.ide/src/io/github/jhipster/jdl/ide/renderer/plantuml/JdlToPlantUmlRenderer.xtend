@@ -122,6 +122,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
 	def private String toCardinality(JdlRelationship rs) {
 		val card = (rs?.eContainer as JdlRelationships)?.cardinality
+		
 		return switch (card) {
 			case ONE_TO_ONE: relationRole(rs.source.role, '1') +  '--' + relationRole(rs.target.role, '1')
 			case ONE_TO_MANY: relationRole(rs.source.role, '1') + '--o' + relationRole(rs.target.role, '*')
@@ -132,8 +133,9 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	}
 
 	def protected relationRole(JdlRelationRole it, String card) {
-		if (it == null) return ''' "«card»" '''
-		if (!name.isNullOrEmpty) ''' "«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»«IF !card.equals('1')» «card»«ENDIF»" '''
+		if (it == null) return ''' "0..«card» " '''
+		val cardValue = ''' «IF required && card.equals('*')» 1«ELSE»0«ENDIF»..«card» '''
+		if (!name.isNullOrEmpty) ''' "«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»«cardValue»" '''
 	}
 	
 	// *** Note ***
@@ -145,7 +147,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			«entity.fields.map[renderJdlObject].join»
 		}
 		«FOR e: entity.fields.map[type].filter(JdlEnumFieldType)»
-			«entity.name» --> «e.element.name»
+			«entity.name» ..> «e.element.name»
 		«ENDFOR»
 	'''
 
