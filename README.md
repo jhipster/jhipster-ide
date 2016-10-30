@@ -47,3 +47,7 @@ The JHipster-IDE Visual Studio Code plugins are located here:
 
 - Visual UML diagrams of your JDL files
 - Support for other tools supporting LSP such as Eclipse Che 
+
+## Download / Installation
+
+- [Project Page](https://jhipster.github.io/jhipster-ide/)
