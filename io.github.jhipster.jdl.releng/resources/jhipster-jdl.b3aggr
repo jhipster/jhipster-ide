@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="JHipster-IDE" label="JHipster-IDE" buildRoot="../target/build">
+  <validationSets label="JHipster-IDE">
+    <contributions description="JHipster-IDE" label="JHipster-IDE">
+      <repositories location="../../io.github.jhipster.jdl.repository/target/repository">
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.0.0"/>
+      </repositories>
+    </contributions>
+    <validationRepositories location="../../io.github.jhipster.jdl.repository/target/repository"/>
+  </validationSets>
+  <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
+    <validationRepositories location="http://download.eclipse.org/releases/neon"/>
+    <validationRepositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases"/>
+    <validationRepositories location="http://plantuml.sourceforge.net/updatesite/"/>
+  </validationSets>
+  <configurations/>
+  <configurations architecture="x86_64"/>
+  <configurations operatingSystem="macosx"/>
+  <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
+  <configurations operatingSystem="linux" windowSystem="gtk"/>
+  <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
+</aggregator:Aggregation>
