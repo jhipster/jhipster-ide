@@ -23,7 +23,7 @@ Hello, this is [JHipster-IDE](https://github.com/jhipster/jhipster-ide/), an Xte
 - Type Hierarchy	
 - Folding
 
-Created by [jbadeau](https://github.com/jbadeau) and [colameo](https://github.com/colameo).
+Created by [Jose Badeau](https://github.com/jbadeau) and [Serano Colameo](https://github.com/colameo).
 
 ## JHipster-IDE was made possible by these cool projects
 
