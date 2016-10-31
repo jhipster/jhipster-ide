@@ -20,7 +20,9 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 				name = 'User'
 			]
 			val model = resource.model
-			if (model != null) model.features += user 
+			if (model != null && model.eContents.filter(JdlEntity).exists[
+				name.equals(user.name)
+			] == false) model.features += user 
 			// else resource.contents += user // FIXME: we cannot have multiple roots in a model!
 		}
 	}
