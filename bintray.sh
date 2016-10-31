@@ -1,5 +1,5 @@
 #!/bin/bash
-#Sample Usage: pushToBintray.sh username apikey owner repo package version pathToP2Repo
+#Sample Usage: bintray.sh username apikey owner repo package version pathToP2Repo
 API=https://api.bintray.com
 BINTRAY_USER=$1
 BINTRAY_API_KEY=$2
