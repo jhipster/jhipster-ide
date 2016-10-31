@@ -125,7 +125,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<configuration>
 					<descriptor>resources/assembly/product.xml</descriptor>
-					<finalName>${project.name}-${pom.version}</finalName>
+					<finalName>${project.groupId}-${pom.version}</finalName>
 				</configuration>
 				<executions>
 					<execution>
