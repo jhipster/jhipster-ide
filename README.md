@@ -33,21 +33,18 @@ Created by [Jose Badeau](https://github.com/jbadeau) and [Serano Colameo](https:
 
 ## Eclipse Setup
 
-The JHipster-IDE eclipse plugins are located here: 
+The JHipster-IDE eclipse plugins are located [here](https://dl.bintray.com/colameo/jh-ide/).
 
 ## IntelliJ Setup
 
-The JHipster-IDE IDEA plugins are located here: 
+Not yet available
 
 ## Visual Studio Code Setup
 
-The JHipster-IDE Visual Studio Code plugins are located here: 
+Install "cbornet.jdl" extension in Visual Studio Code.
 
 ## Coming soon
 
-- Visual UML diagrams of your JDL files
+- IntelliJ IDEA
+- Web integration with AngularJS
 - Support for other tools supporting LSP such as Eclipse Che 
-
-## Download / Installation
-
-- [Project Page](https://jhipster.github.io/jhipster-ide/)
