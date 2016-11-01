@@ -3,10 +3,9 @@ package io.github.jhipster.jdl.ui
 import com.google.inject.Guice
 import com.google.inject.Injector
 import io.github.jhipster.jdl.ide.JdlIdeModule
+import io.github.jhipster.jdl.ui.util.SWTResourceManager
 import org.apache.log4j.Logger
 import org.eclipse.xtext.util.Modules2
-import org.eclipse.core.runtime.CoreException
-import io.github.jhipster.jdl.ui.util.SWTResourceManager
 import org.osgi.framework.BundleContext
 
 class JdlActivator extends io.github.jhipster.jdl.ui.internal.JdlActivator {
