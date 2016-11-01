@@ -38,6 +38,11 @@ Workflow {
 			name = "io.github.jhipster.jdl.JDL"
 			fileExtensions = "jh,jdl"
 
+			newProjectWizardForEclipse = {
+				generate = true
+				pluginProject = false
+			}
+
 			serializer = {
 				generateStub = false
 			}

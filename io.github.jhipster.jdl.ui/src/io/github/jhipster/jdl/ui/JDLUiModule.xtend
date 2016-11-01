@@ -3,6 +3,7 @@
  */
 package io.github.jhipster.jdl.ui
 
+import io.github.jhipster.jdl.ui.wizard.JDLExtendedProjectCreator
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
@@ -10,4 +11,8 @@ import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
  */
 @FinalFieldsConstructor
 class JDLUiModule extends AbstractJDLUiModule {
+
+	override bindIProjectCreator() {
+		JDLExtendedProjectCreator
+	}	
 }
