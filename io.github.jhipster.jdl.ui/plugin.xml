@@ -440,4 +440,15 @@
             name="JDL">
       </perspective>
    </extension>
+	<extension
+		point="org.eclipse.ui.newWizards">
+		<wizard
+			category="org.eclipse.xtext.projectwiz"
+			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+			id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+			name="JDL Project"
+			project="true"
+			icon="icons/JHipster.gif" >
+		</wizard>
+	</extension>   
 </plugin>
