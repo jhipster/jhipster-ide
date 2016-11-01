@@ -5,6 +5,9 @@ import com.google.inject.Injector
 import io.github.jhipster.jdl.ide.JdlIdeModule
 import org.apache.log4j.Logger
 import org.eclipse.xtext.util.Modules2
+import org.eclipse.core.runtime.CoreException
+import io.github.jhipster.jdl.ui.util.SWTResourceManager
+import org.osgi.framework.BundleContext
 
 class JdlActivator extends io.github.jhipster.jdl.ui.internal.JdlActivator {
 	static final Logger logger = Logger.getLogger(JdlActivator)
@@ -26,6 +29,10 @@ class JdlActivator extends io.github.jhipster.jdl.ui.internal.JdlActivator {
 			logger.error(e.getMessage(), e)
 			throw new RuntimeException('''Failed to create injector for «language»''', e)
 		}
-
+	}
+	
+	override stop(BundleContext context) throws Exception {
+		super.stop(context)
+		SWTResourceManager.dispose
 	}
 }
