@@ -12,7 +12,6 @@ import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
-import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
