@@ -21,7 +21,7 @@
 <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="net.sourceforge.plantuml.feature.feature.group" version="1.1.7.8048"/>
+<unit id="net.sourceforge.plantuml.feature.feature.group" version="0.0.0"/>
 <repository location="http://plantuml.sourceforge.net/updatesite/"/>
 </location>
 </locations>

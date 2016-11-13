@@ -1,15 +1,31 @@
 os:
-    - linux
+- linux
 language: java
 jdk:
-    - oraclejdk8
+- oraclejdk8
 cache:
-    directories:
-        - $HOME/.m2
+  directories:
+  - "$HOME/.m2"
 install:
-    - java -version
+- java -version
+sudo: required
+addons:
+  apt:
+    packages:
+      - graphviz
 before_script:
-    - "export DISPLAY=:99.0"
-    - "sh -e /etc/init.d/xvfb start"
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
 script:
-    - mvn clean install
+- mvn clean install
+- cd io.github.jhipster.jdl.releng
+- mvn package -Pproduct
+after_success:
+- cd $TRAVIS_BUILD_DIR
+- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY colameo jh-ide updates
+- bash -e ./deleteExistingP2Content.sh
+- bash -e ./upload.sh $BT_USER $BT_APIKEY colameo jh-ide updates 1.0.0 io.github.jhipster.jdl.releng/target/build/final
+env:
+  global:
+  - secure: FFBOvoAf+V3AsDV+VHSymGi8eoVrjtlaXOsZPKy6FQnvSP9JWfUQz/QDB74HK96t04pMu3SnaOZNCI3K/dkZ3RS/wY8J+TKYTdhcTT+7zPYgn564AV3J7lGl7ozcKWhDUAqC+ti9tpIPGbtKO9iIkXLsaK8ZXd2iT1Qu92deYEnTVdoyiASRb4tMq37ROf2ufvWDauT0x5ozJ3H76m306UMZcUEIa7MlHoiOZz1YHzdQn/K7obVW6wdT8X2NgH7XoepUyC0VI03Xymo+eY5AHth8K5hstJU2dhIYNv9RJwkDgW/5kW9jFqrKl/o5bZjNE9kkeRADRuBbnq0lNhLSGMF4wc2y6vx02GvNERJaxgd/P0nDIWZWJc9YtL0SSB4bnF+cZNhr7MhPeI3qmboj9kEKxL5pPXJXvnREuUx3kFh87L7OCmClhMVbJ2IxdzM4GVFfMIv0DNZhqxzzMxpsbltjbZ1e2Kulez3JavsJ7P9Ey9yk1gp6pGY1j8H79J/y9Epec8ME0x+FpgC5D/api8S+BLJfb3HLnp2wojdJh3do0vyIXPDLHCNBMnE9YjwkG7DcB6jKZgtIGjK3E3KrLY97RdyNtCY+dwYvHhzcbT9E+fIq4aOkuygeqvFrGXFdHZa0GVUf3awiuovARZFyXvrCwjKSV63N98L8UvXvH+s=
+  - secure: rpc109f1v9JVsoV15/1nUGG9K0NbhPdQVLxDt7RypH+yKmJzHOZf1rDNQOrRkCxU0T7/QFybZIeFBd0AGRDWLoOJ2BFpHZK+6hLwRwQzq0NWHyoWdLScp+xQfyRl0K5ybNxxXzkgB1g0LCc8160b/3AJGPzHNWUhfLzGiVOzg+QVKm/zArJ15fu1YPQSVQTsMxGyYe+HGONlq0Lzb6+C5159xg6sOH8SGl5Aa73H6JTPL3FX21pgogfgqIy2/9IGEe90vgxAxHGw66kHLw52Iddv2qE7uPjXi8yuIbRdlSpNb1AxJWE9z9c/yWfzXBipIgrFIRL9Wjge2OSHQvct0Cvn9a+fYWbYk+Mc/0UW24eMkU9gxEEA59MprrvgeaKkaNYWJDh82iwBtI3YRAft9S7T/x0eck5B635WjYera8QILjdS7LI5P4tw7R6eyIcIX7gQ7i95vxJpYVqWpgSs6yg7jrWjJzPkGYkzOZ3CT2w2y4D2AVeVTmMkxxxNHjFn0V0Fm8NAyAMmFEVUn/1Ntu1j0PP++EjRlwYLr/36mCnM4Y6ZCjDMJS/eX/5jwDfVFGbmK/hiAEFFUyPydZJFxLrXY6Z9YzqxCQY1Lg63+MOmcKQsQOQsxx8eFSBJKWE0cYPQswZP6Vl1OQoEZ5bmXBW0cTVI8/s0LSIznBjfjkw=
