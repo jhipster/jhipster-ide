@@ -443,12 +443,18 @@
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<wizard
-			category="org.eclipse.xtext.projectwiz"
-			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
-			id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
-			name="JDL Project"
-			project="true"
-			icon="icons/JHipster.gif" >
+        category="io.github.jhipster.jdl.ui.wizard.jhipster.Wizards"
+        class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+        finalPerspective="io.github.jhipster.jdl.ui.view.JDLPerspective"
+        icon="icons/JHipster.gif"
+        id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+        name="JDL Project"
+        preferredPerspectives="io.github.jhipster.jdl.ui.view.JDLPerspective"
+        project="true">
 		</wizard>
-	</extension>   
+	  <category 
+          id="io.github.jhipster.jdl.ui.wizard.jhipster.Wizards" 
+          name="JHipster">
+      </category> 
+	</extension> 
 </plugin>
