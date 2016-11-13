@@ -16,6 +16,7 @@ script:
 - mvn clean install
 - cd io.github.jhipster.jdl.releng
 - mvn package -Pproduct
+after_success:
 - cd $TRAVIS_BUILD_DIR
 - java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY colameo jh-ide updates
 - bash -e ./deleteExistingP2Content.sh
