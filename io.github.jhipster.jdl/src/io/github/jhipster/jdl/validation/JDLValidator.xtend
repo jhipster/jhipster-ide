@@ -61,16 +61,5 @@ class JDLValidator extends AbstractJDLValidator {
 		roles.filter[isRequired].forEach[ role |
 			warning(REQUIRED_NOT_ALLOWED_MSG.apply(card), role, JDL_RELATION_ROLE__REQUIRED, INVALID_REQUIRED_OPTION)			
 		]
-	}
-	
-// @FIXME
-//	@Check
-//	def checkGreetingStartsWithCapital(JdlRelationRole role) {
-//		if (!Character.isUpperCase(role.name.charAt(0))) {
-//			warning('Relationship name should start with a capital', 
-//					JdlPackage.Literals.JDL_ENTITY__NAME,
-//					ValidationMessageAcceptor.INSIGNIFICANT_INDEX,
-//					INVALID_TYPE_NAME)
-//		}
-//	}
+	}	
 }

@@ -38,6 +38,7 @@
 				<module>io.github.jhipster.jdl.repository</module>
 				<module>io.github.jhipster.jdl.tests</module>
 				<module>io.github.jhipster.jdl.ui.tests</module>
+				<module>io.github.jhipster.jdl.releng</module>
 			</modules>
 		</profile>
 	</profiles>
