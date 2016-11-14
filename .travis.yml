@@ -23,8 +23,6 @@ script:
 after_success:
 - cd $TRAVIS_BUILD_DIR
 - ./deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY colameo jh-ide updates 1.1.0
-- #java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY colameo jh-ide updates
-- #bash -e ./deleteExistingP2Content.sh
 - bash -e ./upload.sh $BT_USER $BT_APIKEY colameo jh-ide updates 1.1.0 io.github.jhipster.jdl.releng/target/build/final
 env:
   global:
