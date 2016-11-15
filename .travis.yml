@@ -22,8 +22,7 @@ script:
 - mvn package -Pproduct
 after_success:
 - cd $TRAVIS_BUILD_DIR
-- java -jar DirectoryCleaner.jar $BT_USER $BT_APIKEY colameo jh-ide updates
-- bash -e ./deleteExistingP2Content.sh
+- ./deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY colameo jh-ide updates 1.0.0
 - bash -e ./upload.sh $BT_USER $BT_APIKEY colameo jh-ide updates 1.0.0 io.github.jhipster.jdl.releng/target/build/final
 env:
   global:
