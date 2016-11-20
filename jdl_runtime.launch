@@ -10,7 +10,7 @@
 <booleanAttribute key="clearConfig" value="false"/>
 <booleanAttribute key="clearws" value="false"/>
 <booleanAttribute key="clearwslog" value="false"/>
-<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/jhipster-jdl"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/jdl_runtime"/>
 <booleanAttribute key="default" value="false"/>
 <stringAttribute key="featureDefaultLocation" value="workspace"/>
 <stringAttribute key="featurePluginResolution" value="workspace"/>
@@ -24,20 +24,6 @@
 <stringAttribute key="product" value="org.eclipse.platform.ide"/>
 <setAttribute key="selected_features">
 <setEntry value="io.github.jhipster.jdl.feature:default"/>
-<setEntry value="org.eclipse.e4.rcp:default"/>
-<setEntry value="org.eclipse.ecf.core.feature:default"/>
-<setEntry value="org.eclipse.ecf.core.ssl.feature:default"/>
-<setEntry value="org.eclipse.emf.common:default"/>
-<setEntry value="org.eclipse.emf.ecore:default"/>
-<setEntry value="org.eclipse.emf.mwe2.launcher:default"/>
-<setEntry value="org.eclipse.equinox.p2.core.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.extras.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.rcp.feature:default"/>
-<setEntry value="org.eclipse.equinox.p2.user.ui:default"/>
-<setEntry value="org.eclipse.help:default"/>
-<setEntry value="org.eclipse.jdt:default"/>
-<setEntry value="org.eclipse.platform:default"/>
-<setEntry value="org.eclipse.rcp:default"/>
 <setEntry value="org.eclipse.xtend.sdk:default"/>
 <setEntry value="org.eclipse.xtext.docs:default"/>
 <setEntry value="org.eclipse.xtext.examples.source:default"/>
