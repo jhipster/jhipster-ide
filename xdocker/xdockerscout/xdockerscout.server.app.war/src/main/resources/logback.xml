@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+
+  <contextListener class="org.eclipse.scout.rt.platform.logger.AutoRegisteringJulLevelChangePropagator" />
+
+  <variable scope="context" name="mdcPattern" value="principal=%X{subject.principal.name}, serverSession=%X{scout.session.id}, jobName=%X{scout.job.name}" />
+  <variable scope="context" name="mdcPatternWithoutEmptyValues" value="%replace(${mdcPattern}){'(, )?\\w+=((?=\\1)|, |$)', ''}" />
+  <variable scope="context" name="logPattern" value="%date{ISO8601} %-5level [%thread] %logger - %msg - MDC[${mdcPatternWithoutEmptyValues}]%n%ex" />
+
+  <appender class="ch.qos.logback.core.rolling.RollingFileAppender" name="FILE">
+    <!-- Sample for Tomcat Log Folder -->
+    <file>${catalina.base}/logs/ch.itemis.xdocker.app.xdockerscout.server.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <fileNamePattern>${catalina.base}/logs/ch.itemis.xdocker.app.xdockerscout.server-%d{yyyy-MM-dd}.log</fileNamePattern>
+      <maxHistory>100</maxHistory>
+    </rollingPolicy>
+    <encoder>
+      <pattern>${logPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
+
+  <logger name="org.eclipse.scout.rt.server.services.common.jdbc.internal.exec.StatementProcessor" level="WARN" />
+  <logger name="org.eclipse.scout.rt.shared.services.common.exceptionhandler.LogExceptionHandlerService" level="WARN" />
+  <logger name="org.eclipse.scout.rt.platform.internal.BeanFilter" level="WARN" />
+
+</configuration>

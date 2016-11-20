@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.eclipse.scout</groupId>
+		<artifactId>maven_rt_plugin_config-master</artifactId>
+	    <version>2.0.6</version>
+	</parent>
+
+	<groupId>ch.itemis.xdocker.app</groupId>
+	<artifactId>xdockerscout.parent</artifactId>
+	<version>1.2.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Xdocker Scout Application Parent Module</name>
+
+	<properties>
+		<jdk.source.version>1.8</jdk.source.version>
+		<!--  org.eclipse.scout.rt_version>6.0.0.M6 5.2.0.M5-->
+		<!-- org.eclipse.scout.rt_version>6.0.0.M6</org.eclipse.scout.rt_version -->
+		<org.eclipse.scout.rt_version>6.0.0.M6_1</org.eclipse.scout.rt_version>
+		<xtextVersion>2.10.0</xtextVersion>
+        <master_sanityCheck_skip>true</master_sanityCheck_skip>
+	</properties>
+
+	<modules>
+		<module>../xdockerscout.shared</module>
+		<module>../xdockerscout.server</module>
+		<module>../xdockerscout.client</module>
+		<module>../xdockerscout.server.app.war</module>
+		<module>../xdockerscout.ui.html</module>
+		<module>../xdockerscout.ui.html.app.war</module>
+	</modules>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Xtext Dependencies -->
+			<dependency>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>org.eclipse.xtext</artifactId>
+				<version>${xtextVersion}</version>
+			</dependency>
+
+			<!-- Scout Dependencies -->
+			<dependency>
+				<groupId>org.eclipse.scout.rt</groupId>
+				<artifactId>org.eclipse.scout.rt</artifactId>
+				<version>${org.eclipse.scout.rt_version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- Shared Dependencies -->
+			<dependency>
+				<groupId>ch.itemis.xdocker.core</groupId>
+				<artifactId>xdockercore.lib</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.itemis.xdocker.core</groupId>
+				<artifactId>xdockercore.util</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<!-- Filetree Dependencies 
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerfiletree.client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerfiletree.ui.html</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			-->
+			
+			<!-- Application Dependencies -->
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerscout.client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerscout.shared</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerscout.server</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.itemis.xdocker.app</groupId>
+				<artifactId>xdockerscout.ui.html</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtextVersion}</version>
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>compile</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+						<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<filesets>
+							<fileset>
+								<directory>${basedir}/xtend-gen</directory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+								<directory>${basedir}/xtend-gen</directory>
+								<includes>
+									<include>**/*</include>
+								</includes>
+							</fileset>
+						</filesets>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	
+</project>

@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.itemis.ch/xdocker/Xdocker"
+			class="ch.itemis.xdocker.xdocker.XdockerPackage"
+		/>
+		<resourceFactory 
+			type="xdocker"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="xdocker"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+		/>
+
+		<lang.setup
+			language="ch.itemis.xdocker.Xdocker"
+			implementationClass="ch.itemis.xdocker.idea.XdockerIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="ch.itemis.xdocker.idea.lang.psi.XdockerCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="ch.itemis.xdocker.idea.lang.XdockerFileTypeFactory"/>
+		<stubElementTypeHolder class="ch.itemis.xdocker.idea.lang.XdockerElementTypeProvider"/>
+		<lang.ast.factory 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="ch.itemis.xdocker.idea.lang.parser.XdockerParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="ch.itemis.xdocker.Xdocker" implementationClass="ch.itemis.xdocker.idea.highlighting.XdockerSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="ch.itemis.xdocker.Xdocker" implementationClass="ch.itemis.xdocker.idea.completion.XdockerCompletionContributor"/>
+		<pom.declarationSearcher implementation="ch.itemis.xdocker.idea.lang.pom.XdockerPomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="ch.itemis.xdocker.idea.facet.XdockerFacetType"/>
+		<lang.documentationProvider 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+		/>
+		<colorSettingsPage implementation="ch.itemis.xdocker.idea.highlighting.XdockerColorSettingsPage"/>
+		<highlightVisitor implementation="ch.itemis.xdocker.idea.highlighting.XdockerSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="ch.itemis.xdocker.Xdocker"
+			factoryClass="ch.itemis.xdocker.idea.XdockerExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>

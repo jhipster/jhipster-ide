@@ -1,0 +1,62 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1084" measuredH="646" mockupW="977" mockupH="624">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="107" y="43" w="977" h="603" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderStyle>square</borderStyle>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::TabBar" x="411" y="67" w="660" h="560" measuredW="196" measuredH="100" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <selectedIndex>0</selectedIndex>
+        <size>14</size>
+        <tabHPosition>left</tabHPosition>
+        <tabVPosition>top</tabVPosition>
+        <text>Eclipse%20Distro%20%5Bx%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="1033" y="137" w="-1" h="276" measuredW="16" measuredH="100" zOrder="2" locked="false" isInGroup="-1"/>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::TabBar" x="122" y="67" w="284" h="560" measuredW="179" measuredH="100" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <selectedIndex>-1</selectedIndex>
+        <size>14</size>
+        <tabHPosition>left</tabHPosition>
+        <text>Docker%20Files</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::MenuBar" x="107" y="22" w="977" h="29" measuredW="153" measuredH="29" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>File%2C%20Edit%2C%20Help</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Tree" x="122" y="89" w="284" h="538" measuredW="300" measuredH="225" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>F%20Scout%20Project%201%0A%20v%20Folder%0A%20%20-%20Dockerfile</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="390" y="93" w="-1" h="534" measuredW="16" measuredH="100" zOrder="6" locked="false" isInGroup="-1"/>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Canvas" x="421" y="137" w="612" h="277" measuredW="100" measuredH="70" zOrder="7" locked="false" isInGroup="-1"/>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Paragraph" x="432" y="143" w="590" h="270" measuredW="200" measuredH="80" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>FROM%20komljen/ubuntu%0AMAINTAINER%20Alen%20Komljen%20%3Calen.komljen@live.com%3E%0A%20%0AENV%20JAVA_VERSION%207%0A%20%0ARUN%20%5C%0A%20%20add-apt-repository%20-y%20ppa%3Awebupd8team/java%20%26%26%20%5C%0A%20%20apt-get%20update%20%26%26%20%5C%0A%20%20echo%20oracle-java%24%7BJAVA_VERSION%7D-installer%20shared/accepted-oracle-license-v1-1%20select%20true%20%5C%0A%20%20%20%20%20%20%20%7C%20/usr/bin/debconf-set-selections%20%26%26%20%5C%0A%20%20apt-get%20-y%20install%20%5C%0A%20%20%20%20%20%20%20%20%20%20oracle-java%24%7BJAVA_VERSION%7D-installer%20%26%26%20%5C%0A%20%20rm%20-rf%20/var/lib/apt/lists/*%20%26%26%20%5C%0A%20%20rm%20/var/cache/oracle-jdk%24%7BJAVA_VERSION%7D-installer/jdk-*.tar.gz%0A%20%0ARUN%20update-alternatives%20--display%20java</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::FormattingToolbar" x="423" y="103" w="-1" h="-1" measuredW="270" measuredH="29" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Button" x="926" y="105" w="-1" h="-1" measuredW="54" measuredH="27" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Button" x="986" y="105" w="-1" h="-1" measuredW="56" measuredH="27" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Close</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::DataGrid" x="422" y="416" w="627" h="195" measuredW="346" measuredH="195" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name%5Cr%28job%20title%29%20%5E%2C%20Age%20%5Ev%2C%20Nickname%2C%20Employee%20v%0AGiacomo%20Guilizzoni%5CrFounder%20%26%20CEO%2C%2036%2C%20Peldi%2C%20%5Bx%5D%0AMarco%20Botton%5CrTuttofare%2C%2034%2C%20%2C%20%5Bx%5D%0AMariah%20Maclachlan%5CrBetter%20Half%2C%2037%2C%20Patata%2C%20%5Bx%5D%0AValerie%20Liberty%5CrHead%20Chef%2C%20%3A%29%2C%20Val%2C%20%5Bx%5D%0AGuido%20Jack%20Guilizzoni%2C%206%2C%20The%20Guids%2C%20%5B%5D%0A%7B65L%2C%200R%2C%2035%2C%200C%7D</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

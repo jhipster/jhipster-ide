@@ -1,0 +1,12 @@
+bin/
+target/
+plugin.xml_gen
+src-gen/
+xtend-gen/
+model/
+.settings/
+.gradle/
+build/
+.project
+.classpath
+.flattened-pom.xml

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.itemis.xdocker.app</groupId>
+		<artifactId>xdockerscout.parent</artifactId>
+		<version>1.2.0-SNAPSHOT</version>
+		<relativePath>../xdockerscout.parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>xdockerscout.shared</artifactId>
+
+	<name>Xdocker Scout Application Shared</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext</artifactId>
+		</dependency>
+		<dependency>
+			<artifactId>org.eclipse.scout.rt.shared</artifactId>
+			<groupId>org.eclipse.scout.rt</groupId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.shared.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.itemis.xdocker.core</groupId>
+			<artifactId>xdockercore.lib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.itemis.xdocker.core</groupId>
+			<artifactId>xdockercore.util</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>
