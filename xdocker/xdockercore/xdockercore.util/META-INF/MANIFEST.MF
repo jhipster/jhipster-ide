@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: xdockercore.util
+Bundle-SymbolicName: xdockercore.util
+Bundle-Version: 1.2.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: xdockercore.lib;visibility:=reexport,
+ org.eclipse.xtend.lib.macro;visibility:=reexport,
+ org.eclipse.core.resources;visibility:=reexport,
+ org.eclipse.core.runtime;visibility:=reexport
+Export-Package: ch.itemis.xdocker.util,
+ ch.itemis.xdocker.util.processor

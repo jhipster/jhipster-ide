@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: xdockerdsl.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.2.0.qualifier
+Bundle-SymbolicName: xdockerdsl.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: xdockerdsl,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ch.itemis.xdocker.ide.contentassist.antlr.internal,
+ ch.itemis.xdocker.ide.contentassist.antlr
+

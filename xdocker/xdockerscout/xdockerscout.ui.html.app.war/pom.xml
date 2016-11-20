@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>ch.itemis.xdocker.app</groupId>
+    <artifactId>xdockerscout.parent</artifactId>
+    <version>1.2.0-SNAPSHOT</version>
+    <relativePath>../xdockerscout.parent/pom.xml</relativePath>
+  </parent>
+
+  <artifactId>xdockerscout.ui.html.app.war</artifactId>
+  <packaging>war</packaging>
+
+  <name>Xdocker Scout Application HTML UI WAR</name>
+
+  <build>
+      <finalName>ch.itemis.xdocker.app.xdockerscout.ui.html</finalName>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>ch.itemis.xdocker.app</groupId>
+      <artifactId>xdockerscout.ui.html</artifactId>
+    </dependency>
+  </dependencies>
+</project>

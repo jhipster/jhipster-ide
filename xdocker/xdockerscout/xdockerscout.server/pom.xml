@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>ch.itemis.xdocker.app</groupId>
+		<artifactId>xdockerscout.parent</artifactId>
+		<version>1.2.0-SNAPSHOT</version>
+		<relativePath>../xdockerscout.parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>xdockerscout.server</artifactId>
+
+	<name>Xdocker Scout Application Server</name>
+
+	<properties>
+		<docker-java.version>2.2.1</docker-java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.github.docker-java</groupId>
+			<artifactId>docker-java</artifactId>
+			<version>${docker-java.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.scout.rt</groupId>
+			<artifactId>org.eclipse.scout.rt.server.test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<artifactId>org.eclipse.scout.rt.server</artifactId>
+			<groupId>org.eclipse.scout.rt</groupId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.xtext</groupId>
+			<artifactId>org.eclipse.xtext</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.itemis.xdocker.core</groupId>
+			<artifactId>xdockercore.lib</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>ch.itemis.xdocker.app</groupId>
+			<artifactId>xdockerscout.shared</artifactId>
+		</dependency>
+	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtend</groupId>
+				<artifactId>xtend-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+	
+</project>

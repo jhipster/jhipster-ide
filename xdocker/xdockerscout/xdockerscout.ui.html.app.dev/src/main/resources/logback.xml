@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+
+  <variable scope="context" name="mdcPattern" value="%X{subject.principal.name} @ %X{http.request.method} %X{http.request.uri} %X{scout.ui.session.id}" />
+  <variable scope="context" name="logPattern" value="%date{ISO8601} %-5level %thread %logger{50} - %m [${mdcPattern}]%n" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="org.eclipse.scout.rt.platform.logger.LevelRangeFilter">
+      <levelMin>TRACE</levelMin>
+      <levelMax>INFO</levelMax>
+    </filter>
+    <encoder>
+      <pattern>${logPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="org.eclipse.scout.rt.platform.logger.LevelRangeFilter">
+      <levelMin>WARN</levelMin>
+      <levelMax>ERROR</levelMax>
+    </filter>
+    <target>System.err</target>
+    <encoder>
+      <pattern>${logPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDERR" />
+  </root>
+
+  <logger level="WARN" name="org.quartz" />
+  <logger name="org.eclipse.scout.rt.platform.internal.BeanFilter" level="WARN" />
+  <logger name="org.eclipse.scout.rt.server.commons.servlet.filter.authentication.DevelopmentAuthenticator" level="WARN" />
+</configuration>

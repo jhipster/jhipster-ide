@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<configuration>
+
+  <contextListener class="org.eclipse.scout.rt.platform.logger.AutoRegisteringJulLevelChangePropagator"/>
+
+  <variable scope="context" name="mdcPattern" value="principal=%X{subject.principal.name}, serverSession=%X{scout.session.id}, jobName=%X{scout.job.name}" />
+  <variable scope="context" name="mdcPatternWithoutEmptyValues" value="%replace(${mdcPattern}){'(, )?\\w+=((?=\\1)|, |$)', ''}" />
+  <variable scope="context" name="logPattern" value="%date{ISO8601} %-5level [%thread] %logger.%method\\(%file:%line\\) - %msg - MDC[${mdcPatternWithoutEmptyValues}]%n%ex" />
+
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="org.eclipse.scout.rt.platform.logger.LevelRangeFilter">
+      <levelMin>TRACE</levelMin>
+      <levelMax>INFO</levelMax>
+    </filter>
+    <encoder>
+      <pattern>${logPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="STDERR" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="org.eclipse.scout.rt.platform.logger.LevelRangeFilter">
+      <levelMin>WARN</levelMin>
+      <levelMax>ERROR</levelMax>
+    </filter>
+    <target>System.err</target>
+    <encoder>
+      <pattern>${logPattern}</pattern>
+    </encoder>
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="STDERR" />
+  </root>
+
+  <logger level="WARN" name="org.quartz" />
+  <logger name="org.eclipse.scout.rt.platform.inventory.internal.JandexInventoryBuilder" level="WARN" />
+  <logger name="org.eclipse.scout.rt.server.services.common.jdbc.internal.exec.StatementProcessor" level="WARN" />
+  <logger name="org.eclipse.scout.rt.platform.internal.BeanFilter" level="WARN" />
+</configuration>

@@ -1,0 +1,4 @@
+# This file is maintained by the NLS editor.  #
+# To ensure a properly working NLS support    #
+# keep this file untouched.                   #
+Nls-Class=ch.itemis.xdocker.app.xdockerscout.shared.text.DefaultTextProviderService
