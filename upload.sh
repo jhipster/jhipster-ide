@@ -36,7 +36,7 @@ if [ ! -d $f ]; then
 #  else 
     curl -X PUT -T $f -u ${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/${PCK_VERSION}/$f;publish=0
 #  fi
-  echo ""
+  echo "Done!"
 fi
 done
 echo "Processing features dir $FEATUREDIR file..."
