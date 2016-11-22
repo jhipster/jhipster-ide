@@ -24,9 +24,10 @@ function deleteMavenArtifacts() {
   echo "Delete existing maven repo version $PCK_VERSION"
   curl -X DELETE -u ${BINTRAY_USER}:${BINTRAY_API_KEY} "https://api.bintray.com/packages/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/versions/$PCK_VERSION" -H "content-type:application/json" 
 
-  echo "Create new maven repo version $PCK_VERSION"
-  curl -X POST -u ${BINTRAY_USER}:${BINTRAY_API_KEY} "https://api.bintray.com/packages/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/versions" -d '{"name": "'$PCK_VERSION'", "desc": "Release '$PCK_VERSION'"}' -H "content-type:application/json" 
+#  echo "Create new maven repo version $PCK_VERSION"
+#  curl -X POST -u ${BINTRAY_USER}:${BINTRAY_API_KEY} "https://api.bintray.com/packages/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/versions" -d '{"name": "'$PCK_VERSION'", "desc": "Release '$PCK_VERSION'"}' -H "content-type:application/json" 
   echo ""
+  echo "Done!"
 }
 
 main "$@"
