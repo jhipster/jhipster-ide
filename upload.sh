@@ -29,13 +29,13 @@ for f in $FILES;
 do
 if [ ! -d $f ]; then
   echo "Processing $f file..."
-#  if [[ "$f" == *content.jar ]] || [[ "$f" == *artifacts.jar ]] 
-#  then
-#    echo "Uploading p2 metadata file directly to the repository"
-#    curl -X PUT -T $f -u ${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/${BINTRAY_OWNER}/${BINTRAY_REPO}/$f;publish=0
-#  else 
+  if [[ "$f" == *content.jar ]] || [[ "$f" == *artifacts.jar ]] 
+  then
+    echo "Uploading p2 metadata file directly to the repository"
+    curl -X PUT -T $f -u ${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/${BINTRAY_OWNER}/${BINTRAY_REPO}/$f;publish=0
+  else 
     curl -X PUT -T $f -u ${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/${PCK_VERSION}/$f;publish=0
-#  fi
+  fi
   echo ""
 fi
 done
@@ -58,3 +58,4 @@ echo "Publishing the new version"
 curl -X POST -u ${BINTRAY_USER}:${BINTRAY_API_KEY} https://api.bintray.com/content/${BINTRAY_OWNER}/${BINTRAY_REPO}/${PCK_NAME}/${PCK_VERSION}/publish -d "{ \"discard\": \"false\" }"
 }
 main "$@"
+
