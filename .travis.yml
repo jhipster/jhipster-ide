@@ -1,6 +1,6 @@
 branches:
   except:
-  - release/1.0.0
+  - release/v1.0.0
 os:
 - linux
 language: java
