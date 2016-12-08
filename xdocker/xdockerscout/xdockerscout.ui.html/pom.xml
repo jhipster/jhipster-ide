@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>ch.itemis.xdocker.app</groupId>
+		<groupId>xdocker.scout</groupId>
 		<artifactId>xdockerscout.parent</artifactId>
 		<version>1.2.0-SNAPSHOT</version>
 		<relativePath>../xdockerscout.parent/pom.xml</relativePath>
@@ -21,7 +21,7 @@
 			<artifactId>org.eclipse.scout.rt.ui.html</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>ch.itemis.xdocker.app</groupId>
+			<groupId>xdocker.scout</groupId>
 			<artifactId>xdockerscout.client</artifactId>
 		</dependency>
 		<dependency>

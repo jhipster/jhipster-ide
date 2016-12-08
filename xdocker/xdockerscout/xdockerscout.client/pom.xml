@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>ch.itemis.xdocker.app</groupId>
+		<groupId>xdocker.scout</groupId>
 		<artifactId>xdockerscout.parent</artifactId>
 		<version>1.2.0-SNAPSHOT</version>
 		<relativePath>../xdockerscout.parent/pom.xml</relativePath>
@@ -20,11 +20,11 @@
 			<artifactId>org.eclipse.xtext</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>ch.itemis.xdocker.core</groupId>
+			<groupId>xdocker.core</groupId>
 			<artifactId>xdockercore.lib</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>ch.itemis.xdocker.core</groupId>
+			<groupId>xdocker.core</groupId>
 			<artifactId>xdockercore.util</artifactId>
 		</dependency>
 		<dependency>
@@ -32,7 +32,7 @@
 			<groupId>org.eclipse.scout.rt</groupId>
 		</dependency>
 		<dependency>
-			<groupId>ch.itemis.xdocker.app</groupId>
+			<groupId>xdocker.scout</groupId>
 			<artifactId>xdockerscout.shared</artifactId>
 		</dependency>
 		<dependency>
