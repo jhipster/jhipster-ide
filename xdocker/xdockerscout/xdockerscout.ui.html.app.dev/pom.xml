@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
-    <groupId>xdocker.scout</groupId>
+	<groupId>io.github.jhipster-ide.xdocker.scout</groupId>
     <artifactId>xdockerscout.parent</artifactId>
     <version>1.1.0-SNAPSHOT</version>
     <relativePath>../xdockerscout.parent/pom.xml</relativePath>
@@ -21,7 +21,7 @@
       <artifactId>org.eclipse.scout.dev.jetty</artifactId>
     </dependency>
     <dependency>
-      <groupId>xdocker.scout</groupId>
+      <groupId>io.github.jhipster-ide.xdocker.scout</groupId>
       <artifactId>xdockerscout.ui.html</artifactId>
     </dependency>
   </dependencies>

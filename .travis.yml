@@ -32,12 +32,9 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 
 script:
-- cd jdl
 - mvn clean install
-- cd io.github.jhipster.jdl.releng
+- cd jdl/io.github.jhipster.jdl.releng
 - mvn package -Pproduct
-- cd $TRAVIS_BUILD_DIR/xdocker
-- mvn clean install
 
 after_success:
 - #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY colameo jh-ide ${REPO} ${VERSION}
