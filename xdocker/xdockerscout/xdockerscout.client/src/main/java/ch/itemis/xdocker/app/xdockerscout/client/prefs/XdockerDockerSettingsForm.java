@@ -30,7 +30,7 @@ import ch.itemis.xdocker.app.xdockerscout.shared.prefs.XdockerDockerPreferncesFo
 import ch.itemis.xdocker.app.xdockerscout.shared.service.IXdockerDockerPropertiesService;
 import ch.itemis.xdocker.app.xdockerscout.shared.service.IXdockerDockerService;
 
-@FormData(value = XdockerDockerPreferncesFormData.class, sdkCommand = FormData.SdkCommand.CREATE)
+@FormData(value = XdockerDockerPreferncesFormData.class, sdkCommand = FormData.SdkCommand.USE)
 public class XdockerDockerSettingsForm extends AbstractForm {
 
 	public XdockerDockerSettingsForm() {

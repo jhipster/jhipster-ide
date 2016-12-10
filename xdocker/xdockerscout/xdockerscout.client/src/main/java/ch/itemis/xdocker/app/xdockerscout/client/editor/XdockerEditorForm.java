@@ -39,7 +39,7 @@ import ch.itemis.xdocker.app.xdockerscout.shared.service.XdockerEditorFormData;
  *
  * @author serano
  */
-@FormData(value = XdockerEditorFormData.class, sdkCommand = FormData.SdkCommand.CREATE)
+@FormData(value = XdockerEditorFormData.class, sdkCommand = FormData.SdkCommand.USE)
 public class XdockerEditorForm extends AbstractForm {
 
 	private Path pathToFile;

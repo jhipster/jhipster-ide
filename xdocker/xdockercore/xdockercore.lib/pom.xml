@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>ch.itemis.xdocker.core</groupId>
+		<groupId>io.github.jhipster-ide.xdocker.core</groupId>
 		<artifactId>xdockercore.parent</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.1.0-SNAPSHOT</version>
 		<relativePath>../xdockercore.parent</relativePath>
 	</parent>
 
@@ -77,7 +77,7 @@
 					<outputDirectory>
 						lib
 					</outputDirectory>
-					<excludeGroupIds>ch.itemis.xdocker</excludeGroupIds>
+					<excludeGroupIds>xdocker</excludeGroupIds>
 				</configuration>
 			</plugin>
 			<plugin>
