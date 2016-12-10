@@ -7,12 +7,28 @@
 	<groupId>io.github.jhipster-ide.xdocker</groupId>
 	<artifactId>xdocker</artifactId>
 	<version>1.1.0-SNAPSHOT</version>
+	<name>Xdocker Super POM</name>
 	<packaging>pom</packaging>
 	
-	<modules>
-		<module>io.github.jhipster.xdocker.core/xdockercore.parent</module>
-		<module>io.github.jhipster.xdocker.dsl/xdockerdsl.parent</module>
-		<module>io.github.jhipster.xdocker.scout/xdockerscout.parent</module>
-	</modules>
+	<profiles>
+		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+		<profile>
+			<id>product</id>
+			<modules>
+				<module>io.github.jhipster.xdocker.dsl/xdockerdsl.releng</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>io.github.jhipster.xdocker.core/xdockercore.parent</module>
+				<module>io.github.jhipster.xdocker.dsl/xdockerdsl.parent</module>
+				<module>io.github.jhipster.xdocker.scout/xdockerscout.parent</module>
+			</modules>
+		</profile>
+	</profiles>
 
 </project>
