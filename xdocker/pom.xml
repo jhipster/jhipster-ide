@@ -10,9 +10,9 @@
 	<packaging>pom</packaging>
 	
 	<modules>
-		<module>xdockercore/xdockercore.parent</module>
-		<module>xdockerdsl/xdockerdsl.parent</module>
-		<module>xdockerscout/xdockerscout.parent</module>
+		<module>io.github.jhipster.xdocker.core/xdockercore.parent</module>
+		<module>io.github.jhipster.xdocker.dsl/xdockerdsl.parent</module>
+		<module>io.github.jhipster.xdocker.scout/xdockerscout.parent</module>
 	</modules>
 
 </project>
