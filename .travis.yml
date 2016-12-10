@@ -8,8 +8,18 @@ language: java
 jdk:
 - oraclejdk8
 
-maven: 
-  version: 3.3.3
+before_install:
+  - wget http://www-eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+  - tar zxvf apache-maven-3.3.9-bin.tar.gz
+  - chmod +x apache-maven-3.3.9/bin/mvn
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
+
+before_script:
+  - export M2_HOME=$PWD/apache-maven-3.3.9
+  - export PATH=$PWD/apache-maven-3.3.9/bin:${PATH}
+  - hash -r
 
 cache:
   directories:
@@ -17,6 +27,7 @@ cache:
 
 install:
 - java -version
+- mvn -version
 
 addons:
   apt:
@@ -36,9 +47,9 @@ before_script:
 
 script:
 - mvn clean install
-- cd jdl/io.github.jhipster.jdl.releng
-- mvn package -Pproduct
 
 after_success:
+- cd jdl/io.github.jhipster.jdl.releng
+- mvn package -Pproduct
 - #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY colameo jh-ide ${REPO} ${VERSION}
 - #bash -e $TRAVIS_BUILD_DIR/upload.sh $BT_USER $BT_APIKEY colameo jh-ide ${REPO} ${VERSION} $TRAVIS_BUILD_DIR/jdl/io.github.jhipster.jdl.releng/target/build/final
