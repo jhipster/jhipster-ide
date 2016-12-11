@@ -10,9 +10,25 @@
 
 	<packaging>pom</packaging>
 	
-	<modules>
-		<module>jdl</module>
-		<module>xdocker</module>
-	</modules>
+	<profiles>
+		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
+		<profile>
+			<id>product</id>
+			<modules>
+				<module>jdl/io.github.jhipster.jdl.releng</module>
+				<module>xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.releng</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>default</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>jdl</module>
+				<module>xdocker</module>
+			</modules>
+		</profile>
+	</profiles>
 
 </project>

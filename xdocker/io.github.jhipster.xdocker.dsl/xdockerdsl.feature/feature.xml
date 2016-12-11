@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="xdockerdsl.feature"
+      label="Xdocker Feature "
+      version="1.1.0.qualifier">
+
+   <plugin
+         id="xdockerdsl"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xdockerdsl.ide"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xdockerdsl.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xdockercore.lib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="xdockercore.util"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

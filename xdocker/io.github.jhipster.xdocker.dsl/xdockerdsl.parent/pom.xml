@@ -22,8 +22,11 @@
 		<module>../xdockerdsl.ui</module>
 		<module>../xdockerdsl.web</module>
 		<module>../xdockerdsl.target</module>
+		<module>../xdockerdsl.feature</module>
 		<module>../xdockerdsl.tests</module>
 		<module>../xdockerdsl.ui.tests</module>
+		<module>../xdockerdsl.repository</module>
+		<module>../xdockerdsl.releng</module>
 	</modules>
 
 	<build>
