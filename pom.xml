@@ -15,8 +15,7 @@
 		<profile>
 			<id>product</id>
 			<modules>
-				<module>jdl/io.github.jhipster.jdl.releng</module>
-				<module>xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.releng</module>
+				<module>releng</module>
 			</modules>
 		</profile>
 		<profile>

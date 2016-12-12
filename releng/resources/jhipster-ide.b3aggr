@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="JHipster-IDE" label="JHipster-IDE" buildRoot="target/build">
+  <validationSets label="JHipster-IDE">
+    <contributions description="JHipster-IDE" label="JHipster-IDE">
+      <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
+        <features name="xdockerdsl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+      </repositories>
+      <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+      </repositories>
+    </contributions>
+  </validationSets>
+  <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
+    <contributions label="Base">
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/">
+        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
+      </repositories>
+      <repositories location="http://plantuml.sourceforge.net/updatesite/">
+        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+      </repositories>
+    </contributions>
+    <validationRepositories location="http://download.eclipse.org/releases/neon"/>
+  </validationSets>
+  <configurations/>
+  <configurations architecture="x86_64"/>
+  <configurations operatingSystem="macosx"/>
+  <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
+  <configurations operatingSystem="linux" windowSystem="gtk"/>
+  <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
+  <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0 //@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.1/@features.0 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.1/@features.0"/>
+</aggregator:Aggregation>
