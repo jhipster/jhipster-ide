@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.feature</artifactId>
+	<name>JDL Feature </name>
 	<packaging>eclipse-feature</packaging>
 
 </project>

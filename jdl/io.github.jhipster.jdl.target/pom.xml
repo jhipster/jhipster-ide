@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.target</artifactId>
+	<name>JDL DSL Target Platform</name>
 	<packaging>eclipse-target-definition</packaging>
 
 </project>

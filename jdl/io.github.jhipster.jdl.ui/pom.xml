@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.ui</artifactId>
+	<name>JDL DSL UI Features</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

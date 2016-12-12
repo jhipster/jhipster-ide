@@ -4,13 +4,14 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
-		<groupId>io.github.jhipster-ide.jdl</groupId>
-		<artifactId>io.github.jhipster.jdl.parent</artifactId>
+		<groupId>io.github.jhipster-ide</groupId>
+		<artifactId>jhipster-ide</artifactId>
 		<version>1.1.0-SNAPSHOT</version>
+		<relativePath>..</relativePath>		
 	</parent>
 
-	<artifactId>io.github.jhipster.jdl.releng</artifactId>
-	<name>JDL DSL Release Engineering Project</name>
+	<artifactId>io.github.jhipster-ide.releng</artifactId>
+	<name>JHipster Release Engineering Project</name>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -91,7 +92,7 @@
 						<artifactId>tycho-eclipserun-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<appArgLine>-data ${project.build.directory}/ws -application org.eclipse.b3.cli.headless aggregate --buildModel ${project.basedir}/resources/jhipster-jdl.b3aggr</appArgLine>
+							<appArgLine>-data ${project.build.directory}/ws -application org.eclipse.b3.cli.headless aggregate --buildModel ${project.basedir}/resources/jhipster-ide.b3aggr</appArgLine>
 							<argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
 							<dependencies>
 								<dependency>
@@ -130,7 +131,7 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-assembly-plugin</artifactId>
 						<configuration>
-							<descriptor>resources/assembly/product.xml</descriptor>
+							<descriptor>releng/resources/assembly/product.xml</descriptor>
 							<finalName>${project.groupId}-${project.version}</finalName>
 						</configuration>
 						<executions>
