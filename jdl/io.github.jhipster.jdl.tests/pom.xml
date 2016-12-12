@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.tests</artifactId>
+	<name>JDL DSL Tests</name>
 	<packaging>eclipse-test-plugin</packaging>
 
 	<build>

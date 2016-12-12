@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.web</artifactId>
+	<name>JDL DSL Server WAR</name>
 	<packaging>war</packaging>
 
 	<build>

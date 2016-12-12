@@ -10,6 +10,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl</artifactId>
+	<name>JDL DSL Frontend</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

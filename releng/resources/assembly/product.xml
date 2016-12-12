@@ -9,7 +9,7 @@
 	</formats>
 	<fileSets>
 		<fileSet>
-			<directory>target/build/final</directory>
+			<directory>${basedir}/target/build/final</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
 				<include>**</include>

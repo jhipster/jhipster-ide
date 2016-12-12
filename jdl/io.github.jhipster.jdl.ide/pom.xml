@@ -9,6 +9,7 @@
 	</parent>
 
 	<artifactId>io.github.jhipster.jdl.ide</artifactId>
+	<name>JDL DSL IDE Features</name>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>

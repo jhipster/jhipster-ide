@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="JHipster-IDE" label="JHipster-IDE" buildRoot="target/build">
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/b3/2011/aggregator/1.1.0" description="JHipster-IDE" label="JHipster-IDE" buildRoot="../target/build">
   <validationSets label="JHipster-IDE">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
