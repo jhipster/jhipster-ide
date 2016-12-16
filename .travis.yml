@@ -49,5 +49,8 @@ script:
 - mvn clean install && mvn package -Pproduct
 
 after_success:
+- #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY jhipster jhipster-ide ${REPO} ${VERSION}
+- #bash -e $TRAVIS_BUILD_DIR/upload.sh $BT_USER $BT_APIKEY jhipster jhipster-ide ${REPO} ${VERSION} $TRAVIS_BUILD_DIR/releng/target/build/final
 - #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY colameo jh-ide ${REPO} ${VERSION}
 - #bash -e $TRAVIS_BUILD_DIR/upload.sh $BT_USER $BT_APIKEY colameo jh-ide ${REPO} ${VERSION} $TRAVIS_BUILD_DIR/jdl/io.github.jhipster.jdl.releng/target/build/final
+
