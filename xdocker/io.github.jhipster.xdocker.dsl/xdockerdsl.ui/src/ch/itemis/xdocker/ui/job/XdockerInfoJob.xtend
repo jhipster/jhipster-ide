@@ -75,12 +75,11 @@ class XdockerInfoJob extends AbstractXdockerJob {
 								1073741824
 							)).round(new MathContext(4, RoundingMode.HALF_UP))» GiB
 							Name: «name»
-							ID: «ID»
-							Debug mode (server): «isDebug»
+							ID: «id»
+							Debug mode (server): «debug»
 							File Descriptors: «NFd»
 							Goroutines: «NGoroutines»
 							System Time: «systime»
-							EventsListeners: «getnEventListener»
 							Init SHA1: «initSha1»
 							Init Path: «initPath»
 							Docker Root Dir: «dockerRootDir»

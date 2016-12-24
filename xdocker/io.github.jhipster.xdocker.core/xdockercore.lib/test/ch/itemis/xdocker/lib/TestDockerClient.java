@@ -7,26 +7,29 @@
  *******************************************************************************/
 package ch.itemis.xdocker.lib;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.SecureRandom;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.io.IOUtils;
 import org.fusesource.jansi.AnsiOutputStream;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.github.dockerjava.api.DockerClient;
-import com.github.dockerjava.api.DockerException;
 import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.command.ExecCreateCmdResponse;
+import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.SearchItem;
+import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
-import com.github.dockerjava.core.DockerClientConfig;
+import com.github.dockerjava.core.command.ExecStartResultCallback;
 
 /**
  * Docker Test Class
@@ -39,27 +42,33 @@ public class TestDockerClient {
 
 	@Before
 	public void beforeTest() throws Exception {
-		DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder()
-				.withServerAddress("https://index.docker.io/v1/");
-		DockerClientConfig config = builder.build();
-		dockerClient = DockerClientBuilder.getInstance(config).build();
+		dockerClient = DockerClientBuilder.getInstance(config()).build();
 	}
 
 	@Test
 	public void execStart() throws Exception {
-		String containerName = "generated_serano" + new SecureRandom().nextInt();
-		CreateContainerResponse container = dockerClient.createContainerCmd("busybox").withCmd("ls")
-				.withName(containerName).exec();
-		assertNotNull(container);
-		assertNotNull(container.getId());
+        String containerName = "generated_" + new SecureRandom().nextInt();
+        CreateContainerResponse container = dockerClient.createContainerCmd("busybox").withCmd("sleep", "9999")
+                .withName(containerName).exec();
+        dockerClient.startContainerCmd(container.getId()).exec();
+        InputStream stdin = new ByteArrayInputStream("STDIN\n".getBytes("UTF-8"));
+        ByteArrayOutputStream stdout = new ByteArrayOutputStream();
 
-		InputStream response = dockerClient.execStartCmd(container.getId()).exec(null);
-		assertNotNull(response);
+        ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(container.getId())
+                .withAttachStdout(true)
+                .withAttachStdin(true)
+                .withCmd("ls")
+                .exec();
 
-		List<String> res = IOUtils.readLines(response);
-		for (String string : res) {
-			System.out.println(string);
-		}
+        boolean completed = dockerClient.execStartCmd(execCreateCmdResponse.getId())
+                .withDetach(false)
+                .withTty(true)
+                .withStdIn(stdin)
+                .exec(new ExecStartResultCallback(stdout, System.err))
+                .awaitCompletion(5, TimeUnit.SECONDS);
+
+        assertTrue("The process was not finished.", completed);
+        System.out.println(stdout.toString("UTF-8"));
 	}
 
 	private void removeImage(DockerClient dockerClient, String image) throws DockerException, InterruptedException {
@@ -87,13 +96,12 @@ public class TestDockerClient {
 		List<SearchItem> dockerSearch = dockerClient.searchImagesCmd(image).exec();
 		for (SearchItem searchItem : dockerSearch) {
 			System.out.println(searchItem.getName());
+//			removeImage(dockerClient, searchItem.getName());
 		}
-		removeImage(dockerClient, image);
 	}
 
 	private DockerClient getDockerClient() {
-		DockerClientConfig.DockerClientConfigBuilder builder = DockerClientConfig.createDefaultConfigBuilder();
-		DockerClient dockerClient = DockerClientBuilder.getInstance(builder.build())
+		DockerClient dockerClient = DockerClientBuilder.getInstance(config())
 				.withDockerCmdExecFactory(DockerClientBuilder.getDefaultDockerCmdExecFactory()).build();
 		return dockerClient;
 	}
@@ -110,6 +118,12 @@ public class TestDockerClient {
 		} catch (IOException e) {
 			return str;
 		}
+	}
+	
+	private static DefaultDockerClientConfig config() {
+		DefaultDockerClientConfig.Builder builder = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withRegistryUrl("https://index.docker.io/v1/");
+        return builder.build();		
 	}
 
 	public static void main(String[] args) throws DockerException, InterruptedException {
