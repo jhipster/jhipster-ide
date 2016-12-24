@@ -10,7 +10,6 @@ package ch.itemis.xdocker.lib
 import ch.itemis.xdocker.lib.config.DockerBuildImageConfig
 import ch.itemis.xdocker.lib.config.DockerRunConfig
 import com.github.dockerjava.api.DockerClient
-import com.github.dockerjava.api.NotModifiedException
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
 import com.github.dockerjava.core.command.BuildImageResultCallback
@@ -22,9 +21,11 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 
 import static ch.itemis.xdocker.lib.util.DockerPropertiesUtil.*
-import com.github.dockerjava.api.command.CreateContainerResponse
-import com.github.dockerjava.api.model.Ports
-import com.github.dockerjava.api.model.ExposedPort
+//import com.github.dockerjava.api.command.CreateContainerResponse
+//import com.github.dockerjava.api.model.Ports
+//import com.github.dockerjava.api.model.ExposedPort
+import com.github.dockerjava.api.exception.NotModifiedException
+import com.github.dockerjava.core.DefaultDockerClientConfig
 
 /**
  * Extension Class for Docker Java API
@@ -54,7 +55,8 @@ class DockerExtensions {
 
 	def setupDocker(DockerProperties props) {
 		setupDockerProperties = props
-		config = DockerClientConfig.createDefaultConfigBuilder.build
+		val builder = DefaultDockerClientConfig.createDefaultConfigBuilder()
+		config = builder.build
 		dockerClient = if (config != null) DockerClientBuilder.getInstance(config).build	
 	}
 
@@ -63,10 +65,6 @@ class DockerExtensions {
 		return this
 	}
 
-	def serverAddress() {
-		config?.serverAddress
-	}
-	
 	def close() {
 	    dockerClient.close
 	}
@@ -115,7 +113,7 @@ class DockerExtensions {
 	
 	def waitContainer(extension DockerClient it, String containerId) {
 		if (containerId.nullOrEmpty) throw new IllegalArgumentException("Argument 'containerId' cannot be null!")
-		waitContainerCmd(containerId).exec
+		waitContainerCmd(containerId).exec(null)
 	}
 
 	def logContainers(extension DockerClient it, List<String> containerIds, LogContainerResultCallback callback) {
@@ -129,7 +127,7 @@ class DockerExtensions {
 
 	def logContainer(extension DockerClient it, String containerId, LogContainerResultCallback callback) {
 		if (containerId.nullOrEmpty) throw new IllegalArgumentException("Argument 'containerId' cannot be null!")
-        return logContainerCmd(containerId).withStdErr.withStdOut.exec(callback)
+        return logContainerCmd(containerId).withStdErr(true).withStdOut(true).exec(callback)
 	}
 	
 	def pull(extension DockerClient it, String image) {
@@ -151,7 +149,7 @@ class DockerExtensions {
 	
 	def removeImage(extension DockerClient it, String imageId) {
 		if (imageId.nullOrEmpty) throw new IllegalArgumentException("Argument 'imageId' cannot be null or empty!")
-		removeImageCmd(imageId).withForce.exec
+		removeImageCmd(imageId).withForce(true).exec
 	}
 
 	def void stopContainers(extension DockerClient it, List<String> containerIds) {

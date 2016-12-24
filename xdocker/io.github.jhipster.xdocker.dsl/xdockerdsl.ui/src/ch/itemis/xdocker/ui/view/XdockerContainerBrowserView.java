@@ -38,6 +38,10 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.ContainerPort;
+import com.ocpsoft.pretty.time.PrettyTime;
+
 import ch.itemis.xdocker.ui.job.XdockerJobStatus;
 import ch.itemis.xdocker.ui.job.XdockerListCntnrsJob;
 import ch.itemis.xdocker.ui.job.XdockerRemoveCntnrJob;
@@ -45,10 +49,6 @@ import ch.itemis.xdocker.ui.job.XdockerShowLogsJob;
 import ch.itemis.xdocker.ui.job.XdockerStartCntnrJob;
 import ch.itemis.xdocker.ui.job.XdockerStopCntnrJob;
 import ch.itemis.xdocker.ui.util.ResourceManager;
-
-import com.github.dockerjava.api.model.Container;
-import com.github.dockerjava.api.model.Container.Port;
-import com.ocpsoft.pretty.time.PrettyTime;
 
 /**
  * Xdocker Container Browser View
@@ -333,7 +333,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 					elements.add(pt.format(new Date(container.getCreated() * 1000)));
 					elements.add(container.getStatus());
 					StringBuffer ports = new StringBuffer();
-					for (Port port : container.getPorts()) {
+					for (ContainerPort port : container.getPorts()) {
 						boolean hasIP, hasPrivPort;
 						if (hasIP = isNotBlank(port.getIp())) {
 							ports.append(port.getIp());
@@ -390,8 +390,8 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		return value != null && value.contains(term);
 	}
 
-	private boolean contains(Port[] values, String term) {
-		for (Port value : values) {
+	private boolean contains(ContainerPort[] values, String term) {
+		for (ContainerPort value : values) {
 			if (contains(value.toString(), term))
 				return true;
 		}
