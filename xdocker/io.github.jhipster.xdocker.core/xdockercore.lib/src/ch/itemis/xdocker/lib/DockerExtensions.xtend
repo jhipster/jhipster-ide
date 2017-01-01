@@ -10,6 +10,8 @@ package ch.itemis.xdocker.lib
 import ch.itemis.xdocker.lib.config.DockerBuildImageConfig
 import ch.itemis.xdocker.lib.config.DockerRunConfig
 import com.github.dockerjava.api.DockerClient
+import com.github.dockerjava.api.exception.NotModifiedException
+import com.github.dockerjava.core.DefaultDockerClientConfig
 import com.github.dockerjava.core.DockerClientBuilder
 import com.github.dockerjava.core.DockerClientConfig
 import com.github.dockerjava.core.command.BuildImageResultCallback
@@ -21,11 +23,6 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 
 import static ch.itemis.xdocker.lib.util.DockerPropertiesUtil.*
-//import com.github.dockerjava.api.command.CreateContainerResponse
-//import com.github.dockerjava.api.model.Ports
-//import com.github.dockerjava.api.model.ExposedPort
-import com.github.dockerjava.api.exception.NotModifiedException
-import com.github.dockerjava.core.DefaultDockerClientConfig
 
 /**
  * Extension Class for Docker Java API
@@ -34,7 +31,7 @@ import com.github.dockerjava.core.DefaultDockerClientConfig
  */
 class DockerExtensions {
 
-	@Accessors private var DockerClientConfig config
+	@Accessors private var DockerClientConfig dockerConfig
     @Accessors private var DockerClient dockerClient
 
 	def static newInstance() {
@@ -54,12 +51,18 @@ class DockerExtensions {
 	}
 
 	def setupDocker(DockerProperties props) {
-		setupDockerProperties = props
-		val builder = DefaultDockerClientConfig.createDefaultConfigBuilder()
-		config = builder.build
-		dockerClient = if (config != null) DockerClientBuilder.getInstance(config).build	
+		DefaultDockerClientConfig.createDefaultConfigBuilder => [
+			dockerConfig = createDockerConfig(props)
+			dockerClient = buildDockerClient
+		]
 	}
 
+	def private buildDockerClient() {
+		val builder = if (dockerConfig != null) DockerClientBuilder.getInstance(dockerConfig) 
+		    		  else DockerClientBuilder.getInstance 
+		builder?.build
+	}
+		
 	def DockerExtensions docker(Procedure1<? super DockerClient> initializer) {
 		if (initializer != null) initializer.apply(dockerClient)
 		return this

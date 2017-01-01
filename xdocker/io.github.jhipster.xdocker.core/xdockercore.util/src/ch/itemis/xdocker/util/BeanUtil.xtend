@@ -8,6 +8,7 @@
 package ch.itemis.xdocker.util
 
 import static extension org.apache.commons.beanutils.BeanUtils.*
+import org.apache.commons.beanutils.ConvertUtils
 
 /**
  * Bean Utility Class
@@ -16,7 +17,11 @@ import static extension org.apache.commons.beanutils.BeanUtils.*
  */
 class BeanUtil {
 
-	def static Object value(Object it, String name)	 {
+	def static Object value(Object it, String name) {
 		getProperty(name)
+	}
+
+	def static <T> T convert(Object obj, Class<?> type) {
+		return ConvertUtils.convert(obj, type) as T
 	}
 }

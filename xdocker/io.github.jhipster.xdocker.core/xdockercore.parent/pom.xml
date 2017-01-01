@@ -18,6 +18,7 @@
 	
 	<modules>
 		<module>../xdockercore.target</module>
+		<module>../xdockercore.base</module>
 		<module>../xdockercore.lib</module>
 		<module>../xdockercore.util</module>
 	</modules>
@@ -228,5 +229,15 @@
 			<snapshots><enabled>true</enabled></snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.github.jhipster-ide.xdocker.core</groupId>
+				<artifactId>xdockercore.util</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
