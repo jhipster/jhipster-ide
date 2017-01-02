@@ -48,7 +48,8 @@ Require-Bundle: com.google.guava,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.junit
+ org.junit,
+ xdockercore.base
 Bundle-ClassPath: .,
  lib/aopalliance-repackaged-2.4.0-b34.jar,
  lib/bcpkix-jdk15on-1.54.jar,

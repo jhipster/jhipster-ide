@@ -58,15 +58,15 @@ final class XdockerDockerPreferences {
 	}
 
 	def DockerProperties toDockerProperties() {
-		return new DockerProperties(
-			dockerUrl,
-			enableLoggingFilter,
-			dockerCertPath,
-			dockerCfgPath,
-			dockerServerAddress,
-			dockerUserName,
-			dockerPassword,
-			null
+		return new DockerProperties(newHashMap(
+				'enableLoggingFilter' -> enableLoggingFilter,
+				'dockerHost' -> dockerUrl,
+				'dockerCertPath' -> dockerCertPath,
+				'dockerConfig' -> dockerCfgPath,
+				'registryUrl' -> dockerServerAddress,
+				'registryUsername' -> dockerUserName,
+				'registryPassword' -> dockerPassword
+			)
 		)
 	}
 

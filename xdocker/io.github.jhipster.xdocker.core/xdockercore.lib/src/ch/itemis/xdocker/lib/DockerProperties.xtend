@@ -7,7 +7,10 @@
  */
 package ch.itemis.xdocker.lib
 
+import ch.itemis.xdocker.base.processor.ConfigProperty
 import org.eclipse.xtend.lib.annotations.Data
+
+import static com.github.dockerjava.core.DefaultDockerClientConfig.*
 
 /** 
  * Docker Properties Class
@@ -16,12 +19,18 @@ import org.eclipse.xtend.lib.annotations.Data
  */
 @Data
 final class DockerProperties {
-	val String url
-	val Boolean enableLoggingFilter
-	val String dockerCertPath
-	val String dockerCfgPath
-	val String serverAddress
-	val String username
-	val String password
-	val String projectPath
+	// Xdocker properties
+	@ConfigProperty val Boolean enableLoggingFilter
+	@ConfigProperty val String projectPath
+
+	// Docker CLI properties 
+	@ConfigProperty(DOCKER_HOST) val String dockerHost
+	@ConfigProperty(DOCKER_CERT_PATH) val String dockerCertPath
+	@ConfigProperty(DOCKER_CONFIG) val String dockerConfig
+	@ConfigProperty(DOCKER_TLS_VERIFY) val String dockerTlsVerify
+	@ConfigProperty(REGISTRY_URL) val String registryUrl
+	@ConfigProperty(REGISTRY_USERNAME) val String registryUsername
+	@ConfigProperty(REGISTRY_PASSWORD) val String registryPassword
+	@ConfigProperty(REGISTRY_EMAIL) val String registryEmail
+	@ConfigProperty(API_VERSION) val String apiVersion
 }

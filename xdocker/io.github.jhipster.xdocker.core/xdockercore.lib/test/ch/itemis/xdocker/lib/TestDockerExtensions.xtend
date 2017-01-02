@@ -16,6 +16,7 @@ import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
+import static com.github.dockerjava.core.DefaultDockerClientConfig.*
 import static org.junit.Assert.*
 
 /**
@@ -33,11 +34,18 @@ class TestDockerExtensions {
 
 	@BeforeClass
 	def static void setUpClass() {
-		props = new DockerProperties(
-			'https://192.168.99.100:2376', true,
-			'/Users/serano/.docker/machine/machines/default', '',
-			'https://index.docker.io/v1/', System.getProperty('user'), '', ''
-		)	
+		props = new DockerProperties(newHashMap(
+				'enableLoggingFilter' -> true,
+				DOCKER_HOST -> 'unix:///var/run/docker.sock',
+				REGISTRY_URL -> 'https://index.docker.io/v1/'
+			)
+		)
+		// log parameters
+		println('--<Docker config parameters>---')
+		props.parameters.forEach[p1, p2|
+			println('''«p1» = «p2»''')
+		]
+		println('------------------------')
 	}
 
 	@Test

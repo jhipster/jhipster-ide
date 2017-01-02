@@ -140,7 +140,7 @@ public abstract class XdockerContainerSearchTable extends AbstractGroupBox {
 				protected void execAction() {
 					try {
 						DockerProperties props = DockerPropertiesUtil.loadFromDisk();
-						URL url = new URL(props.getUrl());
+						URL url = new URL(props.getDockerHost());
 						String[] ports = getSelectedRow().getCellValue(5).toString().split(",");
 						String localPort = null;
 						for (String port : ports) {

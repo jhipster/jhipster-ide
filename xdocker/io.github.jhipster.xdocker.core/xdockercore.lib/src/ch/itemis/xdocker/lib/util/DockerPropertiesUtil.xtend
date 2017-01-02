@@ -8,14 +8,12 @@
 package ch.itemis.xdocker.lib.util
 
 import ch.itemis.xdocker.lib.DockerProperties
+import com.github.dockerjava.core.DefaultDockerClientConfig
 import java.io.File
 import java.util.Properties
-import org.apache.commons.beanutils.BeanUtils
 import org.apache.commons.io.FileUtils
 
 import static java.lang.System.getProperty
-import static java.lang.System.setProperty
-import static org.apache.commons.beanutils.PropertyUtils.getProperty
 
 /**
  * Docker Utility Class
@@ -27,27 +25,21 @@ class DockerPropertiesUtil {
 	val static DEFAULT_PROPS_FILE_NAME = '''«getProperty('user.home')»/.xdocker/docker.properties'''
 	
 	/**
-	 * Setup Docker Properties 
+	 * Create docker config 
 	 */
-	def static void setupDockerProperties(DockerProperties props) {
-		val propNames = props?.class?.declaredFields?.map[name]
-		if (!propNames.nullOrEmpty) propNames.forEach[propName|
-			val propValue = getProperty(props, propName) ?: ""
-			setDockerProperty(propName, propValue.toString)
-		]
+	def static createDockerConfig(DockerProperties dockerProps) {
+		createDockerBuilder(dockerProps).build
 	}
 	
 	/**
-	 * Setup a Docker Property
+	 * Create docker config builder 
 	 */
-	def static setDockerProperty(String propName, String propValue) {
-		if (propValue != null) {
-			setProperty('''docker.io.«propName»''', 
-				if (propValue.nullOrEmpty) "" else propValue
-			)
-		}
+	def static createDockerBuilder(DockerProperties dockerProps) {
+		return new DefaultDockerClientConfig.Builder => [
+			withProperties(dockerProps.toProperties)
+		]
 	}
-
+	
 	/** 
 	 * Persists docker properties to default file name
 	 */
@@ -90,31 +82,21 @@ class DockerPropertiesUtil {
 	/** 
 	 * Converts a Properties object to a DockerProperties
 	 */
-	def static toDockerProperties(Properties it) {
-		return new DockerProperties(
-			getProperty('url'),
-			Boolean.valueOf(
-				getProperty('enableLoggingFilter')
-			),
-			getProperty('dockerCertPath'),
-			getProperty('dockerCfgPath'),
-			getProperty('serverAddress'),
-			getProperty('username'),
-			getProperty('password'),
-			getProperty('projectPath')
-		)
+	def static toDockerProperties(Properties props) {
+		if (props === null || props.isEmpty) return null
+		val params = <String, Object>newHashMap
+		props.keySet.forEach[ k | params.put(k.toString, props.get(k))]
+		return new DockerProperties(params) 
 	}
 	
 	/** 
 	 * Converts a DockerProperties object to a Properties
 	 */
-	def static Properties toProperties(DockerProperties props) {
-		val result = new Properties
-		val keys = props?.class?.declaredFields?.map[name]
-		if (!keys.nullOrEmpty) keys.forEach[key|
-			val value = BeanUtils.getProperty(props, key) ?: ''
-			result.put(key, value)
+	def static Properties toProperties(DockerProperties it) {
+		return new Properties => [ props |
+			parameters.forEach[k, v|
+				if (k != null && v != null) props.put(k, v)
+			]
 		]
-		result		
 	}
 }
