@@ -57,6 +57,7 @@ class ConfigPropertyProcessor extends AbstractFieldProcessor {
 				if (obj == null) return null;
 				return (T)org.apache.commons.beanutils.ConvertUtils.convert(obj, type);
 			'''
+			primarySourceElement = it
 		]
 		
 		declaringType.addConstructor[
@@ -69,6 +70,7 @@ class ConfigPropertyProcessor extends AbstractFieldProcessor {
 					«ENDFOR»
 				);
 			'''
+			primarySourceElement = it
 		]
 
 		declaringType.addMethod('getParameters') [
