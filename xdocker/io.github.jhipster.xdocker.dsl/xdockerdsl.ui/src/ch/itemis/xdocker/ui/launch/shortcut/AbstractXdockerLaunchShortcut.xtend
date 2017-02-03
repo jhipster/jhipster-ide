@@ -28,7 +28,7 @@ abstract class AbstractXdockerLaunchShortcut implements ILaunchShortcut {
 
     new() {
 		val injector = XdockerdslActivator.getInstance().getInjector(XdockerdslActivator.CH_ITEMIS_XDOCKER_XDOCKER)
-		if (injector != null) injector.injectMembers(this)
+		if (injector !== null) injector.injectMembers(this)
     }	
 
     protected def void launch(IFile it) {

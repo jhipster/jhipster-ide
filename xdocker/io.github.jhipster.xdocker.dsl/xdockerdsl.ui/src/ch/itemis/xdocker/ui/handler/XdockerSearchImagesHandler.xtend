@@ -6,8 +6,9 @@ import org.eclipse.core.commands.ExecutionEvent
 import org.eclipse.core.commands.ExecutionException
 import org.eclipse.core.commands.IHandler
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
 import static org.eclipse.core.runtime.IStatus.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
+
 import static extension org.eclipse.ui.handlers.HandlerUtil.*
 
 /** 

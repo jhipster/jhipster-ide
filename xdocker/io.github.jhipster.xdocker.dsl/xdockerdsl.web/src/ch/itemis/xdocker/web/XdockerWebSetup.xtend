@@ -5,25 +5,21 @@ package ch.itemis.xdocker.web
 
 import ch.itemis.xdocker.XdockerRuntimeModule
 import ch.itemis.xdocker.XdockerStandaloneSetup
+import ch.itemis.xdocker.ide.XdockerIdeModule
 import com.google.inject.Guice
 import com.google.inject.Injector
-import com.google.inject.Provider
-import com.google.inject.util.Modules
-import java.util.concurrent.ExecutorService
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtext.util.Modules2
 
 /**
  * Initialization support for running Xtext languages in web applications.
  */
-@FinalFieldsConstructor
 class XdockerWebSetup extends XdockerStandaloneSetup {
-	
-	val Provider<ExecutorService> executorServiceProvider
-	
+
 	override Injector createInjector() {
-		val runtimeModule = new XdockerRuntimeModule()
-		val webModule = new XdockerWebModule(executorServiceProvider)
-		return Guice.createInjector(Modules.override(runtimeModule).with(webModule))
-	}
-	
+		return Guice.createInjector(
+			Modules2.mixin(
+				new XdockerRuntimeModule, new XdockerIdeModule, new XdockerWebModule
+			)
+		)
+	}	
 }

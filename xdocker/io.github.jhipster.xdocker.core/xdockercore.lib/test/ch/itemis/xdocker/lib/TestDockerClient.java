@@ -7,7 +7,7 @@
  *******************************************************************************/
 package ch.itemis.xdocker.lib;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -71,6 +71,7 @@ public class TestDockerClient {
         System.out.println(stdout.toString("UTF-8"));
 	}
 
+	@SuppressWarnings("unused")
 	private void removeImage(DockerClient dockerClient, String image) throws DockerException, InterruptedException {
 		dockerClient.pullImageCmd(image).exec(null);
 		CreateContainerResponse container = dockerClient.createContainerCmd(image).withCmd("sleep", "9999").exec();

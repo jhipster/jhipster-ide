@@ -4,7 +4,6 @@
 package ch.itemis.xdocker.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
-import ch.itemis.xdocker.ui.hover.XdockerHoverProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.

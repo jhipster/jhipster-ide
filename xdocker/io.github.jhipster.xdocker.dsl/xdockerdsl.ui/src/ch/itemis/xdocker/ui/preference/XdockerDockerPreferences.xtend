@@ -37,7 +37,7 @@ final class XdockerDockerPreferences {
 	}
 
 	def static DockerProperties getDockerProperties() {
-		if(INSTANCE == null) throw new IllegalStateException('Unable to load Xdocker properties!')
+		if(INSTANCE === null) throw new IllegalStateException('Unable to load Xdocker properties!')
 		return INSTANCE.toDockerProperties
 	}
 

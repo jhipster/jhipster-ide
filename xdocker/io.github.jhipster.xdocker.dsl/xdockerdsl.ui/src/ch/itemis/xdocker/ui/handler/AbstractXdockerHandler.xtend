@@ -8,17 +8,16 @@
 package ch.itemis.xdocker.ui.handler
 
 import ch.itemis.xdocker.ui.util.XdockerGeneratorHelper
+import com.google.inject.Inject
 import org.eclipse.core.commands.AbstractHandler
-import org.eclipse.core.commands.IHandler
-import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.core.commands.ExecutionEvent
-
-import org.eclipse.jface.viewers.IStructuredSelection
-import org.eclipse.jface.text.ITextSelection
+import org.eclipse.core.commands.IHandler
 import org.eclipse.core.resources.IFile
+import org.eclipse.jface.text.ITextSelection
+import org.eclipse.jface.viewers.IStructuredSelection
+import org.eclipse.xtend.lib.annotations.Accessors
 
 import static extension org.eclipse.ui.handlers.HandlerUtil.*
-import com.google.inject.Inject
 
 /**
  * AbstractXdockerHandler Class
@@ -33,7 +32,7 @@ abstract class AbstractXdockerHandler extends AbstractHandler implements IHandle
 	 * Returns the selected dockerfile
 	 */
 	protected def IFile getDockerfile(ExecutionEvent it) {
-		if (it == null) return null
+		if (it === null) return null
 		val selection = currentSelection
 		return switch (selection) {
 			IStructuredSelection: getFile(selection.firstElement) 

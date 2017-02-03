@@ -9,7 +9,6 @@ package ch.itemis.xdocker.ui.launch.shortcut
 
 import ch.itemis.xdocker.lib.config.DockerRunConfig
 import ch.itemis.xdocker.ui.job.XdockerBuildJob
-import java.util.List
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugPlugin
@@ -85,7 +84,7 @@ class XdockerRunLaunchShortcut extends AbstractXdockerLaunchShortcut {
 		val launchManager = DebugPlugin.getDefault.launchManager
 		val configName = launchManager?.generateLaunchConfigurationName(image)
 		val configType = launchManager?.getLaunchConfigurationType(CONFIG_TYPE)
-		if (configType != null) {
+		if (configType !== null) {
 			configType.newInstance(null, configName) => [
 				setAttribute(ATTR_IMAGE, image)
 				setAttribute(ATTR_CMD, command)

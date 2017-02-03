@@ -9,10 +9,11 @@ package ch.itemis.xdocker.ui.util
 
 import org.eclipse.swt.widgets.Shell
 
-import static org.eclipse.jface.dialogs.MessageDialog.openWarning
 import static org.eclipse.jface.dialogs.MessageDialog.openError
 import static org.eclipse.jface.dialogs.MessageDialog.openInformation
-import static ch.itemis.xdocker.ui.dialogs.ScrollableDialog.showInfoBox
+import static org.eclipse.jface.dialogs.MessageDialog.openWarning
+
+import static ch.itemis.xdocker.ui.dialogs.XdockerScrollableDialog.*
 
 /** 
  * Xdocker Message Extension Util

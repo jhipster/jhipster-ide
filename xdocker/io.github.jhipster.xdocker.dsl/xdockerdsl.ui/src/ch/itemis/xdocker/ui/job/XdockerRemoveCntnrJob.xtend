@@ -10,15 +10,15 @@ package ch.itemis.xdocker.ui.job
 import ch.itemis.xdocker.lib.DockerExtensions
 import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.google.inject.Inject
+import java.util.Arrays
+import java.util.List
 import java.util.Stack
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.xtend.lib.annotations.Accessors
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
 import static org.eclipse.core.runtime.IStatus.*
-import org.eclipse.xtend.lib.annotations.Accessors
-import java.util.List
-import java.util.Arrays
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Remove Container Job
@@ -58,8 +58,8 @@ class XdockerRemoveCntnrJob extends AbstractXdockerJob {
 				removeContainers(containerIds)
 				result.push = XdockerJobStatus.createJobOkStatus
 			} catch (Exception ex) {
-				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ch.itemis.xdocker.ui.job.XdockerRemoveCntnrJob.ERR_RM_CONTAINER, ex)
-				log('''«ch.itemis.xdocker.ui.job.XdockerRemoveCntnrJob.ERR_RM_CONTAINER»''')
+				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, XdockerRemoveCntnrJob.ERR_RM_CONTAINER, ex)
+				log('''«XdockerRemoveCntnrJob.ERR_RM_CONTAINER»''')
 				log(ex.message)
 			}
 		]

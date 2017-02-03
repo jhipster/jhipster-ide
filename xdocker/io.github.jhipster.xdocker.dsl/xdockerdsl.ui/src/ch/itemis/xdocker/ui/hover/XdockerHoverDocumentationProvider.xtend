@@ -7,9 +7,9 @@
  *******************************************************************************/
 package ch.itemis.xdocker.ui.hover
 
-import org.eclipse.xtext.ui.editor.hover.html.DefaultHoverDocumentationProvider
-import org.eclipse.emf.ecore.EObject
 import ch.itemis.xdocker.xdocker.FromStatement
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.ui.editor.hover.html.DefaultHoverDocumentationProvider
 
 /**
  * @author Serano Colameo - Initial contribution and API

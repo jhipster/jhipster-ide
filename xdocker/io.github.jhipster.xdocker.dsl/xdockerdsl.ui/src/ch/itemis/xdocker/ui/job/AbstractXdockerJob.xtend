@@ -8,14 +8,15 @@
 package ch.itemis.xdocker.ui.job
 
 import java.util.Map
+import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.jobs.Job
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure2
 
 import static ch.itemis.xdocker.util.AssertUtil.*
+
 import static extension org.apache.commons.beanutils.BeanUtils.*
-import org.eclipse.core.runtime.IStatus
-import org.eclipse.core.runtime.IProgressMonitor
 
 /**
  * Xdocker Abstract Class

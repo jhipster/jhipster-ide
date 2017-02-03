@@ -9,16 +9,15 @@ package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import ch.itemis.xdocker.ui.util.XdockerGeneratorHelper
+import com.google.inject.Inject
 import java.util.Stack
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.xtend.lib.annotations.Accessors
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
-import static org.eclipse.core.runtime.IStatus.*
-
 import static ch.itemis.xdocker.util.XdockerContants.*
-import com.google.inject.Inject
+import static org.eclipse.core.runtime.IStatus.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Generate Job

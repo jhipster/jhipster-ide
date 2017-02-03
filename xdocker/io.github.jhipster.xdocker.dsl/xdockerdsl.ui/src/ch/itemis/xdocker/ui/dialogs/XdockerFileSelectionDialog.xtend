@@ -23,8 +23,8 @@ import org.eclipse.ui.dialogs.ElementTreeSelectionDialog
 import org.eclipse.ui.dialogs.ISelectionStatusValidator
 import org.eclipse.ui.model.WorkbenchLabelProvider
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
 import static org.eclipse.core.resources.ResourcesPlugin.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /** 
  * Xdocker File Selection Dialog
@@ -119,7 +119,7 @@ class XdockerFileSelectionDialog extends ElementTreeSelectionDialog {
 	 * Check file extension
 	 */
 	def private boolean isAccepted(IFile it) {
-		if (it == null) return false
+		if (it === null) return false
 		return patterns.exists[ p |
 			val ext = fileExtension ?: ''
 			(p.startsWith('*.') && p.endsWith(ext)) || p.equals(name)

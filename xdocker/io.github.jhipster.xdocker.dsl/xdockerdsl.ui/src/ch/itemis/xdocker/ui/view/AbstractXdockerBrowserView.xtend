@@ -7,6 +7,8 @@
  */
 package ch.itemis.xdocker.ui.view
 
+import ch.itemis.xdocker.ui.job.AbstractXdockerJob
+import ch.itemis.xdocker.ui.job.XdockerJobStatus
 import javax.annotation.PostConstruct
 import javax.annotation.PreDestroy
 import org.eclipse.core.runtime.jobs.IJobChangeEvent
@@ -14,8 +16,7 @@ import org.eclipse.core.runtime.jobs.IJobChangeListener
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Display
 import org.eclipse.ui.part.ViewPart
-import ch.itemis.xdocker.ui.job.AbstractXdockerJob
-import ch.itemis.xdocker.ui.job.XdockerJobStatus
+import org.eclipse.ui.part.WorkbenchPart
 import org.eclipse.xtend.lib.annotations.Accessors
 
 /** 
@@ -35,7 +36,7 @@ abstract class AbstractXdockerBrowserView extends ViewPart {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ui.part.WorkbenchPart#setFocus()
+	 * @see WorkbenchPart#setFocus()
 	 */
 	override void setFocus() {
 		parent.layout(true)

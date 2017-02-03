@@ -26,9 +26,9 @@ import org.eclipse.swt.widgets.Shell
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog.ItemsFilter
 import org.eclipse.xtend.lib.annotations.Accessors
+import xdockerdsl.ui.internal.XdockerdslActivator
 
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
-import xdockerdsl.ui.internal.XdockerdslActivator
 
 /** 
  * Abstract Xdocker Selection Dialog
