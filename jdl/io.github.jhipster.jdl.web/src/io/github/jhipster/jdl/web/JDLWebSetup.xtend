@@ -22,7 +22,8 @@ class JDLWebSetup extends JDLStandaloneSetup {
 	
 	override Injector createInjector() {
 		val runtimeModule = new JDLRuntimeModule()
-		val webModule = new JDLWebModule(executorServiceProvider)
+//		val webModule = new JDLWebModule(executorServiceProvider)
+		val webModule = new JDLWebModule()
 		return Guice.createInjector(Modules.override(runtimeModule).with(webModule))
 	}
 	

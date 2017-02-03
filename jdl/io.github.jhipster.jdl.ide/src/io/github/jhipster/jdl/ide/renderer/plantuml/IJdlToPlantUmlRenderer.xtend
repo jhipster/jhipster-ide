@@ -7,7 +7,7 @@ import com.google.inject.ImplementedBy
 interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 	
 	static (Object)=>String toPlantUml = [ it | '''
-		«IF it != null»
+		«IF it !== null»
 			@startuml
 				«toString»
 			@enduml

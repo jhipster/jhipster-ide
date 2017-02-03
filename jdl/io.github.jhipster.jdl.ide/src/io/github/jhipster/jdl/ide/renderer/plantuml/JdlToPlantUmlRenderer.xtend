@@ -37,12 +37,12 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
 	def private JdlDomainModel initEntiyOptionMap(JdlDomainModel jdl) {
 		entiyOptionMap = newHashMap
-		if (jdl == null || jdl.eContents.nullOrEmpty) return jdl
+		if (jdl === null || jdl.eContents.nullOrEmpty) return jdl
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
 			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
 				JdlWithEntityInclusion, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
 			}
-			val isSelectAll = predicate != null && (predicate.isWildcard || predicate.isAll)
+			val isSelectAll = predicate !== null && (predicate.isWildcard || predicate.isAll)
 			if (isSelectAll) {
 				val entitySelection = jdl.eContents.filter(JdlEntity).filter[!isExcluded(o, it)]
 				entitySelection ?: #[]
@@ -68,7 +68,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
 	def private String toPlantUml(JdlDomainModel model) '''
 		«toPlantUml.apply(
-			if (model != null) model.features.map[
+			if (model !== null) model.features.map[
 				renderJdlObject
 			].join
 		)»
@@ -109,8 +109,8 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
 	def dispatch protected renderJdlObject(JdlRelationships rel) '''
 		«rel.relationships.map[
-			if (source != null && source.entity != null && 
-				target != null && target.entity != null
+			if (source !== null && source.entity !== null && 
+				target !== null && target.entity !== null
 			) renderJdlObject
 		].join»
 	'''
@@ -132,7 +132,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	}
 
 	def protected relationRole(JdlRelationRole it, String card) {
-		if (it == null) return ''' "0..«card» " '''
+		if (it === null) return ''' "0..«card» " '''
 		val cardValue = ''' «IF required && card.equals('*')» 1«ELSE»0«ENDIF»..«card» '''
 		if (!name.isNullOrEmpty) ''' "«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»«cardValue»" '''
 	}
