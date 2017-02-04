@@ -30,6 +30,7 @@ src-gen
 xtext-gen
 xtend-gen
 generated
+.antlr-generator-3.2.0-patch.jar
 
 # Mac OS X
 .DS_Store

@@ -8,9 +8,9 @@
 package ch.itemis.xdocker.ui.launch
 
 import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
-import ch.itemis.xdocker.ui.util.XdockerGeneratorHelper
 import ch.itemis.xdocker.ui.job.XdockerRunJob
 import ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchConfigData
+import ch.itemis.xdocker.ui.util.XdockerGeneratorHelper
 import com.google.inject.Inject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IProgressMonitor
@@ -19,12 +19,12 @@ import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate
 import org.eclipse.debug.ui.RefreshTab
 import org.eclipse.swt.widgets.Display
+import xdockerdsl.ui.internal.XdockerdslActivator
 
+import static ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchConfigData.*
 import static ch.itemis.xdocker.ui.util.MessageUtil.*
 
 import static extension ch.itemis.xdocker.ui.job.AbstractXdockerJob.*
-import static ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchConfigData.*
-import xdockerdsl.ui.internal.XdockerdslActivator
 
 /**
  * Xdocker run container delegating class
@@ -40,7 +40,7 @@ class XdockerRunImageLaunchDelegate extends LaunchConfigurationDelegate {
 
     new() {
 		val injector = XdockerdslActivator.getInstance().getInjector(XdockerdslActivator.CH_ITEMIS_XDOCKER_XDOCKER)
-		if (injector != null) injector.injectMembers(this)
+		if (injector !== null) injector.injectMembers(this)
     }	
 	
 	override launch(ILaunchConfiguration cfg, String mode,
@@ -57,8 +57,8 @@ class XdockerRunImageLaunchDelegate extends LaunchConfigurationDelegate {
 			}) => [
 				execute [it, result |
 					// refresh after job has finished
-					if (result != null && result.isOK && 
-						RefreshTab.getRefreshScope(cfg) != null) {
+					if (result !== null && result.isOK && 
+						RefreshTab.getRefreshScope(cfg) !== null) {
 						try {
 							RefreshTab.refreshResources(cfg, monitor)
 						} catch (CoreException e) {

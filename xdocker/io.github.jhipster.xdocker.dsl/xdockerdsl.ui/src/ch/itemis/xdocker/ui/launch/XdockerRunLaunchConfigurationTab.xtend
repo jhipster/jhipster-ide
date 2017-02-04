@@ -184,7 +184,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
      * debug.core.ILaunchConfigurationWorkingCopy)
      */
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		if (control != null) {
+		if (control !== null) {
 			imageNameText.text = ''
 			commandText.text = '' 
 			#[nameText, portSpecText].forEach[
@@ -237,7 +237,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
      * .debug.core.ILaunchConfigurationWorkingCopy)
      */
 	override void performApply(ILaunchConfigurationWorkingCopy it) {
-		if (it != null) {
+		if (it !== null) {
 			setAttribute(ATTR_IMAGE, imageNameText.text) 
 			setAttribute(ATTR_CMD, commandText.text) 
 			setAttribute(ATTR_PARAMS, paramsCheckButton.selection) 

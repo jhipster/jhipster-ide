@@ -7,7 +7,6 @@
  */
 package ch.itemis.xdocker.ui.console
 
-import ch.itemis.xdocker.ui.console.IConsoleLogger
 import java.io.IOException
 import java.io.OutputStream
 import java.util.ArrayList

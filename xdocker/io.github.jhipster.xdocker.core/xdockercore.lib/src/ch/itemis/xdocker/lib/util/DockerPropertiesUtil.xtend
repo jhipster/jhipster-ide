@@ -95,7 +95,7 @@ class DockerPropertiesUtil {
 	def static Properties toProperties(DockerProperties it) {
 		return new Properties => [ props |
 			parameters.forEach[k, v|
-				if (k != null && v != null) props.put(k, v)
+				if (k !== null && v !== null) props.put(k, v)
 			]
 		]
 	}

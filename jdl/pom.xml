@@ -11,13 +11,12 @@
 
 	<groupId>io.github.jhipster-ide.jdl</groupId>
 	<artifactId>io.github.jhipster.jdl.parent</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
 	<name>JDL Main POM</name>
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.23.1</tycho-version>
-		<xtextVersion>2.10.0</xtextVersion>
+		<tycho-version>0.25.0</tycho-version>
+		<xtextVersion>2.11.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -143,7 +142,9 @@
 						<execution>
 							<goals>
 								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
 								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
 							</goals>
 						</execution>
 					</executions>
@@ -229,7 +230,7 @@
 											tycho-compiler-plugin
 										</artifactId>
 										<versionRange>
-											[0.23.1,)
+											[0.25.0,)
 										</versionRange>
 										<goals>
 											<goal>compile</goal>
@@ -248,7 +249,7 @@
 											tycho-packaging-plugin
 										</artifactId>
 										<versionRange>
-											[0.23.1,)
+											[0.25.0,)
 										</versionRange>
 										<goals>
 											<goal>build-qualifier</goal>

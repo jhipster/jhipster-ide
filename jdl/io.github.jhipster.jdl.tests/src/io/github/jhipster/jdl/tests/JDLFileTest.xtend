@@ -101,7 +101,7 @@ class JDLFileTest {
 			val expected = expectedIssues.findFirst[
 				jdlFile.name.equals(key) && value.startsWith(issue.message)
 			]
-			if (expected != null ) println('''Expected issue detected: [«issue»]''') else unexpectedIssues += jdlFile -> issue.message
+			if (expected !== null ) println('''Expected issue detected: [«issue»]''') else unexpectedIssues += jdlFile -> issue.message
 		]
 		// configure and start the generator
 		fileAccess.setOutputPath("src-gen/");

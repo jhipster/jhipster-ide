@@ -107,7 +107,7 @@ class XdockerBuildLaunchShortcut extends AbstractXdockerLaunchShortcut {
 		val launchManager = DebugPlugin.getDefault.launchManager
 		val configName = launchManager?.generateLaunchConfigurationName(project)
 		val configType = launchManager?.getLaunchConfigurationType(CONFIG_TYPE)
-		if (configType != null) {
+		if (configType !== null) {
 			configType.newInstance(null, configName) => [
 				setAttribute(ATTR_PROJECT, project)
 				setAttribute(ATTR_XDOCKER, xdockerFileName)

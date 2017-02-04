@@ -7,8 +7,6 @@
  *******************************************************************************/
 package ch.itemis.xdocker.formatting
 
-import ch.itemis.xdocker.services.XdockerGrammarAccess
-import com.google.inject.Inject
 import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter
 import org.eclipse.xtext.formatting.impl.FormattingConfig
@@ -29,7 +27,7 @@ import static org.eclipse.xtext.GrammarUtil.*
  */
 class XdockerFormatter extends AbstractDeclarativeFormatter {
 
-	@Inject extension XdockerGrammarAccess
+//	@Inject extension XdockerGrammarAccess
 	
 	override protected void configureFormatting(FormattingConfig c) {
 		allParserRules(grammar.getGrammar()).forEach[parseRule|

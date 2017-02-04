@@ -17,11 +17,10 @@ import java.util.Stack
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.xtend.lib.annotations.Accessors
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
-import static ch.itemis.xdocker.ui.job.XdockerRunJob.*
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
 import static ch.itemis.xdocker.util.AnsiUtil.*
 import static org.eclipse.core.runtime.IStatus.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Run Job
@@ -78,7 +77,7 @@ class XdockerRunJob extends AbstractXdockerJob {
 						log('''CONTAINER ID:		IMAGE:			COMMAND:''')
 						log('''«containerId.substring(0,12)»		«image»		«command»''')
 						logContainer(containerId, callback)
-						if (dockerCfg != null && dockerCfg.remove) removeContainer(containerId, false)
+						if (dockerCfg !== null && dockerCfg.remove) removeContainer(containerId, false)
 						result.push = XdockerJobStatus.createJobOkStatus(it)
 					} else log(ERR_RUN_CMD)
 				]

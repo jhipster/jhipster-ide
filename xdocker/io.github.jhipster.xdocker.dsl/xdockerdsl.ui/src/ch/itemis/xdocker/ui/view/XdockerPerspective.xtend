@@ -12,11 +12,11 @@ import org.eclipse.ui.IPerspectiveFactory
 
 import static ch.itemis.xdocker.ui.view.XdockerContainerBrowserView.*
 import static ch.itemis.xdocker.ui.view.XdockerImageBrowserView.*
+import static org.eclipse.debug.ui.IDebugUIConstants.LAUNCH_ACTION_SET
 import static org.eclipse.jdt.ui.JavaUI.*
 import static org.eclipse.ui.IPageLayout.*
 import static org.eclipse.ui.console.IConsoleConstants.*
 import static org.eclipse.ui.progress.IProgressConstants.*
-import static org.eclipse.debug.ui.IDebugUIConstants.LAUNCH_ACTION_SET
 
 /** 
  * Xdocker Perspective Class

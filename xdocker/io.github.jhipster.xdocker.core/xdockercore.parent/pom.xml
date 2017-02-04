@@ -9,11 +9,12 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<tycho-version>0.23.1</tycho-version>
-		<xtextVersion>2.10.0</xtextVersion>
+		<tycho-version>0.25.0</tycho-version>
+		<xtextVersion>2.11.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+		<junit.version>4.11</junit.version>
 	</properties>
 	
 	<modules>
@@ -139,7 +140,7 @@
 											tycho-compiler-plugin
 										</artifactId>
 										<versionRange>
-											[0.23.1,)
+											[0.25.0,)
 										</versionRange>
 										<goals>
 											<goal>compile</goal>
@@ -158,7 +159,7 @@
 											tycho-packaging-plugin
 										</artifactId>
 										<versionRange>
-											[0.23.1,)
+											[0.25.0,)
 										</versionRange>
 										<goals>
 											<goal>build-qualifier</goal>
@@ -237,7 +238,16 @@
 				<artifactId>xdockercore.util</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit-dep</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 </project>

@@ -7,11 +7,11 @@
  *******************************************************************************/
 package ch.itemis.xdocker.ui.console
 
+import org.eclipse.ui.console.ConsolePlugin
+import org.eclipse.ui.console.IConsoleFactory
 import org.eclipse.ui.console.IOConsole
 import org.eclipse.ui.console.IOConsoleOutputStream
 import org.eclipse.xtend.lib.annotations.Accessors
-import org.eclipse.ui.console.IConsoleFactory
-import org.eclipse.ui.console.ConsolePlugin
 
 /**
  * Xdocker Console Implementation
@@ -50,7 +50,7 @@ final class XdockerConsole extends IOConsole {
 	}
 	
 	package def println(String message) {
-		if (message != null) {
+		if (message !== null) {
 			print(message)
 			outStream.write('\n')
 			outStream.flush
@@ -58,6 +58,6 @@ final class XdockerConsole extends IOConsole {
 	}
 	
 	package def print(String message) {
-		if (message != null) outStream.write(message)
+		if (message !== null) outStream.write(message)
 	}
 }

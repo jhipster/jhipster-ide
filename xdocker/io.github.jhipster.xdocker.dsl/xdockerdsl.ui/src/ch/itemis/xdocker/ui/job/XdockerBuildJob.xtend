@@ -17,16 +17,14 @@ import org.eclipse.core.resources.IFolder
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.xtend.lib.annotations.Accessors
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
-import static ch.itemis.xdocker.ui.job.XdockerBuildJob.*
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
+import static ch.itemis.xdocker.util.XdockerContants.*
 import static org.apache.commons.io.FileUtils.*
 import static org.apache.commons.io.filefilter.DirectoryFileFilter.*
 import static org.apache.commons.io.filefilter.FileFileFilter.*
 import static org.apache.commons.io.filefilter.FileFilterUtils.*
 import static org.eclipse.core.runtime.IStatus.*
-
-import static ch.itemis.xdocker.util.XdockerContants.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Build Job
@@ -61,7 +59,7 @@ class XdockerBuildJob extends XdockerGenerateJob {
 			return new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_BUILDING_IMAGE, null)
 		}
 		var status = callGenerator(dockerfile) // call generator first...
-		return if (status != null && status.OK && status.argument instanceof IFolder) {
+		return if (status !== null && status.OK && status.argument instanceof IFolder) {
 			val buildFolder = status.argument as IFolder
 			copyResourcesTo(buildFolder)
 			callBuilder(buildFolder) 

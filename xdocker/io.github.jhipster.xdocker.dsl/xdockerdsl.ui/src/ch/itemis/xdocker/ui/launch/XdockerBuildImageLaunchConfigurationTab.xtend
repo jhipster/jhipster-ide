@@ -176,7 +176,7 @@ class XdockerBuildImageLaunchConfigurationTab extends AbstractXdockerLaunchConfi
      * debug.core.ILaunchConfigurationWorkingCopy)
      */
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		if (control != null) {
+		if (control !== null) {
 			projectText.text = ''
 			xdockerFileText.text = '' 
 			dockerTagText.text = ''
@@ -220,7 +220,7 @@ class XdockerBuildImageLaunchConfigurationTab extends AbstractXdockerLaunchConfi
      * .debug.core.ILaunchConfigurationWorkingCopy)
      */
 	override void performApply(ILaunchConfigurationWorkingCopy it) {
-		if (it != null) {
+		if (it !== null) {
 			setAttribute(ATTR_PROJECT, projectText.text) 
 			setAttribute(ATTR_XDOCKER, xdockerFileText.text) 
 			setAttribute(ATTR_PARAMS, paramsCheckButton.selection) 

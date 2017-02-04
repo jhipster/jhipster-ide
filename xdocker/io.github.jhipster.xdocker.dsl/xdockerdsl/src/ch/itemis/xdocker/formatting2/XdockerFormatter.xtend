@@ -3,17 +3,15 @@
  */
 package ch.itemis.xdocker.formatting2
 
-import ch.itemis.xdocker.services.XdockerGrammarAccess
 import ch.itemis.xdocker.xdocker.FromStatement
 import ch.itemis.xdocker.xdocker.Statement
 import ch.itemis.xdocker.xdocker.Xdocker
-import com.google.inject.Inject
 import org.eclipse.xtext.formatting2.AbstractFormatter2
 import org.eclipse.xtext.formatting2.IFormattableDocument
 
 class XdockerFormatter extends AbstractFormatter2 {
 	
-	@Inject extension XdockerGrammarAccess
+//	@Inject extension XdockerGrammarAccess
 
 	def dispatch void format(Xdocker xdocker, extension IFormattableDocument document) {
 		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 

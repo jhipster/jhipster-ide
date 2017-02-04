@@ -19,9 +19,9 @@ import java.util.List
 import java.util.Stack
 import org.eclipse.core.runtime.IProgressMonitor
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
 import static org.eclipse.core.runtime.IStatus.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Info Job
@@ -55,7 +55,7 @@ class XdockerInfoJob extends AbstractXdockerJob {
 			try {
 				log(MSG_GETTING_INFO)
 				info => [
-					if (it == null) throw new IllegalStateException('Result object is null!')					
+					if (it === null) throw new IllegalStateException('Result object is null!')					
 					val status = XdockerJobStatus.createJobOkStatus(
 						'''
 							Containers: «containers»

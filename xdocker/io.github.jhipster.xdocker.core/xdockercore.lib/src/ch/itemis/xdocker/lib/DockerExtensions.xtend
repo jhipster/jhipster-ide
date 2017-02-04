@@ -58,13 +58,13 @@ class DockerExtensions {
 	}
 
 	def private buildDockerClient() {
-		val builder = if (dockerConfig != null) DockerClientBuilder.getInstance(dockerConfig) 
+		val builder = if (dockerConfig !== null) DockerClientBuilder.getInstance(dockerConfig) 
 		    		  else DockerClientBuilder.getInstance 
 		builder?.build
 	}
 		
 	def DockerExtensions docker(Procedure1<? super DockerClient> initializer) {
-		if (initializer != null) initializer.apply(dockerClient)
+		if (initializer !== null) initializer.apply(dockerClient)
 		return this
 	}
 
@@ -74,7 +74,7 @@ class DockerExtensions {
 
 	def search(String term) {
 		if (term.nullOrEmpty) throw new IllegalArgumentException("Argument 'term' cannot be null or empty!")
-		if (dockerClient == null) throw new IllegalStateException("Docker client not initialized properly!")
+		if (dockerClient === null) throw new IllegalStateException("Docker client not initialized properly!")
 		search(dockerClient, term)
 	}
 
@@ -204,7 +204,7 @@ class DockerExtensions {
 		val dockerfile = Paths.get(dockerFileOrFolder).toFile
 		if (dockerfile.exists == false) throw new IllegalArgumentException('''«dockerfile.toString» does not exits!''')
 		val cmd = buildImageCmd(dockerfile) => [ build |
-			if (cfg != null && cfg.hasParams) {
+			if (cfg !== null && cfg.hasParams) {
 				build.withNoCache(noCache)
 			      .withPull(pull)
 			      .withQuiet(quiet)
@@ -236,7 +236,7 @@ class DockerExtensions {
 		if (containerId.nullOrEmpty) throw new IllegalArgumentException("Argument 'containerId' cannot be null or empty!")
 		else {
 			val cmd = execStartCmd(containerId) => [
-				if (cfg != null) withDetach(detached).withTty(tty)
+				if (cfg !== null) withDetach(detached).withTty(tty)
 			]
 			return cmd.execId
 		}
@@ -262,7 +262,7 @@ class DockerExtensions {
 //                .withExposedPorts(tcp22, tcp23).withPortBindings(portBindings).exec();
 		
 		val cmd = createContainerCmd(image).withCmd(cmdstr.split(' ')) => [ run |
-			if (cfg != null && cfg.hasParams) {
+			if (cfg !== null && cfg.hasParams) {
 				run.withTty(tty)
 				.withStdinOpen(keepStdinOpen)
 				.withAttachStdout(attachStdout)
@@ -274,13 +274,13 @@ class DockerExtensions {
 		]
 		// create and start container command
 		val container = try (cmd.exec => [
-			if (it != null && id.nullOrEmpty == false) {
+			if (it !== null && id.nullOrEmpty == false) {
 				docker.startContainer(id)
 			}
 		]) catch (Exception e) {
 			throw new RuntimeException(e.message)		
 		}
-		if (container == null) throw new RuntimeException('''Could not create container for image «image» and «cmdstr»''')
+		if (container === null) throw new RuntimeException('''Could not create container for image «image» and «cmdstr»''')
 		docker.execStart(container.id)
         return container.id
 	}

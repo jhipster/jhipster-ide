@@ -25,6 +25,7 @@ import ch.itemis.xdocker.xdocker.OnbuildStatement
 import ch.itemis.xdocker.xdocker.PortNumberList
 import ch.itemis.xdocker.xdocker.RunStatement
 import ch.itemis.xdocker.xdocker.SourcesDestValue
+import ch.itemis.xdocker.xdocker.Statement
 import ch.itemis.xdocker.xdocker.TagQualifier
 import ch.itemis.xdocker.xdocker.UserStatement
 import ch.itemis.xdocker.xdocker.VolumeStatement
@@ -35,7 +36,6 @@ import com.google.inject.Inject
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
-import ch.itemis.xdocker.xdocker.Statement
 
 /**
  * Provides labels for EObjects.

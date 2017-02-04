@@ -88,7 +88,7 @@ class ConfigPropertyProcessor extends AbstractFieldProcessor {
 	}
 
    def private String getPropertyName(MutableFieldDeclaration it) {
-   		if (it == null || annotations.isNullOrEmpty) return null
+   		if (it === null || annotations.isNullOrEmpty) return null
 		val propName = annotations.head.getValue('value')?.toString
 		return if (propName.isNullOrEmpty) simpleName else propName
    }

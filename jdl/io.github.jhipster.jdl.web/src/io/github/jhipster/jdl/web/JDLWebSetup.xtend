@@ -5,24 +5,22 @@ package io.github.jhipster.jdl.web
 
 import com.google.inject.Guice
 import com.google.inject.Injector
-import com.google.inject.Provider
 import com.google.inject.util.Modules
 import io.github.jhipster.jdl.JDLRuntimeModule
 import io.github.jhipster.jdl.JDLStandaloneSetup
-import java.util.concurrent.ExecutorService
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
  * Initialization support for running Xtext languages in web applications.
  */
-@FinalFieldsConstructor
+//@FinalFieldsConstructor
 class JDLWebSetup extends JDLStandaloneSetup {
 	
-	val Provider<ExecutorService> executorServiceProvider;
+//	val Provider<ExecutorService> executorServiceProvider;
 	
 	override Injector createInjector() {
 		val runtimeModule = new JDLRuntimeModule()
-		val webModule = new JDLWebModule(executorServiceProvider)
+//		val webModule = new JDLWebModule(executorServiceProvider)
+		val webModule = new JDLWebModule()
 		return Guice.createInjector(Modules.override(runtimeModule).with(webModule))
 	}
 	

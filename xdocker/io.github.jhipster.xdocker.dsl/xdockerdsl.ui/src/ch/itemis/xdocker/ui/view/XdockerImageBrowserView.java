@@ -45,16 +45,16 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
+import com.github.dockerjava.api.model.Image;
+import com.github.dockerjava.api.model.SearchItem;
+import com.ocpsoft.pretty.time.PrettyTime;
+
 import ch.itemis.xdocker.ui.job.XdockerJobStatus;
 import ch.itemis.xdocker.ui.job.XdockerPullImageJob;
 import ch.itemis.xdocker.ui.job.XdockerRemoveImageJob;
 import ch.itemis.xdocker.ui.job.XdockerSearchImagesJob;
 import ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchConfigData;
 import ch.itemis.xdocker.ui.util.ResourceManager;
-
-import com.github.dockerjava.api.model.Image;
-import com.github.dockerjava.api.model.SearchItem;
-import com.ocpsoft.pretty.time.PrettyTime;
 
 /**
  * Xdocker Image Browser View

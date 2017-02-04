@@ -33,13 +33,13 @@ class AssertUtil {
 	}	
 
 	def static assertArgNotNull(String name, Object arg) {
-		if (arg == null) {
+		if (arg === null) {
 			throw new IllegalArgumentException('''Argument [«name»] cannot be null!''')
 		}
 	}	
 
 	def static assertArgNotEmpty(String name, Object arg) {
-		if (arg == null || arg.toString.nullOrEmpty) {
+		if (arg === null || arg.toString.nullOrEmpty) {
 			throw new IllegalArgumentException('''String argument [«name»] cannot be empty!''')
 		}
 	}	

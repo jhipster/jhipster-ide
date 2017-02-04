@@ -14,9 +14,9 @@ import java.util.Stack
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.xtend.lib.annotations.Accessors
 
-import static xdockerdsl.ui.internal.XdockerdslActivator.*
 import static ch.itemis.xdocker.ui.preference.XdockerDockerPreferences.*
 import static org.eclipse.core.runtime.IStatus.*
+import static xdockerdsl.ui.internal.XdockerdslActivator.*
 
 /**
  * Xdocker Search Images Job

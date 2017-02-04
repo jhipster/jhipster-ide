@@ -21,7 +21,7 @@ import static org.eclipse.swt.widgets.Display.*
  * 
  * @author Serano Colameo - Initial contribution and API
  */
-class XdockerDockerPreferencePage extends AbstractPreferencePage implements ch.itemis.xdocker.ui.preference.XdockerPreferenceConstants {
+class XdockerDockerPreferencePage extends AbstractPreferencePage implements XdockerPreferenceConstants {
 	
 	new() {
 		preferenceStore = XdockerdslActivator.instance.preferenceStore

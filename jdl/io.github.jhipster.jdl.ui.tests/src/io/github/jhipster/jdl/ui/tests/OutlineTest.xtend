@@ -1,11 +1,11 @@
 package io.github.jhipster.jdl.ui.tests
 
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
+import io.github.jhipster.jdl.ui.internal.JdlActivator
 import org.eclipse.xtext.junit4.ui.AbstractOutlineTest
+import org.eclipse.xtext.testing.InjectWith
+import org.eclipse.xtext.testing.XtextRunner
 import org.junit.Test
 import org.junit.runner.RunWith
-import io.github.jhipster.jdl.ui.internal.JdlActivator
 
 @RunWith(typeof(XtextRunner))
 @InjectWith(typeof(JDLUiInjectorProvider))

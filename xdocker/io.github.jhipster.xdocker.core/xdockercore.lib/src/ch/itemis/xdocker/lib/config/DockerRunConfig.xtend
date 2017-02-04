@@ -7,8 +7,8 @@
  *******************************************************************************/
 package ch.itemis.xdocker.lib.config
 
-import org.eclipse.xtend.lib.annotations.Data
 import java.io.Serializable
+import org.eclipse.xtend.lib.annotations.Data
 
 /**
  * Docker Run Config

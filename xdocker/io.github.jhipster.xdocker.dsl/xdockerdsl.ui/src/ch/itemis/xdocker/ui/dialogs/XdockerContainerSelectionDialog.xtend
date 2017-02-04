@@ -14,7 +14,7 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.swt.widgets.Display
-import org.eclipse.swt.widgets.Shell	
+import org.eclipse.swt.widgets.Shell
 
 import static ch.itemis.xdocker.ui.util.MessageUtil.*
 

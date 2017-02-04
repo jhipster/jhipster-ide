@@ -24,14 +24,14 @@ import static org.eclipse.swt.SWT.*
  * 
  * @author Serano Colameo - Initial contribution and API
  */
-class ScrollableDialog extends TitleAreaDialog {
+class XdockerScrollableDialog extends TitleAreaDialog {
 	var String title
 	var String subtitle
 	var String message
 	var int messageType
 
 	def static showInfoBox(Shell shell, String title, String subtitle, String message) {
-		return new ScrollableDialog(
+		return new XdockerScrollableDialog(
 			shell, title, subtitle, message, IMessageProvider.INFORMATION
 		) => [
 			create

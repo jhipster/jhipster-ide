@@ -26,7 +26,7 @@
 			<modules>
 				<module>io.github.jhipster.xdocker.core/xdockercore.parent</module>
 				<module>io.github.jhipster.xdocker.dsl/xdockerdsl.parent</module>
-				<module>io.github.jhipster.xdocker.scout/xdockerscout.parent</module>
+<!-- 				<module>io.github.jhipster.xdocker.scout/xdockerscout.parent</module> -->
 			</modules>
 		</profile>
 	</profiles>

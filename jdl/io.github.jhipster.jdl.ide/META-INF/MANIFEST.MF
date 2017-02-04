@@ -8,7 +8,8 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
- net.sourceforge.plantuml.eclipse;visibility:=reexport
+ net.sourceforge.plantuml.eclipse;visibility:=reexport,
+ org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist.antlr,
