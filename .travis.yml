@@ -46,7 +46,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 
 script:
-- mvn clean install # && mvn package -Pproduct
+- mvn clean install # disabled => && mvn package -Pproduct
 
 after_success:
 - #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY jhipster jhipster-ide ${REPO} ${VERSION}
