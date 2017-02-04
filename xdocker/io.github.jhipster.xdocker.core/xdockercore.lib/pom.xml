@@ -82,7 +82,7 @@
 					<outputDirectory>
 						lib
 					</outputDirectory>
-					<excludeGroupIds>xdocker</excludeGroupIds>
+					<excludeGroupIds>io.github.jhipster-ide.xdocker</excludeGroupIds>
 				</configuration>
 			</plugin>
 			<plugin>
