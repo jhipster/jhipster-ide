@@ -6,16 +6,16 @@
         <features name="xdockerdsl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
-        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.1.0.201702041133" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
   <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
     <contributions label="Base">
       <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">
-        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.10.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.10.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
+        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.11.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.11.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.11.0"/>
       </repositories>
       <repositories location="http://plantuml.sourceforge.net/updatesite/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
