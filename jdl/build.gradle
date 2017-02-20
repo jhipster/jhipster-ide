@@ -9,7 +9,7 @@ buildscript {
 }
 
 subprojects {
-	ext.xtextVersion = '2.10.0'
+	ext.xtextVersion = '2.11.0'
 	repositories {
 		jcenter()
 	}
@@ -30,4 +30,10 @@ subprojects {
 	configurations.all {
 		exclude group: 'asm'
 	}
+}
+
+task installServer(type: Copy) {
+	dependsOn(':io.github.jhipster.jdl.ide:installDist')
+    from "io.github.jhipster.jdl.ide/build/install/xtext-server-jdl"
+    into "io.github.jhipster.jdl.vscode/xtext-server-jdl"
 }

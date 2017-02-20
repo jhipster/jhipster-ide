@@ -1,3 +1,5 @@
+apply plugin: 'application'
+
 dependencies {
 	compile project(':io.github.jhipster.jdl')
 	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
@@ -7,3 +9,6 @@ dependencies {
 //this is an eclipse plugin project
 eclipseClasspath.enabled=false
 cleanEclipseClasspath.enabled=false
+
+mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
+applicationName = 'xtext-server-jdl'
