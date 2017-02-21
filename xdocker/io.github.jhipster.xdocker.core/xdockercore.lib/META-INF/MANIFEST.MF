@@ -121,5 +121,4 @@ Bundle-ClassPath: .,
  lib/org.junit-4.12.0.v201504281640-junit.jar.jar,
  lib/osgi-resource-locator-1.0.1.jar,
  lib/slf4j-api-1.7.21.jar,
- lib/unix-socket-factory-2016-04-06T22-21-19.jar,
- lib/xdockercore.base-1.1.0.201702041133.jar
+ lib/unix-socket-factory-2016-04-06T22-21-19.jar
