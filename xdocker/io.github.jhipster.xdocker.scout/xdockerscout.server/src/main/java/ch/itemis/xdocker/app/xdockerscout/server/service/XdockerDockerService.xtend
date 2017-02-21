@@ -33,6 +33,7 @@ import org.eclipse.scout.rt.server.context.ServerRunContexts
 
 import static ch.itemis.xdocker.app.xdockerscout.shared.prefs.XdockerDockerPropertiesConverter.*
 import static ch.itemis.xdocker.util.AnsiUtil.*
+import org.eclipse.scout.rt.shared.ISession
 
 /**
  * XdockerDockerService 
@@ -50,8 +51,8 @@ class XdockerDockerService implements IXdockerDockerService {
 //			])
 //		].join
 //	]
-	val sessionId = ServerSession.get.id
-
+	val sessionId = (ServerSession.get as ISession).id
+	
 	@Inject extension DockerExtensions docker = DockerExtensions.newInstance(
 		DockerPropertiesUtil.loadFromDisk
 	)
@@ -69,7 +70,8 @@ class XdockerDockerService implements IXdockerDockerService {
 	override doTestConnection(XdockerDockerPreferncesFormData data) throws XdockerDockerServiceException {
 		try {
 			docker [
-				setupDocker = toDockerProperties(data)
+// FIXME
+//				setupDocker = toDockerProperties(data)
 			].ping
 		} catch (Exception e) {
 			throw new XdockerDockerServiceException("testConnection() failed!", e)
@@ -127,6 +129,7 @@ class XdockerDockerService implements IXdockerDockerService {
 					]
 				}
 			} catch (Exception ex) {
+				
 				notify(ex.message, sessionId)
 			}
 		]

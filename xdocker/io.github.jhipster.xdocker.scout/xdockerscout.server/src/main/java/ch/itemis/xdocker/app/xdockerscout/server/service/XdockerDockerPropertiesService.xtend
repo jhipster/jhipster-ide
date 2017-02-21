@@ -24,7 +24,7 @@ class XdockerDockerPropertiesService implements IXdockerDockerPropertiesService 
 		try {
 			LOG.info('Load form data')
 			val props = DockerPropertiesUtil.loadFromDisk
-			if (props != null) data = toXdockerDockerPreferncesFormData(props)
+			if (props !== null) data = toXdockerDockerPreferncesFormData(props)
 		} catch (Exception e) {
 			LOG.error('Cannot load docker properties!', e)						
 		}
