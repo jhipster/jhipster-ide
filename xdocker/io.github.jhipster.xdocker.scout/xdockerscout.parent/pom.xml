@@ -21,7 +21,7 @@
 		<jdk.source.version>1.8</jdk.source.version>
 		<!--  org.eclipse.scout.rt_version>6.0.0.M6 5.2.0.M5-->
 		<!-- org.eclipse.scout.rt_version>6.0.0.M6</org.eclipse.scout.rt_version -->
-		<org.eclipse.scout.rt_version>6.0.0.M6_1</org.eclipse.scout.rt_version>
+		<org.eclipse.scout.rt_version>6.0.200.0</org.eclipse.scout.rt_version>
 		<xtextVersion>2.11.0</xtextVersion>
         <master_sanityCheck_skip>true</master_sanityCheck_skip>
 	</properties>

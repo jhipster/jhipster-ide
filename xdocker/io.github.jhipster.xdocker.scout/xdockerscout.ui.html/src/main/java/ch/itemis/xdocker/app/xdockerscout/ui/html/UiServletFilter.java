@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.scout.rt.platform.BEANS;
-import org.eclipse.scout.rt.server.commons.authentication.ConfigFileCredentialVerifier;
+import org.eclipse.scout.rt.platform.security.ConfigFileCredentialVerifier;
 import org.eclipse.scout.rt.server.commons.authentication.DevelopmentAccessController;
 import org.eclipse.scout.rt.server.commons.authentication.FormBasedAccessController;
 import org.eclipse.scout.rt.server.commons.authentication.FormBasedAccessController.FormBasedAuthConfig;
