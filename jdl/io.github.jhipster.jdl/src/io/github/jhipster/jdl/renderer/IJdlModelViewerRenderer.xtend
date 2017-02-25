@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.ide.renderer
+package io.github.jhipster.jdl.renderer
 
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 

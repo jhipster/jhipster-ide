@@ -2,7 +2,7 @@
     "name": "jdl",
     "displayName": "jdl",
     "description": "JDL VS Code extension",
-    "version": "0.0.1",
+    "version": "1.1.0",
     "publisher": "jhipster",
     "engines": {
         "vscode": "^1.4.0"
@@ -48,5 +48,11 @@
     "dependencies": {
         "global": "^4.3.1",
         "vscode-languageclient": "^2.6.3"
-    }
+    },
+    "categories": [
+        "Extension Packs"
+    ],
+    "extensionDependencies": [
+        "jebbs.plantuml"
+    ]
 }

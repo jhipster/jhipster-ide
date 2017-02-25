@@ -1,6 +1,8 @@
 package io.github.jhipster.jdl
 
 import io.github.jhipster.jdl.generator.JDLGenerator
+import io.github.jhipster.jdl.generator.plantuml.IJdlToPlantUmlRenderer
+import io.github.jhipster.jdl.generator.plantuml.JdlToPlantUmlRenderer
 import io.github.jhipster.jdl.resource.JdlDerivedStateComputer
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
@@ -26,5 +28,9 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 
 	def Class<? extends IResourceDescription.Manager> bindIResourceDescriptionManager() {
 		DerivedStateAwareResourceDescriptionManager
+	}
+	
+	def Class<? extends IJdlToPlantUmlRenderer> bindIJdlToPlantUmlRenderer() {
+		return JdlToPlantUmlRenderer
 	}
 }

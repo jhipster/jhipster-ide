@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.ide.renderer.plantuml
+package io.github.jhipster.jdl.generator.plantuml
 
 import io.github.jhipster.jdl.jdl.JdlBlobFieldType
 import io.github.jhipster.jdl.jdl.JdlBooleanFieldType

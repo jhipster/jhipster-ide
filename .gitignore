@@ -21,6 +21,9 @@ bin
 .buildpath
 .externalToolBuilders
 
+# Visual Studio Code
+*.vsix
+
 #Folders:
 .gradle
 
