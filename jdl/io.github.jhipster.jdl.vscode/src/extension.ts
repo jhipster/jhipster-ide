@@ -140,7 +140,8 @@ module plantuml {
 
         private static _JAR_FILE: string = process.env['PLANTUML_JAR'];
         private static _JAVA_EXE: string = path.join(process.env['JAVA_HOME'], 'bin', 'java');
-        private static _BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer._JAR_FILE, "-charset", "utf-8", "-p"];
+//        private static _BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer._JAR_FILE, "-charset", "utf-8", "-p"];
+        private static _BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer._JAR_FILE];
         private static _DELIM: string[] = ["@startuml", "@enduml"];
 
         private _editor: vscode.TextEditor = null;
@@ -205,13 +206,14 @@ module plantuml {
             };
             let [dirName,fsPath] = this._getWorkingPath();
             let plantumlOpts = ["-Dplantuml.include.path=\""+dirName+"\""];
-            if (this.preview)
-                ret.opts = plantumlOpts.concat(Renderer._BASE_OPTS).concat("-tsvg");
-            else {
+            if (this.preview) {
+//                ret.opts = plantumlOpts.concat(Renderer._BASE_OPTS).concat("-tsvg");
+                ret.outputFile = this._editor.document.uri.toString(false).replace('.plantuml', '.png');
+                ret.opts = plantumlOpts.concat(Renderer._BASE_OPTS).concat("-tpng").concat(fsPath).concat(" -o " + ret.outputFile);
+            } else {
                 let format = OutputFmt[this.exportFmt].toLowerCase();
                 ret.opts = plantumlOpts.concat(Renderer._BASE_OPTS).concat("-t" + format);
                 ret.fileExt = format;
-
                 ret.outputFile = fsPath + '.' + ret.fileExt;
                 if (this.exportFmt === OutputFmt.LATEX_NOPREAMBLE)
                     ret.fileExt = ret.fileExt.replace('_', ':');
@@ -224,18 +226,21 @@ module plantuml {
             if (this._buff.trim().length === 0)
                 return null;
             let plantJar = child_process.spawn(Renderer._JAVA_EXE, args.opts);
+//            let plantJar = child_process.execFile(Renderer._JAVA_EXE, args.opts);
             console.log(args.opts);
             plantJar.stdin.write(this._buff);
             plantJar.stdin.end();
             let ret: Thenable<string> = null;
             if (this.preview) {
                 ret = new Promise<string>((res) => {
-                    let svgTxt: string = "";
-                    plantJar.stdout.on('data', (data) => {
-                        svgTxt += data.toString();
-                    });
+                    let b64: string = "";
+//                    plantJar.stdout.on('data', (data) => {
+//                        b64 += data.toString('base64');
+//                    });
                     plantJar.stdout.on('close', (close) => {
-                        let html = `<html><body style="background-color:white;">${svgTxt}</body></html>`;
+//                        let html = `<html><body style="background-color:white;">${svgTxt}</body></html>`;
+//                        let html = `<html><body style="background-color:white;"><img src="data:image/png;base64,${b64}" alt="puml"></body></html>`; 
+                        let html = `<html><body style="background-color:white;"><img src="${args.outputFile}"></body></html>`; 
                         res(html);
                     });
                 });
