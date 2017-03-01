@@ -39,9 +39,15 @@
         "commands": [
             {
                 "command": "plantuml.preview",
-                "title": "Preview Plant UML text from active editor"
+                "title": "Preview Plant UML from active editor"
             }
-        ]        
+        ],    
+        "keybindings": [
+            {
+                "command": "plantuml.preview",
+                "key": "alt+d" 
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",

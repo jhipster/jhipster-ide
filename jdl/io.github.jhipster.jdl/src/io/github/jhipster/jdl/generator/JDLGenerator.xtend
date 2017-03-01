@@ -1,5 +1,6 @@
 package io.github.jhipster.jdl.generator
 
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.renderer.IJdlModelViewerRenderer
 import io.github.jhipster.jdl.renderer.JdlModelViewerRenderer
 import org.eclipse.emf.ecore.resource.Resource
@@ -8,7 +9,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 
 import static io.github.jhipster.jdl.renderer.RenderType.*
-import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * Generates code from your model files on save.
@@ -20,9 +20,9 @@ class JDLGenerator extends AbstractGenerator {
 	extension IJdlModelViewerRenderer = JdlModelViewerRenderer.get(PlantUml)
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		println('JDL generator...')
+		val puml = resource.URI.trimFileExtension.appendFileExtension('plantuml').lastSegment
 		resource.allContents.filter(JdlDomainModel).forEach[
-			fsa.generateFile('file.plantuml', render)
+			fsa.generateFile(puml.toString, render)
 		]
 	}
 }
