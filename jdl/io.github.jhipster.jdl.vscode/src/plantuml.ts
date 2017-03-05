@@ -22,11 +22,15 @@ export class PlantUMLRenderer {
 
     private checkSetup(): boolean {
         let ret: boolean = true;
-        if (!process.env['JAVA_HOME']) {
-            let msg = 'Setup enviroment variable. JAVA_HOME and then restart vscode';
-            vscode.window.showErrorMessage(msg);
-            ret = false;
-        }
+        let javaexe = child_process.exec('java -version', (error, stdout, stderr) => {
+            if (error !== null) {
+                let msg = `Error executing java: ${error}`;
+                vscode.window.showErrorMessage(msg);
+                ret = false;
+            } else {
+                ret = true;
+            }
+        });
         return ret;
     }
 
@@ -86,7 +90,8 @@ class PreviewProvider implements vscode.TextDocumentContentProvider {
 class Renderer {
     public preview: boolean = true;
     private static JAR_FILE: string = "./lib/plantuml.jar";
-    private static JAVA_EXE: string = path.join(process.env['JAVA_HOME'], 'bin', 'java');
+//    private static JAVA_EXE: string = path.join(process.env['JAVA_HOME'], 'bin', 'java');
+    private static JAVA_EXE: string = "java";
     private static BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer.JAR_FILE];
     private static DELIM: string[] = ["@startuml", "@enduml"];
 

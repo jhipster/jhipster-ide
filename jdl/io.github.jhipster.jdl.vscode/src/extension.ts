@@ -1,10 +1,10 @@
 'use strict';
 
-import * as net from 'net';
-import * as path from 'path';
+//import * as net from 'net';
+//import * as child_process from 'child_process';
+//import * as fs from 'fs';
 
-import * as child_process from 'child_process';
-import * as fs from 'fs';
+import * as path from 'path';
 import * as vscode from 'vscode';
 import { PlantUMLRenderer } from './plantuml';
 
