@@ -1,13 +1,8 @@
 'use strict';
 
-//import * as net from 'net';
-//import * as child_process from 'child_process';
-//import * as fs from 'fs';
-
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { PlantUMLRenderer } from './plantuml';
-
 import { workspace, Disposable, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
