@@ -20,9 +20,11 @@ class JDLGenerator extends AbstractGenerator {
 	extension IJdlModelViewerRenderer = JdlModelViewerRenderer.get(PlantUml)
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val puml = resource.URI.trimFileExtension.appendFileExtension('plantuml').lastSegment
-		resource.allContents.filter(JdlDomainModel).forEach[
-			fsa.generateFile(puml.toString, render)
-		]
+		if (System.getProperty('plantuml.gen') == 'true') {
+			val puml = resource.URI.trimFileExtension.appendFileExtension('plantuml').lastSegment
+			resource.allContents.filter(JdlDomainModel).forEach[
+				fsa.generateFile(puml.toString, render)
+			]
+		}
 	}
 }

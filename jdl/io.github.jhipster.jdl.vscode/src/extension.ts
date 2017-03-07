@@ -7,15 +7,18 @@ import { workspace, Disposable, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
 let plantuml: PlantUMLRenderer;
+var process = require('process');
 
 export function activate(context: ExtensionContext) {
     // The server is a locally installed Java application
     let executable = process.platform == 'win32' ? 'xtext-server-jdl.bat' : 'xtext-server-jdl';
     let serverLauncher = context.asAbsolutePath(path.join('xtext-server-jdl', 'bin', executable));
-    let serverOptions: ServerOptions = {
-        run : { command: serverLauncher }, debug: { command: serverLauncher }
-    }
     
+    let serverOptions: ServerOptions = {
+        run:   { command: serverLauncher }, 
+        debug: { command: serverLauncher }
+    }
+
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
@@ -28,6 +31,8 @@ export function activate(context: ExtensionContext) {
         }
     }
 	
+    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dplantuml.gen=true";
+
 	// Create the language client and start the client.
 	let disposable = new LanguageClient('Xtext Server', serverOptions, clientOptions).start();
 	

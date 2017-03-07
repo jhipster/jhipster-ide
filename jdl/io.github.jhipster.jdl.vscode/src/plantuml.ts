@@ -92,7 +92,6 @@ class PreviewProvider implements vscode.TextDocumentContentProvider {
 class Renderer {
     public preview: boolean = true;
     private static JAR_FILE: string = "./lib/plantuml.jar";
-//    private static JAVA_EXE: string = path.join(process.env['JAVA_HOME'], 'bin', 'java');
     private static JAVA_EXE: string = "java";
     private static BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer.JAR_FILE];
     private static DELIM: string[] = ["@startuml", "@enduml"];
@@ -151,7 +150,7 @@ class Renderer {
         let plantumlOpts = ["-Dplantuml.include.path=\"" + dirName + "\""];
         if (this.preview) {
             ret.outputFile = this.editor.document.uri.toString(false).replace('.plantuml', '.png');
-            ret.opts = plantumlOpts.concat(Renderer.BASE_OPTS).concat("-tpng").concat(fsPath).concat(" -o " + ret.outputFile);
+            ret.opts = plantumlOpts.concat(Renderer.BASE_OPTS).concat("-tpng").concat(fsPath).concat("-o" + ret.outputFile);
         }
         return ret;
     }
@@ -165,7 +164,6 @@ class Renderer {
         let ret: Thenable<string> = null;
         if (this.preview) {
             ret = new Promise<string>((res) => {
-                let b64: string = "";
                 plantJar.stdout.on('close', (close) => {
                     let html = `<html><body style="background-color:white;"><img src="${args.outputFile}"></body></html>`;
                     res(html);
