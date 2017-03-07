@@ -6,12 +6,14 @@ import * as child_process from 'child_process';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 
+var process = require('process');
+
 export class PlantUMLRenderer {
     private static PREVIEW_URI = vscode.Uri.parse('plantuml-preview://authority/plantuml-preview');
     private renderer = new Renderer();
     private provider = new PreviewProvider(this.renderer);
 
-    public constructor(private _ctx: vscode.ExtensionContext) {
+    public constructor(private ctx: vscode.ExtensionContext) {
     }
 
     public init() {
@@ -38,7 +40,7 @@ export class PlantUMLRenderer {
 
     private prepareAndRegisterContentProvider() {
         let registration = vscode.workspace.registerTextDocumentContentProvider('plantuml-preview', this.provider);
-        this._ctx.subscriptions.push(this.provider);
+        this.ctx.subscriptions.push(this.provider);
     }
 
     private prepareAndRegisterCommands() {
@@ -61,7 +63,7 @@ export class PlantUMLRenderer {
                 vscode.window.showErrorMessage(err);
             });
         });
-        this._ctx.subscriptions.push(cmdPreview);
+        this.ctx.subscriptions.push(cmdPreview);
     }
 }
 
@@ -105,9 +107,9 @@ class Renderer {
         if (this.editor.document.languageId === "plaintext" || this.editor.document.languageId === "plantuml") {
             this.buff = this.editor.document.getText().trim();
             try {
-                if (this._checkBasicSyntax(this.buff)) {
-                    let args = this._prepareCmdArgs();
-                    ret = this._prepareAndExecCmd(args);
+                if (this.checkBasicSyntax(this.buff)) {
+                    let args = this.prepareCmdArgs();
+                    ret = this.prepareAndExecCmd(args);
                 } 
             } finally {
                 this.buff = null;
@@ -117,7 +119,7 @@ class Renderer {
         return ret;
     }
 
-    private _checkBasicSyntax(buff: string): boolean {
+    private checkBasicSyntax(buff: string): boolean {
         let ret = false;
         let firstDelim = buff.substr(0, 9).toLowerCase();
         let lastDelim = buff.slice(-7).toLowerCase();
@@ -125,7 +127,7 @@ class Renderer {
         return ret;
     }
 
-    private _getWorkingPath(): string[] {
+    private getWorkingPath(): string[] {
         let fsPath = this.editor.document.uri.fsPath;
         let dirName = path.dirname(fsPath);
         if (dirName === ".") {
@@ -140,22 +142,22 @@ class Renderer {
         return [dirName, fsPath];
     }
 
-    private _prepareCmdArgs(): PreparedArgs {
+    private prepareCmdArgs(): PreparedArgs {
         let ret = {
             opts: null,
             outputFile: null,
             fileExt: null
         };
-        let [dirName, fsPath] = this._getWorkingPath();
+        let [dirName, fsPath] = this.getWorkingPath();
         let plantumlOpts = ["-Dplantuml.include.path=\"" + dirName + "\""];
         if (this.preview) {
             ret.outputFile = this.editor.document.uri.toString(false).replace('.plantuml', '.png');
-            ret.opts = plantumlOpts.concat(Renderer.BASE_OPTS).concat("-tpng").concat(fsPath).concat("-o" + ret.outputFile);
+            ret.opts = plantumlOpts.concat(Renderer.BASE_OPTS).concat("-tpng").concat(fsPath).concat(" -o " + ret.outputFile);
         }
         return ret;
     }
 
-    private _prepareAndExecCmd(args: PreparedArgs): Thenable<string> {
+    private prepareAndExecCmd(args: PreparedArgs): Thenable<string> {
         if (this.buff.trim().length === 0) return null;
         let plantJar = child_process.spawn(Renderer.JAVA_EXE, args.opts);
         console.log(args.opts);
