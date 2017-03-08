@@ -6,6 +6,8 @@ import { PlantUMLRenderer } from './plantuml';
 import { workspace, Disposable, ExtensionContext } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
+import  { DidChangeTextDocumentNotification }  from 'vscode-languageclient/lib/protocol';
+
 let plantuml: PlantUMLRenderer;
 var process = require('process');
 
@@ -34,12 +36,22 @@ export function activate(context: ExtensionContext) {
     process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dplantuml.gen=true";
 
 	// Create the language client and start the client.
-	let disposable = new LanguageClient('Xtext Server', serverOptions, clientOptions).start();
-	
+    let langClient = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions)
+	let disposable = langClient.start();
+
 	// Push the disposable to the context's subscriptions so that the 
 	// client can be deactivated on extension deactivation
 	context.subscriptions.push(disposable);
     plantuml = new PlantUMLRenderer(context);
+/*
+    langClient.sendNotification(DidChangeTextDocumentNotification.type, {
+        textDocument: {
+            uri: this._editor.uri,
+            version: this._editor._version
+        },
+        contentChanges: [{ text: this._editor.getText() }]
+    });
+*/
     plantuml.init();
 }
 
