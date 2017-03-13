@@ -6,6 +6,7 @@ dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
 	compile group: 'net.sourceforge.plantuml', name: 'plantuml', version: '8048'
 }
+
 //this is an eclipse plugin project
 eclipseClasspath.enabled=false
 cleanEclipseClasspath.enabled=false

@@ -1,30 +1,35 @@
 package io.github.jhipster.jdl.generator
 
+import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlDomainModel
-import io.github.jhipster.jdl.renderer.IJdlModelViewerRenderer
-import io.github.jhipster.jdl.renderer.JdlModelViewerRenderer
+import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-
-import static io.github.jhipster.jdl.renderer.RenderType.*
+import com.google.inject.ImplementedBy
+import io.github.jhipster.jdl.generator.plantuml.PlantUmlGenerator
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
+
+@ImplementedBy(PlantUmlGenerator)
+interface IJdlGenerator {
+	def void generate(JdlDomainModel model, IFileSystemAccess2 fsa, IGeneratorContext context)
+}
+
 class JDLGenerator extends AbstractGenerator {
 
-	extension IJdlModelViewerRenderer = JdlModelViewerRenderer.get(PlantUml)
+	@Inject Set<IJdlGenerator> generators
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		if (System.getProperty('plantuml.gen') == 'true') {
-			val puml = resource.URI.trimFileExtension.appendFileExtension('plantuml').lastSegment
-			resource.allContents.filter(JdlDomainModel).forEach[
-				fsa.generateFile(puml.toString, render)
+		resource.allContents.filter(JdlDomainModel).forEach[ jdl |
+			generators.forEach[
+				generate(jdl, fsa, context)
 			]
-		}
-	}
+		]
+	}	
 }

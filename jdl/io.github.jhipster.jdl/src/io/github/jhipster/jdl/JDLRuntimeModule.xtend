@@ -1,9 +1,13 @@
 package io.github.jhipster.jdl
 
+import com.google.inject.Provides
+import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.generator.JDLGenerator
-import io.github.jhipster.jdl.generator.plantuml.IJdlToPlantUmlRenderer
-import io.github.jhipster.jdl.generator.plantuml.JdlToPlantUmlRenderer
+import io.github.jhipster.jdl.generator.plantuml.PlantUmlGenerator
+import io.github.jhipster.jdl.renderer.IJdlToPlantUmlRenderer
+import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
 import io.github.jhipster.jdl.resource.JdlDerivedStateComputer
+import java.util.Set
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
 import org.eclipse.xtext.resource.IDerivedStateComputer
@@ -32,5 +36,14 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	
 	def Class<? extends IJdlToPlantUmlRenderer> bindIJdlToPlantUmlRenderer() {
 		return JdlToPlantUmlRenderer
+	}
+	
+	def Class<? extends IJdlGenerator> bindPlantUmlGenerator() {
+		return PlantUmlGenerator
+	}
+
+	@Provides
+	def Set<IJdlGenerator> jdlGenerators() {
+		#{new PlantUmlGenerator}
 	}
 }

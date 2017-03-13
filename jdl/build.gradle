@@ -10,8 +10,10 @@ buildscript {
 
 subprojects {
 	ext.xtextVersion = '2.11.0'
+	
 	repositories {
 		jcenter()
+		mavenCentral()
 		maven {
 			url = 'https://repo.eclipse.org/content/groups/releases'
 		}

@@ -33,7 +33,7 @@ export function activate(context: ExtensionContext) {
         }
     }
 	
-    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dplantuml.gen=true";
+    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dplantuml.gen=true -Dpnguml.gen=true";
 
 	// Create the language client and start the client.
     let langClient = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions)
