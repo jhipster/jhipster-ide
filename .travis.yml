@@ -47,7 +47,7 @@ before_script:
 
 script:
 - mvn clean install # && mvn package -Pproduct
-- $TRAVIS_BUILD_DIR/jdl/gradlew clean installServer
+- cd $TRAVIS_BUILD_DIR/jdl && ../gradlew clean installServer
 
 after_success:
 - #bash -e $TRAVIS_BUILD_DIR/deleteExistingRepoArtifacts.sh $BT_USER $BT_APIKEY jhipster jhipster-ide ${REPO} ${VERSION}
