@@ -1,15 +1,15 @@
 package io.github.jhipster.jdl.ui.modelviewer
 
-import io.github.jhipster.jdl.ide.renderer.IJdlModelViewerRenderer
-import io.github.jhipster.jdl.ide.renderer.JdlModelViewerRenderer
 import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.renderer.IJdlModelViewerRenderer
+import io.github.jhipster.jdl.renderer.JdlModelViewerRenderer
 import net.sourceforge.plantuml.eclipse.utils.AbstractDiagramTextProvider
 import org.eclipse.ui.IEditorInput
 import org.eclipse.ui.IEditorPart
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.eclipse.xtext.ui.editor.model.XtextDocument
 
-import static io.github.jhipster.jdl.ide.renderer.RenderType.*
+import static io.github.jhipster.jdl.renderer.RenderType.*
 
 class JdlDiagramTextProvider extends AbstractDiagramTextProvider {
 

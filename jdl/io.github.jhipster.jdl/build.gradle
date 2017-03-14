@@ -1,7 +1,13 @@
 dependencies {
 	compile "org.eclipse.xtext:org.eclipse.xtext:${xtextVersion}"
 	compile "org.eclipse.xtext:org.eclipse.xtext.xbase:${xtextVersion}"
+	compile "org.eclipse.platform:org.eclipse.core.commands:3.8.0"
+	compile "org.eclipse.platform:org.eclipse.core.resources:3.10.0"
+	compile "org.eclipse.platform:org.eclipse.core.runtime:3.12.0"
+	compile "org.eclipse.platform:org.eclipse.core.resources:3.11.1"
+	compile "net.sourceforge.plantuml:plantuml:8048"
 }
+
 configurations {
 	mwe2 {
 		extendsFrom compile

@@ -2,7 +2,7 @@
     "name": "jdl",
     "displayName": "jdl",
     "description": "JDL VS Code extension",
-    "version": "0.0.1",
+    "version": "1.1.0",
     "publisher": "jhipster",
     "engines": {
         "vscode": "^1.4.0"
@@ -11,7 +11,8 @@
         "Languages"
     ],
     "activationEvents": [
-        "onLanguage:jdl"
+        "onLanguage:jdl",
+        "onCommand:plantuml.preview"
     ],
     "main": "./out/src/extension",
     "contributes": {
@@ -33,6 +34,18 @@
                 "language": "jdl",
                 "scopeName": "text.jdl",
                 "path": "./jdl.tmLanguage"
+            }
+        ],
+        "commands": [
+            {
+                "command": "plantuml.preview",
+                "title": "Preview Plant UML from active editor"
+            }
+        ],    
+        "keybindings": [
+            {
+                "command": "plantuml.preview",
+                "key": "alt+d" 
             }
         ]
     },

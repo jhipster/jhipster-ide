@@ -5,7 +5,7 @@ package ch.itemis.xdocker.web
 
 import ch.itemis.xdocker.XdockerRuntimeModule
 import ch.itemis.xdocker.XdockerStandaloneSetup
-import ch.itemis.xdocker.ide.XdockerIdeModule
+//import ch.itemis.xdocker.ide.XdockerIdeModule
 import com.google.inject.Guice
 import com.google.inject.Injector
 import org.eclipse.xtext.util.Modules2
@@ -18,7 +18,8 @@ class XdockerWebSetup extends XdockerStandaloneSetup {
 	override Injector createInjector() {
 		return Guice.createInjector(
 			Modules2.mixin(
-				new XdockerRuntimeModule, new XdockerIdeModule, new XdockerWebModule
+//				new XdockerRuntimeModule, new XdockerIdeModule, new XdockerWebModule
+				new XdockerRuntimeModule, new XdockerWebModule
 			)
 		)
 	}	
