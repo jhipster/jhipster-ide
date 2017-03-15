@@ -5,37 +5,23 @@ import * as path from 'path';
 import * as child_process from 'child_process';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
+import { LanguageClient } from 'vscode-languageclient';
+import  { DidChangeTextDocumentNotification } from 'vscode-languageclient/lib/protocol';
 
 var process = require('process');
 
 export class PlantUMLRenderer {
     private static PREVIEW_URI = vscode.Uri.parse('plantuml-preview://authority/plantuml-preview');
-    private renderer = new Renderer();
-    private provider = new PreviewProvider(this.renderer);
+    private provider;
 
     public constructor(private ctx: vscode.ExtensionContext) {
     }
 
-    public init() {
-        if (this.checkSetup()) {
-            this.prepareAndRegisterContentProvider();
-            this.prepareAndRegisterCommands();
-            this.prepareEditorListerners();
-        }
-    }
-
-    private checkSetup(): boolean {
-        let ret: boolean = true;
-        let javaexe = child_process.exec('java -version', (error, stdout, stderr) => {
-            if (error !== null) {
-                let msg = `Error executing java: ${error}`;
-                vscode.window.showErrorMessage(msg);
-                ret = false;
-            } else {
-                ret = true;
-            }
-        });
-        return ret;
+    public init(langClient: LanguageClient) {
+        let renderer = new Renderer(langClient);
+        this.provider = new PreviewProvider(renderer)
+        this.prepareAndRegisterContentProvider();
+        this.prepareAndRegisterCommands();
     }
 
     private prepareAndRegisterContentProvider() {
@@ -47,16 +33,9 @@ export class PlantUMLRenderer {
         this.preparePreviewCmd();
     }
 
-    private prepareEditorListerners() {
-        vscode.workspace.onDidSaveTextDocument((e: vscode.TextDocument) => {
-            if (e === vscode.window.activeTextEditor.document)
-                this.provider.update(PlantUMLRenderer.PREVIEW_URI);
-        });
-    }
-
     private preparePreviewCmd() {
         let cmdPreview = vscode.commands.registerCommand('plantuml.preview', () => {
-            let ret = vscode.commands.executeCommand('vscode.previewHtml', PlantUMLRenderer.PREVIEW_URI, vscode.ViewColumn.Two, 'PlantUML Preview');
+            let ret = vscode.commands.executeCommand('vscode.previewHtml', PlantUMLRenderer.PREVIEW_URI, vscode.ViewColumn.Two, 'PlantUML');
             ret.then((ok) => {
                 this.provider.update(PlantUMLRenderer.PREVIEW_URI);
             }, (err) => {
@@ -82,49 +61,48 @@ class PreviewProvider implements vscode.TextDocumentContentProvider {
     }
 
     public update(uri: vscode.Uri) {
+//        this.renderer.sendChangeNotification();
         this.onDidChangeVar.fire(uri);
     }
 
     public provideTextDocumentContent(uri: vscode.Uri, token: vscode.CancellationToken): string | Thenable<string> {
         this.renderer.preview = true;
-        return this.renderer.render();
+        let ret = this.renderer.render();
+        return new Promise((resolve, reject) => {
+            ret.then(
+                r => {
+                    resolve(r);
+                }
+            );
+        });
     }
 }
 
 class Renderer {
     public preview: boolean = true;
-    private static JAR_FILE: string = "./lib/plantuml.jar";
-    private static JAVA_EXE: string = "java";
-    private static BASE_OPTS: string[] = ["-Djava.awt.headless=true", "-jar", Renderer.JAR_FILE];
-    private static DELIM: string[] = ["@startuml", "@enduml"];
-
     private editor: vscode.TextEditor = null;
-    private buff: string = null;
+
+    public constructor(private langClient: LanguageClient) {
+    }
+
+    public sendChangeNotification() {
+        let docuri = this.editor.document.uri.toString(false);
+        this.langClient.sendNotification(DidChangeTextDocumentNotification.type, {
+            textDocument: {
+                uri: docuri,
+                version: this.editor.document.version
+            },
+            contentChanges: [{ text: this.editor.document.getText() }]
+        });
+    }
 
     public render(): Thenable<string> {
         let ret: Thenable<string> = null;
         this.editor = vscode.window.activeTextEditor;
-        if (this.editor.document.languageId === "plaintext" || this.editor.document.languageId === "plantuml") {
-            this.buff = this.editor.document.getText().trim();
-            try {
-                if (this.checkBasicSyntax(this.buff)) {
-                    let args = this.prepareCmdArgs();
-                    ret = this.prepareAndExecCmd(args);
-                } 
-            } finally {
-                this.buff = null;
-            }
-        }
-        this.editor = null;
-        return ret;
-    }
-
-    private checkBasicSyntax(buff: string): boolean {
-        let ret = false;
-        let firstDelim = buff.substr(0, 9).toLowerCase();
-        let lastDelim = buff.slice(-7).toLowerCase();
-        if (Renderer.DELIM[0] === firstDelim && Renderer.DELIM[1] == lastDelim) ret = true;
-        return ret;
+        let [dirName, fsPath] = this.getWorkingPath();
+//        this.sendChangeNotification();
+        let docUri = this.editor.document.uri;
+        return this.toHtml(docUri);
     }
 
     private getWorkingPath(): string[] {
@@ -134,50 +112,24 @@ class Renderer {
             dirName = vscode.workspace.rootPath;
             if (dirName === undefined) {
                 dirName = process.env['HOME'];
-                if (dirName === undefined)
+                if (dirName === undefined) {
                     dirName = process.env['USERPROFILE'];
+                }
             }
             fsPath = dirName + "/" + fsPath;
         }
         return [dirName, fsPath];
     }
 
-    private prepareCmdArgs(): PreparedArgs {
-        let ret = {
-            opts: null,
-            outputFile: null,
-            fileExt: null
-        };
-        let [dirName, fsPath] = this.getWorkingPath();
-        let plantumlOpts = ["-Dplantuml.include.path=\"" + dirName + "\""];
-        if (this.preview) {
-            ret.outputFile = this.editor.document.uri.toString(false).replace('.plantuml', '.png');
-            ret.opts = plantumlOpts.concat(Renderer.BASE_OPTS).concat("-tpng").concat(fsPath).concat(" -o " + ret.outputFile);
-        }
-        return ret;
-    }
-
-    private prepareAndExecCmd(args: PreparedArgs): Thenable<string> {
-        if (this.buff.trim().length === 0) return null;
-        let plantJar = child_process.spawn(Renderer.JAVA_EXE, args.opts);
-        console.log(args.opts);
-        plantJar.stdin.write(this.buff);
-        plantJar.stdin.end();
+    private toHtml(jdl: vscode.Uri): Thenable<string> {
         let ret: Thenable<string> = null;
+        let imageFile = jdl.toString(false).replace('.jdl', '.png');
         if (this.preview) {
             ret = new Promise<string>((res) => {
-                plantJar.stdout.on('close', (close) => {
-                    let html = `<html><body style="background-color:white;"><img src="${args.outputFile}"></body></html>`;
-                    res(html);
-                });
+                let html = `<html><body style="background-color:white;"><img src="${imageFile}"></body></html>`;
+                res(html);
             });
         } 
         return ret;
     }
-}
-
-interface PreparedArgs {
-    opts: string[];
-    outputFile?: string;
-    fileExt?: string;
 }
