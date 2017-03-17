@@ -12,7 +12,7 @@ var process = require('process');
 
 export class PlantUMLRenderer {
     private static PREVIEW_URI = vscode.Uri.parse('plantuml-preview://authority/plantuml-preview');
-    private provider;
+    private provider: PreviewProvider;
 
     public constructor(private ctx: vscode.ExtensionContext) {
     }
@@ -34,7 +34,7 @@ export class PlantUMLRenderer {
     }
 
     private preparePreviewCmd() {
-        let cmdPreview = vscode.commands.registerCommand('plantuml.preview', () => {
+        let cmdPreview = vscode.commands.registerTextEditorCommand('plantuml.preview', () => {
             let ret = vscode.commands.executeCommand('vscode.previewHtml', PlantUMLRenderer.PREVIEW_URI, vscode.ViewColumn.Two, 'PlantUML');
             ret.then((ok) => {
                 this.provider.update(PlantUMLRenderer.PREVIEW_URI);
@@ -61,20 +61,12 @@ class PreviewProvider implements vscode.TextDocumentContentProvider {
     }
 
     public update(uri: vscode.Uri) {
-//        this.renderer.sendChangeNotification();
         this.onDidChangeVar.fire(uri);
     }
 
     public provideTextDocumentContent(uri: vscode.Uri, token: vscode.CancellationToken): string | Thenable<string> {
         this.renderer.preview = true;
-        let ret = this.renderer.render();
-        return new Promise((resolve, reject) => {
-            ret.then(
-                r => {
-                    resolve(r);
-                }
-            );
-        });
+        return this.renderer.render();
     }
 }
 
@@ -85,12 +77,11 @@ class Renderer {
     public constructor(private langClient: LanguageClient) {
     }
 
-    public sendChangeNotification() {
-        let docuri = this.editor.document.uri.toString(false);
+    public sendChangeNotification(uri: string, version: number) {
         this.langClient.sendNotification(DidChangeTextDocumentNotification.type, {
             textDocument: {
-                uri: docuri,
-                version: this.editor.document.version
+                uri: uri,
+                version: version
             },
             contentChanges: [{ text: this.editor.document.getText() }]
         });
@@ -99,10 +90,24 @@ class Renderer {
     public render(): Thenable<string> {
         let ret: Thenable<string> = null;
         this.editor = vscode.window.activeTextEditor;
-        let [dirName, fsPath] = this.getWorkingPath();
-//        this.sendChangeNotification();
-        let docUri = this.editor.document.uri;
-        return this.toHtml(docUri);
+
+        if (this.editor == null || this.editor.document.languageId !== "jdl") {
+            return ret;
+        }
+
+        ret = this.toHtml(this.editor.document.uri);
+        this.editor = null;
+        return ret
+    }
+
+    private toPngFile(file: string): string {
+        var pos = file.lastIndexOf('.jdl');
+        var str = file.substring(0, pos) + '.png';
+        return str;
+    }
+
+    private toUriString(uri: vscode.Uri): string {
+        return uri.toString(false);
     }
 
     private getWorkingPath(): string[] {
@@ -121,14 +126,22 @@ class Renderer {
         return [dirName, fsPath];
     }
 
-    private toHtml(jdl: vscode.Uri): Thenable<string> {
+    private toHtml(uri: vscode.Uri): Thenable<string> {
         let ret: Thenable<string> = null;
-        let imageFile = jdl.toString(false).replace('.jdl', '.png');
+        let imageUri = this.toPngFile(this.toUriString(uri));
+        let imageFile = this.toPngFile(uri.fsPath);
         if (this.preview) {
-            ret = new Promise<string>((res) => {
-                let html = `<html><body style="background-color:white;"><img src="${imageFile}"></body></html>`;
-                res(html);
-            });
+            if (fs.existsSync(imageFile)) {
+                ret = new Promise<string>((res) => {
+                    let html = `<html><body style="background-color:white;"><img src="${imageUri}"></body></html>`;
+                    res(html);
+                });
+            } else {
+                ret = new Promise<string>((res) => {
+                    let html = `<html><body>Image file ${imageFile} not found!</body></html>`;
+                    res(html);
+                });
+            }
         } 
         return ret;
     }
