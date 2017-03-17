@@ -7,8 +7,6 @@
  *******************************************************************************/
 package ch.itemis.xdocker.lib;
 
-import static org.junit.Assert.assertTrue;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -16,11 +14,9 @@ import java.io.InputStream;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
 import org.fusesource.jansi.AnsiOutputStream;
-import org.junit.Before;
 import org.junit.Test;
 
 import com.github.dockerjava.api.DockerClient;
@@ -40,12 +36,7 @@ import junit.framework.TestCase;
  */
 public class TestJHipsterDockerRun extends TestCase {
 
-	protected DockerClient dockerClient;
-
-	@Before
-	public void beforeTest() throws Exception {
-		dockerClient = getDockerClient();
-	}
+	private static DockerClient dockerClient = getDockerClient();
 
 	@Test
 	public void runJHipster() throws Exception {
@@ -87,8 +78,8 @@ public class TestJHipsterDockerRun extends TestCase {
                 .withCmd("yo")
                 .exec();
 
-        Scanner scanner = new Scanner(System.in);
-        String username = scanner.nextLine();
+//        Scanner scanner = new Scanner(System.in);
+//        String username = scanner.nextLine();
         
          completed = dockerClient.execStartCmd(execCreateCmdResponse.getId())
                 .withDetach(false)
@@ -101,7 +92,7 @@ public class TestJHipsterDockerRun extends TestCase {
         System.out.println(stdout.toString("UTF-8"));
 	}
 
-	private DockerClient getDockerClient() {
+	private static DockerClient getDockerClient() {
 		DockerClient dockerClient = DockerClientBuilder.getInstance(config())
 				.withDockerCmdExecFactory(DockerClientBuilder.getDefaultDockerCmdExecFactory()).build();
 		return dockerClient;
