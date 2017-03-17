@@ -39,7 +39,7 @@
         "commands": [
             {
                 "command": "plantuml.preview",
-                "title": "Preview Plant UML from active editor"
+                "title": "Plant UML"
             }
         ],    
         "keybindings": [
