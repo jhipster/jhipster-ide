@@ -24,6 +24,7 @@ import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
+import io.github.jhipster.jdl.jdl.JdlConstant
 
 @ImplementedBy(JdlToPlantUmlRenderer)
 interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
@@ -93,6 +94,10 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			renderJdlObject
 		].join»
 	'''
+
+	def dispatch protected renderJdlObject(JdlConstant const) {
+		'' // opt.setting.renderJdlObject
+	}
 
 	def dispatch protected renderJdlObject(JdlOption opt) {
 		'' // opt.setting.renderJdlObject
