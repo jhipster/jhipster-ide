@@ -126,7 +126,7 @@ JdlMaxBytesValidator:
  * ========================================================================= */
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
-		relationships+=JdlRelationship+ (COMMA relationships+=JdlRelationship)*
+		relationships+=JdlRelationship+ (=>COMMA relationships+=JdlRelationship)*
 	'}';
 
 JdlRelationship:
@@ -146,7 +146,7 @@ enum JdlCardinality:
  * ========================================================================= */
 JdlEnum:
 	'enum' name=ID '{'
-		values+=ID (COMMA values+=ID)*
+		values+=ID (COMMA? values+=ID)*
 	'}';
 
 /* =========================================================================
