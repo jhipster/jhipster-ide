@@ -9,7 +9,7 @@ class JdlModelUtil {
 	@Inject IEObjectDocumentationProvider documentationProvider;
 
 	def String getDocumentation(EObject source) {
-		if (source === null) return null;
+		if (source === null) return '' // prevent NPE
 		val documentation = documentationProvider.getDocumentation(source)
 		return documentation;
 	}
