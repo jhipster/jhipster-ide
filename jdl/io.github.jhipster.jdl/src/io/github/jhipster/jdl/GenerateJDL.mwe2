@@ -37,6 +37,18 @@ Workflow {
 		language = StandardLanguage {
 			name = "io.github.jhipster.jdl.JDL"
 			fileExtensions = "jh,jdl"
+/* 	
+ * Disabled for the moment...
+ * 		
+			fragment = parser.antlr.XtextAntlrGeneratorFragment2 {
+			    antlrParam = "-Xconversiontimeout"
+		      	antlrParam = "10000"
+			    options = {
+			        memoize = true
+					backtrack = true
+			    }
+			}
+*/			
 
 			newProjectWizardForEclipse = {
 				generate = true

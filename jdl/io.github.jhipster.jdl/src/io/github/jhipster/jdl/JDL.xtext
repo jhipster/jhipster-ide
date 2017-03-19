@@ -2,6 +2,8 @@ grammar io.github.jhipster.jdl.JDL with org.eclipse.xtext.common.Terminals
 
 generate jdl "http://www.github.io/jhipster/jdl/JDL"
 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
 /* =========================================================================
  * ROOT
  * ========================================================================= */
@@ -9,14 +11,23 @@ JdlDomainModel:
 	features+=JdlFeature*;
 
 JdlFeature:
-	JdlEntity | JdlEnum | JdlRelationships | JdlOption;
+	JdlConstant | JdlEntity | JdlEnum | JdlRelationships | JdlOption;
+
+/* =========================================================================
+ * CONSTANT
+ * ========================================================================= */
+JdlConstant:
+	name=ID '=' value=INT;
+
+JdlNumericValue:
+	constant=[JdlConstant] | value=INT;
 
 /* =========================================================================
  * ENTITY
  * ========================================================================= */
 JdlEntity:
 	'entity' name=ID ('(' table=ID ')')? ('{'
-		(fields+=JdlEntityField (',' fields+=JdlEntityField)*)?
+		(fields+=JdlEntityField (COMMA? fields+=JdlEntityField)*)?
 	'}')?;
 
 JdlEntityField:
@@ -65,7 +76,7 @@ JdlBlobFieldType:
 	element=JdlBlobTypes validators+=JdlBlobValidators*;
 
 enum JdlBlobTypes:
-	Blob | AnyBlob | ImageBlob;
+	Blob | AnyBlob | ImageBlob | TextBlob;
 
 /* =========================================================================
  * VALIDATOR
@@ -90,32 +101,32 @@ JdlRequiredValidator:
 	required?='required';
 
 JdlMinLengthValidator:
-	'minlength' '(' value=INT ')';
+	'minlength' '(' value=JdlNumericValue ')';
 
 JdlMaxLengthValidator:
-	'maxlength' '(' value=INT ')';
+	'maxlength' '(' value=JdlNumericValue ')';
 
 JdlPatternValidator:
 	'pattern' '(' value=STRING ')';
 
 JdlMinValidator:
-	'min' '(' value=INT ')';
+	'min' '(' value=JdlNumericValue ')';
 
 JdlMaxValidator:
-	'max' '(' value=INT ')';
+	'max' '(' value=JdlNumericValue ')';
 
 JdlMinBytesValidator:
-	'minbytes' '(' value=INT ')';
+	'minbytes' '(' value=JdlNumericValue ')';
 
 JdlMaxBytesValidator:
-	'maxbytes' '(' value=INT ')';
+	'maxbytes' '(' value=JdlNumericValue ')';
 
 /* =========================================================================
  * RELATIONSHIP
  * ========================================================================= */
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
-		relationships+=JdlRelationship+ (',' relationships+=JdlRelationship)*
+		relationships+=JdlRelationship+ (=>COMMA relationships+=JdlRelationship)*
 	'}';
 
 JdlRelationship:
@@ -135,7 +146,7 @@ enum JdlCardinality:
  * ========================================================================= */
 JdlEnum:
 	'enum' name=ID '{'
-		values+=ID (',' values+=ID)*
+		values+=ID (COMMA? values+=ID)*
 	'}';
 
 /* =========================================================================
@@ -165,7 +176,7 @@ JdlExceptEntityExclusion:
 	'except' selection=JdlEntitySelection;
 
 JdlEntitySelection:
-	entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
+	entities+=[JdlEntity] (COMMA entities+=[JdlEntity])*;
 
 JdlWildcardPredicate:
 	wildcard?='*' | all?='all';
@@ -236,3 +247,8 @@ JdlAngularSuffixOption returns JdlOptionSetting:
 JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
+/* =========================================================================
+ * TERMINALS
+ * ========================================================================= */
+terminal COMMA returns ecore::EString:
+	',';

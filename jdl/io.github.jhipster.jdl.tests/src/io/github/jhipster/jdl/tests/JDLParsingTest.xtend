@@ -18,6 +18,7 @@ import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import io.github.jhipster.jdl.util.JdlModelUtil
 
 @RunWith(XtextRunner)
 @InjectWith(JDLInjectorProvider)
@@ -25,6 +26,7 @@ class JDLParsingTest{
 
 	@Inject extension ParseHelper<JdlDomainModel> parseHelper
 	@Inject extension ValidationTestHelper
+	@Inject extension JdlModelUtil
 
 	@Test 
 	def void loadModel() {
@@ -154,6 +156,10 @@ class JDLParsingTest{
 					assertFalse(fields.isNullOrEmpty)
 					assertTrue(fields.size == 3)
 					assertTrue(fields.map[name].containsAll(#['startDate', 'endDate', 'language']))
+				]
+				filter[name.equals('Employee')].last => [
+					assertNotNull(it)
+					assertEquals('The Employee entity.'.toString, it.documentation)					
 				]
 			]
 			filter(JdlEnum) => [
