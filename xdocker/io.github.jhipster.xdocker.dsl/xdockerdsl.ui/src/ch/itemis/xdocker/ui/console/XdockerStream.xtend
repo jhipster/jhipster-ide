@@ -20,6 +20,9 @@ class XdockerStream extends OutputStream {
 	private val List<String> buffer = new ArrayList
 
 	new(IConsoleLogger logger) {
+		if (logger === null) {
+			throw new IllegalArgumentException('argument "logger" cannot be null!')
+		}
 		this.logger = logger
 	}
 
