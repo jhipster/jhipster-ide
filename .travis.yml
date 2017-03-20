@@ -10,18 +10,9 @@ jdk:
 
 before_install:
   - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-  - source ~/.nvm/nvm.sh
-  - wget https://archive.apache.org/dist/maven/maven-3/3.3.3/binaries/apache-maven-3.3.3-bin.tar.gz
-  - tar zxvf apache-maven-3.3.3-bin.tar.gz
-  - chmod +x apache-maven-3.3.3/bin/mvn
-  - export M2_HOME=$PWD/apache-maven-3.3.3
-  - export PATH=$PWD/apache-maven-3.3.3/bin:${PATH}
-  - hash -r
 
 before_script:
-  - export M2_HOME=$PWD/apache-maven-3.3.3
-  - export PATH=$PWD/apache-maven-3.3.3/bin:${PATH}
-  - hash -r
+  - source ~/.nvm/nvm.sh
 
 cache:
   directories:
@@ -29,7 +20,7 @@ cache:
 
 install:
   - java -version
-  - mvn -version 
+  - ./mvnw -version 
   - nvm install 7.2.0 && node --version
 
 addons:
@@ -50,7 +41,7 @@ before_script:
 - npm install -g vsce
 
 script:
-- mvn clean install # && mvn package -Pproduct
+- ./mvnw clean install # && ./mvnw package -Pproduct
 - cd jdl && ./gradlew clean installServer
 - cd io.github.jhipster.jdl.vscode && npm install && vsce package
 
