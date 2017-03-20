@@ -9,7 +9,7 @@
   </validationSets>
   <validationSets label="Base" extends="//@validationSets[label='JHipster-Xdocker']">
     <contributions label="Base">
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0/">
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">
         <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.10.0"/>
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.10.0"/>
         <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
