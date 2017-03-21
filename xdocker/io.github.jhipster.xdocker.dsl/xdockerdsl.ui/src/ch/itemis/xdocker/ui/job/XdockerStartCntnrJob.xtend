@@ -61,6 +61,7 @@ class XdockerStartCntnrJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_STOP_CONTAINER, ex)
 				log('''«ERR_STOP_CONTAINER»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last

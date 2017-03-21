@@ -61,6 +61,7 @@ class XdockerRemoveImageJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, XdockerRemoveImageJob.ERR_RM_IMAGE, ex)
 				log('''«XdockerRemoveImageJob.ERR_RM_IMAGE»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last

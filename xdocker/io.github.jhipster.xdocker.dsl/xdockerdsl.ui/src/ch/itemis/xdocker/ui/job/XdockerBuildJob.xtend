@@ -105,6 +105,7 @@ class XdockerBuildJob extends XdockerGenerateJob {
 				log('''«ERR_BUILDING_IMAGE» in «buildFolder»''')
 				log(ex.message)
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_BUILDING_IMAGE, ex)
+				cancel
 			}
 		]
 		return result.pop

@@ -66,6 +66,7 @@ class XdockerGenerateJob extends AbstractXdockerJob {
 			log(msg(XdockerGenerateJob.ERR_GENERATING_DOCKERFILE))
 			log(ex.message)
 			result.push(new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_GENERATING_DOCKERFILE, ex))
+			cancel
 		}
 		return result.pop
 	}
