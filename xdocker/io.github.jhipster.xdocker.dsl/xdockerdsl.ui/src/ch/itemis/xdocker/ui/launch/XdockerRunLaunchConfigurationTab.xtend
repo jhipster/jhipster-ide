@@ -169,7 +169,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
 	}	
 
 	def private Group createPortSpecEditor(Composite parent) {
-		return createGroup(parent, 'Port Spec (-p ...):', 2, 1, GridData.FILL_HORIZONTAL) => [group|
+		return createGroup(parent, 'Ports (<host_port1>:<container_port1> <host_port2>:<container_port2>):', 2, 1, GridData.FILL_HORIZONTAL) => [group|
 			group.enabled = true
 			portSpecText = createSingleText(group, 1) => [
 				addModifyListener = listener
@@ -179,7 +179,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
 	}	
 
 	def private Group createEnvEditor(Composite parent) {
-		return createGroup(parent, 'Envs (-e ENV1=foo ENV2=bar):', 2, 1, GridData.FILL_HORIZONTAL) => [group|
+		return createGroup(parent, 'Envs (USR=root PWD=secret ...):', 2, 1, GridData.FILL_HORIZONTAL) => [group|
 			group.enabled = true
 			envText = createSingleText(group, 1) => [
 				addModifyListener = listener
