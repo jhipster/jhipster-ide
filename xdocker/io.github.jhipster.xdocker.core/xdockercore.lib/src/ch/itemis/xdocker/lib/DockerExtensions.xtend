@@ -269,6 +269,7 @@ class DockerExtensions {
 				.withAttachStderr(attachStderr)
 				.withPublishAllPorts(publishAllPorts)
 				.withPortSpecs(portSpecs)
+				.withEnv(envs)
 				.withName(name)
 			}
 		]

@@ -23,6 +23,7 @@ class DockerRunConfig implements Serializable {
 	val Boolean hasParams
 	val String name
 	val String[] portSpecs
+	val String[] envs
 	val Boolean tty
 	val Boolean detached
 	val Boolean keepStdinOpen

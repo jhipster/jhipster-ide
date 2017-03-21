@@ -59,6 +59,7 @@ class XdockerRunLaunchShortcut extends AbstractXdockerLaunchShortcut {
 	public static val ATTR_PARAMS = defAttr.apply('hasParams')
 	public static val ATTR_NAME = defAttr.apply('name')
 	public static val ATTR_PORT_SPEC = defAttr.apply('port_spec')
+	public static val ATTR_ENV = defAttr.apply('env')
 	public static val ATTR_TTY = defAttr.apply('tty')
 	public static val ATTR_DETACHED = defAttr.apply('detached')
 	public static val ATTR_STDIN = defAttr.apply('stdin')
@@ -72,6 +73,7 @@ class XdockerRunLaunchShortcut extends AbstractXdockerLaunchShortcut {
 	val Boolean hasParams
 	val String name
 	val String[] portSpecs
+	val String[] envs
 	val Boolean tty
 	val Boolean detached
 	val Boolean stdin
@@ -113,6 +115,7 @@ class XdockerRunLaunchShortcut extends AbstractXdockerLaunchShortcut {
 		val hasParams = getAttribute(ATTR_PARAMS, false)
 		val name = getAttribute(ATTR_NAME, '')
 		val portSpecs = getAttribute(ATTR_PORT_SPEC, '').split(' ')
+		val envs = getAttribute(ATTR_ENV, '').split(' ')
 		val tty = hasParams && getAttribute(ATTR_TTY, false)
 		val detached = hasParams && getAttribute(ATTR_DETACHED, false)
 		val stdin = hasParams && getAttribute(ATTR_STDIN, false)
@@ -121,7 +124,7 @@ class XdockerRunLaunchShortcut extends AbstractXdockerLaunchShortcut {
 		val publishPorts = hasParams && getAttribute(ATTR_PUPLISH_PORTS, false)
 		val remove = hasParams && getAttribute(ATTR_REMOVE, false)
 		return new DockerRunConfig(
-			image, command, hasParams, name, portSpecs, tty, detached,  
+			image, command, hasParams, name, portSpecs, envs, tty, detached,  
 			stdin, attachStdout, attachStderr, publishPorts, remove
 		)
 	}
