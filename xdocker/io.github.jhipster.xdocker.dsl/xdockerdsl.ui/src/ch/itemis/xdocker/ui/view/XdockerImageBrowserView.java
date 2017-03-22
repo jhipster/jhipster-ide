@@ -285,8 +285,7 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 		Shell shell = Display.getDefault().getActiveShell();
 		ILaunchConfiguration config = findLaunchConfig(image);
 		if (config == null) {
-			config = new XdockerRunLaunchConfigData(image, null, null, null, null, null, null, null, null, null, null,
-					null).createConfiguration();
+			config = new XdockerRunLaunchConfigData(image, null, null, null, null, null, null, null, null, null, null, null, null).createConfiguration();
 		}
 		LaunchConfigurationDialog dialog = new LaunchConfigurationDialog(shell, config, getLaunchGroup());
 		dialog.setInitialSelection(new StructuredSelection(config));

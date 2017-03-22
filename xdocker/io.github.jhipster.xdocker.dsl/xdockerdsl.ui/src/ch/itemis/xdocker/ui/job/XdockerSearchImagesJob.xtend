@@ -66,6 +66,7 @@ class XdockerSearchImagesJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_SEARCHING, ex)
 				log('''«ERR_SEARCHING»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last

@@ -79,15 +79,15 @@ class XdockerContainerSearchForm extends AbstractForm {
 								for (port : ports) {
 									if(sb.length > 0) sb.append(",")
 									if(hasIP = isNotBlank(port.getIp())) sb.append(port.ip)
-									if (hasPrivPort = (port.privatePort != null)) {
+									if (hasPrivPort = (port.privatePort !== null)) {
 										if(hasIP) sb.append(":")
 										sb.append(String.valueOf(port.privatePort))
 									}
-									if (port.publicPort != null) {
+									if (port.publicPort !== null) {
 										if(hasIP || hasPrivPort) sb.append("->")
 										sb.append(String.valueOf(port.publicPort))
 									}
-									if (port.type != null) {
+									if (port.type !== null) {
 										sb.append("/")
 										sb.append(port.getType())
 									}

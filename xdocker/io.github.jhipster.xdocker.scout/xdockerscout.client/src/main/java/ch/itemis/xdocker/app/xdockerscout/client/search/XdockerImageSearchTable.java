@@ -133,6 +133,7 @@ public abstract class XdockerImageSearchTable extends AbstractGroupBox {
 							true,
 							"",
 							new String[]{"8080"},
+							new String[]{}, // empty envs
 							false,
 							false,
 							false,

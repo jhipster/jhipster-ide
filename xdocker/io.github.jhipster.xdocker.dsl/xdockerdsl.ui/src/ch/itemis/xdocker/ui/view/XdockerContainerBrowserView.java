@@ -9,10 +9,12 @@ package ch.itemis.xdocker.ui.view;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -23,6 +25,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.ViewForm;
 import org.eclipse.swt.events.MenuDetectEvent;
 import org.eclipse.swt.events.MenuDetectListener;
+import org.eclipse.swt.events.MenuEvent;
+import org.eclipse.swt.events.MenuListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
@@ -37,6 +41,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
 
 import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ContainerPort;
@@ -65,6 +70,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 	private MenuItem removeMenu;
 	private MenuItem stopMenu;
 	private MenuItem startMenu;
+	private MenuItem openMenu;
 	private MenuItem selectAllMenu;
 	private MenuItem logsMenu;
 
@@ -150,6 +156,18 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 
 		tableMenu = new Menu(parent.getShell(), SWT.POP_UP);
 		table.setMenu(tableMenu);
+		tableMenu.addMenuListener(new MenuListener() {
+			@Override
+			public void menuShown(MenuEvent e) {
+				TableItem [] item = table.getSelection();
+				try {
+					Map<Integer, Integer> ports = toPorts(item[0].getText(5));
+					openMenu.setEnabled(table.getSelectionCount() == 1 && !ports.isEmpty() && ports.get(8080) != null);
+				} catch (Exception ex) { }
+			}
+			@Override
+			public void menuHidden(MenuEvent e) {}
+		});
 
 		selectAllMenu = new MenuItem(tableMenu, SWT.PUSH);
 		selectAllMenu.setText("Select All");
@@ -172,6 +190,15 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		stopMenu.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				stopSelectedContainers();
+			}
+		});
+
+		openMenu = new MenuItem(tableMenu, SWT.PUSH);
+		openMenu.setText("Open");
+		openMenu.setEnabled(false);
+		openMenu.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				openSelectedContainers();
 			}
 		});
 
@@ -229,6 +256,24 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		if (table.getSelectionIndex() < 0)
 			return;
 		stopSelectedContainers(table.getSelection());
+	}
+
+	private void openSelectedContainers() {
+		if (table.getSelectionIndex() < 0)
+			return;
+		openSelectedContainers(table.getSelection());
+	}
+
+	private void openSelectedContainers(TableItem[] items) {
+		for (TableItem item : table.getSelection()) {
+			try {
+				Map<Integer, Integer> ports = toPorts(item.getText(5));
+				URL url = new URL("http://localhost:" + ports.get(8080));
+				PlatformUI.getWorkbench().getBrowserSupport().getExternalBrowser().openURL(url);
+			} catch (Exception e) {
+				System.err.println("Could not open browser: " + e.getMessage());
+			}
+		}
 	}
 
 	private void stopSelectedContainers(TableItem[] items) {
@@ -334,28 +379,29 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 					elements.add(container.getStatus());
 					StringBuffer ports = new StringBuffer();
 					for (ContainerPort port : container.getPorts()) {
-						boolean hasIP, hasPrivPort;
+						boolean hasIP, hasPublPort;
 						if (hasIP = isNotBlank(port.getIp())) {
 							ports.append(port.getIp());
 						}
-						if (hasPrivPort = port.getPrivatePort() != null) {
+						if (hasPublPort = port.getPublicPort() != null) {
 							if (hasIP) {
 								ports.append(":");
 							}
-							ports.append(String.valueOf(port.getPrivatePort()));
+							ports.append(String.valueOf(port.getPublicPort()));
 						}
-						if (port.getPublicPort() != null) {
-							if (hasIP || hasPrivPort) {
+						if (port.getPrivatePort() != null) {
+							if (hasIP || hasPublPort) {
 								ports.append("->");
 							}
-							ports.append(String.valueOf(port.getPublicPort()));
+							ports.append(String.valueOf(port.getPrivatePort()));
 						}
 						if (port.getType() != null) {
 							ports.append("/");
 							ports.append(port.getType());
 						}
+						ports.append(", ");
 					}
-					elements.add(ports.toString());
+					elements.add(ports.toString().endsWith(", ") ? ports.toString().substring(0, ports.toString().length() - 2) : ports.toString());
 					elements.add(StringUtils.join(container.getNames()));
 					item.setText(elements.toArray(new String[] {}));
 				}
@@ -418,5 +464,22 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 				return true;
 		}
 		return false;
+	}
+	
+	private Map<Integer, Integer> toPorts(String portsDef) {
+		Map<Integer, Integer> result = new HashMap<>();
+		if (portsDef != null && !portsDef.isEmpty()) {
+			String[] portPairs = portsDef.split(",");
+			for (String portPair : portPairs) {
+				String[] ports = portPair.split("->");
+				String localPort = ports[0];
+				if (localPort.contains(":")) {
+					localPort = localPort.split(":")[1].replaceAll("\\D+", "");
+				}
+				Integer dockerPort = Integer.valueOf(ports[1].replaceAll("\\D+", ""));
+				result.put(dockerPort, Integer.valueOf(localPort));
+			}
+		}
+		return result;
 	}
 }

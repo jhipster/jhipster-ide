@@ -81,6 +81,7 @@ class XdockerShowLogsJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, XdockerShowLogsJob.ERR_GETTING_LOGS, ex)
 				log('''«XdockerShowLogsJob.ERR_GETTING_LOGS»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last

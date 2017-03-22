@@ -271,6 +271,7 @@ class DockerExtensions {
 				.withPortSpecs(portSpecs)
 				.withName(name)
 			}
+			if (!envs.isNullOrEmpty && !envs.get(0).isNullOrEmpty) run.withEnv(envs)
 		]
 		// create and start container command
 		val container = try (cmd.exec => [

@@ -61,6 +61,7 @@ class XdockerRemoveCntnrJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, XdockerRemoveCntnrJob.ERR_RM_CONTAINER, ex)
 				log('''«XdockerRemoveCntnrJob.ERR_RM_CONTAINER»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last

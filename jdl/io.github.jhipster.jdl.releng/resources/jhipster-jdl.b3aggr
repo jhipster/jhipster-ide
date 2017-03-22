@@ -9,7 +9,7 @@
   </validationSets>
   <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
     <contributions label="Base">
-      <repositories location="http://plantuml.sourceforge.net/updatesite/">
+      <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7"/>
       </repositories>
       <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">

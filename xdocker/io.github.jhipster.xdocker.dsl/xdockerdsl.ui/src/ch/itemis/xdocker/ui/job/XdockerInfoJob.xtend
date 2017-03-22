@@ -94,6 +94,7 @@ class XdockerInfoJob extends AbstractXdockerJob {
 				result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_GETTING_INFO, ex)
 				log('''«ERR_GETTING_INFO»''')
 				log(ex.message)
+				cancel
 			}
 		]
 		return result.last
