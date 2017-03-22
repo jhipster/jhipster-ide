@@ -16,7 +16,7 @@
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.11.0"/>
         <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.11.0"/>
       </repositories>
-      <repositories location="http://plantuml.sourceforge.net/updatesite/">
+      <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
       <repositories location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/">
