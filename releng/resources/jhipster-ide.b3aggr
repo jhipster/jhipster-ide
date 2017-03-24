@@ -13,17 +13,20 @@
   <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
     <contributions label="Base">
       <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">
+        <bundles name="org.eclipse.xtext.common.types" versionRange="2.11.0"/>
+        <bundles name="org.eclipse.xtext.xbase" versionRange="2.11.0"/>
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.11.0"/>
         <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.11.0"/>
       </repositories>
       <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/">
-        <bundles name="org.objectweb.asm" versionRange="5.0.1.v201404251740"/>
+      <repositories location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/">
+        <bundles name="org.objectweb.asm" versionRange="5.0.1"/>
       </repositories>
     </contributions>
-    <validationRepositories location="http://download.eclipse.org/releases/neon"/>
+    <validationRepositories location="http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/"/>
+    <validationRepositories location="http://download.eclipse.org/releases/neon/"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>

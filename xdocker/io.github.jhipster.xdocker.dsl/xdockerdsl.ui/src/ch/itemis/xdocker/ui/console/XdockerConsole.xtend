@@ -33,7 +33,6 @@ final class XdockerConsole extends IOConsole {
 		override void openConsole() {
 			INSTANCE.showConsoleView
 		}
-		
 	}
 
 	def static consoleManager() {

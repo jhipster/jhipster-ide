@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.google.inject.Inject
 import java.util.Arrays
 import java.util.List
@@ -34,7 +33,6 @@ class XdockerRemoveCntnrJob extends AbstractXdockerJob {
 	@Accessors var List<String> containerIds = newArrayList
 
 	@Inject extension DockerExtensions docker
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	new(String containerId) {
 		this(Arrays.asList(containerId))
