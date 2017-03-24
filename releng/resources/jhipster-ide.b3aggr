@@ -13,10 +13,17 @@
   <validationSets label="Base" extends="//@validationSets[label='JHipster-IDE']">
     <contributions label="Base">
       <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">
-        <bundles name="org.eclipse.xtext.common.types" versionRange="2.11.0"/>
-        <bundles name="org.eclipse.xtext.xbase" versionRange="2.11.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.11.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.11.0"/>
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.1.1.v20170124-1237"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.docs.feature.group" versionRange="2.11.0.v20170130-0818"/>
+        <features name="org.eclipse.xtext.examples.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.redist.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.ui.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.xbase.feature.group" versionRange="2.11.0.v20170201-0242"/>
+        <features name="org.eclipse.xtext.xbase.lib.feature.group" versionRange="2.11.0.v20170124-1424"/>
+        <features name="org.eclipse.xtext.xtext.ui.feature.group" versionRange="2.11.0.v20170201-0242"/>
       </repositories>
       <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
