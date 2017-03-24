@@ -48,3 +48,4 @@ Install "cbornet.jdl" extension in Visual Studio Code.
 - IntelliJ IDEA
 - Web integration with AngularJS
 - Support for other tools supporting LSP such as Eclipse Che 
+
