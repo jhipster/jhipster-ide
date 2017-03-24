@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
-import com.google.inject.Inject
 import java.util.Map
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.IStatus
@@ -29,7 +28,7 @@ abstract class AbstractXdockerJob extends Job {
 
 	@Accessors private var Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block
 
-	@Inject protected extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
+	protected extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 	
 	new(String name) {
 		super(name)

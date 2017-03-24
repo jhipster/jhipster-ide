@@ -33,7 +33,7 @@ final class XdockerConsoleLogger implements IConsoleLogger {
 		if (console === null) {
 			throw new IllegalStateException('Could not initialize console!')
 		}
-		redirect
+//		redirect
 		console.showConsoleView		
 	}
 
@@ -45,7 +45,7 @@ final class XdockerConsoleLogger implements IConsoleLogger {
 		console.clearConsole
 	}
 
-	private def void redirect() {
+	protected def void redirect() {
 		val xdockerAppender = new WriterAppender(new PatternLayout, new XdockerStream(this))
 		Logger.rootLogger.addAppender(xdockerAppender)
 		if (System.properties.containsKey('xdocker.log.stdout')) {
