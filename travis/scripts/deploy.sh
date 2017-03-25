@@ -12,3 +12,5 @@ cd $BUILD_DIR
 java -version
 ./mvnw -version
 node --version
+cd $TRAVIS_BUILD_DIR/io.github.jhipster.jdl.vscode 
+npm install && vsce package
