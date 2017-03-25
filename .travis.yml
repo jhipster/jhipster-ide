@@ -42,10 +42,6 @@ script:
   - cd $TRAVIS_BUILD_DIR && ./mvnw clean install
   - cd $TRAVIS_BUILD_DIR/jdl && ./gradlew clean installServer
 
-after_success:
-  - cd $TRAVIS_BUILD_DIR && ./mvnw clean package -Pproduct
-  - # cd $TRAVIS_BUILD_DIR/io.github.jhipster.jdl.vscode && npm install && vsce package
-
 before_deploy:
   - cd $TRAVIS_BUILD_DIR && chmod +x ./travis/scripts/deploy.sh
 
