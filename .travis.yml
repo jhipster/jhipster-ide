@@ -39,9 +39,6 @@ script:
   - ./mvnw clean install
   - cd jdl && ./gradlew clean installServer
 
-after_success:
-  - cd io.github.jhipster.jdl.vscode && npm install && vsce package
-
 deploy:
   - provider: script
     skip_cleanup: true
