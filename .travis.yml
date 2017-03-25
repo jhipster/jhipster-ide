@@ -1,5 +1,5 @@
 notifications:
-   email: true
+   email: false
     
 os:
   - linux
