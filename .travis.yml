@@ -38,17 +38,18 @@ env:
 script:
   - ./mvnw clean install
   - cd jdl && ./gradlew clean installServer
+  - cd $TRAVIS_BUILD_DIR
 
 deploy:
   - provider: script
     skip_cleanup: true
-    script: travis/scripts/deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG
+    script: ./travis/scripts/deploy.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG
     on:
        tags: true
        branch: master
   - provider: script
     skip_cleanup: true
-    script: travis/deploy.sh $TRAVIS_BUILD_DIR
+    script: ./travis/deploy.sh $TRAVIS_BUILD_DIR
     on:
        tags: false
        branch: master
