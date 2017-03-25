@@ -427,7 +427,6 @@
 	</extension>
 	<extension point="net.sourceforge.plantuml.eclipse.diagramTextProvider">
 	   <diagramTextProvider
-	   fileExtensions="jdl,jh"
 	        providerClass="io.github.jhipster.jdl.ui.modelviewer.JdlDiagramTextProvider">
 	   </diagramTextProvider>
 	</extension>	

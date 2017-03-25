@@ -7,6 +7,7 @@
  *******************************************************************************/
 package ch.itemis.xdocker.ui.job
 
+import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import java.util.Map
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.IStatus
@@ -26,6 +27,8 @@ import static extension org.apache.commons.beanutils.BeanUtils.*
 abstract class AbstractXdockerJob extends Job {
 
 	@Accessors private var Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block
+
+	protected extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 	
 	new(String name) {
 		super(name)

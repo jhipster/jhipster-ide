@@ -39,7 +39,6 @@ class XdockerBuildJob extends XdockerGenerateJob {
 	static val MSG_BUILDING_IMAGE = TASK_BUILDING_IMAGE+'\n'
 
 	extension DockerExtensions docker
-	extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	@Accessors var DockerBuildImageConfig dockerCfg
 

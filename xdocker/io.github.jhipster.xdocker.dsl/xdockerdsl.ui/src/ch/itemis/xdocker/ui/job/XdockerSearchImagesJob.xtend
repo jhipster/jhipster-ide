@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.google.inject.Inject
 import java.util.Stack
 import org.eclipse.core.runtime.IProgressMonitor
@@ -33,7 +32,6 @@ class XdockerSearchImagesJob extends AbstractXdockerJob {
 	@Accessors var boolean local = false
 
 	@Inject extension DockerExtensions docker
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	new() {
 		this(null) // term must be initialized afterwards...

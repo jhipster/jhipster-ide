@@ -366,14 +366,16 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 					PrettyTime pt = new PrettyTime();
 					for (Object obj : images) {
 						Image image = obj instanceof Image ? (Image) obj : null;
-						if (image == null)
-							return;
+						if (image == null) return;
 						TableItem item = new TableItem(table, SWT.NONE);
 						List<String> elements = new ArrayList<String>();
-						String[] repoTag = image.getRepoTags()[0].split(":");
-						elements.add(repoTag[0]);
-						elements.add(repoTag[1]);
-						elements.add(image.getId().substring(0, 12));
+						String tagFragment = image.getRepoTags() != null && image.getRepoTags().length > 0 ? image.getRepoTags()[0] : null;
+						String[] repoTag = tagFragment != null ? image.getRepoTags()[0].split(":") : null;
+						if (repoTag != null) {
+							if (repoTag.length > 0) elements.add(repoTag[0]);
+							if (repoTag.length > 1) elements.add(repoTag[1]);
+						}
+						if (image.getId() != null && image.getId().length() >= 12) elements.add(image.getId().substring(0, 12));
 						elements.add(pt.format(new Date(image.getCreated() * 1000)));
 						elements.add(String.valueOf(image.getVirtualSize()));
 						item.setText(elements.toArray(new String[] {}));
@@ -386,8 +388,7 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 				List<SearchItem> images = (List<SearchItem>) status.getArgument();
 				for (Object obj : images) {
 					SearchItem image = obj instanceof SearchItem ? (SearchItem) obj : null;
-					if (image == null)
-						return;
+					if (image == null) return;
 					TableItem item = new TableItem(table, SWT.NONE);
 					List<String> elements = new ArrayList<String>();
 					elements.add(image.getName());
@@ -395,13 +396,13 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 					elements.add(String.valueOf(image.getStarCount()));
 					elements.add(String.valueOf(image.isOfficial()));
 					elements.add(String.valueOf(image.isTrusted()));
-					item.setText(elements.toArray(new String[] {}));
+					item.setText(elements.toArray(new String[]{}));
 				}
 			}
 			// resize columns
 			for (int i = 0, n = table.getColumnCount(); i < n; i++) {
-				if (isLocal() || i != 1) { // skip description because could be
-					// too long...
+				if (isLocal() || i != 1) { 
+					// skip description because could be too long...
 					table.getColumn(i).pack();
 				}
 			}

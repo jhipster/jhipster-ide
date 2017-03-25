@@ -33,10 +33,11 @@ import static extension ch.itemis.xdocker.ui.job.AbstractXdockerJob.*
  * @author Serano Colameo - Initial contribution and API
  */
 class XdockerBuildImageLaunchDelegate extends LaunchConfigurationDelegate {
-	val static console = XdockerConsoleLogger.INSTANCE
 	val static ERR_TITLE = 'Error launching Docker Build Image Job'
 	val static ERR_MSG = 'Wrong launcher definition - project and Xdocker file must be defined and accessible!'	
 	
+	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
+
     @Inject protected XdockerGeneratorHelper generator
 
     new() {
@@ -68,6 +69,7 @@ class XdockerBuildImageLaunchDelegate extends LaunchConfigurationDelegate {
 						}
 					}
 				]
+				console = null
 			]
 		} else Display.^default.asyncExec [
 			error(ERR_TITLE, ERR_MSG)

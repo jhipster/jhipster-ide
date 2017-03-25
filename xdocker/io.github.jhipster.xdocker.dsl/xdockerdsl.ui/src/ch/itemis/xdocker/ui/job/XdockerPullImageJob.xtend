@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.github.dockerjava.api.model.PullResponseItem
 import com.github.dockerjava.core.command.PullImageResultCallback
 import com.google.inject.Inject
@@ -35,7 +34,6 @@ class XdockerPullImageJob extends AbstractXdockerJob {
 	@Accessors var List<String> images
 
 	@Inject extension DockerExtensions docker
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	new(List<String> images) {
 		super(JOB_NAME)

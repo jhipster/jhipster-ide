@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.github.dockerjava.api.model.Frame
 import com.github.dockerjava.core.command.LogContainerResultCallback
 import com.google.inject.Inject
@@ -37,7 +36,6 @@ class XdockerShowLogsJob extends AbstractXdockerJob {
 	@Accessors var List<String> containerIds = newArrayList
 
 	@Inject extension DockerExtensions docker
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	new(List<String> containerIds) {
 		super(JOB_NAME)

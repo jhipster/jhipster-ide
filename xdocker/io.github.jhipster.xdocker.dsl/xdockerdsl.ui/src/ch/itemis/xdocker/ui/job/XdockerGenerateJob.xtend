@@ -7,9 +7,7 @@
  *******************************************************************************/
 package ch.itemis.xdocker.ui.job
 
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import ch.itemis.xdocker.ui.util.XdockerGeneratorHelper
-import com.google.inject.Inject
 import java.util.Stack
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.IProgressMonitor
@@ -34,8 +32,7 @@ class XdockerGenerateJob extends AbstractXdockerJob {
 	private static val MSG_GENERATING_DOCKERFILE = TASK_GENERATING_DOCKERFILE + ':'
 
     @Accessors extension XdockerGeneratorHelper generator
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
-
+    
 	new() {
 		super(JOB_NAME)
 	}

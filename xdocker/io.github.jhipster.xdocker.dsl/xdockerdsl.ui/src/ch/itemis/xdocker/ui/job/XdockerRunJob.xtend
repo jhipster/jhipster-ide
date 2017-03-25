@@ -9,7 +9,6 @@ package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
 import ch.itemis.xdocker.lib.config.DockerRunConfig
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.github.dockerjava.api.model.Frame
 import com.github.dockerjava.core.command.LogContainerResultCallback
 import com.google.inject.Inject
@@ -35,7 +34,6 @@ class XdockerRunJob extends AbstractXdockerJob {
 	private static val TASK_RUN_CMD = 'Running command in docker...\n'
 	
 	@Inject extension DockerExtensions docker
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
 	@Accessors var String image
 	@Accessors var String command
