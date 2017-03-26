@@ -36,7 +36,7 @@ class XdockerBuildImageLaunchDelegate extends LaunchConfigurationDelegate {
 	val static ERR_TITLE = 'Error launching Docker Build Image Job'
 	val static ERR_MSG = 'Wrong launcher definition - project and Xdocker file must be defined and accessible!'	
 	
-	@Inject extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
+	extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 
     @Inject protected XdockerGeneratorHelper generator
 

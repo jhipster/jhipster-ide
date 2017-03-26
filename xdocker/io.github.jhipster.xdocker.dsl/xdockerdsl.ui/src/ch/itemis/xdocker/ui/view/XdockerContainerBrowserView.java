@@ -473,18 +473,28 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 				String[] portPairs = portsDef.split(",");
 				for (String portPair : portPairs) {
 					String[] ports = portPair.split("->");
+					if (ports == null || ports.length < 2) continue;
 					String localPort = ports[0];
-					if (localPort.contains(":")) {
-						localPort = localPort.split(":")[1].replaceAll("\\D+", "");
-					} else {
-						localPort = localPort.replaceAll("\\D+", "");
+					if (localPort.contains(":")) localPort = localPort.split(":")[1];
+					Integer localPortNumber = toPortNumber(localPort);
+					Integer dockerPortNumber = toPortNumber(ports[1]);
+					if (dockerPortNumber != null && localPortNumber != null) {
+						result.put(dockerPortNumber, localPortNumber);
 					}
-					Integer dockerPort = Integer.valueOf(localPort.trim());
-					result.put(dockerPort, Integer.valueOf(localPort));
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	private Integer toPortNumber(String port) {
+		Integer result;
+		try {
+			result = Integer.valueOf(port.trim().replaceAll("\\D+", ""));
+		} catch (Exception e) {
+			result = null;
 		}
 		return result;
 	}
