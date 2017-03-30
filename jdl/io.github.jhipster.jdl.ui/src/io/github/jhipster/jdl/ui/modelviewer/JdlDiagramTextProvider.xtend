@@ -17,12 +17,14 @@ class JdlDiagramTextProvider extends AbstractDiagramTextProvider {
 	extension IJdlModelViewerRenderer = JdlModelViewerRenderer.get(PlantUml)
 
 	override protected getDiagramText(IEditorPart editorPart, IEditorInput editorInput, ISelection selection) {
-		val document = (editorPart as XtextEditor).documentProvider.getDocument(editorInput) as XtextDocument
-		val model = document?.readOnly [
-			val element = contents.head
-			if (element instanceof JdlDomainModel) element else null
-		]
-		render(model)
+		if (editorPart instanceof XtextEditor) {
+			val document = (editorPart as XtextEditor).documentProvider.getDocument(editorInput) as XtextDocument
+			val model = document?.readOnly [
+				val element = contents?.head
+				if (element instanceof JdlDomainModel) element else null
+			]
+			model.render
+		}
 	}
 	
 	override supportsSelection(ISelection selection) {
