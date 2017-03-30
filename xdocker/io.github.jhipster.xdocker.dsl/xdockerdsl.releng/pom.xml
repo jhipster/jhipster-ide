@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>io.github.jhipster-ide.xdocker.dsl</groupId>
 		<artifactId>xdockerdsl.parent</artifactId>
-		<version>1.1.0</version>
+		<version>1.1.1</version>
 		<relativePath>../xdockerdsl.parent</relativePath>		
 	</parent>
 

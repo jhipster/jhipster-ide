@@ -2,7 +2,7 @@
     "name": "jdl",
     "displayName": "jdl",
     "description": "JDL VS Code extension",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "publisher": "jhipster-ide",
     "icon": "images/icon.gif",
     "engines": {
