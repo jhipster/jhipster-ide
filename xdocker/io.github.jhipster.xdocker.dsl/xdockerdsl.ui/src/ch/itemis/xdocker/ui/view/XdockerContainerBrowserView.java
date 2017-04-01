@@ -95,7 +95,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		setParent(parent);
 		parent.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		ViewForm form = new ViewForm(parent, SWT.NONE);
+		ViewForm form = new ViewForm(parent, SWT.BORDER);
 
 		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH);
 		form.setTopLeft(searchInput);
@@ -105,7 +105,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 			}
 		});
 
-		Button searchButton = new Button(form, SWT.NONE);
+		Button searchButton = new Button(form, SWT.CENTER);
 		searchButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -126,31 +126,31 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 			}
 		});
 
-		TableColumn nameColumn = new TableColumn(table, SWT.NONE);
+		TableColumn nameColumn = new TableColumn(table, SWT.CENTER);
 		nameColumn.setWidth(100);
 		nameColumn.setText("Container Id");
 
-		TableColumn descColumn = new TableColumn(table, SWT.NONE);
+		TableColumn descColumn = new TableColumn(table, SWT.CENTER);
 		descColumn.setWidth(100);
 		descColumn.setText("Image");
 
-		TableColumn starsColumn = new TableColumn(table, SWT.NONE);
+		TableColumn starsColumn = new TableColumn(table, SWT.CENTER);
 		starsColumn.setWidth(200);
 		starsColumn.setText("Command");
 
-		TableColumn officialColumn = new TableColumn(table, SWT.NONE);
+		TableColumn officialColumn = new TableColumn(table, SWT.CENTER);
 		officialColumn.setWidth(150);
 		officialColumn.setText("Created");
 
-		TableColumn automatedColumn = new TableColumn(table, SWT.NONE);
+		TableColumn automatedColumn = new TableColumn(table, SWT.CENTER);
 		automatedColumn.setWidth(200);
 		automatedColumn.setText("Status");
 
-		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.NONE);
+		TableColumn tblclmnNewColumn = new TableColumn(table, SWT.CENTER);
 		tblclmnNewColumn.setWidth(100);
 		tblclmnNewColumn.setText("Ports");
 
-		TableColumn tblclmnNames = new TableColumn(table, SWT.NONE);
+		TableColumn tblclmnNames = new TableColumn(table, SWT.CENTER);
 		tblclmnNames.setWidth(200);
 		tblclmnNames.setText("Names");
 
@@ -159,14 +159,17 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		tableMenu.addMenuListener(new MenuListener() {
 			@Override
 			public void menuShown(MenuEvent e) {
-				TableItem [] item = table.getSelection();
+				TableItem[] item = table.getSelection();
 				try {
 					Map<Integer, Integer> ports = toPorts(item[0].getText(5));
 					openMenu.setEnabled(table.getSelectionCount() == 1 && !ports.isEmpty() && ports.get(8080) != null);
-				} catch (Exception ex) { }
+				} catch (Exception ex) {
+				}
 			}
+
 			@Override
-			public void menuHidden(MenuEvent e) {}
+			public void menuHidden(MenuEvent e) {
+			}
 		});
 
 		selectAllMenu = new MenuItem(tableMenu, SWT.PUSH);
@@ -218,7 +221,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 			}
 		});
 
-		buttonAll = new Button(form, SWT.CHECK);
+		buttonAll = new Button(form, SWT.CHECK | SWT.CENTER);
 		form.setTopCenter(buttonAll);
 		buttonAll.setText("All");
 
@@ -401,7 +404,8 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 						}
 						ports.append(", ");
 					}
-					elements.add(ports.toString().endsWith(", ") ? ports.toString().substring(0, ports.toString().length() - 2) : ports.toString());
+					elements.add(ports.toString().endsWith(", ")
+							? ports.toString().substring(0, ports.toString().length() - 2) : ports.toString());
 					elements.add(StringUtils.join(container.getNames()));
 					item.setText(elements.toArray(new String[] {}));
 				}
@@ -465,7 +469,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		}
 		return false;
 	}
-	
+
 	private Map<Integer, Integer> toPorts(String portsDef) {
 		Map<Integer, Integer> result = new HashMap<>();
 		try {
@@ -473,9 +477,11 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 				String[] portPairs = portsDef.split(",");
 				for (String portPair : portPairs) {
 					String[] ports = portPair.split("->");
-					if (ports == null || ports.length < 2) continue;
+					if (ports == null || ports.length < 2)
+						continue;
 					String localPort = ports[0];
-					if (localPort.contains(":")) localPort = localPort.split(":")[1];
+					if (localPort.contains(":"))
+						localPort = localPort.split(":")[1];
 					Integer localPortNumber = toPortNumber(localPort);
 					Integer dockerPortNumber = toPortNumber(ports[1]);
 					if (dockerPortNumber != null && localPortNumber != null) {
@@ -488,7 +494,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		}
 		return result;
 	}
-	
+
 	private Integer toPortNumber(String port) {
 		Integer result;
 		try {
