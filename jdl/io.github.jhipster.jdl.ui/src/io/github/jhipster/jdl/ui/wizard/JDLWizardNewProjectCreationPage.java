@@ -7,7 +7,7 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
 public class JDLWizardNewProjectCreationPage extends WizardNewProjectCreationPage {
-
+	
 	public JDLWizardNewProjectCreationPage(String pageName) {
 		super(pageName);
 		Image image = getPluginImage("io.github.jhipster.jdl.ui", "icons/JHipster.gif");

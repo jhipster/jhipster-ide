@@ -443,10 +443,10 @@
 		point="org.eclipse.ui.newWizards">
 		<wizard
         category="io.github.jhipster.jdl.ui.wizard.jhipster.Wizards"
-        class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+        class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardExtension"
         finalPerspective="io.github.jhipster.jdl.ui.view.JDLPerspective"
         icon="icons/JHipster.gif"
-        id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+        id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardExtension"
         name="JDL Project"
         preferredPerspectives="io.github.jhipster.jdl.ui.view.JDLPerspective"
         project="true">

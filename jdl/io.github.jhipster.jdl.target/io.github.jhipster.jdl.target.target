@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="2">
+<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="3">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
@@ -23,6 +23,10 @@
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="net.sourceforge.plantuml.feature.feature.group" version="0.0.0"/>
 <repository location="http://files.idi.ntnu.no/publish/plantuml/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.tm.terminal.feature.feature.group" version="4.1.0"/>
+<repository location="http://download.eclipse.org/tm/terminal/updates/4.1"/>
 </location>
 </locations>
 </target>
