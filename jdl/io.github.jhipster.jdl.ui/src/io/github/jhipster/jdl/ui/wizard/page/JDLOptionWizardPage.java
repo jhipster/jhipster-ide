@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.ui.wizard;
+package io.github.jhipster.jdl.ui.wizard.page;
 
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.wizard.WizardPage;

@@ -1,6 +1,7 @@
 package io.github.jhipster.jdl.ui.wizard
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.ui.wizard.page.JDLOptionWizardPage
 import java.io.BufferedOutputStream
 import org.eclipse.tm.terminal.view.ui.view.TerminalsView
 import org.eclipse.ui.PartInitException

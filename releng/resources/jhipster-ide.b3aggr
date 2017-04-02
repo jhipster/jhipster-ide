@@ -31,6 +31,9 @@
       <repositories location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/">
         <bundles name="org.objectweb.asm" versionRange="5.0.1"/>
       </repositories>
+      <repositories location="http://download.eclipse.org/tm/terminal/updates/4.1">
+        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.1.0"/>
+      </repositories>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/"/>
     <validationRepositories location="http://download.eclipse.org/releases/neon/"/>

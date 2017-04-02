@@ -25,7 +25,7 @@
 <repository location="http://files.idi.ntnu.no/publish/plantuml/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.tm.terminal.feature.feature.group" version="4.1.0"/>
+<unit id="org.eclipse.tm.terminal.feature.feature.group" version="0.0.0"/>
 <repository location="http://download.eclipse.org/tm/terminal/updates/4.1"/>
 </location>
 </locations>
