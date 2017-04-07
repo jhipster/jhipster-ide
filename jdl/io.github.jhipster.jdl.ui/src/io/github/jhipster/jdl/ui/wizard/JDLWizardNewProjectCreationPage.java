@@ -3,9 +3,7 @@
  */
 package io.github.jhipster.jdl.ui.wizard;
 
-import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-
-public class JDLWizardNewProjectCreationPage extends WizardNewProjectCreationPage {
+public class JDLWizardNewProjectCreationPage extends AbstractJDLWizardNewProjectCreationPage {
 
 	public JDLWizardNewProjectCreationPage(String pageName) {
 		super(pageName);

@@ -447,7 +447,7 @@
         finalPerspective="io.github.jhipster.jdl.ui.view.JDLPerspective"
         icon="icons/JHipster.gif"
         id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardExtension"
-        name="JDL Project"
+        name="JHipster Project"
         preferredPerspectives="io.github.jhipster.jdl.ui.view.JDLPerspective"
         project="true">
 		</wizard>
