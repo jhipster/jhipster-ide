@@ -39,7 +39,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 					val folder = new File(location)
 					if (!folder.exists) folder.mkdirs
 					newHashMap => [
-						put(PROP_TITLE, '''Bootstrap «project»''')
+						put(PROP_TITLE, '''«project»''')
 						put(PROP_ENCODING, ENCODING)
 						put(PROP_DELEGATE_ID, DELEGATE_ID)
 						put(PROP_PROCESS_PATH, '/bin/bash')
