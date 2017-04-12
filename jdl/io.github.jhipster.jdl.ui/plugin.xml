@@ -98,6 +98,13 @@
 			name="Templates">
 			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
+        <page
+	          category="io.github.jhipster.jdl.JDL"
+              class="io.github.jhipster.jdl.ui.preference.JDLShellPreferencePage"
+	          id="io.github.jhipster.jdl.JDL.templates"
+              name="Shell Properties">
+              <keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
+        </page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
@@ -456,4 +463,10 @@
           name="JHipster">
       </category> 
 	</extension> 
+    <extension
+	     point="org.eclipse.core.runtime.preferences">
+	   <initializer
+	         class="io.github.jhipster.jdl.ui.preference.JDLPreferenceInitializer">
+	   </initializer>
+	</extension>
 </plugin>
