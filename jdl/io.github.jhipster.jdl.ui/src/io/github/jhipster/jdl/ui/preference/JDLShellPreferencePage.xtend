@@ -1,22 +1,28 @@
 package io.github.jhipster.jdl.ui.preference
 
 import io.github.jhipster.jdl.ui.JdlActivator
-import org.eclipse.core.runtime.Assert
 import org.eclipse.jface.preference.StringFieldEditor
 import org.eclipse.jface.text.Document
 import org.eclipse.jface.text.source.SourceViewerConfiguration
 import org.eclipse.jface.text.source.projection.ProjectionViewer
 import org.eclipse.swt.SWT
+import org.eclipse.swt.events.SelectionEvent
+import org.eclipse.swt.events.SelectionListener
 import org.eclipse.swt.layout.GridData
+import org.eclipse.swt.widgets.Button
 import org.eclipse.swt.widgets.Composite
+import org.eclipse.swt.widgets.FileDialog
 import org.eclipse.swt.widgets.Label
 import org.eclipse.xtext.ui.editor.preferences.AbstractPreferencePage
 
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
+import static org.eclipse.core.runtime.Assert.*
+import static org.eclipse.debug.internal.ui.SWTFactory.*
 
 class JDLShellPreferencePage extends AbstractPreferencePage {
 	
 	var ProjectionViewer shellEditor
+	var Button browseProgramButton
 
 	new() {
 		preferenceStore = JdlActivator.instance.preferenceStore
@@ -24,45 +30,64 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 	}
 
 	override protected createFieldEditors() {
-		val script = preferenceStore.getString(SCRIPT)
 		fieldEditorParent => [
-			addField(new StringFieldEditor(P_Shell, COMMAND, it))
-			shellEditor = createEditor(it, script, SCRIPT)
+			val maingrp = createGroup(it, SHELL, 1, 1, GridData.FILL_HORIZONTAL) => [
+				enabled = true
+			]
+			val execField = new StringFieldEditor(P_Exec, EXEC, maingrp) => [
+				addField
+			]
+			addField(new StringFieldEditor(P_Args, ARGS, maingrp))
+			browseProgramButton = createPushButton(it, 'Browse', null) => [
+				addSelectionListener = new SelectionListener {
+					override widgetDefaultSelected(SelectionEvent e) { /* nothing todo */ }
+					override widgetSelected(SelectionEvent e) {
+						new FileDialog(shell, SWT.OPEN) => [
+					        execField.stringValue = open
+						]
+					}
+				}
+			]
+			createGroup(it, SCRIPT, 2, 2, GridData.FILL_HORIZONTAL) => [group|
+				group.enabled = true
+				shellEditor = createEditor(group, store.getString(P_Script), null) 
+			]
 		]
 	}
 
 	override protected performApply() {
-		store
+		save
 		super.performApply()
 	}
 	
 	override performOk() {
-		store
+		save
 		super.performOk()
 	}
 	
+	def private save() {
+		store.setValue(P_Script, shellEditor.textWidget.text)
+	}
+	
 	def private store() {
-		preferenceStore.setValue(SCRIPT, shellEditor.textWidget.text)
+		preferenceStore
 	}
 
 	def private createEditor(Composite parent, String content, String labelText) {
-		Assert.isNotNull(labelText)
-        new Label(parent, SWT.TOP) => [
-        	font = parent.font
-			text = labelText
-        ]
+		isNotNull(parent)
+		if (!labelText.isNullOrEmpty) {
+	        new Label(parent, SWT.TOP) => [
+	        	font = parent.font
+				text = labelText
+	        ]
+		}
 		val viewer = createViewer(parent) => [
 			editable = true
-			addTextListener[] // TODO: implement me!
-			addSelectionChangedListener[] // TODO: implement me!
+			document.set(content)
 		]
-		val doc = viewer.document => [
-			if (it !== null) set(content) else viewer.document = new Document(content)
-		]
-		val (int)=>int nlines = [l | if (l < 5) 5 else if (l > 12) 12 else l]
 		new GridData(GridData.FILL_BOTH) => [
 			widthHint = convertWidthInCharsToPixels(80)
-			heightHint = convertHeightInCharsToPixels(nlines.apply(doc.numberOfLines))
+			heightHint = convertHeightInCharsToPixels(20)
 			viewer.control.layoutData = it
 		]
 		return viewer
