@@ -139,7 +139,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
 			imageNameText = createSingleText(group, 1) => [
 				addModifyListener = listener
 			] 
-			browseImageButton = createPushButton(group, 'Browse', null) 
+			browseImageButton = createPushButton(group, 'Browse...', null) 
 			browseImageButton.addSelectionListener = new DefaultSelectionListener {
 				override widgetSelected(SelectionEvent e) {
 					imageNameText.text = chooseDockerImage ?: imageNameText.text

@@ -102,7 +102,7 @@
 	          category="io.github.jhipster.jdl.JDL"
               class="io.github.jhipster.jdl.ui.preference.JDLShellPreferencePage"
 	          id="io.github.jhipster.jdl.JDL.templates"
-              name="Generator">
+              name="Generator Run Config">
               <keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
         </page>
 	</extension>
