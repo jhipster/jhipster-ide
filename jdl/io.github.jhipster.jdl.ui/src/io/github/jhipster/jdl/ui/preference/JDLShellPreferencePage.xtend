@@ -26,9 +26,9 @@ import static org.eclipse.jface.dialogs.MessageDialog.*
 
 class JDLShellPreferencePage extends AbstractPreferencePage {
 	
-	var ProjectionViewer shellEditor
 	var Button browseProgramButton
 	var StringFieldEditor execField
+	var ProjectionViewer shellScriptEditor
 
 	new() {
 		preferenceStore = JdlActivator.instance.preferenceStore
@@ -72,17 +72,26 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 					override widgetDefaultSelected(SelectionEvent e) { /* nothing todo */ }
 					override widgetSelected(SelectionEvent e) {
 						new FileDialog(shell, SWT.OPEN) => [
-							val executable = open
-							if (!executable.isNullOrEmpty) execField.stringValue = executable
+							filterPath = executable
+							val result = open
+							if (!result.isNullOrEmpty) execField.stringValue = result
 						]
 					}
 				}
 			]
 			createGroup(it, SCRIPT, 2, 2, GridData.FILL_HORIZONTAL) => [group|
 				group.enabled = true
-				shellEditor = createEditor(group, store.getString(P_Script), null) 
+				shellScriptEditor = createEditor(group, store.getString(P_Script), null) 
 			]
 		]
+	}
+
+	def private String getExecutable() {
+		execField?.stringValue		
+	}
+
+	def private String getShellScript() {
+		shellScriptEditor?.textWidget?.text		
 	}
 
 	override protected performApply() {
@@ -100,7 +109,7 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 	def private save() {
 		return validate => [ succeeded |
 			if (succeeded) {
-				store.setValue(P_Script, shellEditor.textWidget.text)
+				store.setValue(P_Script, shellScript)
 			}
 		]
 	}
