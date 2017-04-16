@@ -31,9 +31,12 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 					echo "No argument supplied"
 				else
 					# echo "alias $1='docker exec -it $1  bash'" > .jhenv
+					# name = $1
+					# [[ $(docker ps -f "name=$name" --format '{{.Names}}') == $name ]] || \\
 					# docker run --name $1 -v $2:/home/jhipster/$1 -v ~/.m2:/home/jhipster/.m2 -d -t jhipster/jhipster
 					# docker exec -it $1 bash
-					yo jhipster 
+					yo jhipster
+					bash
 				fi
 			''')
 			setDefault(P_Envs, 'PATH=${env_var:PATH}:/usr/bin')
