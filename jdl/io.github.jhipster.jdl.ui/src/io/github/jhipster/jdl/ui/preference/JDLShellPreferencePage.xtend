@@ -28,11 +28,12 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 	
 	var Button browseProgramButton
 	var StringFieldEditor execField
+	var StringFieldEditor envsField
 	var ProjectionViewer shellScriptEditor
 
 	new() {
 		preferenceStore = JdlActivator.instance.preferenceStore
-		description = 'Set preferences for calling JHipster generator'
+		description = 'JHipster shell integration'
 	}
 
 	override propertyChange(PropertyChangeEvent event) {
@@ -67,6 +68,9 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 				addField
 			]
 			addField(new StringFieldEditor(P_Args, ARGS, maingrp))
+			envsField = new StringFieldEditor(P_Envs, ENVS, maingrp) => [
+				addField
+			]
 			browseProgramButton = createPushButton(it, 'Browse...', null) => [
 				addSelectionListener = new SelectionListener {
 					override widgetDefaultSelected(SelectionEvent e) { /* nothing todo */ }
@@ -81,7 +85,9 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 			]
 			createGroup(it, SCRIPT, 2, 2, GridData.FILL_HORIZONTAL) => [group|
 				group.enabled = true
-				shellScriptEditor = createEditor(group, store.getString(P_Script), null) 
+				shellScriptEditor = createEditor(group, store.getString(P_Script), null) => [
+					editable = true
+				]
 			]
 		]
 	}
