@@ -5,11 +5,13 @@ import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
 import io.github.jhipster.jdl.ui.JdlActivator
 
 interface JDLPreferenceProperties {
+	public val P_Enabled = 'enabled'
 	public val P_Exec = 'exec'
 	public val P_Args = 'args'
 	public val P_Script = 'script'
 	public val P_Envs = 'envs'
-	
+
+	public val SCRIPT_CHECKBOX = 'Enable Script'
 	public val EXEC = 'Executable:'
 	public val ARGS = 'Arguments:'
 	public val SCRIPT = 'Script:'
@@ -21,8 +23,10 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	override initializeDefaultPreferences() {
 		JdlActivator.instance.preferenceStore => [
+			setDefault(P_Enabled, true)
 			setDefault(P_Exec, '/bin/bash')
 			setDefault(P_Args, '-c "${script} ${project} ${path} ${switch}"')
+			setDefault(P_Envs, 'PATH=${env_var:PATH}:/usr/bin')
 			setDefault(P_Script, '''
 				#!/bin/bash
 				export PATH=$PATH:/usr/local/bin
@@ -39,7 +43,6 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 					bash
 				fi
 			''')
-			setDefault(P_Envs, 'PATH=${env_var:PATH}:/usr/bin')
 		]
 	}
 }

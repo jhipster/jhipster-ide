@@ -3,6 +3,7 @@ package io.github.jhipster.jdl.ui.preference
 import io.github.jhipster.jdl.ui.JdlActivator
 import java.nio.file.Files
 import java.nio.file.Paths
+import org.eclipse.jface.preference.BooleanFieldEditor
 import org.eclipse.jface.preference.StringFieldEditor
 import org.eclipse.jface.text.Document
 import org.eclipse.jface.text.source.SourceViewerConfiguration
@@ -16,6 +17,7 @@ import org.eclipse.swt.widgets.Button
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.FileDialog
+import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Label
 import org.eclipse.xtext.ui.editor.preferences.AbstractPreferencePage
 
@@ -26,10 +28,13 @@ import static org.eclipse.jface.dialogs.MessageDialog.*
 
 class JDLShellPreferencePage extends AbstractPreferencePage {
 	
-	var Button browseProgramButton
-	var StringFieldEditor execField
-	var StringFieldEditor envsField
-	var ProjectionViewer shellScriptEditor
+	Group shellgrp
+	Button browseProgramButton
+	BooleanFieldEditor shellEnabledField
+	StringFieldEditor execField
+	StringFieldEditor argsField
+	StringFieldEditor envsField
+	ProjectionViewer shellScriptEditor
 
 	new() {
 		preferenceStore = JdlActivator.instance.preferenceStore
@@ -37,10 +42,21 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 	}
 
 	override propertyChange(PropertyChangeEvent event) {
-		if (event.source === execField) {
-			val exec = event.newValue?.toString
-			exec.checkExecutable
+		switch (event.source) {
+			case execField: {
+				val exec = event.newValue?.toString
+				exec.checkExecutable
+			}
+			case shellEnabledField: {
+				enableWidgets(shellEnabledField.booleanValue)
+			}
 		}
+	}
+
+	def private enableWidgets(boolean value) {
+		#[browseProgramButton, shellgrp, shellScriptEditor.textWidget].forEach[
+			enabled = value
+		]
 	}
 
 	def private boolean checkExecutable() {
@@ -61,14 +77,13 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 
 	override protected createFieldEditors() {
 		fieldEditorParent => [
-			val maingrp = createGroup(it, SHELL, 1, 1, GridData.FILL_HORIZONTAL) => [
-				enabled = true
-			]
-			execField = new StringFieldEditor(P_Exec, EXEC, maingrp) => [
+			shellEnabledField = new BooleanFieldEditor(P_Enabled, SCRIPT_CHECKBOX, SWT.NONE, it) => [
 				addField
 			]
-			addField(new StringFieldEditor(P_Args, ARGS, maingrp))
-			envsField = new StringFieldEditor(P_Envs, ENVS, maingrp) => [
+			shellgrp = createGroup(it, SHELL, 1, 1, GridData.FILL_HORIZONTAL) => [
+				enabled = true
+			]
+			execField = new StringFieldEditor(P_Exec, EXEC, shellgrp) => [
 				addField
 			]
 			browseProgramButton = createPushButton(it, 'Browse...', null) => [
@@ -83,12 +98,19 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 					}
 				}
 			]
+			argsField = new StringFieldEditor(P_Args, ARGS, shellgrp) => [
+				addField
+			]
+			envsField = new StringFieldEditor(P_Envs, ENVS, shellgrp) => [
+				addField
+			]
 			createGroup(it, SCRIPT, 2, 2, GridData.FILL_HORIZONTAL) => [group|
 				group.enabled = true
 				shellScriptEditor = createEditor(group, store.getString(P_Script), null) => [
 					editable = true
 				]
 			]
+			enableWidgets(true)
 		]
 	}
 

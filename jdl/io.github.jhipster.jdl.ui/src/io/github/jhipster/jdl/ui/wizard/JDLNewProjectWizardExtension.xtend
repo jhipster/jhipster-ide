@@ -4,6 +4,7 @@ import com.google.inject.Inject
 import java.io.File
 import java.nio.charset.Charset
 import java.nio.file.Files
+import java.nio.file.Path
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.core.variables.VariablesPlugin
@@ -14,14 +15,15 @@ import org.eclipse.xtext.ui.wizard.IProjectCreator
 
 import static io.github.jhipster.jdl.ui.internal.JdlActivator.*
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
+import static io.github.jhipster.jdl.ui.terminal.TerminalHelper.*
 import static java.nio.file.attribute.PosixFilePermission.*
 import static java.nio.file.attribute.PosixFilePermissions.*
-import static io.github.jhipster.jdl.ui.terminal.TerminalHelper.*
 
 class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 
 	IPreferenceStore preferenceStore
 	VariablesPlugin variablesPlugin
+	Path shellScript
 
 	@Inject new(IProjectCreator projectCreator) {
 		super(projectCreator)
@@ -53,15 +55,21 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 						ConsolePlugin.log(it)
 					]
 				}
+				// remove temporary files...
+				val shellScripFile = shellScript?.toFile
+				if (shellScripFile !== null && shellScripFile.canWrite) {
+					shellScripFile.delete
+				}
 			}
 		}		
 	}
 
 	def private prepare(String project, String location) {
+		if (script.isNullOrEmpty) return
 		val perms = asFileAttribute(#{OWNER_READ, OWNER_WRITE, OWNER_EXECUTE})
-		val tmp = Files.createTempFile('jhide', '.sh', perms)
-		Files.write(tmp, #[script], Charset.forName("UTF-8"))
-		#['script' -> tmp.toString, 'project' -> project, 
+		shellScript = Files.createTempFile('jhide', '.sh', perms)
+		Files.write(shellScript, #[script], Charset.forName("UTF-8"))
+		#['script' -> shellScript.toString, 'project' -> project, 
 		  'path' -> location, 'switch' -> '--creation'
 		 ].forEach[ bindVariable(key, value) ]
 	}
