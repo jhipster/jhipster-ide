@@ -28,9 +28,11 @@ import org.eclipse.ui.internal.ide.IDEWorkbenchMessages
 import org.eclipse.ui.internal.ide.IDEWorkbenchPlugin
 import org.eclipse.ui.internal.ide.IIDEHelpContextIds
 import org.eclipse.ui.internal.ide.dialogs.ProjectContentsLocationArea
+import io.github.jhipster.jdl.ui.internal.JdlActivator
 
 import static io.github.jhipster.jdl.ui.util.ResourceManager.getPluginImage
 import static org.eclipse.jface.resource.ImageDescriptor.createFromImage
+import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
 
 @SuppressWarnings("restriction") 
 class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
@@ -64,7 +66,7 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 	override void createControl(Composite parent) {
 		var Composite composite = new Composite(parent, SWT.NULL)
 		initializeDialogUnits(parent)
-		PlatformUI.getWorkbench().getHelpSystem().setHelp(composite, IIDEHelpContextIds.NEW_PROJECT_WIZARD_PAGE)
+		PlatformUI.workbench.helpSystem.setHelp(composite, IIDEHelpContextIds.NEW_PROJECT_WIZARD_PAGE)
 		composite.setLayout(new GridLayout())
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH))
 		createProjectNameGroup(composite)
@@ -84,7 +86,7 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 
 	def WorkingSetGroup createWorkingSetGroup(Composite composite, IStructuredSelection selection,
 		String[] supportedWorkingSetTypes) {
-		if(workingSetGroup !== null) return workingSetGroup
+		if (workingSetGroup !== null) return workingSetGroup
 		workingSetGroup = new WorkingSetGroup(composite, selection, supportedWorkingSetTypes)
 		return workingSetGroup
 	}
@@ -105,6 +107,7 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 	}
 
 	def private final void createProjectNameGroup(Composite parent) {
+		val isShellEnabled = JdlActivator.instance.preferenceStore.getBoolean(P_ShellEnabled)
 		// project specification group
 		var Composite projectGroup = new Composite(parent, SWT.NONE)
 		var GridLayout layout = new GridLayout()
@@ -121,9 +124,12 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 		data.widthHint = SIZING_TEXT_FIELD_WIDTH
 		projectNameField.setLayoutData(data)
 		projectNameField.setFont(parent.getFont())
-		btnCallJhipsterGenerator = new Button(projectGroup, SWT.CHECK)
-		btnCallJhipsterGenerator.setText("Bootstrap project")
-		btnCallJhipsterGenerator.setSelection(true)
+		if (isShellEnabled) {
+			btnCallJhipsterGenerator = new Button(projectGroup, SWT.CHECK)
+			btnCallJhipsterGenerator.setText("Bootstrap project")
+			btnCallJhipsterGenerator.setSelection(true)
+		}
+		
 		// Set the initial value first before listener
 		// to avoid handling an event during the creation.
 		if (initialProjectFieldValue !== null) {

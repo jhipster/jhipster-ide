@@ -33,7 +33,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 
 	override performFinish() {
 		val result = super.performFinish
-		if(mainPage.isCallJhipsterGenerator()) openTerminal
+		if (isShellEnabled && mainPage.isCallJhipsterGenerator) openTerminal
 		return result
 	}
 
@@ -72,6 +72,10 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		#['script' -> shellScript.toString, 'project' -> project, 
 		  'path' -> location, 'switch' -> '--creation'
 		 ].forEach[ bindVariable(key, value) ]
+	}
+
+	def private boolean isShellEnabled() {
+		preferenceStore.getBoolean(P_ShellEnabled)
 	}
 
 	def private String getExec() {

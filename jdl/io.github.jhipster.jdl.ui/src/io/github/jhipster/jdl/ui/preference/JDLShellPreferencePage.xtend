@@ -77,7 +77,7 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 
 	override protected createFieldEditors() {
 		fieldEditorParent => [
-			shellEnabledField = new BooleanFieldEditor(P_Enabled, SCRIPT_CHECKBOX, SWT.NONE, it) => [
+			shellEnabledField = new BooleanFieldEditor(P_ShellEnabled, SCRIPT_CHECKBOX, SWT.NONE, it) => [
 				addField
 			]
 			shellgrp = createGroup(it, SHELL, 1, 1, GridData.FILL_HORIZONTAL) => [
@@ -110,7 +110,7 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 					editable = true
 				]
 			]
-			enableWidgets(true)
+			enableWidgets(shellEnabledField.booleanValue)
 		]
 	}
 
