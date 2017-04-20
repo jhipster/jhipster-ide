@@ -533,7 +533,7 @@
             icon="icons/docker-build.gif"
             id="ch.itemis.xdocker.ui.ide.dockerBuildShortcut"
             label="Docker Build Image"
-            modes="run, debug">
+            modes="run">
          <contextualLaunch>
             <enablement>
                <reference
@@ -765,7 +765,7 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             id="ch.itemis.xdocker.ui.XdockerRunLaunchConfigType"
-            modes="run, debug"
+            modes="run"
             name="Docker Run"
             delegate="ch.itemis.xdocker.ui.launch.XdockerRunImageLaunchDelegate"
             />

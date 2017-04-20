@@ -35,19 +35,19 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	def private String getExecDefault(String os) {
 		if (os.isUnix) '/bin/bash'
-		else if (os.isWindows) '' 
+		else if (os.isWindows) 'c:\\windows\\system32\\cmd.exe' 
 		else '' // unknown operating system
 	}
 
 	def private String getArgsDefault(String os) {
-		if (os.isUnix) '-c "${script} ${project} ${path} ${switch}"'
-		else if (os.isWindows) '' 
+		if (os.isUnix) '-c "${script} ${project} ${path}"'
+		else if (os.isWindows) '/c ${script} ${project} ${path}' 
 		else '' // unknown operating system
 	}
 
 	def private String getEnvsDefault(String os) {
-		if (os.isUnix) 'PATH=${env_var:PATH}:/usr/bin'
-		else if (os.isWindows) '' 
+		if (os.isUnix) 'PATH=${env_var:PATH}:/usr/local/bin:'
+		else if (os.isWindows) 'PATH=${env_var:PATH}'
 		else '' // unknown operating system
 	}
 	
@@ -59,23 +59,32 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	
 	def private String getScriptForUnix() '''
 		#!/bin/bash
+		# enable the following statement if you want to call automatically jhipster after creating a new project
+		# yo jhipster
+		# ./mvnw --no-plugin-registry eclipse:eclipse
+		bash
+	'''
+/* TODO Implement me
+		#!/bin/bash
 		export PATH=$PATH:/usr/local/bin
 		if [ -z "$1" ]
 		then
 			echo "No argument supplied"
 		else
 			# echo "alias $1='docker exec -it $1  bash'" > .jhenv
-			# name = $1
-			# [[ $(docker ps -f "name=$name" --format '{{.Names}}') == $name ]] || \\
+			# [[ $(docker ps -f "name=$1" --format '{{.Names}}') == $1 ]] || \\
 			# docker run --name $1 -v $2:/home/jhipster/$1 -v ~/.m2:/home/jhipster/.m2 -d -t jhipster/jhipster
 			# docker exec -it $1 bash
 			yo jhipster
 			bash
-		fi
-	'''
+		fi  
+*/
 
 	def private String getScriptForWindows() '''
-		REM undefined
+		REM enable the following statement if you want to call automatically jhipster after creating a new project
+		REM yo jhipster
+		REM mvnw --no-plugin-registry eclipse:eclipse
+		cmd.exe 
 	'''
 	
 	def private isWindows(String os) {

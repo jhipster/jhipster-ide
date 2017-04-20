@@ -27,7 +27,7 @@
       </repositories>
       <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7"/>
-        <categories name="201704061657.net.sourceforge.plantuml.feature" versionRange="1.0.0"/>
+        <categories name="201704180954.net.sourceforge.plantuml.feature" versionRange="1.0.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/">
         <bundles name="org.objectweb.asm" versionRange="5.0.1"/>
