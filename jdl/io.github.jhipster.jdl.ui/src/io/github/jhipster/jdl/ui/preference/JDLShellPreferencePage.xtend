@@ -110,7 +110,7 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 					editable = true
 				]
 			]
-			enableWidgets(shellEnabledField.booleanValue)
+			enableWidgets(preferenceStore.getBoolean(P_ShellEnabled))
 		]
 	}
 

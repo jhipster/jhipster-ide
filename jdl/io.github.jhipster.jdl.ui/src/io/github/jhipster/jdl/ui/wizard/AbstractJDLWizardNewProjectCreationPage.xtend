@@ -186,7 +186,6 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 		var IWorkspace workspace = IDEWorkbenchPlugin.getPluginWorkspace()
 		var String projectFieldContents = getProjectNameFieldValue()
 		if (projectFieldContents.equals('')) {
-			// $NON-NLS-1$
 			setErrorMessage(null)
 			setMessage(IDEWorkbenchMessages.WizardNewProjectCreationPage_projectNameEmpty)
 			return false
@@ -209,27 +208,25 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 			setErrorMessage(validLocationMessage)
 			return false
 		}
-		setErrorMessage(null)
-		setMessage(null)
+		errorMessage = null
+		message = null 
 		return true
 	}
 
 	override void setVisible(boolean visible) {
 		super.setVisible(visible)
-		if (visible) {
-			projectNameField.setFocus()
-		}
+		if (visible) projectNameField.setFocus
 	}
 
 	def boolean useDefaults() {
-		return locationArea.isDefault()
+		return locationArea.isDefault
 	}
 	
 	def IWorkingSet[] getSelectedWorkingSets() {
-		return if(workingSetGroup === null) newArrayOfSize(0) else workingSetGroup.getSelectedWorkingSets()
+		return if (workingSetGroup === null) newArrayOfSize(0) else workingSetGroup.selectedWorkingSets
 	}
 
 	def boolean isCallJhipsterGenerator() {
-		return btnCallJhipsterGenerator.getSelection()
+		return btnCallJhipsterGenerator !== null && btnCallJhipsterGenerator.selection
 	}
 }

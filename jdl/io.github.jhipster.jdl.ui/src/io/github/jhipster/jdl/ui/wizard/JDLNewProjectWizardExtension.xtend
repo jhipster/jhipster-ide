@@ -33,7 +33,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 
 	override performFinish() {
 		val result = super.performFinish
-		if (isShellEnabled && mainPage.isCallJhipsterGenerator) openTerminal
+		if (mainPage.isCallJhipsterGenerator) openTerminal
 		return result
 	}
 
@@ -51,11 +51,13 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		new ITerminalService.Done() {
 			override void done(IStatus it) {
 				if (!isOK) {
-					new Status(severity, IO_GITHUB_JHIPSTER_JDL_JDL, code, message, exception) => [
+					new Status(
+						severity, IO_GITHUB_JHIPSTER_JDL_JDL, code, message, exception
+					) => [
 						ConsolePlugin.log(it)
 					]
 				}
-				// remove temporary files...
+				// remove temporary file...
 				val shellScripFile = shellScript?.toFile
 				if (shellScripFile !== null && shellScripFile.canWrite) {
 					shellScripFile.delete
@@ -65,7 +67,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 	}
 
 	def private prepare(String project, String location) {
-		if (script.isNullOrEmpty) return
+		if (!isShellEnabled || script.isNullOrEmpty) return
 		val perms = asFileAttribute(#{OWNER_READ, OWNER_WRITE, OWNER_EXECUTE})
 		shellScript = Files.createTempFile('jhide', '.sh', perms)
 		Files.write(shellScript, #[script], Charset.forName("UTF-8"))
