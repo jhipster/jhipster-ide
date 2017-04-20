@@ -443,7 +443,7 @@
             class="io.github.jhipster.jdl.ui.view.JDLPerspective"
             icon="icons/JHipster.gif"
             id="io.github.jhipster.jdl.ui.view.JDLPerspective"
-            name="JDL">
+            name="JHipster">
       </perspective>
    </extension>
 	<extension
