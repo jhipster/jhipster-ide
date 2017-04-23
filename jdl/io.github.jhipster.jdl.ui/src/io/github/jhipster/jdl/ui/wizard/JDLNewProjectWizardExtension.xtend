@@ -3,7 +3,6 @@ package io.github.jhipster.jdl.ui.wizard
 import com.google.inject.Inject
 import java.io.File
 import java.nio.charset.Charset
-import java.nio.file.Files
 import java.nio.file.Path
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
@@ -13,6 +12,7 @@ import org.eclipse.tm.terminal.view.core.interfaces.ITerminalService
 import org.eclipse.ui.console.ConsolePlugin
 import org.eclipse.xtext.ui.wizard.IProjectCreator
 
+import static java.nio.file.Files.*
 import static io.github.jhipster.jdl.ui.internal.JdlActivator.*
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
 import static io.github.jhipster.jdl.ui.terminal.TerminalHelper.*
@@ -60,20 +60,27 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 				// remove temporary file...
 				val shellScripFile = shellScript?.toFile
 				if (shellScripFile !== null && shellScripFile.canWrite) {
-					shellScripFile.delete
+//					shellScripFile.delete
 				}
 			}
 		}		
 	}
 
-	def private prepare(String project, String location) {
+	def private void prepare(String project, String location) {
 		if (!isShellEnabled || script.isNullOrEmpty) return
-		val perms = asFileAttribute(#{OWNER_READ, OWNER_WRITE, OWNER_EXECUTE})
-		shellScript = Files.createTempFile('jhide', '.sh', perms)
-		Files.write(shellScript, #[script], Charset.forName("UTF-8"))
-		#['script' -> shellScript.toString, 'project' -> project, 
-		  'path' -> location, 'switch' -> '--creation'
-		 ].forEach[ bindVariable(key, value) ]
+		val isWindows = System.getProperty('os.name').toLowerCase.contains('win')
+		shellScript = 
+			if (isWindows) createTempFile('jhide', '.cmd') 
+			else createTempFile('jhide', '.sh', asFileAttribute(#{OWNER_READ, OWNER_WRITE, OWNER_EXECUTE}))
+		val content = newArrayList
+		if (isWindows && !envs.isNullOrEmpty) {
+			envs.forEach[content.add('''set «it»''')]
+		} 
+		content.add(script)
+		write(shellScript, content, Charset.forName("UTF-8"))
+		#['script' -> shellScript.toString, 'project' -> project, 'path' -> location].forEach[ 
+			bindVariable(key, value)
+		]
 	}
 
 	def private boolean isShellEnabled() {
@@ -93,8 +100,10 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 	}
 
 	def private String[] getEnvs() {
-		val envs = preferenceStore.getString(P_Envs)
-		if(!envs.isNullOrEmpty) expandVars(envs).split(' ').toArray(#[]) else null
+// FIXME: add better ui implementation for this...
+//		val envs = preferenceStore.getString(P_Envs)
+//		if(!envs.isNullOrEmpty) expandVars(envs).split(' ').toArray(#[])
+		return null
 	}
 
 	def private bindVariable(String name, String value) {

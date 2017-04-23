@@ -9,14 +9,12 @@ interface JDLPreferenceProperties {
 	public val P_Exec = 'exec'
 	public val P_Args = 'args'
 	public val P_Script = 'script'
-	public val P_Envs = 'envs'
 
 	public val SCRIPT_CHECKBOX = 'Enable Script'
 	public val EXEC = 'Executable:'
 	public val ARGS = 'Arguments:'
 	public val SCRIPT = 'Script:'
 	public val SHELL = 'Shell:'
-	public val ENVS = 'Envs (FOO=bar PATH=/path/to):'
 }
 
 class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
@@ -27,7 +25,6 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 				setDefault(P_ShellEnabled, true)
 				setDefault(P_Exec, os.execDefault)
 				setDefault(P_Args, os.argsDefault)
-				setDefault(P_Envs, os.envsDefault)
 				setDefault(P_Script, os.scriptDefault)
 			]
 		]
@@ -35,19 +32,13 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	def private String getExecDefault(String os) {
 		if (os.isUnix) '/bin/bash'
-		else if (os.isWindows) 'c:\\windows\\system32\\cmd.exe' 
+		else if (os.isWindows) 'C:\\Windows\\System32\\cmd.exe'
 		else '' // unknown operating system
 	}
 
 	def private String getArgsDefault(String os) {
 		if (os.isUnix) '-c "${script} ${project} ${path}"'
-		else if (os.isWindows) '/c ${script} ${project} ${path}' 
-		else '' // unknown operating system
-	}
-
-	def private String getEnvsDefault(String os) {
-		if (os.isUnix) 'PATH=${env_var:PATH}:/usr/local/bin:'
-		else if (os.isWindows) 'PATH=${env_var:PATH}'
+		else if (os.isWindows) '/k ${script} ${project} ${path}' 
 		else '' // unknown operating system
 	}
 	
@@ -59,9 +50,10 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	
 	def private String getScriptForUnix() '''
 		#!/bin/bash
-		# enable the following statement if you want to call automatically jhipster after creating a new project
-		# yo jhipster
-		# ./mvnw --no-plugin-registry eclipse:eclipse
+		export PATH=$PATH:/usr/local/bin:
+		echo "Initialize JHipster project %1"
+		command yo jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
+		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
 		bash
 	'''
 /* TODO Implement me
@@ -81,14 +73,15 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 */
 
 	def private String getScriptForWindows() '''
-		REM enable the following statement if you want to call automatically jhipster after creating a new project
-		REM yo jhipster
-		REM mvnw --no-plugin-registry eclipse:eclipse
-		cmd.exe 
+		@echo off
+		@echo Initialize JHipster project %1
+		set PATH=%PATH%;C:\Windows\System32;
+		call yo jhipster || echo Yeoman JHipster generator is required but it's not installed!
+		call mvnw.cmd --no-plugin-registry eclipse:eclipse || echo maven wrapper script not found!
 	'''
 	
 	def private isWindows(String os) {
-		return os !== null && os.contains('windows')
+		return os !== null && os.contains('win')
 	}
 
 	def private isUnix(String os) {
