@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="io.github.jhipster.jdl.feature"
-      label="JDL Feature "
+      label="JHipster IDE Feature"
       version="1.2.0.qualifier">
 
    <plugin

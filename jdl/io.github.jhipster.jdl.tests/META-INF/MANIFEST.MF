@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.tests
-Bundle-Vendor: My Company
+Bundle-Vendor: io.github.jhipster
 Bundle-Version: 1.2.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.tests; singleton:=true
 Bundle-ActivationPolicy: lazy

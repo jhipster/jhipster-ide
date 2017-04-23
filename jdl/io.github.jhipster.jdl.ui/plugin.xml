@@ -81,7 +81,7 @@
 		<page
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
 			id="io.github.jhipster.jdl.JDL"
-			name="JDL">
+			name="JHipster IDE">
 			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
 		<page
@@ -98,13 +98,20 @@
 			name="Templates">
 			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 		</page>
+        <page
+	          category="io.github.jhipster.jdl.JDL"
+              class="io.github.jhipster.jdl.ui.preference.JDLShellPreferencePage"
+	          id="io.github.jhipster.jdl.JDL.templates"
+              name="Shell Integration">
+              <keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
+        </page>
 	</extension>
 	<extension
 			point="org.eclipse.ui.propertyPages">
 		<page
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
 			id="io.github.jhipster.jdl.JDL"
-			name="JDL">
+			name="JHipster IDE">
 			<keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
 			<enabledWhen>
 				<adapt type="org.eclipse.core.resources.IProject"/>
@@ -436,18 +443,18 @@
             class="io.github.jhipster.jdl.ui.view.JDLPerspective"
             icon="icons/JHipster.gif"
             id="io.github.jhipster.jdl.ui.view.JDLPerspective"
-            name="JDL">
+            name="JHipster">
       </perspective>
    </extension>
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<wizard
         category="io.github.jhipster.jdl.ui.wizard.jhipster.Wizards"
-        class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
+        class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardExtension"
         finalPerspective="io.github.jhipster.jdl.ui.view.JDLPerspective"
         icon="icons/JHipster.gif"
-        id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizard"
-        name="JDL Project"
+        id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardExtension"
+        name="JHipster Project"
         preferredPerspectives="io.github.jhipster.jdl.ui.view.JDLPerspective"
         project="true">
 		</wizard>
@@ -456,4 +463,10 @@
           name="JHipster">
       </category> 
 	</extension> 
+    <extension
+	     point="org.eclipse.core.runtime.preferences">
+	   <initializer
+	         class="io.github.jhipster.jdl.ui.preference.JDLPreferenceInitializer">
+	   </initializer>
+	</extension>
 </plugin>

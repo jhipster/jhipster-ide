@@ -3,10 +3,10 @@
   <validationSets label="JHipster-IDE">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
-        <features name="xdockerdsl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="xdockerdsl.feature.feature.group" versionRange="1.2.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
-        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.2.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
@@ -26,10 +26,20 @@
         <features name="org.eclipse.xtext.xtext.ui.feature.group" versionRange="2.11.0.v20170201-0242"/>
       </repositories>
       <repositories location="http://files.idi.ntnu.no/publish/plantuml/repository/">
-        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7.8051" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.7"/>
+        <categories name="201704180954.net.sourceforge.plantuml.feature" versionRange="1.0.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/">
         <bundles name="org.objectweb.asm" versionRange="5.0.1"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/tm/terminal/updates/4.2">
+        <features name="org.eclipse.tm.terminal.connector.local.feature.feature.group" versionRange="4.2.0.201611281915" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.control.feature.feature.group" versionRange="4.2.0.201611281915" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.2.0.201611281915" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="4.2.0.201611281915" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/tools/cdt/releases/9.2/">
+        <bundles name="org.eclipse.cdt.core" versionRange="6.2.0.201704050430"/>
       </repositories>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/"/>
@@ -41,5 +51,6 @@
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
   <configurations operatingSystem="linux" windowSystem="gtk"/>
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
-  <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.1/@features.0 //@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.1/@features.0"/>
+  <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.1/@features.0 //@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0"/>
+  <customCategories identifier="Terminal Integration" label="Terminal Integration" description="Terminal Integration" features="//@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.0 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.1 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.2 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.3"/>
 </aggregator:Aggregation>

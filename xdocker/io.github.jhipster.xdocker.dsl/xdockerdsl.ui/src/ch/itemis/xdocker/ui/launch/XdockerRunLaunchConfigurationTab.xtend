@@ -96,7 +96,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
 			} 
 		]
 		
-		val dockerElements = #[imageNameText, nameText, portSpecText, envText] + dockerCheckButtons
+		val dockerElements = #[nameText, portSpecText, envText] + dockerCheckButtons
 		
 		paramsCheckButton.addSelectionListener = new SelectionAdapter {
 			override void widgetSelected(SelectionEvent e) {
@@ -139,7 +139,7 @@ class XdockerRunLaunchConfigurationTab extends AbstractXdockerLaunchConfiguratio
 			imageNameText = createSingleText(group, 1) => [
 				addModifyListener = listener
 			] 
-			browseImageButton = createPushButton(group, 'Browse', null) 
+			browseImageButton = createPushButton(group, 'Browse...', null) 
 			browseImageButton.addSelectionListener = new DefaultSelectionListener {
 				override widgetSelected(SelectionEvent e) {
 					imageNameText.text = chooseDockerImage ?: imageNameText.text
