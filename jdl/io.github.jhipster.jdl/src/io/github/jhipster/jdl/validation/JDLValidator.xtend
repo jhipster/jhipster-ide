@@ -3,8 +3,8 @@ package io.github.jhipster.jdl.validation
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
 import io.github.jhipster.jdl.jdl.JdlEnum
-import org.eclipse.xtext.validation.Check
 import io.github.jhipster.jdl.jdl.JdlRelationships
+import org.eclipse.xtext.validation.Check
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
@@ -29,9 +29,9 @@ class JDLValidator extends AbstractJDLValidator {
 			warning(INVALID_ENUM_NAME_MSG, JDL_ENUM__NAME, INSIGNIFICANT_INDEX, INVALID_TYPE_NAME)
 		}
 		for (v : enumeration.values) {
-			if (Character.isLowerCase(v.charAt(0))) {
+			if (!v.toUpperCase.equals(v)) {
 				warning(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES,
-				enumeration.values.indexOf(v), INVALID_FEATURE_NAME)
+				enumeration.values.indexOf(v), NOT_UPPER_CASE)
 			}
 		}
 	}
