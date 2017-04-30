@@ -50,6 +50,6 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ./releng/scripts/build_products.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG
+    script: ./releng/scripts/build_products.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG $BT_USER $BT_APIKEY 1.2 1.2.0
     on:
        branch: master
