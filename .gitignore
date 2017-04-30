@@ -26,6 +26,7 @@ bin
 
 #Folders:
 .gradle
+.m2
 
 # Xtext
 java-gen
