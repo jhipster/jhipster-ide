@@ -30,7 +30,7 @@ class JDLValidator extends AbstractJDLValidator {
 		}
 		for (v : enumeration.values) {
 			if (!v.toUpperCase.equals(v)) {
-				warning(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES,
+				error(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES,
 				enumeration.values.indexOf(v), NOT_UPPER_CASE)
 			}
 		}
