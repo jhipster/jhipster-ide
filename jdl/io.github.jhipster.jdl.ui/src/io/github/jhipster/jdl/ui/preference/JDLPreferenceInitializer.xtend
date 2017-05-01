@@ -37,7 +37,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	def private String getArgsDefault(String os) {
-		if (os.isUnix) '-c "${script} ${project} ${path}"'
+		if (os.isUnix) '-lc "${script} ${project} ${path}"'
 		else if (os.isWindows) '/k ${script} ${project} ${path}' 
 		else '' // unknown operating system
 	}
