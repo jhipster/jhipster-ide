@@ -27,7 +27,6 @@ class JDLNewProjectWizardInitialContents {
 				
 				entity Country {
 					countryName String
-				    foobar String
 				}
 				
 				// an ignored comment

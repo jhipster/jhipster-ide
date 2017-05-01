@@ -21,7 +21,7 @@ class PlantUmlGenerator implements IJdlGenerator {
 			val isPlantUmlGenOn = Boolean.getBoolean('plantuml.gen')
 			val isPngUmlGenOn = Boolean.getBoolean('pnguml.gen')
 			model.render => [
-				if (isPlantUmlGenOn) createPlantUml(it, resource.toFile('plantuml'));			
+				if (isPlantUmlGenOn) createPlantUml(it, resource.toFile('plantuml'))			
 				if (isPngUmlGenOn) createImage(it, resource.toFile('png'))
 			]
 		} else println('Error processing model: ' + model)
