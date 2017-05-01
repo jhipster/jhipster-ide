@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.generator.plantuml
+package io.github.jhipster.jdl.plantuml
 
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.jdl.JdlDomainModel

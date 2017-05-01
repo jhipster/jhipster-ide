@@ -1,14 +1,14 @@
 package io.github.jhipster.jdl.generator
 
+import com.google.inject.ImplementedBy
 import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.plantuml.PlantUmlGenerator
 import java.util.Set
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import com.google.inject.ImplementedBy
-import io.github.jhipster.jdl.generator.plantuml.PlantUmlGenerator
 
 /**
  * Generates code from your model files on save.

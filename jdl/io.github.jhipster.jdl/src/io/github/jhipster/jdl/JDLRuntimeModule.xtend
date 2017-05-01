@@ -3,7 +3,7 @@ package io.github.jhipster.jdl
 import com.google.inject.Provides
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.generator.JDLGenerator
-import io.github.jhipster.jdl.generator.plantuml.PlantUmlGenerator
+import io.github.jhipster.jdl.plantuml.PlantUmlGenerator
 import io.github.jhipster.jdl.renderer.IJdlToPlantUmlRenderer
 import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
 import io.github.jhipster.jdl.resource.JdlDerivedStateComputer
