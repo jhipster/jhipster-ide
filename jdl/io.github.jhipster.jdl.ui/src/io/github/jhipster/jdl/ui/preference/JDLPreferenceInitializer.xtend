@@ -37,7 +37,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	def private String getArgsDefault(String os) {
-		if (os.isUnix) '-c "${script} ${project} ${path}"'
+		if (os.isUnix) '-lc "${script} ${project} ${path}"'
 		else if (os.isWindows) '/k ${script} ${project} ${path}' 
 		else '' // unknown operating system
 	}
@@ -51,7 +51,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	def private String getScriptForUnix() '''
 		#!/bin/bash
 		export PATH=$PATH:/usr/local/bin:
-		echo "Initialize JHipster project %1"
+		echo "Initialize JHipster project $1"
 		command yo jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
 		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
 		bash

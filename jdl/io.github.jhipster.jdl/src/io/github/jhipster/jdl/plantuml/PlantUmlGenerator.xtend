@@ -1,4 +1,4 @@
-package io.github.jhipster.jdl.generator.plantuml
+package io.github.jhipster.jdl.plantuml
 
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.jdl.JdlDomainModel
@@ -18,13 +18,11 @@ class PlantUmlGenerator implements IJdlGenerator {
 	override generate(JdlDomainModel model, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val resource = model?.eResource
 		if (resource !== null) {
+			val isPlantUmlGenOn = Boolean.getBoolean('plantuml.gen')
+			val isPngUmlGenOn = Boolean.getBoolean('pnguml.gen')
 			model.render => [
-				if (System.getProperty('plantuml.gen') == 'true') {
-					createPlantUml(it, resource.toFile('plantuml'));			
-				}					
-				if (System.getProperty('pnguml.gen') == 'true') {
-					createImage(it, resource.toFile('png'))
-				}					
+				if (isPlantUmlGenOn) createPlantUml(it, resource.toFile('plantuml'))			
+				if (isPngUmlGenOn) createImage(it, resource.toFile('png'))
 			]
 		} else println('Error processing model: ' + model)
 	}
