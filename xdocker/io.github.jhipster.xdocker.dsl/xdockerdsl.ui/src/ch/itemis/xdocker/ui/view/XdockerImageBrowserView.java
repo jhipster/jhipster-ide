@@ -172,18 +172,13 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 	private void setMenuForRemoteImages() {
 		Menu tableMenu = new Menu(getParent().getShell(), SWT.POP_UP);
 		table.setMenu(tableMenu);
-		MenuItem pullMenu = new MenuItem(tableMenu, SWT.PUSH);
-		pullMenu.setText("Pull Image");
-		pullMenu.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event event) {
-				pullImages();
-			}
-		});
+		setPullMenu(tableMenu);
 	}
 
 	private void setMenuForLocalImages() {
 		tableMenu = new Menu(getParent().getShell(), SWT.POP_UP);
 		table.setMenu(tableMenu);
+		setPullMenu(tableMenu);
 		runMenu = new MenuItem(tableMenu, SWT.PUSH);
 		runMenu.setText("Run...");
 		runMenu.addListener(SWT.Selection, new Listener() {
@@ -203,6 +198,16 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 		selectAllMenu.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				table.selectAll();
+			}
+		});
+	}
+
+	private void setPullMenu(Menu tableMenu) {
+		MenuItem pullMenu = new MenuItem(tableMenu, SWT.PUSH);
+		pullMenu.setText("Pull Image");
+		pullMenu.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event event) {
+				pullImages();
 			}
 		});
 	}
