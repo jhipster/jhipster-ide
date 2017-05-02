@@ -12,7 +12,8 @@ VERSION=$6
 
 OWNER=jhipster
 PACKAGE=jhipster-ide
-PRODUCT=`ls -1 $BUILD_DIR/releng/target/io.github.jhipster-ide-$VERSION*.zip`
+#PRODUCT=`ls -1 $BUILD_DIR/releng/target/io.github.jhipster-ide-$VERSION*.zip`
+PRODUCT=$BUILD_DIR/releng/target/io.github.jhipster-ide-$VERSION*.zip
 
 echo "Folder: $BUILD_DIR tag: $BUILD_TAG release: $RELEASE version: $VERSION product: $PRODUCT"
 
