@@ -70,7 +70,7 @@ JdlDateFieldType:
 	element=JdlDateTypes validators+=JdlRequiredValidator*;
 
 enum JdlDateTypes:
-	Date | LocalDate | ZonedDateTime;
+	Date | LocalDate | ZonedDateTime | Instant;
 	
 JdlBlobFieldType:
 	element=JdlBlobTypes validators+=JdlBlobValidators*;
