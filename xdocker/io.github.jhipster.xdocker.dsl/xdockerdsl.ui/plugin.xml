@@ -533,7 +533,25 @@
             icon="icons/docker-build.gif"
             id="ch.itemis.xdocker.ui.ide.dockerBuildShortcut"
             label="Docker Build Image"
-            modes="run">
+            modes="run, debug">
+         <contextualLaunch>
+            <enablement>
+               <reference
+                     definitionId="ch.itemis.xdocker.ui.oneDockerFileSelected">
+               </reference>
+            </enablement>
+         </contextualLaunch>
+      </shortcut>
+   </extension>
+
+  <extension
+         point="org.eclipse.debug.ui.launchShortcuts">
+     <shortcut
+            class="ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchShortcut"
+            icon="icons/docker-build.gif"
+            id="ch.itemis.xdocker.ui.ide.dockerRunShortcut"
+            label="Docker Run Image"
+            modes="run, debug">
          <contextualLaunch>
             <enablement>
                <reference
@@ -765,7 +783,7 @@
          point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             id="ch.itemis.xdocker.ui.XdockerRunLaunchConfigType"
-            modes="run"
+            modes="run, debug"
             name="Docker Run"
             delegate="ch.itemis.xdocker.ui.launch.XdockerRunImageLaunchDelegate"
             />
