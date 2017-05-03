@@ -5,12 +5,12 @@
 			class="io.github.jhipster.jdl.jdl.JdlPackage"
 		/>
 		<resourceFactory 
-			type="jh"
+			type="jdl"
 			class="org.eclipse.xtext.resource.IResourceFactory"
 			factoryClass="io.github.jhipster.jdl.idea.JDLExtensionFactory"
 		/>
 		<resourceServiceProvider
-			uriExtension="jh"
+			uriExtension="jdl"
 			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
 			factoryClass="io.github.jhipster.jdl.idea.JDLExtensionFactory"
 		/>

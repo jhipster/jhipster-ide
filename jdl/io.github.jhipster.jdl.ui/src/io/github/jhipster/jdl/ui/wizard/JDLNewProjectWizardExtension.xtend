@@ -12,10 +12,10 @@ import org.eclipse.tm.terminal.view.core.interfaces.ITerminalService
 import org.eclipse.ui.console.ConsolePlugin
 import org.eclipse.xtext.ui.wizard.IProjectCreator
 
-import static java.nio.file.Files.*
 import static io.github.jhipster.jdl.ui.internal.JdlActivator.*
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
 import static io.github.jhipster.jdl.ui.terminal.TerminalHelper.*
+import static java.nio.file.Files.*
 import static java.nio.file.attribute.PosixFilePermission.*
 import static java.nio.file.attribute.PosixFilePermissions.*
 
@@ -42,9 +42,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		val project = mainPage.projectName
 		val location = mainPage.location + File.separator + project
 		prepare(project, location)
-		openTerminal(
-			project, location, exec, args, done, envs
-		)
+		openTerminal(project, location, exec, args, done, envs)
 	}
 
 	def done() {
@@ -57,21 +55,18 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 						ConsolePlugin.log(it)
 					]
 				}
-				// remove temporary file...
-				val shellScripFile = shellScript?.toFile
-				if (shellScripFile !== null && shellScripFile.canWrite) {
-//					shellScripFile.delete
-				}
 			}
-		}		
+		}
 	}
 
 	def private void prepare(String project, String location) {
 		if (!isShellEnabled || script.isNullOrEmpty) return
 		val isWindows = System.getProperty('os.name').toLowerCase.contains('win')
-		shellScript = 
-			if (isWindows) createTempFile('jhide', '.cmd') 
-			else createTempFile('jhide', '.sh', asFileAttribute(#{OWNER_READ, OWNER_WRITE, OWNER_EXECUTE}))
+		shellScript = if (isWindows) createTempFile('jhide', '.cmd') 
+			else createTempFile('jhide', '.sh', asFileAttribute(#{
+				OWNER_READ, OWNER_WRITE, OWNER_EXECUTE
+			}))
+		shellScript.toFile.deleteOnExit
 		val content = newArrayList
 		if (isWindows && !envs.isNullOrEmpty) {
 			envs.forEach[content.add('''set «it»''')]
