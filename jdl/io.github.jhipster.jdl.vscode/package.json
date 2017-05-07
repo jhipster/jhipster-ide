@@ -3,7 +3,7 @@
     "displayName": "jdl",
     "description": "JDL VS Code extension",
     "version": "1.2.0",
-    "publisher": "jhipster",
+    "publisher": "jhipster-ide",
     "icon": "images/icon.gif",
     "engines": {
         "vscode": "^1.4.0"
@@ -42,11 +42,11 @@
                 "command": "plantuml.preview",
                 "title": "Plant UML"
             }
-        ],    
+        ],
         "keybindings": [
             {
                 "command": "plantuml.preview",
-                "key": "alt+d" 
+                "key": "alt+d"
             }
         ]
     },
