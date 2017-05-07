@@ -12,7 +12,7 @@ public class JDLNewProjectWizardEnhanced extends JDLNewProjectWizard {
 	@Inject
 	public JDLNewProjectWizardEnhanced(IProjectCreator projectCreator) {
 		super(projectCreator);
-		setWindowTitle("New JDL Project");
+		setWindowTitle("New JHipster Project");
 	}
 
 	protected JDLWizardNewProjectCreationPage getMainPage() {
@@ -26,8 +26,8 @@ public class JDLNewProjectWizardEnhanced extends JDLNewProjectWizard {
 	@Override
 	public void addPages() {
 		mainPage = createMainPage("basicNewProjectPage");
-		mainPage.setTitle("JDL Project");
-		mainPage.setDescription("Create a new JDL project.");
+		mainPage.setTitle("JHipster Project");
+		mainPage.setDescription("Create a new JHipster project.");
 		addPage(mainPage);
 	}
 
