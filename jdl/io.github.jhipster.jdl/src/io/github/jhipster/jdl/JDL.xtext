@@ -27,7 +27,7 @@ JdlNumericValue:
  * ========================================================================= */
 JdlEntity:
 	'entity' name=ID ('(' table=ID ')')? ('{'
-		(fields+=JdlEntityField (COMMA? fields+=JdlEntityField)*)?
+		(fields+=JdlEntityField (','? fields+=JdlEntityField)*)?
 	'}')?;
 
 JdlEntityField:
@@ -126,7 +126,7 @@ JdlMaxBytesValidator:
  * ========================================================================= */
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
-		relationships+=JdlRelationship+ (=>COMMA relationships+=JdlRelationship)*
+		relationships+=JdlRelationship (',' relationships+=JdlRelationship)*
 	'}';
 
 JdlRelationship:
@@ -146,7 +146,7 @@ enum JdlCardinality:
  * ========================================================================= */
 JdlEnum:
 	'enum' name=ID '{'
-		values+=ID (COMMA? values+=ID)*
+		values+=ID (','? values+=ID)*
 	'}';
 
 /* =========================================================================
@@ -176,7 +176,7 @@ JdlExceptEntityExclusion:
 	'except' selection=JdlEntitySelection;
 
 JdlEntitySelection:
-	entities+=[JdlEntity] (COMMA entities+=[JdlEntity])*;
+	entities+=[JdlEntity] (',' entities+=[JdlEntity])*;
 
 JdlWildcardPredicate:
 	wildcard?='*' | all?='all';
@@ -246,9 +246,3 @@ JdlAngularSuffixOption returns JdlOptionSetting:
  * ========================================================================= */
 JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
-
-/* =========================================================================
- * TERMINALS
- * ========================================================================= */
-terminal COMMA returns ecore::EString:
-	',';
