@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide) [![Download](https://api.bintray.com/packages/jhipster/jhipster-ide/1.1/images/download.svg)](https://bintray.com/jhipster/jhipster-ide/1.1/_latestVersion)
+[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide) [![Download](https://api.bintray.com/packages/jhipster/jhipster-ide/1.2/images/download.svg)](https://bintray.com/jhipster/jhipster-ide/1.2/_latestVersion)
 
 JHipster-IDE
 ============
