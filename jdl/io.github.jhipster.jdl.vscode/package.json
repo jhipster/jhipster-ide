@@ -2,9 +2,9 @@
     "name": "jdl",
     "displayName": "jdl",
     "description": "JDL VS Code extension",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "jhipster-ide",
-    "icon": "images/icon.gif",
+    "icon": "images/icon.jpg",
     "engines": {
         "vscode": "^1.4.0"
     },
