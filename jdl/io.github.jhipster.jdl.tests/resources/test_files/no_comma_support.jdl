@@ -25,7 +25,7 @@ entity G {
 }
 
 relationship OneToOne {
-  A{b required} to B{a}
+  A{b required} to B{a},
   C{c required} to E{e}
 }
 
