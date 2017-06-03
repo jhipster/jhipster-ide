@@ -4,7 +4,7 @@
     "description": "JDL VS Code extension",
     "version": "1.2.0",
     "publisher": "jhipster-ide",
-    "icon": "images/icon.gif",
+    "icon": "images/icon.jpg",
     "engines": {
         "vscode": "^1.4.0"
     },
