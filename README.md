@@ -5,8 +5,8 @@ JHipster-IDE
 
 Hello, this is [JHipster-IDE](https://github.com/jhipster/jhipster-ide/), a set of IDE features:
 
-- JDL DSL Editor
-- Xdocker - to manage docker images and containers in JHipster
+- JHipster IDE with an JDL editor and shell integration to call JHipster generator directly from the IDE
+- Xdocker - to manage docker images and containers in JHipster IDE
 
 Created by [Jose Badeau](https://github.com/jbadeau) and [Serano Colameo](https://github.com/colameo).
 
