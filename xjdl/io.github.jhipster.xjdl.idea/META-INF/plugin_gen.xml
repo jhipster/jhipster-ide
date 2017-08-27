@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.github.io/jhipster/xjdl/Xjdl"
+			class="io.github.jhipster.xjdl.xjdl.XjdlPackage"
+		/>
+		<resourceFactory 
+			type="xjdl"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="xjdl"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+		/>
+
+		<lang.setup
+			language="io.github.jhipster.xjdl.Xjdl"
+			implementationClass="io.github.jhipster.xjdl.idea.XjdlIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="io.github.jhipster.xjdl.idea.lang.psi.XjdlCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="io.github.jhipster.xjdl.idea.lang.XjdlFileTypeFactory"/>
+		<stubElementTypeHolder class="io.github.jhipster.xjdl.idea.lang.XjdlElementTypeProvider"/>
+		<lang.ast.factory 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="io.github.jhipster.xjdl.idea.lang.parser.XjdlParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="io.github.jhipster.xjdl.Xjdl" implementationClass="io.github.jhipster.xjdl.idea.highlighting.XjdlSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="io.github.jhipster.xjdl.Xjdl" implementationClass="io.github.jhipster.xjdl.idea.completion.XjdlCompletionContributor"/>
+		<pom.declarationSearcher implementation="io.github.jhipster.xjdl.idea.lang.pom.XjdlPomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="io.github.jhipster.xjdl.idea.facet.XjdlFacetType"/>
+		<lang.documentationProvider 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+		/>
+		<colorSettingsPage implementation="io.github.jhipster.xjdl.idea.highlighting.XjdlColorSettingsPage"/>
+		<highlightVisitor implementation="io.github.jhipster.xjdl.idea.highlighting.XjdlSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="io.github.jhipster.xjdl.Xjdl"
+			factoryClass="io.github.jhipster.xjdl.idea.XjdlExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>

@@ -1,0 +1,3 @@
+include 'io.github.jhipster.xjdl'
+include 'io.github.jhipster.xjdl.ide'
+include 'io.github.jhipster.xjdl.idea'

@@ -1,0 +1,7 @@
+grammar io.github.jhipster.xjdl.Xjdl with org.eclipse.xtext.xbase.Xbase
+
+generate xjdl "http://www.github.io/jhipster/xjdl/Xjdl"
+
+Model:
+	name=ID;
+

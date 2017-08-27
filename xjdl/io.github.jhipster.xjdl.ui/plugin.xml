@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension
+		point="org.eclipse.ui.editors">
+		<editor
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+			default="true"
+			extensions="xjdl"
+			id="io.github.jhipster.xjdl.Xjdl"
+			matchingStrategy="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.editor.JavaEditorInputMatcher"
+			name="Xjdl Editor">
+		</editor>
+	</extension>
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+			commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+			commandId="io.github.jhipster.xjdl.Xjdl.validate">
+		<activeWhen>
+			<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+			</reference>
+		</activeWhen>
+		</handler>
+		<!-- copy qualified name -->
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
+			<activeWhen>
+				<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened" />
+			</activeWhen>
+		</handler>
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+			commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
+			<activeWhen>
+				<and>
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.XtextEditor.opened" />
+					<iterate>
+						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+					</iterate>
+				</and>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.core.expressions.definitions">
+		<definition id="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+			<and>
+				<reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="io.github.jhipster.xjdl.Xjdl"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+		<definition id="io.github.jhipster.xjdl.Xjdl.XtextEditor.opened">
+			<and>
+				<reference definitionId="isXtextEditorActive"/>
+				<with variable="activeEditor">
+					<test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName"
+						value="io.github.jhipster.xjdl.Xjdl"
+						forcePluginActivation="true"/>
+				</with>
+			</and>
+		</definition>
+	</extension>
+	<extension
+			point="org.eclipse.ui.preferencePages">
+		<page
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl"
+			name="Xjdl">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+		</page>
+		<page
+			category="io.github.jhipster.xjdl.Xjdl"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl.coloring"
+			name="Syntax Coloring">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+		</page>
+		<page
+			category="io.github.jhipster.xjdl.Xjdl"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl.templates"
+			name="Templates">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+		</page>
+	</extension>
+	<extension
+			point="org.eclipse.ui.propertyPages">
+		<page
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl"
+			name="Xjdl">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension
+		point="org.eclipse.ui.keywords">
+		<keyword
+			id="io.github.jhipster.xjdl.ui.keyword_Xjdl"
+			label="Xjdl"/>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+	<command
+			description="Trigger expensive validation"
+			id="io.github.jhipster.xjdl.Xjdl.validate"
+			name="Validate">
+	</command>
+	<!-- copy qualified name -->
+	<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+	</command>
+	<command
+			id="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+			categoryId="org.eclipse.ui.category.edit"
+			description="Copy the qualified name for the selected element"
+			name="Copy Qualified Name">
+	</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			 <command
+				 commandId="io.github.jhipster.xjdl.Xjdl.validate"
+				 style="push"
+				 tooltip="Trigger expensive validation">
+			<visibleWhen checkEnabled="false">
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</visibleWhen>
+		</command>
+		</menuContribution>
+		<!-- copy qualified name -->
+		<menuContribution locationURI="popup:#TextEditorContext?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="menu:edit?after=copy">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution locationURI="popup:org.eclipse.xtext.ui.outline?after=additions">
+			<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName"
+				style="push" tooltip="Copy Qualified Name">
+				<visibleWhen checkEnabled="false">
+					<and>
+						<reference definitionId="io.github.jhipster.xjdl.Xjdl.XtextEditor.opened" />
+						<iterate>
+							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
+						</iterate>
+					</and>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+			commandId="org.eclipse.xtext.ui.editor.FindReferences">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- adding resource factories -->
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="xjdl">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+		<resourceServiceProvider
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+			uriExtension="xjdl">
+		</resourceServiceProvider>
+	</extension>
+	<!-- marker definitions for io.github.jhipster.xjdl.Xjdl -->
+	<extension
+			id="xjdl.check.fast"
+			name="Xjdl Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.fast"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="xjdl.check.normal"
+			name="Xjdl Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.normal"/>
+		<persistent value="true"/>
+	</extension>
+	<extension
+			id="xjdl.check.expensive"
+			name="Xjdl Problem"
+			point="org.eclipse.core.resources.markers">
+		<super type="org.eclipse.xtext.ui.check.expensive"/>
+		<persistent value="true"/>
+	</extension>
+	<extension point="org.eclipse.xtext.builder.participant">
+		<participant
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
+			fileExtensions="xjdl"/>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="io.github.jhipster.xjdl.Xjdl"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl.compiler.preferencePage"
+			name="Compiler">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.propertyPages">
+		<page
+			category="io.github.jhipster.xjdl.Xjdl"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl.compiler.propertyPage"
+			name="Compiler">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+			<enabledWhen>
+				<adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+			<filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+		</page>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?after=xtext.ui.openDeclaration">
+			<command
+				commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand"
+				id="io.github.jhipster.xjdl.Xjdl.OpenGeneratedCode"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened" />
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.generator.trace.OpenGeneratedFileHandler"
+			commandId="org.eclipse.xtext.ui.OpenGeneratedFileCommand">
+			<activeWhen>
+				<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened" />
+			</activeWhen>
+		</handler>
+	</extension>
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- quickfix marker resolution generator for io.github.jhipster.xjdl.Xjdl -->
+	<extension
+			point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.jhipster.xjdl.ui.xjdl.check.fast">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.jhipster.xjdl.ui.xjdl.check.normal">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+		<markerResolutionGenerator
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+			markerType="io.github.jhipster.xjdl.ui.xjdl.check.expensive">
+			<attribute
+				name="FIXABLE_KEY"
+				value="true">
+			</attribute>
+		</markerResolutionGenerator>
+	</extension>
+	<!-- Rename Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.ui.refactoring.RenameElement"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.preferencePages">
+		<page
+			category="io.github.jhipster.xjdl.Xjdl"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+			id="io.github.jhipster.xjdl.Xjdl.refactoring"
+			name="Refactoring">
+			<keywordReference id="io.github.jhipster.xjdl.ui.keyword_Xjdl"/>
+		</page>
+	</extension>
+	<!-- Type Hierarchy  -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchyHandler"
+			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.QuickTypeHierarchyHandler"
+			commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenTypeHierarchy"
+				style="push"
+				tooltip="Open Type Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.jdt.ui.edit.text.java.open.hierarchy"
+				style="push"
+				tooltip="Quick Type Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- Call Hierachy -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierachyHandler"
+			commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.xbase.ui.hierarchy.OpenCallHierarchy"
+				style="push"
+				tooltip="Open Call Hierarchy">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.core.runtime.adapters">
+		<factory class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.builder.smap.StratumBreakpointAdapterFactory"
+			adaptableType="org.eclipse.xtext.ui.editor.XtextEditor">
+			<adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+		</factory> 
+	</extension>
+	<extension point="org.eclipse.ui.editorActions">
+		<editorContribution targetID="io.github.jhipster.xjdl.Xjdl" 
+			id="io.github.jhipster.xjdl.Xjdl.rulerActions">
+			<action
+				label="Not Used"
+	 			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+				style="push"
+				actionID="RulerDoubleClick"
+				id="io.github.jhipster.xjdl.Xjdl.doubleClickBreakpointAction"/>
+		</editorContribution>
+	</extension>
+	<extension point="org.eclipse.ui.popupMenus">
+		<viewerContribution
+			targetID="io.github.jhipster.xjdl.Xjdl.RulerContext"
+			id="io.github.jhipster.xjdl.Xjdl.RulerPopupActions">
+			<action
+				label="Toggle Breakpoint"
+				class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+				menubarPath="debug"
+				id="io.github.jhipster.xjdl.Xjdl.rulerContextMenu.toggleBreakpointAction">
+			</action>
+			<action
+				label="Not used"
+				class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
+				menubarPath="debug"
+				id="io.github.jhipster.xjdl.Xjdl.rulerContextMenu.enableDisableBreakpointAction">
+			</action>
+			<action
+				label="Breakpoint Properties"
+				helpContextId="breakpoint_properties_action_context"
+				class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.jdt.debug.ui.actions.JavaBreakpointPropertiesRulerActionDelegate"
+				menubarPath="group.properties"
+				id="io.github.jhipster.xjdl.Xjdl.rulerContextMenu.openBreapointPropertiesAction">
+			</action>
+		</viewerContribution>
+	</extension>
+	<!-- Introduce Local Variable Refactoring -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler 
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.refactoring.ExtractVariableHandler"
+			commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.edit">
+			<command commandId="org.eclipse.xtext.xbase.ui.refactoring.ExtractLocalVariable"
+				style="push">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<!-- Open implementation -->
+	<extension point="org.eclipse.ui.handlers">
+		<handler
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.xbase.ui.navigation.OpenImplementationHandler"
+			commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+			<activeWhen>
+				<reference
+					definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="menu:navigate?after=open.ext4">
+			<command commandId="org.eclipse.xtext.xbase.ui.OpenImplementationCommand">
+				<visibleWhen checkEnabled="false">
+					<reference
+						definitionId="io.github.jhipster.xjdl.Xjdl.Editor.opened">
+					</reference>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.compare.contentViewers">
+		<viewer id="io.github.jhipster.xjdl.Xjdl.compare.contentViewers"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="xjdl">
+		</viewer>
+	</extension>
+	<extension point="org.eclipse.compare.contentMergeViewers">
+		<viewer id="io.github.jhipster.xjdl.Xjdl.compare.contentMergeViewers"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+			extensions="xjdl" label="Xjdl Compare">
+		</viewer>
+	</extension>
+	<extension point="org.eclipse.ui.editors.documentProviders">
+		<provider id="io.github.jhipster.xjdl.Xjdl.editors.documentProviders"
+			class="io.github.jhipster.xjdl.ui.XjdlExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+			extensions="xjdl">
+		</provider>
+	</extension>
+	<extension point="org.eclipse.team.core.fileTypes">
+		<fileTypes
+			extension="xjdl"
+			type="text">
+		</fileTypes>
+	</extension>
+</plugin>

@@ -1,0 +1,9 @@
+#Sun Aug 27 22:09:16 CEST 2017
+connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
+connection.java.home=null
+connection.gradle.user.home=null
+connection.arguments=
+eclipse.preferences.version=1
+connection.jvm.arguments=
+project.path=\:io.github.jhipster.xjdl.idea
+connection.project.dir=..

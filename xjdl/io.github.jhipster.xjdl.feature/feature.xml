@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="io.github.jhipster.xjdl.feature"
+	label="Xjdl Feature "
+	version="1.0.0.qualifier">
+	<plugin
+			id="io.github.jhipster.xjdl"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="io.github.jhipster.xjdl.ide"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+	<plugin
+			id="io.github.jhipster.xjdl.ui"
+			download-size="0"
+			install-size="0"
+			version="0.0.0"
+			unpack="false"/>
+</feature>
