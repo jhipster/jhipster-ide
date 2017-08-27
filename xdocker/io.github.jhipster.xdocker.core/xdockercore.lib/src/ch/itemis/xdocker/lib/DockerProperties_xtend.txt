@@ -18,7 +18,7 @@ import static com.github.dockerjava.core.DefaultDockerClientConfig.*
  * @author Serano Colameo - Initial contribution and API
  */
 @Data
-final class DockerProperties { 
+final class DockerProperties2 { 
 	// Xdocker properties
 	@ConfigProperty val Boolean enableLoggingFilter
 	@ConfigProperty val String projectPath
