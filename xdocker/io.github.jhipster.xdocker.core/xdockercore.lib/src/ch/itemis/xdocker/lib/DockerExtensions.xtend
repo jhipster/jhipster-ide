@@ -34,7 +34,7 @@ class DockerExtensions {
 	@Accessors private var DockerClientConfig dockerConfig
     @Accessors private var DockerClient dockerClient
 
-	def static newInstance() {
+	def static newInstance() { 
 		return new DockerExtensions
 	}
 
