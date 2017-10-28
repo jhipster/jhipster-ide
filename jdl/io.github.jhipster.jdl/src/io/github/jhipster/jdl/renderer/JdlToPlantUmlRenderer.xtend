@@ -3,6 +3,7 @@ package io.github.jhipster.jdl.renderer
 import com.google.inject.ImplementedBy
 import io.github.jhipster.jdl.jdl.JdlBlobFieldType
 import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
+import io.github.jhipster.jdl.jdl.JdlConstant
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
@@ -18,13 +19,11 @@ import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
-import io.github.jhipster.jdl.jdl.JdlWithEntityInclusion
-import io.github.jhipster.jdl.renderer.IJdlModelViewerRenderer
+import io.github.jhipster.jdl.jdl.JdlWithEntitySelectionAndValue
 import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
-import io.github.jhipster.jdl.jdl.JdlConstant
 
 @ImplementedBy(JdlToPlantUmlRenderer)
 interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
@@ -55,7 +54,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		if (jdl === null || jdl.eContents.nullOrEmpty) return jdl
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
 			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
-				JdlWithEntityInclusion, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
+				JdlWithEntitySelectionAndValue, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
 			}
 			val isSelectAll = predicate !== null && (predicate.isWildcard || predicate.isAll)
 			if (isSelectAll) {
@@ -63,7 +62,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 				entitySelection ?: #[]
 			} else {
 				val entitySelection = if (o.setting?.includes !== null) switch (o.setting.includes) {
-					JdlWithEntityInclusion, JdlForEntityInclusion: {
+					JdlWithEntitySelectionAndValue, JdlForEntityInclusion: {
 						val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
 					 	selection?.entities
 				 	}

@@ -164,10 +164,14 @@ JdlOptionSetting:
 	JdlSkipClientOption |
 	JdlSkipServerOption |
 	JdlAngularSuffixOption |
-	JdlNoFluentMethodOption;
+	JdlNoFluentMethodOption |
+	JdlFilterOption;
 
-JdlWithEntityInclusion:
+JdlWithEntitySelectionAndValue:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
+
+JdlWithEntitySelectionAndNoValue:
+	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 
 JdlForEntityInclusion:
 	'for' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
@@ -185,7 +189,7 @@ JdlWildcardPredicate:
  * DTO OPTION 
  * ========================================================================= */
 JdlDtoOption returns JdlOptionSetting:
-	dtoOption?='dto' includes=JdlWithEntityInclusion dtoType=JdlDtoType;
+	dtoOption?='dto' includes=JdlWithEntitySelectionAndValue dtoType=JdlDtoType;
 
 enum JdlDtoType:
 	mapstruct;
@@ -194,7 +198,7 @@ enum JdlDtoType:
  * PAGINATION OPTION 
  * ========================================================================= */
 JdlPaginateOption returns JdlOptionSetting:
-	paginateOption?='paginate' includes=JdlWithEntityInclusion paginateType=JdlPaginateType;
+	paginateOption?='paginate' includes=JdlWithEntitySelectionAndValue paginateType=JdlPaginateType;
 
 JdlPaginateType:
 	pagination?=('pager' | 'pagination') | infiniteScroll?='infinite-scroll';
@@ -203,7 +207,7 @@ JdlPaginateType:
  * SERVICE OPTION 
  * ========================================================================= */
 JdlServiceOption returns JdlOptionSetting:
-	serviceOption?='service' includes=JdlWithEntityInclusion serviceType=JdlServiceType;
+	serviceOption?='service' includes=JdlWithEntitySelectionAndValue serviceType=JdlServiceType;
 
 enum JdlServiceType:
 	serviceClass | serviceImpl;
@@ -212,13 +216,13 @@ enum JdlServiceType:
  * MICRO SERVICE OPTION 
  * ========================================================================= */
 JdlMicroserviceOption returns JdlOptionSetting:
-	microserviceOption?='microservice' includes=JdlWithEntityInclusion appname=ID;
+	microserviceOption?='microservice' includes=JdlWithEntitySelectionAndValue appname=ID;
 
 /* =========================================================================
  * SEARCH OPTION 
  * ========================================================================= */
 JdlSearchOption returns JdlOptionSetting:
-	searchOption?='search' includes=JdlWithEntityInclusion searchType=JdlSearchType;
+	searchOption?='search' includes=JdlWithEntitySelectionAndValue searchType=JdlSearchType;
 
 enum JdlSearchType:
 	elasticsearch;
@@ -239,10 +243,21 @@ JdlSkipServerOption returns JdlOptionSetting:
  * ANGULAR SUFFIX OPTION 
  * ========================================================================= */
 JdlAngularSuffixOption returns JdlOptionSetting:
-	angularSuffixOption?='angularSuffix' includes=JdlWithEntityInclusion id=ID;
+	angularSuffixOption?='angularSuffix' includes=JdlWithEntitySelectionAndValue id=ID;
+
+/* =========================================================================
+ * Filter OPTION 
+ * ========================================================================= */
+JdlFilterOption returns JdlOptionSetting:
+	filterOption?='filter' includes=JdlWithEntitySelectionAndValue;
 
 /* =========================================================================
  * NO FLUENT METHOD OPTION 
  * ========================================================================= */
 JdlNoFluentMethodOption returns JdlOptionSetting:
-	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
+	noFluentMethodOption?='noFluentMethod' includes=JdlWithEntitySelectionAndNoValue;
+
+/* =========================================================================
+ * END OF GRAMMAR DEFINITION 
+ * ========================================================================= */
+	
