@@ -2,6 +2,12 @@ grammar io.github.jhipster.xjdl.Xjdl with org.eclipse.xtext.xbase.Xbase
 
 generate xjdl "http://www.github.io/jhipster/xjdl/Xjdl"
 
+import "http://www.github.io/jhipster/jdl/JDL" as jdl
+
 Model:
 	name=ID;
 
+XJdlEntity:
+	'entity' name=ID 'extends' JdlEntity=[jdl::JdlEntity] ('{'
+		
+	'}')?;

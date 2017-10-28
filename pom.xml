@@ -25,6 +25,7 @@
 			</activation>
 			<modules>
 				<module>jdl</module>
+				<module>xjdl</module>
 				<module>xdocker</module>
 			</modules>
 		</profile>

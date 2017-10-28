@@ -7,6 +7,14 @@ var rootPath = ".."
 
 Workflow {
 	
+	bean = org.eclipse.emf.mwe.utils.StandaloneSetup {
+        scanClassPath = true
+        platformUri = "${rootPath}/.."
+        uriMap = {
+            from = "platform:/resource/io.github.jhipster.jdl/model/generated/JDL.genmodel"
+            to = "platform:/resource/io.github.jhipster.jdl/model/generated/JDL.genmodel"
+        }     
+    }
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -42,6 +50,9 @@ Workflow {
 			serializer = {
 				generateStub = false
 			}
+			
+			referencedResource = "platform:/resource/io.github.jhipster.jdl/model/generated/JDL.genmodel"
+			
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
