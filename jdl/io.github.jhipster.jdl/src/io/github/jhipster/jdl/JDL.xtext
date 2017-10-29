@@ -167,14 +167,14 @@ JdlOptionSetting:
 	JdlNoFluentMethodOption |
 	JdlFilterOption;
 
-JdlWithEntitySelectionAndValue:
+JdlWithEntitySelectionAndValue returns JdlOptionSelection:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
 
-JdlWithEntitySelectionAndNoValue:
-	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
-
-JdlForEntityInclusion:
+JdlForEntityInclusion returns JdlOptionSelection:
 	'for' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
+
+JdlEntityInclusion returns JdlOptionSelection:
+	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 
 JdlExceptEntityExclusion:
 	'except' selection=JdlEntitySelection;
@@ -249,13 +249,13 @@ JdlAngularSuffixOption returns JdlOptionSetting:
  * Filter OPTION 
  * ========================================================================= */
 JdlFilterOption returns JdlOptionSetting:
-	filterOption?='filter' includes=JdlWithEntitySelectionAndValue;
+	filterOption?='filter' includes=JdlEntityInclusion;
 
 /* =========================================================================
  * NO FLUENT METHOD OPTION 
  * ========================================================================= */
 JdlNoFluentMethodOption returns JdlOptionSetting:
-	noFluentMethodOption?='noFluentMethod' includes=JdlWithEntitySelectionAndNoValue;
+	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * END OF GRAMMAR DEFINITION 

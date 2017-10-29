@@ -11,15 +11,14 @@ import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlEnumFieldType
 import io.github.jhipster.jdl.jdl.JdlFieldType
-import io.github.jhipster.jdl.jdl.JdlForEntityInclusion
 import io.github.jhipster.jdl.jdl.JdlOption
+import io.github.jhipster.jdl.jdl.JdlOptionSelection
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
-import io.github.jhipster.jdl.jdl.JdlWithEntitySelectionAndValue
 import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
@@ -53,19 +52,17 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		entiyOptionMap = newHashMap
 		if (jdl === null || jdl.eContents.nullOrEmpty) return jdl
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
-			val predicate = if (o.setting?.includes !== null) switch (o.setting.includes) {
-				JdlWithEntitySelectionAndValue, JdlForEntityInclusion: valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
+			val predicate = if (o.setting?.includes !== null && o.setting.includes instanceof JdlOptionSelection) {
+				valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
 			}
 			val isSelectAll = predicate !== null && (predicate.isWildcard || predicate.isAll)
 			if (isSelectAll) {
 				val entitySelection = jdl.eContents.filter(JdlEntity).filter[!isExcluded(o, it)]
 				entitySelection ?: #[]
 			} else {
-				val entitySelection = if (o.setting?.includes !== null) switch (o.setting.includes) {
-					JdlWithEntitySelectionAndValue, JdlForEntityInclusion: {
-						val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
-					 	selection?.entities
-				 	}
+				val entitySelection = if (o.setting?.includes !== null && o.setting.includes instanceof JdlOptionSelection) {
+					val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
+				 	selection?.entities
 				}
 				entitySelection ?: #[]
 			}

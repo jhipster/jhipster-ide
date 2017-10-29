@@ -51,7 +51,9 @@ class JDLFileTest {
 		 "wrong_required_relationships_jdl.jdl" -> "Constraint 'required' on a relationship of type ManyToOne will be ignored",
 		 "wrong_required_relationships_jdl.jdl" -> "Constraint 'required' on a relationship of type ManyToMany will be ignored",
 		 "invalid_option.jdl" -> "missing 'mapstruct' at 'wrong'",
-		 "wrong_enum_values.jdl" -> "Enum value name must be upper case"
+		 "wrong_enum_values.jdl" -> "Enum value name must be upper case",
+		 "filtering_wrong.jdl" -> "no viable alternative at input 'for'",
+		 "filtering_wrong.jdl" -> "mismatched input '<EOF>' expecting '='"
 	]
 	
 	new(File jdlFile) {
