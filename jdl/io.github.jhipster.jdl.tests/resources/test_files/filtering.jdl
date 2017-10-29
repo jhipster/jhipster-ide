@@ -1,4 +1,7 @@
 entity A
 entity B
 
+filter all except B
 filter * except B
+filter * 
+filter all
