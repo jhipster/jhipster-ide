@@ -23,7 +23,7 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 				val selEntities = newHashSet(sel.entities).flatten.toList
 				val exclEntities = newHashSet(excludedEntites).flatten.toList => [ removeAll(selEntities) ]
 				if (!exclEntities.isEmpty ) { 
-					val msg = INVALID_ENTITY_SELECTION_MSG + '''«IF exclEntities.length>1»s«ENDIF»: «exclEntities.map[name].toList» '''
+					val msg = INVALID_ENTITY_SELECTION_MSG + '''«IF exclEntities.length>1»s«ENDIF»: «exclEntities.map[name].toList»'''
 					exclEntities.forEach[ 
 						val i = excludedEntites.indexOf(it) 
 						error(msg, option.excludes.selection, JDL_ENTITY_SELECTION__ENTITIES, i)

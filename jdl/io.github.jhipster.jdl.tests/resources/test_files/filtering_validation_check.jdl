@@ -1,0 +1,6 @@
+entity A
+entity B
+entity C
+entity D
+
+filter A, B except B, C, D
