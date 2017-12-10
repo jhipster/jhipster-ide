@@ -171,10 +171,7 @@ JdlWithEntitySelectionAndValue returns JdlOptionSelection:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
 
 JdlForEntityInclusion returns JdlOptionSelection:
-	'for' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
-
-JdlEntityInclusion returns JdlOptionSelection:
-	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
+	hasFor?='for'? (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 
 JdlExceptEntityExclusion:
 	'except' selection=JdlEntitySelection;
@@ -249,7 +246,7 @@ JdlAngularSuffixOption returns JdlOptionSetting:
  * Filter OPTION 
  * ========================================================================= */
 JdlFilterOption returns JdlOptionSetting:
-	filterOption?='filter' includes=JdlEntityInclusion;
+	filterOption?='filter' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * NO FLUENT METHOD OPTION 

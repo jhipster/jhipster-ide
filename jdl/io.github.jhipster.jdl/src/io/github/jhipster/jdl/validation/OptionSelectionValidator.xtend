@@ -31,5 +31,12 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 				}
 			}
 		}
-	}		
+	}
+	
+//	@Check
+//	def checkOptionSelectionFor(JdlOptionSelection sel) {
+//		if (sel !== null && sel.hasFor) {
+//			error('Keyword "for" is not allowed anymore!', sel, JDL_OPTION_SELECTION__HAS_FOR, INSIGNIFICANT_INDEX)
+//		}
+//	}
 }
