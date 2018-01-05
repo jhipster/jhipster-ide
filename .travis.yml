@@ -43,6 +43,7 @@ script:
 
 after_success:
   - cd $TRAVIS_BUILD_DIR/jdl && ./gradlew clean installServer
+  - cd $TRAVIS_BUILD_DIR && chmod +x ./releng/scripts/build_products.sh
 
 # skip deployment for the moment!!
 #before_deploy:

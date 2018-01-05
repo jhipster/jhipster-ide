@@ -17,6 +17,7 @@
 		<tycho-version>1.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<eclipse.name>neon</eclipse.name>
+		<b3aggr.headless.repo>http://mirrors.ibiblio.org/eclipse/modeling/emft/b3/headless-4.4</b3aggr.headless.repo>		
 	</properties>
 
 	<repositories>
@@ -103,12 +104,12 @@
 								<repository>
 									<id>b3-headless</id>
 									<layout>p2</layout>
-									<url>http://download.eclipse.org/modeling/emft/b3/headless-4.4/</url>
+									<url>${b3aggr.headless.repo}</url>
 								</repository>
 								<repository>
 									<id>b3</id>
 									<layout>p2</layout>
-									<url>http://download.eclipse.org/modeling/emft/b3/updates-4.4/</url>
+									<url>${b3aggr.headless.repo}</url>
 								</repository>
 								<repository>
 									<id>eclipse</id>

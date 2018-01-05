@@ -3,16 +3,16 @@
   <validationSets label="JHipster-Xdocker">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../xdockerdsl.repository/target/repository">
-        <features name="xdockerdsl.feature.feature.group" versionRange="1.1.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="xdockerdsl.feature.feature.group" versionRange="1.3.0" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
   <validationSets label="Base" extends="//@validationSets[label='JHipster-Xdocker']">
     <contributions label="Base">
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0/">
-        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.10.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.10.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.10.0"/>
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0/">
+        <features name="org.eclipse.xtext.runtime.feature.group" versionRange="2.13.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.13.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.13.0"/>
       </repositories>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/releases/neon"/>
