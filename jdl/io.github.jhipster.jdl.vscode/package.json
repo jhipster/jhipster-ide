@@ -42,11 +42,11 @@
                 "command": "plantuml.preview",
                 "title": "Plant UML"
             }
-        ],    
+        ],
         "keybindings": [
             {
                 "command": "plantuml.preview",
-                "key": "alt+d" 
+                "key": "alt+d"
             }
         ]
     },
@@ -61,6 +61,7 @@
     },
     "dependencies": {
         "global": "^4.3.1",
+        "tsc": "^1.20150623.0",
         "vscode-languageclient": "^2.6.3"
     }
 }

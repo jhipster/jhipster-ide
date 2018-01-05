@@ -5,8 +5,7 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 1.3.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: xdockercore.lib,
- io.github.jhipster.jdl,
+Require-Bundle: io.github.jhipster.jdl,
  io.github.jhipster.jdl.ide,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
