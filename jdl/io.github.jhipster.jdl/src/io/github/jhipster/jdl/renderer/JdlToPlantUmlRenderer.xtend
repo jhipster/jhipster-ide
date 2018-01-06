@@ -30,6 +30,7 @@ interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 	static (Object)=>String toPlantUml = [ it | '''
 			«IF it !== null»
 				@startuml
+					!pragma graphviz_dot jdot
 					«toString»
 				@enduml
 			«ENDIF»
