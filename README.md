@@ -5,7 +5,7 @@ JHipster-IDE
 
 JHipster IDE is an Xtext DSL which provides textual editing support of JHipster Domain Language files for popular IDEs and editors such as Eclipse and Visual Studio Code. 
 
-##Features
+## Features
 
 - JHipster IDE with an JDL editor and shell integration to call JHipster generator directly from the IDE and everything you would expect from a modern IDE editor (syntax coloring, validations, formatting, refactoring, find references etc.)
 - Xdocker - to manage docker images and containers in JHipster IDE
