@@ -18,8 +18,11 @@ import static io.github.jhipster.jdl.ui.terminal.TerminalHelper.*
 import static java.nio.file.Files.*
 import static java.nio.file.attribute.PosixFilePermission.*
 import static java.nio.file.attribute.PosixFilePermissions.*
+import static org.eclipse.jface.dialogs.MessageDialog.*
 
 class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
+
+	val JDL_PERSPECTIVE_ID = 'io.github.jhipster.jdl.ui.view.JDLPerspective' 
 
 	IPreferenceStore preferenceStore
 	VariablesPlugin variablesPlugin
@@ -46,6 +49,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 	}
 
 	def done() {
+		openJDLPerspective
 		new ITerminalService.Done() {
 			override void done(IStatus it) {
 				if (!isOK) {
@@ -56,6 +60,19 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 					]
 				}
 			}
+		}
+	}
+
+	def private void openJDLPerspective() {
+		openPerspective(JDL_PERSPECTIVE_ID)
+	}
+	
+	def private void openPerspective(String perspectiveID) {
+		val window = workbench.activeWorkbenchWindow
+		try {
+			workbench.showPerspective(perspectiveID, window)
+		} catch (Exception e) {
+			openError(window.shell, 'Error Opening Perspective', '''Could not open Perspective with ID: «perspectiveID»''')
 		}
 	}
 
