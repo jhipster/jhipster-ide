@@ -18,11 +18,8 @@ JHipster IDE is an Xtext DSL which provides textual editing support of JHipster 
 
 JHipster IDE is available in the [Eclipse Marketplace](https://marketplace.eclipse.org/content/jhipster-ide). The easiest way to install it is to drag the following icon <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3184658" class="drag" title="Drag to your running Eclipse workspace to install JHipster IDE"><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace to install JHipster IDE" /></a> on the start page into your Eclipse or just open the marketplace dialog in Eclipse (Help > Eclipse Marketplace...) and search for <b>JHipster</b>.
 
-![Eclipse installation]({{ site.url }}/docs/jhipster_ide_eclipse.gif)
-
-See also <a href="https://www.youtube.com/embed/LERTahPqVjo">this</a> tutorial on Youtube how to install and use the IDE in Eclipse.
+![Eclipse](/docs/jhipster_ide_eclipse.gif) 
 
 ## Visual Studio Code installation
 
-![Visual Studio Code installation]({{ site.url }}/docs/jhipster_ide_vscode.gif)
-![altText](/docs/jhipster_ide_vscode.gif) 
+![Visual Studio Code](/docs/jhipster_ide_vscode.gif) 
