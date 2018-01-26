@@ -31,6 +31,7 @@ interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 			«IF it !== null»
 				@startuml
 					!pragma graphviz_dot jdot
+					!pragma syntax class
 					«toString»
 				@enduml
 			«ENDIF»

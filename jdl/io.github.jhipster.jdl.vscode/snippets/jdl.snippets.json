@@ -4,19 +4,19 @@
         "prefix": "entity-create",
         "body": [
             "/**",
-            " * The ${Entity:Enter the entity name} entity.",
+            " * The ${1:Entity} entity.",
             " * @author ${author:A true hipster}",
             " */",
-            "entity ${Entity} {",
-            "\t/** ${fieldName} */",
-            "\t${fieldName} ${FieldType}",
+            "entity ${1:Entity} {",
+            "\t/** ${2:fieldName} */",
+            "\t${2:fieldName} ${3:FieldType}",
             "}"
         ]
     },
     "Create a new enum": {
         "prefix": "enum-create",
         "body": [
-            "enum ${EnumName:Enter the enum name} {",
+            "enum ${EnumName} {",
             "\t${FIRST_VALUE}, ${SECOND_VALUE}",
             "}"
         ]

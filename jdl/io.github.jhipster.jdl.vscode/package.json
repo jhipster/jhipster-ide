@@ -37,6 +37,12 @@
                 "path": "./jdl.tmLanguage"
             }
         ],
+        "snippets": [
+            {
+                "language": "jdl",
+                "path": "./snippets/jdl.snippets.json"
+            }
+        ],
         "commands": [
             {
                 "command": "plantuml.preview",
