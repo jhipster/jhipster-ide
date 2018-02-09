@@ -2,7 +2,7 @@
     "name": "jdl",
     "displayName": "jdl",
     "description": "JDL VS Code extension",
-    "version": "1.2.0",
+    "version": "1.3.1",
     "publisher": "jhipster-ide",
     "icon": "images/icon.jpg",
     "engines": {
@@ -27,14 +27,14 @@
                     ".jdl",
                     "jh"
                 ],
-                "configuration": "./jdl.configuration.json"
+                "configuration": "./configs/jdl.configuration.json"
             }
         ],
         "grammars": [
             {
                 "language": "jdl",
                 "scopeName": "text.jdl",
-                "path": "./jdl.tmLanguage"
+                "path": "./syntaxes/jdl.tmLanguage"
             }
         ],
         "snippets": [
