@@ -24,18 +24,17 @@ import java.util.Set
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 
+import static io.github.jhipster.jdl.util.PlantUmlUtil.*
+import static net.sourceforge.plantuml.eclipse.utils.PlantumlConstants.*
+
 @ImplementedBy(JdlToPlantUmlRenderer)
 interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
-	
+
 	static (Object)=>String toPlantUml = [ it | '''
-			«IF it !== null»
-				@startuml
-					!pragma graphviz_dot jdot
-					!pragma syntax class
-					«toString»
-				@enduml
-			«ENDIF»
-		''' ]
+		«START_UML»
+			«IF it !== null»«toString»«ENDIF»
+		«END_UML»
+	''']
 }
 
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
@@ -43,11 +42,11 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
 
 	override render(JdlDomainModel jdl) {
-		jdl.init.toPlantUml
+		return jdl.init.toPlantUml
 	}
 
 	def private JdlDomainModel init(JdlDomainModel jdl) {
-		jdl.initEntiyOptionMap
+		return jdl.initEntiyOptionMap
 	}
 	
 	def private JdlDomainModel initEntiyOptionMap(JdlDomainModel jdl) {
@@ -79,13 +78,21 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		return jdl
 	}
 
-	def private String toPlantUml(JdlDomainModel model) '''
-		«toPlantUml.apply(
-			if (model !== null) model.features.map[
-				renderJdlObject
-			].join
-		)»
+	def private String toPlantUml(JdlDomainModel it) '''
+ 		«toPlantUml.apply('''
+			«options»
+			«IF it !== null»«content»«ELSE»«USER»«ENDIF»
+		''')»
 	'''
+	
+	def private getOptions() '''
+		«IF useJDot»!pragma graphviz_dot jdot«ENDIF»
+		!pragma syntax class		
+	'''
+
+	def private getContent(JdlDomainModel it) {
+		return features.map[renderJdlObject].join
+	}
 	
 	def dispatch renderJdlObject(JdlDomainModel model) '''
 		«model.features.map[

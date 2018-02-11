@@ -264,14 +264,14 @@ class DockerExtensions {
 		val cmd = createContainerCmd(image).withCmd(cmdstr.split(' ')) => [ run |
 			if (cfg !== null && cfg.hasParams) {
 				run.withTty(tty)
-				.withStdinOpen(keepStdinOpen)
-				.withAttachStdout(attachStdout)
-				.withAttachStderr(attachStderr)
-				.withPublishAllPorts(publishAllPorts)
-				.withPortSpecs(portSpecs)
-				.withName(name)
+				   .withStdinOpen(keepStdinOpen)
+				   .withAttachStdout(attachStdout)
+				   .withAttachStderr(attachStderr)
+				   .withPublishAllPorts(publishAllPorts)
+				   .withPortSpecs(portSpecs)
+				   .withName(name)
 			}
-			if (!envs.isNullOrEmpty && !envs.get(0).isNullOrEmpty) run.withEnv(envs)
+			if (cfg !== null && !envs.isNullOrEmpty && !envs.head.isNullOrEmpty) run.withEnv(envs)
 		]
 		// create and start container command
 		val container = try (cmd.exec => [
