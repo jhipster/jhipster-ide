@@ -1,7 +1,6 @@
 {
-
     "Create a new entity": {
-        "prefix": "create entity",
+        "prefix": "add entity",
         "body": [
             "/**",
             " * The ${1:Entity} entity.",
@@ -14,10 +13,115 @@
         ]
     },
     "Create a new field": {
-        "prefix": "create field",
+        "prefix": "add field",
         "body": [
             "/** ${1:fieldName} */",
             "${1:fieldName} ${2|String, Integer, Long, BigDecimal, Float, Double, Boolean, Date, LocalDate, ZonedDateTime, Instant, Blob, AnyBlob, ImageBlob, TextBlob |}",
+        ]
+    },
+    "Create an one-to-one relationship": {
+        "prefix": "add relationship one-to-one",
+        "body": [
+            "/**",
+            " * One to one relationship.",
+            " */",
+            "relationship OneToOne {",
+	            "\t${1:Entity1} to ${2:Entity2}",
+            "}"
+        ]
+    },
+    "Create an one-to-many relationship": {
+        "prefix": "add relationship one-to-many",
+        "body": [
+            "/**",
+            " * One to many relationship.",
+            " */",
+            "relationship OneToMany {",
+	            "\t${1:Entity1} to ${2:Entity2}",
+            "}"
+        ]
+    },
+    "Create an many-to-one relationship": {
+        "prefix": "add relationship many-to-one",
+        "body": [
+            "/**",
+            " * Many to one relationship.",
+            " */",
+            "relationship ManyToOne {",
+	            "\t${1:Entity1} to ${2:Entity2}",
+            "}"
+        ]
+    },
+    "Paginate entities with standard pagination": {
+        "prefix": "add paginate-with-pagination",
+        "body": [
+            "paginate ${0:Entities} with pagination"
+        ]
+    },
+    "Paginate entities with a pager": {
+        "prefix": "add paginate-with-pager",
+        "body": [
+            "paginate ${0:Entities} with pager"
+        ]
+    },
+    "Paginate entities with an infinite scroll": {
+        "prefix": "add paginate-with-infinite-scroll",
+        "body": [
+            "paginate ${0:Entities} with infinite-scroll"
+        ]
+    },
+    "Use DTOs to domain entities mapping": {
+        "prefix": "add dto-entities",
+        "body": [
+            "dto ${0:Entities} with mapstruct"
+        ]
+    },
+    "Make entities resources use an intermediate service class": {
+        "prefix": "add service-serviceClass",
+        "body": [
+            "service ${0:Entities} with serviceClass"
+        ]
+    },
+    "Make entities resources use an intermediate service interface and implementation ": {
+        "prefix": "add service-serviceImpl",
+        "body": [
+            "service ${0:Entities} with serviceImpl"
+        ]
+    },
+    "Add a search engine for entities": {
+        "prefix": "add search-entities",
+        "body": [
+            "search ${0:Entities} with elasticsearch"
+        ]
+    },
+    "Add entities to a microservice": {
+        "prefix": "add microservice-entities",
+        "body": [
+            "microservice ${1:Entities} with ${0:microserviceName}"
+        ]
+    },
+    "Add a suffix to entities in AngularJS": {
+        "prefix": "add angularSuffix-entities",
+        "body": [
+            "angularSuffix ${1:Entities} with ${2:suffix}"
+        ]
+    },
+    "Skip client generation for entities": {
+        "prefix": "add skipClient-entities",
+        "body": [
+            "skipClient for ${0:Entities}"
+        ]
+    },
+    "Skip server generation for entities": {
+        "prefix": "add skipServer-entities",
+        "body": [
+            "skipServer for ${0:Entities}"
+        ]
+    },
+    "Don't generate utility fluent methods in entities domain class'": {
+        "prefix": "add noFluentMethod-entities",
+        "body": [
+            "noFluentMethod for ${0:Entities}"
         ]
     }
 }
