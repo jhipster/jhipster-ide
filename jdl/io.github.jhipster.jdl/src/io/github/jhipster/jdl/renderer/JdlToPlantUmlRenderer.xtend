@@ -25,7 +25,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 
 import static io.github.jhipster.jdl.util.PlantUmlUtil.*
-import static net.sourceforge.plantuml.eclipse.utils.PlantumlConstants.*
 
 @ImplementedBy(JdlToPlantUmlRenderer)
 interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {

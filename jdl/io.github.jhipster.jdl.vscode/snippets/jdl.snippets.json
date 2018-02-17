@@ -55,73 +55,73 @@
     "Paginate entities with standard pagination": {
         "prefix": "add paginate-with-pagination",
         "body": [
-            "paginate ${0:Entities} with pagination"
+            "paginate ${0:*} with pagination"
         ]
     },
     "Paginate entities with a pager": {
         "prefix": "add paginate-with-pager",
         "body": [
-            "paginate ${0:Entities} with pager"
+            "paginate ${0:*} with pager"
         ]
     },
     "Paginate entities with an infinite scroll": {
         "prefix": "add paginate-with-infinite-scroll",
         "body": [
-            "paginate ${0:Entities} with infinite-scroll"
+            "paginate ${0:*} with infinite-scroll"
         ]
     },
     "Use DTOs to domain entities mapping": {
         "prefix": "add dto-entities",
         "body": [
-            "dto ${0:Entities} with mapstruct"
+            "dto ${0:*} with mapstruct"
         ]
     },
     "Make entities resources use an intermediate service class": {
         "prefix": "add service-serviceClass",
         "body": [
-            "service ${0:Entities} with serviceClass"
+            "service ${0:*} with serviceClass"
         ]
     },
     "Make entities resources use an intermediate service interface and implementation ": {
         "prefix": "add service-serviceImpl",
         "body": [
-            "service ${0:Entities} with serviceImpl"
+            "service ${0:*} with serviceImpl"
         ]
     },
     "Add a search engine for entities": {
         "prefix": "add search-entities",
         "body": [
-            "search ${0:Entities} with elasticsearch"
+            "search ${0:*} with elasticsearch"
         ]
     },
     "Add entities to a microservice": {
         "prefix": "add microservice-entities",
         "body": [
-            "microservice ${1:Entities} with ${0:microserviceName}"
+            "microservice ${1:*} with ${0:microserviceName}"
         ]
     },
     "Add a suffix to entities in AngularJS": {
         "prefix": "add angularSuffix-entities",
         "body": [
-            "angularSuffix ${1:Entities} with ${2:suffix}"
+            "angularSuffix ${1:*} with ${2:suffix}"
         ]
     },
     "Skip client generation for entities": {
         "prefix": "add skipClient-entities",
         "body": [
-            "skipClient for ${0:Entities}"
+            "skipClient for ${0:*}"
         ]
     },
     "Skip server generation for entities": {
         "prefix": "add skipServer-entities",
         "body": [
-            "skipServer for ${0:Entities}"
+            "skipServer for ${0:*}"
         ]
     },
     "Don't generate utility fluent methods in entities domain class'": {
         "prefix": "add noFluentMethod-entities",
         "body": [
-            "noFluentMethod for ${0:Entities}"
+            "noFluentMethod for ${0:*}"
         ]
     }
 }

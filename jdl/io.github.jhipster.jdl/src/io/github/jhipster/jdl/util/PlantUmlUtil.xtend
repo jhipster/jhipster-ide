@@ -10,6 +10,8 @@ import static java.nio.file.Files.*
 class PlantUmlUtil {
 
 	public static val USER = 'class User'
+	public static final String START_UML = "@startuml"
+	public static final String END_UML = "@enduml"
 
 	def static createPlantUml(String src, File dst) {
 		write(dst.toPath, #[src]);
