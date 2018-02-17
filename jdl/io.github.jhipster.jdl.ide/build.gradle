@@ -1,9 +1,11 @@
 apply plugin: 'application'
 
+xtextVersion = "2.13.0"
+
 dependencies {
 	compile project(':io.github.jhipster.jdl')
-	compile "org.eclipse.xtext:org.eclipse.xtext.ide:${xtextVersion}"
-	compile "org.eclipse.xtext:org.eclipse.xtext.xbase.ide:${xtextVersion}"
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.ide', version:'2.13.0'
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.xbase', version:'2.13.0'
 	compile group: 'net.sourceforge.plantuml', name: 'plantuml', version: '8048'
 }
 

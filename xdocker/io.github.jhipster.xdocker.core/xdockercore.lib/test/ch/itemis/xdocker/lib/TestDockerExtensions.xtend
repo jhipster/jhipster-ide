@@ -16,7 +16,6 @@ import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
 
-import static com.github.dockerjava.core.DefaultDockerClientConfig.*
 import static org.junit.Assert.*
 
 /**
@@ -36,14 +35,15 @@ class TestDockerExtensions {
 	def static void setUpClass() {
 		props = new DockerProperties(newHashMap(
 				'enableLoggingFilter' -> true,
-				DOCKER_HOST -> 'unix:///var/run/docker.sock',
-				REGISTRY_URL -> 'https://index.docker.io/v1/'
+				'dockerHost' -> 'unix:///var/run/docker.sock',
+				'registryUrl' -> 'https://index.docker.io/v1/'
 			)
 		)
+		
 		// log parameters
 		println('--<Docker config parameters>---')
-		props.parameters.forEach[p1, p2|
-			println('''«p1» = «p2»''')
+		props.parameters.forEach[key, value|
+			println('''«key» = «value»''')
 		]
 		println('------------------------')
 	}
@@ -54,7 +54,7 @@ class TestDockerExtensions {
 		docker [
 			images.forEach [
 				print(it.id + ' ')
-				println(it.repoTags.get(0))
+				println(it.repoTags.head)
 			]
 		]
 	}
