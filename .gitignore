@@ -29,6 +29,7 @@ bin
 .m2
 
 # Xtext
+model/
 java-gen
 src-gen
 xtext-gen

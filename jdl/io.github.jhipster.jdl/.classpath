@@ -5,5 +5,6 @@
 	<classpathentry kind="src" path="src/"/>
 	<classpathentry kind="src" path="src-gen/"/>
 	<classpathentry kind="src" path="xtend-gen/"/>
+	<classpathentry exported="true" kind="lib" path="lib/plantuml-epl-8059.jar" sourcepath="/plantumllib"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
