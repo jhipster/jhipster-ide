@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "tslint.enable": true
+	}
+}

@@ -3,7 +3,7 @@
 import * as path from 'path';
 import * as vscode from 'vscode';
 import { PlantUMLRenderer } from './plantuml';
-import { workspace, Disposable, ExtensionContext } from 'vscode';
+import { workspace, commands, Disposable, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, ServerOptions } from 'vscode-languageclient';
 
 let plantuml: PlantUMLRenderer;
@@ -36,7 +36,8 @@ export function activate(context: ExtensionContext) {
 	// Create the language client and start the client.
     let langClient = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions)
 	let disposable = langClient.start();
-
+    let activeEditor = vscode.window.activeTextEditor;
+    //let result = commands.executeCommand("init", activeEditor.document.uri.toString())
 	// Push the disposable to the context's subscriptions so that the 
 	// client can be deactivated on extension deactivation
 	context.subscriptions.push(disposable);
