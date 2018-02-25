@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>io.github.jhipster-ide</groupId>
 		<artifactId>jhipster-ide</artifactId>
-		<version>1.3.1-SNAPSHOT</version>
+		<version>1.4.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>		
 	</parent>
 
@@ -133,7 +133,7 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-assembly-plugin</artifactId>
 						<configuration>
-							<descriptor>releng/resources/assembly/product.xml</descriptor>
+							<descriptor>${project.basedir}/resources/assembly/product.xml</descriptor>
 							<finalName>${project.groupId}-${project.version}</finalName>
 						</configuration>
 						<executions>
