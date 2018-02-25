@@ -133,7 +133,7 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-assembly-plugin</artifactId>
 						<configuration>
-							<descriptor>releng/resources/assembly/product.xml</descriptor>
+							<descriptor>${project.basedir}/resources/assembly/product.xml</descriptor>
 							<finalName>${project.groupId}-${project.version}</finalName>
 						</configuration>
 						<executions>
