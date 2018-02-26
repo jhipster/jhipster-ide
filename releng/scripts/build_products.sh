@@ -17,7 +17,7 @@ PRODUCT=$BUILD_DIR/releng/target/io.github.jhipster-ide-$VERSION*.zip
 
 echo "Folder: $BUILD_DIR tag: $BUILD_TAG release: $RELEASE version: $VERSION product: $PRODUCT"
 
-cd $BUILD_DIR/releng && ./mvnw clean package -Pproduct
+cd $BUILD_DIR/releng && ../mvnw -settings ../settings.xml clean package -Pproduct
 cd $BUILD_DIR/jdl/io.github.jhipster.jdl.vscode && npm install && vsce package
 
 #cd $BUILD_DIR/releng/target
