@@ -88,11 +88,25 @@ class JDLFileTest {
 
 	@Parameters
     def static Collection<File> getJdlFiles() {
-    	val resources = new File('./resources/test_files')
-  		val result = resources.listFiles([File dir, String name | 
-  			name.endsWith('.jdl')
-  		]).toList
+    		val result = newArrayList
+    		jdlExternalResourceFolders.forEach[
+		    	val resources = new File(it)
+	  		resources.listFiles([File dir, String name | 
+	  			name.endsWith('.jdl')
+	  		]) => [
+	  			result.addAll(it)
+	  		]
+    		]
   		return result
+    }
+    
+    def private static String[] getJdlExternalResourceFolders() {
+    		val resource = './resources/'
+  		return new File(resource).listFiles([File file | 
+  			file.isDirectory
+  		]).map[
+  			it.toPath.toString
+  		]
     }
 
 	@Test
