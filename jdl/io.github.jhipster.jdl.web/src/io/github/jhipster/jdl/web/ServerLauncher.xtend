@@ -18,7 +18,7 @@ import org.eclipse.jetty.webapp.WebXmlConfiguration
  */
 class ServerLauncher {
 	def static void main(String[] args) {
-		val server = new Server(new InetSocketAddress('localhost', 8080))
+		val server = new Server(new InetSocketAddress('localhost', 18080))
 		server.handler = new WebAppContext => [
 			resourceBase = 'WebRoot'
 			welcomeFiles = #["index.html"]

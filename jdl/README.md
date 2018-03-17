@@ -41,7 +41,7 @@ Not yet available
 
 ## Visual Studio Code Setup
 
-Install [jhipster-ide](https://marketplace.visualstudio.com/items?itemName=jhipster-ide.jdl)" extension in Visual Studio Code.
+Install [jhipster-ide](https://marketplace.visualstudio.com/items?itemName=jhipster-ide.jdl) extension in Visual Studio Code.
 
 ## Coming soon
 
