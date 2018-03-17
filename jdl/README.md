@@ -33,7 +33,7 @@ Created by [Jose Badeau](https://github.com/jbadeau) and [Serano Colameo](https:
 
 ## Eclipse Setup
 
-The JHipster-IDE eclipse plugins are located [here](https://dl.bintray.com/colameo/jh-ide/).
+The JHipster-IDE eclipse plugins are located [here](https://marketplace.eclipse.org/content/jhipster-ide).
 
 ## IntelliJ Setup
 
@@ -41,7 +41,7 @@ Not yet available
 
 ## Visual Studio Code Setup
 
-Install "cbornet.jdl" extension in Visual Studio Code.
+Install [jhipster-ide](https://marketplace.visualstudio.com/items?itemName=jhipster-ide.jdl) extension in Visual Studio Code.
 
 ## Coming soon
 
