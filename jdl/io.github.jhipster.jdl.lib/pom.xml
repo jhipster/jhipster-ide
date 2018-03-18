@@ -9,8 +9,8 @@
 		<version>1.4.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>io.github.jhipster.jdl.feature</artifactId>
-	<name>JDL DSL Feature </name>
-	<packaging>eclipse-feature</packaging>
+	<artifactId>io.github.jhipster.jdl.lib</artifactId>
+	<name>JDL DSL Lib Project</name>
+	<packaging>eclipse-plugin</packaging>
 
 </project>
