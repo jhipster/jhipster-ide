@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: io.github.jhipster.jdl.lib
-Bundle-SymbolicName: io.github.jhipster.jdl.lib;singleton:=true
+Bundle-Name: io.github.jhipster.jdl.generator.lib
+Bundle-SymbolicName: io.github.jhipster.jdl.generator.lib;singleton:=true
 Bundle-Version: 1.4.0.qualifier
 Bundle-Vendor: io.github.jhipster
 Bundle-ActivationPolicy: lazy
@@ -9,6 +9,7 @@ Require-Bundle: com.google.inject,
  org.eclipse.emf,
  org.eclipse.emf.common,
  org.eclipse.emf.ecore,
+ io.github.jhipster.jdl,
  org.eclipse.xtend.lib;visibility:=reexport,
  org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
