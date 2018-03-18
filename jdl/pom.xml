@@ -11,7 +11,7 @@
 
 	<groupId>io.github.jhipster-ide.jdl</groupId>
 	<artifactId>io.github.jhipster.jdl.parent</artifactId>
-	<name>JDL Main POM</name>
+	<name>JDL DSL Main POM</name>
 	<packaging>pom</packaging>
 
 	<properties>
@@ -39,6 +39,7 @@
 			</activation>
 			<modules>
 				<module>io.github.jhipster.jdl</module>
+				<module>io.github.jhipster.jdl.lib</module>
 				<module>io.github.jhipster.jdl.ide</module>
 				<module>io.github.jhipster.jdl.ui</module>
 				<module>io.github.jhipster.jdl.web</module>
