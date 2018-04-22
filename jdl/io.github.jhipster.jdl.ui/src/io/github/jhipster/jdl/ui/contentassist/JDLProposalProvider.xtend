@@ -18,10 +18,7 @@
  */
 package io.github.jhipster.jdl.ui.contentassist
 
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
-import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
-import org.eclipse.xtext.Assignment
 
 /**
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
@@ -33,9 +30,5 @@ class JDLProposalProvider extends AbstractJDLProposalProvider {
 
 	override protected isValidProposal(String proposal, String prefix, ContentAssistContext context) {
 		!proposal.isNullOrEmpty
-	}
-
-	override completeJdlApplicationParameter_ParameterName(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		acceptor.accept(createCompletionProposal('param123', context))
 	}
 }
