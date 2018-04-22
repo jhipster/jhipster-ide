@@ -24,8 +24,8 @@
         "onLanguage:jdl",
         "onCommand:plantuml.preview"
     ],
-    "//mnain" :  "./out/src/extension-dev",
-    "main": "./out/src/extension",
+    "main": "./out/src/extension-dev",
+    "//main": "./out/src/extension",
     "contributes": {
         "languages": [
             {

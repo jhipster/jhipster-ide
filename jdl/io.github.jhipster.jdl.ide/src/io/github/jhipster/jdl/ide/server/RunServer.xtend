@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jhipster.jdl.ide.main
+package io.github.jhipster.jdl.ide.server
 
 import java.io.IOException
 import java.net.InetSocketAddress
@@ -37,7 +37,8 @@ import com.google.inject.Guice
 class RunServer {
 	
 	def static void main(String[] args) throws InterruptedException, IOException {
-		val injector = Guice.createInjector(new ServerModule) 
+		println('Server is listening...')
+		val injector = Guice.createInjector(new ServerModule)
 		val languageServer = injector.getInstance(LanguageServerImpl) 
 		val Function<MessageConsumer, MessageConsumer> wrapper = [ consumer | {
 			var MessageConsumer result = consumer 
@@ -46,7 +47,7 @@ class RunServer {
 		val launcher = createSocketLauncher(languageServer, LanguageClient, 
 			new InetSocketAddress('localhost', 5007), Executors.newCachedThreadPool, wrapper
 		) 
-		languageServer.connect(launcher.remoteProxy) 
+		languageServer.connect(launcher.remoteProxy)
 		val Future<?> future = launcher.startListening
 		while (!future.isDone) {
 			Thread.sleep(10_000l) 
