@@ -4,12 +4,45 @@
 <dict>
 	<key>fileTypes</key>
 	<array>
-		<string>*.jdl</string>
+		<string>*.jdl,*.jh</string>
 	</array>
 	<key>name</key>
 	<string>jdl</string>
 	<key>patterns</key>
 	<array>
+        <!-- application -->
+        <dict>
+            <key>begin</key>
+			<string>(application)\s+(\w+)</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>storage.modifier.java</string>
+                </dict>
+                <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>entity.name.type.class.java</string>
+                </dict>
+            </dict>
+			<key>end</key>
+            <string>}</string>
+            <key>name</key>
+            <string>meta.application.jdl</string>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>include</key>
+                    <string>source.java#comments</string>
+                </dict>
+                <dict>
+                    <key>include</key>
+                    <string>source.java#enums</string>
+                </dict>
+            </array>
+        </dict>
         <!-- enums -->
         <dict>
             <key>begin</key>

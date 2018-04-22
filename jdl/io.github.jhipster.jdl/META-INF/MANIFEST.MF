@@ -34,10 +34,10 @@ Export-Package: io.github.jhipster.jdl,
  io.github.jhipster.jdl.serializer,
  io.github.jhipster.jdl.services,
  io.github.jhipster.jdl.util,
- io.github.jhipster.jdl.validation,
- net.sourceforge.plantuml.core
-Import-Package: net.sourceforge.plantuml.core,
+ io.github.jhipster.jdl.validation
+Import-Package: 
  org.apache.log4j,
  org.eclipse.swt.graphics
 Bundle-ClassPath: .,
- lib/plantuml-epl-8059.jar
+ lib/plantuml-epl-8059.jar,
+ lib/generator-vscode-0.4.jar
