@@ -55,6 +55,11 @@
 						<artifactId>org.eclipse.xtext.xbase</artifactId>
 						<version>${xtextVersion}</version>
 					</dependency>
+<!-- Disabled for the moment -->
+<!-- 					<dependency> -->
+<!-- 						<groupId>com.itemis.xtext</groupId> -->
+<!-- 						<artifactId>generator-vscode</artifactId> -->
+<!-- 					</dependency> -->
 				</dependencies>
 			</plugin>
 			<plugin>
@@ -145,5 +150,20 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>itemis</id>
+			<url>http://dl.bintray.com/itemis/maven</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.itemis.xtext</groupId> -->
+<!-- 			<artifactId>generator-vscode</artifactId> -->
+<!-- 			<version>0.4</version> -->
+<!-- 		</dependency> -->
+	</dependencies>
 
 </project>

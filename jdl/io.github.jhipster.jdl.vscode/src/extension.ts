@@ -51,7 +51,7 @@ export function activate(context: ExtensionContext) {
         }
     }
 	
-    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dpnguml.gen=true";
+    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dpnguml.gen=true -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=9999,suspend=n,quiet=y";
 
 	// Create the language client and start the client.
     let langClient = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions)

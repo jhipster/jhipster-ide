@@ -28,6 +28,7 @@ Workflow {
 					enabled = true
 				}
 				createEclipseMetaData = true
+				
 			}
 			code = {
 				encoding = "UTF-8"
@@ -40,6 +41,10 @@ Workflow {
 /* 	
  * Disabled for the moment...
  * 		
+			fragment = com.itemis.xtext.generator.vscode.VSCodeExtensionFragment {
+				publisher = "jhipster-ide"
+			}
+			
 			fragment = parser.antlr.XtextAntlrGeneratorFragment2 {
 			    antlrParam = "-Xconversiontimeout"
 		      	antlrParam = "10000"
@@ -49,7 +54,6 @@ Workflow {
 			    }
 			}
 */			
-
 			newProjectWizardForEclipse = {
 				generate = true
 				pluginProject = false

@@ -1,4 +1,17 @@
 {
+    "Create an application configuration": {
+        "prefix": "add application",
+        "body": [
+            "/**",
+            " * The application configuration.",
+            " * @author ${author:A true hipster}",
+            " */",
+            "application {",
+            "\tconfig {",
+	        "\t}",
+            "}"
+        ]
+    },
     "Create a new entity": {
         "prefix": "add entity",
         "body": [

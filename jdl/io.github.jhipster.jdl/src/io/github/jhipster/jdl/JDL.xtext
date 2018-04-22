@@ -32,10 +32,45 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
  * ROOT
  * ========================================================================= */
 JdlDomainModel:
+	applications+=JdlApplication*
 	features+=JdlFeature*;
 
 JdlFeature:
 	JdlConstant | JdlEntity | JdlEnum | JdlRelationships | JdlOption;
+
+/* =========================================================================
+ * APPLICTION
+ * ========================================================================= */
+ 
+JdlApplication: 
+	'application' '{'
+		config=JdlApplicationConfig
+		selection=JdlApplicationEntitiesSelection?
+		exclusion=JdlExceptEntityExclusion?
+	'}';
+
+JdlApplicationConfig:
+	'config' '{'
+		applicationConfigParameters=JdlApplicationConfigParameters
+	'}';	
+	
+JdlApplicationEntitiesSelection:
+	'entities' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
+
+JdlApplicationConfigParameters:
+	paramters+=JdlApplicationParameter ','? (paramters+=JdlApplicationParameter ','?)*;
+			
+JdlApplicationParameter:
+	parameterName=ID (
+		('['? identifiers+=ID (JdlParamValueSeparator identifiers+=ID)* ']'?) 
+		| stringValue=STRING | numberValue=INT | JdlReserverdWords
+	);
+
+JdlParamValueSeparator:
+	'.' | ',';
+
+JdlReserverdWords:
+	'microservice' | 'elasticsearch';
 
 /* =========================================================================
  * CONSTANT
@@ -188,6 +223,7 @@ JdlOptionSetting:
 	JdlSkipClientOption |
 	JdlSkipServerOption |
 	JdlAngularSuffixOption |
+	JdlClientRootFolderOption |
 	JdlNoFluentMethodOption |
 	JdlFilterOption;
 
@@ -267,6 +303,12 @@ JdlAngularSuffixOption returns JdlOptionSetting:
 	angularSuffixOption?='angularSuffix' includes=JdlWithEntitySelectionAndValue id=ID;
 
 /* =========================================================================
+ * CLIENT ROOT FOLDER OPTION 
+ * ========================================================================= */
+JdlClientRootFolderOption returns JdlOptionSetting:
+	angularSuffixOption?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ID;
+
+/* =========================================================================
  * Filter OPTION 
  * ========================================================================= */
 JdlFilterOption returns JdlOptionSetting:
@@ -279,6 +321,11 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
 /* =========================================================================
+ * TERMINALS DEFINITIONS
+ * ========================================================================= */
+@Override 
+terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
+
+/* =========================================================================
  * END OF GRAMMAR DEFINITION 
  * ========================================================================= */
-	

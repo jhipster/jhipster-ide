@@ -1,8 +1,9 @@
-connection.arguments=
+#Mon Apr 09 17:16:18 CEST 2018
 connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
-connection.java.home=null
-connection.jvm.arguments=
-connection.project.dir=..
 derived.resources=.gradle,build
+connection.java.home=null
+connection.arguments=
 eclipse.preferences.version=1
+connection.jvm.arguments=
 project.path=\:io.github.jhipster.jdl
+connection.project.dir=../io.github.jhipster.jdl.ide
