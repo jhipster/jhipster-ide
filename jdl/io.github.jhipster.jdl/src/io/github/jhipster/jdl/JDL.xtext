@@ -22,7 +22,7 @@
  * @author Serano Colameo - Initial contribution and API
  */
  
-grammar io.github.jhipster.jdl.JDL with org.eclipse.xtext.common.Terminals
+grammar io.github.jhipster.jdl.JDL hidden(WS, ML_COMMENT, SL_COMMENT)
 
 generate jdl "http://www.github.io/jhipster/jdl/JDL"
 
@@ -166,7 +166,7 @@ JdlMaxLengthValidator:
 	'maxlength' '(' value=JdlNumericValue ')';
 
 JdlPatternValidator:
-	'pattern' '(' value=STRING ')';
+	'pattern' '(' value=REG_EXP ')';
 
 JdlMinValidator:
 	'min' '(' value=JdlNumericValue ')';
@@ -323,8 +323,16 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
 /* =========================================================================
  * TERMINALS DEFINITIONS
  * ========================================================================= */
-@Override 
+
+terminal WS: (' '|'\t'|'\r'|'\n')+;
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING: '"' EXP '"' | "'" EXP "'";
+terminal fragment EXP: ('\\' . | !('\\'|'"'|'\r'|'\n'))*;
+terminal ML_COMMENT: '/*' -> '*/';
+terminal SL_COMMENT: '//' ANY;
+terminal REG_EXP: '/' ANY '/';
+terminal fragment ANY: !('\n'|'\r'|'/')* ('\r'? '\n')?;
 
 /* =========================================================================
  * END OF GRAMMAR DEFINITION 
