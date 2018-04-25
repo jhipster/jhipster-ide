@@ -75,7 +75,8 @@ class JDLFileTest {
 		 "wrong_enum_values.jdl" -> "Enum value name must be upper case",
 		 "filtering_wrong.jdl" -> "no viable alternative at input 'for'",
 		 "filtering_wrong.jdl" -> "mismatched input '<EOF>' expecting '='",
-		 "filtering_validation_check.jdl" -> "Selection does not contain excluded elements: [C, D]"
+		 "filtering_validation_check.jdl" -> "Selection does not contain excluded elements: [C, D]",
+		 "wrong_pattern_definition.jdl" -> "Wrong regexp pattern!"
 	]
 	
 	new(File jdlFile) {

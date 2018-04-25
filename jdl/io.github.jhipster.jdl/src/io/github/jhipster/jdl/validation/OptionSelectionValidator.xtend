@@ -27,6 +27,9 @@ import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+import io.github.jhipster.jdl.jdl.JdlPatternValidator
+import java.util.regex.PatternSyntaxException
+import java.util.regex.Pattern
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -52,6 +55,15 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 				}
 			}
 		}
+	}
+
+	@Check
+	def checkPatternRegExp(JdlPatternValidator pattern) {
+	    try {
+	        Pattern.compile(pattern.value);
+	    } catch (PatternSyntaxException e) {
+			error('Wrong regexp pattern!', JDL_PATTERN_VALIDATOR__VALUE, INSIGNIFICANT_INDEX)
+	    }
 	}
 	
 //	@Check
