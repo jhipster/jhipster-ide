@@ -65,8 +65,17 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 	}
 
 	@Fix(IssueCodes.INVALID_REQUIRED_OPTION)
-	def void fixFeatureName2(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Remove required', 'Remove required constraint', 'many-to-many.gif') [
+	def void removeRequiredConstraint(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove "required" keyword', 'Remove required constraint', 'many-to-many.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, '')
+		]
+	}
+
+	@Fix(IssueCodes.FOR_NOTALLOWED)
+	def void removeForOptionKeyword(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove "for" keyword', 'Remove "for" option', 'remove.gif') [
 			context |
 			val xtextDocument = context.xtextDocument
 			xtextDocument.replace(issue.offset, issue.length, '')
