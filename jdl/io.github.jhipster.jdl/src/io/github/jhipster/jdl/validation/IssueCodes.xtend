@@ -24,17 +24,23 @@ import io.github.jhipster.jdl.jdl.JdlCardinality
  * @author Serano Colameo - Initial contribution and API
  */
 interface IssueCodes {
+	// codes
 	String PREFIX = 'io.github.jhipster.jdl.'
 	String INVALID_TYPE_NAME = PREFIX + 'InvalidTypeName'
 	String INVALID_FEATURE_NAME = PREFIX + 'InvalidFeatureName'
 	String NOT_UPPER_CASE = PREFIX + 'NotUpperCase'
 	String MISSING_TYPE = PREFIX + 'MissingType'
+	String INVALID_REQUIRED_OPTION = PREFIX + 'InvalidRequiredOption'
+	String FOR_NOTALLOWED = PREFIX + 'ForOptionNotAllowed'
+	String FOR_NOTALLOWED_MSG = 'Keyword "for" is not allowed anymore!'
+	String WRONG_REGEXP = PREFIX + 'WrongRegexp'
+	// messages
+	String WRONG_REGEXP_MSG = 'Wrong regexp pattern!'
 	String INVALID_ENTITY_NAME_MSG = 'Entity name should start with a capital'
 	String INVALID_ENUM_NAME_MSG = 'Enum name should start with a capital'
 	String INVALID_ENUM_VALUE_NAME_MSG = 'Enum value name must be upper case'
 	String FIELD_NAME_LOWERCASE_MSG = 'Field name should start with a lower case'
 	String DUPLICATE_FIELD_DEF_MSG = 'Field with name already defined'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
-	String INVALID_REQUIRED_OPTION = PREFIX + 'InvalidRequiredOption'
 	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
 }
