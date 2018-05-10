@@ -23,7 +23,7 @@ import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
-import io.github.jhipster.jdl.model.JdlApplicationOptions
+import io.github.jhipster.jdl.config.JdlApplicationOptions
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.EcoreUtil2
@@ -35,7 +35,7 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 
-import static io.github.jhipster.jdl.model.JdlLanguages.*
+import static io.github.jhipster.jdl.config.JdlLanguages.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
