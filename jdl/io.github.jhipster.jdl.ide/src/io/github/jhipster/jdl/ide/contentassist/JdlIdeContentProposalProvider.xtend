@@ -44,7 +44,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	@Inject IdeContentProposalPriorities proposalPriorities
 	
-	val options = JdlApplicationOptions.INSTANCE
+	val JdlApplicationOptions options = JdlApplicationOptions.INSTANCE
 	
 	override protected createProposals(AbstractElement assignment, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
