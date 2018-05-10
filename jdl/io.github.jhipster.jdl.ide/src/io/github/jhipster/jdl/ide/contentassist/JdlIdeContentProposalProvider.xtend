@@ -18,16 +18,24 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
+import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlApplication
+import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
+import io.github.jhipster.jdl.model.JdlApplicationOptions
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
-import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities
-import com.google.inject.Inject
-import io.github.jhipster.jdl.jdl.JdlApplicationConfig
-import org.eclipse.xtext.EcoreUtil2
-import io.github.jhipster.jdl.jdl.JdlApplication
+import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
+import org.eclipse.xtext.resource.XtextResource
+import org.eclipse.xtext.util.CancelIndicator
+import org.eclipse.xtext.validation.CheckMode
+
+import static io.github.jhipster.jdl.model.JdlLanguages.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -35,25 +43,91 @@ import io.github.jhipster.jdl.jdl.JdlApplication
 class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 
 	@Inject IdeContentProposalPriorities proposalPriorities
-
+	
+	val options = JdlApplicationOptions.INSTANCE
+	
 	override protected createProposals(AbstractElement assignment, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
 		val model = context.currentModel
-		val application = EcoreUtil2.getContainerOfType(model, JdlApplication)
+		if (model.hasIssues && (
+			model instanceof JdlApplication // || model instanceof JdlApplicationConfig
+		)) {
+			super.createProposals(assignment, context, acceptor)
+			return
+		}
 		switch (model) {
 			JdlApplicationConfig: {
-				val entry = proposalCreator.createProposal("param", context)
-				acceptor.accept(
-					entry, proposalPriorities.getDefaultPriority(entry)
-				)
+				val existingParamNames = if (!model.paramters.isNullOrEmpty) model.paramters.map[it.paramName] else #[]
+				options.names.filter[!existingParamNames.contains(it)].forEach[addProposal(context, acceptor)]
 			}
-			JdlApplicationParameter: {
-				val entry = proposalCreator.createProposal("foobar", context)
-				acceptor.accept(
-					entry, proposalPriorities.getDefaultPriority(entry)
-				)
+			JdlApplicationParameter: createParameterProposal(model, assignment, context, acceptor)
+			JdlApplicationParameterValue: {
+				val param = EcoreUtil2.getContainerOfType(model, JdlApplicationParameter)
+				createParameterProposal(param, assignment, context, acceptor)
 			}
-			default : super.createProposals(assignment, context, acceptor)
 		}
+	}
+	
+	def private createParameterProposal(JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+		if (param === null) return
+		val paramValue = param.paramValue
+		val params = options.getParameters(param.paramName)
+		val type = options.getParameterType(param.paramName)
+		switch (type) {
+			case Boolean : if (paramValue === null || paramValue.identifiers.isNullOrEmpty)
+				#[Boolean.FALSE, Boolean.TRUE].map[
+					proposalCreator.createProposal(it.toString, context)
+				].forEach[ entry |
+					acceptor.accept(entry, proposalPriorities.getDefaultPriority(entry))
+				]
+			case ListOfLangIsoCodes : {
+				val existingParams = paramValue?.identifiers ?: #[]
+				if (existingParams.isNullOrEmpty) {
+					addProposal('''[«params.join(', ')»]''', context, acceptor)
+				} else {
+					JHipsterIsoLangauges.filter[ k, v |
+						!existingParams.contains(k)
+					].forEach[ k, v |
+						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«k»''', v, context, acceptor)
+					]
+				}
+			}
+			case ListOfLiterals : {
+				val existingParams = paramValue?.identifiers ?: #[]
+				if (existingParams.isNullOrEmpty) {
+					addProposal('''[«params.join(', ')»]''', context, acceptor)
+				} else {
+					params.filter[
+						!existingParams.contains(it)
+					].forEach[
+						addProposal(''', «it»''', context, acceptor)
+					]
+				}
+			}
+			case LangIsoCode : if (paramValue === null || paramValue.identifiers.isNullOrEmpty) JHipsterIsoLangauges.forEach[ key, value |
+				addProposal(key, value, context, acceptor)
+			]
+			case Namespace : addProposal('io.github.jhipster.myapp', context, acceptor)
+			case Version : addProposal('0.0.0', context, acceptor)
+			case Literal :  params.forEach[addProposal(context, acceptor)]
+			default : super.createProposals(assignment, context, acceptor) 
+		}
+	}
+	
+	def private void addProposal(String proposal, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+		addProposal(proposal, null, context, acceptor)
+	}
+	
+	def private void addProposal(String proposal, String description, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+		val entry = proposalCreator.createProposal(proposal, context)
+		if (entry !== null) entry.description = description
+		acceptor.accept(entry, proposalPriorities.getDefaultPriority(entry))
+	}
+	
+	def private boolean hasIssues(EObject model) {
+		if (model === null) return true
+		val res = (model.eResource as XtextResource)
+		val issues = res.resourceServiceProvider.resourceValidator.validate(res, CheckMode.FAST_ONLY, CancelIndicator.NullImpl)
+		return !issues.isNullOrEmpty && !(model instanceof JdlApplicationParameter)
 	}
 }

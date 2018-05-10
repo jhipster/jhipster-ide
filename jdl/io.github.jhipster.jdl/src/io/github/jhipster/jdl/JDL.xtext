@@ -50,27 +50,35 @@ JdlApplication:
 	'}';
 
 JdlApplicationConfig:
-	'config' '{'
-		applicationConfigParameters=JdlApplicationConfigParameters
+	'config' {JdlApplicationConfig} '{'
+		(paramters+=JdlApplicationParameter (=>',')?)* //((',')? paramters+=JdlApplicationParameter)*)?
+//		(paramters+=JdlApplicationParameter)* ((',')? paramters+=JdlApplicationParameter)*
 	'}';	
-	
+
 JdlApplicationEntitiesSelection:
 	'entities' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
-
-JdlApplicationConfigParameters:
-	paramters+=JdlApplicationParameter ','? (paramters+=JdlApplicationParameter ','?)*;
 			
 JdlApplicationParameter:
-	parameterName=ID (
-		('['? identifiers+=ID (JdlParamValueSeparator identifiers+=ID)* ']'?) 
-		| stringValue=STRING | numberValue=INT | JdlReserverdWords
-	);
+	paramName=JdlApplicationParameterName paramValue=JdlApplicationParameterValue;
 
-JdlParamValueSeparator:
+JdlApplicationParameterName:
+	ID | JdlReserverdWords;
+
+JdlApplicationParameterValue:
+	('['? identifiers+=JdlApplicationParameterLiteral (JdlParamValueSeparator identifiers+=JdlApplicationParameterLiteral)* ']'?) 
+		| stringValue=STRING | numberValue=INT | version=Version;
+
+JdlApplicationParameterLiteral:
+	ID | JdlReserverdWords;
+
+Version:
+	major=INT '.' minor=INT ('.' patch=INT)?;
+
+JdlParamValueSeparator: 
 	'.' | ',';
 
 JdlReserverdWords:
-	'microservice' | 'elasticsearch';
+	'microservice' | 'elasticsearch' | 'skipClient' | 'skipServer';
 
 /* =========================================================================
  * CONSTANT
