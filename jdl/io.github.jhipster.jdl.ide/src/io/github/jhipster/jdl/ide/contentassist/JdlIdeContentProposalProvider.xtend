@@ -85,9 +85,9 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 				if (existingParams.isNullOrEmpty) {
 					addProposal('''[«params.join(', ')»]''', context, acceptor)
 				} else {
-					JHipsterIsoLangauges.filter[ k, v |
+					JHipsterIsoLangauges.filter[ String k, String v |
 						!existingParams.contains(k)
-					].forEach[ k, v |
+					].forEach[ String k, String v |
 						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«k»''', v, context, acceptor)
 					]
 				}
@@ -104,9 +104,10 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 					]
 				}
 			}
-			case LangIsoCode : if (paramValue === null || paramValue.identifiers.isNullOrEmpty) JHipsterIsoLangauges.forEach[ key, value |
-				addProposal(key, value, context, acceptor)
-			]
+			case LangIsoCode : if (paramValue === null || paramValue.identifiers.isNullOrEmpty) 
+				JHipsterIsoLangauges.forEach[ String key, String value |
+					addProposal(key, value, context, acceptor)
+				]
 			case Namespace : addProposal('io.github.jhipster.myapp', context, acceptor)
 			case Version : addProposal('0.0.0', context, acceptor)
 			case Literal :  params.forEach[addProposal(context, acceptor)]
