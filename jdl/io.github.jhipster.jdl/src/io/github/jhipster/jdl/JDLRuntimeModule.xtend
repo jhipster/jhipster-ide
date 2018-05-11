@@ -21,6 +21,7 @@ package io.github.jhipster.jdl
 /**
  * @author Serano Colameo - Initial contribution and API
  */
+
 import com.google.inject.Provides
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.generator.JDLGenerator
@@ -28,6 +29,7 @@ import io.github.jhipster.jdl.plantuml.PlantUmlGenerator
 import io.github.jhipster.jdl.renderer.IJdlToPlantUmlRenderer
 import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
 import io.github.jhipster.jdl.resource.JdlDerivedStateComputer
+import io.github.jhipster.jdl.scoping.JdlGlobalScopeProvider
 import java.util.Set
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
@@ -66,5 +68,9 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	@Provides
 	def Set<IJdlGenerator> jdlGenerators() {
 		#{new PlantUmlGenerator}
+	}
+	
+	override bindIGlobalScopeProvider() {
+		JdlGlobalScopeProvider
 	}
 }

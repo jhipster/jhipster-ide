@@ -28,7 +28,6 @@ Workflow {
 					enabled = true
 				}
 				createEclipseMetaData = true
-				
 			}
 			code = {
 				encoding = "UTF-8"
