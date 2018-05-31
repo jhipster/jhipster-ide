@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="Content-Language" content="en-us">
 	<title>Example Web Editor</title>
-	<link rel="stylesheet" type="text/css" href="xtext/2.10.0/xtext-ace.css"/>
+	<link rel="stylesheet" type="text/css" href="xtext/2.13.0/xtext-ace.css"/>
 	<link rel="stylesheet" type="text/css" href="style.css"/>
 	<script src="webjars/requirejs/2.2.0/require.min.js"></script>
 	<script type="text/javascript">
@@ -14,16 +14,16 @@
 		require.config({
 			baseUrl: baseUrl,
 			paths: {
-				"jquery": "webjars/jquery/2.2.3/jquery.min",
-				"ace/ext/language_tools": "webjars/ace/1.2.2/src/ext-language_tools",
-				"xtext/xtext-ace": "xtext/2.10.0/xtext-ace"
+				"jquery": "webjars/jquery/2.2.4/jquery.min",
+				"ace/ext/language_tools": "webjars/ace/1.2.3/src/ext-language_tools",
+				"xtext/xtext-ace": "xtext/2.13.0/xtext-ace"
 			}
 		});
-		require(["webjars/ace/1.2.2/src/ace"], function() {
+		require(["webjars/ace/1.2.3/src/ace"], function() {
 			require(["xtext/xtext-ace"], function(xtext) {
 				xtext.createEditor({
 					baseUrl: baseUrl,
-					syntaxDefinition: "xtext-resources/generated/mode-jh"
+					syntaxDefinition: "xtext-resources/jhjdl"
 				});
 			});
 		});
@@ -32,124 +32,11 @@
 <body>
 
 <div class="container">
-	<div class="header">
-		<h1>JDL Web Editor</h1>
+	<div>
+		<h3>JDL Web Editor</h3>
 	</div>
 	<div class="content">
-		<div id="xtext-editor" data-editor-xtext-lang="jh">
-			entity Region {
-				regionName String
-			}
-			
-			entity Country {
-				countryName String
-			}
-			
-			// an ignored comment
-			/** not an ignored comment */
-			entity Location {
-				streetAddress String,
-				postalCode String,
-				city String,
-				stateProvince String
-			}
-			
-			entity Department {
-				departmentName String required
-			}
-			
-			/**
-			 * Task entity.
-			 * @author The JHipster team.
-			 */
-			entity Task {
-				title String,
-				description String
-			}
-			
-			/**
-			 * The Employee entity.
-			 */
-			entity Employee {
-				/**
-				* The firstname attribute.
-				*/
-				firstName String,
-				lastName String,
-				email String,
-				phoneNumber String,
-				hireDate ZonedDateTime,
-				salary Long,
-				commissionPct Long
-			}
-			
-			entity Job {
-				jobTitle String,
-				minSalary Long,
-				maxSalary Long
-			}
-			
-			entity JobHistory {
-				startDate ZonedDateTime,
-				endDate ZonedDateTime,
-				language Language
-			}
-			
-			enum Language {
-			    FRENCH, ENGLISH, SPANISH
-			}
-			
-			relationship OneToOne {
-				Country{region} to Region
-			}
-			
-			relationship OneToOne {
-				Location{country} to Country
-			}
-			
-			relationship OneToOne {
-				Department{location} to Location
-			}
-			
-			relationship ManyToMany {
-				Job{task(title)} to Task{job}
-			}
-			
-			// defining multiple OneToMany relationships with comments
-			relationship OneToMany {
-				Employee{job} to Job,
-				/**
-				* A relationship
-				*/
-				Department{employee} to
-				/**
-				* Another side of the same relationship
-				*/
-				Employee
-			}
-			
-			relationship ManyToOne {
-				Employee{manager} to Employee
-			}
-			
-			// defining multiple oneToOne relationships
-			relationship OneToOne {
-				JobHistory{job} to Job,
-				JobHistory{department} to Department,
-				JobHistory{employee} to Employee
-			}
-			
-			// Set pagination options
-			paginate JobHistory, Employee with infinite-scroll
-			paginate Job with pagination
-			
-			dto * with mapstruct
-			
-			// Set service options to all except few
-			service all with serviceImpl except Employee, Job
-			// Set an angular suffix
-			angularSuffix * with mySuffix
-		</div>
+		<div id="xtext-editor" data-editor-xtext-lang="jdl"></div>
 	</div>
 </div>
 

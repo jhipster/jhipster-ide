@@ -51,8 +51,7 @@ JdlApplication:
 
 JdlApplicationConfig:
 	'config' {JdlApplicationConfig} '{'
-		(paramters+=JdlApplicationParameter (=>',')?)* //((',')? paramters+=JdlApplicationParameter)*)?
-//		(paramters+=JdlApplicationParameter)* ((',')? paramters+=JdlApplicationParameter)*
+		(paramters+=JdlApplicationParameter ','?)*
 	'}';	
 
 JdlApplicationEntitiesSelection:
@@ -61,8 +60,16 @@ JdlApplicationEntitiesSelection:
 JdlApplicationParameter:
 	paramName=JdlApplicationParameterName paramValue=JdlApplicationParameterValue;
 
-JdlApplicationParameterName:
-	ID | JdlReserverdWords;
+enum JdlApplicationParameterName:
+	applicationType | authenticationType | baseName |
+	buildTool | cacheProvider | clientFramework | clientPackageManager |
+    databaseType | devDatabaseType | enableHibernateCache |
+    enableSwaggerCodegen | enableTranslation | jhiPrefix |
+	jhipsterVersion | languages | messageBroker |
+	nativeLanguage | packageName | prodDatabaseType |
+	searchEngine | serverPort | serviceDiscoveryType |
+	skipClient | skipServer | skipUserManagement | path |
+    testFrameworks | uaaBaseName | useSass | websocket;
 
 JdlApplicationParameterValue:
 	('['? identifiers+=JdlApplicationParameterLiteral (JdlParamValueSeparator identifiers+=JdlApplicationParameterLiteral)* ']'?) 
@@ -137,7 +144,7 @@ JdlDateFieldType:
 	element=JdlDateTypes validators+=JdlRequiredValidator*;
 
 enum JdlDateTypes:
-	Date | LocalDate | ZonedDateTime | Instant;
+	Date | LocalDate | ZonedDateTime | Instant | UUID;
 	
 JdlBlobFieldType:
 	element=JdlBlobTypes validators+=JdlBlobValidators*;

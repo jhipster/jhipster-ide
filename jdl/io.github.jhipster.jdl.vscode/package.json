@@ -10,7 +10,7 @@
         "vscode": "^1.4.0"
     },
     "categories": [
-        "Languages"
+        "Programming Languages"
     ],
     "bugs": {
         "url": "https://github.com/jhipster/jhipster-ide/issues"
@@ -24,8 +24,8 @@
         "onLanguage:jdl",
         "onCommand:plantuml.preview"
     ],
-    "main": "./out/src/extension-dev",
-    "//main": "./out/src/extension",
+    "//main": "./out/src/extension-dev",
+    "main": "./out/src/extension",
     "contributes": {
         "languages": [
             {

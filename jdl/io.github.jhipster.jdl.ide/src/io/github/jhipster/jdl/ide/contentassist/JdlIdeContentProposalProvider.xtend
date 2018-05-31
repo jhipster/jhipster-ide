@@ -19,14 +19,14 @@
 package io.github.jhipster.jdl.ide.contentassist
 
 import com.google.inject.Inject
-import io.github.jhipster.jdl.jdl.JdlApplication
+import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
-import io.github.jhipster.jdl.config.JdlApplicationOptions
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities
@@ -36,6 +36,8 @@ import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 
 import static io.github.jhipster.jdl.config.JdlLanguages.*
+import java.util.List
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -46,33 +48,44 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 	
 	val JdlApplicationOptions options = JdlApplicationOptions.INSTANCE
 	
+	override protected filterKeyword(Keyword keyword, ContentAssistContext context) {
+		return keyword.value == 'name' || !keyword.parameterExists(context)
+	}
+
+	def boolean parameterExists(Keyword keyword, ContentAssistContext context) {
+		return if (!keyword.value.isNullOrEmpty) {
+			context.parameters.exists[it.literal == keyword.value]
+		} else false
+	}
+
+	def List<JdlApplicationParameterName> getParameters(ContentAssistContext context) {
+		val cfg = EcoreUtil2.getContainerOfType(context.currentModel, JdlApplicationConfig)
+		val existingParamNames = if (cfg !== null && !cfg.paramters.isNullOrEmpty) cfg.paramters.map[it.paramName] else #[]
+		return existingParamNames
+	}
+	
 	override protected createProposals(AbstractElement assignment, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
 		val model = context.currentModel
-		if (model.hasIssues && (
-			model instanceof JdlApplication // || model instanceof JdlApplicationConfig
-		)) {
+		if (model.hasIssues) {
 			super.createProposals(assignment, context, acceptor)
 			return
 		}
 		switch (model) {
-			JdlApplicationConfig: {
-				val existingParamNames = if (!model.paramters.isNullOrEmpty) model.paramters.map[it.paramName] else #[]
-				options.names.filter[!existingParamNames.contains(it)].forEach[addProposal(context, acceptor)]
-			}
 			JdlApplicationParameter: createParameterProposal(model, assignment, context, acceptor)
 			JdlApplicationParameterValue: {
 				val param = EcoreUtil2.getContainerOfType(model, JdlApplicationParameter)
 				createParameterProposal(param, assignment, context, acceptor)
 			}
+			default: super.createProposals(assignment, context, acceptor)
 		}
 	}
 	
 	def private createParameterProposal(JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
-		if (param === null) return
+		if (param === null || param.isDefined) return
 		val paramValue = param.paramValue
-		val params = options.getParameters(param.paramName)
-		val type = options.getParameterType(param.paramName)
+		val params = options.getParameters(param.paramName.literal)
+		val type = options.getParameterType(param.paramName.literal)
 		switch (type) {
 			case Boolean : if (paramValue === null || paramValue.identifiers.isNullOrEmpty)
 				#[Boolean.FALSE, Boolean.TRUE].map[
@@ -111,6 +124,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 			case Namespace : addProposal('io.github.jhipster.myapp', context, acceptor)
 			case Version : addProposal('0.0.0', context, acceptor)
 			case Literal :  params.forEach[addProposal(context, acceptor)]
+			case Number : params.forEach[addProposal(it, context, acceptor)]
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}
@@ -130,5 +144,14 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 		val res = (model.eResource as XtextResource)
 		val issues = res.resourceServiceProvider.resourceValidator.validate(res, CheckMode.FAST_ONLY, CancelIndicator.NullImpl)
 		return !issues.isNullOrEmpty && !(model instanceof JdlApplicationParameter)
+	}
+
+	def private boolean isDefined(JdlApplicationParameter it) {
+		return it !== null && it.paramValue.isDefined
+	}
+	
+	def private boolean isDefined(JdlApplicationParameterValue it) {
+		return if (it !== null) it.version !== null || !it.identifiers.isNullOrEmpty 
+		       || it.numberValue != 0 || !it.stringValue.isNullOrEmpty else false
 	}
 }
