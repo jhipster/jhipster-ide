@@ -46,7 +46,7 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
 			new JdlApplicationOption('clientPackageManager', #['yarn', 'npm']),
-			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase']),
+			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
 			new JdlApplicationOption('devDatabaseType', #['h2Disk', 'h2Memory', '*']),
 			new JdlApplicationOption('enableHibernateCache', #['true']),
 			new JdlApplicationOption('enableSwaggerCodegen', #['false']),
