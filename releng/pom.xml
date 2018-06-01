@@ -18,8 +18,9 @@
 		<tycho-version>1.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<eclipse.name>neon</eclipse.name>
-<!-- 	<b3aggr.headless.repo>http://mirrors.ibiblio.org/eclipse/modeling/emft/b3/headless-4.4</b3aggr.headless.repo>		 -->
-		<b3aggr.headless.repo>http://mirror.neu.edu.cn/eclipse/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo>
+<!-- 	<b3aggr.headless.repo>http://mirrors.ibiblio.org/eclipse/modeling/emft/b3/headless-4.4</b3aggr.headless.repo> -->
+<!-- 	<b3aggr.headless.repo>http://mirror.neu.edu.cn/eclipse/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo> -->
+		<b3aggr.headless.repo>http://eclipse.mirror.wearetriple.com/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo>
 	</properties>
 
 	<repositories>
