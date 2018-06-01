@@ -18,6 +18,7 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
+import java.util.List
 import com.google.inject.Inject
 import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
@@ -34,10 +35,9 @@ import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 import static io.github.jhipster.jdl.config.JdlLanguages.*
-import java.util.List
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -82,12 +82,12 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 	}
 	
 	def private createParameterProposal(JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
-		if (param === null || param.isDefined) return
+		if (param === null) return
 		val paramValue = param.paramValue
 		val params = options.getParameters(param.paramName.literal)
 		val type = options.getParameterType(param.paramName.literal)
 		switch (type) {
-			case Boolean : if (paramValue === null || paramValue.identifiers.isNullOrEmpty)
+			case Boolean : if (!param.isDefined)
 				#[Boolean.FALSE, Boolean.TRUE].map[
 					proposalCreator.createProposal(it.toString, context)
 				].forEach[ entry |
@@ -117,14 +117,14 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 					]
 				}
 			}
-			case LangIsoCode : if (paramValue === null || paramValue.identifiers.isNullOrEmpty) 
+			case LangIsoCode : if (!param.isDefined) 
 				JHipsterIsoLangauges.forEach[ String key, String value |
 					addProposal(key, value, context, acceptor)
 				]
-			case Namespace : addProposal('io.github.jhipster.myapp', context, acceptor)
-			case Version : addProposal('0.0.0', context, acceptor)
-			case Literal :  params.forEach[addProposal(context, acceptor)]
-			case Number : params.forEach[addProposal(it, context, acceptor)]
+			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
+			case Version : if (!param.isDefined) addProposal('0.0.0', context, acceptor)
+			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
+			case Number : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}

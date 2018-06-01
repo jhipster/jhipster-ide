@@ -37,6 +37,9 @@ class JdlApplicationOptions {
 	
 	private new() {} // this is a singleton!
 	
+	public static val JH_VERSION = 'jhipsterVersion'
+	public static val SERVER_PORT = 'serverPort'
+	
 	@Accessors(PUBLIC_GETTER) val static INSTANCE = new JdlApplicationOptions => [
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
