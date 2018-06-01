@@ -34,6 +34,7 @@ interface IssueCodes {
 	String FOR_NOTALLOWED = PREFIX + 'ForOptionNotAllowed'
 	String FOR_NOTALLOWED_MSG = 'Keyword "for" is not allowed anymore!'
 	String WRONG_REGEXP = PREFIX + 'WrongRegexp'
+	String INVALID_PARAM_VALUE = PREFIX + 'InvalidParamValue'
 	// messages
 	String WRONG_REGEXP_MSG = 'Wrong regexp pattern!'
 	String INVALID_ENTITY_NAME_MSG = 'Entity name should start with a capital'
@@ -43,4 +44,10 @@ interface IssueCodes {
 	String DUPLICATE_FIELD_DEF_MSG = 'Field with name already defined'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
 	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
+	String INVALID_PARAM_NAME_MSG = 'Invalid application parameter - unknown literal!'
+	String INVALID_BOOLEAN_PARAM_MSG = 'Invalid application parameter - boolean (true/false) value expected!'
+	String INVALID_ISOCODE_PARAM_MSG = 'Invalid application parameter - ISO code is invalid!'
+	String INVALID_PACKAGE_PARAM_MSG = 'Invalid application parameter - invalid package identifier!'
+	String INVALID_JHVERSION_PARAM_MSG = 'Invalid application parameter - invalid JHipster version number!'
+	String INVALID_PORT_PARAM_MSG = 'Invalid application parameter - server port is invalid!'
 }

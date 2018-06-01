@@ -37,21 +37,24 @@ class JdlApplicationOptions {
 	
 	private new() {} // this is a singleton!
 	
+	public static val JH_VERSION = 'jhipsterVersion'
+	public static val SERVER_PORT = 'serverPort'
+	
 	@Accessors(PUBLIC_GETTER) val static INSTANCE = new JdlApplicationOptions => [
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
 			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
-			new JdlApplicationOption('baseName', #['jhipster']),
+			new JdlApplicationOption('baseName', #['jhipster'], AnyLiteral),
 			new JdlApplicationOption('buildTool', #['maven', 'gradle']),
 			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
 			new JdlApplicationOption('clientPackageManager', #['yarn', 'npm']),
-			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase']),
+			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
 			new JdlApplicationOption('devDatabaseType', #['h2Disk', 'h2Memory', '*']),
-			new JdlApplicationOption('enableHibernateCache', #['true']),
-			new JdlApplicationOption('enableSwaggerCodegen', #['false']),
-			new JdlApplicationOption('enableTranslation', #['true']),
-			new JdlApplicationOption('jhiPrefix', #['jhi']),
+			new JdlApplicationOption('enableHibernateCache', #['true'], Boolean),
+			new JdlApplicationOption('enableSwaggerCodegen', #['false'], Boolean),
+			new JdlApplicationOption('enableTranslation', #['true'], Boolean),
+			new JdlApplicationOption('jhiPrefix', #['jhi'], AnyLiteral),
 			new JdlApplicationOption('jhipsterVersion', Version),
 			new JdlApplicationOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
 			new JdlApplicationOption('messageBroker', #['kafka', 'false']),
@@ -95,6 +98,7 @@ class JdlApplicationOptions {
 
 enum JdlApplicationParameterType {
 	Undefined,
+	AnyLiteral,
 	Literal,
 	ListOfLiterals,
 	ListOfLangIsoCodes,

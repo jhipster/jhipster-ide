@@ -28,7 +28,8 @@ import org.eclipse.xtext.validation.ComposedChecks
 @ComposedChecks(validators = #[
 	CaseSensitivityValidator,
 	CardinalityValidator,
-	OptionSelectionValidator
+	OptionSelectionValidator,
+	ApplicationConfigValidator
 ])
 class JDLValidator extends AbstractJDLValidator {
 	
