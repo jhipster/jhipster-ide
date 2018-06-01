@@ -73,7 +73,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		#!/bin/bash
 		export PATH=$PATH:/usr/local/bin:
 		echo "Initialize JHipster project $1"
-		command yo jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
+		command jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
 		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
 		bash
 	'''
@@ -97,7 +97,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		@echo off
 		@echo Initialize JHipster project %1
 		set PATH=%PATH%;C:\Windows\System32;
-		call yo jhipster || echo Yeoman JHipster generator is required but it's not installed!
+		call jhipster || echo Yeoman JHipster generator is required but it's not installed!
 		call mvnw.cmd --no-plugin-registry eclipse:eclipse || echo maven wrapper script not found!
 	'''
 	
