@@ -75,6 +75,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		echo "Initialize JHipster project $1"
 		command jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
 		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
+		[ -d ./bin ] && rm -rf ./bin # remove bin folder created by eclipse
 		bash
 	'''
 /* TODO Implement me
@@ -99,6 +100,7 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		set PATH=%PATH%;C:\Windows\System32;
 		call jhipster || echo Yeoman JHipster generator is required but it's not installed!
 		call mvnw.cmd --no-plugin-registry eclipse:eclipse || echo maven wrapper script not found!
+		if exist bin rd /q /s bin
 	'''
 	
 	def private isWindows(String os) {
