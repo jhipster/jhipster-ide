@@ -35,6 +35,8 @@ import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
 import org.eclipse.xtext.resource.IDerivedStateComputer
 import org.eclipse.xtext.resource.IResourceDescription
+import org.eclipse.xtext.generator.IOutputConfigurationProvider
+import io.github.jhipster.jdl.generator.JDLOutputConfigurationProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -72,5 +74,9 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	
 	override bindIGlobalScopeProvider() {
 		JdlGlobalScopeProvider
+	}
+	
+	def Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
+		return JDLOutputConfigurationProvider
 	}
 }
