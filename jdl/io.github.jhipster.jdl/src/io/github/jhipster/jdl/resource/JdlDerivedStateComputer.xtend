@@ -18,12 +18,11 @@
  */
 package io.github.jhipster.jdl.resource
 
-import io.github.jhipster.jdl.jdl.JdlDomainModel
-import io.github.jhipster.jdl.jdl.JdlEntity
-import io.github.jhipster.jdl.jdl.JdlFactory
 import io.github.jhipster.jdl.jdl.JdlPackage
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -31,8 +30,7 @@ import org.eclipse.xtext.resource.IDerivedStateComputer
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	static val USER_ENTITY = 'User'
-	static val USER_FIELD_NAME = 'name'
-	static extension val JdlFactory = JdlPackage.eINSTANCE.jdlFactory
+	static val factory = JdlPackage.eINSTANCE.jdlFactory
 
 	override discardDerivedState(DerivedStateAwareResource resource) {
 		// nothing to do here
@@ -40,17 +38,13 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
-			resource.model -> (
-				createJdlEntity => [
-					name = USER_ENTITY
-					it.fields += createJdlEntityField => [
-						it.name = USER_FIELD_NAME
-						it.type = createJdlStringFieldType
-					]
-				]
-			) => [
-				key?.features += value
+			val user = factory.createJdlEntity => [
+				name = USER_ENTITY
 			]
+			val model = resource.model
+			if (model !== null && model.eContents.filter(JdlEntity).exists[
+				name.equals(user.name)
+			] == false) model.features += user 
 		}
 	}
 
@@ -64,7 +58,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
 		try {
-			resource.contents.filter(JdlEntity).exists[name.equals(USER_ENTITY)]
+			resource.contents.filter(JdlEntity).findFirst[name.equals(USER_ENTITY)] !== null
 		} catch (Exception exception) {
 			false
 		}
