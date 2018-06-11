@@ -18,9 +18,6 @@
  */
 package io.github.jhipster.jdl.scoping
 
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EReference
-
 /**
  * This class contains custom scoping description.
  * 
@@ -29,8 +26,4 @@ import org.eclipse.emf.ecore.EReference
  */
 class JDLScopeProvider extends AbstractJDLScopeProvider {
 	
-	override getScope(EObject context, EReference reference) {
-		super.getScope(context, reference)
-	}
-
 }

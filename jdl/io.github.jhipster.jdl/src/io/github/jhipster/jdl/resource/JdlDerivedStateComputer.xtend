@@ -18,18 +18,21 @@
  */
 package io.github.jhipster.jdl.resource
 
+import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlFactory
 import io.github.jhipster.jdl.jdl.JdlPackage
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
-import io.github.jhipster.jdl.jdl.JdlEntity
-import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
-	static val factory = JdlPackage.eINSTANCE.jdlFactory
+	static val USER_ENTITY = 'User'
+	static val USER_FIELD_NAME = 'name'
+	static extension val JdlFactory = JdlPackage.eINSTANCE.jdlFactory
 
 	override discardDerivedState(DerivedStateAwareResource resource) {
 		// nothing to do here
@@ -37,14 +40,17 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
-			val user = factory.createJdlEntity => [
-				name = 'User'
+			resource.model -> (
+				createJdlEntity => [
+					name = USER_ENTITY
+					it.fields += createJdlEntityField => [
+						it.name = USER_FIELD_NAME
+						it.type = createJdlStringFieldType
+					]
+				]
+			) => [
+				key?.features += value
 			]
-			val model = resource.model
-			if (model !== null && model.eContents.filter(JdlEntity).exists[
-				name.equals(user.name)
-			] == false) model.features += user 
-			// else resource.contents += user // FIXME: we cannot have multiple roots in a model!
 		}
 	}
 
@@ -58,7 +64,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
 		try {
-			resource.contents.filter(JdlEntity).findFirst[name.equals('User')] !== null
+			resource.contents.filter(JdlEntity).exists[name.equals(USER_ENTITY)]
 		} catch (Exception exception) {
 			false
 		}
