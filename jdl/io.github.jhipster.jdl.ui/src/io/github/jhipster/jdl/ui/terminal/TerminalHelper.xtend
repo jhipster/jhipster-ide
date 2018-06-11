@@ -44,40 +44,37 @@ final class TerminalHelper {
 		#[project, location, executable].forEach[isNotNull(it)] // Check if we have all mandatory parameters
 		val workbench = PlatformUI.workbench
 		val display = workbench.display
-		val shell = display.activeShell
-		display.asyncExec(new Runnable {
-			override run() {
-				try {
-					val folder = new File(location)
-					if (!folder.exists) folder.mkdirs
-					newHashMap => [
-						put(PROP_TITLE, '''«project»''')
-						put(PROP_ENCODING, ENCODING)
-						put(PROP_DELEGATE_ID, DELEGATE_ID)
-						put(PROP_PROCESS_PATH, executable)
-						put(PROP_PROCESS_WORKING_DIR, location)
-						put(PROP_PROCESS_MERGE_ENVIRONMENT, true)
-						put(PROP_LOCAL_ECHO, false)
-						// put(PROP_FORCE_NEW, true)
-						if (!envs.isNullOrEmpty) put(PROP_PROCESS_ENVIRONMENT, envs)
-						if (!args.isNullOrEmpty) put(PROP_PROCESS_ARGS, args)
-						// Show terminal view
-						workbench.activeWorkbenchWindow.activePage.showView(
-							TERMINAL_VIEW_ID
-						) as TerminalsView => [
-							show(null)
-							setFocus
-						]
-						// and open the terminal
-						TerminalServiceFactory.service => [ terminal |
-							val props = it
-							if (terminal !== null) terminal.openConsole(props, doneCallback)
-						]
+		display.asyncExec [
+			try {
+				val folder = new File(location)
+				if (!folder.exists) folder.mkdirs
+				newHashMap => [
+					put(PROP_TITLE, project)
+					put(PROP_ENCODING, ENCODING)
+					put(PROP_DELEGATE_ID, DELEGATE_ID)
+					put(PROP_PROCESS_PATH, executable)
+					put(PROP_PROCESS_WORKING_DIR, location)
+					put(PROP_PROCESS_MERGE_ENVIRONMENT, true)
+					put(PROP_LOCAL_ECHO, false)
+					// put(PROP_FORCE_NEW, true)
+					if (!envs.isNullOrEmpty) put(PROP_PROCESS_ENVIRONMENT, envs)
+					if (!args.isNullOrEmpty) put(PROP_PROCESS_ARGS, args)
+					// Show terminal view
+					workbench.activeWorkbenchWindow.activePage.showView(
+						TERMINAL_VIEW_ID
+					) as TerminalsView => [
+						show(null)
+						setFocus
 					]
-				} catch (PartInitException e) {
-					openError(shell, 'Error opening terminal', e.message)
-				}
+					// and open the terminal
+					TerminalServiceFactory.service => [ terminal |
+						val props = it
+						if (terminal !== null) terminal.openConsole(props, doneCallback)
+					]
+				]
+			} catch (PartInitException e) {
+				openError(display.activeShell, 'Error opening terminal', e.message)
 			}
-		})
+		]
 	}
 }

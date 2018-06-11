@@ -29,6 +29,7 @@ import io.github.jhipster.jdl.jdl.JdlDomainModel
  */
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
+	static val USER_ENTITY = 'User'
 	static val factory = JdlPackage.eINSTANCE.jdlFactory
 
 	override discardDerivedState(DerivedStateAwareResource resource) {
@@ -38,13 +39,12 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
 			val user = factory.createJdlEntity => [
-				name = 'User'
+				name = USER_ENTITY
 			]
 			val model = resource.model
 			if (model !== null && model.eContents.filter(JdlEntity).exists[
 				name.equals(user.name)
 			] == false) model.features += user 
-			// else resource.contents += user // FIXME: we cannot have multiple roots in a model!
 		}
 	}
 
@@ -58,7 +58,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
 		try {
-			resource.contents.filter(JdlEntity).findFirst[name.equals('User')] !== null
+			resource.contents.filter(JdlEntity).findFirst[name.equals(USER_ENTITY)] !== null
 		} catch (Exception exception) {
 			false
 		}

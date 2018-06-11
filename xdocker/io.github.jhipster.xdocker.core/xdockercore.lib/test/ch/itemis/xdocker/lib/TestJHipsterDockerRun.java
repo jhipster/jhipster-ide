@@ -41,7 +41,7 @@ public class TestJHipsterDockerRun extends TestCase {
 	@Test
 	public void runJHipster() throws Exception {
         String containerName = "JHipsterMyApp" + new SecureRandom().nextInt();
-        List<Volume> volumes = new ArrayList<>();
+        List<Volume> volumes = new ArrayList<Volume>();
         volumes.add(new Volume("~/MyApp1:/home/jhipster/app"));
         volumes.add(new Volume("~/.m2:/home/jhipster/.m2"));
         CreateContainerResponse container = dockerClient.createContainerCmd("jhipster/jhipster")

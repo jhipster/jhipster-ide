@@ -55,21 +55,6 @@ public final class DockerProperties {
   @ConfigProperty(DefaultDockerClientConfig.API_VERSION)
   private final String apiVersion;
   
-  public DockerProperties(final Boolean enableLoggingFilter, final String projectPath, final String dockerHost, final String dockerCertPath, final String dockerConfig, final String dockerTlsVerify, final String registryUrl, final String registryUsername, final String registryPassword, final String registryEmail, final String apiVersion) {
-    super();
-    this.enableLoggingFilter = enableLoggingFilter;
-    this.projectPath = projectPath;
-    this.dockerHost = dockerHost;
-    this.dockerCertPath = dockerCertPath;
-    this.dockerConfig = dockerConfig;
-    this.dockerTlsVerify = dockerTlsVerify;
-    this.registryUrl = registryUrl;
-    this.registryUsername = registryUsername;
-    this.registryPassword = registryPassword;
-    this.registryEmail = registryEmail;
-    this.apiVersion = apiVersion;
-  }
-  
   @Override
   @Pure
   public int hashCode() {
@@ -235,19 +220,34 @@ public final class DockerProperties {
     return (T)org.apache.commons.beanutils.ConvertUtils.convert(obj, type);
   }
   
+  public DockerProperties(final Boolean enableLoggingFilter, final String projectPath, final String dockerHost, final String dockerCertPath, final String dockerConfig, final String dockerTlsVerify, final String registryUrl, final String registryUsername, final String registryPassword, final String registryEmail, final String apiVersion) {
+	    super();
+	    this.enableLoggingFilter = enableLoggingFilter;
+	    this.projectPath = projectPath;
+	    this.dockerHost = dockerHost;
+	    this.dockerCertPath = dockerCertPath;
+	    this.dockerConfig = dockerConfig;
+	    this.dockerTlsVerify = dockerTlsVerify;
+	    this.registryUrl = registryUrl;
+	    this.registryUsername = registryUsername;
+	    this.registryPassword = registryPassword;
+	    this.registryEmail = registryEmail;
+	    this.apiVersion = apiVersion;
+	  }
+	  
   public DockerProperties(final HashMap<String, Object> params) {
     this(
-    	convert(params.get("enableLoggingFilter"), Boolean.class),
-    	convert(params.get("projectPath"), String.class),
-    	convert(params.get("dockerHost"), String.class),
-    	convert(params.get("dockerCertPath"), String.class),
-    	convert(params.get("dockerConfig"), String.class),
-    	convert(params.get("dockerTlsVerify"), String.class),
-    	convert(params.get("registryUrl"), String.class),
-    	convert(params.get("registryUsername"), String.class),
-    	convert(params.get("registryPassword"), String.class),
-    	convert(params.get("registryEmail"), String.class),
-    	convert(params.get("apiVersion"), String.class)
+    	(Boolean)convert(params.get("enableLoggingFilter"), Boolean.class),
+    	(String)convert(params.get("projectPath"), String.class),
+    	(String)convert(params.get("dockerHost"), String.class),
+    	(String)convert(params.get("dockerCertPath"), String.class),
+    	(String)convert(params.get("dockerConfig"), String.class),
+    	(String)convert(params.get("dockerTlsVerify"), String.class),
+    	(String)convert(params.get("registryUrl"), String.class),
+    	(String)convert(params.get("registryUsername"), String.class),
+    	(String)convert(params.get("registryPassword"), String.class),
+    	(String)convert(params.get("registryEmail"), String.class),
+    	(String)convert(params.get("apiVersion"), String.class)
     );
   }
   
