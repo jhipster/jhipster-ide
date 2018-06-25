@@ -18,19 +18,19 @@
  */
 package io.github.jhipster.jdl.validation
 
-import org.eclipse.xtext.EcoreUtil2
-import io.github.jhipster.jdl.jdl.Version
 import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
 
+import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
+import static io.github.jhipster.jdl.config.JdlLanguages.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import static io.github.jhipster.jdl.config.JdlLanguages.*
-import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -90,11 +90,14 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 					error(INVALID_PORT_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
+			case AnyLiteral: if (!isValidJavaIdentifier(paramValue.stringValue)) {
+				error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+			}
 		}
 	}
 
-	def private isValidJhipsterVersion(Version version) {
-		return version !== null && version.major >=4
+	def private isValidJhipsterVersion(JdlApplicationParameterVersion version) {
+		return version !== null && !version.versionTag.isNullOrEmpty
 	}
 	
 	def private isValidJavaIdentifier(String identifier) {

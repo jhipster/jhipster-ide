@@ -38,6 +38,7 @@ import org.eclipse.xtext.validation.CheckMode
 import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 import static io.github.jhipster.jdl.config.JdlLanguages.*
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -77,6 +78,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 				val param = EcoreUtil2.getContainerOfType(model, JdlApplicationParameter)
 				createParameterProposal(param, assignment, context, acceptor)
 			}
+			JdlApplicationParameterVersion: return
 			default: super.createProposals(assignment, context, acceptor)
 		}
 	}
@@ -122,9 +124,10 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 					addProposal(key, value, context, acceptor)
 				]
 			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
-			case Version : if (!param.isDefined) addProposal('0.0.0', context, acceptor)
+			case Version : if (!param.isDefined) addProposal('5.0.0', context, acceptor)
 			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
 			case Number : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
+			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}
