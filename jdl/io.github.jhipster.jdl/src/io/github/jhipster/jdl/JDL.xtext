@@ -68,18 +68,18 @@ enum JdlApplicationParameterName:
 	jhipsterVersion | languages | messageBroker |
 	nativeLanguage | packageName | prodDatabaseType |
 	searchEngine | serverPort | serviceDiscoveryType |
-	skipClient | skipServer | skipUserManagement | path |
+	skipClient | skipServer | skipUserManagement |
     testFrameworks | uaaBaseName | useSass | websocket;
 
 JdlApplicationParameterValue:
 	('['? identifiers+=JdlApplicationParameterLiteral (JdlParamValueSeparator identifiers+=JdlApplicationParameterLiteral)* ']'?) 
-		| stringValue=STRING | numberValue=INT | version=Version;
+		| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
 
 JdlApplicationParameterLiteral:
 	ID | JdlReserverdWords;
 
-Version:
-	major=INT '.' minor=INT ('.' patch=INT)?;
+JdlApplicationParameterVersion:
+	versionTag=VERSION_TAG; 
 
 JdlParamValueSeparator: 
 	'.' | ',';
@@ -336,11 +336,12 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * TERMINALS DEFINITIONS
+ * TERMINAL DEFINITIONS
  * ========================================================================= */
 
+terminal VERSION_TAG returns ecore::EString: INT '.' INT ('.' INT)? ('-' ID)?;
 terminal WS: (' '|'\t'|'\r'|'\n')+;
-terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
+terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal STRING: '"' EXP '"' | "'" EXP "'";
 terminal fragment EXP: ('\\' . | !('\\'|'"'|'\r'|'\n'))*;

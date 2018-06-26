@@ -1,0 +1,36 @@
+application {
+  config {
+  	applicationType gateway
+  	baseName jhipster
+  	authenticationType jwt
+  	buildTool gradle
+  	cacheProvider ehcache
+  	jhiPrefix jhi
+  	jhipsterVersion 5.1.0-RC1
+  	clientFramework react
+  	databaseType cassandra devDatabaseType h2Disk
+  	enableHibernateCache false 
+  	enableSwaggerCodegen false 
+  	enableTranslation false
+  	languages [en, fr, ar-ly]
+  	messageBroker false
+  	nativeLanguage ar-ly 
+  	packageName io.github.jhipster.myapp
+  	prodDatabaseType mariadb
+  	searchEngine elasticsearch
+  	serverPort 8080
+  	serviceDiscoveryType consul
+  	skipClient false
+  	skipServer false 
+  	skipUserManagement false 
+  	testFrameworks [protactor, cucumber, gatling]
+	uaaBaseName uaa
+	useSass false
+	websocket spring-websocket  	
+	clientPackageManager yarn
+  }
+  entities * except Customer
+}
+
+entity BankAccount
+entity Customer
