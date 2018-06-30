@@ -18,7 +18,10 @@ cache:
 addons:
   apt:
     packages:
+    - build-essential
     - graphviz
+    - openssl
+    - libssl-dev
 
 env:
   global:
@@ -31,8 +34,8 @@ before_install:
 install:
   - java -version
   - ./mvnw -version
-  - nvm ls-remote 8.11.3
-  - nvm install 8.11.3 && node --version
+  - nvm ls-remote v8.11.3
+  - nvm install v8.11.3 && node --version
 
 before_script:
   - export DISPLAY=:99.0
