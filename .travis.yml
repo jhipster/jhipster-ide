@@ -31,7 +31,7 @@ before_install:
 install:
   - java -version
   - ./mvnw -version
-  - nvm install 7.2.0 && node --version
+  - nvm install 8.11.3 && node --version
 
 before_script:
   - export DISPLAY=:99.0
