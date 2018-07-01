@@ -18,7 +18,10 @@ cache:
 addons:
   apt:
     packages:
+    - build-essential
     - graphviz
+    - openssl
+    - libssl-dev
 
 env:
   global:
@@ -26,12 +29,13 @@ env:
   - secure: rpc109f1v9JVsoV15/1nUGG9K0NbhPdQVLxDt7RypH+yKmJzHOZf1rDNQOrRkCxU0T7/QFybZIeFBd0AGRDWLoOJ2BFpHZK+6hLwRwQzq0NWHyoWdLScp+xQfyRl0K5ybNxxXzkgB1g0LCc8160b/3AJGPzHNWUhfLzGiVOzg+QVKm/zArJ15fu1YPQSVQTsMxGyYe+HGONlq0Lzb6+C5159xg6sOH8SGl5Aa73H6JTPL3FX21pgogfgqIy2/9IGEe90vgxAxHGw66kHLw52Iddv2qE7uPjXi8yuIbRdlSpNb1AxJWE9z9c/yWfzXBipIgrFIRL9Wjge2OSHQvct0Cvn9a+fYWbYk+Mc/0UW24eMkU9gxEEA59MprrvgeaKkaNYWJDh82iwBtI3YRAft9S7T/x0eck5B635WjYera8QILjdS7LI5P4tw7R6eyIcIX7gQ7i95vxJpYVqWpgSs6yg7jrWjJzPkGYkzOZ3CT2w2y4D2AVeVTmMkxxxNHjFn0V0Fm8NAyAMmFEVUn/1Ntu1j0PP++EjRlwYLr/36mCnM4Y6ZCjDMJS/eX/5jwDfVFGbmK/hiAEFFUyPydZJFxLrXY6Z9YzqxCQY1Lg63+MOmcKQsQOQsxx8eFSBJKWE0cYPQswZP6Vl1OQoEZ5bmXBW0cTVI8/s0LSIznBjfjkw=
 
 before_install:
-  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash
-
+  - wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+  
 install:
   - java -version
   - ./mvnw -version
-  - nvm install 7.2.0 && node --version
+  - nvm ls-remote v8.11.3
+  - nvm install v8.11.3 && node --version
 
 before_script:
   - export DISPLAY=:99.0

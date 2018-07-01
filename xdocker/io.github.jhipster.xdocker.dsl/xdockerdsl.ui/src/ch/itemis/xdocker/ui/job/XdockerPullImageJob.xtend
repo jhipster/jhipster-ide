@@ -54,8 +54,8 @@ class XdockerPullImageJob extends AbstractXdockerJob {
 				val callback = new PullImageResultCallback {
 					override onNext(PullResponseItem item) {
 						if (!item?.status.nullOrEmpty) log('''«item.status» «item.progress»''')
-						else if (!item?.error.nullOrEmpty) {
-							log(item.error)
+						else if (!item?.errorDetail.message.nullOrEmpty) {
+							log(item?.errorDetail.message)
 							result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, item.error, null)
 						}
 						else if (!item?.id.nullOrEmpty) log('''id is «item.id»''')
