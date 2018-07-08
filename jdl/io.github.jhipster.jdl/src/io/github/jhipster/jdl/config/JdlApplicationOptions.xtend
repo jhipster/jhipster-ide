@@ -54,7 +54,7 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('enableHibernateCache', #['true'], Boolean),
 			new JdlApplicationOption('enableSwaggerCodegen', #['false'], Boolean),
 			new JdlApplicationOption('enableTranslation', #['true'], Boolean),
-			new JdlApplicationOption('jhiPrefix', #['prefix'], AnyLiteral),
+			new JdlApplicationOption('jhiPrefix', #['prefix'], JavaIdentifierLiteral),
 			new JdlApplicationOption('jhipsterVersion', Version),
 			new JdlApplicationOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
 			new JdlApplicationOption('messageBroker', #['kafka', 'false']),
@@ -98,6 +98,7 @@ class JdlApplicationOptions {
 
 enum JdlApplicationParameterType {
 	Undefined,
+	JavaIdentifierLiteral,
 	AnyLiteral,
 	NumDigitLiteral,
 	Literal,

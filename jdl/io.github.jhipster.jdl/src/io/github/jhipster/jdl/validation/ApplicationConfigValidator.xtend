@@ -90,8 +90,8 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 					error(INVALID_PORT_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
-			case AnyLiteral: if (!isValidJavaIdentifier(paramValue.stringValue)) {
-				error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+			case JavaIdentifierLiteral: if (paramValue.identifiers.isNullOrEmpty || !isValidJavaIdentifier(paramValue.identifiers.head)) {
+				error(INVALID_IDENTIFIER_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 			}
 			case NumDigitLiteral: {
 				val prefixDigiAllowed = !paramValue.stringValue.nullOrEmpty
