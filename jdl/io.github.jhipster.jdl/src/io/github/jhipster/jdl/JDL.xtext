@@ -31,6 +31,7 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 /* =========================================================================
  * ROOT
  * ========================================================================= */
+
 JdlDomainModel:
 	applications+=JdlApplication*
 	features+=JdlFeature*;
@@ -40,8 +41,8 @@ JdlFeature:
 
 /* =========================================================================
  * APPLICTION
- * ========================================================================= */
- 
+ * ========================================================================= */ 
+
 JdlApplication: 
 	'application' '{'
 		config=JdlApplicationConfig
@@ -76,7 +77,7 @@ JdlApplicationParameterValue:
 		| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
 
 JdlApplicationParameterLiteral:
-	ID | JdlReserverdWords;
+	ID | NUMERIC_PREFIXED_ID | JdlReserverdWords;
 
 JdlApplicationParameterVersion:
 	versionTag=VERSION_TAG; 
@@ -90,6 +91,7 @@ JdlReserverdWords:
 /* =========================================================================
  * CONSTANT
  * ========================================================================= */
+
 JdlConstant:
 	name=ID '=' value=INT;
 
@@ -99,6 +101,7 @@ JdlNumericValue:
 /* =========================================================================
  * ENTITY
  * ========================================================================= */
+
 JdlEntity:
 	'entity' name=ID ('(' table=ID ')')? ('{'
 		(fields+=JdlEntityField (','? fields+=JdlEntityField)*)?
@@ -155,6 +158,7 @@ enum JdlBlobTypes:
 /* =========================================================================
  * VALIDATOR
  * ========================================================================= */
+
 JdlStringValidators:
 	required?=JdlRequiredValidator |
 	minlength=JdlMinLengthValidator |
@@ -198,6 +202,7 @@ JdlMaxBytesValidator:
 /* =========================================================================
  * RELATIONSHIP
  * ========================================================================= */
+
 JdlRelationships:
 	'relationship' cardinality=JdlCardinality '{'
 		relationships+=JdlRelationship (','? relationships+=JdlRelationship)*
@@ -218,6 +223,7 @@ enum JdlCardinality:
 /* =========================================================================
  * ENUM
  * ========================================================================= */
+
 JdlEnum:
 	'enum' name=ID '{'
 		values+=ID (','? values+=ID)*
@@ -226,6 +232,7 @@ JdlEnum:
 /* =========================================================================
  * OPTION 
  * ========================================================================= */
+
 JdlOption:
 	setting=JdlOptionSetting (excludes=JdlExceptEntityExclusion)?;
 
@@ -260,6 +267,7 @@ JdlWildcardPredicate:
 /* =========================================================================
  * DTO OPTION 
  * ========================================================================= */
+
 JdlDtoOption returns JdlOptionSetting:
 	dtoOption?='dto' includes=JdlWithEntitySelectionAndValue dtoType=JdlDtoType;
 
@@ -269,6 +277,7 @@ enum JdlDtoType:
 /* =========================================================================
  * PAGINATION OPTION 
  * ========================================================================= */
+
 JdlPaginateOption returns JdlOptionSetting:
 	paginateOption?='paginate' includes=JdlWithEntitySelectionAndValue paginateType=JdlPaginateType;
 
@@ -278,6 +287,7 @@ JdlPaginateType:
 /* =========================================================================
  * SERVICE OPTION 
  * ========================================================================= */
+
 JdlServiceOption returns JdlOptionSetting:
 	serviceOption?='service' includes=JdlWithEntitySelectionAndValue serviceType=JdlServiceType;
 
@@ -287,12 +297,14 @@ enum JdlServiceType:
 /* =========================================================================
  * MICRO SERVICE OPTION 
  * ========================================================================= */
+
 JdlMicroserviceOption returns JdlOptionSetting:
 	microserviceOption?='microservice' includes=JdlWithEntitySelectionAndValue appname=ID;
 
 /* =========================================================================
  * SEARCH OPTION 
  * ========================================================================= */
+
 JdlSearchOption returns JdlOptionSetting:
 	searchOption?='search' includes=JdlWithEntitySelectionAndValue searchType=JdlSearchType;
 
@@ -302,6 +314,7 @@ enum JdlSearchType:
 /* =========================================================================
  * SKIP CLIENT OPTION 
  * ========================================================================= */
+
 JdlSkipClientOption returns JdlOptionSetting:
 	skipClientOption?='skipClient' includes=JdlForEntityInclusion;
 
@@ -320,18 +333,21 @@ JdlAngularSuffixOption returns JdlOptionSetting:
 /* =========================================================================
  * CLIENT ROOT FOLDER OPTION 
  * ========================================================================= */
+
 JdlClientRootFolderOption returns JdlOptionSetting:
 	angularSuffixOption?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ID;
 
 /* =========================================================================
  * Filter OPTION 
  * ========================================================================= */
+
 JdlFilterOption returns JdlOptionSetting:
 	filterOption?='filter' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * NO FLUENT METHOD OPTION 
  * ========================================================================= */
+
 JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
@@ -339,9 +355,10 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
  * TERMINAL DEFINITIONS
  * ========================================================================= */
 
+terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
+terminal NUMERIC_PREFIXED_ID returns ecore::EString: INT? ID;
 terminal VERSION_TAG returns ecore::EString: INT '.' INT ('.' INT)? ('-' ID)?;
 terminal WS: (' '|'\t'|'\r'|'\n')+;
-terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal STRING: '"' EXP '"' | "'" EXP "'";
 terminal fragment EXP: ('\\' . | !('\\'|'"'|'\r'|'\n'))*;

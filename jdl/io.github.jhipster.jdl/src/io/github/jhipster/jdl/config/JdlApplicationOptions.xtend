@@ -44,7 +44,7 @@ class JdlApplicationOptions {
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
 			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
-			new JdlApplicationOption('baseName', #['jhipster'], AnyLiteral),
+			new JdlApplicationOption('baseName', #['jhipster'], NumDigitLiteral),
 			new JdlApplicationOption('buildTool', #['maven', 'gradle']),
 			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
@@ -99,6 +99,7 @@ class JdlApplicationOptions {
 enum JdlApplicationParameterType {
 	Undefined,
 	AnyLiteral,
+	NumDigitLiteral,
 	Literal,
 	ListOfLiterals,
 	ListOfLangIsoCodes,

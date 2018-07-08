@@ -93,20 +93,34 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 			case AnyLiteral: if (!isValidJavaIdentifier(paramValue.stringValue)) {
 				error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 			}
+			case NumDigitLiteral: {
+				val prefixDigiAllowed = !paramValue.stringValue.nullOrEmpty
+				val value = if (prefixDigiAllowed) paramValue.stringValue else paramValue.identifiers?.head
+				if (value.matches('^\\d+.*') && !paramValue.identifiers.isNullOrEmpty) {
+					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, WRONG_PARAM_VALUE_TYPE)
+				} else if (!isValidJavaIdentifier(value, prefixDigiAllowed)) {
+					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
+			}
 		}
 	}
 
 	def private isValidJhipsterVersion(JdlApplicationParameterVersion version) {
 		return version !== null && !version.versionTag.isNullOrEmpty
 	}
-	
+
 	def private isValidJavaIdentifier(String identifier) {
-		if (!identifier.isNullOrEmpty) {
-			val chars = identifier.toCharArray
-			for (var i = 0; i<chars.length; i++) {
-				if (i == 0 && !Character.isJavaIdentifierStart(chars.get(i))) return false
-				else if (i>0 && !Character.isJavaIdentifierPart(chars.get(i)))  return false
-			}
+		isValidJavaIdentifier(identifier, false)
+	}
+	
+	def private isValidJavaIdentifier(String id, boolean isPrefixNumAllowed) {
+		if (id.isNullOrEmpty || id.matches('^\\d+.*') && !isPrefixNumAllowed) return false
+		val idWithoutDigits = id.replaceAll('^\\d+', '') 
+		val chars = idWithoutDigits.toCharArray
+		for (var i = 0; i<chars.length; i++) {
+			val c = chars.get(i)
+			if ((i == 0 && !Character.isJavaIdentifierStart(c)) ||
+			    (i  > 0 && !Character.isJavaIdentifierPart(c))) return false
 		}
 		return true
 	}

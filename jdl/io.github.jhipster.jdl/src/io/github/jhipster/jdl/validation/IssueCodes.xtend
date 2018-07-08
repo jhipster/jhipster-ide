@@ -35,6 +35,7 @@ interface IssueCodes {
 	String FOR_NOTALLOWED_MSG = 'Keyword "for" is not allowed anymore!'
 	String WRONG_REGEXP = PREFIX + 'WrongRegexp'
 	String INVALID_PARAM_VALUE = PREFIX + 'InvalidParamValue'
+	String WRONG_PARAM_VALUE_TYPE = PREFIX + 'WrongParamValueType'
 	// messages
 	String WRONG_REGEXP_MSG = 'Wrong regexp pattern!'
 	String INVALID_ENTITY_NAME_MSG = 'Entity name should start with a capital'
@@ -48,6 +49,7 @@ interface IssueCodes {
 	String INVALID_BOOLEAN_PARAM_MSG = 'Invalid application parameter - boolean (true/false) value expected!'
 	String INVALID_ISOCODE_PARAM_MSG = 'Invalid application parameter - ISO code is invalid!'
 	String INVALID_PACKAGE_PARAM_MSG = 'Invalid application parameter - invalid package identifier!'
+	String INVALID_BASENAME_PARAM_MSG = 'Invalid application parameter - invalid base name!'
 	String INVALID_JHVERSION_PARAM_MSG = 'Invalid application parameter - invalid JHipster version number!'
 	String INVALID_PORT_PARAM_MSG = 'Invalid application parameter - server port is invalid!'
 }
