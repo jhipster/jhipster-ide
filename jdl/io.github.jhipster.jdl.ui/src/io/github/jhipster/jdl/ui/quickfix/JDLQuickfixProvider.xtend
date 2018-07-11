@@ -81,4 +81,16 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, issue.length, '')
 		]
 	}
+
+	@Fix(IssueCodes.WRONG_PARAM_VALUE_TYPE)
+	def changeToStringLiteral(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Change to string literal', 'Change to string literal.', 'change.gif') [
+			context |
+			context.xtextDocument => [ doc |
+				val xtextDocument = context.xtextDocument
+				val identifier = xtextDocument.get(issue.offset, issue.length)
+				xtextDocument.replace(issue.offset, issue.length, '''"«identifier»"''')
+			]
+		]
+	}
 }

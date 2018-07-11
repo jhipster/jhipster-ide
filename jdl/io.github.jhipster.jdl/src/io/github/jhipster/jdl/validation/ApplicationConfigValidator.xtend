@@ -18,14 +18,15 @@
  */
 package io.github.jhipster.jdl.validation
 
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import io.github.jhipster.jdl.jdl.JdlApplicationParameter
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
+import io.github.jhipster.jdl.config.JdlApplicationOptions
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
+import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 
 import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
 import static io.github.jhipster.jdl.config.JdlLanguages.*
@@ -40,6 +41,18 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 	val JdlApplicationOptions options = JdlApplicationOptions.INSTANCE
 
 	override register(EValidatorRegistrar registrar) {}
+
+	@Check
+	def void checkApplicationParametersUniqueness(JdlApplicationConfig config) {
+		val set = newHashSet
+		config.paramters.map[
+			it.paramName.literal
+		].forEach[ p, i |
+			if (!set.add(p)) error(
+				String.format(INVALID_PARAM_NOTUNIQUE_MSG, p), JDL_APPLICATION_CONFIG__PARAMTERS, i
+			)
+		]
+	}
 
 	@Check
 	def void checkApplicationParameter(JdlApplicationParameterValue paramValue) {
@@ -90,8 +103,17 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 					error(INVALID_PORT_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
-			case AnyLiteral: if (!isValidJavaIdentifier(paramValue.stringValue)) {
-				error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+			case JavaIdentifierLiteral: if (paramValue.identifiers.isNullOrEmpty || !isValidJavaIdentifier(paramValue.identifiers.head)) {
+				error(INVALID_IDENTIFIER_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+			}
+			case NumDigitLiteral: {
+				val prefixDigiAllowed = !paramValue.stringValue.nullOrEmpty
+				val value = if (prefixDigiAllowed) paramValue.stringValue else paramValue.identifiers?.head
+				if (value.matches('^\\d+.*') && !paramValue.identifiers.isNullOrEmpty) {
+					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, WRONG_PARAM_VALUE_TYPE)
+				} else if (!isValidJavaIdentifier(value, prefixDigiAllowed)) {
+					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
 			}
 		}
 	}
@@ -99,14 +121,19 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 	def private isValidJhipsterVersion(JdlApplicationParameterVersion version) {
 		return version !== null && !version.versionTag.isNullOrEmpty
 	}
-	
+
 	def private isValidJavaIdentifier(String identifier) {
-		if (!identifier.isNullOrEmpty) {
-			val chars = identifier.toCharArray
-			for (var i = 0; i<chars.length; i++) {
-				if (i == 0 && !Character.isJavaIdentifierStart(chars.get(i))) return false
-				else if (i>0 && !Character.isJavaIdentifierPart(chars.get(i)))  return false
-			}
+		isValidJavaIdentifier(identifier, false)
+	}
+	
+	def private isValidJavaIdentifier(String id, boolean isPrefixNumAllowed) {
+		if (id.isNullOrEmpty || id.matches('^\\d+.*') && !isPrefixNumAllowed) return false
+		val idWithoutDigits = id.replaceAll('^\\d+', '') 
+		val chars = idWithoutDigits.toCharArray
+		for (var i = 0; i<chars.length; i++) {
+			val c = chars.get(i)
+			if ((i == 0 && !Character.isJavaIdentifierStart(c)) ||
+			    (i  > 0 && !Character.isJavaIdentifierPart(c))) return false
 		}
 		return true
 	}

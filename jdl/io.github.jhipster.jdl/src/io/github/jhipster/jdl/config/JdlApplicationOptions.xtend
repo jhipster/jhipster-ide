@@ -44,7 +44,7 @@ class JdlApplicationOptions {
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
 			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
-			new JdlApplicationOption('baseName', #['jhipster'], AnyLiteral),
+			new JdlApplicationOption('baseName', #['jhipster'], NumDigitLiteral),
 			new JdlApplicationOption('buildTool', #['maven', 'gradle']),
 			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
@@ -54,7 +54,7 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('enableHibernateCache', #['true'], Boolean),
 			new JdlApplicationOption('enableSwaggerCodegen', #['false'], Boolean),
 			new JdlApplicationOption('enableTranslation', #['true'], Boolean),
-			new JdlApplicationOption('jhiPrefix', #['prefix'], AnyLiteral),
+			new JdlApplicationOption('jhiPrefix', #['prefix'], JavaIdentifierLiteral),
 			new JdlApplicationOption('jhipsterVersion', Version),
 			new JdlApplicationOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
 			new JdlApplicationOption('messageBroker', #['kafka', 'false']),
@@ -72,7 +72,6 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('useSass', Boolean),
 			new JdlApplicationOption('websocket', #['spring-websocket', 'false'])
 		])
-		
 	]
 
 	def void add(JdlApplicationOption option) {
@@ -98,7 +97,9 @@ class JdlApplicationOptions {
 
 enum JdlApplicationParameterType {
 	Undefined,
+	JavaIdentifierLiteral,
 	AnyLiteral,
+	NumDigitLiteral,
 	Literal,
 	ListOfLiterals,
 	ListOfLangIsoCodes,

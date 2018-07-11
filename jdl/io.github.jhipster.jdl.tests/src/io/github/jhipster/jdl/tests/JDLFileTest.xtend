@@ -77,7 +77,9 @@ class JDLFileTest {
 		 "for_keyword_notallowed.jdl" -> 'Keyword "for" is not allowed anymore!',
 		 "filtering_validation_check.jdl" -> "Selection does not contain excluded elements: [C, D]",
 		 "wrong_pattern_definition.jdl" -> "Wrong regexp pattern!",
-		 "simple.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored"
+		 "simple.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored",
+		 "application_with_wrong_numprefixed_baseName.jdl" -> "Invalid base name!",
+		 "application_with_duplicate_params.jdl" -> "Parameter [enableTranslation] already defined!"
 	]
 	
 	new(File jdlFile) {
