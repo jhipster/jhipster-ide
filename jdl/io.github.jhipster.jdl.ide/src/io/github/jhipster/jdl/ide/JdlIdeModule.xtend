@@ -20,6 +20,8 @@ package io.github.jhipster.jdl.ide
 
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
+import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
+import io.github.jhipster.jdl.ide.service.CommandService
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -28,5 +30,9 @@ class JdlIdeModule extends AbstractJDLIdeModule {
 
 	def Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
 		return JdlIdeContentProposalProvider
+	}
+
+	def Class<? extends IExecutableCommandService> bindIExecutableCommandService() {
+		return CommandService
 	}
 }

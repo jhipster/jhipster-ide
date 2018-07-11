@@ -72,7 +72,6 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('useSass', Boolean),
 			new JdlApplicationOption('websocket', #['spring-websocket', 'false'])
 		])
-		
 	]
 
 	def void add(JdlApplicationOption option) {

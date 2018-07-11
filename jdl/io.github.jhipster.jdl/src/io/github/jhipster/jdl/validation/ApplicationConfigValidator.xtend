@@ -18,14 +18,15 @@
  */
 package io.github.jhipster.jdl.validation
 
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import io.github.jhipster.jdl.jdl.JdlApplicationParameter
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
+import io.github.jhipster.jdl.config.JdlApplicationOptions
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
+import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 
 import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
 import static io.github.jhipster.jdl.config.JdlLanguages.*
@@ -40,6 +41,18 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 	val JdlApplicationOptions options = JdlApplicationOptions.INSTANCE
 
 	override register(EValidatorRegistrar registrar) {}
+
+	@Check
+	def void checkApplicationParametersUniqueness(JdlApplicationConfig config) {
+		val set = newHashSet
+		config.paramters.map[
+			it.paramName.literal
+		].forEach[ p, i |
+			if (!set.add(p)) error(
+				String.format(INVALID_PARAM_NOTUNIQUE_MSG, p), JDL_APPLICATION_CONFIG__PARAMTERS, i
+			)
+		]
+	}
 
 	@Check
 	def void checkApplicationParameter(JdlApplicationParameterValue paramValue) {
