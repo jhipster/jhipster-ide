@@ -47,7 +47,7 @@ interface IssueCodes {
 	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
 	String INVALID_PARAM_NAME_MSG = 'Unknown literal!'
 	String INVALID_BOOLEAN_PARAM_MSG = 'Boolean (true/false) value expected!'
-	String INVALID_ISOCODE_PARAM_MSG = 'ISO code is invalid!'
+	String INVALID_ISOCODE_PARAM_MSG = 'Invalid ISO code!'
 	String INVALID_IDENTIFIER_PARAM_MSG = 'Invalid identifier!'
 	String INVALID_PACKAGE_PARAM_MSG = 'Invalid package name!'
 	String INVALID_BASENAME_PARAM_MSG = 'Invalid base name!'
