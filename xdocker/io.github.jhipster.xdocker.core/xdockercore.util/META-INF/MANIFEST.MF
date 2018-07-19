@@ -10,3 +10,4 @@ Require-Bundle: xdockercore.lib;visibility:=reexport,
  org.eclipse.core.runtime;visibility:=reexport
 Export-Package: ch.itemis.xdocker.util,
  ch.itemis.xdocker.util.processor
+Automatic-Module-Name: xdockercore.util
