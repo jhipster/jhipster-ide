@@ -31,6 +31,7 @@ import org.eclipse.swt.events.MenuDetectListener;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
@@ -55,6 +56,7 @@ import ch.itemis.xdocker.ui.job.XdockerRemoveImageJob;
 import ch.itemis.xdocker.ui.job.XdockerSearchImagesJob;
 import ch.itemis.xdocker.ui.launch.shortcut.XdockerRunLaunchConfigData;
 import ch.itemis.xdocker.ui.util.ResourceManager;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Xdocker Image Browser View
@@ -72,6 +74,7 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 	private MenuItem runMenu;
 	private MenuItem removeMenu;
 	private MenuItem selectAllMenu;
+	private Composite composite;
 
 	/**
 	 * Constructor
@@ -95,8 +98,26 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 		parent.setLayout(new FillLayout(SWT.HORIZONTAL));
 
 		ViewForm form = new ViewForm(parent, SWT.BORDER);
-
-		Button searchButton = new Button(form, SWT.CENTER);
+		composite = new Composite(form, SWT.NONE);
+		form.setTopCenter(composite);
+		GridLayout buttonsLayout = new GridLayout(2, true);
+		buttonsLayout.marginHeight = 0;
+		buttonsLayout.marginWidth = 0;
+		buttonsLayout.verticalSpacing = 0;
+		buttonsLayout.horizontalSpacing = 0;
+		composite.setLayout(buttonsLayout);
+		repoCombo = new Combo(composite, SWT.READ_ONLY);
+		repoCombo.setItems(new String[] { "Local", "Remote" });
+		repoCombo.addListener(SWT.Selection, new Listener() {
+			public void handleEvent(Event e) {
+				resetResultTable();
+			}
+		});
+		repoCombo.select(0);
+		repoCombo.pack();
+		
+		Button searchButton = new Button(composite, SWT.CENTER);
+		searchButton.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
 		searchButton.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
@@ -109,10 +130,8 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 				search();
 			}
 		});
-
-		form.setTopRight(searchButton);
 		searchButton.setText("Search");
-
+						
 		table = new Table(form, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		form.setContent(table);
 		table.setHeaderVisible(true);
@@ -142,17 +161,6 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 				search();
 			}
 		});
-
-		repoCombo = new Combo(form, SWT.READ_ONLY);
-		repoCombo.setItems(new String[] { "Local", "Remote" });
-		repoCombo.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				resetResultTable();
-			}
-		});
-		form.setTopCenter(repoCombo);
-		repoCombo.select(0);
-		repoCombo.pack();
 
 		parent.pack();
 	}
