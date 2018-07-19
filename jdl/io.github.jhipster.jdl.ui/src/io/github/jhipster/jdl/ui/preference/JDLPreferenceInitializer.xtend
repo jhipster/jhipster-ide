@@ -71,34 +71,22 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 	
 	def private String getScriptForUnix() '''
 		#!/bin/bash
-		export PATH=$PATH:/usr/local/bin:
 		echo "Initialize JHipster project $1"
-		command jhipster || { echo >&2 "Yeoman JHipster generator is required but it's not installed!"; }
+		export PATH=$PATH:/usr/local/bin:$HOME/.nvm:$HOME/.yarn/bin
+		export NVM_DIR="$HOME/.nvm"
+		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+		command yarn || export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
+		command jhipster || { echo >&2 "JHipster is required but it's not installed!"; }
 		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
 		[ -d ./bin ] && rm -rf ./bin # remove bin folder created by eclipse
 		bash
 	'''
-/* TODO Implement me
-		#!/bin/bash
-		export PATH=$PATH:/usr/local/bin
-		if [ -z "$1" ]
-		then
-			echo "No argument supplied"
-		else
-			# echo "alias $1='docker exec -it $1  bash'" > .jhenv
-			# [[ $(docker ps -f "name=$1" --format '{{.Names}}') == $1 ]] || \\
-			# docker run --name $1 -v $2:/home/jhipster/$1 -v ~/.m2:/home/jhipster/.m2 -d -t jhipster/jhipster
-			# docker exec -it $1 bash
-			yo jhipster
-			bash
-		fi  
-*/
-
+	
 	def private String getScriptForWindows() '''
 		@echo off
 		@echo Initialize JHipster project %1
 		set PATH=%PATH%;C:\Windows\System32;
-		call jhipster || echo Yeoman JHipster generator is required but it's not installed!
+		call jhipster || echo JHipster generator is required but it's not installed!
 		call mvnw.cmd --no-plugin-registry eclipse:eclipse || echo maven wrapper script not found!
 		if exist bin rd /q /s bin
 	'''
