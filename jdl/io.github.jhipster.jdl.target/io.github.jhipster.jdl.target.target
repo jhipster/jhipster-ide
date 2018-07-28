@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="6">
+<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="7">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
@@ -28,7 +28,7 @@
 <repository location="http://files.idi.ntnu.no/publish/plantuml/repository/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.3.0.v20170913-0640"/>
+<unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.3.1.v20180425-1201"/>
 <repository location="http://download.eclipse.org/lsp4j/updates/releases/"/>
 </location>
 </locations>

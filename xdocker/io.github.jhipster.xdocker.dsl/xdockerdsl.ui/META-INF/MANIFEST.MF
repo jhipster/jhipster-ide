@@ -29,3 +29,6 @@ Export-Package: ch.itemis.xdocker.ui.quickfix,
  xdockerdsl.ui.internal,
  ch.itemis.xdocker.ui.contentassist
 Bundle-Activator: xdockerdsl.ui.internal.XdockerdslActivator
+Automatic-Module-Name: xdockerdsl.ui
+Bundle-ClassPath: swing2swt.jar,
+ .

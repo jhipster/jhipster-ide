@@ -7,17 +7,12 @@
  *******************************************************************************/
 package ch.itemis.xdocker.lib
 
-import com.github.dockerjava.core.command.BuildImageResultCallback
-import com.github.dockerjava.core.command.PullImageResultCallback
 import com.google.inject.Inject
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.junit.BeforeClass
 import org.junit.FixMethodOrder
 import org.junit.Test
 import org.junit.runners.MethodSorters
-
-import static com.github.dockerjava.core.DefaultDockerClientConfig.*
-import static org.junit.Assert.*
 
 /**
  * Docker JHipster Dev Box Test Class

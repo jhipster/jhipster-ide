@@ -9,7 +9,6 @@ package ch.itemis.xdocker.ui.job
 
 import ch.itemis.xdocker.lib.DockerExtensions
 import ch.itemis.xdocker.lib.config.DockerBuildImageConfig
-import ch.itemis.xdocker.ui.console.XdockerConsoleLogger
 import com.github.dockerjava.api.model.BuildResponseItem
 import com.github.dockerjava.core.command.BuildImageResultCallback
 import java.util.Stack

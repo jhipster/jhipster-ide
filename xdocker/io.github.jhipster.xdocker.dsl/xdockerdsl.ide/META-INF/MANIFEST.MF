@@ -12,4 +12,5 @@ Require-Bundle: xdockerdsl,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ch.itemis.xdocker.ide.contentassist.antlr.internal,
  ch.itemis.xdocker.ide.contentassist.antlr
+Automatic-Module-Name: xdockerdsl.ide
 

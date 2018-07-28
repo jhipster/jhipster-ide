@@ -28,3 +28,4 @@ Export-Package: ch.itemis.xdocker.generator,
  ch.itemis.xdocker.serializer,
  ch.itemis.xdocker.formatting2
 Import-Package: org.apache.log4j
+Automatic-Module-Name: xdockerdsl

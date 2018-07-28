@@ -54,6 +54,8 @@ import ch.itemis.xdocker.ui.job.XdockerShowLogsJob;
 import ch.itemis.xdocker.ui.job.XdockerStartCntnrJob;
 import ch.itemis.xdocker.ui.job.XdockerStopCntnrJob;
 import ch.itemis.xdocker.ui.util.ResourceManager;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.GridData;
 
 /**
  * Xdocker Container Browser View
@@ -65,7 +67,6 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 
 	private Table table;
 	private Text searchInput;
-	private Button buttonAll;
 	private Menu tableMenu;
 	private MenuItem removeMenu;
 	private MenuItem stopMenu;
@@ -73,6 +74,8 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 	private MenuItem openMenu;
 	private MenuItem selectAllMenu;
 	private MenuItem logsMenu;
+	private Composite composite;
+	private Button buttonAll;
 
 	/**
 	 * Constructor
@@ -95,7 +98,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 		setParent(parent);
 		parent.setLayout(new FillLayout(SWT.HORIZONTAL));
 
-		ViewForm form = new ViewForm(parent, SWT.BORDER);
+		ViewForm form = new ViewForm(parent, SWT.NONE);
 
 		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH);
 		form.setTopLeft(searchInput);
@@ -104,16 +107,6 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 				search();
 			}
 		});
-
-		Button searchButton = new Button(form, SWT.CENTER);
-		searchButton.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				search();
-			}
-		});
-		form.setTopRight(searchButton);
-		searchButton.setText("Search");
 
 		table = new Table(form, SWT.BORDER | SWT.FULL_SELECTION | SWT.MULTI);
 		form.setContent(table);
@@ -215,15 +208,37 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 
 		logsMenu = new MenuItem(tableMenu, SWT.PUSH);
 		logsMenu.setText("Logs");
+		
+		composite = new Composite(form, SWT.NONE);
+		form.setTopRight(composite);
+		GridLayout buttonsLayout = new GridLayout(2, true);
+		buttonsLayout.marginHeight = 0;
+		buttonsLayout.marginWidth = 0;
+		buttonsLayout.verticalSpacing = 0;
+		buttonsLayout.horizontalSpacing = 0;
+		composite.setLayout(buttonsLayout);
+		
+		buttonAll = new Button(composite, SWT.CHECK);
+		buttonAll.setLayoutData(new GridData(SWT.CENTER, SWT.CENTER, false, false, 1, 1));
+		buttonAll.setAlignment(SWT.RIGHT);
+		buttonAll.setText("All");
+		
+		Button buttonSearch = new Button(composite, SWT.NONE);
+		buttonSearch.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				search();
+			}
+		});
+		GridData gdBtnSearch = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gdBtnSearch.minimumWidth = 10;
+		buttonSearch.setLayoutData(gdBtnSearch);
+		buttonSearch.setText("Search");
 		logsMenu.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event event) {
 				logsOfSelectedContainers();
 			}
 		});
-
-		buttonAll = new Button(form, SWT.CHECK | SWT.CENTER);
-		form.setTopCenter(buttonAll);
-		buttonAll.setText("All");
 
 		parent.pack();
 	}
