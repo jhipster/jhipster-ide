@@ -14,4 +14,7 @@ package ch.itemis.xdocker.ui.console
  */
 interface IConsoleLogger {
 	def void log(String message)
+	def void log(String message, boolean newLine)
+	def void progressBar(boolean start)
+	def void clearConsole()
 }
