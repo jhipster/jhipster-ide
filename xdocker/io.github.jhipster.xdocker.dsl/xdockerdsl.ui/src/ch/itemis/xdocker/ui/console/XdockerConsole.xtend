@@ -25,7 +25,7 @@ final class XdockerConsole extends IOConsole {
 	
 	new() { 
 		super('Xdocker Console', 'XdockerConsole', null, true)
-		initStream()
+		initStream
 		consoleManager?.addConsoles(#[this])
 	}
 

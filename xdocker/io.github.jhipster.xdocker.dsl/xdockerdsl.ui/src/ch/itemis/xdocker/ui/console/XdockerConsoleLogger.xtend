@@ -20,8 +20,9 @@ import org.eclipse.xtend.lib.annotations.Accessors
  */
 final class XdockerConsoleLogger implements IConsoleLogger {
 
-	private var XdockerConsole console 
+	XdockerConsole console
 
+	@Accessors(PUBLIC_GETTER) ProgressBarRotating progressBar
 	@Accessors(PRIVATE_SETTER, PUBLIC_GETTER) val static INSTANCE = new XdockerConsoleLogger
 
 	private new() {
@@ -34,14 +35,68 @@ final class XdockerConsoleLogger implements IConsoleLogger {
 			throw new IllegalStateException('Could not initialize console!')
 		}
 //		redirect
-		console.showConsoleView		
+//		console.showConsoleView
 	}
 
 	override log(String message) {
-		console.println(message)
+		log(message, true)
 	}
 
-	def clearConsole() {
+	override log(String message, boolean newLine) {
+		if (newLine && !message?.trim.isNullOrEmpty) console.println(message) else console.print(message)
+	}
+
+	static class ProgressBarRotating extends Thread {
+		boolean _showProgress = true
+		extension XdockerConsoleLogger logger
+
+		new(XdockerConsoleLogger logger) {
+			this.logger = logger
+		}
+
+		def static start(XdockerConsoleLogger logger) {
+			val instance = new ProgressBarRotating(logger)
+			instance.run
+			return instance
+		}
+
+		def void showProgress() {
+			_showProgress = true
+		}
+
+		def void hideProgress() {
+			_showProgress = false
+		}
+
+		def boolean isShowProgress() {
+			return _showProgress
+		}
+
+		def void stopProgress() {
+			hideProgress
+		}
+
+		override void run() {
+			val anim = "|/-\\"
+			var x = 0;
+			while (isShowProgress) {
+				log('\r', false)
+				log('Processing ' + anim.charAt(x++ % anim.length), false)
+				try {
+					Thread.sleep(100);
+				} catch (Exception e) { /* nothing to handle here */}
+			}
+		}
+	}
+
+	override void progressBar(boolean start) {
+		if (start) {
+			if (progressBar === null) progressBar = ProgressBarRotating.start(this) 
+			progressBar.showProgress()
+		} else if (progressBar !== null) progressBar.stopProgress()
+	}
+
+	override clearConsole() {
 		console.clearConsole
 	}
 

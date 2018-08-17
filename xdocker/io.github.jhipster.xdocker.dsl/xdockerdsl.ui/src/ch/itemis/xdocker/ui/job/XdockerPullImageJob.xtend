@@ -49,13 +49,14 @@ class XdockerPullImageJob extends AbstractXdockerJob {
 	private def XdockerJobStatus execute() {
 		val result = new Stack<XdockerJobStatus>
 		clearConsole
+		// progressBar(true)
 		docker [
 			try {
 				val callback = new PullImageResultCallback {
 					override onNext(PullResponseItem item) {
 						if (!item?.status.nullOrEmpty) log('''«item.status» «item.progress»''')
 						else if (!item?.errorDetail.message.nullOrEmpty) {
-							log(item?.errorDetail.message)
+							log(item?.errorDetail.message, false)
 							result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, item.error, null)
 						}
 						else if (!item?.id.nullOrEmpty) log('''id is «item.id»''')
@@ -67,7 +68,7 @@ class XdockerPullImageJob extends AbstractXdockerJob {
 					}
 					
 					override onError(Throwable ex) {
-						log(if(ex.message.nullOrEmpty) ex.cause.toString else ex.message)
+						log(if (ex.message.nullOrEmpty) ex.cause.toString else ex.message)
 						result.push = new XdockerJobStatus(ERROR, CH_ITEMIS_XDOCKER_XDOCKER, ERROR, ERR_PULL, ex)
 					}
 				}
@@ -83,6 +84,7 @@ class XdockerPullImageJob extends AbstractXdockerJob {
 				cancel
 			}
 		]
+		// progressBar.stopProgress
 		return result.last
 	}
 }
