@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="7">
+<?pde version="3.8"?><target name="io.github.jhipster.jdl.target" sequenceNumber="8">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.draw2d.feature.group" version="0.0.0"/>
@@ -30,6 +30,11 @@
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.lsp4j.sdk.feature.group" version="0.3.1.v20180425-1201"/>
 <repository location="http://download.eclipse.org/lsp4j/updates/releases/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.m2e.feature.feature.group" version="1.8.3.20180227-2137"/>
+<unit id="org.eclipse.m2e.logback.feature.feature.group" version="1.8.3.20180227-2137"/>
+<repository location="http://download.eclipse.org/technology/m2e/releases/1.8/1.8.3.20180227-2137/?d"/>
 </location>
 </locations>
 </target>
