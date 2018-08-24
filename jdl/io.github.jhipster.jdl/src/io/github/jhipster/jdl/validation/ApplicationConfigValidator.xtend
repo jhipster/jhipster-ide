@@ -32,6 +32,7 @@ import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
 import static io.github.jhipster.jdl.config.JdlLanguages.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -53,6 +54,15 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 			)
 		]
 	}
+	
+	@Check
+	def void checkDeprecatedApplicationParameter(JdlApplicationConfig config) {
+		config.paramters.forEach[ it, i |
+			if (paramName === JdlApplicationParameterName.JHIPSTER_VERSION) {
+				warning(DEPRECATED_PARAM_MSG, JDL_APPLICATION_CONFIG__PARAMTERS, i, DEPRECATED_PARAMETER)
+			}
+		]
+	}
 
 	@Check
 	def void checkApplicationParameter(JdlApplicationParameterValue paramValue) {
@@ -62,43 +72,53 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 		val paramType = options.getParameterType(paramName)
 		switch (paramType) {
 			case Boolean: if (!paramValue.identifiers.isNullOrEmpty) {
-				val values = paramValue.identifiers
-				if (!#[Boolean.FALSE, Boolean.TRUE].exists[values.contains(it.toString)]) {
+				val value = paramValue.identifiers.head
+				if (!#[Boolean.FALSE, Boolean.TRUE].exists[value.contains(it.toString)]) {
 					error(INVALID_BOOLEAN_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
-			case #[ListOfLangIsoCodes, LangIsoCode].exists[it == paramType]: if (!paramValue.identifiers.isNullOrEmpty) {
-				val values = paramValue.identifiers
-				values.forEach[ e, i |
+			case LangIsoCode: if (!paramValue.identifiers.isNullOrEmpty) {
+				val value = paramValue.identifiers.head
+				if (!JHipsterIsoLangauges.containsKey(value)) {
+					error(INVALID_ISOCODE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__LIST_ELEMENTS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
+			}
+			case ListOfLangIsoCodes: if (!paramValue.listElements.isNullOrEmpty) {
+				paramValue.listElements.forEach[ e, i |
 					if (!JHipsterIsoLangauges.containsKey(e)) {
 						error(INVALID_ISOCODE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
 					}
 				]				
 			}
-			case #[Literal, ListOfLiterals].exists[it == paramType]: if (!paramValue.identifiers.isNullOrEmpty) {
+			case ListOfLiterals: if (!paramValue.listElements.isNullOrEmpty) {
 				val expected = options.getParameters(paramName)
-				paramValue.identifiers.forEach[ e, i |
+				paramValue.listElements.forEach[ e, i |
 					if (!expected.contains(e)) {
 						error(INVALID_PARAM_NAME_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
 					}
 				]				
 			}
+			case Literal: if (!paramValue.identifiers.isNullOrEmpty && paramValue.identifiers.size === 1) {
+				val value = paramValue.identifiers.head
+				val expected = options.getParameters(paramName)
+				if (!expected.contains(value)) {
+					error(INVALID_PARAM_NAME_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
+			}
 			case Namespace: if (!paramValue.identifiers.isNullOrEmpty) {
-				paramValue.identifiers.forEach[ e, i |
-					if (!isValidJavaIdentifier(e)) {
-						error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
-					}
-				]
+				if (!isValidJavaIdentifier(paramValue.identifiers.head)) {
+					error(INVALID_PACKAGE_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
 			}
 			case Version: {
 				if (paramName == JH_VERSION && !isValidJhipsterVersion(paramValue.version)) {
-					error(INVALID_JHVERSION_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+					error(INVALID_JHVERSION_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__VERSION, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
 			case Number: {
 				if (paramName == SERVER_PORT && !paramValue.identifiers.isNullOrEmpty ||
 					paramValue.stringValue !== null || !paramValue.stringValue.isNullOrEmpty ||
-					paramValue.version !== null
+					paramValue.version !== null || !paramValue.listElements.isNullOrEmpty
 				) {
 					error(INVALID_PORT_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
@@ -108,12 +128,15 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 			}
 			case NumDigitLiteral: {
 				val prefixDigiAllowed = !paramValue.stringValue.nullOrEmpty
-				val value = if (prefixDigiAllowed) paramValue.stringValue else paramValue.identifiers?.head
+				val value = if (prefixDigiAllowed) paramValue.stringValue else paramValue.identifiers.head
 				if (value.matches('^\\d+.*') && !paramValue.identifiers.isNullOrEmpty) {
 					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, WRONG_PARAM_VALUE_TYPE)
 				} else if (!isValidJavaIdentifier(value, prefixDigiAllowed)) {
 					error(INVALID_BASENAME_PARAM_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
+			}
+			default: {
+				// nothing to do here
 			}
 		}
 	}

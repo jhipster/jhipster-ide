@@ -73,17 +73,15 @@ enum JdlApplicationParameterName:
     testFrameworks | uaaBaseName | useSass | websocket;
 
 JdlApplicationParameterValue:
-	('['? identifiers+=JdlApplicationParameterLiteral (JdlParamValueSeparator identifiers+=JdlApplicationParameterLiteral)* ']'?) 
-		| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
+	('[' listElements+=JdlApplicationParameterLiteral (',' listElements+=JdlApplicationParameterLiteral)* ']')
+	| (identifiers+=JdlApplicationParameterLiteral ('.' identifiers+=JdlApplicationParameterLiteral)*)
+	| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
 
 JdlApplicationParameterLiteral:
 	ID | NUMERIC_PREFIXED_ID | JdlReserverdWords;
 
 JdlApplicationParameterVersion:
 	versionTag=VERSION_TAG; 
-
-JdlParamValueSeparator: 
-	'.' | ',';
 
 JdlReserverdWords:
 	'microservice' | 'elasticsearch' | 'skipClient' | 'skipServer';
@@ -357,7 +355,7 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
 
 terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
 terminal NUMERIC_PREFIXED_ID returns ecore::EString: INT? ID;
-terminal VERSION_TAG returns ecore::EString: INT '.' INT ('.' INT)? ('-' ID)?;
+terminal VERSION_TAG returns ecore::EString: '"' INT '.' INT ('.' INT)? ('-' ID)? '"';
 terminal WS: (' '|'\t'|'\r'|'\n')+;
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal STRING: '"' EXP '"' | "'" EXP "'";

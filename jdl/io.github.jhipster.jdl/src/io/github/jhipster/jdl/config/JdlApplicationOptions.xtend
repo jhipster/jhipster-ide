@@ -44,7 +44,7 @@ class JdlApplicationOptions {
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
 			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
-			new JdlApplicationOption('baseName', #['jhipster'], NumDigitLiteral),
+			new JdlApplicationOption('baseName', #['yourBaseName'], AnyLiteral),
 			new JdlApplicationOption('buildTool', #['maven', 'gradle']),
 			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
@@ -68,7 +68,7 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('skipServer', Boolean),
 			new JdlApplicationOption('skipUserManagement', Boolean),
 			new JdlApplicationOption('testFrameworks', #['protactor', 'cucumber', 'gatling'], ListOfLiterals),
-			new JdlApplicationOption('uaaBaseName',  #['uaa']),
+			new JdlApplicationOption('uaaBaseName',  #['"uaa"']),
 			new JdlApplicationOption('useSass', Boolean),
 			new JdlApplicationOption('websocket', #['spring-websocket', 'false'])
 		])

@@ -93,4 +93,13 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 			]
 		]
 	}
+	
+	@Fix(IssueCodes.DEPRECATED_PARAMETER)
+	def void removeParamter(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove parameter definition', 'Remove parameter', 'remove.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, '')
+		]
+	}
 }
