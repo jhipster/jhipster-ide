@@ -20,6 +20,9 @@ package io.github.jhipster.jdl.ui.terminal
 
 import com.google.inject.Singleton
 import java.io.File
+import org.eclipse.core.runtime.preferences.InstanceScope
+import org.eclipse.tm.internal.terminal.control.impl.TerminalPlugin
+import org.eclipse.tm.internal.terminal.preferences.ITerminalConstants
 import org.eclipse.tm.terminal.view.core.TerminalServiceFactory
 import org.eclipse.tm.terminal.view.core.interfaces.ITerminalService.Done
 import org.eclipse.tm.terminal.view.ui.view.TerminalsView
@@ -46,6 +49,9 @@ final class TerminalHelper {
 		val display = workbench.display
 		display.asyncExec [
 			try {
+				val preferences = InstanceScope.INSTANCE.getNode(TerminalPlugin.PLUGIN_ID)
+				preferences.putBoolean(ITerminalConstants.PREF_INVERT_COLORS, true)
+				preferences.flush
 				val folder = new File(location)
 				if (!folder.exists) folder.mkdirs
 				newHashMap => [
