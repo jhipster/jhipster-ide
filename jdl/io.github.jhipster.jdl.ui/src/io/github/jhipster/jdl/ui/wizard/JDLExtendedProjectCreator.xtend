@@ -24,6 +24,8 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.xtext.ui.XtextProjectHelper
+import org.eclipse.m2e.core.MavenPlugin
+import org.eclipse.m2e.core.project.ResolverConfiguration
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -37,7 +39,9 @@ class JDLExtendedProjectCreator extends JDLProjectCreator {
 			project.setDescription(it, new NullProgressMonitor)
 			val srcPath = project.getFolder('src').fullPath
 			val srcEntries = #[JavaCore.newSourceEntry(srcPath, null)]
-			JavaCore.create(project).setRawClasspath(srcEntries, new NullProgressMonitor)		
+			val resolverConfiguration = new ResolverConfiguration
+			MavenPlugin.projectConfigurationManager.enableMavenNature(project, resolverConfiguration, new NullProgressMonitor)
+			JavaCore.create(project).setRawClasspath(srcEntries, new NullProgressMonitor)
 		]
 	}
 }
