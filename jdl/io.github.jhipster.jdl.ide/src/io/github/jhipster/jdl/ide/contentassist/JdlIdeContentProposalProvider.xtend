@@ -128,6 +128,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
 			case Number : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
 			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
+			case JavaIdentifierLiteral : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}
