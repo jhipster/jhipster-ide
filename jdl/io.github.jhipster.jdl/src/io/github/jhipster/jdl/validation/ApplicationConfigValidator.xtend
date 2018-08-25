@@ -64,6 +64,21 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 		]
 	}
 
+// FIXME: keep not clear how logic is really implemented in generator
+//
+//	@Check
+//	def void checkApplicationAndAuthenticationTypeCombination(JdlApplicationParameter param) {
+//		if (param.paramName !== JdlApplicationParameterName.AUTHENTICATION_TYPE) return
+//		val config = EcoreUtil2.getContainerOfType(param, JdlApplicationConfig) 
+//		val appType = config.paramters.findFirst[it.paramName == JdlApplicationParameterName.APPLICATION_TYPE]
+//		val isUaaAppType = appType.hasParamValue('uaa')
+//		if (isUaaAppType && !param.hasParamValue('uaa')) {
+//			error(INVALID_AUTH_TYPE_MSG, JDL_APPLICATION_PARAMETER__PARAM_VALUE, INSIGNIFICANT_INDEX, INVALID_AUTH_VALUE_TYPE)
+//		} else if (!isUaaAppType && param.hasParamValue('uaa')) {
+//			error(INVALID_AUTH_TYPE_MSG, JDL_APPLICATION_PARAMETER__PARAM_VALUE, INSIGNIFICANT_INDEX, INVALID_AUTH_PARAM_TYPE)
+//		}
+//	}
+
 	@Check
 	def void checkApplicationParameter(JdlApplicationParameterValue paramValue) {
 		val param = EcoreUtil2.getContainerOfType(paramValue, JdlApplicationParameter)
@@ -141,15 +156,15 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 		}
 	}
 
-	def private isValidJhipsterVersion(JdlApplicationParameterVersion version) {
+	def protected isValidJhipsterVersion(JdlApplicationParameterVersion version) {
 		return version !== null && !version.versionTag.isNullOrEmpty
 	}
 
-	def private isValidJavaIdentifier(String identifier) {
+	def protected isValidJavaIdentifier(String identifier) {
 		isValidJavaIdentifier(identifier, false)
 	}
 	
-	def private isValidJavaIdentifier(String id, boolean isPrefixNumAllowed) {
+	def protected isValidJavaIdentifier(String id, boolean isPrefixNumAllowed) {
 		if (id.isNullOrEmpty || id.matches('^\\d+.*') && !isPrefixNumAllowed) return false
 		val idWithoutDigits = id.replaceAll('^\\d+', '') 
 		val chars = idWithoutDigits.toCharArray
@@ -159,5 +174,11 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 			    (i  > 0 && !Character.isJavaIdentifierPart(c))) return false
 		}
 		return true
+	}
+
+	def protected boolean hasParamValue(JdlApplicationParameter param, String value) {
+		if (param?.paramValue?.identifiers.isNullOrEmpty) return false
+		val paramValue = param.paramValue.identifiers.last
+		return paramValue.equalsIgnoreCase(value)
 	}
 }

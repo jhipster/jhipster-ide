@@ -37,6 +37,8 @@ interface IssueCodes {
 	String INVALID_PARAM_VALUE = PREFIX + 'InvalidParamValue'
 	String WRONG_PARAM_VALUE_TYPE = PREFIX + 'WrongParamValueType'
 	String DEPRECATED_PARAMETER = PREFIX + 'DeprecatedParameter'
+	String INVALID_AUTH_VALUE_TYPE = PREFIX + 'InvalidAuthParamValueType'
+	String INVALID_AUTH_PARAM_TYPE = PREFIX + 'InvalidAuthParamType'
 	// messages
 	String WRONG_REGEXP_MSG = 'Wrong regexp pattern!'
 	String INVALID_ENTITY_NAME_MSG = 'Entity name should start with a capital'
@@ -56,4 +58,5 @@ interface IssueCodes {
 	String INVALID_PORT_PARAM_MSG = 'Invalid server port!'
 	String INVALID_PARAM_NOTUNIQUE_MSG = 'Parameter [%s] already defined!'
 	String DEPRECATED_PARAM_MSG = 'Deprecated, will be removed in the next major release!'
+	String INVALID_AUTH_TYPE_MSG = 'Invalid authentication type!'
 }

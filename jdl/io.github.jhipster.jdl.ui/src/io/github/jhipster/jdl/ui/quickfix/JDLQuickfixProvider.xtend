@@ -102,4 +102,13 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, issue.length, '')
 		]
 	}
+	
+	@Fix(IssueCodes.INVALID_AUTH_VALUE_TYPE)
+	def void setAuthParameterToUaa(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Set authentication type to uaa', 'Set authentication type to uaa', 'change.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, 'uaa')
+		]
+	}
 }
