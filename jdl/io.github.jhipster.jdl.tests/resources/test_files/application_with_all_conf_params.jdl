@@ -6,7 +6,7 @@ application {
   	buildTool gradle
   	cacheProvider ehcache
   	jhiPrefix jhi
-  	jhipsterVersion 5.1.0-RC1
+  	jhipsterVersion "5.1.0-RC1"
   	clientFramework react
   	databaseType cassandra devDatabaseType h2Disk
   	enableHibernateCache false 
@@ -24,7 +24,7 @@ application {
   	skipServer false 
   	skipUserManagement false 
   	testFrameworks [protactor, cucumber, gatling]
-	uaaBaseName uaa
+	uaaBaseName "uaaBase"
 	useSass false
 	websocket spring-websocket  	
 	clientPackageManager yarn
