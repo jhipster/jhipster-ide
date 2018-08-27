@@ -51,21 +51,21 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		]
 	}
 
-	def private String getExecDefault(String os) {
-		if (os.isUnix) '/bin/bash'
-		else if (os.isWindows) 'C:\\Windows\\System32\\cmd.exe'
+	def private String getExecDefault(String it) {
+		if (isUnix) '/bin/bash'
+		else if (isWindows) 'C:\\Windows\\System32\\cmd.exe'
 		else '' // unknown operating system
 	}
 
-	def private String getArgsDefault(String os) {
-		if (os.isUnix) '-lc "${script} ${project} ${path}"'
-		else if (os.isWindows) '/k ${script} ${project} ${path}' 
+	def private String getArgsDefault(String it) {
+		if (isUnix) '-lc "${script} ${project} ${path}"'
+		else if (isWindows) '/k ${script} ${project} ${path}' 
 		else '' // unknown operating system
 	}
 	
-	def private String getScriptDefault(String os) {
-		if (os.isUnix) getScriptForUnix 
-		else if (os.isWindows) scriptForWindows 
+	def private String getScriptDefault(String it) {
+		if (isUnix) scriptForUnix 
+		else if (isWindows) scriptForWindows 
 		else '' // unknown operating system
 	}
 	
@@ -77,7 +77,6 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 		command yarn || export PATH="$PATH:`yarn global bin`:$HOME/.config/yarn/global/node_modules/.bin"
 		command jhipster || { echo >&2 "JHipster is required but it's not installed!"; }
-		./mvnw --no-plugin-registry eclipse:eclipse || { echo >&2 "maven wrapper script not found!"; }
 		[ -d ./bin ] && rm -rf ./bin # remove bin folder created by eclipse
 		bash
 	'''
@@ -87,7 +86,6 @@ class JDLPreferenceInitializer extends AbstractPreferenceInitializer {
 		@echo Initialize JHipster project %1
 		set PATH=%PATH%;C:\Windows\System32;
 		call jhipster || echo JHipster generator is required but it's not installed!
-		call mvnw.cmd --no-plugin-registry eclipse:eclipse || echo maven wrapper script not found!
 		if exist bin rd /q /s bin
 	'''
 	

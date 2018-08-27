@@ -96,8 +96,8 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 			locationArea.updateProjectName(initialProjectFieldValue)
 		}
 		// Scale the button based on the rest of the dialog
-		setButtonLayoutData(locationArea.getBrowseButton())
-		setPageComplete(validatePage())
+		setButtonLayoutData(locationArea.browseButton)
+		setPageComplete(validatePage)
 		// Show description on opening
 		setErrorMessage(null)
 		setMessage(null)
@@ -150,7 +150,6 @@ class AbstractJDLWizardNewProjectCreationPage extends WizardPage {
 			btnCallJhipsterGenerator.setText("Bootstrap project")
 			btnCallJhipsterGenerator.setSelection(true)
 		}
-		
 		// Set the initial value first before listener
 		// to avoid handling an event during the creation.
 		if (initialProjectFieldValue !== null) {

@@ -96,7 +96,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 					acceptor.accept(entry, proposalPriorities.getDefaultPriority(entry))
 				]
 			case ListOfLangIsoCodes : {
-				val existingParams = paramValue?.identifiers ?: #[]
+				val existingParams = paramValue?.listElements ?: #[]
 				if (existingParams.isNullOrEmpty) {
 					addProposal('''[«params.join(', ')»]''', context, acceptor)
 				} else {
@@ -108,7 +108,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 				}
 			}
 			case ListOfLiterals : {
-				val existingParams = paramValue?.identifiers ?: #[]
+				val existingParams = paramValue?.listElements ?: #[]
 				if (existingParams.isNullOrEmpty) {
 					addProposal('''[«params.join(', ')»]''', context, acceptor)
 				} else {
@@ -124,10 +124,11 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 					addProposal(key, value, context, acceptor)
 				]
 			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
-			case Version : if (!param.isDefined) addProposal('5.0.0', context, acceptor)
+			case Version : if (!param.isDefined) addProposal('"5.0.0"', context, acceptor)
 			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case Number : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
-			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(it, context, acceptor)]
+			case Number : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
+			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
+			case JavaIdentifierLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}
@@ -154,7 +155,8 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 	}
 	
 	def private boolean isDefined(JdlApplicationParameterValue it) {
-		return if (it !== null) it.version !== null || !it.identifiers.isNullOrEmpty 
-		       || it.numberValue != 0 || !it.stringValue.isNullOrEmpty else false
+		return if (it !== null) it.version !== null 
+			   || !it.identifiers.isNullOrEmpty || !it.listElements.isNullOrEmpty 
+			   || it.numberValue != 0 || !it.stringValue.isNullOrEmpty else false
 	}
 }

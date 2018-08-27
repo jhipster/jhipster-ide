@@ -93,4 +93,22 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 			]
 		]
 	}
+	
+	@Fix(IssueCodes.DEPRECATED_PARAMETER)
+	def void removeParamter(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove parameter definition', 'Remove parameter', 'remove.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, '')
+		]
+	}
+	
+	@Fix(IssueCodes.INVALID_AUTH_VALUE_TYPE)
+	def void setAuthParameterToUaa(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Set authentication type to uaa', 'Set authentication type to uaa', 'change.gif') [
+			context |
+			val xtextDocument = context.xtextDocument
+			xtextDocument.replace(issue.offset, issue.length, 'uaa')
+		]
+	}
 }

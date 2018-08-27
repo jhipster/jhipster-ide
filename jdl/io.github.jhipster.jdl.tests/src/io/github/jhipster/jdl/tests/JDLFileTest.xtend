@@ -79,7 +79,8 @@ class JDLFileTest {
 		 "wrong_pattern_definition.jdl" -> "Wrong regexp pattern!",
 		 "simple.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored",
 		 "application_with_wrong_numprefixed_baseName.jdl" -> "Invalid base name!",
-		 "application_with_duplicate_params.jdl" -> "Parameter [enableTranslation] already defined!"
+		 "application_with_duplicate_params.jdl" -> "Parameter [enableTranslation] already defined!",
+		 "application_with_all_conf_params.jdl" -> "Deprecated, will be removed in the next major release!"
 	]
 	
 	new(File jdlFile) {
