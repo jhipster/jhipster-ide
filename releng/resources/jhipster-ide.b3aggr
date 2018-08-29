@@ -30,17 +30,21 @@
       <repositories location="http://download.eclipse.org/tools/orbit/R-builds/R20170307180635/repository/">
         <bundles name="org.objectweb.asm" versionRange="5.0.1"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/tm/terminal/updates/4.2">
-        <features name="org.eclipse.tm.terminal.connector.local.feature.feature.group" versionRange="4.2.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
-        <features name="org.eclipse.tm.terminal.control.feature.feature.group" versionRange="4.2.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
-        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.2.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
-        <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="4.2.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+      <repositories location="http://download.eclipse.org/tm/terminal/updates/4.3">
+        <features name="org.eclipse.tm.terminal.connector.local.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.control.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
       </repositories>
       <repositories location="http://download.eclipse.org/tools/cdt/releases/9.2/">
         <bundles name="org.eclipse.cdt.core" versionRange="6.2.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/lsp4j/updates/releases/">
         <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="[0.3.1,0.4.0]"/>
+      </repositories>
+      <repositories location="http://download.eclipse.org/technology/m2e/releases/1.8/1.8.3.20180227-2137/">
+        <features name="org.eclipse.m2e.feature.feature.group" versionRange="1.8.3"/>
+        <features name="org.eclipse.m2e.logback.feature.feature.group" versionRange="1.8.3"/>
       </repositories>
     </contributions>
     <validationRepositories location="http://download.eclipse.org/eclipse/updates/4.6/R-4.6.3-201703010400/"/>
