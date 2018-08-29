@@ -42,7 +42,7 @@ export function activate(context: ExtensionContext) {
     // Options to control the language client
     let clientOptions: LanguageClientOptions = {
         // Register the server for plain text documents
-        documentSelector: ['jdl'],
+        documentSelector: ['jdl', 'jh'],
         synchronize: {
             // Synchronize the setting section 'languageServerExample' to the server
             configurationSection: 'languageServerExample',
