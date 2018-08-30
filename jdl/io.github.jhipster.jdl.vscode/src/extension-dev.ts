@@ -42,7 +42,7 @@ export function activate(context: ExtensionContext) {
     };
     
     let clientOptions: LanguageClientOptions = {
-        documentSelector: ['jdl'],
+        documentSelector: ['jdl', 'jh'],
         synchronize: {
             fileEvents: workspace.createFileSystemWatcher('**/*.*')
         }
