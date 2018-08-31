@@ -7,7 +7,6 @@
 <unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.pde.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
-<unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.tm.terminal.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.tm.terminal.view.feature.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.xpand" version="0.0.0"/>
