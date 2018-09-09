@@ -27,7 +27,7 @@ import org.eclipse.xtext.validation.ComposedChecks
  */
 @ComposedChecks(validators = #[
 	CaseSensitivityValidator,
-	CardinalityValidator,
+//	CardinalityValidator, ==> https://github.com/jhipster/jhipster-ide/issues/216
 	OptionSelectionValidator,
 	ApplicationConfigValidator
 ])
