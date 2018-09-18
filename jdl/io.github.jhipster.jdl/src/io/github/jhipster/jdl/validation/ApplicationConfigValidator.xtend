@@ -109,7 +109,8 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 				val expected = options.getParameters(paramName)
 				paramValue.listElements.forEach[ e, i |
 					if (!expected.contains(e)) {
-						error(INVALID_PARAM_NAME_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
+						val msg = String.format(INVALID_PARAM_NAME_MSG, e)
+						error(msg, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
 					}
 				]				
 			}
@@ -117,7 +118,9 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 				val value = paramValue.identifiers.head
 				val expected = options.getParameters(paramName)
 				if (!expected.contains(value)) {
-					error(INVALID_PARAM_NAME_MSG, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+					val msg = String.format(INVALID_PARAM_NAME_MSG, value)
+					println('''<<<<<<<<«msg» «value»''')
+					error(msg, JDL_APPLICATION_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
 			case Namespace: if (!paramValue.identifiers.isNullOrEmpty) {
