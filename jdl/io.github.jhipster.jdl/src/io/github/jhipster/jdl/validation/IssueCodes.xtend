@@ -48,7 +48,7 @@ interface IssueCodes {
 	String DUPLICATE_FIELD_DEF_MSG = 'Field with name already defined'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
 	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
-	String INVALID_PARAM_NAME_MSG = 'Unknown literal!'
+	String INVALID_PARAM_NAME_MSG = 'Unknown literal [%s]!'
 	String INVALID_BOOLEAN_PARAM_MSG = 'Boolean (true/false) value expected!'
 	String INVALID_ISOCODE_PARAM_MSG = 'Invalid ISO code!'
 	String INVALID_IDENTIFIER_PARAM_MSG = 'Invalid identifier!'

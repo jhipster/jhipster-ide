@@ -41,6 +41,8 @@ class JdlApplicationOptions {
 	public static val SERVER_PORT = 'serverPort'
 	
 	@Accessors(PUBLIC_GETTER) val static INSTANCE = new JdlApplicationOptions => [
+		val noSqlDbTypes = #['mongodb', 'cassandra', 'couchbase']
+		val prodDbTypes = #['mysql', 'mariadb', 'mssql', 'postgresql', 'oracle', 'no'] + noSqlDbTypes
 		addAll(#[
 			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
 			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
@@ -50,7 +52,8 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
 			new JdlApplicationOption('clientPackageManager', #['yarn', 'npm']),
 			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
-			new JdlApplicationOption('devDatabaseType', #['h2Disk', 'h2Memory', '*']),
+			new JdlApplicationOption('prodDatabaseType', prodDbTypes),
+			new JdlApplicationOption('devDatabaseType', #['h2Disk', 'h2Memory', '*'] + prodDbTypes),
 			new JdlApplicationOption('enableHibernateCache', #['true'], Boolean),
 			new JdlApplicationOption('enableSwaggerCodegen', #['false'], Boolean),
 			new JdlApplicationOption('enableTranslation', #['true'], Boolean),
@@ -60,14 +63,13 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('messageBroker', #['kafka', 'false']),
 			new JdlApplicationOption('nativeLanguage', #['en'], LangIsoCode),
 			new JdlApplicationOption('packageName', Namespace),
-			new JdlApplicationOption('prodDatabaseType', #['mysql', 'mariadb', 'mssql', 'postgresql', 'oracle', 'no']),
 			new JdlApplicationOption('searchEngine', #['elasticsearch', 'false']),
 			new JdlApplicationOption('serverPort', #['8080', '8081', '9999'], Number),
 			new JdlApplicationOption('serviceDiscoveryType', #['eureka', 'consul', 'no']),
 			new JdlApplicationOption('skipClient', Boolean),
 			new JdlApplicationOption('skipServer', Boolean),
 			new JdlApplicationOption('skipUserManagement', Boolean),
-			new JdlApplicationOption('testFrameworks', #['protactor', 'cucumber', 'gatling'], ListOfLiterals),
+			new JdlApplicationOption('testFrameworks', #['protractor', 'cucumber', 'gatling'], ListOfLiterals),
 			new JdlApplicationOption('uaaBaseName',  #['"uaa"']),
 			new JdlApplicationOption('useSass', Boolean),
 			new JdlApplicationOption('websocket', #['spring-websocket', 'false'])
