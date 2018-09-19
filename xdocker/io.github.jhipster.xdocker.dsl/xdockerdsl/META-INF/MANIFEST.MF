@@ -7,25 +7,27 @@ Bundle-SymbolicName: xdockerdsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.equinox.common;bundle-version="3.10.0",
  org.eclipse.emf.ecore,
- org.eclipse.xtext.xbase.lib;bundle-version="2.13.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.antlr.runtime,
  org.eclipse.xtext.util,
- org.eclipse.xtend.lib;bundle-version="2.13.0",
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
  org.eclipse.emf.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: ch.itemis.xdocker.generator,
- ch.itemis.xdocker.xdocker.impl,
- ch.itemis.xdocker.services,
- ch.itemis.xdocker.xdocker,
- ch.itemis.xdocker.parser.antlr.internal,
- ch.itemis.xdocker.xdocker.util,
- ch.itemis.xdocker,
+Export-Package: ch.itemis.xdocker,
+ ch.itemis.xdocker.converter,
+ ch.itemis.xdocker.formatting,
+ ch.itemis.xdocker.formatting2,
+ ch.itemis.xdocker.generator,
  ch.itemis.xdocker.parser.antlr,
- ch.itemis.xdocker.validation,
+ ch.itemis.xdocker.parser.antlr.internal,
  ch.itemis.xdocker.scoping,
  ch.itemis.xdocker.serializer,
- ch.itemis.xdocker.formatting2
+ ch.itemis.xdocker.services,
+ ch.itemis.xdocker.validation,
+ ch.itemis.xdocker.xdocker,
+ ch.itemis.xdocker.xdocker.impl,
+ ch.itemis.xdocker.xdocker.util
 Import-Package: org.apache.log4j
 Automatic-Module-Name: xdockerdsl
