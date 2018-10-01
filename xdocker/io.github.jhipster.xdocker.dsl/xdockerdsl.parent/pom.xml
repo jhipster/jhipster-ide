@@ -34,7 +34,6 @@
 		<module>../xdockerdsl.tests</module>
 		<module>../xdockerdsl.ui.tests</module>
 		<module>../xdockerdsl.repository</module>
-		<module>../xdockerdsl.releng</module>
 	</modules>
 
 	<build>
