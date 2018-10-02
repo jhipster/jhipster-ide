@@ -37,10 +37,12 @@
       <repositories location="http://download.eclipse.org/tm/terminal/updates/4.3">
         <bundles name="org.eclipse.tm.terminal.control" versionRange="4.3.0.201706130821"/>
         <bundles name="org.eclipse.tm.terminal.view.core" versionRange="4.2.0.201609191434"/>
+        <bundles name="org.eclipse.tm.terminal.view.ui" versionRange="4.3.0.201706130844"/>
         <features name="org.eclipse.tm.terminal.connector.local.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
         <features name="org.eclipse.tm.terminal.control.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
         <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
         <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="4.3.0" categories="//@customCategories[identifier='Terminal%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.control.sdk.feature.feature.group" versionRange="4.3.0.201706140544" categories="//@customCategories[identifier='Terminal%20Integration']"/>
       </repositories>
       <repositories location="http://download.eclipse.org/tools/cdt/releases/9.2/">
         <bundles name="org.eclipse.cdt.core" versionRange="6.2.0"/>
@@ -63,5 +65,5 @@
   <configurations operatingSystem="linux" windowSystem="gtk"/>
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
   <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.1/@features.0 //@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0"/>
-  <customCategories identifier="Terminal Integration" label="Terminal Integration" description="Terminal Integration" features="//@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.0 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.1 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.2 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.3"/>
+  <customCategories identifier="Terminal Integration" label="Terminal Integration" description="Terminal Integration" features="//@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.0 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.1 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.2 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.3 //@validationSets[label='Base']/@contributions[label='Base']/@repositories.3/@features.4"/>
 </aggregator:Aggregation>
