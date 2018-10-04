@@ -29,6 +29,7 @@ import org.eclipse.xtext.ui.editor.model.XtextDocument
 
 import static io.github.jhipster.jdl.renderer.RenderType.*
 import org.eclipse.jface.viewers.ISelection
+import java.util.Map
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -37,7 +38,7 @@ class JdlDiagramTextProvider extends AbstractDiagramTextProvider {
 
 	extension IJdlModelViewerRenderer = JdlModelViewerRenderer.get(PlantUml)
 
-	override protected getDiagramText(IEditorPart editorPart, IEditorInput editorInput, ISelection selection) {
+	override protected getDiagramText(IEditorPart editorPart, IEditorInput editorInput, ISelection selection, Map<String, Object> map) {
 		if (editorPart instanceof XtextEditor) {
 			val document = editorPart.documentProvider.getDocument(editorInput) as XtextDocument
 			val model = document?.readOnly [

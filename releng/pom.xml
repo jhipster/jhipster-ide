@@ -17,11 +17,7 @@
 	<properties>
 		<tycho-version>1.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<eclipse.name>neon</eclipse.name>
-		<!-- see: http://download.eclipse.org/cbi/updates/aggregator/ -->
-<!-- 	<b3aggr.headless.repo>http://mirrors.ibiblio.org/eclipse/modeling/emft/b3/headless-4.4</b3aggr.headless.repo> -->
-<!-- 	<b3aggr.headless.repo>http://mirror.neu.edu.cn/eclipse/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo> -->
-<!-- 	<b3aggr.headless.repo>http://eclipse.mirror.wearetriple.com/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo> -->
+		<eclipse.name>photon</eclipse.name>
 		<aggr.headless.repo>http://download.eclipse.org/cbi/updates/aggregator/headless/4.7/</aggr.headless.repo>
 	</properties>
 
@@ -98,7 +94,7 @@
 						<version>${tycho-version}</version>
 						<configuration>
 							<applicationsArgs>
-		    					<arg>-application</arg>
+		    					<arg>-data ${project.build.directory}/ws -application</arg>
     							<applicationsArg>org.eclipse.cbi.p2repo.cli.headless</applicationsArg>
 								<applicationsArg>aggregate</applicationsArg>
 								<applicationsArg>--buildModel</applicationsArg>
