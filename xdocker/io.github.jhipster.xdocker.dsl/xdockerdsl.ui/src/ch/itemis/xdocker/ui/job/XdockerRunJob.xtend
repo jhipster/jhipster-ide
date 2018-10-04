@@ -28,10 +28,10 @@ import static xdockerdsl.ui.internal.XdockerdslActivator.*
  */
 class XdockerRunJob extends AbstractXdockerJob {
 
-	private static val JOB_NAME = 'Docker Run Job'
-	private static val ERR_RUN_CMD = 'Error in executing docker run command'
-	private static val MSG_RUN_CMD = 'Please wait while connecting to docker...\n'
-	private static val TASK_RUN_CMD = 'Running command in docker...\n'
+	static val JOB_NAME = 'Docker Run Job'
+	static val ERR_RUN_CMD = 'Error in executing docker run command'
+	static val MSG_RUN_CMD = 'Please wait while connecting to docker...\n'
+	static val TASK_RUN_CMD = 'Running command in docker...\n'
 	
 	@Inject extension DockerExtensions docker
 
