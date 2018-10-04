@@ -17,10 +17,8 @@
 	<properties>
 		<tycho-version>1.0.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<eclipse.name>neon</eclipse.name>
-<!-- 	<b3aggr.headless.repo>http://mirrors.ibiblio.org/eclipse/modeling/emft/b3/headless-4.4</b3aggr.headless.repo> -->
-<!-- 	<b3aggr.headless.repo>http://mirror.neu.edu.cn/eclipse/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo> -->
-		<b3aggr.headless.repo>http://eclipse.mirror.wearetriple.com/modeling/emft/b3/headless-4.4/</b3aggr.headless.repo>
+		<eclipse.name>photon</eclipse.name>
+		<aggr.headless.repo>http://download.eclipse.org/cbi/updates/aggregator/headless/4.7/</aggr.headless.repo>
 	</properties>
 
 	<repositories>
@@ -95,24 +93,42 @@
 						<artifactId>tycho-eclipserun-plugin</artifactId>
 						<version>${tycho-version}</version>
 						<configuration>
-							<appArgLine>-data ${project.build.directory}/ws -application org.eclipse.b3.cli.headless aggregate --buildModel ${project.basedir}/resources/jhipster-ide.b3aggr</appArgLine>
-							<argLine>-Xmx1024m -XX:MaxPermSize=512m</argLine>
+							<applicationsArgs>
+		    					<arg>-data ${project.build.directory}/ws -application</arg>
+    							<applicationsArg>org.eclipse.cbi.p2repo.cli.headless</applicationsArg>
+								<applicationsArg>aggregate</applicationsArg>
+								<applicationsArg>--buildModel</applicationsArg>
+								<applicationsArg>${project.basedir}/resources/jhipster-ide.aggr</applicationsArg>
+								<applicationsArg>--eclipseLogLevel</applicationsArg>
+								<applicationsArg>INFO</applicationsArg>
+								<applicationsArg>--logLevel</applicationsArg>
+								<applicationsArg>INFO</applicationsArg>
+								<applicationsArg>--action</applicationsArg>
+								<applicationsArg>CLEAN_BUILD</applicationsArg>
+							</applicationsArgs>
+							<jvmArgs>
+								<jvmArg>-Xms256M</jvmArg>
+								<jvmArg>-Xmx1024m</jvmArg>
+							</jvmArgs>						
 							<dependencies>
 								<dependency>
-									<artifactId>org.eclipse.b3.aggregator.engine.feature</artifactId>
+									<artifactId>org.eclipse.cbi.p2repo.aggregator.engine.feature</artifactId>
+									<type>eclipse-feature</type>
+								</dependency>
+								<dependency>
+									<artifactId>org.eclipse.equinox.p2.core.feature</artifactId>
+									<type>eclipse-feature</type>
+								</dependency>
+								<dependency>
+									<artifactId>org.eclipse.equinox.core.feature</artifactId>
 									<type>eclipse-feature</type>
 								</dependency>
 							</dependencies>
 							<repositories>
 								<repository>
-									<id>b3-headless</id>
+									<id>cbi-headless</id>
 									<layout>p2</layout>
-									<url>${b3aggr.headless.repo}</url>
-								</repository>
-								<repository>
-									<id>b3</id>
-									<layout>p2</layout>
-									<url>${b3aggr.headless.repo}</url>
+									<url>${aggr.headless.repo}</url>
 								</repository>
 								<repository>
 									<id>eclipse</id>

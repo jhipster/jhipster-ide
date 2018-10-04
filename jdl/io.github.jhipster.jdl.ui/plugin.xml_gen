@@ -410,12 +410,18 @@
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="jdl,jh">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="io.github.jhipster.jdl.JDL.contenttype"
+			contentViewerId="io.github.jhipster.jdl.JDL.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="io.github.jhipster.jdl.JDL.compare.contentMergeViewers"
 			class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="jdl,jh" label="JDL Compare">
 		</viewer>
+		<contentTypeBinding
+			contentTypeId="io.github.jhipster.jdl.JDL.contenttype"
+			contentMergeViewerId="io.github.jhipster.jdl.JDL.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="io.github.jhipster.jdl.JDL.editors.documentProviders"
