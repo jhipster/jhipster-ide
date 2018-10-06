@@ -24,10 +24,10 @@ import static extension org.eclipse.ui.handlers.HandlerUtil.*
  * @author Serano Colameo - Initial contribution and API
  */
 class XdockerDockerInfoHandler extends AbstractHandler {
-	private static final String MESSGAE_TITLE = 'Docker Info'
-	private static final String MESSGAE_INFO_TITLE = 'Docker Configuration and Information'
-	private static final String MESSGAE_ERRTITLE = 'Unexpected Error'
-	private static final String MESSGAE_ERROR = 'Error getting info from docker'
+	static final String MESSGAE_TITLE = 'Docker Info'
+	static final String MESSGAE_INFO_TITLE = 'Docker Configuration and Information'
+	static final String MESSGAE_ERRTITLE = 'Unexpected Error'
+	static final String MESSGAE_ERROR = 'Error getting info from docker'
 
     /* 
      * (non-Javadoc)

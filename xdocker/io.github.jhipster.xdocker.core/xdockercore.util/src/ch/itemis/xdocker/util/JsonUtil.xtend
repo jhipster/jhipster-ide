@@ -21,9 +21,9 @@ import java.util.Map
 class JsonUtil {	
 	public static val INSTANCE = new JsonUtil
 	
-	private val factory = new JsonFactory
-	private val mapper = new ObjectMapper(factory)
-    private	val typeRef = new TypeReference<HashMap<String,Object>>() {}
+	val factory = new JsonFactory
+	val mapper = new ObjectMapper(factory)
+    val typeRef = new TypeReference<HashMap<String,Object>>() {}
 
 	private new() {		
 	}

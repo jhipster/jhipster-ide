@@ -26,7 +26,7 @@ import static extension org.apache.commons.beanutils.BeanUtils.*
  */
 abstract class AbstractXdockerJob extends Job {
 
-	@Accessors private var Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block
+	@Accessors var Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block
 
 	protected extension XdockerConsoleLogger console = XdockerConsoleLogger.INSTANCE
 	
@@ -34,18 +34,18 @@ abstract class AbstractXdockerJob extends Job {
 		super(name)
 	}
 	
-	def public static AbstractXdockerJob create(Class<? extends AbstractXdockerJob> job) {
+	def static AbstractXdockerJob create(Class<? extends AbstractXdockerJob> job) {
 		return job.newInstance
 	}
 
-	def public static AbstractXdockerJob create(Class<? extends AbstractXdockerJob> job, Map<String, Object> args) {
+	def static AbstractXdockerJob create(Class<? extends AbstractXdockerJob> job, Map<String, Object> args) {
 		return job.create => [
 			assertArguments(args)
 			populate(args)
 		]
 	}
 
-	def public AbstractXdockerJob execute(Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block) {
+	def AbstractXdockerJob execute(Procedure2<? super AbstractXdockerJob, ? super XdockerJobStatus> block) {
 		setBlock(block)
 		schedule
 		return this

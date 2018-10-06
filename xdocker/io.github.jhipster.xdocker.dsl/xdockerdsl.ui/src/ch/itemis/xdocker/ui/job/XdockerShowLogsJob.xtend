@@ -28,10 +28,10 @@ import static xdockerdsl.ui.internal.XdockerdslActivator.*
  */
 class XdockerShowLogsJob extends AbstractXdockerJob {
 
-	private static val JOB_NAME = 'Docker Show Logs Job'
-	private static val ERR_GETTING_LOGS = 'Error getting logs from docker'
-	private static val MSG_GETTING_LOGS = 'Please wait while getting logs from docker...\n'
-	private static val TASK_GETTING_LOGS = 'Getting logs from docker...\n'
+	static val JOB_NAME = 'Docker Show Logs Job'
+	static val ERR_GETTING_LOGS = 'Error getting logs from docker'
+	static val MSG_GETTING_LOGS = 'Please wait while getting logs from docker...\n'
+	static val TASK_GETTING_LOGS = 'Getting logs from docker...\n'
 	
 	@Accessors var List<String> containerIds = newArrayList
 

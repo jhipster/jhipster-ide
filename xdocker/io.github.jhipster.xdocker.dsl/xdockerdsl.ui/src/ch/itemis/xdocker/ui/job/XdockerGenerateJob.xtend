@@ -26,10 +26,10 @@ class XdockerGenerateJob extends AbstractXdockerJob {
 
 	@Accessors var IFile dockerfile
 
-	private static val JOB_NAME = 'Docker Generate Job'
-	private static val ERR_GENERATING_DOCKERFILE = 'Error generating dockerfile'
-	private static val TASK_GENERATING_DOCKERFILE = 'Generating dockerfile'
-	private static val MSG_GENERATING_DOCKERFILE = TASK_GENERATING_DOCKERFILE + ':'
+	static val JOB_NAME = 'Docker Generate Job'
+	static val ERR_GENERATING_DOCKERFILE = 'Error generating dockerfile'
+	static val TASK_GENERATING_DOCKERFILE = 'Generating dockerfile'
+	static val MSG_GENERATING_DOCKERFILE = TASK_GENERATING_DOCKERFILE + ':'
 
     @Accessors extension XdockerGeneratorHelper generator
     

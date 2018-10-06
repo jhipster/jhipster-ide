@@ -23,6 +23,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1
 
 import static ch.itemis.xdocker.lib.util.DockerPropertiesUtil.*
+import org.apache.log4j.Logger
 
 /**
  * Extension Class for Docker Java API
@@ -31,8 +32,10 @@ import static ch.itemis.xdocker.lib.util.DockerPropertiesUtil.*
  */
 class DockerExtensions {
 
-	@Accessors private var DockerClientConfig dockerConfig
-    @Accessors private var DockerClient dockerClient
+	static val LOG = Logger.getLogger(DockerExtensions)
+
+	@Accessors var DockerClientConfig dockerConfig
+    @Accessors var DockerClient dockerClient
 
 	def static newInstance() { 
 		return new DockerExtensions
@@ -51,10 +54,14 @@ class DockerExtensions {
 	}
 
 	def setupDocker(DockerProperties props) {
-		DefaultDockerClientConfig.createDefaultConfigBuilder => [
-			dockerConfig = createDockerConfig(props)
-			dockerClient = buildDockerClient
-		]
+		try {
+			DefaultDockerClientConfig.createDefaultConfigBuilder => [
+				dockerConfig = createDockerConfig(props)
+				dockerClient = buildDockerClient
+			]
+		} catch (Throwable ex) {
+			LOG.error('Error during docker setup!', ex)	
+		}
 	}
 
 	def private buildDockerClient() {

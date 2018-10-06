@@ -16,8 +16,8 @@ import java.util.List
  * @author Serano Colameo - Initial contribution and API
  */
 class XdockerStream extends OutputStream {
-	private IConsoleLogger logger
-	private val List<String> buffer = new ArrayList
+	IConsoleLogger logger
+	val List<String> buffer = new ArrayList
 
 	new(IConsoleLogger logger) {
 		if (logger === null) {

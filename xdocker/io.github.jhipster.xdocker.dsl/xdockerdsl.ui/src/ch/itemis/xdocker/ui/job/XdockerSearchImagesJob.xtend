@@ -25,7 +25,7 @@ import static xdockerdsl.ui.internal.XdockerdslActivator.*
 class XdockerSearchImagesJob extends AbstractXdockerJob {
 
 	static val JOB_NAME = 'Search Docker Images Job'
-	static val ERR_SEARCHING = 'Error searching images from docker'
+	static val ERR_SEARCHING = 'Error searching images from docker!\n\nPlease verify if docker daemon is running properly!\n'
 	static val TASK_SEARCHING = 'Searching images from docker...\n'
 
 	@Accessors var String term
