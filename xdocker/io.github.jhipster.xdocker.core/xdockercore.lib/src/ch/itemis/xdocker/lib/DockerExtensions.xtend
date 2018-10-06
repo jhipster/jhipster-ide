@@ -31,8 +31,8 @@ import static ch.itemis.xdocker.lib.util.DockerPropertiesUtil.*
  */
 class DockerExtensions {
 
-	@Accessors private var DockerClientConfig dockerConfig
-    @Accessors private var DockerClient dockerClient
+	@Accessors var DockerClientConfig dockerConfig
+    @Accessors var DockerClient dockerClient
 
 	def static newInstance() { 
 		return new DockerExtensions
@@ -50,7 +50,7 @@ class DockerExtensions {
 		setupDocker(props)
 	}
 
-	def setupDocker(DockerProperties props) {
+	def private setupDocker(DockerProperties props) {
 		DefaultDockerClientConfig.createDefaultConfigBuilder => [
 			dockerConfig = createDockerConfig(props)
 			dockerClient = buildDockerClient
