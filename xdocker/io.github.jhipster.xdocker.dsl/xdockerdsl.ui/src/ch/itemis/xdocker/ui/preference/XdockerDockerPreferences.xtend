@@ -20,7 +20,7 @@ import static ch.itemis.xdocker.lib.config.DockerPropertiesConstants.*
  */
 final class XdockerDockerPreferences {
 
-	private var IPreferenceStore store
+	var IPreferenceStore store
 	public static var XdockerDockerPreferences INSTANCE = new XdockerDockerPreferences
 
 	def static void defaults(String dockerUrl, Boolean enableLoggingFilter, String dockerCertPath, String dockerCfgPath,

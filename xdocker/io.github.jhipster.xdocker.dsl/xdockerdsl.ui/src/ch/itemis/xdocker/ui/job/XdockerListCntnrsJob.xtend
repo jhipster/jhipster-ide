@@ -29,7 +29,7 @@ import static xdockerdsl.ui.internal.XdockerdslActivator.*
 class XdockerListCntnrsJob extends AbstractXdockerJob {
 
 	static val JOB_NAME = 'Docker Info Job'
-	static val ERR_CNT_LIST = 'Error getting container list from docker'
+	static val ERR_CNT_LIST = 'Error getting container list from docker!\n\nPlease verify if docker daemon is running properly!\n'
 	static val TASK_CNT_LIST = 'Getting list of containers from docker...\n'
 /**	
  * Keep this for the moment!

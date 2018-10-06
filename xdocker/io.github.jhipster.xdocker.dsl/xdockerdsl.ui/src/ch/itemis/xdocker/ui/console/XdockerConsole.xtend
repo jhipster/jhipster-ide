@@ -20,8 +20,8 @@ import org.eclipse.xtend.lib.annotations.Accessors
  */
 final class XdockerConsole extends IOConsole {
 	
-	@Accessors private static var XdockerConsole INSTANCE = new XdockerConsole
-	@Accessors private var IOConsoleOutputStream outStream
+	@Accessors static var XdockerConsole INSTANCE = new XdockerConsole
+	@Accessors var IOConsoleOutputStream outStream
 	
 	new() { 
 		super('Xdocker Console', 'XdockerConsole', null, true)

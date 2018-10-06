@@ -30,7 +30,7 @@ import static xdockerdsl.ui.internal.XdockerdslActivator.*
 class XdockerInfoJob extends AbstractXdockerJob {
 
 	static val JOB_NAME = 'Docker Info Job'
-	static val ERR_GETTING_INFO = 'Error getting info from docker'
+	static val ERR_GETTING_INFO = 'Error getting info from docker!\n\nPlease verify if docker daemon is running properly!\n'
 	static val MSG_GETTING_INFO = 'Please wait while connecting to docker...\n'
 	static val TASK_GETTING_INFO = 'Getting info from docker...\n'
 	

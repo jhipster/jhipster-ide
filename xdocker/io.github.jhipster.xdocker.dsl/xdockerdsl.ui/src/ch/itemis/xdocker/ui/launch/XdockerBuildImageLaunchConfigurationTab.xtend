@@ -32,7 +32,7 @@ import static org.eclipse.debug.internal.ui.SWTFactory.*
 @SuppressWarnings('restriction')
 class XdockerBuildImageLaunchConfigurationTab extends AbstractXdockerLaunchConfigurationTab {
 
-	private val NAME = 'Build Image'
+	val NAME = 'Build Image'
 	
 	// mandatory parameters
 	var Text projectText

@@ -12,3 +12,4 @@ Require-Bundle: com.google.inject,
  org.eclipse.xtend.lib;visibility:=reexport,
  org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: io.github.jhipster.jdl.lib
