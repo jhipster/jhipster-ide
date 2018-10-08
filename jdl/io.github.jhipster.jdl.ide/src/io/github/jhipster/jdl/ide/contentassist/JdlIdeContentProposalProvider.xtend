@@ -69,7 +69,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 		IIdeContentProposalAcceptor acceptor) {
 		val model = context.currentModel
 		if (model.hasIssues) {
-			super.createProposals(assignment, context, acceptor)
+			// super.createProposals(assignment, context, acceptor)
 			return
 		}
 		switch (model) {
