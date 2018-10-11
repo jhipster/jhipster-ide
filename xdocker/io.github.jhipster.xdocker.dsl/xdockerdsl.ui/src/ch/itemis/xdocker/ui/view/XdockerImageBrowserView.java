@@ -153,7 +153,7 @@ public class XdockerImageBrowserView extends AbstractXdockerBrowserView {
 			}
 		});
 
-		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH);
+		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH | SWT.ICON_CANCEL | SWT.ICON_SEARCH);
 		searchInput.setEnabled(true);
 		form.setTopLeft(searchInput);
 		searchInput.addListener(SWT.DefaultSelection, new Listener() {

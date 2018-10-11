@@ -100,7 +100,7 @@ public class XdockerContainerBrowserView extends AbstractXdockerBrowserView {
 
 		ViewForm form = new ViewForm(parent, SWT.NONE);
 
-		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH);
+		searchInput = new Text(form, SWT.BORDER | SWT.V_SCROLL | SWT.SEARCH | SWT.ICON_CANCEL | SWT.ICON_SEARCH);
 		form.setTopLeft(searchInput);
 		searchInput.addListener(SWT.DefaultSelection, new Listener() {
 			public void handleEvent(Event e) {
