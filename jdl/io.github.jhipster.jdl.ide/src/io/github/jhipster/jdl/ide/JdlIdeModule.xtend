@@ -18,10 +18,12 @@
  */
 package io.github.jhipster.jdl.ide
 
+import io.github.jhipster.jdl.ide.contentassist.JdlContentAssistService
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import io.github.jhipster.jdl.ide.service.CommandService
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
-import io.github.jhipster.jdl.ide.service.CommandService
+import org.eclipse.xtext.ide.server.contentassist.ContentAssistService
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -34,5 +36,9 @@ class JdlIdeModule extends AbstractJDLIdeModule {
 
 	def Class<? extends IExecutableCommandService> bindIExecutableCommandService() {
 		return CommandService
+	}
+	
+	def Class<? extends ContentAssistService> bindContentAssistService() {
+		return JdlContentAssistService
 	}
 }
