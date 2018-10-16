@@ -27,12 +27,10 @@ import { window, workspace, commands, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
 
 export function activate(context: ExtensionContext) {
-  // The server is a started as a separate app and listens on port 5007
     let connectionInfo = {
         port: 5007
     };
     let serverOptions = () => {
-        // Connect to language server via socket
         let socket = net.connect(connectionInfo);
         let result: StreamInfo = {
             writer: socket,
@@ -48,9 +46,7 @@ export function activate(context: ExtensionContext) {
         }
     };
     
-    // Create the language client and start the client.
     let lc = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions);
-
     var disposable2 = commands.registerCommand("jdl.a.proxy", async () => {
         let activeEditor = window.activeTextEditor;
         if (!activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'jdl') {
@@ -63,7 +59,6 @@ export function activate(context: ExtensionContext) {
     })
 
     context.subscriptions.push(disposable2);
-
     // enable tracing (.Off, .Messages, Verbose)
     lc.trace = Trace.Verbose;
     let disposable = lc.start();
