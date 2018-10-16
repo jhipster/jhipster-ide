@@ -19,14 +19,34 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.16</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.lsp4j</groupId>
+			<artifactId>org.eclipse.lsp4j</artifactId>
+			<version>0.5.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.xtext</groupId>
 			<artifactId>org.eclipse.xtext.ide</artifactId>
 			<version>${xtextVersion}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse.xtext</groupId>
-			<artifactId>org.eclipse.xtext.xbase.ide</artifactId>
-			<version>${xtextVersion}</version>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm</artifactId>
+			<version>6.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-commons</artifactId>
+			<version>6.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-tree</artifactId>
+			<version>6.2.1</version>
 		</dependency>
 	</dependencies>
 
@@ -50,10 +70,11 @@
 						<configuration>
 							<repositoryLayout>flat</repositoryLayout>
 							<repositoryName>lib</repositoryName>
+						    <useWildcardClassPath>true</useWildcardClassPath>
 							<programs>
 								<program>
-									<mainClass>org.eclipse.xtext.ide.server.ServerLauncher</mainClass>
 									<id>xtext-server-jdl</id>
+									<mainClass>org.eclipse.xtext.ide.server.ServerLauncher</mainClass>
 								</program>
 							</programs>
 						</configuration>
@@ -62,5 +83,5 @@
 			</plugin>
 		</plugins>
 	</build>
-
+	
 </project>

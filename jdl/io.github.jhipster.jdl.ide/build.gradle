@@ -1,18 +1,18 @@
 plugins {
-	id 'com.github.johnrengelman.shadow' version '2.0.0'
+	id 'com.github.johnrengelman.shadow' version '2.0.4'
 }
 
 apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = "org.eclipse.xtext.ide.server.ServerLauncher"
 
-xtextVersion = "2.13.0"
+xtextVersion = "2.15.0"
 
 dependencies {
 	compile project(':io.github.jhipster.jdl')
-	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.ide', version:'2.13.0'
-	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.xbase', version:'2.13.0'
-	compile group: 'net.sourceforge.plantuml', name: 'plantuml', version: '8048'
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.ide', version: "${xtextVersion}"
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.xbase', version: "${xtextVersion}"
+	compile group: 'net.sourceforge.plantuml', name: 'plantuml', version: '8059'
 }
 
 //this is an eclipse plugin project
