@@ -101,6 +101,7 @@ JdlNumericValue:
  * ========================================================================= */
 
 JdlEntity:
+	annotations+=JdlAnnotation*
 	'entity' name=ID ('(' table=ID ')')? ('{'
 		(fields+=JdlEntityField (','? fields+=JdlEntityField)*)?
 	'}')?;
@@ -121,7 +122,7 @@ JdlEntityType:
 	element=JdlEntity;
 
 JdlEnumFieldType:
-	element=[JdlEnum] validators+=JdlRequiredValidator*;
+	element=[JdlEnum] validators+=JdlDefaultValidators*;
 
 JdlStringFieldType:
 	element=JdlStringType validators+=JdlStringValidators*;
@@ -136,13 +137,13 @@ enum JdlNumericTypes:
 	Integer | Long | BigDecimal | Float | Double;
 
 JdlBooleanFieldType:
-	element=JdlBooleanType validators+=JdlRequiredValidator*;
+	element=JdlBooleanType validators+=JdlDefaultValidators*;
 
 JdlBooleanType:
 	element='Boolean';
 
 JdlDateFieldType:
-	element=JdlDateTypes validators+=JdlRequiredValidator*;
+	element=JdlDateTypes validators+=JdlDefaultValidators*;
 
 enum JdlDateTypes:
 	Date | LocalDate | ZonedDateTime | Instant | UUID;
@@ -159,19 +160,29 @@ enum JdlBlobTypes:
 
 JdlStringValidators:
 	required?=JdlRequiredValidator |
+	unique?=JdlUniqueValidator |
 	minlength=JdlMinLengthValidator |
 	maxlength=JdlMaxLengthValidator |
 	pattern=JdlPatternValidator;
 
 JdlNumericValidators:
 	required?=JdlRequiredValidator | 
+	unique?=JdlUniqueValidator |
 	min=JdlMinValidator | 
 	max=JdlMaxValidator;
 
 JdlBlobValidators:
 	required?=JdlRequiredValidator |
+	unique?=JdlUniqueValidator |
 	minbytes=JdlMinBytesValidator | 
 	maxbytes=JdlMaxBytesValidator;
+
+JdlDefaultValidators:
+	required?=JdlRequiredValidator |
+	unique?=JdlUniqueValidator;
+
+JdlUniqueValidator:
+	unique?='unique';
 
 JdlRequiredValidator:
 	required?='required';
@@ -228,6 +239,62 @@ JdlEnum:
 	'}';
 
 /* =========================================================================
+ * ANNOTATION 
+ * ========================================================================= */
+
+JdlAnnotation:
+	JdlComplexAnnotation |
+	JdlSimpleAnnotation;
+
+JdlComplexAnnotation:
+	'@' (JdlDtoAnnotation |
+	 JdlPaginateAnnotation |
+	 JdlServiceAnnotation |
+	 JdlMicroserviceAnnotation |
+	 JdlSearchAnnotation |
+	 JdlAngularSuffixAnnotation |
+	 JdlClientRootFolderAnnotation);
+
+JdlSimpleAnnotation:
+	'@' (JdlSkipClientAnnotation |
+		JdlSkipServerAnnotation |
+		JdlFilterAnnotation |
+		JdlNoFluentMethodAnnotation);
+
+JdlDtoAnnotation returns JdlComplexAnnotation:
+	dto?='dto' '(' dtoType=JdlDtoType ')';
+
+JdlPaginateAnnotation returns JdlComplexAnnotation:
+	paginate?='paginate' '(' paginateType=JdlPaginateType ')';
+	
+JdlServiceAnnotation returns JdlComplexAnnotation:
+	service?='service' '(' serviceType=JdlServiceType ')';
+
+JdlMicroserviceAnnotation returns JdlComplexAnnotation:
+	microservice?='microservice' '(' name=ID ')';
+
+JdlSearchAnnotation returns JdlComplexAnnotation:
+	search?='search' '(' searchType=JdlSearchType ')';
+
+JdlAngularSuffixAnnotation returns JdlComplexAnnotation:
+	angularSuffix?='angularSuffix' '(' name=ID ')';
+
+JdlClientRootFolderAnnotation returns JdlComplexAnnotation:
+	clientRootFolder?='clientRootFolder';
+
+JdlSkipClientAnnotation returns JdlSimpleAnnotation:
+	skipClient?='skipClient';
+
+JdlSkipServerAnnotation returns JdlSimpleAnnotation:
+	skipServer?='skipServer';
+
+JdlFilterAnnotation returns JdlSimpleAnnotation:
+	skipServer?='filter';
+
+JdlNoFluentMethodAnnotation returns JdlSimpleAnnotation:
+	noFluentMethod?='noFluentMethod';
+
+/* =========================================================================
  * OPTION 
  * ========================================================================= */
 
@@ -251,7 +318,7 @@ JdlWithEntitySelectionAndValue returns JdlOptionSelection:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
 
 JdlForEntityInclusion returns JdlOptionSelection:
-	hasFor?='for'? (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
+	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 
 JdlExceptEntityExclusion:
 	'except' selection=JdlEntitySelection;
@@ -333,7 +400,7 @@ JdlAngularSuffixOption returns JdlOptionSetting:
  * ========================================================================= */
 
 JdlClientRootFolderOption returns JdlOptionSetting:
-	angularSuffixOption?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ID;
+	clientRootFolder?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ID;
 
 /* =========================================================================
  * Filter OPTION 

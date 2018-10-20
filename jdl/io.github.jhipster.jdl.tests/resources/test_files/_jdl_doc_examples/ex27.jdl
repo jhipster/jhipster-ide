@@ -1,0 +1,5 @@
+entity Owner
+entity Car
+relationship OneToMany {
+  Owner{car} to Car{owner}
+}

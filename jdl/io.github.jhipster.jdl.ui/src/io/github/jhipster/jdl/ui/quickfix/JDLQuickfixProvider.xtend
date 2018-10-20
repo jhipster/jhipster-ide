@@ -73,15 +73,6 @@ class JDLQuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 
-	@Fix(IssueCodes.FOR_NOTALLOWED)
-	def void removeForOptionKeyword(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Remove "for" keyword', 'Remove "for" option', 'remove.gif') [
-			context |
-			val xtextDocument = context.xtextDocument
-			xtextDocument.replace(issue.offset, issue.length, '')
-		]
-	}
-
 	@Fix(IssueCodes.WRONG_PARAM_VALUE_TYPE)
 	def changeToStringLiteral(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Change to string literal', 'Change to string literal.', 'change.gif') [

@@ -1,0 +1,7 @@
+entity A
+entity B
+entity C
+
+// no service for A
+service B with serviceClass
+service C with serviceImpl

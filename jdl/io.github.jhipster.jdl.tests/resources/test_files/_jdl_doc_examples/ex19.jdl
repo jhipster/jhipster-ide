@@ -1,0 +1,7 @@
+entity A
+entity B
+entity C
+
+dto C with mapstruct
+paginate * with pager except C
+search A with elasticsearch

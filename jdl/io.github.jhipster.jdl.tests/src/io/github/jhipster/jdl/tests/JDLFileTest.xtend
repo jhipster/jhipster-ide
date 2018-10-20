@@ -23,6 +23,8 @@ import com.google.inject.Injector
 import com.google.inject.Provider
 import io.github.jhipster.jdl.JDLStandaloneSetup
 import java.io.File
+import java.nio.file.Files
+import java.nio.file.Paths
 import java.util.Collection
 import java.util.List
 import org.eclipse.emf.common.util.URI
@@ -74,7 +76,8 @@ class JDLFileTest {
 		 "invalid_option.jdl" -> "missing 'mapstruct' at 'wrong'",
 		 "wrong_enum_values.jdl" -> "Enum value name must be upper case",
 		 "filtering_wrong.jdl" -> 'Keyword "for" is not allowed anymore!',
-		 "for_keyword_notallowed.jdl" -> 'Keyword "for" is not allowed anymore!',
+		 "for_keyword_notallowed.jdl" -> "mismatched input '<EOF>' expecting '='",
+		 "for_keyword_notallowed.jdl" -> "Couldn't resolve reference to JdlEntity 'for'.",
 		 "filtering_validation_check.jdl" -> "Selection does not contain excluded elements: [C, D]",
 		 "wrong_pattern_definition.jdl" -> "Wrong regexp pattern!",
 		 "simple.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored",
@@ -114,27 +117,19 @@ class JDLFileTest {
 
 	@Parameters
     def static Collection<File> getJdlFiles() {
-    		val result = newArrayList
-    		jdlExternalResourceFolders.forEach[
-		    	val resources = new File(it)
-	  		resources.listFiles([File dir, String name | 
-	  			name.endsWith('.jdl')
-	  		]) => [
-	  			result.addAll(it)
-	  		]
-    		]
+		val result = newArrayList
+		Files.walk(
+			Paths.get('./resources/')
+		).filter[
+			Files.isDirectory(it)
+		].map[
+  			it.toFile.listFiles([dir, name | 
+  				name.endsWith('.jdl') || name.endsWith('.jh')
+  			])
+  		].forEach[result.addAll(it)]
   		return result
     }
     
-    def private static String[] getJdlExternalResourceFolders() {
-    		val resource = './resources/'
-  		return new File(resource).listFiles([File file | 
-  			file.isDirectory
-  		]).map[
-  			it.toPath.toString
-  		]
-    }
-
 	@Test
 	def void testJdlFile() {
 		jdlReferencedFiles.forEach[

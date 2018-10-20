@@ -1,0 +1,5 @@
+entity Owner
+entity Car
+relationship ManyToOne {
+  Car to Owner
+}

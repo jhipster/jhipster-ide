@@ -1,0 +1,8 @@
+entity A
+entity B
+entity C
+entity Z
+
+dto * with mapstruct except A
+service all with serviceImpl except A, B, C
+paginate C with pagination

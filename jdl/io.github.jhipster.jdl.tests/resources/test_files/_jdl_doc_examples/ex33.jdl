@@ -1,0 +1,6 @@
+entity A
+entity B
+entity C
+
+microservice * with firstMS except B 
+microservice * with secondMS except A 
