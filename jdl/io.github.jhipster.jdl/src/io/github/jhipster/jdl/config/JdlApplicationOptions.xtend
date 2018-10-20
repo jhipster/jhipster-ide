@@ -65,7 +65,7 @@ class JdlApplicationOptions {
 			new JdlApplicationOption('packageName', Namespace),
 			new JdlApplicationOption('searchEngine', #['elasticsearch', 'false']),
 			new JdlApplicationOption('serverPort', #['8080', '8081', '9999'], Number),
-			new JdlApplicationOption('serviceDiscoveryType', #['eureka', 'consul', 'no']),
+			new JdlApplicationOption('serviceDiscoveryType', #['eureka', 'consul', 'no', 'false']),
 			new JdlApplicationOption('skipClient', Boolean),
 			new JdlApplicationOption('skipServer', Boolean),
 			new JdlApplicationOption('skipUserManagement', Boolean),
