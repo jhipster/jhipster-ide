@@ -62,7 +62,7 @@ class JDLFormatter extends AbstractFormatter2 {
 	def dispatch void format(JdlEntity entity, extension IFormattableDocument document) {
 		val open = entity.regionFor.keyword('{') 
 		val close = entity.regionFor.keyword('}')
-		entity.regionFor.keyword(jdlEntityAccess.entityKeyword_0).append[oneSpace]
+		entity.regionFor.keyword(jdlEntityAccess.entityKeyword_1).append[oneSpace]
 		open.append[newLine]
 		interior(open, close)[indent]
 		entity.fields.forEach[format]

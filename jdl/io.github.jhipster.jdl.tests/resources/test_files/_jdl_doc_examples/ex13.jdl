@@ -1,0 +1,14 @@
+entity A {
+  name String required
+}
+entity B
+entity C
+
+dto A, B with mapstruct
+
+paginate A with infinite-scroll
+paginate B with pagination
+paginate C with pager  // pager is only available in AngularJS
+
+service A with serviceClass
+service C with serviceImpl

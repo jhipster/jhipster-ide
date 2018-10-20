@@ -1,0 +1,42 @@
+application {
+  config {
+    baseName myMonolith
+    applicationType monolith
+  }
+  entities * except C, D
+}
+
+application {
+  config {
+    baseName myGateway
+    applicationType gateway
+    serverPort 9042
+  }
+  entities * except A, B
+}
+
+application {
+  config {
+    baseName microserviceA
+    applicationType microservice
+  }
+  entities C
+}
+
+application {
+  config {
+    baseName microserviceB
+    applicationType microservice
+    serverPort 8082
+  }
+  entities D
+}
+
+entity A
+entity B
+entity C
+entity D
+
+dto * with mapstruct
+service * with serviceClass
+paginate D with pager

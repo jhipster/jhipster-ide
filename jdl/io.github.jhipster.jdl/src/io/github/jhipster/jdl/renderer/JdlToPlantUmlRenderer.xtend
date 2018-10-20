@@ -21,6 +21,7 @@ package io.github.jhipster.jdl.renderer
 import com.google.inject.ImplementedBy
 import io.github.jhipster.jdl.jdl.JdlBlobFieldType
 import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
+import io.github.jhipster.jdl.jdl.JdlComplexAnnotation
 import io.github.jhipster.jdl.jdl.JdlConstant
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
@@ -28,6 +29,7 @@ import io.github.jhipster.jdl.jdl.JdlEntityField
 import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlEnumFieldType
+import io.github.jhipster.jdl.jdl.JdlFactory
 import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlOptionSelection
@@ -35,6 +37,7 @@ import io.github.jhipster.jdl.jdl.JdlOptionSetting
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
+import io.github.jhipster.jdl.jdl.JdlSimpleAnnotation
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
 import java.util.Map
@@ -60,6 +63,7 @@ interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
 	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
+	val factory = JdlFactory.eINSTANCE 
 
 	override render(JdlDomainModel jdl) {
 		return jdl.init.toPlantUml
@@ -95,7 +99,32 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 				entiyOptionMap.put(entity, options)
 			]
 		]
+		jdl.eContents.filter(JdlEntity).map[annotations].flatten.forEach[ 
+			val entity = eContainer as JdlEntity
+			val options = if (entiyOptionMap.containsKey(entity)) entiyOptionMap.get(entity) else newHashSet 
+			entiyOptionMap.put(entity, options)
+			val aOption = switch (it) {
+				JdlComplexAnnotation case isDto: { createOption => [setting.dtoOption = true] }
+				JdlComplexAnnotation case isAngularSuffix: { createOption => [setting.angularSuffixOption = true] }
+				JdlComplexAnnotation case isClientRootFolder: { createOption => [setting.clientRootFolder = true] }
+				JdlComplexAnnotation case isMicroservice: { createOption => [setting.microserviceOption = true] }
+				JdlComplexAnnotation case isPaginate: { createOption => [setting.paginateOption = true] }
+				JdlComplexAnnotation case isSearch:  { createOption => [setting.searchOption = true] }
+				JdlComplexAnnotation case isService: { createOption => [setting.serviceOption = true] }
+				JdlSimpleAnnotation case isNoFluentMethod: { createOption => [setting.noFluentMethodOption = true] }
+				JdlSimpleAnnotation case isSkipClient: { createOption => [setting.skipClientOption = true] }
+				JdlSimpleAnnotation case isSkipServer: { createOption => [setting.skipServerOption = true] }
+			}
+			if (aOption !== null) options.add(aOption)
+		]
 		return jdl
+	}
+
+	def private JdlOption createOption() {
+		val result = factory.createJdlOption => [
+			it.setting = factory.createJdlOptionSetting
+		]		
+		return result
 	}
 
 	def private String toPlantUml(JdlDomainModel it) '''

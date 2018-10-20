@@ -1,0 +1,9 @@
+@paginate(pager)
+@search(elasticsearch)
+entity A
+
+@paginate(pager)
+entity B
+
+@dto(mapstruct)
+entity C

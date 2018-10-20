@@ -1,0 +1,3 @@
+entity A {
+  myString String required minlength(1) maxlength(42) pattern(/[A-Z]+/)
+}

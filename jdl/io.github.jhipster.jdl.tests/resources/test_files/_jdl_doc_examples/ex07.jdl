@@ -1,0 +1,6 @@
+entity Book
+entity Author
+
+relationship ManyToOne {
+  Book to Author
+}

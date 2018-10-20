@@ -30,7 +30,6 @@ import static io.github.jhipster.jdl.validation.IssueCodes.*
 import io.github.jhipster.jdl.jdl.JdlPatternValidator
 import java.util.regex.PatternSyntaxException
 import java.util.regex.Pattern
-import io.github.jhipster.jdl.jdl.JdlOptionSelection
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -65,12 +64,5 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 	    } catch (PatternSyntaxException e) {
 			error(WRONG_REGEXP_MSG, JDL_PATTERN_VALIDATOR__VALUE, INSIGNIFICANT_INDEX, WRONG_REGEXP)
 	    }
-	}
-	
-	@Check
-	def checkOptionSelectionFor(JdlOptionSelection sel) {
-		if (sel !== null && sel.hasFor) {
-			error(FOR_NOTALLOWED_MSG, sel, JDL_OPTION_SELECTION__HAS_FOR, INSIGNIFICANT_INDEX, FOR_NOTALLOWED)
-		}
 	}
 }

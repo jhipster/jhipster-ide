@@ -31,8 +31,6 @@ interface IssueCodes {
 	String NOT_UPPER_CASE = PREFIX + 'NotUpperCase'
 	String MISSING_TYPE = PREFIX + 'MissingType'
 	String INVALID_REQUIRED_OPTION = PREFIX + 'InvalidRequiredOption'
-	String FOR_NOTALLOWED = PREFIX + 'ForOptionNotAllowed'
-	String FOR_NOTALLOWED_MSG = 'Keyword "for" is not allowed anymore!'
 	String WRONG_REGEXP = PREFIX + 'WrongRegexp'
 	String INVALID_PARAM_VALUE = PREFIX + 'InvalidParamValue'
 	String WRONG_PARAM_VALUE_TYPE = PREFIX + 'WrongParamValueType'

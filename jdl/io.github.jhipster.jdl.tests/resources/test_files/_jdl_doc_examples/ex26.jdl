@@ -1,0 +1,5 @@
+entity Citizen
+entity Passport
+relationship OneToOne {
+  Citizen to Passport
+}

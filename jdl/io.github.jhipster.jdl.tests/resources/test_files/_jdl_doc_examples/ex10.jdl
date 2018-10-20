@@ -1,0 +1,13 @@
+entity A
+entity B
+entity C
+entity D
+
+relationship OneToOne {
+  A{b} to B{a}
+  B{c} to C
+}
+relationship ManyToMany {
+  A{d} to D{a}
+  C{d} to D{c}
+}

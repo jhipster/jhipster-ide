@@ -1,0 +1,12 @@
+application { // will be generated under the 'myFirstApp' folder
+  config {
+    baseName myFirstApp
+  }
+}
+
+application { // will be generated under the 'mySecondApp' folder
+  config {
+    baseName mySecondApp
+    applicationType microservice
+  }
+}

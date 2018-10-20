@@ -1,0 +1,7 @@
+entity A
+entity B
+entity C
+
+microservice * with mysuperjhipsterapp except C
+microservice C with myotherjhipsterapp
+search * with elasticsearch except C
