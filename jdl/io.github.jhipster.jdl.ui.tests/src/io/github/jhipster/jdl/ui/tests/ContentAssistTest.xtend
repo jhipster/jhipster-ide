@@ -66,6 +66,17 @@ class ContentAssistTest extends AbstractContentAssistTest {
 		}''')
 	}
 
+	@Test def void testApplicationTemplateProposal() {
+		newBuilder.applyProposal("Application - template for a Application configuration").expectContent('''
+		/** 
+		 * Application configuration section
+		 */
+		application {
+			config {
+			}
+		}''')
+	}
+
 	private def void testContentAssistant(CharSequence text, List<String> expectedProposals) {
 		val cursorPosition = text.toString.indexOf(cursor)
 		val content = text.toString.replace(cursor, '')		
