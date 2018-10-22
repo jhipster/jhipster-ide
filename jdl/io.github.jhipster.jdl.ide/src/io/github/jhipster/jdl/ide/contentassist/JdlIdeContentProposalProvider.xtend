@@ -110,7 +110,12 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 			case ListOfLiterals : {
 				val existingParams = paramValue?.listElements ?: #[]
 				if (existingParams.isNullOrEmpty) {
-					addProposal('''[«params.join(', ')»]''', context, acceptor)
+					val text = context.currentNode?.text?.trim
+					val brackets = if (text.isNullOrEmpty) #['[',']'] 
+									else if (context.currentModel.hasIssues && text == ']') #['[', ''] 
+									else if (context.prefix.trim == '[') #['', ']'] 
+									else #['', '']
+					addProposal('''«brackets.head»«params.join(', ')»«brackets.last»''', context, acceptor)
 				} else {
 					params.filter[
 						!existingParams.contains(it)
