@@ -123,34 +123,34 @@ JdlEntityType:
 	element=JdlEntity;
 
 JdlEnumFieldType:
-	element=[JdlEnum] validators+=JdlDefaultValidators*;
+	element=[JdlEnum] validators+=JdlDefaultValidator*;
 
 JdlStringFieldType:
-	element=JdlStringType validators+=JdlStringValidators*;
+	element=JdlStringType validators+=JdlStringValidator*;
 
 JdlStringType:
 	element='String';
 
 JdlNumericFieldType:
-	element=JdlNumericTypes validators+=JdlNumericValidators*;
+	element=JdlNumericTypes validators+=JdlNumericValidator*;
 
 enum JdlNumericTypes:
 	Integer | Long | BigDecimal | Float | Double;
 
 JdlBooleanFieldType:
-	element=JdlBooleanType validators+=JdlDefaultValidators*;
+	element=JdlBooleanType validators+=JdlDefaultValidator*;
 
 JdlBooleanType:
 	element='Boolean';
 
 JdlDateFieldType:
-	element=JdlDateTypes validators+=JdlDefaultValidators*;
+	element=JdlDateTypes validators+=JdlDefaultValidator*;
 
 enum JdlDateTypes:
 	Date | LocalDate | ZonedDateTime | Instant | UUID;
 	
 JdlBlobFieldType:
-	element=JdlBlobTypes validators+=JdlBlobValidators*;
+	element=JdlBlobTypes validators+=JdlBlobValidator*;
 
 enum JdlBlobTypes:
 	Blob | AnyBlob | ImageBlob | TextBlob;
@@ -159,26 +159,26 @@ enum JdlBlobTypes:
  * VALIDATOR
  * ========================================================================= */
 
-JdlStringValidators:
+JdlStringValidator:
 	required?=JdlRequiredValidator |
 	unique?=JdlUniqueValidator |
 	minlength=JdlMinLengthValidator |
 	maxlength=JdlMaxLengthValidator |
 	pattern=JdlPatternValidator;
 
-JdlNumericValidators:
+JdlNumericValidator:
 	required?=JdlRequiredValidator | 
 	unique?=JdlUniqueValidator |
 	min=JdlMinValidator | 
 	max=JdlMaxValidator;
 
-JdlBlobValidators:
+JdlBlobValidator:
 	required?=JdlRequiredValidator |
 	unique?=JdlUniqueValidator |
 	minbytes=JdlMinBytesValidator | 
 	maxbytes=JdlMaxBytesValidator;
 
-JdlDefaultValidators:
+ JdlDefaultValidator:
 	required?=JdlRequiredValidator |
 	unique?=JdlUniqueValidator;
 
