@@ -3,12 +3,12 @@
   <validationSets description="JHipster-IDE" label="JHipster-IDE" extends="//@validationSets[label='Base']">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
-        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.5.0.201810011839" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.5.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
     <contributions description="Xdocker" label="Xdocker">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
-        <features name="xdockerdsl.feature.feature.group" versionRange="1.5.0.201810011839" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="xdockerdsl.feature.feature.group" versionRange="1.5.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
