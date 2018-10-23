@@ -73,7 +73,8 @@ enum JdlApplicationParameterName:
     testFrameworks | uaaBaseName | useSass | websocket;
 
 JdlApplicationParameterValue:
-	('[' listElements+=JdlApplicationParameterLiteral (',' listElements+=JdlApplicationParameterLiteral)* ']')
+	{JdlApplicationParameterValue} 
+	('[' listElements+=JdlApplicationParameterLiteral? (',' listElements+=JdlApplicationParameterLiteral)* ']')
 	| (identifiers+=JdlApplicationParameterLiteral ('.' identifiers+=JdlApplicationParameterLiteral)*)
 	| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
 

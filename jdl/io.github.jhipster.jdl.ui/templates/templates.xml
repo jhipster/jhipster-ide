@@ -10,4 +10,11 @@ entity ${name} {
 }</template>
 	<template name="Field" description="template for an Entity Field" id="io.github.jhipster.jdl.JDL.JdlEntityField" 
 	autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlEntityField" enabled="true">${fieldName} ${fieldType} ${cursor}</template>
+	<template name="Application" description="template for a Application configuration" id="io.github.jhipster.jdl.JDL.JdlApplication" autoinsert="true" context="io.github.jhipster.jdl.JDL.JdlApplication" enabled="true">/** 
+ * Application configuration section
+ */
+application {
+	config {
+	}
+}</template>
 </templates>
