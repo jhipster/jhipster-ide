@@ -37,8 +37,16 @@ subprojects {
 	}
 }
 
-task installServer(type: Copy) {
-	dependsOn(':io.github.jhipster.jdl.ide:installDist')
-    from "io.github.jhipster.jdl.ide/build/install/xtext-server-jdl"
-    into "io.github.jhipster.jdl.vscode/xtext-server-jdl"
+task installServer(type: GradleBuild) {
+	tasks = [':io.github.jhipster.jdl.ide:installDist', ':installServerVsc', ':installServerAtom']
+}
+
+task installServerVsc(type: Copy) {
+    from "io.github.jhipster.jdl.ide/build/install/jdl-ls"
+    into "io.github.jhipster.jdl.vscode/jdl-ls"
+}
+
+task installServerAtom(type: Copy) {
+    from "io.github.jhipster.jdl.ide/build/install/jdl-ls"
+    into "io.github.jhipster.jdl.atom/jdl-ls"
 }

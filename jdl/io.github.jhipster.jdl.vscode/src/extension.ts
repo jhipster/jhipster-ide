@@ -30,8 +30,8 @@ let plantuml: PlantUMLRenderer;
 var process = require('process');
 
 export function activate(context: ExtensionContext) {
-    let executable = process.platform == 'win32' ? 'xtext-server-jdl.bat' : 'xtext-server-jdl';
-    let serverLauncher = context.asAbsolutePath(path.join('xtext-server-jdl', 'bin', executable));
+    let executable = process.platform == 'win32' ? 'jdl-ls.bat' : 'jdl-ls';
+    let serverLauncher = context.asAbsolutePath(path.join('jdl-ls', 'bin', executable));
     
     let serverOptions: ServerOptions = {
         run:   { command: serverLauncher }, 
@@ -46,7 +46,7 @@ export function activate(context: ExtensionContext) {
         }
     }
 	
-    process.env['XTEXT_SERVER_JDL_OPTS'] = "-Dpnguml.gen=true -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=9999,suspend=n,quiet=y";
+    process.env['JDL_LS_OPTS'] = "-Dpnguml.gen=true -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=9999,suspend=n,quiet=y";
 
     let langClient = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions)
 	let disposable = langClient.start();

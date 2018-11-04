@@ -14,7 +14,7 @@
     "atom": ">=1.21.0"
   },
   "dependencies": {
-    "atom-languageclient": "0.9.5"
+    "atom-languageclient": "0.9.7"
   },
   "enhancedScopes": [
     "source.jdl"
@@ -34,7 +34,7 @@
   "providedServices": {
     "autocomplete.provider": {
       "versions": {
-        "2.0.0": "provideAutocomplete"
+        "4.0.0": "provideAutocomplete"
       }
     },
     "code-format.range": {

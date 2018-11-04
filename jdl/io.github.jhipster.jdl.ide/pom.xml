@@ -73,7 +73,7 @@
 						    <useWildcardClassPath>true</useWildcardClassPath>
 							<programs>
 								<program>
-									<id>xtext-server-jdl</id>
+									<id>jdl-ls</id>
 									<mainClass>org.eclipse.xtext.ide.server.ServerLauncher</mainClass>
 								</program>
 							</programs>

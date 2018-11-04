@@ -32,7 +32,7 @@ let plantuml: PlantUMLRenderer;
 const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
 export function activate(context: ExtensionContext) {
-	const libFolder = context.asAbsolutePath(path.join('./xtext-server-jdl/lib/*'))
+	const libFolder = context.asAbsolutePath(path.join('./jdl-ls/lib/*'))
 	let vmargs = "-Dpnguml.gen=true";
 
 	let serverOptions: Executable = {

@@ -20,7 +20,7 @@ eclipseClasspath.enabled=false
 cleanEclipseClasspath.enabled=false
 
 mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
-applicationName = 'xtext-server-jdl'
+applicationName = 'jdl-ls'
 
 shadowJar {
 	from(project.convention.getPlugin(JavaPluginConvention).sourceSets.main.output)
