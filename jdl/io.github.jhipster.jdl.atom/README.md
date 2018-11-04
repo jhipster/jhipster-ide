@@ -1,6 +1,6 @@
 # JHipster IDE
 
-This plugin provides rich support for JHipster Domain Language (JDL) files for popular IDEs and editors such as Eclipse and Visual Studio Code.
+This plugin provides rich support for JHipster Domain Language (JDL) files for popular IDEs and editors such as Eclipse, Visual Studio Code and Atom.
 
 ## Features
 

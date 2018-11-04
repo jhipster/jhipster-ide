@@ -14,7 +14,12 @@
     "atom": ">=1.21.0"
   },
   "dependencies": {
-    "atom-languageclient": "0.9.7"
+    "atom-languageclient": "0.9.7",
+    "atom-package-dependencies": "latest"
+  },
+  "package-dependencies": {
+    "autocomplete-plus": "latest",
+    "atom-ide-ui": "latest"
   },
   "enhancedScopes": [
     "source.jdl"
