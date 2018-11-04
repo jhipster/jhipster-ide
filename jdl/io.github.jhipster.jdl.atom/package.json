@@ -3,7 +3,7 @@
   "main": "./src/jdl",
   "version": "1.6.0",
   "description": "JHipster IDE",
-  "repository": "http://www.jhipster.tech/jhipster-ide/",
+  "repository": "https://github.com/jhipster/jhipster-ide/tree/master/jdl/io.github.jhipster.jdl.atom",
   "license": "Apache-2.0",
   "keywords": [
     "jdl",
