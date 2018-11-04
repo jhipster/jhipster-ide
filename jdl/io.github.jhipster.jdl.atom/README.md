@@ -11,6 +11,10 @@ This plugin provides rich support for JHipster Domain Language (JDL) files for p
 	- Hover Information
 	- and more
 
+## Dependent Extensions
+ - [autocomplete-plus >= 2.41.0](https://atom.io/packages/autocomplete-plus)
+ - [atom-ide-ui >= 0.13.0](https://atom.io/packages/atom-ide-ui) 
+
 ## About Snippets
 
 This plugin integrates also snippets. 
