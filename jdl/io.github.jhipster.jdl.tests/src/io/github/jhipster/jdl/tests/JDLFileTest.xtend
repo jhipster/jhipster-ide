@@ -135,6 +135,7 @@ class JDLFileTest {
 		jdlReferencedFiles.forEach[
 			resourceSet.getResource(URI.createURI(absoluteFile.toURI.toString), true)
 		]
+		println('''Load and validate «jdlFile»''')
 		val resource = resourceSet.getResource(URI.createURI(jdlFile.toURI.toString), true)
 		// validate the resource
 		val issues = validator.validate(resource, CheckMode.ALL, CancelIndicator.NullImpl)
