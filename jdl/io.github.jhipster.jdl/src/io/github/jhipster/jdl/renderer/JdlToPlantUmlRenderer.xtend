@@ -46,6 +46,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 
 import static io.github.jhipster.jdl.util.PlantUmlUtil.*
+import io.github.jhipster.jdl.jdl.JdlApplication
+import io.github.jhipster.jdl.jdl.JdlDeployment
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -150,11 +152,19 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	'''
 
 	def dispatch protected renderJdlObject(JdlConstant const) {
-		'' // opt.setting.renderJdlObject
+		'' // for the moment we do not want to render this type
+	}
+
+	def dispatch protected renderJdlObject(JdlApplication app) {
+		'' // for the moment we do not want to render this type
+	}
+
+	def dispatch protected renderJdlObject(JdlDeployment depl) {
+		'' // for the moment we do not want to render this type
 	}
 
 	def dispatch protected renderJdlObject(JdlOption opt) {
-		'' // opt.setting.renderJdlObject
+		'' // for the moment we do not want to render this type
 	}
 
 	def private getOptionType(JdlOptionSetting setting) {

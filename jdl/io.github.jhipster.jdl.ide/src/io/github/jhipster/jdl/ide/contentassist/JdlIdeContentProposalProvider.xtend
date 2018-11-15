@@ -18,12 +18,14 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
-import java.util.List
 import com.google.inject.Inject
 import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterValue
+import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
+import io.github.jhipster.jdl.jdl.JdlParameterValue
+import io.github.jhipster.jdl.jdl.JdlParameterVersion
+import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.EcoreUtil2
@@ -35,10 +37,8 @@ import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 
 import static io.github.jhipster.jdl.config.JdlLanguages.*
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterVersion
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -74,11 +74,11 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 		}
 		switch (model) {
 			JdlApplicationParameter: createParameterProposal(model, assignment, context, acceptor)
-			JdlApplicationParameterValue: {
+			JdlParameterValue: {
 				val param = EcoreUtil2.getContainerOfType(model, JdlApplicationParameter)
 				createParameterProposal(param, assignment, context, acceptor)
 			}
-			JdlApplicationParameterVersion: return
+			JdlParameterVersion: return
 			default: super.createProposals(assignment, context, acceptor)
 		}
 	}
@@ -159,7 +159,7 @@ class JdlIdeContentProposalProvider extends IdeContentProposalProvider {
 		return it !== null && it.paramValue.isDefined
 	}
 	
-	def private boolean isDefined(JdlApplicationParameterValue it) {
+	def private boolean isDefined(JdlParameterValue it) {
 		return if (it !== null) it.version !== null 
 			   || !it.identifiers.isNullOrEmpty || !it.listElements.isNullOrEmpty 
 			   || it.numberValue != 0 || !it.stringValue.isNullOrEmpty else false
