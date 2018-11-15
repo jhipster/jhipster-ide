@@ -18,24 +18,16 @@
  */
 package io.github.jhipster.jdl.config
 
-import java.util.List
-import java.util.Map
-import org.eclipse.xtend.lib.annotations.Accessors
-import org.eclipse.xtext.util.Triple
-import org.eclipse.xtext.util.Tuples
 import com.google.inject.Singleton
+import org.eclipse.xtend.lib.annotations.Accessors
 
-import static io.github.jhipster.jdl.config.JdlApplicationParameterType.*
+import static io.github.jhipster.jdl.config.JdlParameterType.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */ 
 @Singleton
-class JdlApplicationOptions {
-	
-	val Map<String, JdlApplicationOption> options = newHashMap
-	
-	private new() {} // this is a singleton!
+class JdlApplicationOptions extends JdlAbstractOptions {
 	
 	public static val JH_VERSION = 'jhipsterVersion'
 	public static val SERVER_PORT = 'serverPort'
@@ -44,102 +36,35 @@ class JdlApplicationOptions {
 		val noSqlDbTypes = #['mongodb', 'cassandra', 'couchbase']
 		val prodDbTypes = #['mysql', 'mariadb', 'mssql', 'postgresql', 'oracle', 'no'] + noSqlDbTypes
 		addAll(#[
-			new JdlApplicationOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
-			new JdlApplicationOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
-			new JdlApplicationOption('baseName', #['yourBaseName'], AnyLiteral),
-			new JdlApplicationOption('buildTool', #['maven', 'gradle']),
-			new JdlApplicationOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
-			new JdlApplicationOption('clientFramework', #['angularX', 'react']),
-			new JdlApplicationOption('clientPackageManager', #['yarn', 'npm']),
-			new JdlApplicationOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
-			new JdlApplicationOption('prodDatabaseType', prodDbTypes),
-			new JdlApplicationOption('devDatabaseType', #['h2Disk', 'h2Memory', '*'] + prodDbTypes),
-			new JdlApplicationOption('enableHibernateCache', #['true'], Boolean),
-			new JdlApplicationOption('enableSwaggerCodegen', #['false'], Boolean),
-			new JdlApplicationOption('enableTranslation', #['true'], Boolean),
-			new JdlApplicationOption('jhiPrefix', #['jhi'], JavaIdentifierLiteral),
-			new JdlApplicationOption('jhipsterVersion', Version),
-			new JdlApplicationOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
-			new JdlApplicationOption('messageBroker', #['kafka', 'false']),
-			new JdlApplicationOption('nativeLanguage', #['en'], LangIsoCode),
-			new JdlApplicationOption('packageName', Namespace),
-			new JdlApplicationOption('searchEngine', #['elasticsearch', 'false']),
-			new JdlApplicationOption('serverPort', #['8080', '8081', '9999'], Number),
-			new JdlApplicationOption('serviceDiscoveryType', #['eureka', 'consul', 'no', 'false']),
-			new JdlApplicationOption('skipClient', Boolean),
-			new JdlApplicationOption('skipServer', Boolean),
-			new JdlApplicationOption('skipUserManagement', Boolean),
-			new JdlApplicationOption('testFrameworks', #['protractor', 'cucumber', 'gatling'], ListOfLiterals),
-			new JdlApplicationOption('uaaBaseName',  #['"uaa"']),
-			new JdlApplicationOption('useSass', Boolean),
-			new JdlApplicationOption('websocket', #['spring-websocket', 'false'])
+			new JdlOption('applicationType', #['monolith', 'microservice', 'gateway', 'uaa']),
+			new JdlOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
+			new JdlOption('baseName', #['yourBaseName'], AnyLiteral),
+			new JdlOption('buildTool', #['maven', 'gradle']),
+			new JdlOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
+			new JdlOption('clientFramework', #['angularX', 'react']),
+			new JdlOption('clientPackageManager', #['yarn', 'npm']),
+			new JdlOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
+			new JdlOption('prodDatabaseType', prodDbTypes),
+			new JdlOption('devDatabaseType', #['h2Disk', 'h2Memory', '*'] + prodDbTypes),
+			new JdlOption('enableHibernateCache', #['true'], Boolean),
+			new JdlOption('enableSwaggerCodegen', #['false'], Boolean),
+			new JdlOption('enableTranslation', #['true'], Boolean),
+			new JdlOption('jhiPrefix', #['jhi'], JavaIdentifierLiteral),
+			new JdlOption('jhipsterVersion', Version),
+			new JdlOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
+			new JdlOption('messageBroker', #['kafka', 'false']),
+			new JdlOption('nativeLanguage', #['en'], LangIsoCode),
+			new JdlOption('packageName', Namespace),
+			new JdlOption('searchEngine', #['elasticsearch', 'false']),
+			new JdlOption('serverPort', #['8080', '8081', '9999'], Number),
+			new JdlOption('serviceDiscoveryType', #['eureka', 'consul', 'no', 'false']),
+			new JdlOption('skipClient', Boolean),
+			new JdlOption('skipServer', Boolean),
+			new JdlOption('skipUserManagement', Boolean),
+			new JdlOption('testFrameworks', #['protractor', 'cucumber', 'gatling'], ListOfLiterals),
+			new JdlOption('uaaBaseName',  #['"uaa"']),
+			new JdlOption('useSass', Boolean),
+			new JdlOption('websocket', #['spring-websocket', 'false'])
 		])
 	]
-
-	def void add(JdlApplicationOption option) {
-		options.put(option.name, option)
-	}
-
-	def void addAll(JdlApplicationOption[] options) {
-		options.forEach[add(it)]
-	}
-	
-	def List<String> getNames() {
-		return if (options.isEmpty) #[] else options.keySet.toList
-	}
-
-	def List<String> getParameters(String name) {
-		return if (!options.containsKey(name)) #[] else options.get(name).parameters
-	}
-
-	def JdlApplicationParameterType getParameterType(String name) {
-		return if (!options.containsKey(name)) Undefined else options.get(name).parameterType
-	}
-}
-
-enum JdlApplicationParameterType {
-	Undefined,
-	JavaIdentifierLiteral,
-	AnyLiteral,
-	NumDigitLiteral,
-	Literal,
-	ListOfLiterals,
-	ListOfLangIsoCodes,
-	LangIsoCode,
-	Namespace,
-	Boolean,
-	Version,
-	Number
-}
-
-class JdlApplicationOption {
-	@Accessors(PUBLIC_GETTER) Triple<String, String[], JdlApplicationParameterType> config
-
-	def String getName() {
-		return config.first
-	}
-
-	def JdlApplicationParameterType getParameterType() {
-		return config.third
-	}
-
-	def List<String> getParameters() {
-		return config.second
-	}
-
-	new(String name) {
-		this(name, #[], Literal)
-	}
-
-	new(String name, String[] properties) {
-		this(name, properties, Literal)
-	}
-	
-	new(String name, JdlApplicationParameterType type) {
-		this(name,  #[], type)
-	}
-	
-	new(String name, String[] properties, JdlApplicationParameterType type) {
-		this.config = Tuples.create(name, properties, type)
-	}
 }
