@@ -48,10 +48,10 @@ class ContentAssistTest extends AbstractContentAssistTest {
 		'''
 			application {
 			  config {
-			    testFrameworks [«cursor»
+			    testFrameworks [«cursor»]
 			  }
 			}
-		'''.testContentAssistant(#[',', '[protractor, cucumber, gatling]',  ']'])
+		'''.testContentAssistant(#['protractor, cucumber, gatling'])
 	}
 
 	@Test def void testEntityTemplateProposal() {
@@ -67,12 +67,13 @@ class ContentAssistTest extends AbstractContentAssistTest {
 	}
 
 	@Test def void testApplicationTemplateProposal() {
-		newBuilder.applyProposal("Application - template for a Application configuration").expectContent('''
+		newBuilder.applyProposal("Application - template for a application configuration").expectContent('''
 		/** 
 		 * Application configuration section
 		 */
 		application {
 			config {
+				
 			}
 		}''')
 	}

@@ -18,8 +18,8 @@
  */
  
 /**
- * @author Jose Badeau - Initial contribution and API
- * @author Serano Colameo - Initial contribution and API
+ * @author Jose Badeau - Initial contribution
+ * @author Serano Colameo - Initial contribution and enhancements
  */
  
 grammar io.github.jhipster.jdl.JDL hidden(WS, ML_COMMENT, SL_COMMENT)
@@ -33,11 +33,16 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
  * ========================================================================= */
 
 JdlDomainModel:
-	applications+=JdlApplication*
 	features+=JdlFeature*;
 
 JdlFeature:
-	JdlConstant | JdlEntity | JdlEnum | JdlRelationships | JdlOption;
+	  JdlApplication 
+	| JdlDeployment 
+	| JdlConstant 
+	| JdlEntity 
+	| JdlEnum 
+	| JdlRelationships 
+	| JdlOption;
 
 /* =========================================================================
  * APPLICTION
@@ -59,7 +64,7 @@ JdlApplicationEntitiesSelection:
 	'entities' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 			
 JdlApplicationParameter:
-	paramName=JdlApplicationParameterName paramValue=JdlApplicationParameterValue;
+	paramName=JdlApplicationParameterName paramValue=JdlParameterValue;
 
 enum JdlApplicationParameterName:
 	applicationType | authenticationType | baseName |
@@ -72,20 +77,25 @@ enum JdlApplicationParameterName:
 	skipClient | skipServer | skipUserManagement |
     testFrameworks | uaaBaseName | useSass | websocket;
 
-JdlApplicationParameterValue:
-	{JdlApplicationParameterValue} 
-	('[' listElements+=JdlApplicationParameterLiteral? (',' listElements+=JdlApplicationParameterLiteral)* ']')
-	| (identifiers+=JdlApplicationParameterLiteral ('.' identifiers+=JdlApplicationParameterLiteral)*)
-	| stringValue=STRING | numberValue=INT | version=JdlApplicationParameterVersion;
+/* =========================================================================
+ * DEPLOYMENT
+ * ========================================================================= */ 
 
-JdlApplicationParameterLiteral:
-	ID | NUMERIC_PREFIXED_ID | JdlReserverdWords;
+JdlDeployment: 
+	{JdlDeployment} 'deployment' '{'
+		(paramters+=JdlDeploymentParameter ','?)*
+	'}';
 
-JdlApplicationParameterVersion:
-	versionTag=VERSION_TAG; 
+JdlDeploymentParameter:
+	paramName=JdlDeploymentParameterName paramValue=JdlParameterValue;
 
-JdlReserverdWords:
-	'microservice' | 'elasticsearch' | 'skipClient' | 'skipServer';
+enum JdlDeploymentParameterName:
+	deploymentType | directoryPath |  appsFolders |
+	clusteredDbApps | gatewayType | monitoring | consoleOptions |
+    serviceDiscoveryType | dockerRepositoryName | dockerPushCommand |
+    kubernetesNamespace | kubernetesServiceType | ingressDomain |
+	istio | istioRoute | enableRancherLoadBalancing |
+	openshiftNamespace | storageType;
 
 /* =========================================================================
  * CONSTANT
@@ -416,6 +426,25 @@ JdlFilterOption returns JdlOptionSetting:
 
 JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
+
+/* =========================================================================
+ * PARAMETER VALUE
+ * ========================================================================= */ 
+
+JdlParameterValue:
+	{JdlParameterValue} 
+	('[' listElements+=JdlParameterLiteral? (',' listElements+=JdlParameterLiteral)* ']')
+	| (identifiers+=JdlParameterLiteral ('.' identifiers+=JdlParameterLiteral)*)
+	| stringValue=STRING | numberValue=INT | version=JdlParameterVersion;
+
+JdlParameterLiteral:
+	ID | NUMERIC_PREFIXED_ID | JdlReserverdWords;
+
+JdlParameterVersion:
+	versionTag=VERSION_TAG; 
+
+JdlReserverdWords:
+	'microservice' | 'elasticsearch' | 'skipClient' | 'skipServer';
 
 /* =========================================================================
  * TERMINAL DEFINITIONS

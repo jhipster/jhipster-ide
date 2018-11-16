@@ -147,6 +147,12 @@ class JDLFileTest {
 		]
 		// configure and start the generator
 		fileAccess.setOutputPath("src-gen/");
-		generator.doGenerate(resource, fileAccess, null);
+		try {
+			generator.doGenerate(resource, fileAccess, null);
+		} catch (Exception ex) {
+			println('''Error in «jdlFile»''')
+			ex.printStackTrace
+			throw ex
+		}
 	}
 }
