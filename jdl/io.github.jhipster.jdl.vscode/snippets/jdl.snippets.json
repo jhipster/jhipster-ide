@@ -8,7 +8,20 @@
             " */",
             "application {",
             "\tconfig {",
+            "\t\t$1",
 	        "\t}",
+            "}"
+        ]
+    },
+    "Create an deployment configuration": {
+        "prefix": "add deployment",
+        "body": [
+            "/**",
+            " * The deployment configuration.",
+            " * @author ${author:A true hipster}",
+            " */",
+            "deployment {",
+            "\t$1",
             "}"
         ]
     },
@@ -29,8 +42,8 @@
         "prefix": "add field",
         "body": [
             "/** ${1:fieldName} */",
-            "${1:fieldName} ${2|String, Integer, Long, BigDecimal, Float, Double, Boolean, Date, LocalDate, ZonedDateTime, Instant, Blob, AnyBlob, ImageBlob, TextBlob |}",
-        ]
+            "${1:fieldName} ${2|String, Integer, Long, BigDecimal, Float, Double, Boolean, Date, LocalDate, ZonedDateTime, Instant, Blob, AnyBlob, ImageBlob, TextBlob |}"
+       	]
     },
     "Create an one-to-one relationship": {
         "prefix": "add relationship one-to-one",
