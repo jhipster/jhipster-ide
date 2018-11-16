@@ -52,6 +52,7 @@ class JdlDeploymentOptions extends JdlAbstractOptions {
 			new JdlOption('istio', #['no', 'manualInjection', 'autoInjection']),
 			new JdlOption('istioRoute', Boolean),
 			new JdlOption('openshiftNamespace', Boolean),
+			new JdlOption('enableRancherLoadBalancing', Boolean),
 			new JdlOption('storageType', #['ephemeral', 'persistent'])
 		])
 	]

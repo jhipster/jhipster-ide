@@ -40,6 +40,19 @@
                 </dict>
             </array>
         </dict>
+        <!-- deployment -->
+        <dict>
+            <key>include</key>
+            <string>source.java#comments</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(deployment)\b</string>
+            <key>end</key>
+            <string>}</string>
+            <key>name</key>
+            <string>storage.modifier.java</string>
+        </dict>
         <!-- enums -->
         <dict>
             <key>begin</key>
