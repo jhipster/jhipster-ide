@@ -19,12 +19,15 @@
 package io.github.jhipster.jdl.validation
 
 import io.github.jhipster.jdl.config.JdlApplicationOptions
+import io.github.jhipster.jdl.config.JdlDeploymentOptions
+import io.github.jhipster.jdl.config.JdlParameterType
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
-import org.eclipse.xtext.EcoreUtil2
+import java.util.List
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
@@ -33,13 +36,15 @@ import static io.github.jhipster.jdl.config.JdlApplicationOptions.*
 import static io.github.jhipster.jdl.config.JdlLanguages.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
 class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 
-	val JdlApplicationOptions options = JdlApplicationOptions.INSTANCE
+	val JdlApplicationOptions applOptions = JdlApplicationOptions.INSTANCE
+	val JdlDeploymentOptions deplOptions = JdlDeploymentOptions.INSTANCE
 
 	override register(EValidatorRegistrar registrar) {}
 
@@ -80,11 +85,11 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 //	}
 
 	@Check
-	def void checkApplicationParameter(JdlParameterValue paramValue) {
-		val param = EcoreUtil2.getContainerOfType(paramValue, JdlApplicationParameter)
-		val paramName = param?.paramName?.literal
+	def void checkParameterValue(JdlParameterValue paramValue) {
+		val paramName = (getContainerOfType(paramValue, JdlApplicationParameter)?.paramName ?:
+			getContainerOfType(paramValue, JdlDeploymentParameter)?.paramName).literal
 		if (paramName.isNullOrEmpty) return;
-		val paramType = options.getParameterType(paramName)
+		val paramType = getParameterType(paramName)
 		switch (paramType) {
 			case Boolean: if (!paramValue.identifiers.isNullOrEmpty) {
 				val value = paramValue.identifiers.head
@@ -106,21 +111,25 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 				]				
 			}
 			case ListOfLiterals: if (!paramValue.listElements.isNullOrEmpty) {
-				val expected = options.getParameters(paramName)
+				val expected = getParameters(paramName)
 				paramValue.listElements.forEach[ e, i |
 					if (!expected.contains(e)) {
 						val msg = String.format(INVALID_PARAM_NAME_MSG, e)
 						error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
 					}
 				]				
-			}
+			} 
 			case Literal: if (!paramValue.identifiers.isNullOrEmpty && paramValue.identifiers.size === 1) {
 				val value = paramValue.identifiers.head
-				val expected = options.getParameters(paramName)
+				val expected = getParameters(paramName)
 				if (!expected.contains(value)) {
 					val msg = String.format(INVALID_PARAM_NAME_MSG, value)
-					println('''<<<<<<<<«msg» «value»''')
 					error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
+			}
+			case String: {
+				if (!paramValue.identifiers.isNullOrEmpty || paramValue.stringValue.isNullOrEmpty) {
+					error(INVALID_STRING_PARAM_MSG, JDL_PARAMETER_VALUE__STRING_VALUE, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
 			case Namespace: if (!paramValue.identifiers.isNullOrEmpty) {
@@ -157,6 +166,16 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 				// nothing to do here
 			}
 		}
+	}
+	
+	def private JdlParameterType getParameterType(String paramName) {
+		val result = applOptions.getParameterType(paramName) 
+		return if (result == JdlParameterType.Undefined) deplOptions.getParameterType(paramName)
+	}
+
+	def private List<String> getParameters(String paramName) {
+		val applParams = applOptions.getParameters(paramName)
+		return if (applParams.isNullOrEmpty) deplOptions.getParameters(paramName)
 	}
 
 	def protected isValidJhipsterVersion(JdlParameterVersion version) {

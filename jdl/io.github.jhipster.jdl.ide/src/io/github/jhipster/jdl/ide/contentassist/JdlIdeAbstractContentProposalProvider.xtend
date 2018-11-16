@@ -98,6 +98,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 					]
 				}
 			}
+			case ListOfAnyLiterals : addProposal('''[]''', context, acceptor)
 			case LangIsoCode : if (!param.isDefined) 
 				JHipsterIsoLangauges.forEach[ String key, String value |
 					addProposal(key, value, context, acceptor)

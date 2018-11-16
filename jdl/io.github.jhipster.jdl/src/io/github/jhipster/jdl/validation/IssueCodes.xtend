@@ -57,4 +57,6 @@ interface IssueCodes {
 	String INVALID_PARAM_NOTUNIQUE_MSG = 'Parameter [%s] already defined!'
 	String DEPRECATED_PARAM_MSG = 'Deprecated, will be removed in the next major release!'
 	String INVALID_AUTH_TYPE_MSG = 'Invalid authentication type!'
+	String INVALID_STRING_PARAM_MSG = 'Invalid string value!'
+	String EMPTY_VALUE_MSG = 'Empty value not allowed'
 }

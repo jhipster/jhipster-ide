@@ -7,10 +7,12 @@ enum JdlParameterType {
 	NumDigitLiteral,
 	Literal,
 	ListOfLiterals,
+	ListOfAnyLiterals,
 	ListOfLangIsoCodes,
 	LangIsoCode,
 	Namespace,
 	Boolean,
 	Version,
+	String,
 	Number
 }
