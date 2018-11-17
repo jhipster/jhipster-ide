@@ -6,7 +6,7 @@
 
 	<groupId>io.github.jhipster-ide.xdocker</groupId>
 	<artifactId>xdocker</artifactId>
-	<version>1.6.0-SNAPSHOT</version>
+	<version>1.7.0-SNAPSHOT</version>
 	<name>Xdocker DSL Main POM</name>
 	<packaging>pom</packaging>
 	

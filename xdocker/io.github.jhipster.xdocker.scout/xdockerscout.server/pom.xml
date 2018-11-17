@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>io.github.jhipster-ide.xdocker.scout</groupId>
 		<artifactId>xdockerscout.parent</artifactId>
-		<version>1.6.0-SNAPSHOT</version>
+		<version>1.7.0-SNAPSHOT</version>
 		<relativePath>../xdockerscout.parent/pom.xml</relativePath>
 	</parent>
 

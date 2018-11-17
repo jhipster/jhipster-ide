@@ -16,6 +16,7 @@ This plugin provides rich support for JHipster Domain Language (JDL) files for p
 This plugin integrates also snippets. 
 
 - `add application`: snippet to add an application config section
+- `add deployment`: snippet to add a deployment section
 - `add entity`: snippet to add a new entity
 - `add field`: snippet to add a new entity field
 - `add relationship one-to-one`: snippet to add a new 1:1 relationship

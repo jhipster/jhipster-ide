@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/xdockerdsl.feature_1.4.0.qualifier.jar" id="xdockerdsl.feature" version="1.6.0.qualifier">
+   <feature url="features/xdockerdsl.feature_1.4.0.qualifier.jar" id="xdockerdsl.feature" version="1.7.0.qualifier">
       <category name="main"/>
    </feature>
    <category-def name="main" label="Xdocker"/>
