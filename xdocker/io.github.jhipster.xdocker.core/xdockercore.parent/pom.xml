@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.jhipster-ide.xdocker.core</groupId>
-	<version>1.6.0-SNAPSHOT</version>
+	<version>1.7.0-SNAPSHOT</version>
 	<artifactId>xdockercore.parent</artifactId>
 	<name>Xdocker Core Parent</name>
 	<packaging>pom</packaging>

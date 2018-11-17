@@ -6,7 +6,7 @@
 
 	<groupId>io.github.jhipster-ide</groupId>
 	<artifactId>jhipster-ide</artifactId>
-	<version>1.6.0-SNAPSHOT</version>
+	<version>1.7.0-SNAPSHOT</version>
 
 	<name>JHipster IDE Main POM</name>
 	<packaging>pom</packaging>

@@ -4,7 +4,7 @@
 
   <groupId>io.github.jhipster-ide.xdocker.scout</groupId>
   <artifactId>xdockerscout</artifactId>
-  <version>1.6.0-SNAPSHOT</version>
+  <version>1.7.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Xdocker Scout Application ROOT Module</name>
