@@ -22,3 +22,7 @@ JHipster IDE is available in the [Eclipse Marketplace](https://marketplace.eclip
 ## Visual Studio Code installation
 
 ![Visual Studio Code](/docs/jhipster_ide_vscode.gif) 
+
+## Atom installation
+
+![Atom](/docs/jhipster_ide_atom.gif) 

@@ -27,7 +27,7 @@ subprojects {
 	apply plugin: 'idea'
 	
 	group = 'io.github.jhipster.jdl'
-	version = '1.6.0-SNAPSHOT'
+	version = '1.7.0'
 	
 	sourceCompatibility = '1.8'
 	targetCompatibility = '1.8'
