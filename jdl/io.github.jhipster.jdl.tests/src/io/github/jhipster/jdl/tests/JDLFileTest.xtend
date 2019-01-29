@@ -95,8 +95,7 @@ class JDLFileTest {
 		unexpectedIssues = newArrayList
 		// put here all JDL definitions which are referenced by other JDLs
 		jdlReferencedFiles = #[
-// none at the moment
-//			new File('./resources/test_files/foobar.jdl')
+			new File('./resources/test_files/jdl2.jdl')
 		]
 	}
 
