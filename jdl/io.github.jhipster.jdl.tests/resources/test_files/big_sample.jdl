@@ -81,7 +81,7 @@ relationship OneToMany {
   Employee{department},
   Employee{job} to Job{employee},
   Location{country} to Country,
-  Country{region} to Region
+  Country{region} to Region with jpaDerivedIdentifier
 }
 
 relationship ManyToOne {

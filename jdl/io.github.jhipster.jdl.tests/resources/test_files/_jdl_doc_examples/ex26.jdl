@@ -3,3 +3,8 @@ entity Passport
 relationship OneToOne {
   Citizen to Passport
 }
+
+// using @MapsId
+relationship OneToOne {
+  Citizen to Passport with jpaDerivedIdentifier   
+}
