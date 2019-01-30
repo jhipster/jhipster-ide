@@ -75,7 +75,8 @@ enum JdlApplicationParameterName:
 	nativeLanguage | packageName | prodDatabaseType |
 	searchEngine | serverPort | serviceDiscoveryType |
 	skipClient | skipServer | skipUserManagement |
-    testFrameworks | uaaBaseName | useSass | websocket;
+    testFrameworks | uaaBaseName | useSass | websocket |
+    entitySuffix | dtoSuffix;
 
 /* =========================================================================
  * DEPLOYMENT
@@ -229,13 +230,16 @@ JdlRelationships:
 	'}';
 
 JdlRelationship:
-	source=JdlRelation 'to' target=JdlRelation;
+	source=JdlRelation 'to' target=JdlRelation ('with' option=JdlRelationOption)?;
 
 JdlRelation:
 	entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
 	'{' name=ID ((required?=JdlRequiredValidator)? & ('(' role=ID ')')?) '}';
+
+enum JdlRelationOption:
+    jpaDerivedIdentifier;
 
 enum JdlCardinality:
 	OneToMany | ManyToOne | OneToOne | ManyToMany;
