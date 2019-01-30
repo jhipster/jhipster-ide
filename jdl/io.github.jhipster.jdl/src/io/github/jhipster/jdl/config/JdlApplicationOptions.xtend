@@ -49,6 +49,8 @@ class JdlApplicationOptions extends JdlAbstractOptions {
 			new JdlOption('enableHibernateCache', #['true'], Boolean),
 			new JdlOption('enableSwaggerCodegen', #['false'], Boolean),
 			new JdlOption('enableTranslation', #['true'], Boolean),
+            new JdlOption('entitySuffix', #['Entity'], JavaIdentifierLiteral),
+            new JdlOption('dtoSuffix', #['DTO'], JavaIdentifierLiteral),
 			new JdlOption('jhiPrefix', #['jhi'], JavaIdentifierLiteral),
 			new JdlOption('jhipsterVersion', Version),
 			new JdlOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
