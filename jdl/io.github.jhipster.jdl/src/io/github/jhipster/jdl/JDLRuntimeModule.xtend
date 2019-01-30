@@ -25,18 +25,17 @@ package io.github.jhipster.jdl
 import com.google.inject.Provides
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.generator.JDLGenerator
+import io.github.jhipster.jdl.generator.JDLOutputConfigurationProvider
 import io.github.jhipster.jdl.plantuml.PlantUmlGenerator
 import io.github.jhipster.jdl.renderer.IJdlToPlantUmlRenderer
 import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
 import io.github.jhipster.jdl.resource.JdlDerivedStateComputer
-import io.github.jhipster.jdl.scoping.JdlGlobalScopeProvider
 import java.util.Set
+import org.eclipse.xtext.generator.IOutputConfigurationProvider
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
 import org.eclipse.xtext.resource.IDerivedStateComputer
 import org.eclipse.xtext.resource.IResourceDescription
-import org.eclipse.xtext.generator.IOutputConfigurationProvider
-import io.github.jhipster.jdl.generator.JDLOutputConfigurationProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -70,10 +69,6 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	@Provides
 	def Set<IJdlGenerator> jdlGenerators() {
 		#{new PlantUmlGenerator}
-	}
-	
-	override bindIGlobalScopeProvider() {
-		JdlGlobalScopeProvider
 	}
 	
 	def Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {

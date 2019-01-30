@@ -1,0 +1,12 @@
+application {
+  config {
+  }
+}  
+
+entity A {
+	fieldNameA MyEnum
+} 
+
+entity B {
+	fieldNameB String
+}
