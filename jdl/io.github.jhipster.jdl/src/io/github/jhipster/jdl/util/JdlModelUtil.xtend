@@ -19,8 +19,13 @@
 package io.github.jhipster.jdl.util
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlRelation
+import io.github.jhipster.jdl.jdl.JdlRelationRole
+import io.github.jhipster.jdl.jdl.JdlRelationship
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
+
+import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -33,5 +38,13 @@ class JdlModelUtil {
 		if (source === null) return '' // prevent NPE
 		val documentation = documentationProvider.getDocumentation(source)
 		return documentation;
+	}
+	
+	def static JdlRelation getOpposite(JdlRelationRole relationRole) {
+        if (relationRole === null) return null
+        val relation = relationRole.eContainer as JdlRelation
+        val relship = getContainerOfType(relationRole.eContainer, JdlRelationship)
+        val opposite = if (relship.source === relation) relship.target else relship.source
+        return opposite
 	}
 }

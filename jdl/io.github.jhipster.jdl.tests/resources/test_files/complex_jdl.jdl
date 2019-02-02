@@ -1,11 +1,11 @@
 entity Department {
   name String required,
   description TextBlob,
-  advertisement Blob,
+  advertisement Blob, 
   logo ImageBlob
 }
 
-/**
+/** 
  * JobHistory comment.
  */
 entity JobHistory {
@@ -13,13 +13,13 @@ entity JobHistory {
   endDate ZonedDateTime,
   language Language
 }
-
+   
 enum Language {
   FRENCH, ENGLISH, SPANISH
 }
 
 enum JobType {
-  TYPE1, TYPE2
+  TYPE1, TYPE2 
 }
 
 entity Job {
@@ -55,7 +55,7 @@ entity Location {
 
 entity Task {
   title String,
-  description String
+  description String 
 }
 
 entity Country {
@@ -68,7 +68,7 @@ entity Region {
 
 relationship OneToOne {
   JobHistory{department} to Department
-}
+} 
 
 relationship OneToOne {
   JobHistory{job} to Job
@@ -79,29 +79,29 @@ relationship OneToOne {
 }
 
 relationship ManyToMany {
-  Job{chore(title)} to Task{job}
+  Job{chore(title)} to Task{job(jobTitle)}      
 }
 
-relationship ManyToOne {
-  Employee{user(login)} to User{employee}
-}
-
-relationship OneToOne {
-  Department{location} to Location
-}
-
+//relationship ManyToOne { 
+//  Employee{user(lastName)} to User{employee} 
+//}
+//
+//relationship OneToOne { 
+//  Department{location(streetAddress)} to Location{dep(logo)}
+//}
+ 
 relationship OneToMany {
   /**
    * A relationship
    */
-  Department{employee} to
-  /**
+  Department{employee} to  
+  /** 
    * Another side of the same relationship
    */
   Employee{department}
 }
 
-relationship ManyToOne {
+relationship ManyToOne { 
   Employee{manager} to Employee
 }
 
@@ -110,7 +110,7 @@ relationship OneToMany {
 }
 
 relationship OneToOne {
-  Location{country} to Country
+  Location{country} to Country 
 }
 
 relationship OneToOne {

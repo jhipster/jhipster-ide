@@ -217,7 +217,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	def protected relationRole(JdlRelationRole it, String card) {
 		if (it === null) return ''' "0..«card» " '''
 		val cardValue = ''' «IF required && card.equals('*')» 1«ELSE»0«ENDIF»..«card» '''
-		if (!name.isNullOrEmpty) ''' "«name»«IF !role.isNullOrEmpty»(«role»)«ENDIF»«cardValue»" '''
+		if (displayField !== null && !name.isNullOrEmpty) ''' "«name»«IF !displayField.name.isNullOrEmpty»(«displayField.name»)«ENDIF»«cardValue»" '''
 	}
 	
 	// *** Note ***
