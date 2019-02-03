@@ -22,13 +22,18 @@ import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.config.JdlDeploymentOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
+import io.github.jhipster.jdl.jdl.JdlDisplayField
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
+import io.github.jhipster.jdl.jdl.JdlRelationRole
 import org.eclipse.xtext.AbstractElement
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
+
+import static org.eclipse.xtext.EcoreUtil2.*
+
+import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -60,13 +65,19 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 			JdlApplicationParameter: createParameterProposal(applOptions, model, assignment, context, acceptor)
 			JdlDeploymentParameter: createParameterProposal(deplOptions, model, assignment, context, acceptor)
 			JdlParameterValue case model.eContainer instanceof JdlApplicationParameter: {
-				val param = EcoreUtil2.getContainerOfType(model, JdlApplicationParameter)
+				val param = getContainerOfType(model, JdlApplicationParameter)
 				createParameterProposal(applOptions, param, assignment, context, acceptor)
 			}
 			JdlParameterValue case model.eContainer instanceof JdlDeploymentParameter: {
-				val param = EcoreUtil2.getContainerOfType(model, JdlDeploymentParameter)
+				val param = getContainerOfType(model, JdlDeploymentParameter)
 				createParameterProposal(deplOptions, param, assignment, context, acceptor)
 			}
+            JdlDisplayField: {
+                val relationRole = getContainerOfType(model, JdlRelationRole)
+                val opposite = relationRole.opposite
+                val entity = opposite.entity
+                entity.fields.forEach[ addProposal(name, context, acceptor) ]
+            }
 			JdlParameterVersion: return
 			default: super.createProposals(assignment, context, acceptor)
 		}

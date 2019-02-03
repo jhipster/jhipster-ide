@@ -114,11 +114,11 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		}
 	}
 
-	def private void addProposal(String proposal, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def protected void addProposal(String proposal, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		addProposal(proposal, null, context, acceptor)
 	}
 	
-	def private void addProposal(String proposal, String description, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def protected void addProposal(String proposal, String description, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		val entry = proposalCreator.createProposal(proposal, context)
 		if (entry !== null) entry.description = description
 		acceptor.accept(entry, proposalPriorities.getDefaultPriority(entry))

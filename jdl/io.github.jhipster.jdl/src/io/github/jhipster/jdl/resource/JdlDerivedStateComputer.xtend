@@ -23,6 +23,8 @@ import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.jdl.JdlFieldType
+import io.github.jhipster.jdl.jdl.JdlNumericTypes
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -37,15 +39,47 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
+        val fieldDecls = #[
+            'firstName' -> stringType,
+            'lastName' -> stringType,
+            'login' -> stringType,
+            'email' -> stringType,
+            'imageUrl' -> stringType, 
+            'authorities' -> stringType
+        ]
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
-			val user = factory.createJdlEntity => [
-				name = USER_ENTITY
+			val user = factory.createJdlEntity => [ entity |
+				entity.name = USER_ENTITY
+				fieldDecls.forEach[ entity.addField(it.key, it.value) ]
 			]
 			val model = resource.model
 			if (model !== null && model.eContents.filter(JdlEntity).exists[
 				name.equals(user.name)
 			] == false) model.features += user 
 		}
+	}
+
+    def boolType() {factory.createJdlBooleanFieldType => [
+        it.element = factory.createJdlBooleanType
+        it.element.element = 'Boolean'
+    ]}
+    
+    def stringType() {factory.createJdlStringFieldType => [
+        it.element = factory.createJdlStringType
+        it.element.element = 'String'
+    ]}
+    
+    def numType() {factory.createJdlNumericFieldType => [
+        it.element = JdlNumericTypes.INTEGER
+    ]}
+	
+	def private void addField(JdlEntity entiy, String name, JdlFieldType type) {
+	   entiy.fields.add(
+	     factory.createJdlEntityField => [
+	         it.name = name 
+	         it.type = type
+	     ]
+	   )
 	}
 
 	def private getModel(DerivedStateAwareResource resource) {

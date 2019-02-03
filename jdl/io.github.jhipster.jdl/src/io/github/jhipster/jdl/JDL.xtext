@@ -236,7 +236,10 @@ JdlRelation:
 	entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
-	'{' name=ID ((required?=JdlRequiredValidator)? & ('(' role=ID ')')?) '}';
+	'{' name=ID ((required?=JdlRequiredValidator)? & (displayField=JdlDisplayField)?) '}';
+
+JdlDisplayField:
+    '(' name=ID ')';
 
 enum JdlRelationOption:
     jpaDerivedIdentifier;

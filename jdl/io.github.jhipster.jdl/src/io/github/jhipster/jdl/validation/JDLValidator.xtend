@@ -29,7 +29,8 @@ import org.eclipse.xtext.validation.ComposedChecks
 	CaseSensitivityValidator,
 //	CardinalityValidator, ==> https://github.com/jhipster/jhipster-ide/issues/216
 	OptionSelectionValidator,
-	ApplicationConfigValidator
+	ApplicationConfigValidator,
+	RelationshipValidator
 ])
 class JDLValidator extends AbstractJDLValidator {
 	

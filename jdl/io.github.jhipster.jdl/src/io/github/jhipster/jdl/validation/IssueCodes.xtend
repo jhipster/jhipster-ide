@@ -59,4 +59,5 @@ interface IssueCodes {
 	String INVALID_AUTH_TYPE_MSG = 'Invalid authentication type!'
 	String INVALID_STRING_PARAM_MSG = 'Invalid string value!'
 	String EMPTY_VALUE_MSG = 'Empty value not allowed'
+    String INVALID_FIELD_SELECTION_MSG = 'Field [%s] does not exist in entity [%s]'
 }

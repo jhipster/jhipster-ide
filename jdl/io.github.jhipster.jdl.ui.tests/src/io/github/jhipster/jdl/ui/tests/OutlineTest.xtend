@@ -65,6 +65,12 @@ class OutlineTest extends AbstractOutlineTest {
 				  Address - Person
 				Option: DTO
 				User
+				  firstName
+				  lastName
+				  login
+				  email
+				  imageUrl
+				  authorities
 			'''
 		)
 	}
