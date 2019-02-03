@@ -83,8 +83,10 @@ class JDLFileTest {
 		 "simple.jdl" -> "Constraint 'required' on a relationship of type OneToMany will be ignored",
 		 "application_with_wrong_numprefixed_baseName.jdl" -> "Invalid base name!",
 		 "application_with_duplicate_params.jdl" -> "Parameter [enableTranslation] already defined!",
-		 "application_with_all_conf_params.jdl" -> "Deprecated, will be removed in the next major release!"
-	]
+		 "application_with_all_conf_params.jdl" -> "Deprecated, will be removed in the next major release!",
+		 "wrong_displayfield_in_target.jdl" -> "Field [jobTitle1] does not exist in entity [Job]",
+         "wrong_displayfield_in_source.jdl" -> "Field [title1] does not exist in entity [Task]"
+	   ]
 	
 	new(File jdlFile) {
 		this.jdlFile = jdlFile

@@ -54,6 +54,38 @@ class ContentAssistTest extends AbstractContentAssistTest {
 		'''.testContentAssistant(#['protractor, cucumber, gatling'])
 	}
 
+    @Test def void testDisplayFieldForSourceRole() {
+        '''
+            entity C {
+              nameC String
+            }
+            
+            entity F {
+              count Integer
+            }
+            
+            relationship ManyToMany {
+                C{name(«cursor»)} to F{aa(nameC)}
+            }
+        '''.testContentAssistant(#['(', 'count'])
+    }
+
+    @Test def void testDisplayFieldForTargetRole() {
+        '''
+            entity C {
+              nameC String
+            }
+            
+            entity F {
+              count Integer
+            }
+            
+            relationship ManyToMany {
+                C{name(count)} to F{aa(«cursor»)}
+            }
+        '''.testContentAssistant(#['(', 'nameC'])
+    }
+
 	@Test def void testEntityTemplateProposal() {
 		newBuilder.applyProposal("Entity - template for an Entity").expectContent('''
 
