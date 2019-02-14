@@ -8,7 +8,7 @@
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
 			extensions="jh,jdl"
-			icon="icons/JHipster.gif"
+			icon="icons/JHipsterProject.gif"
 			id="io.github.jhipster.jdl.JDL"
 			name="JDL Editor">
 		</editor>
@@ -441,11 +441,12 @@
          point="org.eclipse.ui.perspectives">
       <perspective
             class="io.github.jhipster.jdl.ui.view.JDLPerspective"
-            icon="icons/JHipster.gif"
+            icon="icons/JHipsterProject.gif"
             id="io.github.jhipster.jdl.ui.view.JDLPerspective"
             name="JHipster">
       </perspective>
    </extension>
+    <!-- 
 	<extension
 		point="org.eclipse.ui.newWizards">
 		<wizard
@@ -463,10 +464,53 @@
           name="JHipster">
       </category> 
 	</extension> 
+    -->
+
     <extension
-	     point="org.eclipse.core.runtime.preferences">
-	   <initializer
-	         class="io.github.jhipster.jdl.ui.preference.JDLPreferenceInitializer">
-	   </initializer>
-	</extension>
+         point="org.eclipse.core.runtime.preferences">
+       <initializer
+             class="io.github.jhipster.jdl.ui.preference.JDLPreferenceInitializer">
+       </initializer>
+    </extension>
+    
+    <extension
+        point="org.eclipse.ui.newWizards">
+        <wizard
+            category="org.eclipse.xtext.projectwiz"
+            class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardEnhanced"
+            id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardEnhanced"
+            name="JHipster Project"
+                project="true">
+        </wizard>
+    </extension>
+    <extension
+        point="org.eclipse.ui.newWizards">
+        <category id="io.github.jhipster.jdl.ui.category" name="JHipster">
+        </category>
+        <wizard
+            category="io.github.jhipster.jdl.ui.category"
+            class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.template.JDLTemplateNewProjectWizard"
+            id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardEnhanced"
+            name="JHipster Project"
+            icon="icons/JHipsterProject.gif"
+            project="true">
+        </wizard>
+    </extension>
+    <extension
+        point="org.eclipse.xtext.ui.projectTemplate">
+        <projectTemplateProvider
+            class="io.github.jhipster.jdl.ui.JDLExecutableExtensionFactory:io.github.jhipster.jdl.ui.wizard.JDLProjectTemplateProvider"
+            grammarName="io.github.jhipster.jdl.JDL">
+        </projectTemplateProvider>
+    </extension>
+    <extension
+        point="org.eclipse.ui.perspectiveExtensions">
+        <perspectiveExtension targetID="org.eclipse.ui.resourcePerspective">
+            <newWizardShortcut id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardEnhanced"/>
+        </perspectiveExtension>
+        <perspectiveExtension targetID="org.eclipse.jdt.ui.JavaPerspective">
+            <newWizardShortcut id="io.github.jhipster.jdl.ui.wizard.JDLNewProjectWizardEnhanced"/>
+        </perspectiveExtension>
+    </extension>
+	
 </plugin>

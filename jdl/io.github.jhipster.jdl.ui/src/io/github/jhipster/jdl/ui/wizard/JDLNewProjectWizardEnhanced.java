@@ -20,13 +20,14 @@ package io.github.jhipster.jdl.ui.wizard;
 
 import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo;
 import org.eclipse.xtext.ui.wizard.IProjectCreator;
+import org.eclipse.xtext.ui.wizard.XtextNewProjectWizard;
 
 import com.google.inject.Inject;
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-public class JDLNewProjectWizardEnhanced extends JDLNewProjectWizard {
+public class JDLNewProjectWizardEnhanced extends XtextNewProjectWizard {
 
 	private JDLWizardNewProjectCreationPage mainPage;
 
@@ -68,5 +69,4 @@ public class JDLNewProjectWizardEnhanced extends JDLNewProjectWizard {
 		}
 		return projectInfo;
 	}
-
 }

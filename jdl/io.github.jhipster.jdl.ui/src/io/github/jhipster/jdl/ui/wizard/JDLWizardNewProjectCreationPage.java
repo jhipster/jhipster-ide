@@ -26,5 +26,4 @@ public class JDLWizardNewProjectCreationPage extends AbstractJDLWizardNewProject
 	public JDLWizardNewProjectCreationPage(String pageName) {
 		super(pageName);
 	}
-
 }

@@ -25,11 +25,14 @@ Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.tm.terminal.view.ui;bundle-version="4.3.0",
  org.eclipse.ui.console;bundle-version="3.6.0",
  org.eclipse.core.variables;bundle-version="3.2.800",
- org.eclipse.m2e.core;bundle-version="1.8.3"
+ org.eclipse.m2e.core;bundle-version="1.8.3",
+ org.eclipse.pde.core,
+ org.eclipse.ui.forms
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ui.contentassist,
  io.github.jhipster.jdl.ui.quickfix,
- io.github.jhipster.jdl.ui.internal
+ io.github.jhipster.jdl.ui.internal,
+ io.github.jhipster.jdl.ui.wizard
 Bundle-Activator: io.github.jhipster.jdl.ui.JdlActivator
 Automatic-Module-Name: io.github.jhipster.jdl.ui

@@ -58,6 +58,10 @@ Workflow {
 				pluginProject = false
 			}
 
+            projectWizard = {
+                generate = true
+            }
+            
 			serializer = {
 				generateStub = false
 			}
