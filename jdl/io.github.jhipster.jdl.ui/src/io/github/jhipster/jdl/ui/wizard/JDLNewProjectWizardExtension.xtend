@@ -62,7 +62,8 @@ class JDLNewProjectWizardExtension {
 	def void openTerminal(String project, String location) {
 		if (exec.isNullOrEmpty) return;
 		prepare(project, location)
-		openTerminal(project, location, exec, args, done, envs)
+//		openTerminal(project, location, exec, args, done, envs)
+        openTerminal(project, location, exec, null, done, envs)
 	}
 
 	def done() {
