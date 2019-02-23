@@ -8,6 +8,7 @@ import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Status
 import org.eclipse.jdt.core.JavaCore
+import org.eclipse.m2e.core.internal.IMavenConstants
 import org.eclipse.xtext.ui.XtextProjectHelper
 import org.eclipse.xtext.ui.util.PluginProjectFactory
 import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo
@@ -16,6 +17,10 @@ import org.eclipse.xtext.ui.wizard.template.IProjectGenerator
 import org.eclipse.xtext.ui.wizard.template.StringTemplateVariable
 
 class ProjectWizardUtil {
+    
+//    public static String MAVEN_SOURCE_FOLDER = 'src/main/java'
+    public static String MAVEN_SOURCE_FOLDER = 'src'
+    public static String MAVEN_MODEL_FOLDER = MAVEN_SOURCE_FOLDER + '/model'
     
     static class GenerateProjectsDelegator extends AbstractProjectTemplate {
         def static void generateProjects(IProjectGenerator generator, PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path, String content) {
@@ -26,7 +31,7 @@ class ProjectWizardUtil {
         
         def void create(IProjectGenerator generator, PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path, String content) {
             generateProjects(generator, projectInfo, modeFilelName, path) => [
-                addFile('''src/«path»«File.separator»«modeFilelName»''', content) 
+                addFile('''«path»«File.separator»«modeFilelName»''', content) 
             ]
             generator.createFoldersAndSetResult(projectInfo, modeFilelName, path)
         }
@@ -39,16 +44,15 @@ class ProjectWizardUtil {
     def static void initialize(PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path) {
         projectName = projectInfo.projectName
         location = projectInfo.locationPath
-        projectNatures += #[JavaCore.NATURE_ID, 'org.eclipse.pde.PluginNature', XtextProjectHelper.NATURE_ID]
-        builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID]
-        folders += 'src'
+        projectNatures += #[JavaCore.NATURE_ID, 'org.eclipse.pde.PluginNature', XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
+        builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, IMavenConstants.BUILDER_ID]
+        folders += MAVEN_SOURCE_FOLDER
+        folders += MAVEN_MODEL_FOLDER
     }
     
     def static validatePath(String path) {
-        if (path.matches('[a-z][a-z0-9_]*(/[a-z][a-z0-9_]*)*'))
-            null
-        else
-            new Status(IStatus.ERROR, 'Wizard', "'" + path + "' is not a valid package name")
+        if (path.matches('[a-z][a-z0-9_]*(/[a-z][a-z0-9_]*)*')) null
+        else new Status(IStatus.ERROR, 'Wizard', "'" + path + "' is not a valid package name")
     }
 
     def static PluginProjectFactory generateProjects(IProjectGenerator generator, IExtendedProjectInfo projectInfo, String path, String modeFilelName) {

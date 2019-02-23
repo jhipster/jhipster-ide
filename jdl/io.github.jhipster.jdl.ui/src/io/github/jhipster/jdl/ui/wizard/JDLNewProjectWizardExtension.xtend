@@ -40,6 +40,7 @@ import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.IWorkbenchWindow
 import org.eclipse.swt.widgets.Display
 import java.util.concurrent.atomic.AtomicReference
+import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -59,11 +60,11 @@ class JDLNewProjectWizardExtension {
 		this.variablesPlugin = VariablesPlugin.^default
 	}
 
-	def void openTerminal(String project, String location) {
+	def void openTerminal(TemplateProjectInfo projectInfo, String project, String location) {
 		if (exec.isNullOrEmpty) return;
 		prepare(project, location)
-//		openTerminal(project, location, exec, args, done, envs)
-        openTerminal(project, location, exec, null, done, envs)
+		val cliArgs = if (projectInfo.projectTemplate instanceof JHipsterProjectFromCli) args
+        openTerminal(project, location, exec, cliArgs, done, envs)
 	}
 
 	def done() {

@@ -40,8 +40,13 @@ class JDLExtendedProjectCreator extends JDLProjectCreator {
 			val srcPath = project.getFolder('src').fullPath
 			val srcEntries = #[JavaCore.newSourceEntry(srcPath, null)]
 			val resolverConfiguration = new ResolverConfiguration
-			MavenPlugin.projectConfigurationManager.enableMavenNature(project, resolverConfiguration, new NullProgressMonitor)
-			JavaCore.create(project).setRawClasspath(srcEntries, new NullProgressMonitor)
+//			MavenPlugin.projectConfigurationManager.enableMavenNature(project, resolverConfiguration, new NullProgressMonitor)
+//            val srcMainJavaPath = project.getFolder('src/main/java').fullPath
+//			JavaCore.newSourceEntry(srcMainJavaPath)
+//			JavaCore.create(project).setRawClasspath(srcEntries, new NullProgressMonitor)
+            MavenPlugin.projectConfigurationManager.enableMavenNature(project, resolverConfiguration, new NullProgressMonitor)
+            JavaCore.create(project).setRawClasspath(srcEntries, new NullProgressMonitor)
+
 		]
 	}
 }
