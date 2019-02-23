@@ -47,7 +47,7 @@ class ProjectWizardUtil {
         projectNatures += #[JavaCore.NATURE_ID, 'org.eclipse.pde.PluginNature', XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
         builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, IMavenConstants.BUILDER_ID]
         folders += MAVEN_SOURCE_FOLDER
-        folders += MAVEN_MODEL_FOLDER
+//        folders += MAVEN_MODEL_FOLDER
     }
     
     def static validatePath(String path) {
@@ -55,7 +55,7 @@ class ProjectWizardUtil {
         else new Status(IStatus.ERROR, 'Wizard', "'" + path + "' is not a valid package name")
     }
 
-    def static PluginProjectFactory generateProjects(IProjectGenerator generator, IExtendedProjectInfo projectInfo, String path, String modeFilelName) {
+    def static PluginProjectFactory generateProjects(IProjectGenerator generator, IExtendedProjectInfo projectInfo,  String modeFilelName, String path) {
         val factory = new PluginProjectFactory => [
             generator.generate(it => [
                 initialize(projectInfo, modeFilelName, path)
@@ -85,7 +85,7 @@ class ProjectWizardUtil {
     }
 
     def static void createFoldersAndSetResult(IProjectGenerator generator, IExtendedProjectInfo projectInfo, String modeFilelName, String path) {
-        val folder = createFolders(projectInfo, '''src/«path»''')
+        val folder = createFolders(projectInfo, path)
         val creator = generator as JDLTemplateProjectCreator
         creator.result = folder.getFile(modeFilelName) 
     }

@@ -8,7 +8,6 @@ import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo
 import org.eclipse.xtext.ui.wizard.IProjectInfo
 import org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard
 import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
-import io.github.jhipster.jdl.ui.wizard.JDLExtendedProjectCreator
 
 class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
 
