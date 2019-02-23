@@ -18,8 +18,7 @@ import org.eclipse.xtext.ui.wizard.template.StringTemplateVariable
 
 class ProjectWizardUtil {
     
-//    public static String MAVEN_SOURCE_FOLDER = 'src/main/java'
-    public static String MAVEN_SOURCE_FOLDER = 'src'
+    public static String MAVEN_SOURCE_FOLDER = 'src/main/java'
     public static String MAVEN_MODEL_FOLDER = MAVEN_SOURCE_FOLDER + '/model'
     
     static class GenerateProjectsDelegator extends AbstractProjectTemplate {
@@ -47,7 +46,6 @@ class ProjectWizardUtil {
         projectNatures += #[JavaCore.NATURE_ID, 'org.eclipse.pde.PluginNature', XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
         builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, IMavenConstants.BUILDER_ID]
         folders += MAVEN_SOURCE_FOLDER
-//        folders += MAVEN_MODEL_FOLDER
     }
     
     def static validatePath(String path) {
