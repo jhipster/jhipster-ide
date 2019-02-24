@@ -18,7 +18,9 @@ import org.eclipse.xtext.ui.wizard.template.StringTemplateVariable
 
 class ProjectWizardUtil {
     
-    public static String MAVEN_SOURCE_FOLDER = 'src/main/java'
+    public static String MAVEN_SOURCE_FOLDER = 'src/main'
+    public static String JAVA_SOURCE_FOLDER = 'src/main/java'
+    public static String TEST_SOURCE_FOLDER = 'src/test/java'
     public static String MAVEN_MODEL_FOLDER = MAVEN_SOURCE_FOLDER + '/model'
     
     static class GenerateProjectsDelegator extends AbstractProjectTemplate {
@@ -43,9 +45,9 @@ class ProjectWizardUtil {
     def static void initialize(PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path) {
         projectName = projectInfo.projectName
         location = projectInfo.locationPath
-        projectNatures += #[JavaCore.NATURE_ID, 'org.eclipse.pde.PluginNature', XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
+        projectNatures += #[JavaCore.NATURE_ID, XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
         builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, IMavenConstants.BUILDER_ID]
-        folders += MAVEN_SOURCE_FOLDER
+        folders += JAVA_SOURCE_FOLDER
     }
     
     def static validatePath(String path) {
@@ -76,7 +78,7 @@ class ProjectWizardUtil {
     def static IFolder createFolders(IExtendedProjectInfo projectInfo, String path) {
         val root = ResourcesPlugin.workspace.root
         val project  = root.getProject(projectInfo.projectName)
-        if (!project.exists) project.create(new NullProgressMonitor)
+        if (!project.exists) project.create(new NullProgressMonitor) 
         val folder = projectInfo.getSourceFolder(path)
         if (folder !== null && !folder.exists) folder.location.toFile.mkdirs
         return folder
