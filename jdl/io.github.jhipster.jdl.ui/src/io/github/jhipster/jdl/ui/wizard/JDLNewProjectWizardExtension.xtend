@@ -19,7 +19,6 @@
 package io.github.jhipster.jdl.ui.wizard
 
 import com.google.inject.Inject
-import java.io.File
 import java.nio.charset.Charset
 import java.nio.file.Path
 import org.eclipse.core.runtime.IStatus
@@ -27,8 +26,8 @@ import org.eclipse.core.runtime.Status
 import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.tm.terminal.view.core.interfaces.ITerminalService
+import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.console.ConsolePlugin
-import org.eclipse.xtext.ui.wizard.IProjectCreator
 
 import static io.github.jhipster.jdl.ui.internal.JdlActivator.*
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
@@ -37,36 +36,35 @@ import static java.nio.file.Files.*
 import static java.nio.file.attribute.PosixFilePermission.*
 import static java.nio.file.attribute.PosixFilePermissions.*
 import static org.eclipse.jface.dialogs.MessageDialog.*
+import org.eclipse.ui.PlatformUI
+import org.eclipse.ui.IWorkbenchWindow
+import org.eclipse.swt.widgets.Display
+import java.util.concurrent.atomic.AtomicReference
+import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
+class JDLNewProjectWizardExtension {
 
 	val JDL_PERSPECTIVE_ID = 'io.github.jhipster.jdl.ui.view.JDLPerspective' 
 
 	IPreferenceStore preferenceStore
 	VariablesPlugin variablesPlugin
 	Path shellScript
+    IWorkbench workbench
 
-	@Inject new(IProjectCreator projectCreator) {
-		super(projectCreator)
-		preferenceStore = instance.preferenceStore
-		variablesPlugin = VariablesPlugin.^default
+	@Inject new() {
+	    this.workbench = PlatformUI.workbench
+		this.preferenceStore = instance.preferenceStore
+		this.variablesPlugin = VariablesPlugin.^default
 	}
 
-	override performFinish() {
-		val result = super.performFinish
-		if (mainPage.isCallJhipsterGenerator) openTerminal
-		return result
-	}
-
-	def private void openTerminal() {
-		if (exec.isNullOrEmpty) return
-		val project = mainPage.projectName
-		val location = mainPage.location + File.separator + project
+	def void openTerminal(TemplateProjectInfo projectInfo, String project, String location) {
+		if (exec.isNullOrEmpty) return;
 		prepare(project, location)
-		openTerminal(project, location, exec, args, done, envs)
+		val cliArgs = if (projectInfo.projectTemplate instanceof JHipsterProjectFromCli) args
+        openTerminal(project, location, exec, cliArgs, done, envs)
 	}
 
 	def done() {
@@ -84,20 +82,26 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		}
 	}
 
-	def private void openJDLPerspective() {
+	def void openJDLPerspective() {
 		openPerspective(JDL_PERSPECTIVE_ID)
 	}
 	
-	def private void openPerspective(String perspectiveID) {
-		val window = workbench.activeWorkbenchWindow
+	def void openPerspective(String perspectiveID) {
+	    val AtomicReference<IWorkbenchWindow> window = new AtomicReference<IWorkbenchWindow>
 		try {
-			workbench.showPerspective(perspectiveID, window)
-		} catch (Exception e) {
-			openError(window.shell, 'Error Opening Perspective', '''Could not open Perspective with ID: «perspectiveID»''')
+            Display.getDefault().asyncExec [
+                PlatformUI.workbench.activeWorkbenchWindow => [
+                    window.set = it
+                    workbench.showPerspective(perspectiveID, it)
+                ]
+            ]
+		} catch (Exception ex) {
+		    if (window.get !== null) openError(window.get.shell, 'Error Opening Perspective', '''Could not open Perspective with ID: «perspectiveID»''')
+		    ex.printStackTrace
 		}
 	}
 
-	def private void prepare(String project, String location) {
+	def void prepare(String project, String location) {
 		if (!isShellEnabled || script.isNullOrEmpty) return
 		val isWindows = System.getProperty('os.name').toLowerCase.contains('win')
 		shellScript = if (isWindows) createTempFile('jhide', '.cmd') 
@@ -116,30 +120,30 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		]
 	}
 
-	def private boolean isShellEnabled() {
+	def boolean isShellEnabled() {
 		preferenceStore.getBoolean(P_ShellEnabled)
 	}
 
-	def private String getExec() {
+	def String getExec() {
 		preferenceStore.getString(P_Exec)
 	}
 
-	def private String getArgs() {
+	def String getArgs() {
 		expandVars(preferenceStore.getString(P_Args))
 	}
 
-	def private String getScript() {
+	def String getScript() {
 		expandVars(preferenceStore.getString(P_Script))
 	}
 
-	def private String[] getEnvs() {
+	def String[] getEnvs() {
 // FIXME: add better ui implementation for this...
 //		val envs = preferenceStore.getString(P_Envs)
 //		if(!envs.isNullOrEmpty) expandVars(envs).split(' ').toArray(#[])
 		return null
 	}
 
-	def private bindVariable(String name, String value) {
+	def bindVariable(String name, String value) {
 		variablesPlugin.stringVariableManager => [
 			val vardef = #[newValueVariable(name, '''Variable «name»''', true, value)]
 			removeVariables(vardef)
@@ -147,7 +151,7 @@ class JDLNewProjectWizardExtension extends JDLNewProjectWizardEnhanced {
 		]
 	}
 
-	def private String expandVars(String input) {
+	def String expandVars(String input) {
 		variablesPlugin.stringVariableManager.performStringSubstitution(input, false)
 	}
 }

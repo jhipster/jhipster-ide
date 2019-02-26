@@ -53,11 +53,10 @@ Workflow {
 			    }
 			}
 */			
-			newProjectWizardForEclipse = {
-				generate = true
-				pluginProject = false
-			}
-
+            projectWizard = {
+                generate = true
+            }
+            
 			serializer = {
 				generateStub = false
 			}

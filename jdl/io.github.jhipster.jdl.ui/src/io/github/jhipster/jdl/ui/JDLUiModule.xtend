@@ -18,12 +18,13 @@
  */
 package io.github.jhipster.jdl.ui
 
-import io.github.jhipster.jdl.ui.wizard.JDLExtendedProjectCreator
+import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import io.github.jhipster.jdl.ui.wizard.template.JDLTemplateProjectCreator
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.UiToIdeContentProposalProvider
-import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import org.eclipse.xtext.ui.wizard.IProjectCreator
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -33,10 +34,6 @@ import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
 @FinalFieldsConstructor
 class JDLUiModule extends AbstractJDLUiModule {
 
-	override bindIProjectCreator() {
-		JDLExtendedProjectCreator
-	}
-
 	def Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
 		return JdlIdeContentProposalProvider
 	}
@@ -44,4 +41,8 @@ class JDLUiModule extends AbstractJDLUiModule {
 	override Class<? extends IContentProposalProvider> bindIContentProposalProvider() {
 		return UiToIdeContentProposalProvider
 	}
+	
+    override Class<? extends IProjectCreator> bindIProjectCreator() {
+    	return JDLTemplateProjectCreator 
+    }	
 }
