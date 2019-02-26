@@ -79,8 +79,8 @@ class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
     }
 
     override canFinish() {
-        val it = templateParameterPage?.control
-        return it !== null && isVisible
+        val it = templateParameterPage
+        return it !== null && isPageComplete && control !== null && control.isVisible
     }
     
     override protected doFinish(IProjectInfo projectInfo, IProgressMonitor monitor) {
