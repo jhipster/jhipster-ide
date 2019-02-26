@@ -17,6 +17,12 @@ public class Messages extends NLS {
 	public static String JHipsterMonolithProject_Description;
 	public static String JHipsterProjectFromCli_Label;
 	public static String JHipsterProjectFromCli_Description;
+	public static String JHipsterMonolithProject2_Label;
+	public static String JHipsterMonolithProject2_Description;
+	public static String JHipsterMicroserviceProject_Label;
+	public static String JHipsterMicroserviceProject_Description;
+	public static String JHipsterGatewayProject_Label;
+	public static String JHipsterGatewayProject_Description;
 	
 	static {
 	// initialize resource bundle

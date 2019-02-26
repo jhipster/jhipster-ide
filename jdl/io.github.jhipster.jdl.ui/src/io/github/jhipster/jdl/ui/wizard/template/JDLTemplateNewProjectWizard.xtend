@@ -9,6 +9,7 @@ import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Path
 import org.eclipse.jdt.core.JavaCore
 import org.eclipse.jface.wizard.IWizardPage
+import org.eclipse.swt.widgets.Display
 import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo
 import org.eclipse.xtext.ui.wizard.IProjectInfo
 import org.eclipse.xtext.ui.wizard.template.TemplateNewProjectWizard
@@ -16,7 +17,6 @@ import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
 
 import static io.github.jhipster.jdl.ui.wizard.util.ProjectWizardUtil.*
 import static org.eclipse.core.resources.IResourceFilterDescription.*
-import org.eclipse.swt.widgets.Display
 
 class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
 
@@ -26,7 +26,7 @@ class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
     static val FILTER_ARG = '1.0-name-matches-true-false-node_modules'
     
     extension JDLNewProjectWizardExtension ext = new JDLNewProjectWizardExtension
-    
+
     override addPages() {
         super.addPages 
         #[
@@ -76,6 +76,11 @@ class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
         buildPath.add(modelClasspath)
         buildPath.add(testClasspath)
         javaProject.setRawClasspath(buildPath, new NullProgressMonitor)                
+    }
+
+    override canFinish() {
+        val it = templateParameterPage?.control
+        return it !== null && isVisible
     }
     
     override protected doFinish(IProjectInfo projectInfo, IProgressMonitor monitor) {
