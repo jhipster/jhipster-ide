@@ -24,7 +24,7 @@ class JDLProjectTemplateProvider implements IProjectTemplateProvider {
 final class JHipsterProjectFromCli {
     val group = group('Properties')
     val pkg = text('Package:', 'com.mycompany.myapp', 'The package path to place the files in', group)
-    val baseName = text('Base name:', 'myMonolithApp', 'The base name', group)
+    val baseName = text('Base name:', 'myApp', 'The base name', group)
 
     var template = '''
         /**
