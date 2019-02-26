@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide) [![Download](https://api.bintray.com/packages/jhipster/jhipster-ide/1.5/images/download.svg)](https://bintray.com/jhipster/jhipster-ide/1.5/_latestVersion) [![Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client](https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png)](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3184658 "Drag to your running Eclipse* workspace. *Requires Eclipse Marketplace Client")
+[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide) [![Download](https://api.bintray.com/packages/jhipster/jhipster-ide/1.6/images/download.svg)](https://bintray.com/jhipster/jhipster-ide/1.6/_latestVersion)
+
 JHipster-IDE
 ============
 
@@ -15,7 +16,7 @@ JHipster IDE is an Xtext DSL which provides textual editing support of JHipster 
 
 ## Eclipse installation
 
-JHipster IDE is available in the [Eclipse Marketplace](https://marketplace.eclipse.org/content/jhipster-ide). The easiest way to install it is to drag the following icon <a href="http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3184658" class="drag" title="Drag to your running Eclipse workspace to install JHipster IDE"><img class="img-responsive" src="https://marketplace.eclipse.org/sites/all/themes/solstice/public/images/marketplace/btn-install.png" alt="Drag to your running Eclipse workspace to install JHipster IDE" /></a> on the start page into your Eclipse or just open the marketplace dialog in Eclipse (Help > Eclipse Marketplace...) and search for <b>JHipster</b>.
+JHipster IDE is available in the [Eclipse Marketplace](https://marketplace.eclipse.org/content/jhipster-ide). Just open the marketplace dialog in Eclipse (Help > Eclipse Marketplace...) and search for <b>JHipster</b>.
 
 ## Visual Studio Code installation
 
