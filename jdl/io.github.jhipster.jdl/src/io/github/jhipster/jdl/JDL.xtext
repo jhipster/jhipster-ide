@@ -19,7 +19,7 @@
  
 /**
  * @author Jose Badeau - Initial contribution
- * @author Serano Colameo - Initial contribution and enhancements
+ * @author Serano Colameo - Completely rewritten
  */
  
 grammar io.github.jhipster.jdl.JDL hidden(WS, ML_COMMENT, SL_COMMENT)
@@ -103,10 +103,10 @@ enum JdlDeploymentParameterName:
  * ========================================================================= */
 
 JdlConstant:
-	name=ID '=' value=INT;
+	name=ID '=' value=SInt;
 
 JdlNumericValue:
-	constant=[JdlConstant] | value=INT;
+	constant=[JdlConstant] | value=SInt;
 
 /* =========================================================================
  * ENTITY
@@ -457,11 +457,15 @@ JdlReserverdWords:
  * TERMINAL DEFINITIONS
  * ========================================================================= */
 
-terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')*;
+SInt: UInt | NEG_INT;
+UInt: INT;
+
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal NEG_INT returns ecore::EInt: '-'? INT;    
+terminal ID: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'-'|INT)*;
 terminal NUMERIC_PREFIXED_ID returns ecore::EString: INT? ID;
 terminal VERSION_TAG returns ecore::EString: '"' INT '.' INT ('.' INT)? ('-' ID)? '"';
 terminal WS: (' '|'\t'|'\r'|'\n')+;
-terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal STRING: '"' EXP '"' | "'" EXP "'";
 terminal fragment EXP: ('\\' . | !('\\'|'"'|'\r'|'\n'))*;
 terminal ML_COMMENT: '/*' -> '*/';
