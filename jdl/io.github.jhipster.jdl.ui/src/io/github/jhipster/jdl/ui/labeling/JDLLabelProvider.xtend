@@ -19,14 +19,16 @@
 package io.github.jhipster.jdl.ui.labeling
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlApplicationConfig
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlOption
+import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
-import io.github.jhipster.jdl.jdl.JdlRelation
 
 /**
  * Provides labels for EObjects.
@@ -73,6 +75,14 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
  			case isSkipClientOption : 'SkipClient'
  			default : 'Unknown'	
 		}
+ 	}
+
+	def text(JdlApplicationParameter param) {
+		param.paramName.literal
+ 	}
+
+	def text(JdlApplicationConfig it) {
+		'config'
  	}
  	
 	def image(EObject eObj) {
