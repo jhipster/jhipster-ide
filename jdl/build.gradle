@@ -9,7 +9,7 @@ buildscript {
 }
 
 subprojects {
-	ext.xtextVersion = '2.15.0'
+	ext.xtextVersion = '2.16.0'
 	
 	repositories {
 		jcenter()
