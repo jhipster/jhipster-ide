@@ -35,8 +35,9 @@ public class JdlContentAssistService extends ContentAssistService {
 	protected CompletionItem toCompletionItem(ContentAssistEntry entry, int caretOffset, Position caretPosition,
 			Document document) {
 		CompletionItem completionItem = super.toCompletionItem(entry, caretOffset, caretPosition, document);
+		if (completionItem == null) return null;
 		Either<String, MarkupContent> documentation = completionItem.getDocumentation();
-		if (documentation.getLeft() == null && documentation.getRight() == null) {
+		if (documentation != null && documentation.getLeft() == null && documentation.getRight() == null) {
 			completionItem.setDocumentation((Either<String, MarkupContent>) null);
 		}
 		return completionItem;

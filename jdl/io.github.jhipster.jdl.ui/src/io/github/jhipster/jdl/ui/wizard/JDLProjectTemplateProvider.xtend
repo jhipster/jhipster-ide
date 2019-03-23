@@ -210,7 +210,7 @@ final class JHipsterMonolithProject {
 and a parameter to set the package.</p>')
 final class JHipsterMicroserviceProject {
     val group = group('Properties')
-    val pkg = text('Package:', 'com.mycompany.service', 'The package path to place the files in', group)
+    val pkg = text('Package:', 'com.mycompany.myservice', 'The package path to place the files in', group)
     val baseName = text('Base name:', 'myMicroservice', 'The base name', group)
     var template = '''
         /**

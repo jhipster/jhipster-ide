@@ -7,7 +7,7 @@
     "icon": "images/icon.jpg",
     "license": "Apache-2.0",
     "engines": {
-        "vscode": "^1.4.0"
+        "vscode": "^1.30.0"
     },
     "categories": [
         "Programming Languages"
@@ -69,15 +69,17 @@
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
         "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "update-vscode": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "typescript": "^2.1.6",
-        "vscode": "^1.1.30"
+        "vscode": "^1.1.32",
+        "typescript": "^3.3.4000",
+        "@types/node": "^10.11.5"
     },
     "dependencies": {
-        "global": "^4.3.1",
+        "global": "^4.3.2",
         "tsc": "^1.20150623.0",
-        "vscode-languageclient": "^2.6.3"
+        "vscode-languageclient": "^5.1.0"
     }
 }

@@ -26,7 +26,7 @@ import * as child_process from 'child_process';
 import * as fs from 'fs';
 import * as vscode from 'vscode';
 import { LanguageClient } from 'vscode-languageclient';
-import  { DidChangeTextDocumentNotification } from 'vscode-languageclient/lib/protocol';
+//import  { DidChangeTextDocumentNotification } from 'vscode-languageclient/lib/protocol';
 
 var process = require('process');
 
@@ -97,6 +97,7 @@ class Renderer {
     public constructor(private langClient: LanguageClient) {
     }
 
+/*
     public sendChangeNotification(uri: string, version: number) {
         this.langClient.sendNotification(DidChangeTextDocumentNotification.type, {
             textDocument: {
@@ -106,7 +107,7 @@ class Renderer {
             contentChanges: [{ text: this.editor.document.getText() }]
         });
     }
-
+*/
     public render(): Thenable<string> {
         let ret: Thenable<string> = null;
         this.editor = vscode.window.activeTextEditor;

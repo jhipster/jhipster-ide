@@ -25,6 +25,8 @@ import io.github.jhipster.jdl.jdl.JdlRelation
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 
 /**
  * Customization of the default outline structure.
@@ -36,15 +38,12 @@ import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
 class JDLOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	
 	override protected _createChildren(DocumentRootNode parentNode, EObject modelElement) {
-		
 		// skip root node
 		if (modelElement instanceof JdlDomainModel) {
 			for (feature : modelElement.features) {
 				createNode(parentNode, feature);
 			}
-			
 		}
-
 	}
 	
 	def protected _isLeaf(JdlOption it) {
@@ -56,6 +55,14 @@ class JDLOutlineTreeProvider extends DefaultOutlineTreeProvider {
 	}
 
 	def protected _isLeaf(JdlRelation it) {
+		true
+	}
+
+	def protected _isLeaf(JdlDeploymentParameter it) {
+		true
+	}
+
+	def protected _isLeaf(JdlApplicationParameter it) {
 		true
 	}
 }

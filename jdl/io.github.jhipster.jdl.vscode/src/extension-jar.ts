@@ -33,7 +33,7 @@ const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
 export function activate(context: ExtensionContext) {
 	const libFolder = context.asAbsolutePath(path.join('./jdl-ls/lib/*'))
-	let vmargs = "-Dpnguml.gen=true";
+	let vmargs = '-Dpnguml.gen=true';
 
 	let serverOptions: Executable = {
 		command: 'java',
@@ -67,8 +67,10 @@ export function activate(context: ExtensionContext) {
 	window.onDidChangeActiveTextEditor((activeEditor) => {
 		toggleItem(activeEditor, item);
 	});
+	/*
 	let result = commands.executeCommand("init", activeEditor.document.uri.toString())
 	console.log("Init succeeded: "+result);
+	*/
 
 	// Push the disposable to the context's subscriptions so that the 
 	// client can be deactivated on extension deactivation

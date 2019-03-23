@@ -23,7 +23,6 @@ import io.github.jhipster.jdl.config.JdlDeploymentOptions
 import io.github.jhipster.jdl.config.JdlParameterType
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
-import io.github.jhipster.jdl.jdl.JdlApplicationParameterName
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
@@ -60,15 +59,6 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 		]
 	}
 	
-	@Check
-	def void checkDeprecatedApplicationParameter(JdlApplicationConfig config) {
-		config.paramters.forEach[ it, i |
-			if (paramName === JdlApplicationParameterName.JHIPSTER_VERSION) {
-				warning(DEPRECATED_PARAM_MSG, JDL_APPLICATION_CONFIG__PARAMTERS, i, DEPRECATED_PARAMETER)
-			}
-		]
-	}
-
 // FIXME: keep not clear how logic is really implemented in generator
 //
 //	@Check
@@ -93,7 +83,9 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 		switch (paramType) {
 			case Boolean: if (!paramValue.identifiers.isNullOrEmpty) {
 				val value = paramValue.identifiers.head
-				if (!#[Boolean.FALSE, Boolean.TRUE].exists[value.contains(it.toString)]) {
+				if (!#[
+					Boolean.TRUE.toString, Boolean.FALSE.toString
+				].exists[it == value]) {
 					error(INVALID_BOOLEAN_PARAM_MSG, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 				}
 			}
@@ -106,7 +98,7 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 			case ListOfLangIsoCodes: if (!paramValue.listElements.isNullOrEmpty) {
 				paramValue.listElements.forEach[ e, i |
 					if (!JHipsterIsoLangauges.containsKey(e)) {
-						error(INVALID_ISOCODE_PARAM_MSG, JDL_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
+						error(INVALID_ISOCODE_PARAM_MSG, JDL_PARAMETER_VALUE__LIST_ELEMENTS, i, INVALID_PARAM_VALUE)
 					}
 				]				
 			}
@@ -115,7 +107,7 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 				paramValue.listElements.forEach[ e, i |
 					if (!expected.contains(e)) {
 						val msg = String.format(INVALID_PARAM_NAME_MSG, e)
-						error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, i, INVALID_PARAM_VALUE)
+						error(msg, JDL_PARAMETER_VALUE__LIST_ELEMENTS, i, INVALID_PARAM_VALUE)
 					}
 				]				
 			} 
@@ -170,12 +162,12 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 	
 	def private JdlParameterType getParameterType(String paramName) {
 		val result = applOptions.getParameterType(paramName) 
-		return if (result == JdlParameterType.Undefined) deplOptions.getParameterType(paramName)
+		return if (result == JdlParameterType.Undefined) deplOptions.getParameterType(paramName) else result
 	}
 
 	def private List<String> getParameters(String paramName) {
 		val applParams = applOptions.getParameters(paramName)
-		return if (applParams.isNullOrEmpty) deplOptions.getParameters(paramName)
+		return if (applParams.isNullOrEmpty) deplOptions.getParameters(paramName) else applParams
 	}
 
 	def protected isValidJhipsterVersion(JdlParameterVersion version) {
