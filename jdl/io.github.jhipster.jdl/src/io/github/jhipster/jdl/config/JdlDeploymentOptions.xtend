@@ -36,7 +36,7 @@ class JdlDeploymentOptions extends JdlAbstractOptions {
 	
 	@Accessors(PUBLIC_GETTER) val static INSTANCE = new JdlDeploymentOptions => [
 		addAll(#[
-			new JdlOption('deploymentType', #['docker-compose', 'kubernetes', 'openshift', 'rancher-compose']),
+			new JdlOption('deploymentType', #['docker-compose', 'kubernetes', 'openshift']),
 			new JdlOption('directoryPath', #['"../"'], AnyLiteral),
 			new JdlOption('appsFolders', ListOfAnyLiterals),
 			new JdlOption('clusteredDbApps', #[], ListOfAnyLiterals),
