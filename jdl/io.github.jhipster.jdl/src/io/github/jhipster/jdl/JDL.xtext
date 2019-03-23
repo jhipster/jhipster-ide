@@ -71,12 +71,10 @@ enum JdlApplicationParameterName:
 	buildTool | cacheProvider | clientFramework | clientPackageManager |
     databaseType | devDatabaseType | enableHibernateCache |
     enableSwaggerCodegen | enableTranslation | jhiPrefix |
-	jhipsterVersion | languages | messageBroker |
-	nativeLanguage | packageName | prodDatabaseType |
-	searchEngine | serverPort | serviceDiscoveryType |
-	skipClient | skipServer | skipUserManagement |
-    testFrameworks | uaaBaseName | useSass | websocket |
-    entitySuffix | dtoSuffix;
+	languages | messageBroker | nativeLanguage | packageName | 
+	prodDatabaseType | searchEngine | serverPort | serviceDiscoveryType |
+	skipClient | skipServer | skipUserManagement | testFrameworks | 
+	uaaBaseName | useSass | websocket | entitySuffix | dtoSuffix;
 
 /* =========================================================================
  * DEPLOYMENT

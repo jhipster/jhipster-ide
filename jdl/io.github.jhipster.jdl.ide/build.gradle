@@ -6,7 +6,7 @@ apply plugin: 'application'
 apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = "org.eclipse.xtext.ide.server.ServerLauncher"
 
-xtextVersion = "2.15.0"
+xtextVersion = "2.16.0"
 
 dependencies {
 	compile project(':io.github.jhipster.jdl')

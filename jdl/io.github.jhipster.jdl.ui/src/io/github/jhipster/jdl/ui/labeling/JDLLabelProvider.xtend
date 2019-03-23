@@ -29,6 +29,11 @@ import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import io.github.jhipster.jdl.jdl.JdlApplication
+import io.github.jhipster.jdl.jdl.JdlDeployment
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
+
+import static extension org.apache.commons.lang3.StringUtils.*
 
 /**
  * Provides labels for EObjects.
@@ -78,11 +83,31 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
  	}
 
 	def text(JdlApplicationParameter param) {
-		param.paramName.literal
+		try {
+			param.paramName.literal.toFirstUpper.splitByCharacterTypeCamelCase.join(' ')
+		} catch (Exception exception) {
+			super.text(param)
+		}
+ 	}
+
+	def text(JdlApplication it) {
+		'Application'
  	}
 
 	def text(JdlApplicationConfig it) {
-		'config'
+		'Config'
+ 	}
+
+	def text(JdlDeployment it) {
+		'Deployment'
+ 	}
+
+	def text(JdlDeploymentParameter param) {
+		try {
+			param.paramName.literal.toFirstUpper.splitByCharacterTypeCamelCase.join(' ')
+		} catch (Exception exception) {
+			super.text(param)
+		}
  	}
  	
 	def image(EObject eObj) {
