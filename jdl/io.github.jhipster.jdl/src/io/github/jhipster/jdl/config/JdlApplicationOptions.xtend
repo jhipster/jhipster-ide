@@ -52,7 +52,6 @@ class JdlApplicationOptions extends JdlAbstractOptions {
             new JdlOption('entitySuffix', #['Entity'], JavaIdentifierLiteral),
             new JdlOption('dtoSuffix', #['DTO'], JavaIdentifierLiteral),
 			new JdlOption('jhiPrefix', #['jhi'], JavaIdentifierLiteral),
-			new JdlOption('jhipsterVersion', Version),
 			new JdlOption('languages', #['en', 'fr'], ListOfLangIsoCodes),
 			new JdlOption('messageBroker', #['kafka', 'false']),
 			new JdlOption('nativeLanguage', #['en'], LangIsoCode),
