@@ -34,6 +34,7 @@ import io.github.jhipster.jdl.jdl.JdlDeployment
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 
 import static extension org.apache.commons.lang3.StringUtils.*
+import io.github.jhipster.jdl.jdl.JdlApplicationEntitiesSelection
 
 /**
  * Provides labels for EObjects.
@@ -100,6 +101,10 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 
 	def text(JdlDeployment it) {
 		'Deployment'
+ 	}
+
+	def text(JdlApplicationEntitiesSelection it) {
+		'Entities'
  	}
 
 	def text(JdlDeploymentParameter param) {
