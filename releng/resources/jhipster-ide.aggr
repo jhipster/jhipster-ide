@@ -14,15 +14,15 @@
   </validationSets>
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.15.0/">
+      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0/">
         <bundles name="org.junit" versionRange="4.12.0.v201504281640"/>
         <bundles name="org.junit.source" versionRange="4.12.0.v201504281640"/>
-        <bundles name="org.objectweb.asm" versionRange="6.2.1.v20180823-1831"/>
-        <bundles name="org.objectweb.asm.source" versionRange="6.2.1.v20180823-1831"/>
-        <bundles name="org.objectweb.asm.tree" versionRange="6.2.1.v20180823-1831"/>
-        <bundles name="org.objectweb.asm.tree.source" versionRange="6.2.1.v20180823-1831"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.15.0.v20180916-1232"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.15.0.v20180916-1232"/>
+        <bundles name="org.objectweb.asm" versionRange="7.0.0"/>
+        <bundles name="org.objectweb.asm.source" versionRange="7.0.0"/>
+        <bundles name="org.objectweb.asm.tree" versionRange="7.0.0"/>
+        <bundles name="org.objectweb.asm.tree.source" versionRange="7.0.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.16.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.16.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/lsp4j/updates/releases/">
         <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="[0.6.0,0.7.0]"/>
@@ -42,8 +42,8 @@
         <features name="org.eclipse.m2e.logback.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
         <features name="org.eclipse.m2e.sdk.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/tm/updates/4.5.0/repository/">
-        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.5.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
+      <repositories location="http://download.eclipse.org/releases/2018-12">
+        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.5.1" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
       </repositories>
     </contributions>
     <contributions description="Eclipse Extras" label="Eclipse Extras">
