@@ -295,7 +295,7 @@ final class JHipsterGatewayProject {
     }
 
     override generateProjects(IProjectGenerator it) {
-        generateProjects(                                                 
+        generateProjects(
             new PluginProjectFactory, projectInfo, '''«baseName».jdl''', MAVEN_MODEL_FOLDER, template
         )
     }

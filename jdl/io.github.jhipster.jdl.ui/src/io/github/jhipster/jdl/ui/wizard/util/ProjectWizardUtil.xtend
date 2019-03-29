@@ -51,7 +51,9 @@ class ProjectWizardUtil {
     }
     
     def static validatePath(String path) {
-        if (path.matches('[a-z][a-z0-9_]*(/[a-z][a-z0-9_]*)*')) null
+    	var pathStr = path.replace("\\", "/")
+	    pathStr = pathStr.replace(":/", ":\\\\")
+        if (pathStr.matches('[a-z][a-z0-9_]*(/[a-z][a-z0-9_]*)*')) null
         else new Status(IStatus.ERROR, 'Wizard', "'" + path + "' is not a valid package name")
     }
 
