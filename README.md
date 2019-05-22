@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master)](https://travis-ci.org/jhipster/jhipster-ide) [![Download](https://api.bintray.com/packages/jhipster/jhipster-ide/1.7/images/download.svg)](https://bintray.com/jhipster/jhipster-ide/1.7/_latestVersion)
+[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][travis-image]][travis-url] [![Download][download-image]][download-url]
 
 JHipster-IDE
 ============
@@ -25,3 +25,12 @@ Search for jhipster and install/reload code.
 ## Atom installation
 
 Search for jhipster and install/reload atom.
+
+[azure-devops-image]: https://dev.azure.com/jhipster/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
+[azure-devops-url-main]: https://dev.azure.com/jhipster/jhipster-ide/_build
+
+[travis-image]: https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master
+[travis-url]: https://travis-ci.org/jhipster/jhipster-ide
+
+[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/1.7/images/download.svg
+[download-url]: https://bintray.com/jhipster/jhipster-ide/1.7/_latestVersion
