@@ -20,11 +20,33 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+  DISPLAY: :99.0
+
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '8.11.3'
-  displayName: 'INSTALL: Install Node.js'
+  displayName: 'TOOLS: install Node.js'
+
+- script: |
+    set -e
+    sudo add-apt-repository ppa:openjdk-r/ppa
+    sudo apt-get update
+    sudo apt-get install -y openjdk-8-jdk
+    sudo update-java-alternatives -s java-1.8.0-openjdk-amd64
+    java -version
+  displayName: 'TOOLS: configuring OpenJDK'
+
+- script: |
+    set -e
+    sudo apt install build-essential graphviz openssl libssl-dev libgtk3.0-cil-dev xvfb
+    mkdir /tmp/.X11-unix
+    chmod 1777 /tmp/.X11-unix
+    sudo chown root /tmp/.X11-unix/
+    Xvfb :99.0 -screen 0 1024x768x24 -ac 2>&1 > /dev/null &
+    npm install -g vsce
+  displayName: 'TOOLS: install libraries'
 
 - script: |
     java -version
@@ -32,5 +54,8 @@ steps:
     node --version
   displayName: 'CHECK: versions'
 
-- bash: ./mvnw clean install
-  displayName: 'TEST: build'
+- bash: ./mvnw -B clean install
+  displayName: 'TEST: install'
+
+- bash: $(Build.Repository.LocalPath)/jdl/gradlew clean installServer
+  displayName: 'TEST: installServer'
