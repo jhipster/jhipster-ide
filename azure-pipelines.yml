@@ -42,7 +42,7 @@ steps:
     set -e
     sudo apt install build-essential graphviz openssl libssl-dev libgtk3.0-cil-dev xvfb
     mkdir -p /tmp/.X11-unix
-    chmod 1777 /tmp/.X11-unix
+    sudo chmod 1777 /tmp/.X11-unix
     sudo chown root /tmp/.X11-unix/
     Xvfb :99.0 -screen 0 1024x768x24 -ac 2>&1 > /dev/null &
     npm install -g vsce
