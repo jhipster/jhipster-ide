@@ -57,5 +57,7 @@ steps:
 - bash: ./mvnw -B clean install
   displayName: 'TEST: install'
 
-- bash: $(Build.Repository.LocalPath)/jdl/gradlew clean installServer
+- script: |
+    cd $(Build.Repository.LocalPath)/jdl
+    ./gradlew clean installServer
   displayName: 'TEST: installServer'
