@@ -54,7 +54,7 @@ steps:
     node --version
   displayName: 'CHECK: versions'
 
-- bash: ./mvnw -B clean install
+- bash: ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'TEST: install'
 
 - script: |
