@@ -8,8 +8,11 @@ sudo: required
 
 language: java
 
+services:
+  - xvfb
+
 jdk:
-  - oraclejdk8
+  - openjdk8
 
 cache:
   directories:
@@ -38,8 +41,6 @@ install:
   - nvm install v8.11.3 && node --version
 
 before_script:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
   - npm install -g vsce
 
 script:
