@@ -85,8 +85,12 @@ class JDLFileTest {
 		 "application_with_duplicate_params.jdl" -> "Parameter [enableTranslation] already defined!",
 		 "application_with_all_conf_params.jdl" -> "Deprecated, will be removed in the next major release!",
 		 "wrong_displayfield_in_target.jdl" -> "Field [jobTitle1] does not exist in entity [Job]",
-         "wrong_displayfield_in_source.jdl" -> "Field [title1] does not exist in entity [Task]"
-	   ]
+         "wrong_displayfield_in_source.jdl" -> "Field [title1] does not exist in entity [Task]",
+         "duplicate_fields.jdl" -> "Field with name already defined",
+         "big_sample.jdl" -> "Field [employee] does not exist in entity [Employee]",
+         "big_sample.jdl" -> "Field [JobTitle] does not exist in entity [Job]",
+         "big_sample.jdl" -> "Field [region] does not exist in entity [Region]" 
+	   ] 
 	
 	new(File jdlFile) {
 		this.jdlFile = jdlFile
