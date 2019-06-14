@@ -171,9 +171,10 @@ class JDLParsingTest{
 				assertTrue(size == 9) // 8 + 1 User (built-in entity)
 				filter[name.equals('JobHistory')].last => [
 					assertNotNull(it)
-					assertFalse(fields.isNullOrEmpty)
-					assertTrue(fields.size == 3)
-					assertTrue(fields.map[name].containsAll(#['startDate', 'endDate', 'language']))
+					assertNotNull(fieldDefinition)
+					assertFalse(fieldDefinition.fields.isNullOrEmpty)
+					assertTrue(fieldDefinition.fields.size == 3)
+					assertTrue(fieldDefinition.fields.map[name].containsAll(#['startDate', 'endDate', 'language']))
 				]
 				filter[name.equals('Employee')].last => [
 					assertNotNull(it)

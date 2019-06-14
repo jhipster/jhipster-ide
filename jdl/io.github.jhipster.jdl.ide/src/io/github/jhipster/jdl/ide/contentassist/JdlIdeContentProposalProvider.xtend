@@ -76,7 +76,7 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
                 val relationRole = getContainerOfType(model, JdlRelationRole)
                 val opposite = relationRole.opposite
                 val entity = opposite.entity
-                entity.fields.forEach[ addProposal(name, context, acceptor) ]
+                entity.fieldDefinition.fields.forEach[ addProposal(name, context, acceptor) ]
             }
 			JdlParameterVersion: return
 			default: super.createProposals(assignment, context, acceptor)

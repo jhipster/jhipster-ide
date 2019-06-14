@@ -1,6 +1,8 @@
 entity A {
-  tata String,
+  tata String
   titi Integer,
-  toto Boolean,
+  toto Boolean  
   tutu String
-}
+} 
+ 
+  

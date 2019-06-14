@@ -1,0 +1,44 @@
+application {
+    config {
+        applicationType gateway
+        authenticationType jwt
+        buildTool gradle
+    }
+}
+
+entity A {
+    name Double
+}
+
+/**
+ * The Entity entity.
+ * @author ${author:A true hipster}
+ */
+entity Entity {
+    /** fieldName **/
+    fieldName String maxlength (11)
+
+}
+
+dto * with mapstruct
+
+/**
+ * The Aasas entity.
+ * @author ${author:A true hipster}
+ */
+entity Aasas {
+    /** fieldName **/
+    fieldName String
+	a String
+
+}
+
+entity Aasas0 { 
+
+}
+
+entity Aasas1  {
+	a String
+	a String 
+
+}

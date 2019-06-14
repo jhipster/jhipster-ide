@@ -36,6 +36,7 @@ import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
 import org.eclipse.xtext.resource.IDerivedStateComputer
 import org.eclipse.xtext.resource.IResourceDescription
+import io.github.jhipster.jdl.naming.JdlQualifiedNameProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -73,5 +74,9 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	
 	def Class<? extends IOutputConfigurationProvider> bindIOutputConfigurationProvider() {
 		return JDLOutputConfigurationProvider
+	}
+	
+	override bindIQualifiedNameProvider() {
+		JdlQualifiedNameProvider
 	}
 }

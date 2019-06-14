@@ -113,8 +113,11 @@ JdlNumericValue:
 JdlEntity:
 	annotations+=JdlAnnotation*
 	'entity' name=ID ('(' table=ID ')')? ('{'
-		(fields+=JdlEntityField (','? fields+=JdlEntityField)*)?
+		fieldDefinition=JdlEntityFieldDefinition?
 	'}')?;
+	
+JdlEntityFieldDefinition:
+	fields+=JdlEntityField (','? fields+=JdlEntityField)*;
 
 JdlEntityField:
 	name=ID type=JdlFieldType;

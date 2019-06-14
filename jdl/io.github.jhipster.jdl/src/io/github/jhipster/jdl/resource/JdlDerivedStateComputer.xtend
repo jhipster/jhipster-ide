@@ -1,15 +1,15 @@
 /**
  * Copyright 2013-2018 the original author or authors from the JHipster project.
- *
+ * 
  * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -39,47 +39,65 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
-        val fieldDecls = #[
-            'firstName' -> stringType,
-            'lastName' -> stringType,
-            'login' -> stringType,
-            'email' -> stringType,
-            'imageUrl' -> stringType, 
-            'authorities' -> stringType
-        ]
+		val fieldDecls = #[
+			'firstName' -> stringType,
+			'lastName' -> stringType,
+			'login' -> stringType,
+			'email' -> stringType,
+			'imageUrl' -> stringType,
+			'authorities' -> stringType
+		]
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
 			val user = factory.createJdlEntity => [ entity |
 				entity.name = USER_ENTITY
-				fieldDecls.forEach[ entity.addField(it.key, it.value) ]
+				entity.fieldDefinition = factory.createJdlEntityFieldDefinition
+				fieldDecls.forEach[entity.addField(it.key, it.value)]
 			]
 			val model = resource.model
-			if (model !== null && model.eContents.filter(JdlEntity).exists[
-				name.equals(user.name)
-			] == false) model.features += user 
+			if (model !== null) {
+				model.name = resource.modelName
+				if(model.eContents.filter(JdlEntity).exists [
+					name.equals(user.name)
+				] == false) model.features += user
+			}
 		}
 	}
 
-    def boolType() {factory.createJdlBooleanFieldType => [
-        it.element = factory.createJdlBooleanType
-        it.element.element = 'Boolean'
-    ]}
-    
-    def stringType() {factory.createJdlStringFieldType => [
-        it.element = factory.createJdlStringType
-        it.element.element = 'String'
-    ]}
-    
-    def numType() {factory.createJdlNumericFieldType => [
-        it.element = JdlNumericTypes.INTEGER
-    ]}
-	
+	def private String getModelName(DerivedStateAwareResource resource) {
+		return try {
+			resource.URI.trimFileExtension.lastSegment
+		} catch (Exception exception) {
+			null
+		}
+	}
+
+	def boolType() {
+		factory.createJdlBooleanFieldType => [
+			it.element = factory.createJdlBooleanType
+			it.element.element = 'Boolean'
+		]
+	}
+
+	def stringType() {
+		factory.createJdlStringFieldType => [
+			it.element = factory.createJdlStringType
+			it.element.element = 'String'
+		]
+	}
+
+	def numType() {
+		factory.createJdlNumericFieldType => [
+			it.element = JdlNumericTypes.INTEGER
+		]
+	}
+
 	def private void addField(JdlEntity entiy, String name, JdlFieldType type) {
-	   entiy.fields.add(
-	     factory.createJdlEntityField => [
-	         it.name = name 
-	         it.type = type
-	     ]
-	   )
+		entiy.fieldDefinition.fields.add(
+			factory.createJdlEntityField => [
+				it.name = name
+				it.type = type
+			]
+		)
 	}
 
 	def private getModel(DerivedStateAwareResource resource) {

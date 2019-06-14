@@ -65,7 +65,7 @@ class JDLFormatter extends AbstractFormatter2 {
 		entity.regionFor.keyword(jdlEntityAccess.entityKeyword_1).append[oneSpace]
 		open.append[newLine]
 		interior(open, close)[indent]
-		entity.fields.forEach[format]
+		entity.fieldDefinition?.fields.forEach[format]
 		entity.regionFor.keywords(',').forEach[
 			surround[noSpace].append[newLine]
 		]
