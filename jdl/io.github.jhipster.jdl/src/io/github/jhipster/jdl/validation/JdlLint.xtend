@@ -76,6 +76,18 @@ class JdlLint extends AbstractDeclarativeValidator {
 	}
 
 	@Check
+	def void checkForGroupableRelationships(JdlRelationships relations) {
+		val set = newHashSet
+		set.add(relations.cardinality)
+		val model = getContainerOfType(relations, JdlDomainModel)
+		model.features.filter(JdlRelationships).forEach[ r, i |
+			if (!set.add(r.cardinality)) info(
+				String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality), JDL_RELATIONSHIPS__RELATIONSHIPS, i
+			)
+		]
+	}
+	
+	@Check
 	def void checkRelationshipUniqueness(JdlRelationships relations) {
 		val set = newHashSet
 		relations.relationships.filter[
@@ -89,7 +101,7 @@ class JdlLint extends AbstractDeclarativeValidator {
 			)
 		]
 	}
-	
+
 	@Check
 	def void checkForDuplicateEnumValues(JdlEnum enumDef) {
 		val duplicates = enumDef.values.stream().distinct().filter(e|Collections.frequency(enumDef.values, e) > 1).

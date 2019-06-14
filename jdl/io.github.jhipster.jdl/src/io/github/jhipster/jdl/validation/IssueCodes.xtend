@@ -51,6 +51,7 @@ interface IssueCodes {
 	String USELESS_COMMAS_MSG = 'Useless commas can be removed'
 	String DUPLICATE_ENUM_DEF_MSG = 'Enum with name "%s" already defined'
 	String DUPLICATE_ENUM_VALUE_DEF_MSG = 'Duplicate enum value "%s"'
+	String FOUND_GROUPABLE_RELATIONSHIP_MSG = 'Found groupable relationship "%s"'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
 	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
 	String INVALID_PARAM_NAME_MSG = 'Unknown literal [%s]!'
