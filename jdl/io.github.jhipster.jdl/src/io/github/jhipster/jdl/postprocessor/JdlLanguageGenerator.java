@@ -16,25 +16,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jhipster.jdl.postprocessor
+package io.github.jhipster.jdl.postprocessor;
 
-import com.google.inject.Guice
-import org.eclipse.xtext.XtextRuntimeModule
-import org.eclipse.xtext.XtextStandaloneSetup
-import org.eclipse.xtext.xtext.generator.XtextGenerator
-import org.eclipse.xtext.xtext.ecoreInference.IXtext2EcorePostProcessor
+import org.eclipse.xtext.XtextRuntimeModule;
+import org.eclipse.xtext.XtextStandaloneSetup;
+import org.eclipse.xtext.xtext.ecoreInference.IXtext2EcorePostProcessor;
+import org.eclipse.xtext.xtext.generator.XtextGenerator;
+
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-class JdlLanguageGenerator extends XtextGenerator {
-	
-	new() {
+public class JdlLanguageGenerator extends XtextGenerator {
+	public JdlLanguageGenerator() {
 		new XtextStandaloneSetup() {
-			override createInjector() {
+			@Override
+			public Injector createInjector() {
 				return Guice.createInjector(new XtextRuntimeModule() {
-					def Class<? extends IXtext2EcorePostProcessor> bindIXtext2EcorePostProcessor() {
-						return JdlMetaModelPostProcessor
+					@SuppressWarnings("unused")
+					public Class<? extends IXtext2EcorePostProcessor> bindIXtext2EcorePostProcessor() {
+						return JdlMetaModelPostProcessor.class;
 					}
 				});
 			}

@@ -50,7 +50,8 @@ Export-Package: io.github.jhipster.jdl,
  org.apache.commons.lang3.time,
  org.apache.commons.lang3.tuple
 Import-Package: org.apache.log4j,
- org.eclipse.swt.graphics
+ org.eclipse.swt.graphics,
+ org.eclipse.xtext.xtext.generator
 Bundle-ClassPath: .,
  lib/plantuml-epl-8059.jar,
  lib/generator-vscode-0.4.jar,
