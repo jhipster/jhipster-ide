@@ -1,4 +1,4 @@
-[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][travis-image]][travis-url] [![Download][download-image]][download-url]
+[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Download][download-image]][download-url]
 
 JHipster-IDE
 ============
