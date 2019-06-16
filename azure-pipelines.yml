@@ -26,9 +26,9 @@ variables:
 jobs:
 - job: |
   workspace:
-	clean: all
+   clean: all
   displayName: 'Clean workspace'
-    
+
 steps:
 - task: NodeTool@0
   inputs:
