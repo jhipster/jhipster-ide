@@ -4,8 +4,9 @@ enum A {
 }
 enum B {
   BA,
-  BB
-}
+  BA,
+  B
+} 
 enum A {
   AA
 }

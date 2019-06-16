@@ -7,7 +7,7 @@ var rootPath = ".."
 
 Workflow {
 	
-	component = XtextGenerator {
+	component = postprocessor.JdlLanguageGenerator {
 		configuration = {
 			project = StandardProjectConfig {
 				baseName = "io.github.jhipster.jdl"
@@ -66,7 +66,7 @@ Workflow {
 			}			
 			
 			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
 		}
 	}

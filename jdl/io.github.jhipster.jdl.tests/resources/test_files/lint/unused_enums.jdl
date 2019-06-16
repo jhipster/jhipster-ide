@@ -1,15 +1,16 @@
 entity A {
-  thing MyEnum
+  thing MyEnum1
 }
 
-enum MyEnum {
-  A, B
+enum MyEnum1 {
+  A1, B1
 }
 
 enum MyEnum2 {
-  A, B
+  A2, B2
 }
-
+ 
 enum MyEnum3 {
-  A, B
+  A3, B3
 }
+                             

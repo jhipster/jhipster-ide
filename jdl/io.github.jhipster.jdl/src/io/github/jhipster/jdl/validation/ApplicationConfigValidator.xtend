@@ -21,7 +21,6 @@ package io.github.jhipster.jdl.validation
 import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.config.JdlDeploymentOptions
 import io.github.jhipster.jdl.config.JdlParameterType
-import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
@@ -47,18 +46,6 @@ class ApplicationConfigValidator extends AbstractDeclarativeValidator {
 
 	override register(EValidatorRegistrar registrar) {}
 
-	@Check
-	def void checkApplicationParametersUniqueness(JdlApplicationConfig config) {
-		val set = newHashSet
-		config.paramters.map[
-			it.paramName.literal
-		].forEach[ p, i |
-			if (!set.add(p)) error(
-				String.format(INVALID_PARAM_NOTUNIQUE_MSG, p), JDL_APPLICATION_CONFIG__PARAMTERS, i
-			)
-		]
-	}
-	
 // FIXME: keep not clear how logic is really implemented in generator
 //
 //	@Check

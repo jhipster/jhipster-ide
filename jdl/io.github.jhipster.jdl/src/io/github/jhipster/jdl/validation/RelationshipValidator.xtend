@@ -40,7 +40,7 @@ class RelationshipValidator extends AbstractDeclarativeValidator {
         val opposite = relationRole.opposite 
 	    if (opposite === null || relationRole.displayField?.name.isNullOrEmpty) return;
 	    val entity = opposite.entity
-        if (!entity.fields.exists[it.name == relationRole.displayField.name]) {
+        if (!entity.fieldDefinition?.fields.exists[it.name == relationRole.displayField.name]) {
             val msg =  String.format(INVALID_FIELD_SELECTION_MSG, relationRole.displayField.name, entity.name)
             warning(msg, relationRole, JDL_RELATION_ROLE__DISPLAY_FIELD, INSIGNIFICANT_INDEX)
          }
