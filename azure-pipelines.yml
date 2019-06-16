@@ -23,6 +23,12 @@ pool:
 variables:
   DISPLAY: :99.0
 
+jobs:
+- job: |
+  workspace:
+	clean: all
+  displayName: 'Clean workspace'
+    
 steps:
 - task: NodeTool@0
   inputs:
