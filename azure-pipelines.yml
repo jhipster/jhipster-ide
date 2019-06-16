@@ -57,10 +57,10 @@ steps:
     node --version
   displayName: 'CHECK: versions'
 
-- bash: ./mvnw -B -Dmaven.wagon.http.pool=false clean install
-  displayName: 'MAVEN: install'
+#- bash: ./mvnw -B -Dmaven.wagon.http.pool=false clean install
+#  displayName: 'MAVEN: install'
 
-- script: |
-    cd $(Build.Repository.LocalPath)/jdl
-    ./gradlew clean installServer
-  displayName: 'GRADLE: installServer'
+#- script: |
+#    cd $(Build.Repository.LocalPath)/jdl
+#    ./gradlew clean installServer
+#  displayName: 'GRADLE: installServer'
