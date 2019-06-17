@@ -12,7 +12,7 @@ services:
   - xvfb
 
 jdk:
-  - openjdk8
+  - oraclejdk8
 
 cache:
   directories:
