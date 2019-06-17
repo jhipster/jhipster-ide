@@ -22,6 +22,7 @@ addons:
   apt:
     packages:
     - build-essential
+    - oracle-java8-installer
     - graphviz
     - openssl
     - libssl-dev

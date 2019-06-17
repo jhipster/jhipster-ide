@@ -55,7 +55,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 			]
 			val model = resource.model
 			if (model !== null) {
-				model.name = resource.modelName
+//				model.name = resource.modelName
 				if(model.eContents.filter(JdlEntity).exists [
 					name.equals(user.name)
 				] == false) model.features += user
@@ -63,7 +63,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 		}
 	}
 
-	def private String getModelName(DerivedStateAwareResource resource) {
+	def protected String getModelName(DerivedStateAwareResource resource) {
 		return try {
 			resource.URI.trimFileExtension.lastSegment
 		} catch (Exception exception) {

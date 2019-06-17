@@ -35,6 +35,7 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
+import static java.lang.System.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
 import static org.apache.commons.lang3.StringUtils.*
@@ -45,7 +46,7 @@ import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
  * @author Serano Colameo - Initial contribution and API
  */
 class JdlLint extends AbstractDeclarativeValidator {
-	
+
 	@Inject JDLGrammarAccess ga
 
 	override register(EValidatorRegistrar registrar) {
@@ -53,57 +54,69 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	@Check
 	def void checkApplicationParametersUniqueness(JdlApplicationConfig config) {
+		if (isLintDisabled(config)) return
 		val set = newHashSet
-		config.paramters.map[
+		config.paramters.map [
 			it.paramName.literal
-		].forEach[ p, i |
-			if (!set.add(p)) error(
-				String.format(INVALID_PARAM_NOTUNIQUE_MSG, p), JDL_APPLICATION_CONFIG__PARAMTERS, i
-			)
+		].forEach [ p, i |
+			if (!set.add(p))
+				error(
+					String.format(INVALID_PARAM_NOTUNIQUE_MSG, p),
+					JDL_APPLICATION_CONFIG__PARAMTERS, i
+				)
 		]
 	}
 
 	@Check
 	def void checkDeploymentParametersUniqueness(JdlDeployment deployment) {
+		if (isLintDisabled(deployment)) return
 		val set = newHashSet
-		deployment.paramters.map[
+		deployment.paramters.map [
 			it.paramName.literal
-		].forEach[ p, i |
-			if (!set.add(p)) error(
-				String.format(INVALID_PARAM_NOTUNIQUE_MSG, p), JDL_DEPLOYMENT__PARAMTERS, i
-			)
+		].forEach [ p, i |
+			if (!set.add(p))
+				error(
+					String.format(INVALID_PARAM_NOTUNIQUE_MSG, p),
+					JDL_DEPLOYMENT__PARAMTERS, i
+				)
 		]
 	}
 
 	@Check
 	def void checkForGroupableRelationships(JdlRelationships relations) {
+		if (isLintDisabled(relations)) return
 		val set = newHashSet
 		set.add(relations.cardinality)
 		val model = getContainerOfType(relations, JdlDomainModel)
-		model.features.filter(JdlRelationships).forEach[ r, i |
-			if (!set.add(r.cardinality)) warning(
-				String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality), JDL_RELATIONSHIPS__RELATIONSHIPS, i
-			)
+		model.features.filter(JdlRelationships).forEach [ r, i |
+			if (!set.add(r.cardinality))
+				warning(
+					String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality),
+					JDL_RELATIONSHIPS__RELATIONSHIPS, i
+				)
 		]
 	}
-	
+
 	@Check
 	def void checkRelationshipUniqueness(JdlRelationships relations) {
+		if (isLintDisabled(relations)) return
 		val set = newHashSet
-		relations.relationships.filter[
-			it.source !== null && it.source.entity !== null &&
-			it.target !== null && it.target.entity !== null
-		].forEach[ r, i |
-			if (!set.add(r.source.entity -> r.target.entity)) error(
-				String.format(
-					INVALID_RELATIONSHIP_NOTUNIQUE_MSG, r.source.entity.name -> r.target.entity.name
-				), JDL_RELATIONSHIPS__RELATIONSHIPS, i
-			)
+		relations.relationships.filter [
+			it.source !== null && it.source.entity !== null && it.target !== null && it.target.entity !== null
+		].forEach [ r, i |
+			if (!set.add(r.source.entity -> r.target.entity))
+				error(
+					String.format(
+						INVALID_RELATIONSHIP_NOTUNIQUE_MSG,
+						r.source.entity.name -> r.target.entity.name
+					), JDL_RELATIONSHIPS__RELATIONSHIPS, i
+				)
 		]
 	}
 
 	@Check
 	def void checkForDuplicateEnumValues(JdlEnum enumDef) {
+		if (isLintDisabled(enumDef)) return
 		val duplicates = enumDef.values.stream().distinct().filter(e|Collections.frequency(enumDef.values, e) > 1).
 			collect(Collectors.toList());
 		if (!duplicates.isNullOrEmpty) {
@@ -124,6 +137,7 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	@Check
 	def void checkUnusedEnums(JdlEnum it) {
+		if (isLintDisabled) return
 		val model = getContainerOfType(it, JdlDomainModel)
 		val AtomicBoolean found = new AtomicBoolean
 		findCrossReferences(model, #{it}, [found.set(true)])
@@ -134,6 +148,7 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	@Check
 	def void checkForEmptyEntityDef(JdlEntity it) {
+		if (isLintDisabled) return;
 		if (fieldDefinition?.fields.isNullOrEmpty && containsCurlyBrackets(it)) {
 			info(String.format(EMPTY_ENTITY_DEF_MSG, it.name), JDL_ENTITY__NAME)
 		}
@@ -141,6 +156,7 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	@Check
 	def void checkTableDef(JdlEntity it) {
+		if (isLintDisabled) return;
 		if (!table.isNullOrEmpty) {
 			var tableName = join(splitByCharacterTypeCamelCase(name), '_').toLowerCase
 			if (tableName == table) {
@@ -151,9 +167,19 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	@Check
 	def void checkUselessCommas(JdlEntity it) {
+		if (isLintDisabled) return;
 		if (containsComma(it.fieldDefinition)) {
 			warning(USELESS_COMMAS_MSG, JDL_ENTITY__FIELD_DEFINITION)
 		}
+	}
+
+	def private boolean isLintDisabled(EObject eObj) {
+		val model = getContainerOfType(eObj, JdlDomainModel)
+		val node = findActualNodeFor(model)
+		if (node === null) return false
+		val lines = node.text.split(lineSeparator)
+		val result = lines.head.replaceAll('\\s', '') == ('//lint=false')
+		return result
 	}
 
 	def private boolean containsComma(EObject eObj) {
@@ -169,7 +195,7 @@ class JdlLint extends AbstractDeclarativeValidator {
 
 	def private boolean containsTerminal(EObject eObj, String... terminals) {
 		val node = findActualNodeFor(eObj)
-		if (node === null) return false
+		if(node === null) return false
 		val expression = node.text
 		return !expression.isNullOrEmpty && terminals.forall[expression.contains(it)]
 	}

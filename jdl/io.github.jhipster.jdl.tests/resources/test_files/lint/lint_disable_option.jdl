@@ -1,0 +1,74 @@
+// lint = false
+entity A
+entity B
+entity C{}
+entity A 
+entity Toto(toto) 
+entity SuperToto(super_toto) 
+
+entity D {
+  aa String
+  bb Integer
+  cc Boolean
+  aa Boolean
+  cc Boolean
+}
+             
+relationship OneToMany {
+  A to B
+}
+
+relationship OneToMany {
+  B to C
+}
+
+relationship OneToMany {
+  A to C
+}
+
+relationship OneToMany {
+  A to B
+  A to B
+}
+             
+application {
+  config {
+  	testFrameworks [protractor]
+  	databaseType cassandra
+  	prodDatabaseType mongodb
+  	devDatabaseType couchbase
+  	devDatabaseType couchbase
+  }
+  entities * except Customer
+}
+             
+deployment {
+  deploymentType openshift,
+  deploymentType docker-compose,
+  appsFolders [tata, titi],
+  dockerRepositoryName "test"
+}
+
+entity AA {
+  thing MyEnum1
+}
+
+enum MyEnum1 {
+  A1, B1
+}
+
+enum MyEnum2 {
+  A2, B2
+}
+ 
+enum MyEnum3 {
+  A3, B3
+}
+                     
+entity Abc {
+  tata String
+  titi Integer,
+  toto Boolean  
+  tutu String
+} 
+     

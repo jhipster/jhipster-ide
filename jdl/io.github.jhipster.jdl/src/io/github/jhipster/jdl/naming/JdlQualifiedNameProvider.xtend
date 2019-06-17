@@ -28,10 +28,10 @@ import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider
  */
 class JdlQualifiedNameProvider extends DefaultDeclarativeQualifiedNameProvider {
 
-	override getFullyQualifiedName(EObject eObj) {
-		val fqn = super.getFullyQualifiedName(eObj)
-		if (fqn === null) return fqn
-		val model = EcoreUtil2.getContainerOfType(eObj, JdlDomainModel)
-		return if (fqn.segmentCount > 1 && fqn.firstSegment == model.name) fqn.skipFirst(1) else fqn
-	}
+//	override getFullyQualifiedName(EObject eObj) {
+//		val fqn = super.getFullyQualifiedName(eObj)
+//		if (fqn === null) return fqn
+//		val model = EcoreUtil2.getContainerOfType(eObj, JdlDomainModel)
+//		return if (fqn.segmentCount > 1 && fqn.firstSegment == model.name) fqn.skipFirst(1) else fqn
+//	}
 }
