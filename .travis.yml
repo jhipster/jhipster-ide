@@ -20,7 +20,7 @@ cache:
 
 addons:
   apt:
-    packages:    
+    packages:
     - build-essential
     - graphviz
     - openssl
