@@ -16,14 +16,14 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.16.0</xtextVersion>
+		<xtextVersion>2.18.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<junit.version>4.12</junit.version>
 		<org.reficio.p2-maven-plugin.version>1.3.0</org.reficio.p2-maven-plugin.version>
 		<!-- Tycho settings -->
-		<tycho-version>1.3.0</tycho-version>
+		<tycho-version>1.4.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
@@ -32,7 +32,6 @@
 	</properties>
 
 	<profiles>
-		<!-- DO NOT CHANGE THE *ORDER* IN WHICH THESE PROFILES ARE DEFINED! -->
 		<profile>
 			<id>product</id>
 			<modules>
@@ -326,15 +325,22 @@
 
 	<dependencyManagement>
 		<dependencies>
+<!-- 			<dependency> -->
+<!-- 				<groupId>junit</groupId> -->
+<!-- 				<artifactId>junit</artifactId> -->
+<!-- 				<version>${junit.version}</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 				<groupId>junit</groupId> -->
+<!-- 				<artifactId>junit-dep</artifactId> -->
+<!-- 				<version>${junit.version}</version> -->
+<!-- 			</dependency> -->
 			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit-dep</artifactId>
-				<version>${junit.version}</version>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-dev-bom</artifactId>
+				<version>${xtextVersion}</version>
+				<type>pom</type>
+				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

@@ -48,7 +48,7 @@ public class TestDockerClient {
 	@Test
 	public void execStart() throws Exception {
         String containerName = "generated_" + new SecureRandom().nextInt();
-        CreateContainerResponse container = dockerClient.createContainerCmd("busybox").withCmd("sleep", "9999")
+        CreateContainerResponse container = dockerClient.createContainerCmd("alpine").withCmd("sleep", "9999")
                 .withName(containerName).exec();
         dockerClient.startContainerCmd(container.getId()).exec();
         InputStream stdin = new ByteArrayInputStream("STDIN\n".getBytes("UTF-8"));
