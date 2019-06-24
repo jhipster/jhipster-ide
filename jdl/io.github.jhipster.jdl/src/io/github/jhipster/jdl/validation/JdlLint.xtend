@@ -178,7 +178,9 @@ class JdlLint extends AbstractDeclarativeValidator {
 		val node = findActualNodeFor(model)
 		if (node === null) return false
 		val lines = node.text.split(lineSeparator)
-		val result = lines.head.replaceAll('\\s', '') == ('//lint=false')
+		val result = #['//lint=false', '//no-linting'].exists[
+			lines.head.replaceAll('\\s', '') == it
+		]
 		return result
 	}
 
