@@ -67,9 +67,9 @@ class JDLTemplateNewProjectWizard extends TemplateNewProjectWizard {
         )
         val javaProject = JavaCore.create(project)
         javaProject.save(new NullProgressMonitor, true)
-        val modelFolder = project.getFolder(new Path(MAVEN_MODEL_FOLDER))
+        val modelFolder = project.getFolder(new Path(RESOURCE_MODEL_FOLDER))
         val modelClasspath = JavaCore.newSourceEntry(modelFolder.fullPath)
-        val testFolder = project.getFolder(new Path(TEST_SOURCE_FOLDER))
+        val testFolder = project.getFolder(new Path(TEST_JAVA_FOLDER))
         testFolder.location.toFile.mkdirs
         val testClasspath = JavaCore.newSourceEntry(testFolder.fullPath)
         val buildPath = newArrayList(javaProject.rawClasspath)
