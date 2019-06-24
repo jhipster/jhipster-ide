@@ -8,7 +8,6 @@ import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Status
 import org.eclipse.jdt.core.JavaCore
-import org.eclipse.m2e.core.internal.IMavenConstants
 import org.eclipse.xtext.ui.XtextProjectHelper
 import org.eclipse.xtext.ui.util.PluginProjectFactory
 import org.eclipse.xtext.ui.wizard.IExtendedProjectInfo
@@ -18,10 +17,13 @@ import org.eclipse.xtext.ui.wizard.template.StringTemplateVariable
 
 class ProjectWizardUtil {
     
-    public static String MAVEN_SOURCE_FOLDER = 'src/main'
-    public static String JAVA_SOURCE_FOLDER = 'src/main/java'
-    public static String TEST_SOURCE_FOLDER = 'src/test/java'
-    public static String MAVEN_MODEL_FOLDER = MAVEN_SOURCE_FOLDER + '/model'
+    public static String MAIN_SOURCE_FOLDER = 'src/main'
+    public static String TEST_SOURCE_FOLDER = 'src/test'
+    public static String RESOURCE_FOLDER = 'src/resource'
+    public static String MAIN_JAVA_FOLDER = MAIN_SOURCE_FOLDER + '/java'
+    public static String TEST_JAVA_FOLDER = TEST_SOURCE_FOLDER + '/java'
+    public static String RESOURCE_MODEL_FOLDER = RESOURCE_FOLDER + '/model'
+    public static String MAVEN_MODEL_NATURE = 'org.eclipse.m2e.core.maven2Nature'
     
     static class GenerateProjectsDelegator extends AbstractProjectTemplate {
         def static void generateProjects(IProjectGenerator generator, PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path, String content) {
@@ -45,9 +47,9 @@ class ProjectWizardUtil {
     def static void initialize(PluginProjectFactory it, IExtendedProjectInfo projectInfo, String modeFilelName, String path) {
         projectName = projectInfo.projectName
         location = projectInfo.locationPath
-        projectNatures += #[JavaCore.NATURE_ID, XtextProjectHelper.NATURE_ID, IMavenConstants.NATURE_ID]
-        builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, IMavenConstants.BUILDER_ID]
-        folders += JAVA_SOURCE_FOLDER
+        projectNatures += #[JavaCore.NATURE_ID, XtextProjectHelper.NATURE_ID, MAVEN_MODEL_NATURE]
+        builderIds += #[JavaCore.BUILDER_ID, XtextProjectHelper.BUILDER_ID, MAVEN_MODEL_NATURE]
+        folders += io.github.jhipster.jdl.ui.wizard.util.ProjectWizardUtil.MAIN_JAVA_FOLDER
     }
     
     def static validatePath(String path) {
