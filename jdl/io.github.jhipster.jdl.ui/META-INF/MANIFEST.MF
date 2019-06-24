@@ -25,7 +25,6 @@ Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.tm.terminal.view.ui;bundle-version="4.5.100",
  org.eclipse.ui.console;bundle-version="3.8.500",
  org.eclipse.core.variables;bundle-version="3.4.500",
- org.eclipse.m2e.core;bundle-version="1.9.1",
  org.eclipse.pde.core,
  org.eclipse.ui.forms
 Import-Package: org.apache.log4j

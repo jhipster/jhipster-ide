@@ -41,10 +41,5 @@
 		<unit id="net.sourceforge.plantuml.feature.feature.group" version="0.0.0"/>
 		<repository location="http://hallvard.github.io/plantuml/"/>
 	</location>
-	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="org.eclipse.m2e.feature.feature.group" version="0.0.0"/>
-		<unit id="org.eclipse.m2e.logback.feature.feature.group" version="0.0.0"/>
-		<repository location="http://download.eclipse.org/technology/m2e/releases/1.9/1.9.1.20180912-1601/"/>
-	</location>
 </locations>
 </target>
