@@ -55,7 +55,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 			]
 			val model = resource.model
 			if (model !== null) {
-//				model.name = resource.modelName
+				model.name = resource.modelName
 				if(model.eContents.filter(JdlEntity).exists [
 					name.equals(user.name)
 				] == false) model.features += user
