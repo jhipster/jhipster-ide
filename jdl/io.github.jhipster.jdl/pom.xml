@@ -16,24 +16,6 @@
 	<build>
 		<plugins>
 			<plugin>
-               <groupId>org.apache.maven.plugins</groupId>
-               <artifactId>maven-compiler-plugin</artifactId>
-               <version>3.8.1</version>
-               <executions>
-               	 <execution>
-               	 	<phase>validate</phase>
-               	 	<goals>
-               	 		<goal>compile</goal>
-               	 	</goals>
-               	 </execution>
-               </executions>
-               <configuration>
-                  <includes>
-                     <include>io/github/jhipster/jdl/postprocessor/*.java</include>
-                  </includes>
-               </configuration>
-            </plugin>		
-			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.4.0</version>

@@ -44,8 +44,8 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>io.github.jhipster.jdl</module>
 				<module>io.github.jhipster.jdl.lib</module>
+				<module>io.github.jhipster.jdl</module>
 				<module>io.github.jhipster.jdl.generator.lib</module>
 				<module>io.github.jhipster.jdl.ide</module>
 				<module>io.github.jhipster.jdl.ui</module>

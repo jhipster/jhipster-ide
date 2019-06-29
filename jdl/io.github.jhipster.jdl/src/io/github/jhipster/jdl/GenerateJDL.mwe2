@@ -7,7 +7,7 @@ var rootPath = ".."
 
 Workflow {
 	
-	component = postprocessor.JdlLanguageGenerator {
+	component = lib.pp.JdlLanguageGenerator {
 		configuration = {
 			project = StandardProjectConfig {
 				baseName = "io.github.jhipster.jdl"
