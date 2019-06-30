@@ -16,7 +16,7 @@ Require-Bundle: io.github.jhipster.jdl.ui,
  org.eclipse.jdt.core,
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.github.jhipster.jdl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
  org.junit;bundle-version="4.12.0",

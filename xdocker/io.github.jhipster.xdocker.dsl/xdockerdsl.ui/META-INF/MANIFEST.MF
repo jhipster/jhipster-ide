@@ -24,7 +24,7 @@ Require-Bundle: xdockerdsl,
  org.eclipse.xtext.common.types.ui,
  org.eclipse.jdt.ui
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ch.itemis.xdocker.ui,
  ch.itemis.xdocker.ui.console,
  ch.itemis.xdocker.ui.contentassist,
