@@ -60,7 +60,7 @@ steps:
     node --version
   displayName: 'CHECK: versions'
 
-- script:
+- script: |
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
     export PATH=$JAVA_HOME/bin:$PATH
     ./mvnw -B -Dmaven.wagon.http.pool=false clean install
