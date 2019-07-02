@@ -39,7 +39,6 @@ steps:
     sudo apt-get install -y openjdk-11-jre openjdk-11-jdk
     export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
     export PATH=$JAVA_HOME/bin:$PATH
-    ls -ls $JAVA_HOME/bin
     java -version
   displayName: 'TOOLS: configuring OpenJDK'
 
@@ -54,13 +53,17 @@ steps:
   displayName: 'TOOLS: install libraries'
 
 - script: |
-    echo $JAVA_HOME
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+    export PATH=$JAVA_HOME/bin:$PATH
     java -version
     ./mvnw -version
     node --version
   displayName: 'CHECK: versions'
 
-- bash: ./mvnw -B -Dmaven.wagon.http.pool=false clean install
+- script:
+    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+    export PATH=$JAVA_HOME/bin:$PATH
+    ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'MAVEN: install'
 
 - script: |
