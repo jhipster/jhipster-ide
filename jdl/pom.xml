@@ -26,9 +26,10 @@
 		<tycho-version>1.4.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
-		<moduleProperties></moduleProperties>
+		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 		<systemProperties></systemProperties>
 		<tycho.testArgLine></tycho.testArgLine>
+		<additionalTestArguments></additionalTestArguments>
 	</properties>
 
 	<profiles>
@@ -160,13 +161,6 @@
 						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
 						<testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory>
 					</configuration>
-<!-- 					<dependencies> -->
-<!-- 						<dependency> -->
-<!-- 							<groupId>org.eclipse.platform</groupId> -->
-<!-- 							<artifactId>org.eclipse.equinox.common</artifactId> -->
-<!-- 							<version>3.10.0</version> -->
-<!-- 						</dependency> -->
-<!-- 					</dependencies> -->
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -175,10 +169,6 @@
 					<configuration>
 						<filesets>
 							<fileset>
-								<directory>${basedir}/xtend-gen</directory>
-								<includes>
-									<include>**/*</include>
-								</includes>
 								<directory>${basedir}/xtend-gen</directory>
 								<includes>
 									<include>**/*</include>
@@ -245,7 +235,7 @@
 											tycho-compiler-plugin
 										</artifactId>
 										<versionRange>
-											[1.0.0,)
+											[0.23.1,)
 										</versionRange>
 										<goals>
 											<goal>compile</goal>
@@ -264,7 +254,7 @@
 											tycho-packaging-plugin
 										</artifactId>
 										<versionRange>
-											[1.0.0,)
+											[0.23.1,)
 										</versionRange>
 										<goals>
 											<goal>build-qualifier</goal>
@@ -289,6 +279,21 @@
 					<configuration>
 						<compilerArgument>-err:-forbidden</compilerArgument>
 						<useProjectSettings>false</useProjectSettings>
+					</configuration>
+				</plugin>
+				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+					To skip tests, but still compile them, use: -DskipTests
+					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
+					at end) -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-surefire-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
+						<argLine>${platformSystemProperties} ${systemProperties} ${moduleProperties} ${additionalTestArguments}</argLine>
+						<failIfNoTests>false</failIfNoTests>
+						<useUIHarness>false</useUIHarness>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -325,16 +330,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-<!-- 			<dependency> -->
-<!-- 				<groupId>junit</groupId> -->
-<!-- 				<artifactId>junit</artifactId> -->
-<!-- 				<version>${junit.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>junit</groupId> -->
-<!-- 				<artifactId>junit-dep</artifactId> -->
-<!-- 				<version>${junit.version}</version> -->
-<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.eclipse.xtext</groupId>
 				<artifactId>xtext-dev-bom</artifactId>

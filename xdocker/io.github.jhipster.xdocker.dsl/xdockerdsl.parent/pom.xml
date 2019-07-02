@@ -19,9 +19,10 @@
 		<tycho-version>1.4.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
-		<moduleProperties></moduleProperties>
+		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
 		<systemProperties></systemProperties>
 		<tycho.testArgLine></tycho.testArgLine>
+		<additionalTestArguments></additionalTestArguments>
 	</properties>
 
 	<modules>
