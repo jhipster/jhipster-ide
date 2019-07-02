@@ -53,7 +53,7 @@ steps:
   displayName: 'TOOLS: install libraries'
 
 - script: |
-	echo $JAVA_HOME
+    echo $JAVA_HOME
     java -version
     ./mvnw -version
     node --version
