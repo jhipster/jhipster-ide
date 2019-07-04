@@ -11,15 +11,15 @@
 	<properties>
 		<xtextVersion>2.18.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<junit.version>4.12</junit.version>
 		<org.reficio.p2-maven-plugin.version>1.3.0</org.reficio.p2-maven-plugin.version>
 		<!-- Tycho settings -->
 		<tycho-version>1.4.0</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
-		<moduleProperties>--add-modules=ALL-SYSTEM</moduleProperties>
+		<moduleProperties></moduleProperties>
 		<systemProperties></systemProperties>
 		<tycho.testArgLine></tycho.testArgLine>
 		<additionalTestArguments></additionalTestArguments>

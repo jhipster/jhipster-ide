@@ -28,7 +28,7 @@ Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.pde.core,
  org.eclipse.ui.forms
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ui.contentassist,
  io.github.jhipster.jdl.ui.quickfix,
  io.github.jhipster.jdl.ui.internal,
