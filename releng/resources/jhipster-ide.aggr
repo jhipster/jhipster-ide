@@ -3,46 +3,46 @@
   <validationSets description="JHipster-IDE" label="JHipster-IDE" extends="//@validationSets[label='Base']">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
-        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.7.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.8.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
     <contributions description="Xdocker" label="Xdocker">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
-        <features name="xdockerdsl.feature.feature.group" versionRange="1.7.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="xdockerdsl.feature.feature.group" versionRange="1.8.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0/">
-        <bundles name="org.junit" versionRange="4.12.0.v201504281640"/>
-        <bundles name="org.junit.source" versionRange="4.12.0.v201504281640"/>
-        <bundles name="org.objectweb.asm" versionRange="7.0.0"/>
-        <bundles name="org.objectweb.asm.source" versionRange="7.0.0"/>
-        <bundles name="org.objectweb.asm.tree" versionRange="7.0.0"/>
-        <bundles name="org.objectweb.asm.tree.source" versionRange="7.0.0"/>
-        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.16.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.16.0"/>
+      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.18.0/">
+        <bundles name="org.junit" versionRange="4.12.0"/>
+        <bundles name="org.junit.source" versionRange="4.12.0"/>
+        <bundles name="org.objectweb.asm" versionRange="7.1.0"/>
+        <bundles name="org.objectweb.asm.source" versionRange="7.1.0"/>
+        <bundles name="org.objectweb.asm.tree" versionRange="7.1.0"/>
+        <bundles name="org.objectweb.asm.tree.source" versionRange="7.1.0"/>
+        <features name="org.eclipse.xtend.sdk.feature.group" versionRange="2.18.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.18.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/lsp4j/updates/releases/">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="[0.6.0,0.7.0]"/>
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="[0.7.2,0.8.0]"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/orbit/2018-09">
-        <bundles name="com.google.inject" versionRange="3.0.0.v201605172100"/>
+      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/orbit/2019-06">
+        <bundles name="com.google.inject" versionRange="3.0.0"/>
       </repositories>
     </contributions>
     <contributions description="Tools" label="Tools">
       <repositories location="http://hallvard.github.io/plantuml">
-        <features name="net.sourceforge.plantuml.ecore.feature.feature.group" versionRange="1.1.20"/>
-        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.20"/>
-        <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2018.9"/>
+        <features name="net.sourceforge.plantuml.ecore.feature.feature.group" versionRange="1.1.23"/>
+        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.23"/>
+        <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2019.0"/>
       </repositories>
       <repositories location="http://download.eclipse.org/technology/m2e/releases/1.9/1.9.1.20180912-1601/">
         <features name="org.eclipse.m2e.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
         <features name="org.eclipse.m2e.logback.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
         <features name="org.eclipse.m2e.sdk.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
       </repositories>
-      <repositories location="http://download.eclipse.org/releases/2018-12">
+      <repositories location="https://download.eclipse.org/releases/2019-06">
         <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.5.1" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
       </repositories>
     </contributions>
@@ -51,8 +51,8 @@
         <bundles name="org.eclipse.cdt.core" versionRange="6.5.0"/>
       </repositories>
     </contributions>
-    <validationRepositories location="http://download.eclipse.org/releases/2018-12"/>
-    <validationRepositories location="http://download.eclipse.org/modeling/tmf/xtext/updates/orbit/2018-12"/>
+    <validationRepositories location="https://download.eclipse.org/releases/2019-06"/>
+    <validationRepositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/orbit/2019-06"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>
