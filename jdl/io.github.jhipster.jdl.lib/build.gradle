@@ -1,0 +1,11 @@
+ext.xtextVersion = "2.18.0"
+
+dependencies {
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.xtext.generator', version: "${xtextVersion}"
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.ide', version: "${xtextVersion}"
+	compile group:'org.eclipse.xtext', name: 'org.eclipse.xtext.xbase', version: "${xtextVersion}"
+}
+
+//this is an eclipse plugin project
+eclipseClasspath.enabled=false
+cleanEclipseClasspath.enabled=false

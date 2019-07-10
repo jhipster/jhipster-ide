@@ -12,7 +12,7 @@ services:
   - xvfb
 
 jdk:
-  - openjdk8
+  - openjdk11
 
 cache:
   directories:
@@ -55,6 +55,6 @@ before_deploy:
 deploy:
   - provider: script
     skip_cleanup: true
-    script: ./releng/scripts/build_products.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG $BT_USER $BT_APIKEY 1.7 1.7.0
+    script: ./releng/scripts/build_products.sh $TRAVIS_BUILD_DIR $TRAVIS_TAG $BT_USER $BT_APIKEY 1.8 1.8.0
     on:
        branch: master

@@ -9,8 +9,6 @@ package ch.itemis.xdocker.ui.view
 
 import ch.itemis.xdocker.ui.job.AbstractXdockerJob
 import ch.itemis.xdocker.ui.job.XdockerJobStatus
-import javax.annotation.PostConstruct
-import javax.annotation.PreDestroy
 import org.eclipse.core.runtime.jobs.IJobChangeEvent
 import org.eclipse.core.runtime.jobs.IJobChangeListener
 import org.eclipse.swt.widgets.Composite
@@ -29,9 +27,9 @@ abstract class AbstractXdockerBrowserView extends ViewPart {
 	/** 
 	 * Create contents of the view part.
 	 */
-	@PostConstruct def void createControls(Composite parent) {}
+	def void createControls(Composite parent) {}
 	
-	@PreDestroy override void dispose() {}
+	override void dispose() {}
 
 	/*
 	 * (non-Javadoc)

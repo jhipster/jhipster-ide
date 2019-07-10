@@ -1,12 +1,8 @@
 plugins {
-	id 'com.github.johnrengelman.shadow' version '2.0.4'
+	id 'com.github.johnrengelman.shadow' version '4.0.1'
 }
 
-apply plugin: 'application'
-apply plugin: 'com.github.johnrengelman.shadow'
-mainClassName = "org.eclipse.xtext.ide.server.ServerLauncher"
-
-xtextVersion = "2.16.0"
+ext.xtextVersion = "2.18.0"
 
 dependencies {
 	compile project(':io.github.jhipster.jdl')
@@ -15,11 +11,10 @@ dependencies {
 	compile group: 'net.sourceforge.plantuml', name: 'plantuml', version: '8059'
 }
 
-//this is an eclipse plugin project
-eclipseClasspath.enabled=false
-cleanEclipseClasspath.enabled=false
-
+apply plugin: 'application'
+apply plugin: 'com.github.johnrengelman.shadow'
 mainClassName = 'org.eclipse.xtext.ide.server.ServerLauncher'
+
 applicationName = 'jdl-ls'
 
 shadowJar {
@@ -31,6 +26,7 @@ shadowJar {
 	classifier = 'ls'
 	append('plugin.properties')
 }
+
 //this is an eclipse plugin project
 eclipseClasspath.enabled=false
 cleanEclipseClasspath.enabled=false

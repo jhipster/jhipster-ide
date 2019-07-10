@@ -151,7 +151,7 @@ final class JHipsterProjectFromCli {
 
     override generateProjects(IProjectGenerator it) {
         generateProjects(
-            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', MAVEN_MODEL_FOLDER, template
+            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', RESOURCE_MODEL_FOLDER, template
         )
     }
 }
@@ -200,7 +200,7 @@ final class JHipsterMonolithProject {
 
 	override generateProjects(IProjectGenerator it) {
         generateProjects(                                                 
-            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', MAVEN_MODEL_FOLDER, template
+            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', RESOURCE_MODEL_FOLDER, template
         )
 	}
 }
@@ -248,7 +248,7 @@ final class JHipsterMicroserviceProject {
 
     override generateProjects(IProjectGenerator it) {
         generateProjects(                                                 
-            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', MAVEN_MODEL_FOLDER, template
+            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', RESOURCE_MODEL_FOLDER, template
         )
     }
 }
@@ -296,7 +296,7 @@ final class JHipsterGatewayProject {
 
     override generateProjects(IProjectGenerator it) {
         generateProjects(
-            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', MAVEN_MODEL_FOLDER, template
+            new PluginProjectFactory, projectInfo, '''«baseName».jdl''', RESOURCE_MODEL_FOLDER, template
         )
     }
 }

@@ -49,7 +49,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<dependencies>
-	</dependencies>
 </project>
