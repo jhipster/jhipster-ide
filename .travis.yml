@@ -44,7 +44,7 @@ before_script:
   - npm install -g vsce
 
 script:
-  - cd $TRAVIS_BUILD_DIR && ./mvnw clean install
+  - cd $TRAVIS_BUILD_DIR && ./mvnw clean package
 
 after_success:
   - cd $TRAVIS_BUILD_DIR/jdl && ./gradlew clean installServer
