@@ -32,5 +32,5 @@ Search for jhipster and install/reload atom.
 [travis-image]: https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master
 [travis-url]: https://travis-ci.org/jhipster/jhipster-ide
 
-[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/1.7/images/download.svg
-[download-url]: https://bintray.com/jhipster/jhipster-ide/1.7/_latestVersion
+[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/1.8/images/download.svg
+[download-url]: https://bintray.com/jhipster/jhipster-ide/1.8/_latestVersion
