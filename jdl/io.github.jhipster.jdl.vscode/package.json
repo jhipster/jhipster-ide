@@ -79,7 +79,7 @@
         "@types/node": "^8.10.25"
     },
     "dependencies": {
-        "global": "^4.3.2",
+        "global": "^4.4.0",
         "tsc": "^1.20150623.0",
         "vscode-languageclient": "^5.1.0"
     }
