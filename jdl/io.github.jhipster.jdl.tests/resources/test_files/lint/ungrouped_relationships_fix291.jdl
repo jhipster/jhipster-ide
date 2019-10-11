@@ -7,10 +7,6 @@ relationship ManyToMany {
 }
 
 relationship OneToMany {
-  B to C
-}
-
-relationship OneToMany {
   A to C
 }
 
