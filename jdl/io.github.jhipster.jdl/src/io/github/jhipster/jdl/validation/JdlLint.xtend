@@ -88,7 +88,11 @@ class JdlLint extends AbstractDeclarativeValidator {
 		val set = newHashSet
 		set.add(relations.cardinality)
 		val model = getContainerOfType(relations, JdlDomainModel)
-		model.features.filter(JdlRelationships).forEach [ r, i |
+		val rels = model.features.filter(JdlRelationships).filter[
+			it !== relations &&
+			it.cardinality === relations.cardinality
+		]
+		rels.forEach [ r, i |
 			if (!set.add(r.cardinality))
 				warning(
 					String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality),
