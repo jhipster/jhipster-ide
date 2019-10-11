@@ -44,7 +44,7 @@ steps:
 
 - script: |
     set -e
-    sudo apt install build-essential graphviz openssl libssl-dev libgtk3.0-cil-dev xvfb
+    sudo apt install build-essential graphviz openssl libssl-dev libgtk3.0-cil-dev xvfb dbus-x11
     mkdir -p /tmp/.X11-unix
     sudo chmod 1777 /tmp/.X11-unix
     sudo chown root /tmp/.X11-unix/
