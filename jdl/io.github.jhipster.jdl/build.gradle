@@ -4,7 +4,7 @@ dependencies {
 	compile "org.eclipse.platform:org.eclipse.core.commands:3.9.500"
 	compile "org.eclipse.platform:org.eclipse.core.resources:3.13.500"
 	compile "org.eclipse.platform:org.eclipse.core.runtime:3.16.0"
-	compile "net.sourceforge.plantuml:plantuml:1.1.23"
+	compile "net.sourceforge.plantuml:plantuml:8059"
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.7'	
 }
 
