@@ -1,14 +1,18 @@
-#Mon Apr 09 17:16:18 CEST 2018
-override.workspace.settings=true
+arguments=
+auto.sync=false
+build.scans.enabled=false
 connection.arguments=
+connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/Users/serano/.sdkman/candidates/gradle/current))
+connection.java.home=null
 connection.jvm.arguments=
 connection.project.dir=
-gradle.user.home=
-offline.mode=false
-build.scans.enabled=false
-auto.sync=false
-eclipse.preferences.version=1
-connection.java.home=null
 derived.resources=.gradle,build
+eclipse.preferences.version=1
+gradle.user.home=
+java.home=
+jvm.arguments=
+offline.mode=false
+override.workspace.settings=true
 project.path=\:io.github.jhipster.jdl.ide
-connection.gradle.distribution=GRADLE_DISTRIBUTION(LOCAL_INSTALLATION(/Users/serano/.sdkman/candidates/gradle/current))
+show.console.view=false
+show.executions.view=false
