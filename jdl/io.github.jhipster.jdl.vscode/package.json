@@ -81,6 +81,15 @@
     "dependencies": {
         "global": "^4.4.0",
         "tsc": "^1.20150623.0",
-        "vscode-languageclient": "^5.1.0"
+        "vscode-languageclient": "^5.2.1"
+    },
+    "vscode-languageclient": {
+        "version": "5.2.1",
+        "resolved": "https://registry.npmjs.org/vscode-languageclient/-/vscode-languageclient-5.2.1.tgz",
+        "integrity": "sha512-7jrS/9WnV0ruqPamN1nE7qCxn0phkH5LjSgSp9h6qoJGoeAKzwKz/PF6M+iGA/aklx4GLZg1prddhEPQtuXI1Q==",
+        "requires": {
+            "semver": "^5.5.0",
+            "vscode-languageserver-protocol": "3.14.1"
+        }
     }
 }
