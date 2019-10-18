@@ -53,7 +53,6 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 	Button browseProgramButton
 	BooleanFieldEditor shellEnabledField
 	StringFieldEditor execField
-	StringFieldEditor argsField
 	ProjectionViewer shellScriptEditor
 
 	new() {
@@ -118,7 +117,7 @@ class JDLShellPreferencePage extends AbstractPreferencePage {
 					}
 				}
 			]
-			argsField = new StringFieldEditor(P_Args, ARGS, shellgrp) => [
+			new StringFieldEditor(P_Args, ARGS, shellgrp) => [
 				addField
 			]
 			createGroup(it, SCRIPT, 2, 2, GridData.FILL_HORIZONTAL) => [group|
