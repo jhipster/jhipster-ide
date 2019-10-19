@@ -1,0 +1,21 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.9.0'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+//create a single Jar with all dependencies
+task fatJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',  
+        	'Implementation-Version': version
+    }
+    baseName = project.name + '-ls'
+    from { fileTree("./jdl-ls/lib/").collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

@@ -18,7 +18,7 @@
 		<tycho-version>1.3.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<eclipse.name>photon</eclipse.name>
-		<aggr.headless.repo>http://download.eclipse.org/cbi/updates/aggregator/headless/4.7/</aggr.headless.repo>
+		<aggr.headless.repo>http://download.eclipse.org/cbi/updates/aggregator/headless/4.13/</aggr.headless.repo>
 	</properties>
 
 	<repositories>

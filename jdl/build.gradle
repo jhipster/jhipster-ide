@@ -1,11 +1,11 @@
-ext.xtextVersion = '2.18.0'
+ext.xtextVersion = '2.19.0'
 
 buildscript {
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'org.xtext:xtext-gradle-plugin:2.0.4'
+		classpath 'org.xtext:xtext-gradle-plugin:2.0.7'
 	}
 }
 

@@ -35,6 +35,7 @@ import org.eclipse.xtext.xtext.ecoreInference.IXtext2EcorePostProcessor;
 /**
  * @author Serano Colameo - Initial contribution and API
  */
+@SuppressWarnings("restriction")
 public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	@Extension
 	private EcoreFactory factory = EcoreFactory.eINSTANCE;
