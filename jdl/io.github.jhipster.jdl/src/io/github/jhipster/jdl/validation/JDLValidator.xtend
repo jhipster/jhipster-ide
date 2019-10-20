@@ -31,7 +31,7 @@ import org.eclipse.xtext.validation.ComposedChecks
 	OptionSelectionValidator,
 	ApplicationConfigValidator,
 	RelationshipValidator,
-	JdlLint
+	JDLLint
 ])
 class JDLValidator extends AbstractJDLValidator {
 	

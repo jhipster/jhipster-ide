@@ -45,7 +45,7 @@ import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-class JdlLint extends AbstractDeclarativeValidator {
+class JDLLint extends AbstractDeclarativeValidator {
 
 	@Inject JDLGrammarAccess ga
 
@@ -101,6 +101,22 @@ class JdlLint extends AbstractDeclarativeValidator {
 		]
 	}
 
+ 	def void checkRelationshipUniqueness(JdlRelationships relations) {
+ 		if (isLintDisabled(relations)) return
+ 		val set = newHashSet
+ 		relations.relationships.filter [
+ 			it.source !== null && it.source.entity !== null && it.target !== null && it.target.entity !== null
+ 		].forEach [ r, i |
+ 			if (!set.add(r.source.entity -> r.target.entity))
+ 				error(
+ 					String.format(
+ 						INVALID_RELATIONSHIP_NOTUNIQUE_MSG,
+ 						r.source.entity.name -> r.target.entity.name
+ 					), JDL_RELATIONSHIPS__RELATIONSHIPS, i
+ 				)
+ 		]
+ 	}
+ 	
 	@Check
 	def void checkForDuplicateEnumValues(JdlEnum enumDef) {
 		if (isLintDisabled(enumDef)) return
