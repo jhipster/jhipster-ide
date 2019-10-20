@@ -37,6 +37,8 @@ import org.eclipse.xtext.resource.DerivedStateAwareResourceDescriptionManager
 import org.eclipse.xtext.resource.IDerivedStateComputer
 import org.eclipse.xtext.resource.IResourceDescription
 import io.github.jhipster.jdl.naming.JdlQualifiedNameProvider
+import org.eclipse.xtext.validation.INamesAreUniqueValidationHelper
+import io.github.jhipster.jdl.validation.JDLNamesAreUniqueValidationHelper
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -79,4 +81,9 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	override bindIQualifiedNameProvider() {
 		JdlQualifiedNameProvider
 	}
+	
+	def Class<? extends INamesAreUniqueValidationHelper> bindIINamesAreUniqueValidationHelper() {
+		return JDLNamesAreUniqueValidationHelper
+	}
+	
 }
