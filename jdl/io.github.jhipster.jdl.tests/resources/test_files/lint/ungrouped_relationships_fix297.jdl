@@ -1,0 +1,11 @@
+entity Tenant
+entity Product
+entity Subscriber
+
+/**
+ * Many to one relationship.
+ */
+relationship ManyToOne {
+    Product{tenant} to Tenant,
+    Subscriber{tenant} to Tenant
+}
