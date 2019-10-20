@@ -35,9 +35,9 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
-import static java.lang.System.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+import static java.lang.System.*
 import static org.apache.commons.lang3.StringUtils.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
@@ -97,23 +97,6 @@ class JdlLint extends AbstractDeclarativeValidator {
 				warning(
 					String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality),
 					JDL_RELATIONSHIPS__RELATIONSHIPS, i
-				)
-		]
-	}
-
-	@Check
-	def void checkRelationshipUniqueness(JdlRelationships relations) {
-		if (isLintDisabled(relations)) return
-		val set = newHashSet
-		relations.relationships.filter [
-			it.source !== null && it.source.entity !== null && it.target !== null && it.target.entity !== null
-		].forEach [ r, i |
-			if (!set.add(r.source.entity -> r.target.entity))
-				error(
-					String.format(
-						INVALID_RELATIONSHIP_NOTUNIQUE_MSG,
-						r.source.entity.name -> r.target.entity.name
-					), JDL_RELATIONSHIPS__RELATIONSHIPS, i
 				)
 		]
 	}
