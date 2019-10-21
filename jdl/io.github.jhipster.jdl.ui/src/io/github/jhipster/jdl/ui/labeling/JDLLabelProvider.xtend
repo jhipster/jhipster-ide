@@ -19,8 +19,12 @@
 package io.github.jhipster.jdl.ui.labeling
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
+import io.github.jhipster.jdl.jdl.JdlApplicationEntitiesSelection
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlDeployment
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlRelation
@@ -29,12 +33,8 @@ import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
-import io.github.jhipster.jdl.jdl.JdlApplication
-import io.github.jhipster.jdl.jdl.JdlDeployment
-import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 
 import static extension org.apache.commons.lang3.StringUtils.*
-import io.github.jhipster.jdl.jdl.JdlApplicationEntitiesSelection
 
 /**
  * Provides labels for EObjects.

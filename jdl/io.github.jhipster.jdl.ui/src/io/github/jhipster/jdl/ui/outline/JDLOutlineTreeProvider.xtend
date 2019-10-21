@@ -1,15 +1,15 @@
 /**
  * Copyright 2013-2018 the original author or authors from the JHipster project.
- *
+ * 
  * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
+ * 
  *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -18,34 +18,44 @@
  */
 package io.github.jhipster.jdl.ui.outline
 
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntityField
+import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlRelation
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
-import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
-import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 
 /**
  * Customization of the default outline structure.
- *
+ * 
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#outline
  * 
  * @author Serano Colameo - Initial contribution and API
  */
 class JDLOutlineTreeProvider extends DefaultOutlineTreeProvider {
-	
+
 	override protected _createChildren(DocumentRootNode parentNode, EObject modelElement) {
 		// skip root node
 		if (modelElement instanceof JdlDomainModel) {
 			for (feature : modelElement.features) {
-				createNode(parentNode, feature);
+				createNode(parentNode, feature)
 			}
 		}
 	}
 	
+	override protected void createNode(IOutlineNode parentNode, EObject modelElement) {
+		if (modelElement instanceof JdlEntityFieldDefinition) {
+			modelElement.fields.forEach[ field |
+				super.createNode(parentNode, field)
+			]
+		} else super.createNode(parentNode, modelElement)
+	}
+
 	def protected _isLeaf(JdlOption it) {
 		true
 	}
