@@ -254,8 +254,12 @@ enum JdlCardinality:
 
 JdlEnum:
 	'enum' name=ID '{'
-		values+=ID (','? values+=ID)*
+		values+=JdlEnumValue (','? values+=JdlEnumValue)*
 	'}';
+	
+
+JdlEnumValue:
+	value=ID;
 
 /* =========================================================================
  * ANNOTATION 

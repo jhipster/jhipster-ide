@@ -20,8 +20,10 @@ package io.github.jhipster.jdl.ide
 
 import io.github.jhipster.jdl.ide.contentassist.JdlContentAssistService
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import io.github.jhipster.jdl.ide.editor.syntaxcoloring.KeywordsSemanticHighlightingCalculator
 import io.github.jhipster.jdl.ide.service.CommandService
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.contentassist.ContentAssistService
 
@@ -41,4 +43,8 @@ class JdlIdeModule extends AbstractJDLIdeModule {
 	def Class<? extends ContentAssistService> bindContentAssistService() {
 		return JdlContentAssistService
 	}
+	
+	def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator () {
+        KeywordsSemanticHighlightingCalculator
+    }
 }

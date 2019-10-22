@@ -49,7 +49,7 @@ class CaseSensitivityValidator extends AbstractDeclarativeValidator {
 			warning(INVALID_ENUM_NAME_MSG, JDL_ENUM__NAME, INSIGNIFICANT_INDEX, INVALID_TYPE_NAME)
 		}
 		for (v : enumeration.values) {
-			if (!v.toUpperCase.equals(v)) {
+			if (!v.value.toUpperCase.equals(v.value)) {
 				error(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES, enumeration.values.indexOf(v), NOT_UPPER_CASE)
 			}
 		}
