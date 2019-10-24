@@ -20,6 +20,7 @@ Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,
  io.github.jhipster.jdl.ide.contentassist.antlr,
  io.github.jhipster.jdl.ide.contentassist.antlr.internal,
+ io.github.jhipster.jdl.ide.editor.syntaxcoloring,
  io.github.jhipster.jdl.ide.server;x-internal:=true,
  io.github.jhipster.jdl.ide.service
 Automatic-Module-Name: io.github.jhipster.jdl.ide
