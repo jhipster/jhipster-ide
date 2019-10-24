@@ -19,11 +19,13 @@
 package io.github.jhipster.jdl.ui
 
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import io.github.jhipster.jdl.ui.editor.syntaxcoloring.JDLHighlightingConfiguration
 import io.github.jhipster.jdl.ui.wizard.template.JDLTemplateProjectCreator
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.UiToIdeContentProposalProvider
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
 import org.eclipse.xtext.ui.wizard.IProjectCreator
 
 /**
@@ -41,8 +43,12 @@ class JDLUiModule extends AbstractJDLUiModule {
 	override Class<? extends IContentProposalProvider> bindIContentProposalProvider() {
 		return UiToIdeContentProposalProvider
 	}
-	
-    override Class<? extends IProjectCreator> bindIProjectCreator() {
-    	return JDLTemplateProjectCreator 
-    }	
+
+	override Class<? extends IProjectCreator> bindIProjectCreator() {
+		return JDLTemplateProjectCreator
+	}
+
+	def Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return JDLHighlightingConfiguration
+	}
 }
