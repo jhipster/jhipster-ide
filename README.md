@@ -16,15 +16,15 @@ JHipster IDE is an Xtext DSL which provides textual editing support of JHipster 
 
 ## Eclipse installation
 
-JHipster IDE is available in the [Eclipse Marketplace](https://marketplace.eclipse.org/content/jhipster-ide). Just open the marketplace dialog in Eclipse (Help > Eclipse Marketplace...) and search for <b>JHipster</b>.
+JHipster IDE is available from the [Eclipse Marketplace](https://marketplace.eclipse.org/content/jhipster-ide). Just open the marketplace dialog in Eclipse (Help > Eclipse Marketplace...) and search for <b>JHipster</b>.
 
 ## Visual Studio Code installation
 
-Search for jhipster and install/reload code.
+Go to extension marketplace, search for <b>jhipster</b> and install.
 
 ## Atom installation
 
-Search for jhipster and install/reload atom.
+Search for <b>jhipster</b> in the atom packages and install/reload atom or use the apm CLI tool to install.
 
 [azure-devops-image]: https://dev.azure.com/jhipster/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
 [azure-devops-url-main]: https://dev.azure.com/jhipster/jhipster-ide/_build
