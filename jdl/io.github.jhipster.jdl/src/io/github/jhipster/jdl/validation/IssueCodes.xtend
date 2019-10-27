@@ -42,6 +42,7 @@ interface IssueCodes {
 	String INVALID_ENTITY_NAME_MSG = 'Entity name should start with a capital'
 	String INVALID_ENUM_NAME_MSG = 'Enum name should start with a capital'
 	String INVALID_ENUM_VALUE_NAME_MSG = 'Enum value name must be upper case'
+	String INVALID_ENUM_CUSTOM_VALUE_NAME_MSG = 'Invalid enum custom value name'
 	String FIELD_NAME_LOWERCASE_MSG = 'Field name should start with a lower case'
 	String DUPLICATE_FIELD_DEF_MSG = 'Field with name "%s" already defined'
 	String DUPLICATE_ENTITY_DEF_MSG = 'Entity with name "%s" already defined'

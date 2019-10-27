@@ -937,7 +937,8 @@ class JDLFileTest {
 		"wrong_displayfield_in_source.jdl" -> new JdlIssue("Duplicate JdlRelationRole 'employee'", ERROR),
 		"wrong_displayfield_in_target.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),
 		"ex07.jdl" -> new JdlIssue('Found groupable relationship "ManyToOne"', WARNING),
-		"useless_entity_curly_braces.jdl" -> new JdlIssue('Entity declaration can be shorten to "entity B"', INFO)
+		"useless_entity_curly_braces.jdl" -> new JdlIssue('Entity declaration can be shorten to "entity B"', INFO),
+		"enum_with_wrong_value_naming.jdl" -> new JdlIssue('Invalid enum custom value name', ERROR)
 	]
 
 	new(File jdlFile) {
