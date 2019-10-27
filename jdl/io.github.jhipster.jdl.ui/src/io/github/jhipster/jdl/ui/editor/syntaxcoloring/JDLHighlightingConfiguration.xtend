@@ -47,7 +47,6 @@ class JDLHighlightingConfiguration extends DefaultHighlightingConfiguration {
 
 	def TextStyle nameStyle() {
 		return new TextStyle => [
-			backgroundColor = new RGB(255, 255, 255)
 			color = new RGB(20,10,100)
 			style = SWT.BOLD
 		]
@@ -55,7 +54,6 @@ class JDLHighlightingConfiguration extends DefaultHighlightingConfiguration {
 
 	def TextStyle enumValueStyle() {
 		return new TextStyle => [
-			backgroundColor = new RGB(255, 255, 255)
 			color = new RGB(237,119,19)
 			style = SWT.ITALIC
 		]
@@ -63,7 +61,6 @@ class JDLHighlightingConfiguration extends DefaultHighlightingConfiguration {
 	
 	def TextStyle typeStyle() {
 		return new TextStyle => [
-			backgroundColor = new RGB(255, 255, 255)
 			color = new RGB(0,72,186)
 			style = SWT.BOLD
 		]
