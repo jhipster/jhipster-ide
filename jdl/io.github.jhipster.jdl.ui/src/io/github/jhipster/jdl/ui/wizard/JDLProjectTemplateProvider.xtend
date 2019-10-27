@@ -28,7 +28,7 @@ final class JHipsterProjectFromCli {
 
     var template = '''
         /**
-         * JHipster JDL model for «baseName»
+         * JHipster JDL model for myApp
          */
          
         entity Region {
@@ -93,25 +93,16 @@ final class JHipsterProjectFromCli {
             FRENCH, ENGLISH, SPANISH
         }
         
-        relationship OneToOne {
-            Country{region} to Region
-        }
-        
-        relationship OneToOne {
-            Location{country} to Country
-        }
-        
-        relationship OneToOne {
-            Department{location} to Location
-        }
-        
         relationship ManyToMany {
             Job{task(title)} to Task{job}
         }
         
         // defining multiple OneToMany relationships with comments
         relationship OneToMany {
-            Employee{job} to Job,
+            Country{region} to Region
+            Location{country} to Country
+            Department{location} to Location
+            Employee{job} to Job
             /**
             * A relationship
             */
