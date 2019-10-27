@@ -256,10 +256,9 @@ JdlEnum:
 	'enum' name=ID '{'
 		values+=JdlEnumValue (','? values+=JdlEnumValue)*
 	'}';
-	
 
 JdlEnumValue:
-	value=ID;
+	value=ID ('(' customValue=ID ')')?;
 
 /* =========================================================================
  * ANNOTATION 
