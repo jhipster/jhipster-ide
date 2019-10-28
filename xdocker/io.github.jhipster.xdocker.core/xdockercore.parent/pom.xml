@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.18.0</xtextVersion>
+		<xtextVersion>2.19.0</xtextVersion>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>

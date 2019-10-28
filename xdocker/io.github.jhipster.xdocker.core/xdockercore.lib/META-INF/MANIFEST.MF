@@ -77,9 +77,9 @@ Export-Package: ch.itemis.xdocker.lib,
  org.joda.time.tz
 Require-Bundle: com.google.guava,
  com.google.inject,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.xtend.lib,
- org.eclipse.xtend.lib.macro,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.19.0",
+ org.eclipse.xtend.lib;bundle-version="2.19.0",
+ org.eclipse.xtend.lib.macro;bundle-version="2.19.0",
  org.junit,
  xdockercore.base
 Bundle-ClassPath: .,
