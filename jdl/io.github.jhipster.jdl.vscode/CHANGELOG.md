@@ -1,3 +1,6 @@
+### 1.9.0
+- Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/19?).
+
 ### 1.8.0
 - Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/18?).
 
