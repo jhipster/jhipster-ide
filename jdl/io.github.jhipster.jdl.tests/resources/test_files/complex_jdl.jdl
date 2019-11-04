@@ -1,4 +1,5 @@
 entity Department {
+  guid UUID required,
   name String required unique,
   description TextBlob,
   advertisement Blob,
@@ -83,7 +84,7 @@ relationship ManyToMany {
 }
 
 relationship ManyToOne {
-  Employee{user(login)} to User{employee}
+  Employee{user(login)} to User
 }
 
 relationship OneToOne {

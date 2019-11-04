@@ -3,17 +3,18 @@
 @skipClient
 entity A
 
-@paginate(pager)
+@paginate(pagination)
 @dto(mapstruct)
 @service(serviceClass)
 entity B
 
 @skipClient
 @filter
-@paginate(pager)
+@paginate(pagination)
+@readOnly
 entity C
 
 skipServer A
 service A with serviceImpl
-
+readOnly A
 paginate B, C with pagination
