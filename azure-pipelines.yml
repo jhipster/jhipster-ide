@@ -70,3 +70,4 @@ steps:
     cd $(Build.Repository.LocalPath)/jdl
     ./gradlew clean installServer
   displayName: 'GRADLE: installServer'
+
