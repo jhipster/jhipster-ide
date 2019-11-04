@@ -1,10 +1,3 @@
-application {
-  config {
-    packageName com.mathieu.sample
-    devDatabaseType mysql
-  }
-}
-
 entity Department {
   name String required,
   description TextBlob,
@@ -86,21 +79,21 @@ relationship OneToMany {
   /**
    * Another side of the same relationship,
    */
-  Employee{department}, 
+  Employee{department},
   Employee{job} to Job{emp(employee)},
   Location{country} to Country,
-  Country{area(region)} to Region  
-} 
+  Country{area(region)} to Region
+}
 
 relationship ManyToOne {
-  Employee{user(login)} to User{employee},
+  Employee{user(login)} to User,
   Employee{manager(lastName)} to Employee
 }
 
 relationship ManyToMany {
-  JobHistory{department} to Department,
-  JobHistory to Job{history},
-  JobHistory{emp(employee)} to Employee,
+  JobHistory{department} to Department{jobHistory},
+  JobHistory{job} to Job{history},
+  JobHistory{emp(employee)} to Employee{jobHistory},
   Job{chore(title)} to Task{linkedJob(JobTitle)}
 }
 
@@ -111,7 +104,9 @@ dto Employee with mapstruct
 
 service Employee with serviceClass
 
-microservice * with mymicroservice
+microservice all with mymicroservice
+
+readOnly JobHistory
 
 search Employee with elasticsearch
 

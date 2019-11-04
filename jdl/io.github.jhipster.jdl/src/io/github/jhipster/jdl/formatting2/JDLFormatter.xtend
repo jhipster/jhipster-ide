@@ -73,7 +73,7 @@ class JDLFormatter extends AbstractFormatter2 {
 	}
 
 	def dispatch void format(JdlEntityField field, extension IFormattableDocument document) {
-		field.regionFor.assignment(jdlEntityFieldAccess.nameAssignment_0).append[oneSpace]
+		field.regionFor.assignment(jdlEntityFieldAccess.nameAssignment_1).append[oneSpace]
 	}
 
 	def dispatch void format(JdlRelationships relships, extension IFormattableDocument document) {
