@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 1.9.0
+Bundle-Version: 1.9.1
 Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: io.github.jhipster.jdl.lib,
