@@ -1,4 +1,4 @@
-[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Build Status][travis-image]][travis-url] [![Download][download-image]][download-url]
+[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Download][download-image]][download-url]
 
 JHipster-IDE
 ============
@@ -28,9 +28,6 @@ Search for <b>jhipster</b> in the atom packages and install/reload atom or use t
 
 [azure-devops-image]: https://dev.azure.com/jhipster/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
 [azure-devops-url-main]: https://dev.azure.com/jhipster/jhipster-ide/_build
-
-[travis-image]: https://travis-ci.org/jhipster/jhipster-ide.svg?branch=master
-[travis-url]: https://travis-ci.org/jhipster/jhipster-ide
 
 [download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/1.8/images/download.svg
 [download-url]: https://bintray.com/jhipster/jhipster-ide/1.8/_latestVersion
