@@ -74,7 +74,8 @@ enum JdlApplicationParameterName:
 	languages | messageBroker | nativeLanguage | packageName | 
 	prodDatabaseType | searchEngine | serverPort | serviceDiscoveryType |
 	skipClient | skipServer | skipUserManagement | testFrameworks | 
-	uaaBaseName | useSass | websocket | entitySuffix | dtoSuffix;
+	uaaBaseName | useSass | websocket | entitySuffix | dtoSuffix | 
+	jwtSecretKey;
 
 /* =========================================================================
  * DEPLOYMENT
@@ -120,7 +121,7 @@ JdlEntityFieldDefinition:
 	fields+=JdlEntityField (','? fields+=JdlEntityField)*;
 
 JdlEntityField:
-	name=ID type=JdlFieldType;
+	(annotations+=JdlCustomAnnotation)* name=ID type=JdlFieldType;
 
 JdlFieldType:
 	  JdlEnumFieldType 
@@ -234,7 +235,7 @@ JdlRelationship:
 	source=JdlRelation 'to' target=JdlRelation ('with' option=JdlRelationOption)?;
 
 JdlRelation:
-	entity=[JdlEntity] role=JdlRelationRole?;
+	(annotations+=JdlCustomAnnotation)* entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
 	'{' name=ID ((required?=JdlRequiredValidator)? & (displayField=JdlDisplayField)?) '}';
@@ -266,7 +267,8 @@ JdlEnumValue:
 
 JdlAnnotation:
 	JdlComplexAnnotation |
-	JdlSimpleAnnotation;
+	JdlSimpleAnnotation |
+	JdlCustomAnnotation;
 
 JdlComplexAnnotation:
 	'@' (JdlDtoAnnotation |
@@ -281,7 +283,8 @@ JdlSimpleAnnotation:
 	'@' (JdlSkipClientAnnotation |
 		JdlSkipServerAnnotation |
 		JdlFilterAnnotation |
-		JdlNoFluentMethodAnnotation);
+		JdlNoFluentMethodAnnotation |
+		JdlReadOnlyAnnotation);
 
 JdlDtoAnnotation returns JdlComplexAnnotation:
 	dto?='dto' '(' dtoType=JdlDtoType ')';
@@ -316,6 +319,12 @@ JdlFilterAnnotation returns JdlSimpleAnnotation:
 JdlNoFluentMethodAnnotation returns JdlSimpleAnnotation:
 	noFluentMethod?='noFluentMethod';
 
+JdlReadOnlyAnnotation returns JdlSimpleAnnotation:
+	noFluentMethod?='readOnly';
+	
+JdlCustomAnnotation:
+	'@' name=ID ('(' value=ID ')')?;	
+
 /* =========================================================================
  * OPTION 
  * ========================================================================= */
@@ -334,7 +343,8 @@ JdlOptionSetting:
 	JdlAngularSuffixOption |
 	JdlClientRootFolderOption |
 	JdlNoFluentMethodOption |
-	JdlFilterOption;
+	JdlFilterOption |
+	JdlReadOnlyOption;
 
 JdlWithEntitySelectionAndValue returns JdlOptionSelection:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
@@ -437,6 +447,13 @@ JdlFilterOption returns JdlOptionSetting:
 
 JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
+
+/* =========================================================================
+ * NO FLUENT METHOD OPTION 
+ * ========================================================================= */
+
+JdlReadOnlyOption returns JdlOptionSetting:
+	readOnly?='readOnly' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * PARAMETER VALUE

@@ -20,6 +20,11 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+trigger:
+- master
+- feature/*
+- release/*
+
 variables:
   DISPLAY: :99.0
 
@@ -70,3 +75,4 @@ steps:
     cd $(Build.Repository.LocalPath)/jdl
     ./gradlew clean installServer
   displayName: 'GRADLE: installServer'
+

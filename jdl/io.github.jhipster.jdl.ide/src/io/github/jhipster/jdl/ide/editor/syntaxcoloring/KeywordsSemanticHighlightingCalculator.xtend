@@ -30,6 +30,7 @@ import org.eclipse.xtext.util.CancelIndicator
 
 import static io.github.jhipster.jdl.ide.editor.syntaxcoloring.JDLHighlightingStyles.*
 import io.github.jhipster.jdl.jdl.JdlEnum
+import io.github.jhipster.jdl.jdl.JdlCustomAnnotation
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -46,6 +47,11 @@ class KeywordsSemanticHighlightingCalculator extends DefaultSemanticHighlighting
 			JdlRelation: highlightFeature(eObj, jdlRelation_Entity, TYPE_ID)
 			JdlEnum: highlightFeature(eObj, jdlEntity_Name, NAME_ID)
 			JdlEnumValue: highlightFeature(eObj, jdlEnumValue_Value, ENUM_VALUE_ID)
+			JdlCustomAnnotation: {
+				#[jdlCustomAnnotation_Name, jdlCustomAnnotation_Value].forEach[ feature |
+					highlightFeature(eObj, feature, KEYWORD_ID)
+				]
+			}
 		}
 		return false
 	}

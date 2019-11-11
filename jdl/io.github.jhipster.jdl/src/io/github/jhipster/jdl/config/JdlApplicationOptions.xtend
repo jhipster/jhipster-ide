@@ -65,7 +65,8 @@ class JdlApplicationOptions extends JdlAbstractOptions {
 			new JdlOption('testFrameworks', #['protractor', 'cucumber', 'gatling'], ListOfLiterals),
 			new JdlOption('uaaBaseName',  #['"uaa"']),
 			new JdlOption('useSass', Boolean),
-			new JdlOption('websocket', #['spring-websocket', 'false'])
+			new JdlOption('websocket', #['spring-websocket', 'false']),
+			new JdlOption('jwtSecretKey', Namespace)
 		])
 	]
 }
