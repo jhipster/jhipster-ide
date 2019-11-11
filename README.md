@@ -26,8 +26,8 @@ Go to extension marketplace, search for <b>jhipster</b> and install.
 
 Search for <b>jhipster</b> in the atom packages and install/reload atom or use the apm CLI tool to install.
 
-[azure-devops-image]: https://dev.azure.com/jhipster/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
-[azure-devops-url-main]: https://dev.azure.com/jhipster/jhipster-ide/_build
+[azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
+[azure-devops-url-main]: https://dev.azure.com/jhipster-ide/jhipster-ide/_build
 
 [download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/1.9/images/download.svg
 [download-url]: https://bintray.com/jhipster/jhipster-ide/1.9/_latestVersion
