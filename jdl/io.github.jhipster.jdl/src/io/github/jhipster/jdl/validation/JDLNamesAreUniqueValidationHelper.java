@@ -27,6 +27,7 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.validation.NamesAreUniqueValidationHelper;
 import org.eclipse.xtext.validation.ValidationMessageAcceptor;
 
+import io.github.jhipster.jdl.jdl.JdlAnnotation;
 import io.github.jhipster.jdl.jdl.JdlDisplayField;
 import io.github.jhipster.jdl.jdl.JdlRelationRole;
 
@@ -41,7 +42,9 @@ public class JDLNamesAreUniqueValidationHelper extends NamesAreUniqueValidationH
 			ValidationMessageAcceptor acceptor) {
 		if (description == null) return;
 		EObject element = description.getEObjectOrProxy();
-		if (element instanceof JdlRelationRole || element instanceof JdlDisplayField) return;
+		if (element instanceof JdlRelationRole || 
+			element instanceof JdlDisplayField || 
+			element instanceof JdlAnnotation) return;
 		super.checkDescriptionForDuplicatedName(description, clusterTypeToName, acceptor);
 	}
 }
