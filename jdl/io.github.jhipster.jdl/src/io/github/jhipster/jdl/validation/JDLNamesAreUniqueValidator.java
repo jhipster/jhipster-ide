@@ -21,6 +21,7 @@ package io.github.jhipster.jdl.validation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.NamesAreUniqueValidator;
 
+import io.github.jhipster.jdl.jdl.JdlAnnotation;
 import io.github.jhipster.jdl.jdl.JdlDisplayField;
 import io.github.jhipster.jdl.jdl.JdlRelationRole;
 
@@ -31,7 +32,10 @@ public class JDLNamesAreUniqueValidator extends NamesAreUniqueValidator {
 	
 	@Override
 	public void checkUniqueNamesInResourceOf(final EObject eObject) {
-		if (JdlRelationRole.class.isAssignableFrom(eObject.getClass()) || JdlDisplayField.class.isAssignableFrom(eObject.getClass())) return;
+		if (JdlRelationRole.class.isAssignableFrom(eObject.getClass())
+				|| JdlDisplayField.class.isAssignableFrom(eObject.getClass())
+				|| JdlAnnotation.class.isAssignableFrom(eObject.getClass()))
+			return;
 		super.checkUniqueNamesInResourceOf(eObject);
 	}
 }

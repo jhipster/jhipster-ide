@@ -184,8 +184,8 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
 	def dispatch protected renderJdlObject(JdlEnum _enum) '''
 		enum «_enum.name» {
-			«FOR value : _enum.values SEPARATOR ","»
-				«value» 
+			«FOR ev : _enum.values SEPARATOR ","»
+				«IF ev.customValue.isNullOrEmpty»«ev.value»«ELSE»«ev.customValue»«ENDIF» 
 			«ENDFOR»
 		}
 	'''

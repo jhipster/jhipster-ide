@@ -5,9 +5,11 @@ enum EnvironmentType {
   PROD (production),
   TEST (test),
   UAT (uat),
-  NON_PROD (nonProd)
+  NON_PROD (nonProd),
+  FOOBAR
 }
 
 entity Environment {
   type EnvironmentType required
 }
+ 
