@@ -29,7 +29,7 @@ subprojects {
 	apply plugin: 'eclipse'
 
 	group = 'io.github.jhipster.jdl'
-	version = '1.9.1'
+	version = '1.9.2'
 	
 	sourceCompatibility = '1.8'
 	targetCompatibility = '1.8'
