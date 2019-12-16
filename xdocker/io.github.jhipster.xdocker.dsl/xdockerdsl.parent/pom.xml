@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.jhipster-ide.xdocker.dsl</groupId>
-	<version>1.9.1</version>
+	<version>1.9.2</version>
 	<artifactId>xdockerdsl.parent</artifactId>
 	<name>Xdocker DSL Parent</name>
 	<packaging>pom</packaging>
@@ -138,7 +138,7 @@
 											build-helper-maven-plugin
 										</artifactId>
 										<versionRange>
-											[1.9.1,)
+											[1.9.2,)
 										</versionRange>
 										<goals>
 											<goal>add-resource</goal>

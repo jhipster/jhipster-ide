@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>io.github.jhipster-ide</groupId>
 		<artifactId>jhipster-ide</artifactId>
-		<version>1.9.1</version>
+		<version>1.9.2</version>
 	</parent>
 
 	<groupId>io.github.jhipster-ide.jdl</groupId>
@@ -196,7 +196,7 @@
 											build-helper-maven-plugin
 										</artifactId>
 										<versionRange>
-											[1.9.1,)
+											[1.9.2,)
 										</versionRange>
 										<goals>
 											<goal>add-resource</goal>
