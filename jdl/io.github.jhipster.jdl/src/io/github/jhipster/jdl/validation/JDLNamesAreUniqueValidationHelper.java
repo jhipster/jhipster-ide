@@ -40,11 +40,12 @@ public class JDLNamesAreUniqueValidationHelper extends NamesAreUniqueValidationH
 	protected void checkDescriptionForDuplicatedName(IEObjectDescription description,
 			Map<EClass, Map<QualifiedName, IEObjectDescription>> clusterTypeToName,
 			ValidationMessageAcceptor acceptor) {
-		if (description == null) return;
+		if (description == null)
+			return;
 		EObject element = description.getEObjectOrProxy();
-		if (element instanceof JdlRelationRole || 
-			element instanceof JdlDisplayField || 
-			element instanceof JdlAnnotation) return;
+		if (element instanceof JdlRelationRole || element instanceof JdlDisplayField
+				|| element instanceof JdlAnnotation)
+			return;
 		super.checkDescriptionForDuplicatedName(description, clusterTypeToName, acceptor);
 	}
 }

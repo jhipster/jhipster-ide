@@ -1,3 +1,9 @@
+### 1.9.2
+- Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/23).
+
+### 1.9.1
+- Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/21).
+
 ### 1.9.0
 - Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/19?).
 
