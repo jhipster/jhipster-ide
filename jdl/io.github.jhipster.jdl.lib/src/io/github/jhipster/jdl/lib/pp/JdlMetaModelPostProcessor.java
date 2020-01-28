@@ -18,19 +18,18 @@
  */
 package io.github.jhipster.jdl.lib.pp;
 
-import com.google.common.collect.Iterables;
-import org.eclipse.emf.common.util.EList;
+import static org.eclipse.xtext.xbase.lib.ObjectExtensions.operator_doubleArrow;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtext.GeneratedMetamodel;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.ObjectExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xtext.ecoreInference.IXtext2EcorePostProcessor;
+
+import com.google.common.collect.Iterables;
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -43,32 +42,48 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	@Extension
 	private EcorePackage ecorePackage = EcorePackage.eINSTANCE;
 
+	/**
+	 * Process metamodel
+	 *
+	 * @param pkg
+	 */
 	@Override
 	public void process(final GeneratedMetamodel metamodel) {
-		this.process(metamodel.getEPackage());
+		process(metamodel.getEPackage());
 	}
 
-	public void process(final EPackage p) {
-		for (final EClass eClass : Iterables.<EClass>filter(p.getEClassifiers(), EClass.class)) {
+	/**
+	 * Process metamodel package
+	 * 
+	 * @param pkg
+	 */
+	private void process(final EPackage pkg) {
+		for (final EClass eClass : Iterables.<EClass>filter(pkg.getEClassifiers(), EClass.class)) {
 			String elemenName = eClass.getName();
 			if (elemenName != null) {
 				switch (elemenName) {
-				case "JdlDomainModel":
-					this.handleModel(eClass);
+					case "JdlDomainModel":
+						this.handleMetaModel(eClass);
 					break;
 				}
 			}
 		}
 	}
 
-	public EAttribute handleModel(final EClass eClass) {
-		EAttribute attribute = this.factory.createEAttribute();
-		final Procedure1<EAttribute> function = (EAttribute it) -> {
+	/**
+	 * Handle 
+	 * @param eClass
+	 */
+	private void handleMetaModel(final EClass eClass) {
+		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
 			it.setName("name");
 			it.setEType(this.ecorePackage.getEString());
-			EList<EStructuralFeature> eStructuralFeatures = eClass.getEStructuralFeatures();
-			eStructuralFeatures.add(it);
-		};
-		return ObjectExtensions.<EAttribute>operator_doubleArrow(attribute, function);
+			eClass.getEStructuralFeatures().add(it);
+		});
+		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
+			it.setName("fullFileName");
+			it.setEType(this.ecorePackage.getEString());
+			eClass.getEStructuralFeatures().add(it);
+		});
 	}
 }

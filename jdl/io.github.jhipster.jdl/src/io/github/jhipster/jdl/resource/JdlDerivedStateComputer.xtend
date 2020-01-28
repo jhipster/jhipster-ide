@@ -55,6 +55,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 			]
 			val model = resource.model
 			if (model !== null) {
+				model.fullFileName = resource.URI.toFileString
 				model.name = resource.modelName
 				if(model.eContents.filter(JdlEntity).exists [
 					name.equals(user.name)
