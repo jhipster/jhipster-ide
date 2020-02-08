@@ -66,7 +66,7 @@ class JDLBridge {
 	static val PNG_OPT = new Option('png', 'Generate PNG for each JDL file')
 	static val ADOC_OPT = new Option('adoc','Generate an AsciiDoc for each JDL file')
 	static val SINGLE_OPTS = #[JDLBridge.PUML_OPT, PNG_OPT, ADOC_OPT]
-	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL files or folder separated by a space with wildcards') => [
+	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL files or folders separated by a space with wildcards') => [
 		required = true
 		args = UNLIMITED_VALUES
 		valueSeparator = ' '
@@ -156,7 +156,13 @@ class JDLBridge {
 					ALL_OPTIONS.indexOf(o1) - ALL_OPTIONS.indexOf(o2)
 				}
 			})
-			printHelp('jdlbridge', OPTIONS, true)
+			printHelp('\njdlbridge', '\nOptions:', OPTIONS, '''
+				$ jdlbridge -f myApp/MyApp.jdl
+				$ jdlbridge -f myApp/My*.jdl
+				$ jdlbridge -f myApp/*.jdl
+				$ jdlbridge -f myApp/				
+				$ jdlbridge -f myApp/ myApp2/A*.jdl myApp3/*.jh
+			''', true)
 		]
 		exit(1)
 	}
