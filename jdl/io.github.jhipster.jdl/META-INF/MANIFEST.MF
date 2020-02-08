@@ -97,5 +97,6 @@ Import-Package: org.apache.log4j,
 Bundle-ClassPath: .,
  lib/plantuml-epl-8059.jar,
  lib/generator-vscode-0.4.jar,
- lib/commons-lang3-3.7.jar
+ lib/commons-lang3-3.7.jar,
+ lib/commons-io-2.6.jar
 Automatic-Module-Name: io.github.jhipster.jdl
