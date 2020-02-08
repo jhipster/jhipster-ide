@@ -3,11 +3,11 @@
     <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
     <!--ANT 1.7 is required-->
     <!--define folder properties-->
-    <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value=""/>
+    <property name="dir.ws" value=""/>
     <property name="dir.jarfile" value=""/>
+    <property name="dir.ws.plugins" value="${dir.ws}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins"/>
     <property name="dir.jdl" value="../jdl/io.github.jhipster.jdl/"/>
-    <property name="dir.jdllib" value="../jdl/io.github.jhipster.jdl.lib/target/classes/"/>
+    <property name="dir.jdllib" value="../jdl/io.github.jhipster.jdl.lib/"/>
     <target name="execute">
     	<delete file="${dir.jarfile}/jdlbridge.jar"/>
         <jar destfile="${dir.jarfile}/jdlbridge.jar">
@@ -17,57 +17,57 @@
                 <attribute name="Class-Path" value="."/>
                 <attribute name="Rsrc-Class-Path" value="./ com.google.inject_3.0.0.v201605172100.jar org.eclipse.emf_2.8.0.v20180706-1146.jar org.eclipse.emf.common_2.16.0.v20190625-1131.jar org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar org.eclipse.xtend.lib_2.19.0.v20190902-0728.jar org.eclipse.xtext.xbase.lib_2.19.0.v20190902-0728.jar com.google.guava_27.1.0.v20190517-1946.jar org.eclipse.xtend.lib.macro_2.19.0.v20190902-0728.jar org.eclipse.xtext_2.19.0.v20190902-0737.jar org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar org.antlr.runtime_3.2.0.v201101311130.jar org.eclipse.emf.mwe.core_1.5.0.201906111547.jar org.apache.commons.cli_1.2.0.v201404270220.jar org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar org.eclipse.xtext.util_2.19.0.v20190902-0737.jar javax.inject_1.0.0.v20091030.jar org.eclipse.xtext.xtext.generator_2.19.0.v20190902-0737.jar org.eclipse.emf.codegen.ecore_2.19.0.v20190822-1451.jar org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar org.eclipse.emf.mwe2.lib_2.11.0.201906111547.jar org.eclipse.xtext.xbase_2.19.0.v20190902-0952.jar org.eclipse.xtext.common.types_2.19.0.v20190902-0952.jar org.eclipse.equinox.common_3.10.500.v20190815-1535.jar org.eclipse.core.commands_3.9.500.v20190805-1157.jar org.eclipse.core.resources_3.13.500.v20190819-0800.jar org.eclipse.core.runtime_3.16.0.v20190823-1314.jar org.eclipse.osgi_3.15.0.v20190830-1434.jar org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar org.eclipse.core.jobs_3.10.500.v20190620-1426.jar org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar org.eclipse.equinox.app_1.4.300.v20190815-1535.jar net.sourceforge.plantuml.eclipse_1.1.23.jar net.sourceforge.plantuml.text_1.1.23.jar org.eclipse.emf.mwe2.launch_2.11.0.201906111547.jar org.eclipse.emf.mwe2.language_2.11.0.201906111547.jar org.objectweb.asm_7.1.0.v20190412-2143.jar org.apache.commons.logging_1.2.0.v20180409-1502.jar org.apache.log4j_1.2.15.v201012070815.jar com.ibm.icu_64.2.0.v20190507-1337.jar org.eclipse.swt_3.112.0.v20190904-0609.jar org.eclipse.swt.cocoa.macosx.x86_64_3.112.0.v20190904-0609.jar plantuml-epl-8059.jar generator-vscode-0.4.jar commons-lang3-3.7.jar commons-io-2.6.jar"/>
             </manifest>
-            <zipfileset src="lib/jar-in-jar-loader.zip"/>
-            <fileset dir="${dir.jdllib}"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="com.google.inject_3.0.0.v201605172100.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf_2.8.0.v20180706-1146.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.common_2.16.0.v20190625-1131.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtend.lib_2.19.0.v20190902-0728.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext.xbase.lib_2.19.0.v20190902-0728.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="com.google.guava_27.1.0.v20190517-1946.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtend.lib.macro_2.19.0.v20190902-0728.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext_2.19.0.v20190902-0737.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.antlr.runtime_3.2.0.v201101311130.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe.core_1.5.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.apache.commons.cli_1.2.0.v201404270220.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext.util_2.19.0.v20190902-0737.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="javax.inject_1.0.0.v20091030.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext.xtext.generator_2.19.0.v20190902-0737.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.codegen.ecore_2.19.0.v20190822-1451.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe2.lib_2.11.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext.xbase_2.19.0.v20190902-0952.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.xtext.common.types_2.19.0.v20190902-0952.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.equinox.common_3.10.500.v20190815-1535.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.core.commands_3.9.500.v20190805-1157.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.core.resources_3.13.500.v20190819-0800.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.core.runtime_3.16.0.v20190823-1314.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.osgi_3.15.0.v20190830-1434.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.core.jobs_3.10.500.v20190620-1426.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.equinox.app_1.4.300.v20190815-1535.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="net.sourceforge.plantuml.eclipse_1.1.23.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="net.sourceforge.plantuml.text_1.1.23.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe2.launch_2.11.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.emf.mwe2.language_2.11.0.201906111547.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.objectweb.asm_7.1.0.v20190412-2143.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.apache.commons.logging_1.2.0.v20180409-1502.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.apache.log4j_1.2.15.v201012070815.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="com.ibm.icu_64.2.0.v20190507-1337.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.swt_3.112.0.v20190904-0609.jar"/>
-            <zipfileset dir="${dir.workspace}/.metadata/.plugins/org.eclipse.pde.core/.bundle_pool/plugins" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.112.0.v20190904-0609.jar"/>
             <fileset dir="${dir.jdl}/target/classes"/>
+            <fileset dir="${dir.jdllib}/target/classes/"/>
+            <zipfileset src="lib/jar-in-jar-loader.zip"/>
             <zipfileset dir="${dir.jdl}/lib" includes="plantuml-epl-8059.jar"/>
             <zipfileset dir="${dir.jdl}/lib" includes="generator-vscode-0.4.jar"/>
             <zipfileset dir="${dir.jdl}/lib" includes="commons-lang3-3.7.jar"/>
             <zipfileset dir="${dir.jdl}/lib" includes="commons-io-2.6.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="com.google.inject_3.0.0.v201605172100.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf_2.8.0.v20180706-1146.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.common_2.16.0.v20190625-1131.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.ecore_2.19.0.v20190822-1451.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtend.lib_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext.xbase.lib_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="com.google.guava_27.1.0.v20190517-1946.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtend.lib.macro_2.19.0.v20190902-0728.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.antlr.runtime_3.2.0.v201101311130.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe.core_1.5.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.apache.commons.cli_1.2.0.v201404270220.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe2.runtime_2.11.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe.utils_1.5.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext.util_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="javax.inject_1.0.0.v20091030.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext.xtext.generator_2.19.0.v20190902-0737.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.codegen.ecore_2.19.0.v20190822-1451.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.codegen_2.19.0.v20190821-1536.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe2.lib_2.11.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext.xbase_2.19.0.v20190902-0952.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.xtext.common.types_2.19.0.v20190902-0952.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.equinox.common_3.10.500.v20190815-1535.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.core.commands_3.9.500.v20190805-1157.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.core.resources_3.13.500.v20190819-0800.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.core.runtime_3.16.0.v20190823-1314.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.osgi_3.15.0.v20190830-1434.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.osgi.compatibility.state_1.1.600.v20190814-1451.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.core.jobs_3.10.500.v20190620-1426.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.equinox.registry_3.8.500.v20190714-1850.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.equinox.preferences_3.7.500.v20190815-1535.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.core.contenttype_3.7.400.v20190624-1144.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.equinox.app_1.4.300.v20190815-1535.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="net.sourceforge.plantuml.eclipse_1.1.23.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="net.sourceforge.plantuml.text_1.1.23.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe2.launch_2.11.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.emf.mwe2.language_2.11.0.201906111547.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.objectweb.asm_7.1.0.v20190412-2143.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.apache.commons.logging_1.2.0.v20180409-1502.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.apache.log4j_1.2.15.v201012070815.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="com.ibm.icu_64.2.0.v20190507-1337.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.swt_3.112.0.v20190904-0609.jar"/>
+            <zipfileset dir="${dir.ws.plugins}" includes="org.eclipse.swt.cocoa.macosx.x86_64_3.112.0.v20190904-0609.jar"/>
         </jar>
     </target>
 </project>
