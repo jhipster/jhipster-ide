@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project default="create_run_jar" name="Create Runnable Jar for Project io.github.jhipster.jdl with Jar-in-Jar Loader">
+<project default="execute" name="Create Runnable Jar for Project io.github.jhipster.jdl with Jar-in-Jar Loader">
     <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
     <!--ANT 1.7 is required-->
     <!--define folder properties-->
@@ -8,7 +8,7 @@
     <property name="dir.jarfile" value=""/>
     <property name="dir.jdl" value="../jdl/io.github.jhipster.jdl/"/>
     <property name="dir.jdllib" value="../jdl/io.github.jhipster.jdl.lib/target/classes/"/>
-    <target name="create_run_jar">
+    <target name="execute">
     	<delete file="${dir.jarfile}/jdlbridge.jar"/>
         <jar destfile="${dir.jarfile}/jdlbridge.jar">
             <manifest>
