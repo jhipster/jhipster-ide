@@ -79,15 +79,15 @@ class JDLBridge {
 
 	static var CommandLine CLI
 
-	def static private info(String message) {
+	def static private void info(String message) {
 		println('''[«FACILITY»] INFO - «message»''')
 	}
 
-	def static private warn(String message) {
+	def static private void warn(String message) {
 		println('''[«FACILITY»] WARN - «message»''')
 	}
 
-	def static private error(String message) {
+	def static private void error(String message) {
 		err.println('''[«FACILITY»] ERROR - «message»''')
 	}
 
@@ -99,7 +99,7 @@ class JDLBridge {
 		return CLI.getOptionValues(opt.opt)
 	}
 	
-	def private getPaths() {
+	def private Set<String> getPaths() {
 		val fileOptions = JDL_OPT.optionValues
 		val paths = newHashSet
 		fileOptions.forEach[
@@ -117,13 +117,13 @@ class JDLBridge {
 		return paths
 	}
 
-	def private runWith(Set<String> jdlFiles) {
+	def private void runWith(Set<String> jdlFiles) {
 		if (PUML_OPT.isPresent) setProperty('', '')
 		jdlFiles.forEach[run]
 		if (ADOC_OPT.isPresent) createAscidocFile
 	}
 
-	def private run(String jdl) {
+	def private void run(String jdl) {
 		info('''Processing: «jdl»''')
 		if (!Files.exists(Paths.get(jdl))) {
 			error('''JDL file «jdl» does not exist or is not accessible!''')
