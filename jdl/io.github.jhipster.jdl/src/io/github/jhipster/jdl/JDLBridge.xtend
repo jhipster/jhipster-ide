@@ -47,6 +47,7 @@ import static org.apache.commons.io.FileUtils.*
 import static org.eclipse.emf.common.util.URI.*
 import static org.eclipse.xtext.util.CancelIndicator.*
 import static org.eclipse.xtext.validation.CheckMode.*
+import java.time.LocalDate
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -61,13 +62,13 @@ class JDLBridge {
 
 	val resources = <Resource>newArrayList
 
+	static val VERSION = '1.1.3'
 	static val FACILITY = 'jdlbridge'
 	static val PUML_OPT = new Option('puml', 'Generate PlantUML for each JDL file')
 	static val PNG_OPT = new Option('png', 'Generate PNG for each JDL file')
 	static val ADOC_OPT = new Option('adoc','Generate an AsciiDoc for each JDL file')
-	static val SINGLE_OPTS = #[JDLBridge.PUML_OPT, PNG_OPT, ADOC_OPT]
+	static val SINGLE_OPTS = #[PUML_OPT, PNG_OPT, ADOC_OPT]
 	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL files or folders separated by a space with wildcards') => [
-		required = true
 		args = UNLIMITED_VALUES
 		valueSeparator = ' '
 		argName = 'file(s)'
@@ -104,6 +105,10 @@ class JDLBridge {
 		val paths = newHashSet
 		fileOptions.forEach[
 			val f = new File(it)
+			if (!f.exists) {
+				error('''File '«f?.name»' does not exists or is not accessabile!''')
+				exit(1)
+			}
 			if (f.isDirectory) {
 				val files = listFiles(f, new WildcardFileFilter('*.j*'), null)
 				if (!files.isEmpty) paths.addAll(files.filter[ fn |
@@ -118,7 +123,10 @@ class JDLBridge {
 	}
 
 	def private void runWith(Set<String> jdlFiles) {
-		if (PUML_OPT.isPresent) setProperty('', '')
+		if (jdlFiles.isNullOrEmpty) {
+			warn('''No files found to process!''')
+			exit(1)
+		}
 		jdlFiles.forEach[run]
 		if (ADOC_OPT.isPresent) createAscidocFile
 	}
@@ -150,13 +158,15 @@ class JDLBridge {
 	}
 
 	def static private printUsageAndExit() {
+		prinVersion
 		new HelpFormatter => [
 			setOptionComparator(new Comparator<Option>() {
 				override compare(Option o1, Option o2) {
 					ALL_OPTIONS.indexOf(o1) - ALL_OPTIONS.indexOf(o2)
 				}
 			})
-			printHelp('\njdlbridge', '\nOptions:', OPTIONS, '''
+			printHelp('\njdlbridge', '\noptions:\n', OPTIONS, '\n' + '''
+				examples:
 				$ jdlbridge -f myApp/MyApp.jdl
 				$ jdlbridge -f myApp/My*.jdl
 				$ jdlbridge -f myApp/*.jdl
@@ -165,6 +175,22 @@ class JDLBridge {
 			''', true)
 		]
 		exit(1)
+	}
+
+	def static private prinVersion() {
+		println('''
+			   ___ ______  _      _            _      _
+			  |_  ||  _  \| |    | |          (_)    | |
+			    | || | | || |    | |__   _ __  _   __| |  __ _   ___
+			    | || | | || |    | '_ \ | '__|| | / _` | / _` | / _ \
+			/\__/ /| |/ / | |____| |_) || |   | || (_| || (_| ||  __/
+			\____/ |___/  \_____/|_.__/ |_|   |_| \__,_| \__, | \___|
+			                                              __/ |
+			                                             |___/
+			(c) Copyright 2013-«LocalDate.now.year» the JHipster project
+			Author: Serano Colameo
+			Version: «VERSION» 
+		''')
 	}
 
 	def static void main(String[] args) throws ParseException {
@@ -177,6 +203,7 @@ class JDLBridge {
 		if (!SINGLE_OPTS.exists[it.isPresent] || !JDL_OPT.isPresent) printUsageAndExit
 		if (ADOC_OPT.isPresent || JDLBridge.PUML_OPT.isPresent) setProperty('plantuml.gen', 'true')
 		if (PNG_OPT.isPresent) setProperty('pnguml.gen', 'true')
+		prinVersion
 		new JDLStandaloneSetup().createInjectorAndDoEMFRegistration => [ injector |
 			injector.getInstance(JDLBridge) => [
 				runWith(getPaths)

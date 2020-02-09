@@ -8,6 +8,7 @@ import java.nio.file.Paths
 import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvider
 
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 
 class JdlToAsciiDocRenderer implements IJdlModelViewerRenderer {
 	
@@ -57,14 +58,20 @@ class JdlToAsciiDocRenderer implements IJdlModelViewerRenderer {
 	def dispatch compile(JdlEntity e) '''	
 		=== Entity «open»«e.name»«close»
 		«e.documentation»
-						
+		
 		.«e.name»
+		«IF e.fieldDefinition != null»
+			«e.fieldDefinition.compile»
+		«ENDIF»
+		
+	'''
+
+	def dispatch compile(JdlEntityFieldDefinition it) '''
 		[options="header"]
 		|=======================
 		|Field Name|Type | Constraint | Comment
-		«FOR it:e.fieldDefinition.fields»«compile»«ENDFOR»
+		«FOR it:fields»«compile»«ENDFOR»
 		|=======================
-		
 	'''
 
 	def dispatch compile(JdlEntityField it) '''
