@@ -65,8 +65,8 @@ class JDLBridge {
 	static val VERSION = '1.1.3'
 	static val FACILITY = 'jdlbridge'
 	static val PUML_OPT = new Option('puml', 'Generate PlantUML for each JDL file')
-	static val PNG_OPT = new Option('png', 'Generate PNG for each JDL file')
-	static val ADOC_OPT = new Option('adoc','Generate an AsciiDoc for each JDL file')
+	static val PNG_OPT = new Option('png', 'Generate UML diagrams in PNG for each JDL file')
+	static val ADOC_OPT = new Option('adoc','Generate an AsciiDoc with PlantUML diagrams for each JDL')
 	static val SINGLE_OPTS = #[PUML_OPT, PNG_OPT, ADOC_OPT]
 	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL files or folders separated by a space with wildcards') => [
 		args = UNLIMITED_VALUES
