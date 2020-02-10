@@ -62,13 +62,14 @@ class JDLBridge {
 
 	val resources = <Resource>newArrayList
 
-	static val VERSION = '1.1.3'
+	static val VERSION = '1.1.4'
 	static val FACILITY = 'jdlbridge'
-	static val PUML_OPT = new Option('puml', 'Generate PlantUML for each JDL file')
-	static val PNG_OPT = new Option('png', 'Generate UML diagrams in PNG for each JDL file')
-	static val ADOC_OPT = new Option('adoc','Generate an AsciiDoc with PlantUML diagrams for each JDL')
-	static val SINGLE_OPTS = #[PUML_OPT, PNG_OPT, ADOC_OPT]
-	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL files or folders separated by a space with wildcards') => [
+	static val HELP_OPT = new Option('h', 'help', false, 'Print this help message')
+	static val PUML_OPT = new Option('u', 'uml', false, 'Generate PlantUML file for each JDL file')
+	static val PNG_OPT = new Option('p', 'png', false, 'Generate UML diagrams in PNG for each JDL file')
+	static val ADOC_OPT = new Option('a', 'adoc', false, 'Generate an AsciiDoc and PlantUML files for each JDL')
+	static val SINGLE_OPTS = #[HELP_OPT, PUML_OPT, PNG_OPT, ADOC_OPT]
+	static val JDL_OPT = new Option('f', 'jdlfiles', true, 'JDL file search pattern (wildcards allowed) or folders separated by a space') => [
 		args = UNLIMITED_VALUES
 		valueSeparator = ' '
 		argName = 'file(s)'
@@ -167,11 +168,11 @@ class JDLBridge {
 			})
 			printHelp('\njdlbridge', '\noptions:\n', OPTIONS, '\n' + '''
 				examples:
-				$ jdlbridge -f myApp/MyApp.jdl
-				$ jdlbridge -f myApp/My*.jdl
-				$ jdlbridge -f myApp/*.jdl
-				$ jdlbridge -f myApp/				
-				$ jdlbridge -f myApp/ myApp2/A*.jdl myApp3/*.jh
+				$ jdlbridge -u -f myApp/MyApp.jdl
+				$ jdlbridge -p -f myApp/My*.jdl
+				$ jdlbridge -a -f myApp/*.jdl
+				$ jdlbridge -a -f myApp/				
+				$ jdlbridge -adoc -f myApp/ myApp2/A*.jdl myApp3/*.jh
 			''', true)
 		]
 		exit(1)
@@ -179,17 +180,15 @@ class JDLBridge {
 
 	def static private prinVersion() {
 		println('''
-			   ___ ______  _      _            _      _
-			  |_  ||  _  \| |    | |          (_)    | |
-			    | || | | || |    | |__   _ __  _   __| |  __ _   ___
-			    | || | | || |    | '_ \ | '__|| | / _` | / _` | / _ \
-			/\__/ /| |/ / | |____| |_) || |   | || (_| || (_| ||  __/
-			\____/ |___/  \_____/|_.__/ |_|   |_| \__,_| \__, | \___|
-			                                              __/ |
-			                                             |___/
-			(c) Copyright 2013-«LocalDate.now.year» the JHipster project
-			Author: Serano Colameo
-			Version: «VERSION» 
+			   ___ ______  _                                        _            _      _
+			  |_  ||  _  \| |              'x|`                    | |          (_)    | |
+			    | || | | || |            '|xx| `          '|x|     | |__   _ __  _   __| |  __ _   ___
+			    | || | | || |        '    |xx|    `   '    |x|`    | '_ \ | '__|| | / _` | / _` | / _ \
+			/\__/ /| |/ / | |____'        |xx|             |x| `   | |_) || |   | || (_| || (_| ||  __/
+			\____/ |___/  \_____/============|===============|===__|_.__/ |_|   |_| \__,_| \__, | \___|
+			                     ~~~~~~~~~|xx|~~~~~~~~~~~~~|x|~~~~~                         __/ |
+			                                                                               |___/
+			JDLBridge v«VERSION» (c) Copyright 2019-«LocalDate.now.year» - JHipster Project - Serano Colameo
 		''')
 	}
 
@@ -200,7 +199,7 @@ class JDLBridge {
 			error(ex.message)
 			printUsageAndExit
 		}
-		if (!SINGLE_OPTS.exists[it.isPresent] || !JDL_OPT.isPresent) printUsageAndExit
+		if (HELP_OPT.isPresent || !SINGLE_OPTS.exists[it.isPresent] || !JDL_OPT.isPresent) printUsageAndExit
 		if (ADOC_OPT.isPresent || JDLBridge.PUML_OPT.isPresent) setProperty('plantuml.gen', 'true')
 		if (PNG_OPT.isPresent) setProperty('pnguml.gen', 'true')
 		prinVersion
