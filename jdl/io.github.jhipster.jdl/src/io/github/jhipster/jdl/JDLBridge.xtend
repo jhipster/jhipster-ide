@@ -63,7 +63,7 @@ class JDLBridge {
 
 	val resources = <Resource>newArrayList
 
-	static val VERSION = '1.1.5'
+	static val VERSION = '1.1.6'
 	static val FACILITY = 'jdlbridge'
 	static val HELP_OPT = new Option('h', 'help', false, 'Print this help message')
 	static val PUML_OPT = new Option('u', 'uml', false, 'Generate PlantUML for each JDL file')
