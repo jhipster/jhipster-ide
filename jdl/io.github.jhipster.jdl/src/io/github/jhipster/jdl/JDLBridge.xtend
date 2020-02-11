@@ -18,15 +18,19 @@
  */
 package io.github.jhipster.jdl
 
+import com.google.gson.Gson
 import com.google.inject.Inject
 import com.google.inject.Provider
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.renderer.JdlToAsciiDocRenderer
+import java.io.BufferedReader
 import java.io.File
+import java.io.InputStreamReader
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.util.Comparator
+import java.util.HashMap
 import java.util.Set
 import org.apache.commons.cli.BasicParser
 import org.apache.commons.cli.CommandLine
@@ -63,7 +67,8 @@ class JDLBridge {
 
 	val resources = <Resource>newArrayList
 
-	static val VERSION = '1.1.6'
+	static var VERSION = getVersion
+	static val PKG = 'package.json'
 	static val FACILITY = 'jdlbridge'
 	static val HELP_OPT = new Option('h', 'help', false, 'Print this help message')
 	static val PUML_OPT = new Option('u', 'uml', false, 'Generate PlantUML for each JDL file')
@@ -82,6 +87,16 @@ class JDLBridge {
 	]
 
 	static var CommandLine CLI
+	
+	def static private getVersion() {
+		val in = Thread.currentThread.contextClassLoader.getResourceAsStream(PKG)
+		if (in === null) {
+			error('Cannot access ' + PKG)
+			exit(1)
+		}
+		val reader = new BufferedReader(new InputStreamReader(in));		
+		return new Gson().fromJson(reader, HashMap)?.get('version')
+	}
 
 	def static private void info(String message) {
 		println('''[«FACILITY»] INFO - «message»''')

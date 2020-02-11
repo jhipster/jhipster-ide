@@ -21,7 +21,15 @@ Require-Bundle: io.github.jhipster.jdl.lib,
  net.sourceforge.plantuml.eclipse;bundle-version="1.1.23";visibility:=reexport,
  net.sourceforge.plantuml.text;bundle-version="1.1.23";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: io.github.jhipster.jdl,
+Export-Package: com.google.gson,
+ com.google.gson.annotations,
+ com.google.gson.internal,
+ com.google.gson.internal.bind,
+ com.google.gson.internal.bind.util,
+ com.google.gson.internal.reflect,
+ com.google.gson.reflect,
+ com.google.gson.stream,
+ io.github.jhipster.jdl,
  io.github.jhipster.jdl.config;uses:="org.eclipse.xtext.util",
  io.github.jhipster.jdl.formatting2;uses:="io.github.jhipster.jdl.jdl,org.eclipse.xtext.formatting2",
  io.github.jhipster.jdl.generator;uses:="org.eclipse.xtext.generator,org.eclipse.emf.ecore.resource,io.github.jhipster.jdl.jdl",
@@ -98,5 +106,6 @@ Bundle-ClassPath: .,
  lib/plantuml-epl-8059.jar,
  lib/generator-vscode-0.4.jar,
  lib/commons-lang3-3.7.jar,
- lib/commons-io-2.6.jar
+ lib/commons-io-2.6.jar,
+ lib/gson-2.8.6.jar
 Automatic-Module-Name: io.github.jhipster.jdl
