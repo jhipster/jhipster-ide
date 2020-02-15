@@ -18,7 +18,9 @@
  */
 package io.github.jhipster.jdl.validation
 
+import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlRelationRole
+import io.github.jhipster.jdl.util.JdlModelUtil
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
@@ -26,12 +28,12 @@ import org.eclipse.xtext.validation.EValidatorRegistrar
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
 
-import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
-
 /**
  * @author Serano Colameo - Initial contribution and API
  */
 class RelationshipValidator extends AbstractDeclarativeValidator {
+
+	@Inject extension JdlModelUtil
 
 	override register(EValidatorRegistrar registrar) {}
 

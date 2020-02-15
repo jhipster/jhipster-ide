@@ -18,6 +18,7 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
+import com.google.inject.Inject
 import io.github.jhipster.jdl.config.JdlApplicationOptions
 import io.github.jhipster.jdl.config.JdlDeploymentOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
@@ -26,14 +27,13 @@ import io.github.jhipster.jdl.jdl.JdlDisplayField
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
 import io.github.jhipster.jdl.jdl.JdlRelationRole
+import io.github.jhipster.jdl.util.JdlModelUtil
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 
 import static org.eclipse.xtext.EcoreUtil2.*
-
-import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -42,6 +42,8 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 
 	val applOptions = JdlApplicationOptions.INSTANCE
 	val deplOptions = JdlDeploymentOptions.INSTANCE
+	
+	@Inject extension JdlModelUtil
 	
 	override protected filterKeyword(Keyword keyword, ContentAssistContext context) {
 		return keyword.value == 'name' || !keyword.parameterExists(context)
