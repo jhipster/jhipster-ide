@@ -19,35 +19,30 @@
 package io.github.jhipster.jdl.renderer
 
 import com.google.inject.ImplementedBy
+import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlBlobFieldType
 import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
-import io.github.jhipster.jdl.jdl.JdlComplexAnnotation
 import io.github.jhipster.jdl.jdl.JdlConstant
+import io.github.jhipster.jdl.jdl.JdlDeployment
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
-import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlEnumFieldType
-import io.github.jhipster.jdl.jdl.JdlFactory
 import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlOption
-import io.github.jhipster.jdl.jdl.JdlOptionSelection
-import io.github.jhipster.jdl.jdl.JdlOptionSetting
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
-import io.github.jhipster.jdl.jdl.JdlSimpleAnnotation
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
+import io.github.jhipster.jdl.util.JdlModelUtil
 import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.EcoreUtil2
 
 import static io.github.jhipster.jdl.util.PlantUmlUtil.*
-import io.github.jhipster.jdl.jdl.JdlApplication
-import io.github.jhipster.jdl.jdl.JdlDeployment
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -65,70 +60,18 @@ interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 
 	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
-	val factory = JdlFactory.eINSTANCE 
+	@Inject extension JdlModelUtil util
 
 	override render(JdlDomainModel jdl) {
 		return jdl.init.toPlantUml
 	}
 
 	def private JdlDomainModel init(JdlDomainModel jdl) {
-		return jdl.initEntiyOptionMap
-	}
-	
-	def private JdlDomainModel initEntiyOptionMap(JdlDomainModel jdl) {
-		entiyOptionMap = newHashMap
-		if (jdl === null || jdl.eContents.nullOrEmpty) return jdl
-		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |  
-			val predicate = if (o.setting?.includes !== null && o.setting.includes instanceof JdlOptionSelection) {
-				valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
-			}
-			val isSelectAll = predicate !== null && (predicate.isWildcard || predicate.isAll)
-			if (isSelectAll) {
-				val entitySelection = jdl.eContents.filter(JdlEntity).filter[!isExcluded(o, it)]
-				entitySelection ?: #[]
-			} else {
-				val entitySelection = if (o.setting?.includes !== null && o.setting.includes instanceof JdlOptionSelection) {
-					val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
-				 	selection?.entities
-				}
-				entitySelection ?: #[]
-			}
-		]
-		jdl.eContents.filter(JdlOption).toSet.forEach[ option |
-			getEntities.apply(option).forEach[ entity |
-				val options = if (entiyOptionMap.containsKey(entity)) entiyOptionMap.get(entity) else newHashSet 
-				options.add(option)
-				entiyOptionMap.put(entity, options)
-			]
-		]
-		jdl.eContents.filter(JdlEntity).map[annotations].flatten.forEach[ 
-			val entity = eContainer as JdlEntity
-			val options = if (entiyOptionMap.containsKey(entity)) entiyOptionMap.get(entity) else newHashSet 
-			entiyOptionMap.put(entity, options)
-			val aOption = switch (it) {
-				JdlComplexAnnotation case isDto: { createOption => [setting.dtoOption = true] }
-				JdlComplexAnnotation case isAngularSuffix: { createOption => [setting.angularSuffixOption = true] }
-				JdlComplexAnnotation case isClientRootFolder: { createOption => [setting.clientRootFolder = true] }
-				JdlComplexAnnotation case isMicroservice: { createOption => [setting.microserviceOption = true] }
-				JdlComplexAnnotation case isPaginate: { createOption => [setting.paginateOption = true] }
-				JdlComplexAnnotation case isSearch:  { createOption => [setting.searchOption = true] }
-				JdlComplexAnnotation case isService: { createOption => [setting.serviceOption = true] }
-				JdlSimpleAnnotation case isNoFluentMethod: { createOption => [setting.noFluentMethodOption = true] }
-				JdlSimpleAnnotation case isSkipClient: { createOption => [setting.skipClientOption = true] }
-				JdlSimpleAnnotation case isSkipServer: { createOption => [setting.skipServerOption = true] }
-			}
-			if (aOption !== null) options.add(aOption)
-		]
+		util = JdlModelUtil.getInstance(jdl)
+		entiyOptionMap = toEntiyOptionMap(jdl)
 		return jdl
 	}
-
-	def private JdlOption createOption() {
-		val result = factory.createJdlOption => [
-			it.setting = factory.createJdlOptionSetting
-		]		
-		return result
-	}
-
+	
 	def private String toPlantUml(JdlDomainModel it) '''
  		«toPlantUml.apply('''
 			«options»
@@ -167,17 +110,6 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		'' // for the moment we do not want to render this type
 	}
 
-	def private getOptionType(JdlOptionSetting setting) {
-		val result = setting.class.methods.filter[
-			name.startsWith('is') && name.endsWith('Option')
-		].filter[
-		 	invoke(setting) as Boolean
-		]
-		if (!result.isNullOrEmpty && result.size == 1) {
-			result.last.name.replaceAll('is|Option', '')
-		}
-	}
-	
 	def protected renderJdlObject(String option, JdlWildcardPredicate predicate) '''
 		note top of «option» : «option» applies to «IF predicate.isAll || predicate.isWildcard»all«ENDIF»
 	'''
@@ -222,7 +154,7 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
  	def dispatch protected renderJdlObject(JdlEntity entity) '''
  		«val fields = if (entity.fieldDefinition !== null) entity.fieldDefinition.fields else #[]»
-		class «entity.name» «IF entity.table.nullOrEmpty == false»<<Table {«entity.table»}>>«ENDIF»«toOptionStereotype(entity)» {
+		class «entity.name» «IF entity.table.nullOrEmpty == false»<<Table {«entity.table»}>>«ENDIF»«entity.toOptionStereotype(entiyOptionMap)» {
 			«fields.map[renderJdlObject].join»
 		}
 		«FOR e: fields.map[type].filter(JdlEnumFieldType)»
@@ -230,17 +162,6 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 		«ENDFOR»
 	'''
 
-	def private toOptionStereotype(JdlEntity entity) 
-		'''«var opts=entiyOptionMap.get(entity)?.filter[!isExcluded(entity)]»«IF !opts.nullOrEmpty»<<Option {«FOR it : opts SEPARATOR ','»«setting.optionType»«ENDFOR»}>>«ENDIF»'''
-
-	def private boolean isExcluded(JdlOption opt, JdlEntity entity) {
-		try {
-			(EcoreUtil2.resolve(opt, opt.eResource) as JdlOption).excludes.selection.entities.contains(entity)
-		} catch (Exception exception) {
-			false
-		}
-	}
-	
 	def dispatch protected renderJdlObject(JdlEntityField field) '''
 		«field.type.elementType» «field.name»
 	'''
@@ -255,14 +176,6 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 			JdlEnumFieldType, JdlBlobFieldType : valueOf('getName')
 			JdlFieldType : it
 			default: "'unknown type'"
-		}
-	}
-
-	def private valueOf(Object type, String methodName) {
-		try {
-			type.^class.getMethod(methodName).invoke(type)
-		} catch (Exception exception) {
-			null		
 		}
 	}
 }
