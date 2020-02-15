@@ -89,13 +89,15 @@ class JDLBridge {
 	static var CommandLine CLI
 	
 	def static private getVersion() {
+		if (!getProperty('version').isNullOrEmpty) return getProperty('version')
 		val in = Thread.currentThread.contextClassLoader.getResourceAsStream(PKG)
 		if (in === null) {
 			error('Cannot access ' + PKG)
 			exit(1)
 		}
-		val reader = new BufferedReader(new InputStreamReader(in));		
-		return new Gson().fromJson(reader, HashMap)?.get('version')
+		val reader = new BufferedReader(new InputStreamReader(in))
+		val version = new Gson().fromJson(reader, HashMap)?.get('version')?.toString.trim
+		return if (!version.isNullOrEmpty) '''v«version» ''' else ''
 	}
 
 	def static private void info(String message) {
@@ -202,7 +204,7 @@ class JDLBridge {
 				$ «FACILITY» -«PUML_OPT.opt» -«JDL_OPT.opt» myApp/MyApp.jdl
 				$ «FACILITY» -«PNG_OPT.opt» -«JDL_OPT.opt» myApp/My*.jdl
 				$ «FACILITY» -«ADOC_OPT.opt» -«JDL_OPT.opt» myApp/*.jdl
-				$ «FACILITY» -«ADOC_OPT.opt» -«JDL_OPT.opt» myApp/				
+				$ «FACILITY» -«ADOC_OPT.opt» -«JDL_OPT.opt» myApp/ -«SKIP_VALIDATION_OPT.longOpt»
 				$ «FACILITY» --«ADOC_OPT.longOpt» --«JDL_OPT.longOpt» myApp/ myApp2/A*.jdl myApp3/*.jh
 			''', true)
 		]
@@ -220,28 +222,40 @@ class JDLBridge {
 		  \____/|_____/|______/~~~~~~|**|~~~~~~~~|*|~~~~|_.__/|_|  |_|\__,_|\__, |\___|
 		                                                                     __/ |     
 		                                                                    |___/      
-		 JDLBridge v«VERSION» (c) Copyright 2019-«LocalDate.now.year» - JHipster Project - Serano Colameo
+		 JDLBridge «VERSION»(c) Copyright 2019-«LocalDate.now.year» - JHipster Project - Serano Colameo
 		''')
 	}
 
-	def static void main(String[] args) throws ParseException {
+	def static private void initialize(String[] args) {
 		try {
 			CLI = new BasicParser().parse(OPTIONS, args)
 		} catch (Exception ex) {
 			error(ex.message)
 			printUsageAndExit
 		}
-		if (SKIP_VALIDATION_OPT.isPresent) warn('Validations disabled!')
+	}
+
+	def static private void evaluate() {
 		if (HELP_OPT.isPresent || !SINGLE_OPTS.exists[it.isPresent] || !JDL_OPT.isPresent) printUsageAndExit
 		if (ADOC_OPT.isPresent || JDLBridge.PUML_OPT.isPresent) setProperty('plantuml.gen', 'true')
 		if (PNG_OPT.isPresent) setProperty('pnguml.gen', 'true')
 		// start execution...
 		prinVersion
+		if (SKIP_VALIDATION_OPT.isPresent) warn('Validations disabled!')
+	}
+
+	def static private void execute() {
 		new JDLStandaloneSetup().createInjectorAndDoEMFRegistration => [ 
 			getInstance(JDLBridge) => [
 				runWith(getPaths)
 			]
 		]
 		info('Execution finished!')
+	}
+
+	def static void main(String[] args) throws ParseException {
+		initialize(args)
+		evaluate
+		execute
 	}
 }
