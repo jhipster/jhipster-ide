@@ -53,31 +53,6 @@
 					<pomDependencies>consider</pomDependencies>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.mojo</groupId> -->
-<!-- 				<artifactId>appassembler-maven-plugin</artifactId> -->
-<!-- 				<version>2.0.0</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>assemble-standalone</id> -->
-<!-- 						<phase>package</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>assemble</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<repositoryLayout>flat</repositoryLayout> -->
-<!-- 							<repositoryName>lib</repositoryName> -->
-<!-- 						    <useWildcardClassPath>true</useWildcardClassPath> -->
-<!-- 							<programs> -->
-<!-- 								<program> -->
-<!-- 									<id>jdl-ls</id> -->
-<!-- 									<mainClass>org.eclipse.xtext.ide.server.ServerLauncher</mainClass> -->
-<!-- 								</program> -->
-<!-- 							</programs> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-dependency-plugin</artifactId>
@@ -197,6 +172,27 @@
 								<exclude>**/*.g</exclude>
 								<exclude>**/*.mwe2</exclude>
 								<exclude>**/*.xtext</exclude>
+								<exclude>**/*.png</exclude>
+								<exclude>**/*.gif</exclude>
+								<exclude>**/*.svg</exclude>
+								<exclude>**/*.bmp</exclude>
+								<exclude>**/*.dll</exclude>
+								<exclude>**/*.xtend</exclude>
+								<exclude>**/*.java</exclude>
+								<exclude>**/*.js</exclude>
+								<exclude>**/*.so</exclude>
+								<exclude>**/*.txt</exclude>
+								<exclude>**/*.skin</exclude>
+								<exclude>**/*.repx</exclude>
+								<exclude>**/*.jnilib</exclude>
+								<exclude>**/*.xml</exclude>
+								<exclude>**/*.ent</exclude>
+								<exclude>**/*.html</exclude>
+								<exclude>**/*.css</exclude>
+								<exclude>**/*.e4xmi</exclude>
+								<exclude>**/*.aliases</exclude>
+								<exclude>**/*.image*</exclude>
+								<exclude>**/*.properties</exclude>
 							</excludes>
 						</filter>
 					</filters>

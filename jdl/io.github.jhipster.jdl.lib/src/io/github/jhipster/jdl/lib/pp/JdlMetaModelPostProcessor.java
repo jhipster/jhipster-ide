@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.xtext.GeneratedMetamodel;
-import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xtext.ecoreInference.IXtext2EcorePostProcessor;
 
 import com.google.common.collect.Iterables;
@@ -36,10 +35,8 @@ import com.google.common.collect.Iterables;
  */
 @SuppressWarnings("restriction")
 public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
-	@Extension
-	private EcoreFactory factory = EcoreFactory.eINSTANCE;
 
-	@Extension
+	private EcoreFactory factory = EcoreFactory.eINSTANCE;
 	private EcorePackage ecorePackage = EcorePackage.eINSTANCE;
 
 	/**
@@ -62,8 +59,7 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 			String elemenName = eClass.getName();
 			if (elemenName != null) {
 				switch (elemenName) {
-					case "JdlDomainModel":
-						this.handleMetaModel(eClass);
+					case "JdlDomainModel": handleMetaModel(eClass);
 					break;
 				}
 			}
@@ -71,7 +67,8 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	}
 
 	/**
-	 * Handle 
+	 * Handle meta model post-processing actions
+	 * 
 	 * @param eClass
 	 */
 	private void handleMetaModel(final EClass eClass) {
@@ -83,6 +80,12 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
 			it.setName("fullFileName");
 			it.setEType(this.ecorePackage.getEString());
+			eClass.getEStructuralFeatures().add(it);
+		});
+		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
+			it.setName("entiyOptionMap");
+			it.setEType(this.ecorePackage.getEMap());
+			it.setTransient(true);
 			eClass.getEStructuralFeatures().add(it);
 		});
 	}

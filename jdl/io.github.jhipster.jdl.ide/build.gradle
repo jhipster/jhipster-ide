@@ -22,7 +22,7 @@ shadowJar {
 	configurations = [project.configurations.runtime]
 	exclude('META-INF/INDEX.LIST', 'META-INF/*.SF', 'META-INF/*.DSA', 'META-INF/*.RSA','schema/*',
 		'.options', '.api_description', '*.profile', '*.html', 'about.*', 'about_files/*',
-		'plugin.xml', 'modeling32.png', 'systembundle.properties', 'profile.list')
+		'plugin.xml', 'modeling32.png', 'systembundle.properties', 'profile.list', '*.png', '*.gif', '*.svg', '*.dll')
 	classifier = 'ls'
 	append('plugin.properties')
 }
