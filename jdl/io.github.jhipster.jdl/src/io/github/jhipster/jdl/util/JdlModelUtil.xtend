@@ -38,8 +38,8 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.resource.XtextResource
 
-import static org.eclipse.emf.ecore.util.EcoreUtil.*
-import static org.eclipse.xtext.EcoreUtil2.*
+import static extension org.eclipse.emf.ecore.util.EcoreUtil.*
+import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -63,7 +63,7 @@ class JdlModelUtil {
 	def JdlRelation getOpposite(JdlRelationRole relationRole) {
 		if(relationRole === null) return null
 		val relation = relationRole.eContainer as JdlRelation
-		val relship = getContainerOfType(relationRole.eContainer, JdlRelationship)
+		val relship = relationRole.eContainer.getContainerOfType(JdlRelationship)
 		val opposite = if(relship.source === relation) relship.target else relship.source
 		return opposite
 	}
@@ -160,9 +160,16 @@ class JdlModelUtil {
 	def toOptionText(JdlEntity entity, Map<JdlEntity, Set<JdlOption>> entiyOptionMap) 
 		'''«var opts=entiyOptionMap.get(entity)?.filter[!isExcluded(entity)]»«IF !opts.nullOrEmpty»«FOR it : opts SEPARATOR ','»«setting.optionType»«ENDFOR»«ENDIF»'''
 
+	def String getOptionsText(JdlEntity entity) {
+		if (entity === null) return ''
+		val jdl = entity.getContainerOfType(JdlDomainModel)
+		val result = if (jdl !== null) entity.toOptionText(jdl.entiyOptionMap) else ''
+		return result?.toString
+	}
+
 	def boolean isExcluded(JdlOption opt, JdlEntity entity) {
 		try {
-			(resolve(opt, opt.eResource) as JdlOption).excludes.selection.entities.contains(entity)
+			(opt.resolve(opt.eResource) as JdlOption).excludes.selection.entities.contains(entity)
 		} catch (Exception exception) {
 			false
 		}
