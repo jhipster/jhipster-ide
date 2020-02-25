@@ -67,13 +67,24 @@
             "}"
         ]
     },
-    "Create an many-to-one relationship": {
+    "Create a many-to-one relationship": {
         "prefix": "add relationship many-to-one",
         "body": [
             "/**",
             " * Many to one relationship.",
             " */",
             "relationship ManyToOne {",
+	            "\t${1:Entity1} to ${2:Entity2}",
+            "}"
+        ]
+    },
+    "Create a many-to-many relationship": {
+        "prefix": "add relationship many-to-many",
+        "body": [
+            "/**",
+            " * Many to many relationship.",
+            " */",
+            "relationship ManyToMany {",
 	            "\t${1:Entity1} to ${2:Entity2}",
             "}"
         ]
