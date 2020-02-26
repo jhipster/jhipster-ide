@@ -22,6 +22,7 @@ This plugin integrates also snippets.
 - `add relationship one-to-one`: snippet to add a new 1:1 relationship
 - `add relationship one-to-many`: snippet to add a new 1:* relationship
 - `add relationship many-to-one`: snippet to add a new *:1 relationship
+- `add relationship many-to-many`: snippet to add a new \*:\* relationship
 - `add paginate-with-pagination`: snippet to add a pagination option
 - `add paginate-with-pager`: snippet to add a pagination with pager option
 - `add paginate-with-infinite-scroll`: snippet to add a pagination with infinite option
