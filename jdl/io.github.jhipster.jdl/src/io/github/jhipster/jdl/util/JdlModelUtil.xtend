@@ -32,6 +32,7 @@ import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlSimpleAnnotation
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
+import java.util.List
 import java.util.Map
 import java.util.Set
 import org.eclipse.emf.ecore.EObject
@@ -165,6 +166,13 @@ class JdlModelUtil {
 		val jdl = entity.getContainerOfType(JdlDomainModel)
 		val result = if (jdl !== null) entity.toOptionText(jdl.entiyOptionMap) else ''
 		return result?.toString
+	}
+
+	def List<String> getOptions(JdlEntity entity) {
+		if (entity === null) return #[]
+		val jdl = entity.getContainerOfType(JdlDomainModel)
+		val result = if (jdl !== null) entity.toOptionText(jdl.entiyOptionMap) else ''
+		return result?.toString?.split(',')
 	}
 
 	def boolean isExcluded(JdlOption opt, JdlEntity entity) {

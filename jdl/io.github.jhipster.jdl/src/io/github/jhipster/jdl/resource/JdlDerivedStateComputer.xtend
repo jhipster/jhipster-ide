@@ -18,20 +18,32 @@
  */
 package io.github.jhipster.jdl.resource
 
+import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlFieldType
+import io.github.jhipster.jdl.jdl.JdlNumericTypes
 import io.github.jhipster.jdl.jdl.JdlPackage
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
-import io.github.jhipster.jdl.jdl.JdlEntity
-import io.github.jhipster.jdl.jdl.JdlDomainModel
-import io.github.jhipster.jdl.jdl.JdlFieldType
-import io.github.jhipster.jdl.jdl.JdlNumericTypes
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
-	static val USER_ENTITY = 'User'
+	val BUILT_IN_ENTITIES = #{
+		'User' -> #[
+			'firstName' -> stringType,
+			'lastName' -> stringType,
+			'login' -> stringType,
+			'email' -> stringType,
+			'imageUrl' -> stringType,
+			'authorities' -> stringType
+		],
+		'Authority' -> #[
+			'name' -> stringType
+		]
+	}
 	static val factory = JdlPackage.eINSTANCE.jdlFactory
 
 	override discardDerivedState(DerivedStateAwareResource resource) {
@@ -39,27 +51,18 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
-		val fieldDecls = #[
-			'firstName' -> stringType,
-			'lastName' -> stringType,
-			'login' -> stringType,
-			'email' -> stringType,
-			'imageUrl' -> stringType,
-			'authorities' -> stringType
-		]
 		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
-			val user = factory.createJdlEntity => [ entity |
-				entity.name = USER_ENTITY
-				entity.fieldDefinition = factory.createJdlEntityFieldDefinition
-				fieldDecls.forEach[entity.addField(it.key, it.value)]
-			]
 			val model = resource.model
 			if (model !== null) {
 				model.fullFileName = resource.URI.toFileString
 				model.name = resource.modelName
-				if(model.eContents.filter(JdlEntity).exists [
-					name.equals(user.name)
-				] == false) model.features += user
+				BUILT_IN_ENTITIES.forEach[name, fieldDecls|
+					model.features += factory.createJdlEntity => [ entity |
+						entity.name = name
+						entity.fieldDefinition = factory.createJdlEntityFieldDefinition
+						fieldDecls.forEach[entity.addField(key, value)]
+					]
+				]
 			}
 		}
 	}
@@ -111,8 +114,10 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 
 	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
 		try {
-			resource.contents.filter(JdlEntity).findFirst[name.equals(USER_ENTITY)] !== null
-		} catch (Exception exception) {
+			resource.contents.filter(JdlEntity).findFirst[
+				BUILT_IN_ENTITIES.containsKey(name)
+			] !== null
+		} catch (Exception ex) {
 			false
 		}
 	}

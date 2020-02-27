@@ -22,6 +22,7 @@ import static org.eclipse.xtext.xbase.lib.ObjectExtensions.operator_doubleArrow;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -59,7 +60,8 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 			String elemenName = eClass.getName();
 			if (elemenName != null) {
 				switch (elemenName) {
-					case "JdlDomainModel": handleMetaModel(eClass);
+					case "JdlDomainModel" : processJdlDomainModelMetaClass(eClass);
+					case "JdlEntity": processJdlEntityMetaClass(eClass);
 					break;
 				}
 			}
@@ -67,11 +69,11 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	}
 
 	/**
-	 * Handle meta model post-processing actions
+	 * Handle JdlDomainModel meta class
 	 * 
 	 * @param eClass
 	 */
-	private void handleMetaModel(final EClass eClass) {
+	private void processJdlDomainModelMetaClass(final EClass eClass) {
 		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
 			it.setName("name");
 			it.setEType(this.ecorePackage.getEString());
@@ -89,4 +91,22 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 			eClass.getEStructuralFeatures().add(it);
 		});
 	}
+
+	/**
+	 * Handle JdlEntity meta class
+	 * 
+	 * @param eClass
+	 */
+	private void processJdlEntityMetaClass(final EClass eClass) {
+		EGenericType eStringTypeArg = factory.createEGenericType();
+		eStringTypeArg.setEClassifier(ecorePackage.getEString()); 
+		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
+			it.setName("options");
+			it.setEType(ecorePackage.getEEList());
+			it.setTransient(true);
+			it.getEGenericType().getETypeArguments().add(eStringTypeArg);	
+			eClass.getEStructuralFeatures().add(it);
+		});
+	}
 }
+

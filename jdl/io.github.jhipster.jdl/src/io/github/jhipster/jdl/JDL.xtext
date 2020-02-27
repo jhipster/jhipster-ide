@@ -284,7 +284,8 @@ JdlSimpleAnnotation:
 		JdlSkipServerAnnotation |
 		JdlFilterAnnotation |
 		JdlNoFluentMethodAnnotation |
-		JdlReadOnlyAnnotation);
+		JdlReadOnlyAnnotation |
+		JdlEmbeddedAnnotation);
 
 JdlDtoAnnotation returns JdlComplexAnnotation:
 	dto?='dto' '(' dtoType=JdlDtoType ')';
@@ -320,7 +321,10 @@ JdlNoFluentMethodAnnotation returns JdlSimpleAnnotation:
 	noFluentMethod?='noFluentMethod';
 
 JdlReadOnlyAnnotation returns JdlSimpleAnnotation:
-	noFluentMethod?='readOnly';
+	readOnly?='readOnly';
+
+JdlEmbeddedAnnotation returns JdlSimpleAnnotation:
+	embedded?='embedded';
 	
 JdlCustomAnnotation:
 	'@' name=ID ('(' value=ID ')')?;	
@@ -344,7 +348,8 @@ JdlOptionSetting:
 	JdlClientRootFolderOption |
 	JdlNoFluentMethodOption |
 	JdlFilterOption |
-	JdlReadOnlyOption;
+	JdlReadOnlyOption |
+	JdlEmbeddedOption;
 
 JdlWithEntitySelectionAndValue returns JdlOptionSelection:
 	(predicate=JdlWildcardPredicate | selection=JdlEntitySelection) 'with';
@@ -449,11 +454,18 @@ JdlNoFluentMethodOption returns JdlOptionSetting:
 	noFluentMethodOption?='noFluentMethod' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * NO FLUENT METHOD OPTION 
+ * READONLY OPTION 
  * ========================================================================= */
 
 JdlReadOnlyOption returns JdlOptionSetting:
 	readOnly?='readOnly' includes=JdlForEntityInclusion;
+
+/* =========================================================================
+ * EMBEDDED OPTION 
+ * ========================================================================= */
+
+JdlEmbeddedOption returns JdlOptionSetting:
+	embedded?='embedded' includes=JdlForEntityInclusion;
 
 /* =========================================================================
  * PARAMETER VALUE

@@ -12,9 +12,12 @@ entity B
 @filter
 @paginate(pagination)
 @readOnly
-entity C
+@embedded
+entity C 
 
 skipServer A
 service A with serviceImpl
 readOnly A
+embedded B
 paginate B, C with pagination
+ 
