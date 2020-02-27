@@ -113,10 +113,10 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
-		try {
-			resource.contents.filter(JdlEntity).findFirst[
-				BUILT_IN_ENTITIES.containsKey(name)
-			] !== null
+		return try {
+			resource.contents.filter(JdlEntity).exists[
+				BUILT_IN_ENTITIES.containsKey(it.name)
+			]
 		} catch (Exception ex) {
 			false
 		}

@@ -168,7 +168,7 @@ class JDLParsingTest{
 		model.features => [
 			filter(JdlEntity) => [
 				assertFalse(isNullOrEmpty)
-				assertTrue(size == 9) // 8 + 1 User (built-in entity)
+				assertTrue(size == 10) // 8 + 1 User + 2 Authority (built-in entities)
 				filter[name.equals('JobHistory')].last => [
 					assertNotNull(it)
 					assertNotNull(fieldDefinition)
@@ -206,6 +206,10 @@ class JDLParsingTest{
 				assertFalse(findFirst[setting.isAngularSuffixOption] === null)
 				assertTrue(filter[setting.isPaginateOption].size == 2)
 			]
+			filter(JdlEntity).filter[it.name == 'Authority'] => [
+				assertFalse(isNullOrEmpty)
+				assertTrue(size == 1)
+			]
 		]
 	}
 	
@@ -230,4 +234,20 @@ class JDLParsingTest{
 		'''.parse.assertNoErrors
 	}
 	
+	@Test
+	def void testBuiltInEntities() {
+		val model = '''
+			entity A
+		'''.parse
+		assertNotNull(model)
+		
+		val expected = #['Authority', 'User']
+		model.features => [
+			val actual = filter(JdlEntity).filter[
+				expected.contains(it.name)
+			].map[name].toList
+			println(actual)
+			assertEquals(expected, actual)
+		]
+	}
 }
