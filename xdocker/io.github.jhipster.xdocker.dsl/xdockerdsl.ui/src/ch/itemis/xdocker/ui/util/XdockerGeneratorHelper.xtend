@@ -8,7 +8,6 @@
 package ch.itemis.xdocker.ui.util
 
 import com.google.inject.Inject
-import javax.inject.Provider
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IFolder
 import org.eclipse.core.runtime.CoreException
@@ -19,6 +18,7 @@ import org.eclipse.xtext.generator.GeneratorContext
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator2
 import org.eclipse.xtext.ui.resource.IResourceSetProvider
+import com.google.inject.Provider
 
 /**
  * This is a Helper Class to call the Xdocker Genrator

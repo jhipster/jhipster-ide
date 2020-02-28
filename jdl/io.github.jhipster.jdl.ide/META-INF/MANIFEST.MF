@@ -10,11 +10,12 @@ Require-Bundle: io.github.jhipster.jdl,
  org.eclipse.xtext.xbase.ide,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
  com.google.gson,
- org.eclipse.lsp4j;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
- org.eclipse.lsp4j.jsonrpc;bundle-version="[0.8.0,0.9.0)";visibility:=reexport,
- org.eclipse.lsp4j.debug;bundle-version="[0.8.0,0.9.0)",
- org.eclipse.lsp4j.generator;bundle-version="[0.8.0,0.9.0)",
- org.eclipse.lsp4j.jsonrpc.debug;bundle-version="[0.8.0,0.9.0)"
+ org.eclipse.lsp4j;bundle-version="[0.8.1,0.9.0)";visibility:=reexport,
+ org.eclipse.lsp4j.jsonrpc;bundle-version="[0.8.1,0.9.0)";visibility:=reexport,
+ org.eclipse.lsp4j.debug;bundle-version="[0.8.1,0.9.0)",
+ org.eclipse.lsp4j.generator;bundle-version="[0.8.1,0.9.0)",
+ org.eclipse.lsp4j.jsonrpc.debug;bundle-version="[0.8.1,0.9.0)",
+ org.eclipse.lsp4j.websocket;bundle-version="[0.8.1,0.9.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,

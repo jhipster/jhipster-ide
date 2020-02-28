@@ -1,11 +1,11 @@
-ext.xtextVersion = '2.19.0'
+ext.xtextVersion = '2.20.0'
 
 buildscript {
 	repositories {
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'org.xtext:xtext-gradle-plugin:2.0.7'
+		classpath 'org.xtext:xtext-gradle-plugin:2.0.8'
 	}
 }
 
@@ -29,7 +29,7 @@ subprojects {
 	apply plugin: 'eclipse'
 
 	group = 'io.github.jhipster.jdl'
-	version = '2.0.0-SNAPSHOT'
+	version = '2.1.0-SNAPSHOT'
 	
 	sourceCompatibility = '1.8'
 	targetCompatibility = '1.8'
