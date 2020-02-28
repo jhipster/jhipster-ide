@@ -3,12 +3,12 @@
   <validationSets description="JHipster-IDE" label="JHipster-IDE" extends="//@validationSets[label='Base']">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
-        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="1.9.1" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="2.1.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
     <contributions description="Xdocker" label="Xdocker">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
-        <features name="xdockerdsl.feature.feature.group" versionRange="1.9.1" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
+        <features name="xdockerdsl.feature.feature.group" versionRange="2.1.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
     </contributions>
   </validationSets>
@@ -33,9 +33,9 @@
     </contributions>
     <contributions description="Tools" label="Tools">
       <repositories location="http://hallvard.github.io/plantuml">
-        <features name="net.sourceforge.plantuml.ecore.feature.feature.group" versionRange="1.1.23"/>
-        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.23"/>
-        <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2019.0"/>
+        <features name="net.sourceforge.plantuml.ecore.feature.feature.group" versionRange="1.1.24"/>
+        <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.24"/>
+        <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2019.11"/>
       </repositories>
       <repositories location="http://download.eclipse.org/technology/m2e/releases/1.9/1.9.1.20180912-1601/">
         <features name="org.eclipse.m2e.feature.feature.group" versionRange="1.9.1.20180912-1601"/>
