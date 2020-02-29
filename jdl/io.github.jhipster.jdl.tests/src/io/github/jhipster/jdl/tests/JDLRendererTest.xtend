@@ -138,11 +138,12 @@ class JDLRendererTest {
 			** Paginate Points
 			*/
 			paginate Points with pagination
-		'''.parse).toString.split('\n').toList
+		'''.parse)
+		
+		println(actual)
 		
 		assertEquals('''
 			@startuml
-				!pragma syntax class		
 				class BloodPressure <<Option {Paginate}>> {
 					ZonedDateTime timestamp
 					Integer systolic
@@ -172,6 +173,9 @@ class JDLRendererTest {
 				BloodPressure  "user(login) 0..* " o-- "0..1 "  User
 				Weight  "user(login) 0..* " o-- "0..1 "  User
 				Points  "user(login) 0..* " o-- "0..1 "  User
+				class Authority  {
+					String name
+				}
 				class User  {
 					String firstName
 					String lastName
@@ -181,7 +185,7 @@ class JDLRendererTest {
 					String authorities
 				}
 			@enduml
-		'''.toString.split('\n').toList, actual)
+		'''.toString.split('\n').toList, actual.toString.split('\n').toList)
 	}	
 
 	@Test
@@ -277,7 +281,9 @@ class JDLRendererTest {
 			** Paginate Points
 			*/
 			paginate Points with pagination
-		'''.parse).toString.split('\n').toList
+		'''.parse).toString
+
+		println(actual)
 		
 		assertEquals('''
 			= __synthetic0
@@ -377,6 +383,15 @@ class JDLRendererTest {
 			|WeightUnits|Units|required | Weight units
 			|===
 			
+			=== Entity «open»Authority«close»
+			
+			.Fields
+			[options="header, autowidth"]
+			|===
+			|Field Name|Type | Constraint | Comment
+			|Name|| | 
+			|===
+			
 			=== Relationships
 			[options="header, autowidth"]
 			|===
@@ -396,6 +411,6 @@ class JDLRendererTest {
 			| KG | KG Enum
 			| LB | LB Enum
 			|===
-		'''.toString.split('\n').toList, actual)
+		'''.toString.split('\n').toList, actual.split('\n').toList)
 	}	
 }
