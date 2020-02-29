@@ -23,6 +23,7 @@ import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlFieldType
 import io.github.jhipster.jdl.jdl.JdlNumericTypes
 import io.github.jhipster.jdl.jdl.JdlPackage
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
 
@@ -31,8 +32,8 @@ import org.eclipse.xtext.resource.IDerivedStateComputer
  */
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
-	val USER_ENTITY = 'User';
-	val AUTHORITY_ENTITY = 'Authority';
+	val USER_ENTITY = 'User'
+	val AUTHORITY_ENTITY = 'Authority'
 	val BUILT_IN_ENTITIES = #{
 		USER_ENTITY -> #[
 			'firstName' -> stringType,
@@ -53,7 +54,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
-		if (preLinkingPhase || resource === null) return;
+		if (preLinkingPhase || resource === null || !resource.isLoaded) return;
 		if (!resource.builtInTypesAlreadyDefined) {
 			val model = resource.model
 			if (model !== null) {
@@ -110,16 +111,20 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	def private JdlDomainModel getModel(DerivedStateAwareResource resource) {
-		return try {
+		try {
 			val result = resource.contents.filter(JdlDomainModel)
-			if (result.length === 1) result.head
-		} catch (Exception exception) {
-			null
+			var model = if (result.size === 1) result.head
+			if (model != model.eIsProxy) {
+				model = EcoreUtil2.resolve(model, resource) as JdlDomainModel
+			}
+			return model
+		} catch (Exception ex) {
+			return null
 		}
 	}
 
 	def private boolean hasEntity(DerivedStateAwareResource resource, String entiyName) {
-		return resource.allContents.filter(JdlDomainModel).exists[hasEntity(entiyName)]
+		return resource.model.hasEntity(entiyName)
 	}
 
 	def private boolean hasEntity(JdlDomainModel model, String entiyName) {
