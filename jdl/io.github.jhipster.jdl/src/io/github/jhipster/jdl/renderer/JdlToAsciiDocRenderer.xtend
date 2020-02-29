@@ -56,10 +56,10 @@ class JdlToAsciiDocRenderer implements IJdlModelViewerRenderer {
 		if (jdl === null) return ''
 		util = JdlModelUtil.getInstance(jdl)
 		entiyOptionMap = jdl.toEntiyOptionMap
-		jdl.toAscidoc
+		return jdl.toAscidoc
 	}
 	
-	def private toAscidoc(JdlDomainModel model) {
+	def private String toAscidoc(JdlDomainModel model) {
 		if (model.name.isNullOrEmpty || model.fullFileName.isNullOrEmpty) return ''
 		val apps = model.features.filter(JdlApplication)
 		val entities = model.features.filter(JdlEntity).filter[it.name != 'User']

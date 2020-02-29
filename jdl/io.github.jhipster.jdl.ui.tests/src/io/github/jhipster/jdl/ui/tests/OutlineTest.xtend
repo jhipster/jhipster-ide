@@ -64,6 +64,8 @@ class OutlineTest extends AbstractOutlineTest {
 				OneToMany
 				  Address - Person
 				Option: DTO
+				Authority
+				  name
 				User
 				  firstName
 				  lastName

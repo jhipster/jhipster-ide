@@ -31,8 +31,10 @@ import org.eclipse.xtext.resource.IDerivedStateComputer
  */
 class JdlDerivedStateComputer implements IDerivedStateComputer {
 
+	val USER_ENTITY = 'User';
+	val AUTHORITY_ENTITY = 'Authority';
 	val BUILT_IN_ENTITIES = #{
-		'User' -> #[
+		USER_ENTITY -> #[
 			'firstName' -> stringType,
 			'lastName' -> stringType,
 			'login' -> stringType,
@@ -40,7 +42,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 			'imageUrl' -> stringType,
 			'authorities' -> stringType
 		],
-		'Authority' -> #[
+		AUTHORITY_ENTITY -> #[
 			'name' -> stringType
 		]
 	}
@@ -51,17 +53,20 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 	}
 
 	override installDerivedState(DerivedStateAwareResource resource, boolean preLinkingPhase) {
-		if (!preLinkingPhase && !resource.builtInTypesAlreadyDefined) {
+		if (preLinkingPhase || resource === null) return;
+		if (!resource.builtInTypesAlreadyDefined) {
 			val model = resource.model
 			if (model !== null) {
 				model.fullFileName = resource.URI.toFileString
 				model.name = resource.modelName
-				BUILT_IN_ENTITIES.forEach[name, fieldDecls|
-					model.features += factory.createJdlEntity => [ entity |
-						entity.name = name
-						entity.fieldDefinition = factory.createJdlEntityFieldDefinition
-						fieldDecls.forEach[entity.addField(key, value)]
-					]
+				BUILT_IN_ENTITIES.forEach[name, fields|
+					if (!model.hasEntity(name)) {
+						model.features += factory.createJdlEntity => [ entity |
+							entity.name = name
+							entity.fieldDefinition = factory.createJdlEntityFieldDefinition
+							fields.forEach[entity.addField(key, value)]
+						]
+					}
 				]
 			}
 		}
@@ -104,19 +109,30 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 		)
 	}
 
-	def private getModel(DerivedStateAwareResource resource) {
-		try {
-			resource.contents.filter(JdlDomainModel).last
+	def private JdlDomainModel getModel(DerivedStateAwareResource resource) {
+		return try {
+			val result = resource.contents.filter(JdlDomainModel)
+			if (result.length === 1) result.head
 		} catch (Exception exception) {
 			null
 		}
 	}
 
-	def private builtInTypesAlreadyDefined(DerivedStateAwareResource resource) {
+	def private boolean hasEntity(DerivedStateAwareResource resource, String entiyName) {
+		return resource.allContents.filter(JdlDomainModel).exists[hasEntity(entiyName)]
+	}
+
+	def private boolean hasEntity(JdlDomainModel model, String entiyName) {
 		return try {
-			resource.contents.filter(JdlEntity).exists[
-				BUILT_IN_ENTITIES.containsKey(it.name)
-			]
+			model.features.filter(JdlEntity).filter[it.name == entiyName].isNullOrEmpty == false
+		} catch (Exception ex) {
+			false
+		}
+	}
+
+	def private boolean builtInTypesAlreadyDefined(DerivedStateAwareResource it) {
+		return try {
+			hasEntity(USER_ENTITY) && hasEntity(AUTHORITY_ENTITY)
 		} catch (Exception ex) {
 			false
 		}
