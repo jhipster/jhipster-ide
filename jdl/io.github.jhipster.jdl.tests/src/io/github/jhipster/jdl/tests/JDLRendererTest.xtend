@@ -21,14 +21,16 @@ package io.github.jhipster.jdl.tests
 import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.renderer.JdlToAsciiDocRenderer
+import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.junit.Assert.assertEquals
-import io.github.jhipster.jdl.renderer.JdlToPlantUmlRenderer
+import static io.github.jhipster.jdl.util.PlantUmlUtil.*
+import static org.apache.commons.lang3.StringUtils.*
+import static org.junit.Assert.assertTrue
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -140,10 +142,14 @@ class JDLRendererTest {
 			paginate Points with pagination
 		'''.parse)
 		
-		println(actual)
-		
-		assertEquals('''
+		val pragmas = '''
+			«IF useJDot»!pragma graphviz_dot jdot«ENDIF»
+			!pragma syntax class
+		'''.toString
+
+		val expected = '''
 			@startuml
+				«pragmas»
 				class BloodPressure <<Option {Paginate}>> {
 					ZonedDateTime timestamp
 					Integer systolic
@@ -185,7 +191,11 @@ class JDLRendererTest {
 					String authorities
 				}
 			@enduml
-		'''.toString.split('\n').toList, actual.toString.split('\n').toList)
+		'''
+	
+		val diffs = difference(actual, expected)
+		println(diffs)
+		assertTrue(diffs.isEmpty)
 	}	
 
 	@Test
@@ -285,7 +295,7 @@ class JDLRendererTest {
 
 		println(actual)
 		
-		assertEquals('''
+		val expected = '''
 			= __synthetic0
 			:toc: left
 			
@@ -411,6 +421,10 @@ class JDLRendererTest {
 			| KG | KG Enum
 			| LB | LB Enum
 			|===
-		'''.toString.split('\n').toList, actual.split('\n').toList)
+		'''
+		
+		val diffs = difference(actual, expected)
+		println(diffs)
+		assertTrue(diffs.isEmpty)
 	}	
 }
