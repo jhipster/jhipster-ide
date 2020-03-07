@@ -74,14 +74,14 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
 	def private String toPlantUml(JdlDomainModel it) '''
  		«toPlantUml.apply('''
-			«options»
+			«pragmas»
 			«IF it !== null»«content»«ELSE»«USER»«ENDIF»
 		''')»
 	'''
 	
-	def private getOptions() '''
+	def protected getPragmas() '''
 		«IF useJDot»!pragma graphviz_dot jdot«ENDIF»
-		!pragma syntax class		
+		!pragma syntax class
 	'''
 
 	def private getContent(JdlDomainModel it) {
