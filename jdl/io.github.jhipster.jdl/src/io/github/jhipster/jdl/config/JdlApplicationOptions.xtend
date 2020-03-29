@@ -25,13 +25,13 @@ import static io.github.jhipster.jdl.config.JdlParameterType.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
- */ 
+ */
 @Singleton
 class JdlApplicationOptions extends JdlAbstractOptions {
-	
+
 	public static val JH_VERSION = 'jhipsterVersion'
 	public static val SERVER_PORT = 'serverPort'
-	
+
 	@Accessors(PUBLIC_GETTER) val static INSTANCE = new JdlApplicationOptions => [
 		val noSqlDbTypes = #['mongodb', 'cassandra', 'couchbase']
 		val prodDbTypes = #['mysql', 'mariadb', 'mssql', 'postgresql', 'oracle', 'no'] + noSqlDbTypes
@@ -41,7 +41,7 @@ class JdlApplicationOptions extends JdlAbstractOptions {
 			new JdlOption('baseName', #['yourBaseName'], AnyLiteral),
 			new JdlOption('buildTool', #['maven', 'gradle']),
 			new JdlOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
-			new JdlOption('clientFramework', #['angularX', 'react']),
+			new JdlOption('clientFramework', #['angularX', 'react', 'vuejs']),
 			new JdlOption('clientPackageManager', #['yarn', 'npm']),
 			new JdlOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
 			new JdlOption('prodDatabaseType', prodDbTypes),
