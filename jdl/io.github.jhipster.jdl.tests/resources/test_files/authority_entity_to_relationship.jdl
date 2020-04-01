@@ -8,4 +8,3 @@ relationship ManyToOne {
 relationship OneToOne {
   B{authority} to Authority
 }
- 

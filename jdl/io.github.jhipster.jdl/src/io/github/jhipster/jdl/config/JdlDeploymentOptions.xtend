@@ -49,10 +49,8 @@ class JdlDeploymentOptions extends JdlAbstractOptions {
 			new JdlOption('kubernetesNamespace', #['default'], AnyLiteral),
 			new JdlOption('kubernetesServiceType', #['LoadBalancer', 'NodePort', 'Ingress']),
 			new JdlOption('ingressDomain', #['"Ingress"'], AnyLiteral),
-			new JdlOption('istio', #['no', 'manualInjection', 'autoInjection']),
-			new JdlOption('istioRoute', Boolean),
-			new JdlOption('openshiftNamespace', Boolean),
-			new JdlOption('enableRancherLoadBalancing', Boolean),
+			new JdlOption('istio', #['true', 'false'], Boolean),
+			new JdlOption('openshiftNamespace', #['default'], AnyLiteral),
 			new JdlOption('storageType', #['ephemeral', 'persistent'])
 		])
 	]

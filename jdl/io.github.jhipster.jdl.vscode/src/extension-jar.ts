@@ -37,14 +37,14 @@ export function activate(context: ExtensionContext) {
 
 	let serverOptions: Executable = {
 		command: 'java',
-		args: [ vmargs, '-cp', libFolder, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
+		args: [ vmargs, '-cp', libFolder, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
 		options: {stdio: 'pipe'}
 	};
 
 	let clientOptions: LanguageClientOptions = {
 		documentSelector: ['jdl', 'jh'],
 		synchronize: {
-			configurationSection: 'languageServerExample',
+			configurationSection: 'jdlLanguageServer',
 			fileEvents: [
 				workspace.createFileSystemWatcher('**/*.jdl'),
 				workspace.createFileSystemWatcher('**/*.jh')

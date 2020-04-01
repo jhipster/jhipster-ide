@@ -67,15 +67,13 @@ JdlApplicationParameter:
 	paramName=JdlApplicationParameterName paramValue=JdlParameterValue;
 
 enum JdlApplicationParameterName:
-	applicationType | authenticationType | baseName |
-	buildTool | cacheProvider | clientFramework | clientPackageManager |
-    databaseType | devDatabaseType | enableHibernateCache |
-    enableSwaggerCodegen | enableTranslation | jhiPrefix |
-	languages | messageBroker | nativeLanguage | packageName | 
-	prodDatabaseType | searchEngine | serverPort | serviceDiscoveryType |
-	skipClient | skipServer | skipUserManagement | testFrameworks | 
-	uaaBaseName | useSass | websocket | entitySuffix | dtoSuffix | 
-	jwtSecretKey;
+	applicationType | authenticationType | baseName | buildTool |
+	cacheProvider | clientFramework | clientPackageManager | clientTheme |
+	clientThemeVariant | databaseType | devDatabaseType | dtoSuffix | enableHibernateCache |
+	enableSwaggerCodegen | entitySuffix | enableTranslation | jhiPrefix | languages |
+	messageBroker | nativeLanguage | packageName | prodDatabaseType | reactive | 
+	searchEngine | serverPort | serviceDiscoveryType | skipClient | skipServer | 
+	skipUserManagement | testFrameworks | uaaBaseName | useSass | websocket | jwtSecretKey;
 
 /* =========================================================================
  * DEPLOYMENT
@@ -94,8 +92,7 @@ enum JdlDeploymentParameterName:
 	clusteredDbApps | gatewayType | monitoring | consoleOptions |
     serviceDiscoveryType | dockerRepositoryName | dockerPushCommand |
     kubernetesNamespace | kubernetesServiceType | ingressDomain |
-	istio | istioRoute | enableRancherLoadBalancing |
-	openshiftNamespace | storageType;
+	istio | openshiftNamespace | storageType;
 
 /* =========================================================================
  * CONSTANT

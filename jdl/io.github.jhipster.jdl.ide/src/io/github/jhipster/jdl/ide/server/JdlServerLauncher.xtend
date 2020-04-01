@@ -16,17 +16,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jhipster.jdl.web
+package io.github.jhipster.jdl.ide.server
 
-import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
-import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
+import org.eclipse.xtext.ide.server.ServerLauncher
+import org.eclipse.xtext.ide.server.ServerModule
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */ 
-class JDLWebModule extends AbstractJDLWebModule {
-	
-	def Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
-		return JdlIdeContentProposalProvider
+class JdlServerLauncher extends ServerLauncher {
+
+	def static void main(String[] args) {
+		var String name = ServerLauncher.name
+		println('''Starting «name»...''')
+		var ServerModule serverModule = new ServerModule()
+		ServerLauncher.launch(name, args, serverModule)
 	}
 }

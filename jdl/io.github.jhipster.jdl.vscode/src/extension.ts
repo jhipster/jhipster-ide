@@ -41,7 +41,7 @@ export function activate(context: ExtensionContext) {
     let clientOptions: LanguageClientOptions = {
         documentSelector: ['jdl', 'jh'],
         synchronize: {
-            configurationSection: 'languageServerExample',
+            configurationSection: 'jdlLanguageServer',
             fileEvents: workspace.createFileSystemWatcher('**/*.*')
         }
     }
