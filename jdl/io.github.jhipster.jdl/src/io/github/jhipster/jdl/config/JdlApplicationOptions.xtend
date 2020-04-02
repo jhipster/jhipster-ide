@@ -46,7 +46,7 @@ class JdlApplicationOptions extends JdlAbstractOptions {
 			new JdlOption('clientTheme', #['none'], AnyLiteral),
 			new JdlOption('clientThemeVariant', #['primary'], AnyLiteral),
 			new JdlOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
-			new JdlOption('devDatabaseType', #['h2Disk', 'h2Memory', '*'] + prodDbTypes),
+			new JdlOption('devDatabaseType', #['h2Disk', 'h2Memory'] + prodDbTypes),
             new JdlOption('dtoSuffix', #['DTO'], JavaIdentifierLiteral),
 			new JdlOption('enableHibernateCache', #['true'], Boolean),
 			new JdlOption('enableSwaggerCodegen', #['false'], Boolean),
