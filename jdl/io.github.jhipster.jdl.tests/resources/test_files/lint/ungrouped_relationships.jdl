@@ -2,7 +2,7 @@ entity A
 entity B
 entity C
 
-relationship ManyToMany {
+relationship OneToMany {
   A to B
 }
 
@@ -13,4 +13,3 @@ relationship OneToMany {
 relationship OneToMany {
   A to C
 }
-

@@ -1,9 +1,3 @@
-// lint=false
-application {
-	config {
-		
-	}
-}
 entity A
 entity B
 entity A {
