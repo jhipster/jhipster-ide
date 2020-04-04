@@ -71,8 +71,3 @@ steps:
     ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'MAVEN: install'
 
-- script: |
-    cd $(Build.Repository.LocalPath)/jdl
-    ./gradlew clean installServer
-  displayName: 'GRADLE: installServer'
-
