@@ -18,18 +18,21 @@
  */
 package io.github.jhipster.jdl.tests
 
+import com.github.javafaker.Faker
+import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 import java.util.Iterator
 import java.util.Map
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import org.eclipse.xtext.testing.util.ParseHelper
-import io.github.jhipster.jdl.jdl.JdlDomainModel
-import org.eclipse.xtext.testing.validation.ValidationTestHelper
-import com.google.inject.Inject
-import org.junit.Test
-import org.junit.runner.RunWith
+import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
-import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtext.testing.util.ParseHelper
+import org.eclipse.xtext.testing.validation.ValidationTestHelper
+import org.junit.Test
+import org.junit.runner.RunWith
+
+import io.github.jhipster.jdl.config.JDLApplicationOptions
+import static io.github.jhipster.jdl.config.JDLLanguages.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -85,9 +88,13 @@ class JDLCheckOptions {
 				'clientFramework',
 				'authenticationType']
 
+	val bool = Sequence.of(#["true", "false"])
+	val lang = Sequence.of(JHipsterIsoLangauges.keySet.toList)
+	@Extension val Faker faker = new Faker
+
 	@Test
 	def void generateAndParseConfig() {
-		JdlApplicationOptions.INSTANCE => [ opt |
+		JDLApplicationOptions.INSTANCE => [ opt |
 			val params = newHashMap
 			opts.forEach[
 				params.put(it, Sequence.of(opt.getParameters(it)))
@@ -124,24 +131,24 @@ class JDLCheckOptions {
 				clientPackageManager «get('clientPackageManager').next»
 				clientFramework «get('clientFramework').next»
 				authenticationType «get('authenticationType').next»
-				nativeLanguage en
-				serverPort 8080
-				entitySuffix Entity
+				nativeLanguage «lang.next»
+				serverPort «Sequence.of(#['8080','8081', '8090', '9090']).next»
+				entitySuffix «app.name.toFirstUpper.replaceAll('\\s+|\\p{P}', '')»
 				dtoSuffix DTO
-				jwtSecretKey "aaa.bbb.ccc"
-				skipClient false
-				packageName com.foo.bar
-				baseName jhipster
-				skipUserManagement true
-				enableTranslation true
-				languages [en, fr]
+				jwtSecretKey "«internet.domainName.split('\\.').reverse.join(".")»"
+				skipClient «bool.next»
+				packageName «internet.domainName.split('\\.').reverse.join('.')»
+				baseName «app.name.replaceAll('\\s+|\\p{P}', '').toLowerCase»
+				skipUserManagement «bool.next»
+				enableTranslation «bool.next»
+				languages [«lang.next», «lang.next»]
 				jhiPrefix jhi
 				uaaBaseName "uaa"
-				reactive false
-				enableSwaggerCodegen false
-				skipServer false
-				enableHibernateCache true
-				useSass false
+				reactive «bool.next»
+				enableSwaggerCodegen «bool.next»
+				skipServer «bool.next»
+				enableHibernateCache «bool.next»
+				useSass «bool.next»
 				clientTheme none
 				clientThemeVariant primary
 			}

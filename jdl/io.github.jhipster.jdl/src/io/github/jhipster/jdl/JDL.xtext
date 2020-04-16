@@ -22,7 +22,7 @@
  * @author Serano Colameo - Completely rewritten
  */
  
-grammar io.github.jhipster.jdl.JDL hidden(WS, ML_COMMENT, SL_COMMENT)
+grammar io.github.jhipster.jdl.JDL with io.github.jhipster.jdl.base.JDLBase hidden(WS, ML_COMMENT, SL_COMMENT)
 
 generate jdl "http://www.github.io/jhipster/jdl/JDL"
 
@@ -64,16 +64,7 @@ JdlApplicationEntitiesSelection:
 	'entities' (predicate=JdlWildcardPredicate | selection=JdlEntitySelection);
 			
 JdlApplicationParameter:
-	paramName=JdlApplicationParameterName paramValue=JdlParameterValue;
-
-enum JdlApplicationParameterName:
-	applicationType | authenticationType | baseName | buildTool |
-	cacheProvider | clientFramework | clientPackageManager | clientTheme |
-	clientThemeVariant | databaseType | devDatabaseType | dtoSuffix | enableHibernateCache |
-	enableSwaggerCodegen | entitySuffix | enableTranslation | jhiPrefix | languages |
-	messageBroker | nativeLanguage | packageName | prodDatabaseType | reactive | 
-	searchEngine | serverPort | serviceDiscoveryType | skipClient | skipServer | 
-	skipUserManagement | testFrameworks | uaaBaseName | useSass | websocket | jwtSecretKey;
+	paramName=JDLApplicationParameterName paramValue=JdlParameterValue;
 
 /* =========================================================================
  * DEPLOYMENT
@@ -85,14 +76,7 @@ JdlDeployment:
 	'}';
 
 JdlDeploymentParameter:
-	paramName=JdlDeploymentParameterName paramValue=JdlParameterValue;
-
-enum JdlDeploymentParameterName:
-	deploymentType | directoryPath |  appsFolders |
-	clusteredDbApps | gatewayType | monitoring | consoleOptions |
-    serviceDiscoveryType | dockerRepositoryName | dockerPushCommand |
-    kubernetesNamespace | kubernetesServiceType | ingressDomain |
-	istio | openshiftNamespace | storageType;
+	paramName=JDLDeploymentParameterName paramValue=JdlParameterValue;
 
 /* =========================================================================
  * CONSTANT
