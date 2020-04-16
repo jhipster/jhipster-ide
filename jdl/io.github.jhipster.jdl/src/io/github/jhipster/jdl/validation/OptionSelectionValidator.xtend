@@ -20,16 +20,16 @@ package io.github.jhipster.jdl.validation
 
 import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlOption
-import org.eclipse.xtext.EcoreUtil2
+import io.github.jhipster.jdl.jdl.JdlPatternValidator
+import java.util.regex.Pattern
+import java.util.regex.PatternSyntaxException
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import io.github.jhipster.jdl.jdl.JdlPatternValidator
-import java.util.regex.PatternSyntaxException
-import java.util.regex.Pattern
+import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -40,7 +40,7 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 
 	@Check
 	def checkOptionSelection(JdlEntitySelection sel) {
-		val option = EcoreUtil2.getContainerOfType(sel, JdlOption)
+		val option = sel.getContainerOfType(JdlOption)
 		if (option !== null && option.excludes !== null && !sel.entities.isNullOrEmpty) {
 			val excludedEntites = option.excludes.selection?.entities
 			if (!excludedEntites.isNullOrEmpty) {
