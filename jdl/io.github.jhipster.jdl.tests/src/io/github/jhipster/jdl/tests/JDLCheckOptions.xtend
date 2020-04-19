@@ -4,25 +4,25 @@
  * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
  * 
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  * 
  *      http://www.apache.org/licenses/LICENSE-2.0
  * 
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
 package io.github.jhipster.jdl.tests
 
-import com.github.javafaker.Faker
 import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import java.util.Iterator
 import java.util.Map
+import jbase.config.JDLApplicationOptions
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
@@ -31,13 +31,11 @@ import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import io.github.jhipster.jdl.config.JDLApplicationOptions
-import static io.github.jhipster.jdl.config.JDLLanguages.*
+import static jbase.config.JDLLanguages.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
- 
 class Sequence {
 
 	Iterable<String> iterable
@@ -48,18 +46,18 @@ class Sequence {
 		this.iterable = iterable
 		this.iterator = iterable.iterator
 	}
-	
+
 	def static of(Iterable<String> iterable) {
 		return new Sequence(iterable)
 	}
-	
+
 	def reset() {
 		iterator = iterable.iterator
 	}
 
 	def String next() {
 		return try {
-			iterator.next 
+			iterator.next
 		} catch (Exception exception) {
 			done = true
 			reset.next
@@ -74,29 +72,23 @@ class JDLCheckOptions {
 	@Inject extension ParseHelper<JdlDomainModel> parseHelper
 	@Inject extension ValidationTestHelper
 
-	val opts = #['applicationType',
-				'serviceDiscoveryType',
-				'devDatabaseType',
-				'testFrameworks',
-				'messageBroker',
-				'cacheProvider',
-				'websocket',
-				'buildTool',
-				'prodDatabaseType',
-				'searchEngine',
-				'clientPackageManager',
-				'clientFramework',
-				'authenticationType']
+	val opts = #['applicationType', 'serviceDiscoveryType', 'devDatabaseType', 'testFrameworks', 'messageBroker',
+		'cacheProvider', 'websocket', 'buildTool', 'prodDatabaseType', 'searchEngine', 'clientPackageManager',
+		'clientFramework', 'authenticationType']
 
-	val bool = Sequence.of(#["true", "false"])
+	val bool = Sequence.of(#['true', 'false'])
 	val lang = Sequence.of(JHipsterIsoLangauges.keySet.toList)
-	@Extension val Faker faker = new Faker
+	val dtos = Sequence.of(#['DTO', 'DTA', 'DTB', 'DTC'])
+	val ports = Sequence.of(#['8080', '8081', '8090', '9090'])
+	val names = Sequence.of(
+		#['Barbee', 'Barbette', 'Barbey', 'Barbi', 'Barbie', 'Barbra', 'Barby', 'Bari', 'Barrie', 'Barry', 'Basia',
+			'Bathsheba', 'Batsheva', 'Bea', 'Beatrice', 'Beatrisa', 'Beatrix', 'Beatriz', 'Bebe', 'Becca'])
 
 	@Test
 	def void generateAndParseConfig() {
 		JDLApplicationOptions.INSTANCE => [ opt |
 			val params = newHashMap
-			opts.forEach[
+			opts.forEach [
 				params.put(it, Sequence.of(opt.getParameters(it)))
 			]
 			while (!params.done) {
@@ -107,7 +99,7 @@ class JDLCheckOptions {
 						assertNoErrors
 					]
 				]
-			} 
+			}
 		]
 	}
 
@@ -132,13 +124,13 @@ class JDLCheckOptions {
 				clientFramework «get('clientFramework').next»
 				authenticationType «get('authenticationType').next»
 				nativeLanguage «lang.next»
-				serverPort «Sequence.of(#['8080','8081', '8090', '9090']).next»
-				entitySuffix «app.name.toFirstUpper.replaceAll('\\s+|\\p{P}', '')»
-				dtoSuffix DTO
-				jwtSecretKey "«internet.domainName.split('\\.').reverse.join(".")»"
+				serverPort «ports.next»
+				entitySuffix «names.next.substring(0,3)»
+				dtoSuffix «dtos.next»
+				jwtSecretKey "«names.next.toLowerCase.substring(0,3)»"
 				skipClient «bool.next»
-				packageName «internet.domainName.split('\\.').reverse.join('.')»
-				baseName «app.name.replaceAll('\\s+|\\p{P}', '').toLowerCase»
+				packageName «names.next.toLowerCase»
+				baseName «names.next»
 				skipUserManagement «bool.next»
 				enableTranslation «bool.next»
 				languages [«lang.next», «lang.next»]

@@ -32,12 +32,14 @@ let plantuml: PlantUMLRenderer;
 const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
 export function activate(context: ExtensionContext) {
-	const libFolder = context.asAbsolutePath(path.join('./jdl-ls/lib/*'))
+	const libFolder = context.asAbsolutePath(path.join('./lib/jdl.jar'))
 	let vmargs = '-Dpnguml.gen=true';
 
 	let serverOptions: Executable = {
 		command: 'java',
-		args: [ vmargs, '-cp', libFolder, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+//		args: [ vmargs, '-cp', libFolder, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+//		args: [ vmargs, '-cp', libFolder, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
+		args: [ vmargs, '-jar', libFolder, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
 		options: {stdio: 'pipe'}
 	};
 

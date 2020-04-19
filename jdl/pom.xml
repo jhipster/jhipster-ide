@@ -30,6 +30,7 @@
 		<systemProperties></systemProperties>
 		<tycho.testArgLine></tycho.testArgLine>
 		<additionalTestArguments></additionalTestArguments>
+		<launcher>io.github.jhipster.jdl.ide.server.JdlServerLauncher</launcher>
 	</properties>
 
 	<dependencyManagement>
@@ -332,7 +333,6 @@
 				<module>io.github.jhipster.jdl</module>
 				<module>io.github.jhipster.jdl.ide</module>
 				<module>io.github.jhipster.jdl.ui</module>
-				<module>io.github.jhipster.jdl.web</module>
 				<module>io.github.jhipster.jdl.target</module>
 				<module>io.github.jhipster.jdl.feature</module>
 				<module>io.github.jhipster.jdl.repository</module>

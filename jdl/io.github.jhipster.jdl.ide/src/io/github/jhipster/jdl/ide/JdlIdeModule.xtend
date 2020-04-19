@@ -26,6 +26,8 @@ import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
 import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.contentassist.ContentAssistService
+import org.eclipse.xtext.ide.server.hover.HoverService
+import io.github.jhipster.jdl.ide.hover.JDLHoverService
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -45,6 +47,10 @@ class JdlIdeModule extends AbstractJDLIdeModule {
 	}
 	
 	def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator () {
-        KeywordsSemanticHighlightingCalculator
+        return KeywordsSemanticHighlightingCalculator
     }
+    
+    def Class<? extends HoverService> bindHoverService() {
+		return JDLHoverService
+	}
 }

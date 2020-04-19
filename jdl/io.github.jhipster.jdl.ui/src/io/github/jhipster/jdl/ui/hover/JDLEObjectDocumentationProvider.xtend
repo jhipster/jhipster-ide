@@ -16,23 +16,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jhipster.jdl.validation
+package io.github.jhipster.jdl.ui.hover
 
-import org.eclipse.xtext.validation.ComposedChecks
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 
 /**
- * This class contains custom validation rules. 
- *
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * @author Serano Colameo - Initial contribution and API
  */
-@ComposedChecks(validators = #[
-	CaseSensitivityValidator,
-//	CardinalityValidator, ==> https://github.com/jhipster/jhipster-ide/issues/216
-	OptionSelectionValidator,
-	OptionConfigValidator,
-	RelationshipValidator,
-	JDLLint
-])
-class JDLValidator extends AbstractJDLValidator {
-	
+class JDLEObjectDocumentationProvider implements IEObjectDocumentationProvider {
+
+	override getDocumentation(EObject eObj) {
+		if(eObj === null) return null
+		val type = eObj.class
+		return if (type.simpleName.toUpperCase.startsWith('JDL'))
+			type.simpleName.substring(3).replaceAll('Impl', '')
+		else
+			type.simpleName
+	}
 }

@@ -5,7 +5,7 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: io.github.jhipster.jdl.lib,
+Require-Bundle: io.github.jhipster.jdl.lib;visibility:=reexport,
  org.eclipse.xtext,
  org.eclipse.xtext.xbase,
  org.eclipse.equinox.common;bundle-version="3.5.0",
@@ -19,9 +19,9 @@ Require-Bundle: io.github.jhipster.jdl.lib,
  org.eclipse.core.commands,
  org.eclipse.core.resources,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ jbase;bundle-version="1.0.0";visibility:=reexport
 Export-Package: io.github.jhipster.jdl,
- io.github.jhipster.jdl.config;uses:="org.eclipse.xtext.util",
  io.github.jhipster.jdl.formatting2;uses:="io.github.jhipster.jdl.jdl,org.eclipse.xtext.formatting2",
  io.github.jhipster.jdl.generator;uses:="org.eclipse.xtext.generator,org.eclipse.emf.ecore.resource,io.github.jhipster.jdl.jdl",
  io.github.jhipster.jdl.jdl;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util",
@@ -37,6 +37,7 @@ Export-Package: io.github.jhipster.jdl,
    org.eclipse.emf.common.notify.impl,
    io.github.jhipster.jdl.jdl,
    org.eclipse.emf.ecore.util",
+ io.github.jhipster.jdl.config,
  io.github.jhipster.jdl.naming;uses:="org.eclipse.emf.ecore,org.eclipse.xtext.naming",
  io.github.jhipster.jdl.parser.antlr;uses:="io.github.jhipster.jdl.services,org.eclipse.xtext.parser.antlr,io.github.jhipster.jdl.parser.antlr.internal",
  io.github.jhipster.jdl.parser.antlr.internal;
@@ -99,3 +100,4 @@ Bundle-ClassPath: .,
  lib/commons-lang3-3.7.jar,
  lib/commons-io-2.6.jar
 Automatic-Module-Name: io.github.jhipster.jdl
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -18,9 +18,6 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import io.github.jhipster.jdl.config.JdlDeploymentOptions
-import io.github.jhipster.jdl.config.JdlParameterType
 import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
@@ -28,6 +25,9 @@ import io.github.jhipster.jdl.jdl.JdlDeployment
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import java.util.List
+import jbase.config.JDLApplicationOptions
+import jbase.config.JDLDeploymentOptions
+import jbase.config.JDLParameterType
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
@@ -37,7 +37,7 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 
-import static io.github.jhipster.jdl.config.JdlLanguages.*
+import static jbase.config.JDLLanguages.*
 import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
@@ -45,7 +45,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalProvider {
 
-	def dispatch void createParameterProposal(JdlDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def dispatch void createParameterProposal(JDLDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		if (param === null) return
 		val paramValue = param.paramValue
 		val params = options.getParameters(param.paramName.literal)
@@ -53,7 +53,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		createParameterProposal(param, paramValue, params, type, assignment, context, acceptor)
 	}
 	
-	def dispatch void createParameterProposal(JdlApplicationOptions options, JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def dispatch void createParameterProposal(JDLApplicationOptions options, JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		if (param === null) return
 		val paramValue = param.paramValue
 		val params = options.getParameters(param.paramName.literal)
@@ -61,7 +61,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		createParameterProposal(param, paramValue, params, type, assignment, context, acceptor)
 	}
 
-	def private void createParameterProposal(EObject param, JdlParameterValue paramValue, List<String> params, JdlParameterType type, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def private void createParameterProposal(EObject param, JdlParameterValue paramValue, List<String> params, JDLParameterType type, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		switch (type) {
 			case Boolean : if (!param.isDefined)
 				#[Boolean.FALSE, Boolean.TRUE].map[

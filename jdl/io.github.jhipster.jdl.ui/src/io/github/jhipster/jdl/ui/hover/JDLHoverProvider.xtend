@@ -16,23 +16,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.github.jhipster.jdl.validation
+package io.github.jhipster.jdl.ui.hover
 
-import org.eclipse.xtext.validation.ComposedChecks
+import io.github.jhipster.jdl.config.JDLOptions
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider
+
+import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
- * This class contains custom validation rules. 
- *
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * @author Serano Colameo - Initial contribution and API
  */
-@ComposedChecks(validators = #[
-	CaseSensitivityValidator,
-//	CardinalityValidator, ==> https://github.com/jhipster/jhipster-ide/issues/216
-	OptionSelectionValidator,
-	OptionConfigValidator,
-	RelationshipValidator,
-	JDLLint
-])
-class JDLValidator extends AbstractJDLValidator {
-	
+class JDLHoverProvider extends DefaultEObjectHoverProvider {
+
+	extension JDLOptions = JDLOptions.INSTANCE
+
+	override protected getHoverInfoAsHtml(EObject eObj) {
+		if (eObj === null) return null
+		val param = getContainerOfType(eObj, JdlApplicationParameter)
+		switch param {
+			JdlApplicationParameter: param.paramName.asHtml
+			default: super.getHoverInfoAsHtml(eObj)
+		}
+	}
 }

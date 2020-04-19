@@ -22,8 +22,7 @@
  * @author Serano Colameo - Completely rewritten
  */
  
-grammar io.github.jhipster.jdl.JDL with io.github.jhipster.jdl.base.JDLBase hidden(WS, ML_COMMENT, SL_COMMENT)
-
+grammar io.github.jhipster.jdl.JDL with jbase.JBase hidden(WS, ML_COMMENT, SL_COMMENT)
 generate jdl "http://www.github.io/jhipster/jdl/JDL"
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
