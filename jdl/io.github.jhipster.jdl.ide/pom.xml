@@ -87,7 +87,7 @@
 									<goal>copy-dependencies</goal>
 								</goals>
 								<configuration>
-									<outputDirectory>${project.build.directory}/libs</outputDirectory>
+									<outputDirectory>${project.build.directory}/${libs}</outputDirectory>
 									<overWriteReleases>false</overWriteReleases>
 									<overWriteSnapshots>false</overWriteSnapshots>
 									<overWriteIfNewer>true</overWriteIfNewer>
@@ -139,7 +139,7 @@
 								<configuration>
 									<resources>
 										<resource>
-											<directory>${project.build.directory}/libs</directory>
+											<directory>${project.build.directory}/${libs}</directory>
 										</resource>
 									</resources>
 								</configuration>
@@ -249,7 +249,7 @@
 									<goal>assemble</goal>
 								</goals>
 								<configuration>
-									<assembleDirectory>${project.build.directory}/generated-sources/pack</assembleDirectory>
+									<assembleDirectory>${project.build.directory}/${pack}</assembleDirectory>
 									<repositoryLayout>flat</repositoryLayout>
 									<useWildcardClassPath>true</useWildcardClassPath>
 									<!-- uncomment to enable remote debugging

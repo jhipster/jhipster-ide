@@ -30,7 +30,9 @@
 		<systemProperties></systemProperties>
 		<tycho.testArgLine></tycho.testArgLine>
 		<additionalTestArguments></additionalTestArguments>
-		<launcher>io.github.jhipster.jdl.ide.server.JdlServerLauncher</launcher>
+		<launcher>org.eclipse.xtext.ide.server.ServerLauncher</launcher>
+		<pack>generated-sources/pack</pack>
+		<libs>generated-sources/libs</libs>
 	</properties>
 
 	<dependencyManagement>
