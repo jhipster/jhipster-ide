@@ -52,6 +52,7 @@ class JdlLanguages {
 			'ja' -> 'Japanese', 
 			'ko' -> 'Korean', 
 			'mr' -> 'Marathi', 
+			'my' -> 'Myanmar',
 			'pl' -> 'Polish', 
 			'pt-br' -> 'Portuguese (Brazilian)', 
 			'pt-pt' -> 'Portuguese', 
