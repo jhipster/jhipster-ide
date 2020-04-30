@@ -40,7 +40,7 @@ class JdlApplicationOptions extends JdlAbstractOptions {
 			new JdlOption('authenticationType', #['jwt', 'session', 'uaa', 'oauth2']),
 			new JdlOption('baseName', #['yourBaseName'], AnyLiteral),
 			new JdlOption('buildTool', #['maven', 'gradle']),
-			new JdlOption('cacheProvider', #['ehcache', 'hazelcast', 'infinispan', 'no']),
+			new JdlOption('cacheProvider', #['caffeine', 'ehcache', 'hazelcast', 'infinispan', 'memcached', 'redis', 'no']),
 			new JdlOption('clientFramework', #['angularX', 'react']),
 			new JdlOption('clientPackageManager', #['yarn', 'npm']),
 			new JdlOption('databaseType', #['sql', 'mongodb', 'cassandra', 'couchbase', 'no']),
