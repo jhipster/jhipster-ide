@@ -5,7 +5,8 @@ enum EnvironmentType {
   PROD (production),
   TEST (test),
   UAT (uat),
-  NON_PROD (nonProd)
+  NON_PROD (nonProd),
+  STRING_VALUE("This is an enum too")
 }
 
 entity Environment {

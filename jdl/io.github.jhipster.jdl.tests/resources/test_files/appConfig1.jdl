@@ -1,0 +1,37 @@
+application {
+	config {
+		applicationType monolith
+		serviceDiscoveryType eureka
+		devDatabaseType  h2Disk
+		testFrameworks [protractor]
+		messageBroker kafka
+		cacheProvider ehcache
+		websocket spring-websocket
+		buildTool maven
+		prodDatabaseType mysql
+		searchEngine elasticsearch
+		clientPackageManager npm
+		clientFramework angularX
+		authenticationType jwt
+		nativeLanguage de
+		serverPort 8080
+		entitySuffix ZooFoobar
+		dtoSuffix DTO
+		jwtSecretKey "com.hilpert"
+		skipClient false
+		packageName info.monahan
+		baseName stringtough
+		skipUserManagement false
+		enableTranslation true
+		languages [hi, ru]
+		jhiPrefix jhi
+		uaaBaseName "uaa"
+		reactive false
+		enableSwaggerCodegen true
+		skipServer false
+		enableHibernateCache true
+		useSass false
+		clientTheme none
+		clientThemeVariant primary
+	}
+}

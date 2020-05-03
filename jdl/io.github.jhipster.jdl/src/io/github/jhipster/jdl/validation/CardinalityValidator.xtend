@@ -21,10 +21,10 @@ package io.github.jhipster.jdl.validation
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
+import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import org.eclipse.xtext.validation.EValidatorRegistrar
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -35,18 +35,17 @@ class CardinalityValidator extends AbstractDeclarativeValidator {
 	}
 
 	@Check
-	def checkRelationsCardinality(JdlRelationships rel) {
-		val card = rel.cardinality
+	def checkRelationsCardinality(JdlRelationships it) {
 		val roles = newHashSet
-		val rs = rel.relationships
-		switch (card) {
+		val rs = relationships
+		switch (cardinality) {
 			case ONE_TO_MANY : roles += rs.map[target.role]
 			case MANY_TO_MANY: roles += rs.map[source.role] + rs.map[target.role] 
 			case MANY_TO_ONE : roles += rs.map[source.role] 
 			default : return
 		}
 		roles.filter[isRequired].forEach[ role |
-			warning(REQUIRED_NOT_ALLOWED_MSG.apply(card), role, JDL_RELATION_ROLE__REQUIRED, INVALID_REQUIRED_OPTION)			
+			warning(REQUIRED_NOT_ALLOWED_MSG.apply(cardinality), role, JDL_RELATION_ROLE__REQUIRED, INVALID_REQUIRED_OPTION)			
 		]
 	}	
 }

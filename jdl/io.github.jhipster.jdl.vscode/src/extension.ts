@@ -30,8 +30,8 @@ let plantuml: PlantUMLRenderer;
 var process = require('process');
 
 export function activate(context: ExtensionContext) {
-    let executable = process.platform == 'win32' ? 'jdl-ls.bat' : 'jdl-ls';
-    let serverLauncher = context.asAbsolutePath(path.join('jdl-ls', 'bin', executable));
+    let executable = process.platform == 'win32' ? 'launch.bat' : 'launch';
+    let serverLauncher = context.asAbsolutePath(path.join('lib', 'bin', executable));
     
     let serverOptions: ServerOptions = {
         run:   { command: serverLauncher }, 

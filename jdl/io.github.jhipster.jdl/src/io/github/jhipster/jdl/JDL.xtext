@@ -239,7 +239,10 @@ JdlEnum:
 	'}';
 
 JdlEnumValue:
-	value=ID ('(' customValue=ID ')')?;
+	value=ID ('(' customValue=JdlEnumCustomValue ')')?;
+
+JdlEnumCustomValue:
+	INT|ID|STRING;
 
 /* =========================================================================
  * ANNOTATION 

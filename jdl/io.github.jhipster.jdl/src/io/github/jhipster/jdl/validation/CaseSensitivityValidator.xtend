@@ -27,7 +27,6 @@ import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import static io.github.jhipster.jdl.util.IdentifierUtil.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -49,14 +48,11 @@ class CaseSensitivityValidator extends AbstractDeclarativeValidator {
 		if (!Character.isUpperCase(enumeration.name.charAt(0))) {
 			warning(INVALID_ENUM_NAME_MSG, JDL_ENUM__NAME, INSIGNIFICANT_INDEX, INVALID_TYPE_NAME)
 		}
-		for (v : enumeration.values) {
-			if (!v.value.toUpperCase.equals(v.value)) {
-				error(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES, enumeration.values.indexOf(v), NOT_UPPER_CASE)
+		enumeration.values.forEach[ 
+			if (!value.toUpperCase.equals(value)) {
+				error(INVALID_ENUM_VALUE_NAME_MSG, JDL_ENUM__VALUES, enumeration.values.indexOf(it), NOT_UPPER_CASE)
 			}
-			if (!v.customValue.isNullOrEmpty && !isValidJavaIdentifier(v.customValue)) {
-				error(INVALID_ENUM_CUSTOM_VALUE_NAME_MSG, v, JDL_ENUM_VALUE__CUSTOM_VALUE, enumeration.values.indexOf(v))
-			}
-		}
+		]
 	}
 
 	@Check
