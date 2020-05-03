@@ -938,7 +938,9 @@ class JDLFileTest {
 		"wrong_displayfield_in_target.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),
 		"ex07.jdl" -> new JdlIssue('Found groupable relationship "ManyToOne"', WARNING),
 		"useless_entity_curly_braces.jdl" -> new JdlIssue('Entity declaration can be shorten to "entity B"', INFO),
-		"enum_with_wrong_value_naming.jdl" -> new JdlIssue('Invalid enum custom value name', ERROR)
+		"enum_with_wrong_value_naming.jdl" -> new JdlIssue('Invalid enum custom value name', ERROR),
+		"enumWithStringLiterals.jdl" -> new JdlIssue("no viable alternative at input '-1'", ERROR),
+		"enumWithStringLiterals.jdl" -> new JdlIssue('Unused enum definition in "enumWithStringLiterals.jdl"', INFO)
 	]
 
 	new(File jdlFile) {
