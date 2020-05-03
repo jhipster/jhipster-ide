@@ -90,7 +90,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 						}
 					]
 				}
-			case Literal:
+			case EnumLiteral:
 				if (!paramValue.identifiers.isNullOrEmpty && paramValue.identifiers.size === 1) {
 					val value = paramValue.identifiers.head
 					val expected = paramName.parameters
