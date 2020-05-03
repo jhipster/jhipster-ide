@@ -1,4 +1,5 @@
 out/
 node_modules/
 jdl-ls/
-repo
+bin/
+repo/
