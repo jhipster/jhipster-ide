@@ -27,6 +27,7 @@ import io.github.jhipster.jdl.jdl.JdlParameterValue
 import java.util.List
 import jbase.config.JDLApplicationOptions
 import jbase.config.JDLDeploymentOptions
+import jbase.config.JDLLanguages
 import jbase.config.JDLParameterType
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
@@ -37,13 +38,14 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 
-import static jbase.config.JDLLanguages.*
 import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
 abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalProvider {
+
+	extension JDLLanguages = JDLLanguages.INSTANCE
 
 	def dispatch void createParameterProposal(JDLDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		if (param === null) return
@@ -74,10 +76,10 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 				if (existingParams.isNullOrEmpty) {
 					addProposal('''[«params.join(', ')»]''', context, acceptor)
 				} else {
-					JHipsterIsoLangauges.filter[ String k, String v |
-						!existingParams.contains(k)
-					].forEach[ String k, String v |
-						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«k»''', v, context, acceptor)
+					JHipsterIsoLangauges.filter[
+						!existingParams.contains(code)
+					].forEach[ 
+						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«code»''', name, context, acceptor)
 					]
 				}
 			}
@@ -100,8 +102,8 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 			}
 			case ListOfAnyLiterals : addProposal('''[]''', context, acceptor)
 			case LangIsoCode : if (!param.isDefined) 
-				JHipsterIsoLangauges.forEach[ String key, String value |
-					addProposal(key, value, context, acceptor)
+				JHipsterIsoLangauges.forEach[
+					addProposal(code, name, context, acceptor)
 				]
 			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
 			case Version : if (!param.isDefined) addProposal('"5.0.0"', context, acceptor)

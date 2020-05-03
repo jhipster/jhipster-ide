@@ -23,6 +23,7 @@ import io.github.jhipster.jdl.jdl.JdlDomainModel
 import java.util.Iterator
 import java.util.Map
 import jbase.config.JDLApplicationOptions
+import jbase.config.JDLLanguages
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
@@ -30,8 +31,6 @@ import org.eclipse.xtext.testing.util.ParseHelper
 import org.eclipse.xtext.testing.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import static jbase.config.JDLLanguages.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -71,13 +70,14 @@ class JDLCheckOptions {
 
 	@Inject extension ParseHelper<JdlDomainModel> parseHelper
 	@Inject extension ValidationTestHelper
+	@Inject extension JDLLanguages
 
 	val opts = #['applicationType', 'serviceDiscoveryType', 'devDatabaseType', 'testFrameworks', 'messageBroker',
 		'cacheProvider', 'websocket', 'buildTool', 'prodDatabaseType', 'searchEngine', 'clientPackageManager',
 		'clientFramework', 'authenticationType']
 
 	val bool = Sequence.of(#['true', 'false'])
-	val lang = Sequence.of(JHipsterIsoLangauges.keySet.toList)
+	val lang = Sequence.of(langCodes)
 	val dtos = Sequence.of(#['DTO', 'DTA', 'DTB', 'DTC'])
 	val ports = Sequence.of(#['8080', '8081', '8090', '9090'])
 	val names = Sequence.of(

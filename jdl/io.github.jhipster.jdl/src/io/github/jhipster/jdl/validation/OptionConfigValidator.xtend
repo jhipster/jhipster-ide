@@ -23,23 +23,26 @@ import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
+import jbase.config.JDLLanguages
+import org.eclipse.xtext.util.internal.Log
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
+import static io.github.jhipster.jdl.config.JDLOptions.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.util.IdentifierUtil.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import static jbase.config.JDLApplicationOptions.*
-import static jbase.config.JDLLanguages.*
 import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
+@Log
 class OptionConfigValidator extends AbstractDeclarativeValidator {
 
-	extension JDLOptions options = JDLOptions.INSTANCE
+	extension JDLOptions = JDLOptions.INSTANCE
+	extension JDLLanguages = JDLLanguages.INSTANCE
 
 	override register(EValidatorRegistrar registrar) {}
 
@@ -48,7 +51,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 		val paramName = (getContainerOfType(paramValue, JdlApplicationParameter)?.paramName ?:
 			getContainerOfType(paramValue, JdlDeploymentParameter)?.paramName).literal
 		if(paramName.isNullOrEmpty) return;
-		val paramType = getParameterType(paramName)
+		val paramType = paramName.parameterType
 		switch (paramType) {
 			case Boolean:
 				if (!paramValue.identifiers.isNullOrEmpty) {
@@ -64,7 +67,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 			case LangIsoCode:
 				if (!paramValue.identifiers.isNullOrEmpty) {
 					val value = paramValue.identifiers.head
-					if (!JHipsterIsoLangauges.containsKey(value)) {
+					if (!langCodes.contains(value)) {
 						error(INVALID_ISOCODE_PARAM_MSG, JDL_PARAMETER_VALUE__LIST_ELEMENTS, INSIGNIFICANT_INDEX,
 							INVALID_PARAM_VALUE)
 					}
@@ -72,7 +75,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 			case ListOfLangIsoCodes:
 				if (!paramValue.listElements.isNullOrEmpty) {
 					paramValue.listElements.forEach [ e, i |
-						if (!JHipsterIsoLangauges.containsKey(e)) {
+						if (!langCodes.contains(e)) {
 							error(INVALID_ISOCODE_PARAM_MSG, JDL_PARAMETER_VALUE__LIST_ELEMENTS, i, INVALID_PARAM_VALUE)
 						}
 					]
@@ -90,7 +93,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 			case Literal:
 				if (!paramValue.identifiers.isNullOrEmpty && paramValue.identifiers.size === 1) {
 					val value = paramValue.identifiers.head
-					val expected = getParameters(paramName)
+					val expected = paramName.parameters
 					if (!expected.contains(value)) {
 						val msg = String.format(INVALID_PARAM_NAME_MSG, value)
 						error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
@@ -129,28 +132,26 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 						INVALID_PARAM_VALUE)
 				}
 			case NumDigitLiteral: {
-				val prefixDigiAllowed = !paramValue.stringValue.nullOrEmpty
-				val value = if(prefixDigiAllowed) paramValue.stringValue else paramValue.identifiers.head
+				val prefixDigitAllowed = !paramValue.stringValue.nullOrEmpty
+				val value = if(prefixDigitAllowed) paramValue.stringValue else paramValue.identifiers.head
 				if (value.matches('^\\d+.*') && !paramValue.identifiers.isNullOrEmpty) {
 					error(INVALID_BASENAME_PARAM_MSG, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX,
 						WRONG_PARAM_VALUE_TYPE)
-				} else if (!isValidJavaIdentifier(value, prefixDigiAllowed)) {
+				} else if (!isValidJavaIdentifier(value, prefixDigitAllowed)) {
 					error(INVALID_BASENAME_PARAM_MSG, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX,
 						INVALID_PARAM_VALUE)
 				}
 			}
-			default: {
-				// nothing to do here
-			}
+			default: LOG.error('''Unknown «paramType» type!''') // we should throw an exception, but let's be permissive here
 		}
 	}
 
 	def protected isValidJhipsterVersion(JdlParameterVersion version) {
-		return version !== null && !version.versionTag.isNullOrEmpty
+		return !version?.versionTag.isNullOrEmpty
 	}
 
 	def protected boolean hasParamValue(JdlApplicationParameter param, String value) {
-		if(param?.paramValue?.identifiers.isNullOrEmpty) return false
+		if (param?.paramValue?.identifiers.isNullOrEmpty) return false
 		val paramValue = param.paramValue.identifiers.last
 		return paramValue.equalsIgnoreCase(value)
 	}

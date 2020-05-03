@@ -21,7 +21,6 @@ package io.github.jhipster.jdl.validation
 import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlPatternValidator
-import java.util.regex.Pattern
 import java.util.regex.PatternSyntaxException
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
@@ -29,6 +28,8 @@ import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+
+import static extension java.util.regex.Pattern.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
@@ -39,12 +40,12 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 	override register(EValidatorRegistrar registrar) {}
 
 	@Check
-	def checkOptionSelection(JdlEntitySelection sel) {
-		val option = sel.getContainerOfType(JdlOption)
-		if (option !== null && option.excludes !== null && !sel.entities.isNullOrEmpty) {
+	def checkOptionSelection(JdlEntitySelection selection) {
+		val option = selection.getContainerOfType(JdlOption)
+		if (option !== null && option.excludes !== null && !selection.entities.isNullOrEmpty) {
 			val excludedEntites = option.excludes.selection?.entities
 			if (!excludedEntites.isNullOrEmpty) {
-				val selEntities = newHashSet(sel.entities).flatten.toList
+				val selEntities = newHashSet(selection.entities).flatten.toList
 				val exclEntities = newHashSet(excludedEntites).flatten.toList => [ removeAll(selEntities) ]
 				if (!exclEntities.isEmpty ) { 
 					val msg = INVALID_ENTITY_SELECTION_MSG + '''«IF exclEntities.length>1»s«ENDIF»: «exclEntities.map[name].toList»'''
@@ -58,9 +59,9 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 	}
 
 	@Check
-	def checkPatternRegExp(JdlPatternValidator pattern) {
+	def checkPatternRegExp(JdlPatternValidator it) {
 	    try {
-	        Pattern.compile(pattern.value);
+	        value.compile 
 	    } catch (PatternSyntaxException e) {
 			error(WRONG_REGEXP_MSG, JDL_PATTERN_VALIDATOR__VALUE, INSIGNIFICANT_INDEX, WRONG_REGEXP)
 	    }

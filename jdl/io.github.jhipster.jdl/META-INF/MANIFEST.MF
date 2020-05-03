@@ -20,7 +20,7 @@ Require-Bundle: io.github.jhipster.jdl.lib;visibility:=reexport,
  org.eclipse.core.resources,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- jbase;bundle-version="1.0.0";visibility:=reexport
+ jbase;visibility:=reexport
 Export-Package: io.github.jhipster.jdl,
  io.github.jhipster.jdl.formatting2;uses:="io.github.jhipster.jdl.jdl,org.eclipse.xtext.formatting2",
  io.github.jhipster.jdl.generator;uses:="org.eclipse.xtext.generator,org.eclipse.emf.ecore.resource,io.github.jhipster.jdl.jdl",
