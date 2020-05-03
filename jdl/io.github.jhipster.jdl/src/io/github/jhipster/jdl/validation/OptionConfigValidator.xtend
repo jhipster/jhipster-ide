@@ -50,7 +50,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 	def void checkParameterValue(JdlParameterValue paramValue) {
 		val paramName = (getContainerOfType(paramValue, JdlApplicationParameter)?.paramName ?:
 			getContainerOfType(paramValue, JdlDeploymentParameter)?.paramName).literal
-		if(paramName.isNullOrEmpty) return;
+		if (paramName.isNullOrEmpty) return;
 		val paramType = paramName.parameterType
 		switch (paramType) {
 			case Boolean:
@@ -99,6 +99,11 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 						error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
 					}
 				}
+			case AnyLiteral:
+				if (paramValue.identifiers.isNullOrEmpty) {
+					val msg = String.format(INVALID_PARAM_NAME_MSG, '')
+					error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
 			case String: {
 				if (!paramValue.identifiers.isNullOrEmpty || paramValue.stringValue.isNullOrEmpty) {
 					error(INVALID_STRING_PARAM_MSG, JDL_PARAMETER_VALUE__STRING_VALUE, INSIGNIFICANT_INDEX,
@@ -142,7 +147,7 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 						INVALID_PARAM_VALUE)
 				}
 			}
-			default: LOG.error('''Unknown «paramType» type!''') // we should throw an exception, but let's be permissive here
+			default: LOG.error('''Unknown type «paramType» for «paramName»!''') // we should throw an exception, but let's be permissive here
 		}
 	}
 

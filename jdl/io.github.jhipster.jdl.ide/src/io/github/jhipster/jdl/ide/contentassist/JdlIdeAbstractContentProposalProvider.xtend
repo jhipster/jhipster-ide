@@ -106,10 +106,10 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 					addProposal(code, name, context, acceptor)
 				]
 			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
-			case Version : if (!param.isDefined) addProposal('"5.0.0"', context, acceptor)
-			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case Number : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
+			case Version : if (!param.isDefined) addProposal('"0.0.0"', context, acceptor)
+			case Literal,
+			case Number,
+			case AnyLiteral,
 			case JavaIdentifierLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
 			case String : if (!param.isDefined) addProposal('"undefined"', context, acceptor)
 			default : super.createProposals(assignment, context, acceptor) 
