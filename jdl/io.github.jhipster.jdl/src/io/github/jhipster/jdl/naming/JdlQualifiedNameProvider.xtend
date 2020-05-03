@@ -20,8 +20,9 @@ package io.github.jhipster.jdl.naming
 
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.naming.DefaultDeclarativeQualifiedNameProvider
+
+import static extension org.eclipse.xtext.EcoreUtil2.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -31,7 +32,7 @@ class JdlQualifiedNameProvider extends DefaultDeclarativeQualifiedNameProvider {
 	override getFullyQualifiedName(EObject eObj) {
 		val fqn = super.getFullyQualifiedName(eObj)
 		if (fqn === null) return fqn
-		val model = EcoreUtil2.getContainerOfType(eObj, JdlDomainModel)
+		val model = eObj.getContainerOfType(JdlDomainModel)
 		return if (fqn.segmentCount > 1 && fqn.firstSegment == model.name) fqn.skipFirst(1) else fqn
 	}
 }

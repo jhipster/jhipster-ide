@@ -28,12 +28,12 @@ class IdentifierUtil {
 	}
 
 	def static boolean isValidJavaIdentifier(String id, boolean isPrefixNumAllowed) {
-		if(id.isNullOrEmpty || id.matches('^\\d+.*') && !isPrefixNumAllowed) return false
+		if (id.isNullOrEmpty || id.matches('^\\d+.*') && !isPrefixNumAllowed) return false
 		val idWithoutDigits = id.replaceAll('^\\d+', '')
 		val chars = idWithoutDigits.toCharArray
 		for (var i = 0; i < chars.length; i++) {
 			val c = chars.get(i)
-			if((i == 0 && !Character.isJavaIdentifierStart(c)) ||
+			if ((i == 0 && !Character.isJavaIdentifierStart(c)) ||
 				(i > 0 && !Character.isJavaIdentifierPart(c))) return false
 		}
 		return true
