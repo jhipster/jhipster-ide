@@ -90,6 +90,11 @@ class OptionConfigValidator extends AbstractDeclarativeValidator {
 						}
 					]
 				}
+			case ListOfAnyLiterals:
+				if (paramValue.listElements.isNullOrEmpty) {
+					val msg = String.format(INVALID_PARAM_NAME_MSG, '')
+					error(msg, JDL_PARAMETER_VALUE__IDENTIFIERS, INSIGNIFICANT_INDEX, INVALID_PARAM_VALUE)
+				}
 			case EnumLiteral:
 				if (!paramValue.identifiers.isNullOrEmpty && paramValue.identifiers.size === 1) {
 					val value = paramValue.identifiers.head

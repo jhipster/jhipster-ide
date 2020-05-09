@@ -25,6 +25,7 @@ import jbase.config.JDLDeploymentOptions
 import jbase.config.JDLParameterType
 import jbase.jbase.JDLApplicationParameterName
 import jbase.jbase.JDLDeploymentParameterName
+import org.eclipse.emf.ecore.EObject
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -47,6 +48,20 @@ final class JDLOptions {
 	def List<String> getParameters(String paramName) {
 		val applParams = applOptions.getParameters(paramName)
 		return if (applParams.isNullOrEmpty) deplOptions.getParameters(paramName) else applParams
+	}
+
+	def getParamNameByReflection(EObject eObj) {
+		return try {
+			val field = eObj.class.getDeclaredField('paramName')
+			field.accessible = true
+			val result = field.get(eObj)
+			switch (result) {
+				JDLApplicationParameterName: result as JDLApplicationParameterName
+				JDLDeploymentParameterName: result as JDLDeploymentParameterName
+			}
+		} catch (Exception ex) {
+			null
+		}
 	}
 
 	def dispatch describe(JDLApplicationParameterName it) {

@@ -20,6 +20,8 @@ package io.github.jhipster.jdl.ui.hover
 
 import io.github.jhipster.jdl.config.JDLOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
+import io.github.jhipster.jdl.jdl.JdlParameter
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider
 
@@ -34,9 +36,9 @@ class JDLHoverProvider extends DefaultEObjectHoverProvider {
 
 	override protected getHoverInfoAsHtml(EObject eObj) {
 		if (eObj === null) return null
-		val param = getContainerOfType(eObj, JdlApplicationParameter)
+		val param = getContainerOfType(eObj, JdlParameter)
 		switch param {
-			JdlApplicationParameter: param.paramName.asHtml
+			JdlApplicationParameter, JdlDeploymentParameter: getParamNameByReflection(param)?.asHtml
 			default: super.getHoverInfoAsHtml(eObj)
 		}
 	}

@@ -43,6 +43,10 @@ JdlFeature:
 	| JdlRelationships 
 	| JdlOption;
 
+JdlParameter:
+ 	  JdlApplicationParameter 
+ 	| JdlDeploymentParameter;
+ 
 /* =========================================================================
  * APPLICTION
  * ========================================================================= */ 
@@ -74,7 +78,7 @@ JdlDeployment:
 		(paramters+=JdlDeploymentParameter ','?)*
 	'}';
 
-JdlDeploymentParameter:
+JdlDeploymentParameter :
 	paramName=JDLDeploymentParameterName paramValue=JdlParameterValue;
 
 /* =========================================================================

@@ -111,7 +111,12 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 			case Number,
 			case AnyLiteral,
 			case JavaIdentifierLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case String : if (!param.isDefined) addProposal('"undefined"', context, acceptor)
+			case String : if (!param.isDefined) {
+							if (params.isNullOrEmpty)	
+								addProposal('"undefined"', context, acceptor)
+							else
+								params.forEach[addProposal(context, acceptor)]
+						  }
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}

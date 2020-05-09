@@ -163,14 +163,14 @@
 							</transformers>
 							<artifactSet>
 								<excludes><!-- avoid duplicate inclusion due to addjars plugin -->
-									<exclude>*:org.xtext.example.mydsl.ide-org.eclipse.lsp4j*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-org.eclipse.xtext.xbase.lib*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-org.eclipse.xtend.lib*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-com.google.guava*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-asm*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-log4j*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-org.objectweb.asm*</exclude>
-									<exclude>*:org.xtext.example.mydsl.ide-org.apache.log4j*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-org.eclipse.lsp4j*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-org.eclipse.xtext.xbase.lib*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-org.eclipse.xtend.lib*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-com.google.guava*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-asm*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-log4j*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-org.objectweb.asm*</exclude>
+									<exclude>*:io.github.jhipster.jdl.ide-org.apache.log4j*</exclude>
 								</excludes>
 							</artifactSet>
 							<filters>
