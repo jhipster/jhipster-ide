@@ -31,11 +31,11 @@ import org.eclipse.emf.ecore.EObject
  * @author Serano Colameo - Initial contribution and API
  */
 @Singleton
-final class JDLOptions {
+final class JDLOptionsExtension {
 
 	public static val JH_VERSION = 'jhipsterVersion'
 	public static val SERVER_PORT = 'serverPort'	
-	public static val INSTANCE = new JDLOptions
+	public static val INSTANCE = new JDLOptionsExtension
 
 	val applOptions = JDLApplicationOptions.INSTANCE
 	val deplOptions = JDLDeploymentOptions.INSTANCE

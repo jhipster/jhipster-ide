@@ -17,13 +17,14 @@ Require-Bundle: com.google.gson,
  org.eclipse.lsp4j.jsonrpc.debug;bundle-version="[0.8.1,0.9.0)",
  org.eclipse.lsp4j.websocket;bundle-version="[0.8.1,0.9.0)",
  io.github.classgraph;bundle-version="4.8.35",
- jbase.ide 
+ jbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,
  io.github.jhipster.jdl.ide.contentassist.antlr,
  io.github.jhipster.jdl.ide.contentassist.antlr.internal,
  io.github.jhipster.jdl.ide.editor.syntaxcoloring,
+ io.github.jhipster.jdl.ide.hover,
  io.github.jhipster.jdl.ide.server;x-internal:=true,
  io.github.jhipster.jdl.ide.service
 Automatic-Module-Name: io.github.jhipster.jdl.ide

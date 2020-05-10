@@ -18,7 +18,7 @@
  */
 package io.github.jhipster.jdl.ide.hover
 
-import io.github.jhipster.jdl.config.JDLOptions
+import io.github.jhipster.jdl.config.JDLOptionsExtension
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameter
@@ -33,7 +33,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 class JDLHoverService extends HoverService {
 
-	extension JDLOptions = JDLOptions.INSTANCE
+	extension JDLOptionsExtension = JDLOptionsExtension.INSTANCE
 
 	override List<String> getContents(EObject eObj) {
 		if (eObj === null) return null

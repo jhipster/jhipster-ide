@@ -18,7 +18,7 @@
  */
 package io.github.jhipster.jdl.validation
 
-import io.github.jhipster.jdl.config.JDLOptions
+import io.github.jhipster.jdl.config.JDLOptionsExtension
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
@@ -29,7 +29,7 @@ import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
-import static io.github.jhipster.jdl.config.JDLOptions.*
+import static io.github.jhipster.jdl.config.JDLOptionsExtension.*
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.util.IdentifierUtil.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
@@ -41,7 +41,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
 @Log
 class OptionConfigValidator extends AbstractDeclarativeValidator {
 
-	extension JDLOptions = JDLOptions.INSTANCE
+	extension JDLOptionsExtension = JDLOptionsExtension.INSTANCE
 	extension JDLLanguages = JDLLanguages.INSTANCE
 
 	override register(EValidatorRegistrar registrar) {}

@@ -18,7 +18,7 @@
  */
 package io.github.jhipster.jdl.ui.hover
 
-import io.github.jhipster.jdl.config.JDLOptions
+import io.github.jhipster.jdl.config.JDLOptionsExtension
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameter
@@ -32,7 +32,7 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 class JDLHoverProvider extends DefaultEObjectHoverProvider {
 
-	extension JDLOptions = JDLOptions.INSTANCE
+	extension JDLOptionsExtension = JDLOptionsExtension.INSTANCE
 
 	override protected getHoverInfoAsHtml(EObject eObj) {
 		if (eObj === null) return null
