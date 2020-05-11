@@ -58,16 +58,11 @@ steps:
   displayName: 'TOOLS: install libraries'
 
 - script: |
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-    export PATH=$JAVA_HOME/bin:$PATH
-    java -version
     ./mvnw -version
     node --version
   displayName: 'CHECK: versions'
 
 - script: |
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-    export PATH=$JAVA_HOME/bin:$PATH
     ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'MAVEN: install'
 
