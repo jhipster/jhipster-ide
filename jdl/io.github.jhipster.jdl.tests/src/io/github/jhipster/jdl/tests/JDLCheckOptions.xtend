@@ -70,7 +70,8 @@ class JDLCheckOptions {
 
 	@Inject extension ParseHelper<JdlDomainModel> parseHelper
 	@Inject extension ValidationTestHelper
-	@Inject extension JDLLanguages
+	
+	extension JDLLanguages = JDLLanguages.INSTANCE
 
 	val opts = #['applicationType', 'serviceDiscoveryType', 'devDatabaseType', 'testFrameworks', 'messageBroker',
 		'cacheProvider', 'websocket', 'buildTool', 'prodDatabaseType', 'searchEngine', 'clientPackageManager',

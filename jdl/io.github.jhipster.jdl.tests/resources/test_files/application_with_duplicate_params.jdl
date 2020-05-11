@@ -1,6 +1,6 @@
 application {
   config {
-  	baseName "123f1oo_bar1"
+  	baseName jhipster
     packageName com.mathieu.sample.box100width.d1irectory     
     enableTranslation false 
     languages [en, fr, ar-ly, ca, cs, da, hi, de, el, es]
