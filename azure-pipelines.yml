@@ -44,7 +44,6 @@ steps:
     sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
     export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
     export PATH=$JAVA_HOME/bin:$PATH
-    java -version
   displayName: 'TOOLS: configuring OpenJDK'
 
 - script: |
@@ -58,6 +57,7 @@ steps:
   displayName: 'TOOLS: install libraries'
 
 - script: |
+    java -version
     ./mvnw -version
     node --version
   displayName: 'CHECK: versions'
@@ -65,4 +65,3 @@ steps:
 - script: |
     ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'MAVEN: install'
-
