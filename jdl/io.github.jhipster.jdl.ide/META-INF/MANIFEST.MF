@@ -5,7 +5,9 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: com.google.gson,
+Require-Bundle: jbase,
+ jbase.ide,
+ com.google.gson,
  io.github.jhipster.jdl,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
@@ -16,8 +18,7 @@ Require-Bundle: com.google.gson,
  org.eclipse.lsp4j.generator;bundle-version="[0.8.1,0.9.0)",
  org.eclipse.lsp4j.jsonrpc.debug;bundle-version="[0.8.1,0.9.0)",
  org.eclipse.lsp4j.websocket;bundle-version="[0.8.1,0.9.0)",
- io.github.classgraph;bundle-version="4.8.35",
- jbase.ide
+ io.github.classgraph;bundle-version="4.8.35"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,

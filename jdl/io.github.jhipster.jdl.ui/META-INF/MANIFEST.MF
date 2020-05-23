@@ -5,7 +5,8 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: jbase.ui,
+Require-Bundle: jbase,
+ jbase.ui,
  jbase.ide,
  io.github.jhipster.jdl,
  io.github.jhipster.jdl.ide,
