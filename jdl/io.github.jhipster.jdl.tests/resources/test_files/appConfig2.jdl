@@ -1,0 +1,37 @@
+application {
+	config {
+		applicationType monolith
+		entitySuffix Entity
+		serviceDiscoveryType eureka
+		devDatabaseType h2Disk
+		testFrameworks protractor
+		clientThemeVariant primary
+		dtoSuffix DTO
+		nativeLanguage en
+		serverPort 8080
+		skipClient false
+		messageBroker kafka
+		cacheProvider ehcache
+		websocket spring-websocket
+		buildTool maven
+		packageName aaa.bbb.ccc
+		prodDatabaseType mysql
+		baseName jhipster
+		skipUserManagement true
+		enableTranslation true
+		languages en
+		searchEngine elasticsearch
+		jhiPrefix jhi
+		clientPackageManager npm
+		databaseType sql
+		uaaBaseName "uaa"
+		reactive false
+		enableSwaggerCodegen false
+		skipServer false
+		clientFramework angularX
+		enableHibernateCache true
+		useSass "aaa.bbb.ccc"
+		authenticationType jwt
+		clientTheme none
+	}
+}

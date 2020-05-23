@@ -41,10 +41,9 @@ steps:
     set -e
     sudo add-apt-repository ppa:openjdk-r/ppa
     sudo apt-get update
-    sudo apt-get install -y openjdk-11-jre openjdk-11-jdk
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+    sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
     export PATH=$JAVA_HOME/bin:$PATH
-    java -version
   displayName: 'TOOLS: configuring OpenJDK'
 
 - script: |
@@ -58,21 +57,11 @@ steps:
   displayName: 'TOOLS: install libraries'
 
 - script: |
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-    export PATH=$JAVA_HOME/bin:$PATH
     java -version
     ./mvnw -version
     node --version
   displayName: 'CHECK: versions'
 
 - script: |
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-    export PATH=$JAVA_HOME/bin:$PATH
     ./mvnw -B -Dmaven.wagon.http.pool=false clean install
   displayName: 'MAVEN: install'
-
-- script: |
-    cd $(Build.Repository.LocalPath)/jdl
-    ./gradlew clean installServer
-  displayName: 'GRADLE: installServer'
-

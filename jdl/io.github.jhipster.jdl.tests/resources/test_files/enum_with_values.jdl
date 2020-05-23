@@ -6,10 +6,9 @@ enum EnvironmentType {
   TEST (test),
   UAT (uat),
   NON_PROD (nonProd),
-  FOOBAR
+  STRING_VALUE("This is an enum too")
 }
 
 entity Environment {
   type EnvironmentType required
 }
- 

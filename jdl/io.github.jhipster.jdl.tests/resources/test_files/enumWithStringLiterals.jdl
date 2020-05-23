@@ -1,0 +1,17 @@
+enum ProcessingStatus {
+    IN_PROGRESS(In_progress),
+    SUCCESS("Success"),
+    FAIL("Fail"),
+    UNDEFINED("Undefined")
+}
+
+enum Status {
+    IN_PROGRESS(1),
+    SUCCESS(2),
+    FAIL(-1),
+    UNDEFINED(0)
+}
+
+entity EntityB { 
+    myFieldB ProcessingStatus required
+}

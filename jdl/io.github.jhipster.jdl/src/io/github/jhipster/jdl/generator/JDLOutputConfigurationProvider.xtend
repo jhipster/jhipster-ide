@@ -26,8 +26,8 @@ import org.eclipse.xtext.generator.OutputConfigurationProvider
 class JDLOutputConfigurationProvider extends OutputConfigurationProvider {
 
 	override getOutputConfigurations() {
-		val result = super.getOutputConfigurations
-		if (!result.isNullOrEmpty) result.head.outputDirectory = 'src'
-		return result
+		return super.getOutputConfigurations => [
+			if (!isNullOrEmpty) head.outputDirectory = 'src'
+		]
 	}
 }

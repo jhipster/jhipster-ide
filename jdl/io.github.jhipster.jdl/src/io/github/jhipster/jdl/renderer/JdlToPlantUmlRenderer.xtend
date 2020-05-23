@@ -136,7 +136,6 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	
 	def private String toCardinality(JdlRelationship rs) {
 		val card = (rs?.eContainer as JdlRelationships)?.cardinality
-		
 		return switch (card) {
 			case ONE_TO_ONE: relationRole(rs.source.role, '1') +  '--' + relationRole(rs.target.role, '1')
 			case ONE_TO_MANY: relationRole(rs.source.role, '1') + '--o' + relationRole(rs.target.role, '*')

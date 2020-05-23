@@ -20,13 +20,17 @@ package io.github.jhipster.jdl.ui
 
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
 import io.github.jhipster.jdl.ui.editor.syntaxcoloring.JDLHighlightingConfiguration
+import io.github.jhipster.jdl.ui.hover.JDLHoverProvider
 import io.github.jhipster.jdl.ui.wizard.template.JDLTemplateProjectCreator
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.UiToIdeContentProposalProvider
+import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
 import org.eclipse.xtext.ui.wizard.IProjectCreator
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
+import io.github.jhipster.jdl.ui.hover.JDLEObjectDocumentationProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -50,5 +54,13 @@ class JDLUiModule extends AbstractJDLUiModule {
 
 	def Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
 		return JDLHighlightingConfiguration
+	}
+
+	def Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
+		return JDLHoverProvider
+	}
+
+	def Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
+		return JDLEObjectDocumentationProvider
 	}
 }

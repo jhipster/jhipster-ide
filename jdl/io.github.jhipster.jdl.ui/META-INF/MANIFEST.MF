@@ -5,7 +5,10 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: io.github.jhipster.jdl,
+Require-Bundle: jbase,
+ jbase.ui,
+ jbase.ide,
+ io.github.jhipster.jdl,
  io.github.jhipster.jdl.ide,
  org.eclipse.xtext.ui,
  org.eclipse.xtext.ui.shared,
@@ -32,6 +35,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ui;x-internal:=true,
  io.github.jhipster.jdl.ui.contentassist,
  io.github.jhipster.jdl.ui.editor.syntaxcoloring;x-internal:=true,
+ io.github.jhipster.jdl.ui.hover,
  io.github.jhipster.jdl.ui.internal,
  io.github.jhipster.jdl.ui.labeling;x-internal:=true,
  io.github.jhipster.jdl.ui.modelviewer;x-internal:=true,

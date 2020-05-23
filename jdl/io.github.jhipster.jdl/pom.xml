@@ -107,12 +107,6 @@
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../io.github.jhipster.jdl.web/src-gen/</directory>
-							<includes>
-								<include>**/*</include>
-							</includes>
-						</fileset>
-						<fileset>
 							<directory>${basedir}/model/generated/</directory>
 						</fileset>
 					</filesets>

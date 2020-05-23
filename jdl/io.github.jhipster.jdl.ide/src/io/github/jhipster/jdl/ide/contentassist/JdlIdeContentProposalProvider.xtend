@@ -19,8 +19,6 @@
 package io.github.jhipster.jdl.ide.contentassist
 
 import com.google.inject.Inject
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import io.github.jhipster.jdl.config.JdlDeploymentOptions
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlDisplayField
@@ -28,6 +26,8 @@ import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.util.JdlModelUtil
+import jbase.config.JDLApplicationOptions
+import jbase.config.JDLDeploymentOptions
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
@@ -40,8 +40,8 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvider {
 
-	val applOptions = JdlApplicationOptions.INSTANCE
-	val deplOptions = JdlDeploymentOptions.INSTANCE
+	val applOptions = JDLApplicationOptions.INSTANCE
+	val deplOptions = JDLDeploymentOptions.INSTANCE
 	
 	@Inject extension JdlModelUtil
 	

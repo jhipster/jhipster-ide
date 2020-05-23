@@ -18,9 +18,6 @@
  */
 package io.github.jhipster.jdl.ide.contentassist
 
-import io.github.jhipster.jdl.config.JdlApplicationOptions
-import io.github.jhipster.jdl.config.JdlDeploymentOptions
-import io.github.jhipster.jdl.config.JdlParameterType
 import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
@@ -28,6 +25,10 @@ import io.github.jhipster.jdl.jdl.JdlDeployment
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import java.util.List
+import jbase.config.JDLApplicationOptions
+import jbase.config.JDLDeploymentOptions
+import jbase.config.JDLLanguages
+import jbase.config.JDLParameterType
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
@@ -37,7 +38,6 @@ import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.util.CancelIndicator
 import org.eclipse.xtext.validation.CheckMode
 
-import static io.github.jhipster.jdl.config.JdlLanguages.*
 import static org.eclipse.xtext.EcoreUtil2.*
 
 /**
@@ -45,7 +45,9 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalProvider {
 
-	def dispatch void createParameterProposal(JdlDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	extension JDLLanguages = JDLLanguages.INSTANCE
+
+	def dispatch void createParameterProposal(JDLDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		if (param === null) return
 		val paramValue = param.paramValue
 		val params = options.getParameters(param.paramName.literal)
@@ -53,7 +55,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		createParameterProposal(param, paramValue, params, type, assignment, context, acceptor)
 	}
 	
-	def dispatch void createParameterProposal(JdlApplicationOptions options, JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def dispatch void createParameterProposal(JDLApplicationOptions options, JdlApplicationParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		if (param === null) return
 		val paramValue = param.paramValue
 		val params = options.getParameters(param.paramName.literal)
@@ -61,7 +63,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		createParameterProposal(param, paramValue, params, type, assignment, context, acceptor)
 	}
 
-	def private void createParameterProposal(EObject param, JdlParameterValue paramValue, List<String> params, JdlParameterType type, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+	def private void createParameterProposal(EObject param, JdlParameterValue paramValue, List<String> params, JDLParameterType type, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
 		switch (type) {
 			case Boolean : if (!param.isDefined)
 				#[Boolean.FALSE, Boolean.TRUE].map[
@@ -74,10 +76,10 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 				if (existingParams.isNullOrEmpty) {
 					addProposal('''[«params.join(', ')»]''', context, acceptor)
 				} else {
-					JHipsterIsoLangauges.filter[ String k, String v |
-						!existingParams.contains(k)
-					].forEach[ String k, String v |
-						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«k»''', v, context, acceptor)
+					JHipsterIsoLangauges.filter[
+						!existingParams.contains(code)
+					].forEach[ 
+						addProposal('''«IF !existingParams.isNullOrEmpty», «ENDIF»«code»''', name, context, acceptor)
 					]
 				}
 			}
@@ -100,16 +102,21 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 			}
 			case ListOfAnyLiterals : addProposal('''[]''', context, acceptor)
 			case LangIsoCode : if (!param.isDefined) 
-				JHipsterIsoLangauges.forEach[ String key, String value |
-					addProposal(key, value, context, acceptor)
+				JHipsterIsoLangauges.forEach[
+					addProposal(code, name, context, acceptor)
 				]
 			case Namespace : if (!param.isDefined) addProposal('io.github.jhipster.myapp', context, acceptor)
-			case Version : if (!param.isDefined) addProposal('"5.0.0"', context, acceptor)
-			case Literal : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case Number : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case AnyLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
+			case Version : if (!param.isDefined) addProposal('"0.0.0"', context, acceptor)
+			case EnumLiteral,
+			case Number,
+			case AnyLiteral,
 			case JavaIdentifierLiteral : if (!param.isDefined) params.forEach[addProposal(context, acceptor)]
-			case String : if (!param.isDefined) addProposal('"undefined"', context, acceptor)
+			case String : if (!param.isDefined) {
+							if (params.isNullOrEmpty)	
+								addProposal('"undefined"', context, acceptor)
+							else
+								params.forEach[addProposal(context, acceptor)]
+						  }
 			default : super.createProposals(assignment, context, acceptor) 
 		}
 	}
