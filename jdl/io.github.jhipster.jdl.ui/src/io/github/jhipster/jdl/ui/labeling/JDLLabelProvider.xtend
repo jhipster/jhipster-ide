@@ -37,10 +37,6 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 import static extension org.apache.commons.lang3.StringUtils.*
 
 /**
- * Provides labels for EObjects.
- * 
- * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#label-provider
- * 
  * @author Serano Colameo - Initial contribution and API
  */
 class JDLLabelProvider extends DefaultEObjectLabelProvider {

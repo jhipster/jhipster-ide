@@ -24,8 +24,6 @@ import io.github.jhipster.jdl.JDLStandaloneSetup
 import org.eclipse.xtext.util.Modules2
 
 /**
- * Initialization support for running Xtext languages as language servers.
- * 
  * @author Serano Colameo - Initial contribution and API
  */
 class JDLIdeSetup extends JDLStandaloneSetup {
