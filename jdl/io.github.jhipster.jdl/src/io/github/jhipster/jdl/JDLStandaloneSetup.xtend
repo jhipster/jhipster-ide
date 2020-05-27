@@ -19,7 +19,7 @@
 package io.github.jhipster.jdl
 
 /**
- * Initialization support for running Xtext languages without Equinox extension registry.
+ * @author Serano Colameo - Initial contribution and API
  */
 class JDLStandaloneSetup extends JDLStandaloneSetupGenerated {
 

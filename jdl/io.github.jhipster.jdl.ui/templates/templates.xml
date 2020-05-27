@@ -24,4 +24,13 @@ application {
 deployment {
 	${cursor}
 }</template>
+<template autoinsert="true" id="ManyToMany" context="io.github.jhipster.jdl.JDL.JdlRelationships" deleted="false" description="Relationship ManyToMany" enabled="true" name="ManyToMany">relationship ManyToMany {
+	${ :CrossReference(JdlRelation.entity)} to ${entity:CrossReference(JdlRelation.entity)}
+}</template><template autoinsert="true" id="ManyToOne" context="io.github.jhipster.jdl.JDL.JdlRelationships" deleted="false" description="Relationship ManyToOne" enabled="true" name="ManyToOne">relationship ManyToOne {
+	${ :CrossReference(JdlRelation.entity)} to ${entity:CrossReference(JdlRelation.entity)}
+}</template><template autoinsert="true" id="OneToMany" context="io.github.jhipster.jdl.JDL.JdlRelationships" deleted="false" description="Relationship OneToMany" enabled="true" name="OneToMany">relationship OneToMany {
+	${ :CrossReference(JdlRelation.entity)} to ${entity:CrossReference(JdlRelation.entity)}
+}</template><template autoinsert="true" id="OneToOne" context="io.github.jhipster.jdl.JDL.JdlRelationships" deleted="false" description="Relationship OneToOne" enabled="true" name="OneToOne">relationship OneToOne {
+	${ :CrossReference(JdlRelation.entity)} to ${entity:CrossReference(JdlRelation.entity)}
+}</template>
 </templates>

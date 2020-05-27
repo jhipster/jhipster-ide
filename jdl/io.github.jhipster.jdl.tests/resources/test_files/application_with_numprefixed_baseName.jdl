@@ -6,6 +6,7 @@ application {
     languages [en, fr, ar-ly, ca, cs, da, hi, de, el, es]
     applicationType gateway
     authenticationType jwt
+    blueprints [vuejs]
   }
   entities * except B
 }  

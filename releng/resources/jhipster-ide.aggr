@@ -5,6 +5,9 @@
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
         <features name="io.github.jhipster.jdl.feature.feature.group" versionRange="2.1.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
+      <repositories location="https://dl.bintray.com/jhipster/jbase/">
+        <features name="jbase.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
+      </repositories>
     </contributions>
     <contributions description="Xdocker" label="Xdocker">
       <repositories location="../../xdocker/io.github.jhipster.xdocker.dsl/xdockerdsl.repository/target/repository">
@@ -17,8 +20,8 @@
       <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.20.0/">
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.20.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.8.1/">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="[0.8.1,0.9.0]"/>
+      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.9.0">
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.9.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/tools/orbit/downloads/2019-12">
         <bundles name="com.google.inject" versionRange="3.0.0"/>

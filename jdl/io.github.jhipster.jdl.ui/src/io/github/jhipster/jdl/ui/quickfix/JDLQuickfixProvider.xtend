@@ -25,10 +25,6 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
 
 /**
- * Custom quickfixes.
- *
- * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
- * 
  * @author Serano Colameo - Initial contribution and API
  */
 class JDLQuickfixProvider extends DefaultQuickfixProvider {

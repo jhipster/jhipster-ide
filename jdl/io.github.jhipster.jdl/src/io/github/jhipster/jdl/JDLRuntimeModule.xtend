@@ -18,10 +18,6 @@
  */
 package io.github.jhipster.jdl
 
-/**
- * @author Serano Colameo - Initial contribution and API
- */
-
 import com.google.inject.Provides
 import io.github.jhipster.jdl.generator.IJdlGenerator
 import io.github.jhipster.jdl.generator.JDLGenerator
@@ -41,7 +37,7 @@ import org.eclipse.xtext.validation.INamesAreUniqueValidationHelper
 import io.github.jhipster.jdl.validation.JDLNamesAreUniqueValidationHelper
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * @author Serano Colameo - Initial contribution and API
  */
 class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 
