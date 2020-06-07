@@ -29,5 +29,5 @@ Search for <b>jhipster</b> in the atom packages and install/reload atom or use t
 [azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
 [azure-devops-url-main]: https://dev.azure.com/jhipster-ide/jhipster-ide/_build
 
-[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/2.1/images/download.svg
+[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/2.2/images/download.svg
 [download-url]: https://bintray.com/jhipster/jhipster-ide/2.2/_latestVersion
