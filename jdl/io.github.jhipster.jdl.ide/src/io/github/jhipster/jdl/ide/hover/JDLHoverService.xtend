@@ -22,7 +22,6 @@ import io.github.jhipster.jdl.config.JDLOptionsExtension
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlParameter
-import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ide.server.hover.HoverService
 
@@ -35,11 +34,11 @@ class JDLHoverService extends HoverService {
 
 	extension JDLOptionsExtension = JDLOptionsExtension.INSTANCE
 
-	override List<String> getContents(EObject eObj) {
+	override String getContents(EObject eObj) {
 		if (eObj === null) return null
 		val param = getContainerOfType(eObj, JdlParameter)
 		switch param {
-			JdlApplicationParameter, JdlDeploymentParameter: getParamNameByReflection(param)?.describe
+			JdlApplicationParameter, JdlDeploymentParameter: getParamNameByReflection(param)?.describe.join
 			default: super.getContents(eObj)
 		}
 	}

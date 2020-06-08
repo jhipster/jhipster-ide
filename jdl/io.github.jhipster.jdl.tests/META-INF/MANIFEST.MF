@@ -7,7 +7,7 @@ Bundle-SymbolicName: io.github.jhipster.jdl.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
  io.github.jhipster.jdl,
- org.junit;bundle-version="4.12.0",
+ org.junit;bundle-version="4.13.0",
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
