@@ -7,7 +7,7 @@
     "icon": "images/icon.jpg",
     "license": "Apache-2.0",
     "engines": {
-        "vscode": "^1.30.0"
+        "vscode": "^1.38.0"
     },
     "categories": [
         "Programming Languages"
