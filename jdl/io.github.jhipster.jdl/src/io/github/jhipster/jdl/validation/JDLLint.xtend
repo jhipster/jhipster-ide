@@ -23,6 +23,7 @@ import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlDeployment
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
+import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.services.JDLGrammarAccess
@@ -169,10 +170,12 @@ class JDLLint extends AbstractDeclarativeValidator {
 	}
 
 	@Check
-	def void checkUselessCommas(JdlEntity it) {
+	def void checkUselessCommas(JdlEntityFieldDefinition it) {
 		if (isLintDisabled) return;
-		if (containsComma(it.fieldDefinition)) {
-			warning(USELESS_COMMAS_MSG, JDL_ENTITY__FIELD_DEFINITION)
+		if (containsComma(it)) {
+			it.fields.forEach[ f, i |
+				warning(USELESS_COMMAS_MSG, f, JDL_ENTITY_FIELD__TYPE, i)
+			]
 		}
 	}
 
@@ -200,8 +203,8 @@ class JDLLint extends AbstractDeclarativeValidator {
 
 	def private boolean containsTerminal(EObject eObj, String... terminals) {
 		val node = findActualNodeFor(eObj)
-		if(node === null) return false
-		val expression = node.text
+		if (node === null) return false
+		val expression = node.text.replaceAll('(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)','')
 		return !expression.isNullOrEmpty && terminals.forall[expression.contains(it)]
 	}
 }

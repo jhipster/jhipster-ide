@@ -2,7 +2,7 @@ plugins {
 	id 'com.github.johnrengelman.shadow' version '4.0.1'
 }
 
-ext.xtextVersion = "2.20.0"
+ext.xtextVersion = "2.22.0"
 
 dependencies {
 	compile project(':io.github.jhipster.jdl')

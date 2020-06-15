@@ -170,7 +170,8 @@ class JDLFileTest {
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Wrong regexp pattern!', ERROR),
 		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '<EOF>' expecting '}'", ERROR),
-		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR)
+		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR),
+		"issue_347_warn.jdl" -> new JdlIssue('Useless commas can be removed', WARNING)
 	]
 
 	new(File jdlFile) {

@@ -2,25 +2,24 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
  io.github.jhipster.jdl.lib;visibility:=reexport,
  org.eclipse.xtext,
- org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0",
- net.sourceforge.plantuml.eclipse;bundle-version="1.1.24";visibility:=reexport,
- net.sourceforge.plantuml.text;bundle-version="1.1.24";visibility:=reexport,
+ org.eclipse.equinox.common,
+ net.sourceforge.plantuml.eclipse;visibility:=reexport,
+ net.sourceforge.plantuml.text;visibility:=reexport,
  org.eclipse.emf.ecore,
- org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
  org.eclipse.xtext.util,
  org.eclipse.emf.common,
  org.eclipse.core.runtime,
  org.eclipse.core.commands,
  org.eclipse.core.resources,
  org.eclipse.xtend.lib;bundle-version="2.14.0",
- org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
 Export-Package: io.github.jhipster.jdl,
  io.github.jhipster.jdl.formatting2;uses:="io.github.jhipster.jdl.jdl,org.eclipse.xtext.formatting2",
  io.github.jhipster.jdl.generator;uses:="org.eclipse.xtext.generator,org.eclipse.emf.ecore.resource,io.github.jhipster.jdl.jdl",

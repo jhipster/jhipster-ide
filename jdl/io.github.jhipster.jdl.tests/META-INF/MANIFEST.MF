@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.tests
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.3.0.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
  io.github.jhipster.jdl,
- org.junit;bundle-version="4.12.0",
+ org.junit;bundle-version="4.13.0",
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
