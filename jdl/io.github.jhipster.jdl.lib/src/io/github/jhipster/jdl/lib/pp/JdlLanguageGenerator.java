@@ -29,14 +29,13 @@ import com.google.inject.Injector;
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings({"restriction", "unused", "deprecation"})
 public class JdlLanguageGenerator extends XtextGenerator {
 	public JdlLanguageGenerator() {
 		new XtextStandaloneSetup() {
 			@Override
 			public Injector createInjector() {
 				return Guice.createInjector(new XtextRuntimeModule() {
-					@SuppressWarnings("unused")
 					public Class<? extends IXtext2EcorePostProcessor> bindIXtext2EcorePostProcessor() {
 						return JdlMetaModelPostProcessor.class;
 					}
