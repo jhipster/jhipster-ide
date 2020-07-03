@@ -21,10 +21,10 @@ Require-Bundle: jbase,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: io.github.jhipster.jdl.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,
- org.junit;bundle-version="4.12.0",
- org.junit.runners.model;version="4.12.0",
- org.junit.runner;version="4.12.0",
- org.junit.runners;version="4.12.0",
- org.junit.runner.manipulation;version="4.12.0",
- org.junit.runner.notification;version="4.12.0"
+ org.junit;bundle-version="4.13.0",
+ org.junit.runners.model;version="4.13.0",
+ org.junit.runner;version="4.13.0",
+ org.junit.runners;version="4.13.0",
+ org.junit.runner.manipulation;version="4.13.0",
+ org.junit.runner.notification;version="4.13.0"
 Automatic-Module-Name: io.github.jhipster.jdl.ui.tests
