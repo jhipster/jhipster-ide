@@ -73,7 +73,7 @@ class JdlToAsciiDocRenderer implements IJdlModelViewerRenderer {
 			.Please note
 			[NOTE]
 			====
-			This spec was generated out of _«jdlFile.name»_ with *jdlbridge*
+			This spec was generated out of _«jdlFile.name»_.
 			====
 			<<<
 			
