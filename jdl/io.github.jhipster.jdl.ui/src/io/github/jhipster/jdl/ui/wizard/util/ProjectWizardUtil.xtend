@@ -40,7 +40,7 @@ class ProjectWizardUtil {
     
     public static String MAIN_SOURCE_FOLDER = 'src/main'
     public static String TEST_SOURCE_FOLDER = 'src/test'
-    public static String RESOURCE_FOLDER = 'src/resource'
+    public static String RESOURCE_FOLDER = 'src/main/resources'
     public static String MAIN_JAVA_FOLDER = MAIN_SOURCE_FOLDER + '/java'
     public static String TEST_JAVA_FOLDER = TEST_SOURCE_FOLDER + '/java'
     public static String RESOURCE_MODEL_FOLDER = RESOURCE_FOLDER + '/model'
