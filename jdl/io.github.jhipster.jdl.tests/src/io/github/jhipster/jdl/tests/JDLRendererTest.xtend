@@ -302,7 +302,7 @@ class JDLRendererTest {
 			.Please note
 			[NOTE]
 			====
-			This spec was generated out of ___synthetic0.jdl_ with *jdlbridge*
+			This spec was generated out of ___synthetic0.jdl_.
 			====
 			<<<
 			
