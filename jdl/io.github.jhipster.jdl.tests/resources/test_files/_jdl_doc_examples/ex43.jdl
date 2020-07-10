@@ -1,0 +1,81 @@
+entity A
+readOnly A
+
+@readOnly
+entity A2
+
+entity A3
+dto A3 with mapstruct
+
+@dto(mapstruct)
+entity A4
+
+entity A5
+entity B
+
+dto all with mapstruct
+
+@dto(mapstruct)
+entity A6
+
+@dto(mapstruct)
+entity B2
+
+entity A7
+entity B3
+
+skipClient * except A7
+
+entity A8
+
+@skipClient
+entity B4
+
+entity A9
+entity B5
+
+dto all with mapstruct except A9
+
+entity A10
+
+@dto(mapstruct)
+entity B6
+
+entity A11
+entity B7
+
+microservice all with mySuperMS
+
+entity A12
+entity B8
+entity C1
+
+readOnly B8, C1
+dto * with mapstruct except C1
+service * with serviceClass except C1
+search A12 with elasticsearch
+
+@dto(mapstruct)
+@search(elasticsearch)
+@service(serviceClass)
+entity A13
+
+@readOnly
+@dto(mapstruct)
+@service(serviceClass)
+entity B9
+
+@readOnly
+entity C2
+
+// no service for A
+service B9 with serviceClass
+service C1 with serviceImpl
+
+microservice * with mysuperjhipsterapp except C1
+microservice C1 with myotherjhipsterapp
+search * with elasticsearch except C1
+
+@customAnnotation(customValue)
+entity A14
+
