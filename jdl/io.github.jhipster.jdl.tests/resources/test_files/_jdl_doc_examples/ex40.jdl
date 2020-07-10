@@ -1,0 +1,11 @@
+entity A
+entity B
+entity C
+entity D
+
+relationship OneToOne {
+  A to B,
+  B to C,
+  C to D,
+  D to A
+}

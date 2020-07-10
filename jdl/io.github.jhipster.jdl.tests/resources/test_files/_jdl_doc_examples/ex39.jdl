@@ -1,0 +1,12 @@
+// no-linting
+enum Country1 {
+  BELGIUM (Belgium),
+  FRANCE (France),
+  ITALY (Italy)
+}
+
+/** This comment will be taken into account */
+enum Country2 {
+  // But not this one!
+  FRANCE
+}
