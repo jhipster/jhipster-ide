@@ -42,6 +42,7 @@ import static java.lang.System.*
 import static org.apache.commons.lang3.StringUtils.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import io.github.jhipster.jdl.util.JdlModelUtil
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -49,6 +50,7 @@ import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 class JDLLint extends AbstractDeclarativeValidator {
 
 	@Inject JDLGrammarAccess ga
+	@Inject extension JdlModelUtil
 
 	override register(EValidatorRegistrar registrar) {
 	}
@@ -179,16 +181,16 @@ class JDLLint extends AbstractDeclarativeValidator {
 		}
 	}
 
-	def private boolean isLintDisabled(EObject eObj) {
-		val model = getContainerOfType(eObj, JdlDomainModel)
-		val node = findActualNodeFor(model)
-		if (node === null) return false
-		val lines = node.text.split(lineSeparator)
-		val result = #['//lint=false', '//no-linting'].exists[
-			lines.head.replaceAll('\\s', '') == it
-		]
-		return result
-	}
+//	def private boolean isLintDisabled(EObject eObj) {
+//		val model = getContainerOfType(eObj, JdlDomainModel)
+//		val node = findActualNodeFor(model)
+//		if (node === null) return false
+//		val lines = node.text.split(lineSeparator)
+//		val result = #['//lint=false', '//no-linting'].exists[
+//			lines.head.replaceAll('\\s', '') == it
+//		]
+//		return result
+//	}
 
 	def private boolean containsComma(EObject eObj) {
 		val comma = ga.jdlEntityFieldDefinitionAccess.commaKeyword_1_0.value

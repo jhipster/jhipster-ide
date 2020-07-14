@@ -171,7 +171,11 @@ class JDLFileTest {
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Wrong regexp pattern!', ERROR),
 		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '<EOF>' expecting '}'", ERROR),
 		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR),
-		"issue_347_warn.jdl" -> new JdlIssue('Useless commas can be removed', WARNING)
+		"issue_347_warn.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
+		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
+		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR),
+		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
+		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR)
 	]
 
 	new(File jdlFile) {
@@ -215,7 +219,7 @@ class JDLFileTest {
 			Files.isDirectory(it)
 		].map [
 			it.toFile.listFiles([ dir, name |
-				name.endsWith('.jdl') || name.endsWith('.jh')
+				(name.endsWith('.jdl') || name.endsWith('.jh'))
 			])
 		].forEach[result.addAll(it)]
 		return result

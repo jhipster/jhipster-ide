@@ -39,6 +39,9 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.resource.XtextResource
 
+import static java.lang.System.*
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+
 import static extension org.eclipse.emf.ecore.util.EcoreUtil.*
 import static extension org.eclipse.xtext.EcoreUtil2.*
 
@@ -189,5 +192,25 @@ class JdlModelUtil {
 		} catch (Exception exception) {
 			null
 		}
+	}
+	
+	def boolean isSkipUserManagement(EObject it) {
+		return hasOptionComment('//--skip-user-management', '//skip-user-management')
+	}
+	
+	def boolean isLintDisabled(EObject it) {
+		return hasOptionComment('//lint=false', '//no-linting')
+	}
+
+	def boolean hasOptionComment(EObject eObj, String ...options) {
+		if (eObj === null || options.isNullOrEmpty) return false
+		val model = getContainerOfType(eObj, JdlDomainModel)
+		val node = findActualNodeFor(model)
+		if (node === null) return false
+		val lines = node.text.split(lineSeparator)
+		val result = #[options].exists[
+			contains(lines.head.replaceAll('\\s+', ''))
+		]
+		return result
 	}
 }
