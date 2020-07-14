@@ -107,6 +107,12 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 			it.getEGenericType().getETypeArguments().add(eStringTypeArg);	
 			eClass.getEStructuralFeatures().add(it);
 		});
+		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
+			it.setName("builtIn");
+			it.setEType(ecorePackage.getEBoolean());
+			it.setTransient(true);
+			eClass.getEStructuralFeatures().add(it);
+		});
 	}
 }
 
