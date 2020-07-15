@@ -45,6 +45,9 @@ import static org.eclipse.xtext.EcoreUtil2.*
  */
 abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalProvider {
 
+	public static val OPTION_PROPOSALS = #{'// skip-user-management' -> 'Skip user management',
+								  		   '// no-linting' -> 'Disable JDL linting validations'}
+
 	extension JDLLanguages = JDLLanguages.INSTANCE
 
 	def dispatch void createParameterProposal(JDLDeploymentOptions options, JdlDeploymentParameter param, AbstractElement assignment, ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {

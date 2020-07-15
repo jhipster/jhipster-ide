@@ -195,11 +195,11 @@ class JdlModelUtil {
 	}
 	
 	def boolean isSkipUserManagement(EObject it) {
-		return hasOptionComment('//--skip-user-management', '//skip-user-management')
+		return hasOptionComment('--skip-user-management', 'skip-user-management')
 	}
 	
 	def boolean isLintDisabled(EObject it) {
-		return hasOptionComment('//lint=false', '//no-linting')
+		return hasOptionComment('lint=false', 'no-linting')
 	}
 
 	def boolean hasOptionComment(EObject eObj, String ...options) {
@@ -209,7 +209,7 @@ class JdlModelUtil {
 		if (node === null) return false
 		val lines = node.text.split(lineSeparator)
 		val result = #[options].exists[
-			contains(lines.head.replaceAll('\\s+', ''))
+			exists[lines.head.replaceAll('\\s+', '').contains(it)]
 		]
 		return result
 	}
