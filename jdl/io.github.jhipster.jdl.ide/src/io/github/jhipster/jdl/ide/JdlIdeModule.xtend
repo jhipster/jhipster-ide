@@ -28,6 +28,8 @@ import org.eclipse.xtext.ide.server.commands.IExecutableCommandService
 import org.eclipse.xtext.ide.server.contentassist.ContentAssistService
 import org.eclipse.xtext.ide.server.hover.HoverService
 import io.github.jhipster.jdl.ide.hover.JDLHoverService
+import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalPriorities
+import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalPriorities
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -52,5 +54,9 @@ class JdlIdeModule extends AbstractJDLIdeModule {
     
     def Class<? extends HoverService> bindHoverService() {
 		return JDLHoverService
+	}
+
+    def Class<? extends IdeContentProposalPriorities> bindIdeContentProposalPriorities() {
+		return JdlIdeContentProposalPriorities
 	}
 }

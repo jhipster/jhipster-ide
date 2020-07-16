@@ -27,6 +27,7 @@ import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.services.JDLGrammarAccess
+import io.github.jhipster.jdl.util.JdlModelUtil
 import java.util.Collections
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.stream.Collectors
@@ -38,11 +39,9 @@ import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
-import static java.lang.System.*
 import static org.apache.commons.lang3.StringUtils.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-import io.github.jhipster.jdl.util.JdlModelUtil
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -180,17 +179,6 @@ class JDLLint extends AbstractDeclarativeValidator {
 			]
 		}
 	}
-
-//	def private boolean isLintDisabled(EObject eObj) {
-//		val model = getContainerOfType(eObj, JdlDomainModel)
-//		val node = findActualNodeFor(model)
-//		if (node === null) return false
-//		val lines = node.text.split(lineSeparator)
-//		val result = #['//lint=false', '//no-linting'].exists[
-//			lines.head.replaceAll('\\s', '') == it
-//		]
-//		return result
-//	}
 
 	def private boolean containsComma(EObject eObj) {
 		val comma = ga.jdlEntityFieldDefinitionAccess.commaKeyword_1_0.value

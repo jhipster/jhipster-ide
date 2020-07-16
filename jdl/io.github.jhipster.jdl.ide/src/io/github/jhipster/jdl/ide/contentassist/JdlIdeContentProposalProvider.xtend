@@ -28,12 +28,17 @@ import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.util.JdlModelUtil
 import jbase.config.JDLApplicationOptions
 import jbase.config.JDLDeploymentOptions
+import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.AbstractElement
 import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 
 import static org.eclipse.xtext.EcoreUtil2.*
+
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import org.eclipse.xtext.EcoreUtil2
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -59,10 +64,7 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 	override protected createProposals(AbstractElement assignment, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
 		val model = context.currentModel
-//		if (model.hasIssues) {
-//			super.createProposals(assignment, context, acceptor)
-//			return
-//		}
+		addOptions(model, context, acceptor)
 		switch (model) {
 			JdlApplicationParameter: createParameterProposal(applOptions, model, assignment, context, acceptor)
 			JdlDeploymentParameter: createParameterProposal(deplOptions, model, assignment, context, acceptor)
@@ -83,5 +85,15 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 			JdlParameterVersion: return
 			default: super.createProposals(assignment, context, acceptor)
 		}
+	}
+
+	def private void addOptions(EObject eObj, extension ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
+		val model = getContainerOfType(eObj, JdlDomainModel)
+		if (model === null || model.eResource.allContents.isNullOrEmpty  ||
+			getLineAndColumn(eObj?.node, offset).line == 1) {
+			OPTION_PROPOSALS.forEach[ prop, desc |
+				addProposal(prop, desc, context, acceptor)
+			]
+		} 	
 	}
 }

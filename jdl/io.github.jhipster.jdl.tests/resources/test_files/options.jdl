@@ -1,0 +1,17 @@
+// no-linting skip-user-management
+entity A
+entity B
+entity C
+microservice * with firstMS except B
+microservice * with secondMS except A
+microservice * with aaa except A
+
+relationship OneToOne {
+	A to B
+	B to C
+}
+
+relationship OneToOne {
+	A to B
+	B to C
+}
