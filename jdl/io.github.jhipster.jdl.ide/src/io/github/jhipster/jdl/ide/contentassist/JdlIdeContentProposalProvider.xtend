@@ -37,6 +37,8 @@ import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 import static org.eclipse.xtext.EcoreUtil2.*
 
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import org.eclipse.xtext.EcoreUtil2
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -84,14 +86,14 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 			default: super.createProposals(assignment, context, acceptor)
 		}
 	}
-	
+
 	def private void addOptions(EObject eObj, extension ContentAssistContext context, IIdeContentProposalAcceptor acceptor) {
-		getLineAndColumn(eObj?.node, offset) => [
-			if (line == 1) {
-				OPTION_PROPOSALS.forEach[ prop, desc |
-					addProposal(prop, desc, context, acceptor)
-				]
-			}
-		]
+		val model = getContainerOfType(eObj, JdlDomainModel)
+		if (model === null || model.eResource.allContents.isNullOrEmpty  ||
+			getLineAndColumn(eObj?.node, offset).line == 1) {
+			OPTION_PROPOSALS.forEach[ prop, desc |
+				addProposal(prop, desc, context, acceptor)
+			]
+		} 	
 	}
 }

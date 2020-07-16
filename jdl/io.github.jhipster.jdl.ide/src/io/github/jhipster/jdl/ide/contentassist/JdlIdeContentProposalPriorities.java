@@ -29,7 +29,7 @@ public class JdlIdeContentProposalPriorities extends IdeContentProposalPrioritie
 	@Override
 	protected int adjustPriority(ContentAssistEntry entry, int priority) {
 		int prio = priority;
-		if (entry.getProposal().startsWith("//")) {
+		if (entry != null && entry.getProposal().startsWith("//")) {
 			prio += 100;
 		}
 		return super.adjustPriority(entry, prio);
