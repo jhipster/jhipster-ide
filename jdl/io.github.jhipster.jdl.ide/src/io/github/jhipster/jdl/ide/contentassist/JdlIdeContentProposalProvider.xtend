@@ -22,6 +22,7 @@ import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlDisplayField
+import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlParameterValue
 import io.github.jhipster.jdl.jdl.JdlParameterVersion
 import io.github.jhipster.jdl.jdl.JdlRelationRole
@@ -37,8 +38,6 @@ import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 import static org.eclipse.xtext.EcoreUtil2.*
 
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-import org.eclipse.xtext.EcoreUtil2
-import io.github.jhipster.jdl.jdl.JdlDomainModel
 
 /**
  * @author Serano Colameo - Initial contribution and API

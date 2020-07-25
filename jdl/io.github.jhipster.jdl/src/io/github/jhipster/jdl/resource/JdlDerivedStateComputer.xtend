@@ -26,8 +26,6 @@ import io.github.jhipster.jdl.jdl.JdlPackage
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.DerivedStateAwareResource
 import org.eclipse.xtext.resource.IDerivedStateComputer
-import com.google.inject.Inject
-import io.github.jhipster.jdl.util.JdlModelUtil
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -50,7 +48,6 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 		]
 	}
 	static val factory = JdlPackage.eINSTANCE.jdlFactory
-	@Inject extension JdlModelUtil
 
 	override discardDerivedState(DerivedStateAwareResource resource) {
 		// nothing to do here
@@ -60,7 +57,7 @@ class JdlDerivedStateComputer implements IDerivedStateComputer {
 		if (preLinkingPhase || resource === null || !resource.isLoaded) return;
 		if (!resource.builtInTypesAlreadyDefined) {
 			val model = resource.model
-			if (model !== null && !model.isSkipUserManagement) {
+			if (model !== null) {
 				model.fullFileName = resource.URI.toFileString
 				model.name = resource.modelName
 				BUILT_IN_ENTITIES.forEach[name, fields|
