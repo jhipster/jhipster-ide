@@ -24,7 +24,8 @@ Go to extension marketplace, search for <b>jhipster</b> and install.
 
 ## Atom installation
 
-Search for <b>jhipster</b> in the atom packages and install/reload atom or use the apm CLI tool to install.
+This extension is deprecated and will not be maintained anymore!
+Please use VisualStudio Code with the JHipster IDE extension instead.
 
 [azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
 [azure-devops-url-main]: https://dev.azure.com/jhipster-ide/jhipster-ide/_build
