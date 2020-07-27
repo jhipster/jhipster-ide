@@ -18,13 +18,16 @@
  */
 package io.github.jhipster.jdl.ui.outline
 
+import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
 import io.github.jhipster.jdl.jdl.JdlDeploymentParameter
 import io.github.jhipster.jdl.jdl.JdlDomainModel
+import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntityField
 import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlRelation
+import io.github.jhipster.jdl.util.JdlModelUtil
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
@@ -35,13 +38,16 @@ import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
  */
 class JDLOutlineTreeProvider extends DefaultOutlineTreeProvider {
 
+	@Inject extension JdlModelUtil util
+
 	override protected _createChildren(DocumentRootNode parentNode, EObject modelElement) {
-		// skip root node
 		if (modelElement instanceof JdlDomainModel) {
-			for (feature : modelElement.features) {
-				createNode(parentNode, feature)
-			}
-		}
+			modelElement.features.filter[
+				!(it instanceof JdlEntity && (it as JdlEntity).isBuiltIn && isSkipUserManagementEnabled)
+			].forEach[ 
+				createNode(parentNode, it)
+			]
+		} 
 	}
 	
 	override protected void createNode(IOutlineNode parentNode, EObject modelElement) {

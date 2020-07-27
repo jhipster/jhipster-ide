@@ -34,6 +34,12 @@ class ContentAssistTest extends AbstractContentAssistTest {
 
 	val cursor = '''<|>'''
 
+	private def void testContentAssistant(CharSequence text, List<String> expectedProposals) {
+		val cursorPosition = text.toString.indexOf(cursor)
+		val content = text.toString.replace(cursor, '')		
+		newBuilder.append(content).assertTextAtCursorPosition(cursorPosition, expectedProposals)
+	}
+
 	@Test def void testTestFrameworksWithoutBrackets() {
 		'''
 			application {
@@ -110,9 +116,27 @@ class ContentAssistTest extends AbstractContentAssistTest {
 		}''')
 	}
 
-	private def void testContentAssistant(CharSequence text, List<String> expectedProposals) {
-		val cursorPosition = text.toString.indexOf(cursor)
-		val content = text.toString.replace(cursor, '')		
-		newBuilder.append(content).assertTextAtCursorPosition(cursorPosition, expectedProposals)
+	@Test def void testWithSkipUserManagement() {
+		''' // skip-user-management
+            entity A {
+              name String
+            }
+                        
+            relationship ManyToMany {
+                A to U«cursor»
+            }
+        '''.testContentAssistant(#[',', '@', '{', '}'])
+	}
+
+	@Test def void testWithoutSkipUserManagement() {
+		''' 
+            entity A {
+              name String
+            }
+                        
+            relationship ManyToMany {
+                A to U«cursor»
+            }
+        '''.testContentAssistant(#[',', 'User', '@', '{', '}'])
 	}
 }
