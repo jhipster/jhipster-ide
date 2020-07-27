@@ -97,8 +97,8 @@ class JDLLint extends AbstractDeclarativeValidator {
 		rels.forEach [ r, i |
 			if (!set.add(r.cardinality))
 				warning(
-					String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality),
-					JDL_RELATIONSHIPS__RELATIONSHIPS, i
+					String.format(FOUND_GROUPABLE_RELATIONSHIP_MSG, r.cardinality), 
+					r, JDL_RELATIONSHIPS__CARDINALITY
 				)
 		]
 	}

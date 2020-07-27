@@ -179,9 +179,6 @@ class JDLRendererTest {
 				BloodPressure  "user(login) 0..* " o-- "0..1 "  User
 				Weight  "user(login) 0..* " o-- "0..1 "  User
 				Points  "user(login) 0..* " o-- "0..1 "  User
-				class Authority  {
-					String name
-				}
 				class User  {
 					String firstName
 					String lastName

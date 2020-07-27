@@ -76,4 +76,36 @@ class OutlineTest extends AbstractOutlineTest {
 			'''
 		)
 	}
+
+	@Test def void testOutlineWithSkipUserManagement() {
+		''' // skip-user-management
+			entity Address {
+			  street String required,
+			  streetNr Integer required
+			}
+			
+			entity Person {
+			  firstName String required,
+			  lastName String required
+			}
+
+			relationship OneToMany {
+			  Address to Person
+			}
+			
+			dto * with mapstruct except A
+		'''.assertAllLabels(
+			'''
+				Address
+				  street
+				  streetNr
+				Person
+				  firstName
+				  lastName
+				OneToMany
+				  Address - Person
+				Option: DTO
+			'''
+		)
+	}
 }

@@ -3,13 +3,16 @@
  */
 package ch.itemis.xdocker.ui
 
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.ui.plugin.AbstractUIPlugin
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
-@FinalFieldsConstructor
 class XdockerUiModule extends AbstractXdockerUiModule {
+	
+	new(AbstractUIPlugin plugin) {
+		super(plugin)
+	}
 	
 //    public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
 //	return XdockerHoverProvider.class;

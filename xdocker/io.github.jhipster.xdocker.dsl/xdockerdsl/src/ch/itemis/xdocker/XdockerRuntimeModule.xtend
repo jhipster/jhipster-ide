@@ -10,6 +10,7 @@ import ch.itemis.xdocker.converter.XdockerTerminalConverters
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class XdockerRuntimeModule extends AbstractXdockerRuntimeModule {
+	
 	override bindIValueConverterService() {
 		XdockerTerminalConverters
 	}

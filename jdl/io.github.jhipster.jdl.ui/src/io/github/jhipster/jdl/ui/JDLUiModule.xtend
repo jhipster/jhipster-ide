@@ -20,26 +20,29 @@ package io.github.jhipster.jdl.ui
 
 import io.github.jhipster.jdl.ide.contentassist.JdlIdeContentProposalProvider
 import io.github.jhipster.jdl.ui.editor.syntaxcoloring.JDLHighlightingConfiguration
+import io.github.jhipster.jdl.ui.hover.JDLEObjectDocumentationProvider
 import io.github.jhipster.jdl.ui.hover.JDLHoverProvider
 import io.github.jhipster.jdl.ui.wizard.template.JDLTemplateProjectCreator
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.ui.plugin.AbstractUIPlugin
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider
 import org.eclipse.xtext.ui.editor.contentassist.UiToIdeContentProposalProvider
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
 import org.eclipse.xtext.ui.wizard.IProjectCreator
-import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
-import io.github.jhipster.jdl.ui.hover.JDLEObjectDocumentationProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  * 
  * @author Serano Colameo - Initial contribution and API
  */
-@FinalFieldsConstructor
 class JDLUiModule extends AbstractJDLUiModule {
 
+	new(AbstractUIPlugin plugin) {
+		super(plugin)
+	}
+	
 	def Class<? extends IdeContentProposalProvider> bindIdeContentProposalProvider() {
 		return JdlIdeContentProposalProvider
 	}

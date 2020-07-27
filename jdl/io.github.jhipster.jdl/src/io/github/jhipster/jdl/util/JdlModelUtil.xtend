@@ -19,6 +19,7 @@
 package io.github.jhipster.jdl.util
 
 import com.google.inject.Inject
+import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlComplexAnnotation
 import io.github.jhipster.jdl.jdl.JdlDomainModel
 import io.github.jhipster.jdl.jdl.JdlEntity
@@ -30,11 +31,13 @@ import io.github.jhipster.jdl.jdl.JdlOptionSetting
 import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationRole
 import io.github.jhipster.jdl.jdl.JdlRelationship
+import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlSimpleAnnotation
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
 import java.util.List
 import java.util.Map
 import java.util.Set
+import jbase.jbase.JDLApplicationParameterName
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.resource.XtextResource
@@ -70,6 +73,17 @@ class JdlModelUtil {
 		val relship = relationRole.eContainer.getContainerOfType(JdlRelationship)
 		val opposite = if(relship.source === relation) relship.target else relship.source
 		return opposite
+	}
+	
+	def boolean hasRelation(JdlEntity entity) {
+		if (entity === null) return false
+		val model = entity.getContainerOfType(JdlDomainModel)
+		if (model === null || model.features.isNullOrEmpty) return false
+		return model.features.filter(JdlRelationships).map[
+			relationships
+		].flatten.map[
+			#[source.entity, target.entity]
+		].flatten.toList.exists[it == entity]
 	}
 
 	def Map<JdlEntity, Set<JdlOption>> toEntiyOptionMap(JdlDomainModel jdl) {
@@ -193,11 +207,23 @@ class JdlModelUtil {
 			null
 		}
 	}
-	
-	def boolean isSkipUserManagement(EObject it) {
+
+	def boolean hasSkipUserManagementEnabled(JdlApplication it) {
+		val isConfigured = it !== null && config !== null && 
+			!config.paramters.isNullOrEmpty ? 
+				config.paramters.exists[
+					paramName !== null && paramValue !== null && 
+					!paramValue.identifiers.isNullOrEmpty && 
+					paramName == JDLApplicationParameterName.SKIP_USER_MANAGEMENT &&
+					Boolean.valueOf(paramValue.identifiers.head)
+				]
+		return isConfigured || hasOptionComment('--skip-user-management', 'skip-user-management')
+	}
+
+	def boolean isSkipUserManagementEnabled(EObject it) {
 		return hasOptionComment('--skip-user-management', 'skip-user-management')
 	}
-	
+
 	def boolean isLintDisabled(EObject it) {
 		return hasOptionComment('lint=false', 'no-linting')
 	}

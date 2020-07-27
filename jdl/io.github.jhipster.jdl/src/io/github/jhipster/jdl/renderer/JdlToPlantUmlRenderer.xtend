@@ -152,7 +152,8 @@ class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
 	}
 	
  	def dispatch protected renderJdlObject(JdlEntity entity) '''
- 		«val fields = if (entity.fieldDefinition !== null) entity.fieldDefinition.fields else #[]»
+		«if (entity.isBuiltIn && !entity.hasRelation) return ''»
+ 		«val fields = entity.fieldDefinition !== null ? entity.fieldDefinition.fields : #[]»
 		class «entity.name» «IF entity.table.nullOrEmpty == false»<<Table {«entity.table»}>>«ENDIF»«entity.toOptionStereotype(entiyOptionMap)» {
 			«fields.map[renderJdlObject].join»
 		}
