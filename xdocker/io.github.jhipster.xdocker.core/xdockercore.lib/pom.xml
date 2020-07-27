@@ -23,7 +23,7 @@
 		<commons-codec.version>1.8</commons-codec.version>
 		<commons-io.version>2.3</commons-io.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<commons-beanutils.version>1.9.2</commons-beanutils.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<bouncycastle.version>1.51</bouncycastle.version>
 		<unix-socket-factory.version>2016-04-06T22-21-19</unix-socket-factory.version>
 		<guava.version>18.0</guava.version>
