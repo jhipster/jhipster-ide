@@ -82,8 +82,8 @@ class JdlModelUtil {
 		return model.features.filter(JdlRelationships).map[
 			relationships
 		].flatten.map[
-			#[source.entity, target.entity]
-		].flatten.toList.exists[it == entity]
+			#[source?.entity, target?.entity]
+		].flatten.filter[it !== null].toList.exists[it == entity]
 	}
 
 	def Map<JdlEntity, Set<JdlOption>> toEntiyOptionMap(JdlDomainModel jdl) {

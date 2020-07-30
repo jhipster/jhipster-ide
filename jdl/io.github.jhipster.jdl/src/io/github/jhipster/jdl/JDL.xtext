@@ -70,6 +70,15 @@ JdlApplicationEntitiesSelection:
 JdlApplicationParameter:
 	paramName=JDLApplicationParameterName paramValue=JdlParameterValue;
 
+JdlParameterValue:
+	{JdlParameterValue} 
+	('[' listElements+=JdlParameterLiteral? (',' listElements+=JdlParameterLiteral)* ']')
+	| (identifiers+=JdlParameterLiteral ('.' identifiers+=JdlParameterLiteral)*)
+	| stringValue=STRING | numberValue=INT | version=JdlParameterVersion;
+
+JdlParameterVersion:
+	versionTag=VERSION_TAG; 
+
 /* =========================================================================
  * DEPLOYMENT
  * ========================================================================= */ 
@@ -87,7 +96,7 @@ JdlDeploymentParameter :
  * ========================================================================= */
 
 JdlConstant:
-	name=ID '=' value=SInt;
+	name=ValidID '=' value=SInt;
 
 JdlNumericValue:
 	constant=[JdlConstant] | value=SInt;
@@ -98,7 +107,7 @@ JdlNumericValue:
 
 JdlEntity:
 	annotations+=JdlAnnotation*
-	'entity' name=ID ('(' table=ID ')')? ('{'
+	'entity' name=ValidID ('(' table=ValidID ')')? ('{'
 		fieldDefinition=JdlEntityFieldDefinition?
 	'}')?;
 	
@@ -106,7 +115,7 @@ JdlEntityFieldDefinition:
 	fields+=JdlEntityField (','? fields+=JdlEntityField)*;
 
 JdlEntityField:
-	(annotations+=JdlCustomAnnotation)* name=ID type=JdlFieldType;
+	(annotations+=JdlCustomAnnotation)* name=ValidID type=JdlFieldType;
 
 JdlFieldType:
 	  JdlEnumFieldType 
@@ -223,10 +232,10 @@ JdlRelation:
 	(annotations+=JdlCustomAnnotation)* entity=[JdlEntity] role=JdlRelationRole?;
 
 JdlRelationRole:
-	'{' name=ID ((required?=JdlRequiredValidator)? & (displayField=JdlDisplayField)?) '}';
+	'{' name=ValidID ((required?=JdlRequiredValidator)? & (displayField=JdlDisplayField)?) '}';
 
 JdlDisplayField:
-    '(' name=ID ')';
+    '(' name=ValidID ')';
 
 enum JdlRelationOption:
     jpaDerivedIdentifier;
@@ -239,15 +248,15 @@ enum JdlCardinality:
  * ========================================================================= */
 
 JdlEnum:
-	'enum' name=ID '{'
+	'enum' name=ValidID '{'
 		values+=JdlEnumValue (','? values+=JdlEnumValue)*
 	'}';
 
 JdlEnumValue:
-	value=ID ('(' customValue=JdlEnumCustomValue ')')?;
+	value=ValidID ('(' customValue=JdlEnumCustomValue ')')?;
 
 JdlEnumCustomValue:
-	INT|ID|STRING;
+	INT|ValidID|STRING;
 
 /* =========================================================================
  * ANNOTATION 
@@ -285,13 +294,13 @@ JdlServiceAnnotation returns JdlComplexAnnotation:
 	service?='service' '(' serviceType=JdlServiceType ')';
 
 JdlMicroserviceAnnotation returns JdlComplexAnnotation:
-	microservice?='microservice' '(' name=ID ')';
+	microservice?='microservice' '(' name=ValidID ')';
 
 JdlSearchAnnotation returns JdlComplexAnnotation:
 	search?='search' '(' searchType=JdlSearchType ')';
 
 JdlAngularSuffixAnnotation returns JdlComplexAnnotation:
-	angularSuffix?='angularSuffix' '(' name=ID ')';
+	angularSuffix?='angularSuffix' '(' name=ValidID ')';
 
 JdlClientRootFolderAnnotation returns JdlComplexAnnotation:
 	clientRootFolder?='clientRootFolder';
@@ -389,7 +398,7 @@ enum JdlServiceType:
  * ========================================================================= */
 
 JdlMicroserviceOption returns JdlOptionSetting:
-	microserviceOption?='microservice' includes=JdlWithEntitySelectionAndValue appname=ID;
+	microserviceOption?='microservice' includes=JdlWithEntitySelectionAndValue appname=ValidID;
 
 /* =========================================================================
  * SEARCH OPTION 
@@ -418,14 +427,14 @@ JdlSkipServerOption returns JdlOptionSetting:
  * ANGULAR SUFFIX OPTION 
  * ========================================================================= */
 JdlAngularSuffixOption returns JdlOptionSetting:
-	angularSuffixOption?='angularSuffix' includes=JdlWithEntitySelectionAndValue id=ID;
+	angularSuffixOption?='angularSuffix' includes=JdlWithEntitySelectionAndValue id=ValidID;
 
 /* =========================================================================
  * CLIENT ROOT FOLDER OPTION 
  * ========================================================================= */
 
 JdlClientRootFolderOption returns JdlOptionSetting:
-	clientRootFolder?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ID;
+	clientRootFolder?='clientRootFolder' includes=JdlWithEntitySelectionAndValue id=ValidID;
 
 /* =========================================================================
  * Filter OPTION 
@@ -456,30 +465,29 @@ JdlEmbeddedOption returns JdlOptionSetting:
 	embedded?='embedded' includes=JdlForEntityInclusion;
 
 /* =========================================================================
- * PARAMETER VALUE
+ * DATA RULES
  * ========================================================================= */ 
 
-JdlParameterValue:
-	{JdlParameterValue} 
-	('[' listElements+=JdlParameterLiteral? (',' listElements+=JdlParameterLiteral)* ']')
-	| (identifiers+=JdlParameterLiteral ('.' identifiers+=JdlParameterLiteral)*)
-	| stringValue=STRING | numberValue=INT | version=JdlParameterVersion;
-
 JdlParameterLiteral:
-	ID | NUMERIC_PREFIXED_ID | JdlReserverdWords;
-
-JdlParameterVersion:
-	versionTag=VERSION_TAG; 
-
-JdlReserverdWords:
-	'microservice' | 'elasticsearch' | 'skipClient' | 'skipServer';
-
-/* =========================================================================
- * TERMINAL DEFINITIONS
- * ========================================================================= */
+	ValidID | NUMERIC_PREFIXED_ID;
 
 SInt: UInt | NEG_INT;
 UInt: INT;
+
+ValidID:
+	ID | JdlReserverdWords;
+
+JdlReserverdWords:
+	'all' | 'application' | 'config' | 'deployment' | 'dto' | 
+	'elasticsearch' | 'embedded' | 'entities' | 'entity' | 'enum' | 
+	'except' | 'filter' | 'max' | 'maxbytes' | 'maxlength' | 'microservice' | 
+	'min' | 'minbytes' | 'minlength' | 'pager' | 'paginate' | 
+	'pagination' | 'pattern' | 'readOnly' | 'relationship' | 'search' | 
+	'service' | 'skipClient' | 'skipServer' | 'to' | 'with';
+
+/* =========================================================================
+ * TERMINAL RULES
+ * ========================================================================= */
 
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal NEG_INT returns ecore::EInt: '-'? INT;    

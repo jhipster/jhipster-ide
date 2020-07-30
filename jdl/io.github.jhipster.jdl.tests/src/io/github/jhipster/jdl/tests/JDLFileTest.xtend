@@ -130,6 +130,7 @@ class JDLFileTest {
 		"invalid_field_type.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEnum 'NullPointerException'.", ERROR),
 		"invalid_field_type.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"invalid_option.jdl" -> new JdlIssue("missing 'mapstruct' at 'wrong'", ERROR),
+		"issue_347_warn.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"jdl2.jdl" -> new JdlIssue('Unused enum definition in "jdl2.jdl"', INFO),
 		"microservice-ecommerce-store-4-apps.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),
 		"microservice-ecommerce-store-k8s.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),
@@ -139,12 +140,16 @@ class JDLFileTest {
 		"multiple_jdl_comments.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"no_comma_support.jdl" -> new JdlIssue('Entity declaration can be shorten to "entity B"', INFO),
 		"no_comma_support.jdl" -> new JdlIssue('Entity declaration can be shorten to "entity E"', INFO),
-		"non_existent_validation.jdl" -> new JdlIssue("mismatched input 'min' expecting '}'", ERROR),
+		"non_existent_validation.jdl" -> new JdlIssue("no viable alternative at input '('", ERROR),
 		"online-shop.jh" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"pattern_validation_with_quote.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"realistic_sample.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),
 		"simple-online-shop.jh" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"simple.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
+		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
+		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR),
+		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
+		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR),
 		"table.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"two_microservices.jdl" -> new JdlIssue('Definition has no effect. Remove superfluous table name or define a different name.', WARNING),
 		"unexistent_entities_for_relationship.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'B'.", ERROR),
@@ -170,12 +175,7 @@ class JDLFileTest {
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Wrong regexp pattern!', ERROR),
 		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '<EOF>' expecting '}'", ERROR),
-		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR),
-		"issue_347_warn.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
-		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
-		"skip-user-management-option.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR),
-		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'Authority'.", ERROR),
-		"skip-user-management.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'User'.", ERROR)
+		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR)
 	]
 
 	new(File jdlFile) {
