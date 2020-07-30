@@ -18,19 +18,22 @@
  */
 package io.github.jhipster.jdl.ide.editor.syntaxcoloring
 
+import io.github.jhipster.jdl.jdl.JdlAnnotation
+import io.github.jhipster.jdl.jdl.JdlApplicationParameter
+import io.github.jhipster.jdl.jdl.JdlConstant
 import io.github.jhipster.jdl.jdl.JdlEntity
-import io.github.jhipster.jdl.jdl.JdlEntityField
-import io.github.jhipster.jdl.jdl.JdlEnumValue
+import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlPackage
 import io.github.jhipster.jdl.jdl.JdlRelation
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.ide.editor.syntaxcoloring.DefaultSemanticHighlightingCalculator
 import org.eclipse.xtext.ide.editor.syntaxcoloring.IHighlightedPositionAcceptor
 import org.eclipse.xtext.util.CancelIndicator
 
 import static io.github.jhipster.jdl.ide.editor.syntaxcoloring.JDLHighlightingStyles.*
-import io.github.jhipster.jdl.jdl.JdlEnum
-import io.github.jhipster.jdl.jdl.JdlCustomAnnotation
+import static org.eclipse.xtext.ide.editor.syntaxcoloring.HighlightingStyles.*
+import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -41,18 +44,62 @@ class KeywordsSemanticHighlightingCalculator extends DefaultSemanticHighlighting
 
 	override protected boolean highlightElement(EObject eObj, IHighlightedPositionAcceptor it,
 		CancelIndicator cancelIndicator) {
+		val acc = it
 		switch (eObj) {
-			JdlEntity: highlightFeature(eObj, jdlEntity_Name, NAME_ID)
-			JdlEntityField: highlightFeature(eObj, jdlEntityField_Type, TYPE_ID)
-			JdlRelation: highlightFeature(eObj, jdlRelation_Entity, TYPE_ID)
-			JdlEnum: highlightFeature(eObj, jdlEntity_Name, NAME_ID)
-			JdlEnumValue: highlightFeature(eObj, jdlEnumValue_Value, ENUM_VALUE_ID)
-			JdlCustomAnnotation: {
+			JdlConstant: {
+				#[jdlConstant_Name -> NAME_ID, jdlConstant_Value -> ENUM_VALUE_ID].forEach[
+					acc.highlightFeature(eObj, key, value)
+				]
+				return true
+			}
+			JdlApplicationParameter: {
+				highlightFeature(eObj, jdlApplicationParameter_ParamName, NAME_ID)
+				#[jdlParameterValue_Identifiers, jdlParameterValue_ListElements].forEach[
+					highlightListFeature(acc, eObj.paramValue, it, ENUM_VALUE_ID)
+				]
+				#[jdlParameterValue_StringValue, jdlParameterValue_Version, jdlParameterValue_NumberValue].forEach[
+					highlightFeature(acc, eObj.paramValue, it, STRING_ID)
+				]
+				return true
+			}
+			JdlEntity: {
+				#[jdlCustomAnnotation_Name, jdlEntity_Annotations, jdlEntity_Name].forEach[ feature |
+					highlightFeature(eObj, feature, NAME_ID)
+				]
+				eObj.fieldDefinition?.fields?.forEach[ f |
+					highlightFeature(f, jdlEntityField_Type, TYPE_ID)
+					#[jdlEntityField_Name, jdlCustomAnnotation_Name, jdlEntityField_Annotations].forEach[ feature |
+						highlightFeature(f, feature, NAME_ID)
+					]
+				]
+				return true
+			}
+			JdlRelation: {
+				highlightFeature(eObj, jdlRelation_Entity, TYPE_ID)
+				return true
+			}
+			JdlEnum: {
+				highlightFeature(eObj, jdlEntity_Name, NAME_ID)
+				eObj.values.forEach[
+					highlightFeature(acc, it, jdlEnumValue_Value, ENUM_VALUE_ID)
+				]
+				return true
+			}
+			JdlAnnotation: {
 				#[jdlCustomAnnotation_Name, jdlCustomAnnotation_Value].forEach[ feature |
 					highlightFeature(eObj, feature, KEYWORD_ID)
 				]
+				return true
 			}
+			default: return false
 		}
-		return false
+	}
+	
+	def protected void highlightListFeature(
+		IHighlightedPositionAcceptor acceptor, EObject eObj, EStructuralFeature feature, String... styleIds
+	) {
+		findNodesForFeature(eObj, feature)?.forEach[
+			highlightNode(acceptor, it, styleIds)
+		]
 	}
 }
