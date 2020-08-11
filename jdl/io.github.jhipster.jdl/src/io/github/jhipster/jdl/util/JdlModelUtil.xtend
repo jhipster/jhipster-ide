@@ -39,6 +39,7 @@ import java.util.Map
 import java.util.Set
 import jbase.jbase.JDLApplicationParameterName
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.resource.XtextResource
 
@@ -73,6 +74,15 @@ class JdlModelUtil {
 		val relship = relationRole.eContainer.getContainerOfType(JdlRelationship)
 		val opposite = if(relship.source === relation) relship.target else relship.source
 		return opposite
+	}
+
+	def static boolean isJdlResource(JdlDomainModel it) {
+		return it?.eResource.isJdlResource
+	}
+	
+	def static boolean isJdlResource(Resource resource) {
+		val ext = resource?.URI?.fileExtension
+		return !ext.isNullOrEmpty && #['jdl', 'jh'].exists[ext == it]
 	}
 	
 	def boolean hasRelation(JdlEntity entity) {

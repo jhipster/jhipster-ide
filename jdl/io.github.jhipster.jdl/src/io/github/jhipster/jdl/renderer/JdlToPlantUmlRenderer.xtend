@@ -19,7 +19,6 @@
 package io.github.jhipster.jdl.renderer
 
 import com.google.inject.ImplementedBy
-import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlBlobFieldType
 import io.github.jhipster.jdl.jdl.JdlBooleanFieldType
@@ -37,12 +36,11 @@ import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
 import io.github.jhipster.jdl.jdl.JdlStringFieldType
 import io.github.jhipster.jdl.jdl.JdlWildcardPredicate
-import io.github.jhipster.jdl.util.JdlModelUtil
-import java.util.Map
-import java.util.Set
 import org.eclipse.emf.ecore.EObject
 
 import static io.github.jhipster.jdl.util.PlantUmlUtil.*
+
+import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -57,21 +55,12 @@ interface IJdlToPlantUmlRenderer extends IJdlModelViewerRenderer {
 	''']
 }
 
-class JdlToPlantUmlRenderer implements IJdlToPlantUmlRenderer {
-
-	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
-	@Inject extension JdlModelUtil util
+class JdlToPlantUmlRenderer extends AbstractJdlRenderer implements IJdlToPlantUmlRenderer {
 
 	override render(JdlDomainModel jdl) {
-		return jdl.init.toPlantUml
+		return jdl.isJdlResource ? jdl.init.toPlantUml
 	}
 
-	def private JdlDomainModel init(JdlDomainModel jdl) {
-		util = JdlModelUtil.getInstance(jdl)
-		entiyOptionMap = toEntiyOptionMap(jdl)
-		return jdl
-	}
-	
 	def private String toPlantUml(JdlDomainModel it) '''
  		«toPlantUml.apply('''
 			«pragmas»

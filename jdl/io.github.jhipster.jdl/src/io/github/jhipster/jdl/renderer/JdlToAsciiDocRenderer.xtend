@@ -17,7 +17,6 @@
  */
 package io.github.jhipster.jdl.renderer
 
-import com.google.inject.Inject
 import io.github.jhipster.jdl.jdl.JdlApplication
 import io.github.jhipster.jdl.jdl.JdlApplicationConfig
 import io.github.jhipster.jdl.jdl.JdlApplicationParameter
@@ -27,36 +26,26 @@ import io.github.jhipster.jdl.jdl.JdlEntityField
 import io.github.jhipster.jdl.jdl.JdlEntityFieldDefinition
 import io.github.jhipster.jdl.jdl.JdlEnum
 import io.github.jhipster.jdl.jdl.JdlEnumValue
-import io.github.jhipster.jdl.jdl.JdlOption
 import io.github.jhipster.jdl.jdl.JdlRelationship
 import io.github.jhipster.jdl.jdl.JdlRelationships
-import io.github.jhipster.jdl.util.JdlModelUtil
 import java.nio.file.Paths
-import java.util.Map
-import java.util.Set
 
+import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
 import static extension org.apache.commons.lang3.StringUtils.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-class JdlToAsciiDocRenderer implements IJdlModelViewerRenderer {
+class JdlToAsciiDocRenderer extends AbstractJdlRenderer implements IJdlModelViewerRenderer {
 	
-	@Inject extension JdlModelUtil util
-
-	var Map<JdlEntity, Set<JdlOption>> entiyOptionMap
-
 	val linebreak = "'''"
 	val open = '«'
 	val close = '»'
 	val tableheader = '[options="header, autowidth"]'
 	
 	override render(JdlDomainModel jdl) {
-		if (jdl === null) return ''
-		util = JdlModelUtil.getInstance(jdl)
-		entiyOptionMap = jdl.toEntiyOptionMap
-		return jdl.toAscidoc
+		return jdl.isJdlResource ? jdl.init.toAscidoc
 	}
 	
 	def private String toAscidoc(JdlDomainModel model) {

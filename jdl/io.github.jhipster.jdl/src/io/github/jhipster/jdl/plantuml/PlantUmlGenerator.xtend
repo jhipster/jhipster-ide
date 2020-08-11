@@ -30,6 +30,7 @@ import static io.github.jhipster.jdl.renderer.RenderType.*
 import static io.github.jhipster.jdl.util.PlantUmlUtil.*
 
 import static extension io.github.jhipster.jdl.util.EcorePlatformUtil.*
+import static extension io.github.jhipster.jdl.util.JdlModelUtil.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -42,14 +43,14 @@ class PlantUmlGenerator implements IJdlGenerator {
 	override generate(JdlDomainModel model, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		try {
 			val resource = model?.eResource
-			if (resource !== null) {
+			if (resource.isJdlResource) {
 				val isPlantUmlGenOn = Boolean.getBoolean('plantuml.gen')
 				val isPngUmlGenOn = Boolean.getBoolean('pnguml.gen')
 				model.render => [
 					if (isPlantUmlGenOn) createPlantUml(it, resource.toFile('plantuml'))			
 					if (isPngUmlGenOn) createImage(it, resource.toFile('png'))
 				]
-			} else println('Error processing model: ' + model)
+			} else LOG.error('Error processing model: ' + model)
 		} catch (Exception ex) {
 			LOG.error('''Error - could not render model «model?.name» to PlantUML!''', ex)
 		}
