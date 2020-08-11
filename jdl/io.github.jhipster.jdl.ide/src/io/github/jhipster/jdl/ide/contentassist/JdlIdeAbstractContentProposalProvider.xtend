@@ -103,7 +103,7 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 					]
 				}
 			}
-			case ListOfAnyLiterals : addProposal('''[«params.join(', ')»] // any jhipster blueprint identifier''', context, acceptor)
+			case ListOfAnyLiterals : addProposal('''[«params.join(', ')»]''', context, acceptor)
 			case LangIsoCode : if (!param.isDefined) 
 				JHipsterIsoLangauges.forEach[
 					addProposal(code, name, context, acceptor)
