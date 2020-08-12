@@ -20,7 +20,6 @@
  */
 'use strict';
 
-import fileExists from 'file-exists-promise';
 import * as vscode from 'vscode';
 import { LanguageClient } from 'vscode-languageclient';
 
@@ -32,8 +31,7 @@ export class PlantUMLRenderer {
   private webview: vscode.Webview
   private status: string;
 
-  public constructor(private ctx: vscode.ExtensionContext) {
-  }
+  public constructor(private ctx: vscode.ExtensionContext) {}
 
   public async init(langClient: LanguageClient) {
     this.langClient = langClient;
@@ -77,13 +75,12 @@ export class PlantUMLRenderer {
 
   private toPngFile(file: string): string {
     var pos = file.lastIndexOf('.jdl');
-    var str = file.substring(0, pos) + '.png';
-    return str;
+    return file.substring(0, pos) + '.png';
   }
 
   private getImageFile(): string {
     this.editor = vscode.window.activeTextEditor;
-    if (this.editor == null || this.editor.document.languageId !== "jdl") {
+    if (this.editor === null || this.editor.document.languageId !== "jdl") {
         return null;
     }
     return this.toPngFile(this.editor.document.uri.fsPath)

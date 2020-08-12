@@ -59,7 +59,7 @@ final class JDLOptionsExtension {
 				JDLApplicationParameterName: result as JDLApplicationParameterName
 				JDLDeploymentParameterName: result as JDLDeploymentParameterName
 			}
-		} catch (Exception ex) {
+		} catch (Exception ignore) {
 			null
 		}
 	}

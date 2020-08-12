@@ -38,7 +38,9 @@ class JDLHoverService extends HoverService {
 		if (eObj === null) return null
 		val param = getContainerOfType(eObj, JdlParameter)
 		switch param {
-			JdlApplicationParameter, JdlDeploymentParameter: getParamNameByReflection(param)?.describe.join
+			JdlApplicationParameter, JdlDeploymentParameter: {
+				getParamNameByReflection(param)?.describe.join('\t\n')
+			}
 			default: super.getContents(eObj)
 		}
 	}

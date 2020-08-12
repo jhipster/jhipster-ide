@@ -36,8 +36,10 @@ import com.google.inject.Guice
  */
 class RunServer {
 	
+	val static PORT = 5007
+	
 	def static void main(String[] args) throws InterruptedException, IOException {
-		println('Server is listening...')
+		println('''Server is listening on port: «PORT»''')
 		val injector = Guice.createInjector(new ServerModule)
 		val languageServer = injector.getInstance(LanguageServerImpl) 
 		val Function<MessageConsumer, MessageConsumer> wrapper = [ consumer | {
@@ -45,7 +47,7 @@ class RunServer {
 			return result 
 		}] 
 		val launcher = createSocketLauncher(languageServer, LanguageClient, 
-			new InetSocketAddress('localhost', 5007), Executors.newCachedThreadPool, wrapper
+			new InetSocketAddress('localhost', PORT), Executors.newCachedThreadPool, wrapper
 		) 
 		languageServer.connect(launcher.remoteProxy)
 		val Future<?> future = launcher.startListening
