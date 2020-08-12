@@ -25,7 +25,7 @@
         "onCommand:plantuml.preview"
     ],
     "////main": "./out/src/extension-dev",
-    "main": "./out/src/extension-jar",
+    "///main": "./out/src/extension-jar",
     "//main": "./out/src/extension",
     "contributes": {
         "languages": [
