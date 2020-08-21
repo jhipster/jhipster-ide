@@ -2,7 +2,7 @@
 <feature
       id="xdockerdsl.feature"
       label="Xdocker Feature "
-      version="2.3.1.qualifier">
+      version="2.3.1">
 
    <plugin
          id="xdockerdsl"
