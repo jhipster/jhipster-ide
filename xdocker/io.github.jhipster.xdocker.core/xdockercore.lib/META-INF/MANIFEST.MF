@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: xdockercore.lib
 Bundle-SymbolicName: xdockercore.lib
-Bundle-Version: 2.3.1.qualifier
+Bundle-Version: 2.3.2.qualifier
 Bundle-Vendor: itemis Schweiz GmbH
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ch.itemis.xdocker.lib,
  ch.itemis.xdocker.lib.config,
  ch.itemis.xdocker.lib.util,

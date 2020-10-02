@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.1.qualifier
+Bundle-Version: 2.3.2.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
@@ -99,4 +99,4 @@ Bundle-ClassPath: .,
  lib/commons-lang3-3.7.jar,
  lib/commons-io-2.6.jar
 Automatic-Module-Name: io.github.jhipster.jdl
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.ui
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.1.qualifier
+Bundle-Version: 2.3.2.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
@@ -31,7 +31,7 @@ Require-Bundle: jbase,
  org.eclipse.pde.core,
  org.eclipse.ui.forms
 Import-Package: org.apache.log4j
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.github.jhipster.jdl.ui;x-internal:=true,
  io.github.jhipster.jdl.ui.contentassist,
  io.github.jhipster.jdl.ui.editor.syntaxcoloring;x-internal:=true,

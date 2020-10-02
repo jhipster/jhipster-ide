@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.ide
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.1.qualifier
+Bundle-Version: 2.3.2.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
@@ -19,7 +19,7 @@ Require-Bundle: jbase,
  org.eclipse.lsp4j.jsonrpc.debug,
  org.eclipse.lsp4j.websocket,
  io.github.classgraph;bundle-version="4.8.35"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,
  io.github.jhipster.jdl.ide.contentassist.antlr,
