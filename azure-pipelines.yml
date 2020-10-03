@@ -18,7 +18,7 @@
 #
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'ubuntu-20.04'
 
 trigger:
 - master
@@ -41,9 +41,11 @@ steps:
     set -e
     sudo add-apt-repository ppa:openjdk-r/ppa
     sudo apt-get update
-    sudo apt-get install -y openjdk-8-jdk openjdk-8-jre
-    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-    export PATH=$JAVA_HOME/bin:$PATH
+    sudo apt-get install -y openjdk-11-jdk
+    sudo update-java-alternatives -s java-1.11.0-openjdk-amd64
+  env:
+    JAVA_HOME: $(JAVA_HOME_11_X64)
+    PATH: $(JAVA_HOME_11_X64)/bin:$(PATH)
   displayName: 'TOOLS: configuring OpenJDK'
 
 - script: |
@@ -63,5 +65,5 @@ steps:
   displayName: 'CHECK: versions'
 
 - script: |
-    ./mvnw -B -Dmaven.wagon.http.pool=false clean install
+    ./mvnw -B -Dmaven.wagon.http.pool=false clean package
   displayName: 'MAVEN: install'
