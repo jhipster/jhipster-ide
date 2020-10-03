@@ -11,7 +11,7 @@ Require-Bundle: jbase,
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib;bundle-version="2.23.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.github.jhipster.jdl.tests;x-internal=true
 Import-Package: org.hamcrest.core,

@@ -18,7 +18,7 @@
 #
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'ubuntu-20.04'
 
 trigger:
 - master
@@ -65,5 +65,5 @@ steps:
   displayName: 'CHECK: versions'
 
 - script: |
-    ./mvnw -B -Dmaven.wagon.http.pool=false clean install
+    ./mvnw -B -Dmaven.wagon.http.pool=false clean package
   displayName: 'MAVEN: install'

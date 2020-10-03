@@ -17,9 +17,9 @@ Require-Bundle: jbase,
  org.eclipse.core.runtime,
  org.eclipse.core.commands,
  org.eclipse.core.resources,
- org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib;bundle-version="2.23.0",
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib;bundle-version="2.23.0"
 Export-Package: io.github.jhipster.jdl,
  io.github.jhipster.jdl.formatting2;uses:="io.github.jhipster.jdl.jdl,org.eclipse.xtext.formatting2",
  io.github.jhipster.jdl.generator;uses:="org.eclipse.xtext.generator,org.eclipse.emf.ecore.resource,io.github.jhipster.jdl.jdl",
