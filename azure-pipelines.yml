@@ -43,8 +43,8 @@ steps:
     sudo apt-get update
     sudo apt-get install -y openjdk-11-jdk 
   env:
-    JAVA_HOME: /usr/lib/jvm/openjdk-11-jdk 
-    PATH: $(JAVA_HOME)/bin:$(PATH)
+    JAVA_HOME: $(JAVA_HOME_11_X64)
+    PATH: $(JAVA_HOME_11_X64)/bin:$(PATH)
   displayName: 'TOOLS: configuring OpenJDK'
 
 - script: |
