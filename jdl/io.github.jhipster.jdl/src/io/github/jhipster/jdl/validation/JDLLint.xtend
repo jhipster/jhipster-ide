@@ -42,6 +42,7 @@ import static io.github.jhipster.jdl.validation.IssueCodes.*
 import static org.apache.commons.lang3.StringUtils.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import org.eclipse.xtext.nodemodel.ICompositeNode
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -171,18 +172,40 @@ class JDLLint extends AbstractDeclarativeValidator {
 	}
 
 	@Check
-	def void checkUselessCommas(JdlEntityFieldDefinition it) {
+	def void checkUselessCommas(EObject it) {
 		if (isLintDisabled) return;
-		if (containsComma(it)) {
-			it.fields.forEach[ f, i |
-				warning(USELESS_COMMAS_MSG, f, JDL_ENTITY_FIELD__TYPE, i)
-			]
+		switch (it) {
+			JdlEntityFieldDefinition: {
+				if (containsComma(it)) {
+					it.fields.forEach[ f, i |
+						warning(USELESS_COMMAS_MSG, f, JDL_ENTITY_FIELD__TYPE, i)
+					]
+				}
+			} 
+			JdlApplicationConfig : {
+				if (containsComma(it)) {
+					it.paramters.forEach[ f, i |
+						warning(USELESS_COMMAS_MSG, f, JDL_APPLICATION_PARAMETER__PARAM_NAME, i)
+					]
+				}
+			}
+			JdlDeployment : {
+				if (containsComma(it)) {
+					it.paramters.forEach[ f, i |
+						warning(USELESS_COMMAS_MSG, f, JDL_DEPLOYMENT_PARAMETER__PARAM_NAME, i)
+					]
+				}
+			}
 		}
 	}
 
 	def private boolean containsComma(EObject eObj) {
+		val node = findActualNodeFor(eObj)
+		if (node === null) return false
 		val comma = ga.jdlEntityFieldDefinitionAccess.commaKeyword_1_0.value
-		return containsTerminal(eObj, comma)
+		val expression = node.removeComments
+		val lines = expression.split('\n').map[it.trim].toList
+		return lines.exists[it.endsWith(comma)]
 	}
 
 	def private boolean containsCurlyBrackets(EObject eObj) {
@@ -190,11 +213,15 @@ class JDLLint extends AbstractDeclarativeValidator {
 		val rightCurl = ga.jdlEntityAccess.rightCurlyBracketKeyword_4_2.value
 		return containsTerminal(eObj, leftCurl, rightCurl)
 	}
-
+	
 	def private boolean containsTerminal(EObject eObj, String... terminals) {
 		val node = findActualNodeFor(eObj)
 		if (node === null) return false
-		val expression = node.text.replaceAll('(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)','')
+		val expression = node.removeComments
 		return !expression.isNullOrEmpty && terminals.forall[expression.contains(it)]
+	}
+	
+	def private removeComments(ICompositeNode it) {
+		return text.replaceAll('(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/)|(?://.*)','')
 	}
 }
