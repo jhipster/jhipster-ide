@@ -33,16 +33,17 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.util.stream.Collectors
 import java.util.stream.IntStream
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.nodemodel.ICompositeNode
 import org.eclipse.xtext.validation.AbstractDeclarativeValidator
 import org.eclipse.xtext.validation.Check
 import org.eclipse.xtext.validation.EValidatorRegistrar
 
 import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static io.github.jhipster.jdl.validation.IssueCodes.*
+import static java.lang.System.lineSeparator
 import static org.apache.commons.lang3.StringUtils.*
 import static org.eclipse.xtext.EcoreUtil2.*
 import static org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-import org.eclipse.xtext.nodemodel.ICompositeNode
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -204,8 +205,8 @@ class JDLLint extends AbstractDeclarativeValidator {
 		if (node === null) return false
 		val comma = ga.jdlEntityFieldDefinitionAccess.commaKeyword_1_0.value
 		val expression = node.removeComments
-		val lines = expression.split('\n').map[it.trim].toList
-		return lines.exists[it.endsWith(comma)]
+		val lines = expression.split(lineSeparator).map[trim].toList
+		return lines.exists[startsWith(comma) || endsWith(comma)]
 	}
 
 	def private boolean containsCurlyBrackets(EObject eObj) {
