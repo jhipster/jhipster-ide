@@ -22,7 +22,6 @@ import static org.eclipse.xtext.xbase.lib.ObjectExtensions.operator_doubleArrow;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EGenericType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -34,11 +33,11 @@ import com.google.common.collect.Iterables;
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-@SuppressWarnings("restriction")
+@SuppressWarnings({ "restriction", "deprecation" })
 public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 
-	private EcoreFactory factory = EcoreFactory.eINSTANCE;
-	private EcorePackage ecorePackage = EcorePackage.eINSTANCE;
+	private final EcoreFactory factory = EcoreFactory.eINSTANCE;
+	private final EcorePackage ecorePackage = EcorePackage.eINSTANCE;
 
 	/**
 	 * Process metamodel
@@ -57,7 +56,7 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	 */
 	private void process(final EPackage pkg) {
 		for (final EClass eClass : Iterables.<EClass>filter(pkg.getEClassifiers(), EClass.class)) {
-			String elemenName = eClass.getName();
+			final var elemenName = eClass.getName();
 			if (elemenName != null) {
 				switch (elemenName) {
 					case "JdlDomainModel" : processJdlDomainModelMetaClass(eClass);
@@ -98,7 +97,7 @@ public class JdlMetaModelPostProcessor implements IXtext2EcorePostProcessor {
 	 * @param eClass
 	 */
 	private void processJdlEntityMetaClass(final EClass eClass) {
-		EGenericType eStringTypeArg = factory.createEGenericType();
+		final var eStringTypeArg = factory.createEGenericType();
 		eStringTypeArg.setEClassifier(ecorePackage.getEString()); 
 		operator_doubleArrow(factory.createEAttribute(), (EAttribute it) -> {
 			it.setName("options");

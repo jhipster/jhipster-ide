@@ -23,17 +23,16 @@ import com.google.common.collect.ImmutableSet;
 public class ANYValueConverter extends AbstractIDValueConverter {
 
     public ANYValueConverter() {
-	super();
+    	super();
     }
 
     @Override
-    protected Set<String> computeValuesToEscape(Grammar grammar) {
-	return ImmutableSet.copyOf(GrammarUtil.getAllKeywords(grammar));
+    protected Set<String> computeValuesToEscape(final Grammar grammar) {
+    	return ImmutableSet.copyOf(GrammarUtil.getAllKeywords(grammar));
     }
 
     @Override
-    protected boolean mustEscape(String value) {
-	return getValuesToEscape().contains(value);
+    protected boolean mustEscape(final String value) {
+    	return getValuesToEscape().contains(value);
     }
-
 }

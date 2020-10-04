@@ -29,8 +29,9 @@ import com.google.inject.Injector;
 /**
  * @author Serano Colameo - Initial contribution and API
  */
-@SuppressWarnings({"restriction", "unused", "deprecation"})
+@SuppressWarnings({ "deprecation", "unused", "restriction" })
 public class JdlLanguageGenerator extends XtextGenerator {
+	
 	public JdlLanguageGenerator() {
 		new XtextStandaloneSetup() {
 			@Override

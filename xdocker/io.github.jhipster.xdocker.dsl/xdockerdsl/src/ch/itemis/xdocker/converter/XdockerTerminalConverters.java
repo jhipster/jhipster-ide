@@ -21,8 +21,7 @@ import com.google.inject.Singleton;
  * @author Serano Colameo
  */
 @Singleton
-public class XdockerTerminalConverters extends
-	AbstractDeclarativeValueConverterService {
+public class XdockerTerminalConverters extends AbstractDeclarativeValueConverterService {
 
     @Inject
     private INTValueConverter intValueConverter;
@@ -32,11 +31,11 @@ public class XdockerTerminalConverters extends
 
     @ValueConverter(rule = "INT")
     public IValueConverter<Integer> INT() {
-	return intValueConverter;
+    	return intValueConverter;
     }
 
     @ValueConverter(rule = "ANY")
     public IValueConverter<String> ANY() {
-	return anyValueConverter;
+    	return anyValueConverter;
     }
 }
