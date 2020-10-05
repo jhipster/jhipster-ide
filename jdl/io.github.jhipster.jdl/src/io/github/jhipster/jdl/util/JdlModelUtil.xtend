@@ -26,7 +26,6 @@ import io.github.jhipster.jdl.jdl.JdlEntity
 import io.github.jhipster.jdl.jdl.JdlEntitySelection
 import io.github.jhipster.jdl.jdl.JdlFactory
 import io.github.jhipster.jdl.jdl.JdlOption
-import io.github.jhipster.jdl.jdl.JdlOptionSelection
 import io.github.jhipster.jdl.jdl.JdlOptionSetting
 import io.github.jhipster.jdl.jdl.JdlRelation
 import io.github.jhipster.jdl.jdl.JdlRelationRole
@@ -100,7 +99,7 @@ class JdlModelUtil {
 		val result = newHashMap
 		if (jdl === null || jdl.eContents.nullOrEmpty) return result
 		val (JdlOption)=>Iterable<JdlEntity> getEntities = [ o |
-			val predicate = if (o.setting?.includes !== null && o.setting.includes instanceof JdlOptionSelection) {
+			val predicate = if (o.setting?.includes !== null) {
 					valueOf(o.setting.includes, 'getPredicate') as JdlWildcardPredicate
 				}
 			val isSelectAll = predicate !== null && (predicate.isWildcard || predicate.isAll)
@@ -108,11 +107,10 @@ class JdlModelUtil {
 				val entitySelection = jdl.eContents.filter(JdlEntity).filter[!isExcluded(o, it)]
 				entitySelection ?: #[]
 			} else {
-				val entitySelection = if (o.setting?.includes !== null &&
-						o.setting.includes instanceof JdlOptionSelection) {
-						val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
-						selection?.entities
-					}
+				val entitySelection = if (o.setting?.includes !== null) {
+					val selection = valueOf(o.setting.includes, 'getSelection') as JdlEntitySelection
+					selection?.entities
+				}
 				entitySelection ?: #[]
 			}
 		]
@@ -219,15 +217,14 @@ class JdlModelUtil {
 	}
 
 	def boolean hasSkipUserManagementEnabled(JdlApplication it) {
-		val isConfigured = it !== null && config !== null && 
-			!config.paramters.isNullOrEmpty ? 
-				config.paramters.exists[
-					paramName !== null && paramValue !== null && 
-					!paramValue.identifiers.isNullOrEmpty && 
-					paramName == JDLApplicationParameterName.SKIP_USER_MANAGEMENT &&
-					Boolean.valueOf(paramValue.identifiers.head)
-				]
-		return isConfigured || hasOptionComment('--skip-user-management', 'skip-user-management')
+		return it !== null && (isSkipUserManagementEnabled ||
+			!config?.paramters.isNullOrEmpty && config.paramters.exists[
+				paramName !== null && paramValue !== null && 
+				!paramValue.identifiers.isNullOrEmpty && 
+				paramName == JDLApplicationParameterName.SKIP_USER_MANAGEMENT &&
+				Boolean.valueOf(paramValue.identifiers.head)
+			]
+		)
 	}
 
 	def boolean isSkipUserManagementEnabled(EObject it) {
