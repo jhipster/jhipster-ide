@@ -17,13 +17,13 @@
   </validationSets>
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
-      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.22.0/">
+      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.23.0/">
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.20.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.9.0">
         <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.9.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/tools/orbit/downloads/2020-06">
+      <repositories location="https://download.eclipse.org/tools/orbit/downloads/2020-09">
         <bundles name="com.google.inject" versionRange="3.0.0"/>
         <bundles name="com.google.gson" versionRange="2.8.2"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
@@ -40,11 +40,11 @@
         <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2019.11"/>
       </repositories>
       <repositories location="https://download.eclipse.org/technology/m2e/releases/1.16.0/">
-        <features name="org.eclipse.m2e.feature.feature.group" versionRange="1.16.0"/>
+        <features name="org.eclipse.m2e.feature.feature.group" versionRange="1.16.1"/>
         <features name="org.eclipse.m2e.logback.feature.feature.group" versionRange="1.16.0"/>
         <features name="org.eclipse.m2e.sdk.feature.feature.group" versionRange="1.16.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/releases/2020-06/">
+      <repositories location="https://download.eclipse.org/releases/2020-09">
         <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="4.6.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
         <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="4.6.1"/>
       </repositories>
@@ -57,8 +57,8 @@
         <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.11.3"/>
       </repositories>
     </contributions>
-    <validationRepositories location="https://download.eclipse.org/releases/2020-06"/>
-    <validationRepositories location="https://download.eclipse.org/tools/orbit/downloads/2020-06"/>
+    <validationRepositories location="https://download.eclipse.org/releases/2020-09"/>
+    <validationRepositories location="https://download.eclipse.org/tools/orbit/downloads/2020-09"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>
