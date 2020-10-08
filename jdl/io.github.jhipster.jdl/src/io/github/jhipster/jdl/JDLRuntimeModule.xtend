@@ -80,6 +80,5 @@ class JDLRuntimeModule extends AbstractJDLRuntimeModule {
 	
 	def Class<? extends INamesAreUniqueValidationHelper> bindIINamesAreUniqueValidationHelper() {
 		return JDLNamesAreUniqueValidationHelper
-	}
-	
+	}	
 }
