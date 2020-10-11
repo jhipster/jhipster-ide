@@ -1,3 +1,6 @@
+### 2.3.3
+- Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/31).
+
 ### 2.3.2
 - Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/30).
 
