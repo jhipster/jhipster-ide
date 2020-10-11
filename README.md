@@ -27,7 +27,7 @@ Go to extension marketplace, search for <b>jhipster</b> and install.
 This extension is deprecated and will not be maintained anymore!
 Please use VisualStudio Code with the JHipster IDE extension instead.
 
-[azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=master
+[azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=main
 [azure-devops-url-main]: https://dev.azure.com/jhipster-ide/jhipster-ide/_build
 
 [download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/2.3/images/download.svg
