@@ -18,4 +18,4 @@
 # under the License.
 # ----------------------------------------------------------------------------
 
-docker run -it --rm --name jhipster-ide -v "$(pwd)":/usr/src/jhipster-ide -w /usr/src/jhipster-ide maven:3.6.3-jdk-11 mvn clean install
+docker run -it --rm --name jhipster-ide -v "$(pwd)":/usr/src/jhipster-ide -w /usr/src/jhipster-ide maven:3.6.3-openjdk-11 mvn clean install
