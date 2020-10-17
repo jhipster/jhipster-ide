@@ -24,82 +24,69 @@ import * as path from 'path';
 import * as vscode from 'vscode';
 import { Trace } from 'vscode-jsonrpc';
 import { PlantUMLRenderer } from './plantuml';
-import { workspace, commands, ExtensionContext, window, StatusBarAlignment, TextEditor  } from 'vscode';
-import { LanguageClient, LanguageClientOptions } from 'vscode-languageclient';
-import { StreamInfo, Executable, ExecutableOptions } from 'vscode-languageclient';
-import { RequirementsData } from './requirements';
+import { workspace, commands, ExtensionContext, window, StatusBarAlignment } from 'vscode';
+import { LanguageClient, LanguageClientOptions, Executable } from 'vscode-languageclient';
+import { checkJavaVersion, toggleItem, getJavaExec } from './extension-helper';
 
 let plantuml: PlantUMLRenderer;
 
 const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
-export function prepareExecutable(requirements: RequirementsData, workspacePath, javaConfig, context: ExtensionContext, isSyntaxServer: boolean): Executable {
-	const executable: Executable = Object.create(null);
-	const options: ExecutableOptions = Object.create(null);
-	options.env = Object.assign({ syntaxserver : isSyntaxServer }, process.env);
-	executable.options = options;
-	executable.command = path.resolve(requirements.java_home + '/bin/java');
-//	executable.args = prepareParams(requirements, javaConfig, workspacePath, context, isSyntaxServer);
-//	logger.info(`Starting Java server with: ${executable.command} ${executable.args.join(' ')}`);
-	return executable;
-}
-
 export function activate(context: ExtensionContext) {
 	const vmargs = '-Dpnguml.gen=true';
 	const lib = context.asAbsolutePath(path.join('lib', 'jdl.jar'));
 //  const lib = context.asAbsolutePath(path.join('lib', 'bin', executable));
+	let javaCli = getJavaExec();
 
-	let serverOptions: Executable = {
-		command: 'java',
-//		args: [ vmargs, '-cp', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
-//		args: [ vmargs, '-cp', lib, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
-		args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
-		options: {stdio: 'pipe'}
-	};
-
-	let clientOptions: LanguageClientOptions = {
-		documentSelector: ['jdl', 'jh'],
-		synchronize: {
-			configurationSection: 'jdlLanguageServer',
-			fileEvents: [
-				workspace.createFileSystemWatcher('**/*.jdl'),
-				workspace.createFileSystemWatcher('**/*.jh')
-			]
-		}
-	};	
-
-	let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
-	item.text = 'Starting JDL Language Server...';
-	toggleItem(window.activeTextEditor, item);
-	let languageClient = new LanguageClient(LANGUAGE_CLIENT_ID, 'Language Support for JDL', serverOptions, clientOptions);
-	languageClient.onReady().then(() => {
-		item.text = 'JDL Language Server started!';
-		toggleItem(window.activeTextEditor, item);
-	});
+	checkJavaVersion(javaCli).catch(error => {
+		window.showErrorMessage(error.message, error.label).then((selection) => {
+			if (error.label && error.label === selection && error.command) {
+				commands.executeCommand(error.command, error.commandParam);
+			}
+		});
+		throw error;
+	}).then(async (requirements) => {
+		let serverOptions: Executable = {
+			command: javaCli,
+	//		args: [ vmargs, '-cp', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+	//		args: [ vmargs, '-cp', lib, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
+	//		args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+			options: {stdio: 'pipe'}
+		};
 	
-	languageClient.trace = Trace.Off;
-	let disposable = languageClient.start();
-	let activeEditor = vscode.window.activeTextEditor;
-	window.onDidChangeActiveTextEditor((activeEditor) => {
-		toggleItem(activeEditor, item);
+		let clientOptions: LanguageClientOptions = {
+			documentSelector: ['jdl', 'jh'],
+			synchronize: {
+				configurationSection: 'jdlLanguageServer',
+				fileEvents: [
+					workspace.createFileSystemWatcher('**/*.jdl'),
+					workspace.createFileSystemWatcher('**/*.jh')
+				]
+			}
+		};	
+	
+		let item = window.createStatusBarItem(StatusBarAlignment.Right, Number.MIN_VALUE);
+		item.text = 'Starting JDL Language Server...';
+		toggleItem(window.activeTextEditor, item);
+		let languageClient = new LanguageClient(LANGUAGE_CLIENT_ID, 'Language Support for JDL', serverOptions, clientOptions);
+		languageClient.onReady().then(() => {
+			item.text = 'JDL Language Server started!';
+			toggleItem(window.activeTextEditor, item);
+		});
+		
+		languageClient.trace = Trace.Off;
+		let disposable = languageClient.start();
+		const activeEditor = vscode.window.activeTextEditor;
+		window.onDidChangeActiveTextEditor((editor) => {
+			toggleItem(activeEditor, item);
+		});
+	
+		context.subscriptions.push(disposable);
+		plantuml = new PlantUMLRenderer(context);
+		plantuml.init(languageClient);
 	});
-
-	// Push the disposable to the context's subscriptions so that the 
-	// client can be deactivated on extension deactivation
-	context.subscriptions.push(disposable);
-    plantuml = new PlantUMLRenderer(context);
-    plantuml.init(languageClient);
 }
 
 export function deactivate() {
     plantuml = null;
-}
-
-function toggleItem(editor: TextEditor, item) {
-	if (editor && editor.document &&
-		(editor.document.languageId === 'jdl' || editor.document.languageId === 'jh')){
-		item.show();
-	} else{
-		item.hide();
-	}
 }

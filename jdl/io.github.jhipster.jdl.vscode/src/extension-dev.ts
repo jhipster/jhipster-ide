@@ -21,49 +21,59 @@
 'use strict';
 
 import * as net from 'net';
-
-import {Trace} from 'vscode-jsonrpc';
+import { Trace } from 'vscode-jsonrpc';
 import { window, workspace, commands, ExtensionContext, Uri } from 'vscode';
 import { LanguageClient, LanguageClientOptions, StreamInfo, Position as LSPosition, Location as LSLocation } from 'vscode-languageclient';
+import { checkJavaVersion, getJavaExec } from './extension-helper';
 
 export function activate(context: ExtensionContext) {
-    let connectionInfo = {
-        port: 5007
-    };
-    let serverOptions = () => {
-        let socket = net.connect(connectionInfo);
-        let result: StreamInfo = {
-            writer: socket,
-            reader: socket
+	checkJavaVersion(getJavaExec()).catch(error => {
+		window.showErrorMessage(error.message, error.label).then((selection) => {
+			if (error.label && error.label === selection && error.command) {
+				commands.executeCommand(error.command, error.commandParam);
+			}
+		});
+		throw error;
+	}).then(async (requirements) => {
+        let connectionInfo = {
+            port: 5007
         };
-        return Promise.resolve(result);
-    };
-    
-    let clientOptions: LanguageClientOptions = {
-        documentSelector: ['jdl', 'jh'],
-        synchronize: {
-            fileEvents: workspace.createFileSystemWatcher('**/*.*')
-        }
-    };
-    
-    let lc = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions);
-    var disposable2 = commands.registerCommand("jdl.a.proxy", async () => {
-        let activeEditor = window.activeTextEditor;
-        if (!activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'jdl') {
-            return;
-        }
 
-        if (activeEditor.document.uri instanceof Uri) {
-            commands.executeCommand("jdl.a", activeEditor.document.uri.toString());
-        }
-    })
-
-    context.subscriptions.push(disposable2);
-    // enable tracing (.Off, .Messages, Verbose)
-    lc.trace = Trace.Verbose;
-    let disposable = lc.start();
+        let serverOptions = () => {
+            let socket = net.connect(connectionInfo);
+            let result: StreamInfo = {
+                writer: socket,
+                reader: socket
+            };
+            return Promise.resolve(result);
+        };
+        
+        let clientOptions: LanguageClientOptions = {
+            documentSelector: ['jdl', 'jh'],
+            synchronize: {
+                fileEvents: workspace.createFileSystemWatcher('**/*.*')
+            }
+        };
+        
+        let lc = new LanguageClient('JDL Xtext Server', serverOptions, clientOptions);
+        var disposable2 = commands.registerCommand("jdl.a.proxy", async () => {
+            let activeEditor = window.activeTextEditor;
+            if (!activeEditor || !activeEditor.document || activeEditor.document.languageId !== 'jdl') {
+                return;
+            }
     
-    // Push the disposable to the context's subscriptions so that the 
-    // client can be deactivated on extension deactivation
-    context.subscriptions.push(disposable);
+            if (activeEditor.document.uri instanceof Uri) {
+                commands.executeCommand("jdl.a", activeEditor.document.uri.toString());
+            }
+        })
+    
+        context.subscriptions.push(disposable2);
+        // enable tracing (.Off, .Messages, Verbose)
+        lc.trace = Trace.Verbose;
+        let disposable = lc.start();
+        
+        // Push the disposable to the context's subscriptions so that the 
+        // client can be deactivated on extension deactivation
+        context.subscriptions.push(disposable);
+    });
 }

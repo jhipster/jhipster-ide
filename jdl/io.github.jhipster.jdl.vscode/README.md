@@ -46,8 +46,8 @@ Launch VS Code Quick Open (Ctrl+P or CMD+P) and paste the following command, and
 
 Before you can use the plugin, it's necessary to have following installed:
 
-* [Java][Java] : Platform for running the LSP server.
-* [Graphviz][Graphviz] : PlantUML requires it to calculate positions in diagram.
+* [Java][Java] : Java 11 or above for running the LSP server.
+* [Graphviz][Graphviz] : Optionally to calculate positions in diagram.
 
 [Java]: http://java.com/en/download/ "Download Java"
 [Graphviz]: http://www.graphviz.org/download/ "Download Graphviz"

@@ -63,7 +63,7 @@ export function activate(context: ExtensionContext) {
     //let result = commands.executeCommand("init", activeEditor.document.uri.toString())
 	// Push the disposable to the context's subscriptions so that the 
     // client can be deactivated on extension deactivation
-	window.onDidChangeActiveTextEditor((activeEditor) => {
+	window.onDidChangeActiveTextEditor((editor) => {
 		toggleItem(activeEditor, item);
 	});
 	context.subscriptions.push(disposable);

@@ -2,7 +2,7 @@
     "name": "jdl",
     "displayName": "JHipster JDL",
     "description": "JHipster JDL VS Code extension",
-    "version": "2.3.3",
+    "version": "2.3.2",
     "publisher": "jhipster-ide",
     "icon": "images/icon.jpg",
     "license": "Apache-2.0",
@@ -74,11 +74,10 @@
         "postinstall": "node ./node_modules/vscode/bin/install"
     },
     "devDependencies": {
-        "@types/node": "^8.10.25",
-        "diff": "^3.5.0",
-        "tslint": "^5.8.0",
         "typescript": "^3.3.400",
-        "vscode": "^1.1.21"
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25"
     },
     "dependencies": {
         "global": "^4.4.0",

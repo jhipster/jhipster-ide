@@ -91,13 +91,13 @@ export class PlantUMLRenderer {
     if (imageFile === null) {
       return null;
     }
-    return new Promise<string>((res) => {
+    return new Promise<string>((resolve) => {
       if (this.status === null) {
         let img = this.webview.asWebviewUri(vscode.Uri.file(imageFile))
         let html = `<html><body style="background-color:white;"><img src="${img}"/></body></html>`;
-        res(html);
+        resolve(html);
       } else {
-        res(`<html><body></b>${this.status}</b></body></html>`);
+        resolve(`<html><body></b>${this.status}</b></body></html>`);
       }
     });
   }
