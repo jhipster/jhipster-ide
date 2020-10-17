@@ -25,11 +25,24 @@ import * as vscode from 'vscode';
 import { Trace } from 'vscode-jsonrpc';
 import { PlantUMLRenderer } from './plantuml';
 import { workspace, commands, ExtensionContext, window, StatusBarAlignment, TextEditor  } from 'vscode';
-import { LanguageClient, LanguageClientOptions, Executable } from 'vscode-languageclient';
+import { LanguageClient, LanguageClientOptions } from 'vscode-languageclient';
+import { StreamInfo, Executable, ExecutableOptions } from 'vscode-languageclient';
+import { RequirementsData } from './requirements';
 
 let plantuml: PlantUMLRenderer;
 
 const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
+
+export function prepareExecutable(requirements: RequirementsData, workspacePath, javaConfig, context: ExtensionContext, isSyntaxServer: boolean): Executable {
+	const executable: Executable = Object.create(null);
+	const options: ExecutableOptions = Object.create(null);
+	options.env = Object.assign({ syntaxserver : isSyntaxServer }, process.env);
+	executable.options = options;
+	executable.command = path.resolve(requirements.java_home + '/bin/java');
+//	executable.args = prepareParams(requirements, javaConfig, workspacePath, context, isSyntaxServer);
+//	logger.info(`Starting Java server with: ${executable.command} ${executable.args.join(' ')}`);
+	return executable;
+}
 
 export function activate(context: ExtensionContext) {
 	const vmargs = '-Dpnguml.gen=true';
