@@ -50,7 +50,7 @@ export function activate(context: ExtensionContext) {
 			command: javaCli,
 	//		args: [ vmargs, '-cp', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
 	//		args: [ vmargs, '-cp', lib, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
-	//		args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+			args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
 			options: {stdio: 'pipe'}
 		};
 	
