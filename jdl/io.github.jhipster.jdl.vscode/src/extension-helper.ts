@@ -42,6 +42,8 @@ export function getJavaExec() : string {
 	if (javaHome) {
 		const absPath = (javaHome + path.sep + 'bin' + path.sep + 'java')
         result = absPath.replace(path.sep + path.sep, path.sep);
+    } else {
+        window.showWarningMessage("No Java home defined in preference settings - use system defaults...");
     }
     return result;    
 }
