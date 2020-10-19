@@ -34,7 +34,6 @@ const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
 export function activate(context: ExtensionContext) {
 	const vmargs = '-Dpnguml.gen=true';
-	const lib = context.asAbsolutePath(path.join('lib', 'jdl.jar'));
 //  const lib = context.asAbsolutePath(path.join('lib', 'bin', executable));
 	let javaCli = getJavaExec();
 
@@ -50,7 +49,7 @@ export function activate(context: ExtensionContext) {
 			command: javaCli,
 	//		args: [ vmargs, '-cp', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
 	//		args: [ vmargs, '-cp', lib, 'org.eclipse.xtext.ide.server.ServerLauncher' ],
-			args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
+	//		args: [ vmargs, '-jar', lib, 'io.github.jhipster.jdl.ide.server.JdlServerLauncher' ],
 			options: {stdio: 'pipe'}
 		};
 	
