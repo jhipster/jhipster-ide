@@ -34,7 +34,6 @@ const LANGUAGE_CLIENT_ID = 'LANGUAGE_ID_JDL';
 
 export function activate(context: ExtensionContext) {
 	const vmargs = '-Dpnguml.gen=true';
-	const lib = context.asAbsolutePath(path.join('lib', 'jdl.jar'));
 //  const lib = context.asAbsolutePath(path.join('lib', 'bin', executable));
 	let javaCli = getJavaExec();
 
