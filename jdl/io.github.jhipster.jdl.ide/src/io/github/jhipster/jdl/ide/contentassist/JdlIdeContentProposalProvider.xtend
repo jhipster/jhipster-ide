@@ -48,6 +48,7 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 	val deplOptions = JDLDeploymentOptions.INSTANCE
 	
 	@Inject extension JdlModelUtil
+	@Inject extension JdlIdeTemplateProposalProvider templateProposal
 	
 	override protected filterKeyword(Keyword keyword, ContentAssistContext context) {
 		return keyword.value == 'name' || !keyword.parameterExists(context)
@@ -63,6 +64,7 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 	override protected createProposals(AbstractElement assignment, ContentAssistContext context,
 		IIdeContentProposalAcceptor acceptor) {
 		val model = context.currentModel
+		model.useITempl ? templateProposal.acceptProposal(context, acceptor)
 		addOptions(model, context, acceptor)
 		switch (model) {
 			JdlApplicationParameter: createParameterProposal(applOptions, model, assignment, context, acceptor)
@@ -94,5 +96,13 @@ class JdlIdeContentProposalProvider extends JdlIdeAbstractContentProposalProvide
 				addProposal(prop, desc, context, acceptor)
 			]
 		} 	
+	}
+	
+	def private boolean isValid(EObject model) {
+		return model === null || !model.hasIssues
+	}
+	
+	def private boolean useITempl(EObject model) {
+		return Boolean.getBoolean('itempl') && model.isValid 
 	}
 }

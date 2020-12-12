@@ -35,10 +35,11 @@ import org.eclipse.xtext.ide.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ide.editor.contentassist.IIdeContentProposalAcceptor
 import org.eclipse.xtext.ide.editor.contentassist.IdeContentProposalProvider
 import org.eclipse.xtext.resource.XtextResource
-import org.eclipse.xtext.util.CancelIndicator
-import org.eclipse.xtext.validation.CheckMode
 
 import static org.eclipse.xtext.EcoreUtil2.*
+import static org.eclipse.xtext.diagnostics.Severity.*
+import static org.eclipse.xtext.util.CancelIndicator.*
+import static org.eclipse.xtext.validation.CheckMode.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -133,11 +134,15 @@ abstract class JdlIdeAbstractContentProposalProvider extends IdeContentProposalP
 		if (entry !== null) entry.description = description
 		acceptor.accept(entry, proposalPriorities.getDefaultPriority(entry))
 	}
-	
+
 	def protected boolean hasIssues(EObject model) {
 		if (model === null) return true
-		val res = (model.eResource as XtextResource)
-		val issues = res.resourceServiceProvider.resourceValidator.validate(res, CheckMode.FAST_ONLY, CancelIndicator.NullImpl)
+		val resource = model.eResource as XtextResource
+		val issues = resource.resourceServiceProvider.resourceValidator.validate(
+			resource, FAST_ONLY, NullImpl
+		).filter[
+			severity === ERROR
+		]
 		return !issues.isNullOrEmpty && !(model instanceof JdlApplicationParameter)
 	}
 
