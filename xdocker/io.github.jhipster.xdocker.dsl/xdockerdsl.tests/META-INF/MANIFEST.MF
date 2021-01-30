@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: xdockerdsl.tests
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.3.qualifier
+Bundle-Version: 2.3.4.qualifier
 Bundle-SymbolicName: xdockerdsl.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: xdockerdsl,
  org.junit;bundle-version="4.13.0",
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.lib;bundle-version="2.23.0"
+ org.eclipse.xtext.xbase.lib;bundle-version="2.24.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ch.itemis.xdocker.tests;x-internal=true
 Import-Package: org.hamcrest.core,

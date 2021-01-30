@@ -68,7 +68,7 @@ Workflow {
 			}			
 			
 			validator = {
-				generateXtendStub = false
+				generateXtendStub = true
 				composedCheck = "io.github.jhipster.jdl.validation.JDLNamesAreUniqueValidator"
 //				composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}

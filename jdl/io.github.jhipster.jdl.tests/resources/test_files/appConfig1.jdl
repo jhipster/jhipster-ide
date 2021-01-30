@@ -25,7 +25,6 @@ application {
 		enableTranslation true
 		languages [hi, ru]
 		jhiPrefix jhi
-		uaaBaseName "uaa"
 		reactive false
 		enableSwaggerCodegen true
 		skipServer false

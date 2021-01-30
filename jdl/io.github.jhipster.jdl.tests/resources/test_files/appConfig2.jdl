@@ -24,7 +24,6 @@ application {
 		jhiPrefix jhi
 		clientPackageManager npm
 		databaseType sql
-		uaaBaseName "uaa"
 		reactive false
 		enableSwaggerCodegen false
 		skipServer false

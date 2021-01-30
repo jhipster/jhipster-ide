@@ -163,6 +163,7 @@ class JDLFileTest {
 		"table.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"two_microservices.jdl" -> new JdlIssue('Definition has no effect. Remove superfluous table name or define a different name.', WARNING),
 		"uaa_with_user_management_skipped.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
+		"uaa_with_user_management_skipped.jdl" -> new JdlIssue('Unknown literal [uaa]!', ERROR),
 		"underscore_application_name.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"unexistent_entities_for_relationship.jdl" -> new JdlIssue("Couldn't resolve reference to JdlEntity 'B'.", ERROR),
 		"ungrouped_relationships.jdl" -> new JdlIssue('Found groupable relationship "OneToMany"', WARNING),

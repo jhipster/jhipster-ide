@@ -1,5 +1,5 @@
 /**
- * Copyright 2016-2021 the original author or authors from the JHipster project.
+ * Copyright 2013-2020 the original author or authors from the JHipster project.
  * 
  * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
@@ -27,21 +27,16 @@ import io.github.jhipster.jdl.validation.RelationshipValidator;
 import org.eclipse.xtext.validation.ComposedChecks;
 
 /**
- * This class contains custom validation rules.
- * 
- * See
- * https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * @author Serano Colameo - Initial contribution and API
  */
 @ComposedChecks(
-	validators = { 
-		CaseSensitivityValidator.class, 
-		OptionSelectionValidator.class,
-		OptionConfigValidator.class, 
-		RelationshipValidator.class, 
-		JDLLint.class 
-	}
+	validators = #[
+		CaseSensitivityValidator, 
+		OptionSelectionValidator,
+		OptionConfigValidator, 
+		RelationshipValidator, 
+		JDLLint 
+	]
 )
-@SuppressWarnings("all")
-public class JDLValidator extends AbstractJDLValidator {
-
+class JDLValidator extends AbstractJDLValidator {
 }

@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.ide
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.3.qualifier
+Bundle-Version: 2.3.4.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: jbase,
- jbase.ide,
+Require-Bundle: jbase;bundle-version="1.4.1",
+ jbase.ide;bundle-version="1.4.1",
  com.google.gson,
  io.github.jhipster.jdl,
  org.eclipse.xtext.ide,

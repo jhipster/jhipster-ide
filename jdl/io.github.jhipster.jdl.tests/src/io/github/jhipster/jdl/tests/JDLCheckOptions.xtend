@@ -136,7 +136,6 @@ class JDLCheckOptions {
 				enableTranslation «bool.next»
 				languages [«lang.next», «lang.next»]
 				jhiPrefix jhi
-				uaaBaseName "uaa"
 				reactive «bool.next»
 				enableSwaggerCodegen «bool.next»
 				skipServer «bool.next»
