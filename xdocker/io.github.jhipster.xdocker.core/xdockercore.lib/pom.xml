@@ -10,7 +10,7 @@
 		<artifactId>xdockercore.parent</artifactId>
 		<relativePath>../xdockercore.parent</relativePath>
 	</parent>
-
+	
 	<artifactId>xdockercore.lib</artifactId>
 	<name>Xdocker Core Lib</name>
   	<packaging>eclipse-plugin</packaging> 
@@ -29,12 +29,13 @@
 		<guava.version>18.0</guava.version>
 		<slf4j-api.version>1.7.5</slf4j-api.version>
 		<ch.qos.logback.version>1.1.3</ch.qos.logback.version>
-		<docker-java.version>3.0.14</docker-java.version>
+		<docker-java.version>3.2.7</docker-java.version>
 		<org.reficio.p2-maven-plugin.version>1.3.0</org.reficio.p2-maven-plugin.version>
 		<org.mortbay.jetty.jetty-maven-plugin.version>8.1.5.v20120716</org.mortbay.jetty.jetty-maven-plugin.version>
 		<jansi.version>1.11</jansi.version>
 		<joda.time.version>2.8.2</joda.time.version>
 		<ocpsoft-pretty-time.version>1.0.7</ocpsoft-pretty-time.version>
+		<jaxb-api.version>2.3.1</jaxb-api.version>
 	</properties>
 
 	<dependencies>
@@ -69,7 +70,7 @@
 			<version>${unix-socket-factory.version}</version>
 		</dependency>
 	</dependencies>
-
+ 
 	<build>
 		<plugins>
 			<plugin>
@@ -94,12 +95,6 @@
 						<id>default-cli</id>
 						<configuration>
 							<artifacts>
-								<!-- specify your depencies here -->
-								<!-- groupId:artifactId:version -->
-<!-- 								<artifact> -->
-<!-- 									<id>com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider:${jackson-jaxrs.version}</id> -->
-<!-- 									<transitive>true</transitive> -->
-<!-- 								</artifact> -->
 								<artifact>
 									<id>org.glassfish.jersey.connectors:jersey-apache-connector:${jersey.version}</id>
 									<transitive>true</transitive>
@@ -140,8 +135,6 @@
 									<id>org.bouncycastle:bcpkix-jdk15on:${bouncycastle.version}</id>
 									<transitive>true</transitive>
 								</artifact>
-								<!-- Not needed, as logback retrieves it's slf4j-api version automatically 
-									<artifact><id>org.slf4j:slf4j-api:${slf4j-api.version}</id></artifact> -->
 								<artifact>
 									<id>ch.qos.logback:logback-classic:${ch.qos.logback.version}</id>
 								</artifact>
@@ -150,6 +143,10 @@
 								</artifact>
 								<artifact>
 									<id>com.github.docker-java:docker-java:${docker-java.version}</id>
+									<transitive>true</transitive>
+								</artifact>
+								<artifact>
+									<id>javax.xml.bind:jaxb-api${jaxb-api.version}</id>
 									<transitive>true</transitive>
 								</artifact>
 							</artifacts>

@@ -1,5 +1,5 @@
 /** 
- * Copyright (c) 2015 itemis Schweiz GmbH (http://www.itemis-schweiz.ch) and others.
+ * Copyright (c) 2015-2021 Arcware GmbH (http://arcware.io) and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,16 +23,18 @@ class JsonUtil {
 	
 	val factory = new JsonFactory
 	val mapper = new ObjectMapper(factory)
-    val typeRef = new TypeReference<HashMap<String,Object>>() {}
+    val typeRef = new TypeReference<HashMap<String,String>>() {}
 
-	private new() {		
+	private new() {
 	}
 
 	def static Map<String, String> toMap(String json) {
+		val result = <String, String>newHashMap
 		try {
-		    return INSTANCE.mapper.readValue(json, INSTANCE.typeRef) as Map<String, String>
-		} catch (Exception ex) {
-			return <String, String>newHashMap
-		}
+			INSTANCE => [
+				result.putAll(mapper.readValue(json, typeRef))
+			]
+		} catch (Exception ignore) {}
+		return result
 	}
 }

@@ -34,3 +34,12 @@ application {
 		clientTheme none
 	}
 }
+
+
+/** 
+ * Entity Name
+ */
+entity Name {
+	@Transient
+	fieldName String	
+}
