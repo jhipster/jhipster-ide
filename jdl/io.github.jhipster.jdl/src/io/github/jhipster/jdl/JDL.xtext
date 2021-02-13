@@ -324,7 +324,7 @@ JdlEmbeddedAnnotation returns JdlSimpleAnnotation:
 	embedded?='embedded';
 	
 JdlCustomAnnotation:
-	'@' name=ID ('(' value=ID ')')?;	
+	'@' name=ID ('(' value=(ID|STRING) ')')?;	
 
 /* =========================================================================
  * OPTION 
