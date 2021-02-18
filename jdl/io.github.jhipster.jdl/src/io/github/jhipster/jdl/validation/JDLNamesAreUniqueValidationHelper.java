@@ -37,6 +37,7 @@ import io.github.jhipster.jdl.jdl.JdlRelationRole;
 public class JDLNamesAreUniqueValidationHelper extends NamesAreUniqueValidationHelper {
 
 	@Override
+	@SuppressWarnings("deprecation")
 	protected void checkDescriptionForDuplicatedName(IEObjectDescription description,
 			Map<EClass, Map<QualifiedName, IEObjectDescription>> clusterTypeToName,
 			ValidationMessageAcceptor acceptor) {

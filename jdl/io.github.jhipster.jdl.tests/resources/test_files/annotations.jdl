@@ -11,7 +11,7 @@ entity A {
 
 @paginate(pagination)
 @dto(mapstruct)
-@service(serviceClass)
+@service(serviceClass) 
 @myCustomUnaryOption
 entity B
 
@@ -19,6 +19,7 @@ entity B
 @filter
 @paginate(pagination)
 @myCustomBinaryOption(customValue2)
+@Annotation("MyAnnotation")
 entity C
 
 relationship OneToMany {
