@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="JHipsterr IDE" buildRoot="../target/build">
-  <validationSets description="JHipster-IDE" label="JHipster-IDE" extends="//@validationSets[label='Base']">
+<aggregator:Aggregation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:aggregator="http://www.eclipse.org/cbi/p2repo/2011/aggregator/1.1.0" label="JHipster IDE" buildRoot="../target/build">
+  <validationSets description="JHipster IDE" label="JHipster IDE" extends="//@validationSets[label='Base']">
     <contributions description="JHipster-IDE" label="JHipster-IDE">
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
         <features name="io.github.jhipster.jdl.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
@@ -66,6 +66,6 @@
   <configurations operatingSystem="linux" windowSystem="gtk" architecture="x86_64"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa"/>
   <configurations operatingSystem="macosx" windowSystem="cocoa" architecture="x86_64"/>
-  <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster-IDE']/@contributions[label='Xdocker']/@repositories.0/@features.0 //@validationSets[label='JHipster-IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0"/>
+  <customCategories identifier="JHipster IDE" label="JHipster IDE" description="JHipster IDE" features="//@validationSets[label='JHipster%20IDE']/@contributions[label='Xdocker']/@repositories.0/@features.0 //@validationSets[label='JHipster%20IDE']/@contributions[label='JHipster-IDE']/@repositories.0/@features.0"/>
   <customCategories identifier="TM Terminal Shell Integration" label="TM Terminal Shell Integration" description="TM Terminal Shell Integration" features="//@validationSets[label='Base']/@contributions[label='Tools']/@repositories.2/@features.0"/>
 </aggregator:Aggregation>
