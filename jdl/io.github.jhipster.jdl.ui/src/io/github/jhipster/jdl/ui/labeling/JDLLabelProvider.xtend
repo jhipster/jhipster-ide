@@ -46,7 +46,6 @@ class JDLLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 	
-		
 	def text(JdlEntity entity) {
 		entity.name
 	}

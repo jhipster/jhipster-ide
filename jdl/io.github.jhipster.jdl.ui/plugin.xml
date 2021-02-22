@@ -101,7 +101,7 @@
         <page
 	          category="io.github.jhipster.jdl.JDL"
               class="io.github.jhipster.jdl.ui.preference.JDLShellPreferencePage"
-	          id="io.github.jhipster.jdl.JDL.templates"
+	          id="io.github.jhipster.jdl.JDL.shell"
               name="Shell Integration">
               <keywordReference id="io.github.jhipster.jdl.ui.keyword_JDL"/>
         </page>

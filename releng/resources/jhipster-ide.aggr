@@ -28,8 +28,8 @@
         <bundles name="com.google.gson" versionRange="2.8.2"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
         <bundles name="org.junit" versionRange="[4.13.0,4.14.0]"/>
-        <bundles name="org.objectweb.asm" versionRange="8.0.1"/>
-        <bundles name="org.objectweb.asm.tree" versionRange="8.0.1"/>
+        <bundles name="org.objectweb.asm" versionRange="9.0.0"/>
+        <bundles name="org.objectweb.asm.tree" versionRange="9.0.0"/>
         <bundles name="io.github.classgraph" versionRange="4.8.35"/>
       </repositories>
     </contributions>
