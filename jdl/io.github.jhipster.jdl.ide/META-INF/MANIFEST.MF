@@ -5,8 +5,8 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.3.5.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: jbase;bundle-version="1.4.1",
- jbase.ide;bundle-version="1.4.1",
+Require-Bundle: jbase,
+ jbase.ide,
  com.google.gson,
  io.github.jhipster.jdl,
  org.eclipse.xtext.ide,

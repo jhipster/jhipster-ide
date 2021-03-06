@@ -5,7 +5,7 @@ Bundle-Vendor: io.github.jhipster
 Bundle-Version: 2.3.5.qualifier
 Bundle-SymbolicName: io.github.jhipster.jdl; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: jbase;bundle-version="1.4.1",
+Require-Bundle: jbase,
  io.github.jhipster.jdl.lib;visibility:=reexport,
  org.eclipse.xtext,
  org.eclipse.equinox.common;bundle-version="3.5.0",

@@ -3,6 +3,4 @@ entity B
 entity C
 entity D
 
-filter A, B except B, C, D   
- 
-      
+filter A, B except B, C, D
