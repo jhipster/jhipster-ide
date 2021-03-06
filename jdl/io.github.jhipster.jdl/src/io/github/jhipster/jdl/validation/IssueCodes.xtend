@@ -19,6 +19,7 @@
 package io.github.jhipster.jdl.validation
 
 import io.github.jhipster.jdl.jdl.JdlCardinality
+import io.github.jhipster.jdl.jdl.JdlEntity
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -54,7 +55,9 @@ interface IssueCodes {
 	String DUPLICATE_ENUM_VALUE_DEF_MSG = 'Duplicate enum value "%s"'
 	String FOUND_GROUPABLE_RELATIONSHIP_MSG = 'Found groupable relationship "%s"'
 	(JdlCardinality)=>String REQUIRED_NOT_ALLOWED_MSG = ['''Constraint 'required' on a relationship of type «literal» will be ignored''']
-	String INVALID_ENTITY_SELECTION_MSG = 'Selection does not contain excluded element'
+	(JdlEntity)=>String USELESS_ENTITY_SELECTION_MSG = ['''Selected element «name» gets excluded - useless definition!''']
+	(JdlEntity)=>String USELESS_ENTITY_EXCLUSION_MSG = ['''Excluded element «name» is in selection - useless definition!''']
+	(JdlEntity)=>String ENTITY_EXCLUDED_NOT_SELECTED_MSG = ['''Excluded element «name» is not in selection!''']
 	String INVALID_PARAM_NAME_MSG = 'Unknown literal [%s]!'
 	String INVALID_BOOLEAN_PARAM_MSG = 'Boolean (true/false) value expected!'
 	String INVALID_ISOCODE_PARAM_MSG = 'Invalid ISO code!'

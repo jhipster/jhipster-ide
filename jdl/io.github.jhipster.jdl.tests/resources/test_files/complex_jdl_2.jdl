@@ -14,7 +14,7 @@ entity E {
  */
 entity F {
   /** My comment for name of F. */
-  name String,
+  name String, 
   count Integer,
   /** My comment for flag of F. */
   flag Boolean required

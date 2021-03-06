@@ -188,7 +188,15 @@ class JDLFileTest {
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Useless commas can be removed', WARNING),
 		"wrong_pattern_definition.jdl" -> new JdlIssue('Wrong regexp pattern!', ERROR),
 		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '<EOF>' expecting '}'", ERROR),
-		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR)
+		"wrong_relationships_jdl.jdl" -> new JdlIssue("mismatched input '}' expecting RULE_ID", ERROR),
+		"complex_jdl_2.jdl" -> new JdlIssue('Excluded element D is in selection - useless definition!', WARNING),
+		"complex_jdl_2.jdl" -> new JdlIssue('Selected element D gets excluded - useless definition!', WARNING),
+		"no_comma_support.jdl" -> new JdlIssue('Excluded element D is in selection - useless definition!', WARNING),
+		"no_comma_support.jdl" -> new JdlIssue('Selected element D gets excluded - useless definition!', WARNING),
+		"filtering_validation_check.jdl" -> new JdlIssue('Excluded element B is in selection - useless definition!', WARNING),
+		"filtering_validation_check.jdl" -> new JdlIssue('Excluded element C is not in selection!', WARNING),
+		"filtering_validation_check.jdl" -> new JdlIssue('Excluded element D is not in selection!', WARNING),
+		"filtering_validation_check.jdl" -> new JdlIssue('Selected element B gets excluded - useless definition!', WARNING)	
 	]
 
 	new(File jdlFile) {
@@ -209,10 +217,12 @@ class JDLFileTest {
 		val Set<String> reportedIssues = newHashSet
 		unexpectedIssues.forEach [ issue |
 			val msgtoken = if (issue.value.message.contains("'")) '"' else "'"
-			val unexpectedIssue = '''"«issue.key.name»" -> new JdlIssue(«msgtoken»«issue.value.message»«msgtoken», «issue.value.severity»),'''
+			val unexpectedIssue = '''@line[«issue.value.lineNumber»]: "«issue.key.name»" -> new JdlIssue(«msgtoken»«issue.value.message»«msgtoken», «issue.value.severity»),'''
 			reportedIssues += unexpectedIssue
 		]
-		reportedIssues.sort.forEach[System.err.println(it)]
+		reportedIssues.sort.forEach[
+			System.err.println(it)
+		]
 		if (unexpectedIssues.isEmpty == false) fail('Unexpected issues found! Check output...')
 	}
 

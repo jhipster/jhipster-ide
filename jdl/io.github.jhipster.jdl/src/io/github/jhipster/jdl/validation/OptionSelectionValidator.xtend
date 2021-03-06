@@ -42,18 +42,21 @@ class OptionSelectionValidator extends AbstractDeclarativeValidator {
 	@Check
 	def checkOptionSelection(JdlEntitySelection selection) {
 		val option = selection.getContainerOfType(JdlOption)
-		if (option !== null && option.excludes !== null && !selection.entities.isNullOrEmpty) {
+		val selectedEntities = !option.setting?.includes?.selection?.entities.isNullOrEmpty ? option.setting.includes.selection.entities : #[]
+		if (option !== null && option.excludes !== null && !selectedEntities.isNullOrEmpty) {
 			val excludedEntites = option.excludes.selection?.entities
 			if (!excludedEntites.isNullOrEmpty) {
-				val selEntities = newHashSet(selection.entities).flatten.toList
-				val exclEntities = newHashSet(excludedEntites).flatten.toList => [ removeAll(selEntities) ]
-				if (!exclEntities.isEmpty ) { 
-					val msg = INVALID_ENTITY_SELECTION_MSG + '''«IF exclEntities.length>1»s«ENDIF»: «exclEntities.map[name].toList»'''
-					exclEntities.forEach[ 
-						val i = excludedEntites.indexOf(it) 
-						error(msg, option.excludes.selection, JDL_ENTITY_SELECTION__ENTITIES, i)
-					]
-				}
+				selectedEntities.filter[
+					excludedEntites.contains(it)
+				].forEach[
+					warning(USELESS_ENTITY_EXCLUSION_MSG.apply(it), option.excludes.selection, JDL_ENTITY_SELECTION__ENTITIES, excludedEntites.indexOf(it))
+					warning(USELESS_ENTITY_SELECTION_MSG.apply(it), selection, JDL_ENTITY_SELECTION__ENTITIES, selectedEntities.indexOf(it))
+				]
+				excludedEntites.filter[
+					!selectedEntities.contains(it)
+				].forEach[
+					warning(ENTITY_EXCLUDED_NOT_SELECTED_MSG.apply(it), option.excludes.selection, JDL_ENTITY_SELECTION__ENTITIES, excludedEntites.indexOf(it))
+				]
 			}
 		}
 	}
