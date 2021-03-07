@@ -18,10 +18,12 @@
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
       <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.24.0/">
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.23.0"/>
+        <bundles name="org.eclipse.xtext.java" versionRange="2.24.0.v20201130-0919"/>
+        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.24.0.v20201130-0931"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.24.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.10.0">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.9.0"/>
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.10.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/tools/orbit/downloads/2020-12">
         <bundles name="com.google.inject" versionRange="3.0.0"/>
