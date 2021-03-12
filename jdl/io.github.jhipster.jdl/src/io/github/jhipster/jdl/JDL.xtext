@@ -285,46 +285,46 @@ JdlSimpleAnnotation:
 		JdlEmbeddedAnnotation);
 
 JdlDtoAnnotation returns JdlComplexAnnotation:
-	dto?='dto' '(' dtoType=JdlDtoType ')';
+	dto?=('dto'|'Dto') '(' dtoType=JdlDtoType ')';
 
 JdlPaginateAnnotation returns JdlComplexAnnotation:
-	paginate?='paginate' '(' paginateType=JdlPaginateType ')';
+	paginate?=('paginate'|'Paginate') '(' paginateType=JdlPaginateType ')';
 	
 JdlServiceAnnotation returns JdlComplexAnnotation:
-	service?='service' '(' serviceType=JdlServiceType ')';
+	service?=('service'|'Service') '(' serviceType=JdlServiceType ')';
 
 JdlMicroserviceAnnotation returns JdlComplexAnnotation:
-	microservice?='microservice' '(' name=ValidID ')';
+	microservice?=('microservice'|'Microservice') '(' name=ValidID ')';
 
 JdlSearchAnnotation returns JdlComplexAnnotation:
-	search?='search' '(' searchType=JdlSearchType ')';
+	search?=('search'|'Search') '(' searchType=JdlSearchType ')';
 
 JdlAngularSuffixAnnotation returns JdlComplexAnnotation:
-	angularSuffix?='angularSuffix' '(' name=ValidID ')';
+	angularSuffix?=('angularSuffix'|'AngularSuffix') '(' name=ValidID ')';
 
 JdlClientRootFolderAnnotation returns JdlComplexAnnotation:
-	clientRootFolder?='clientRootFolder';
+	clientRootFolder?=('clientRootFolder'|'ClientRootFolder');
 
 JdlSkipClientAnnotation returns JdlSimpleAnnotation:
-	skipClient?='skipClient';
+	skipClient?=('skipClient'|'SkipClient');
 
 JdlSkipServerAnnotation returns JdlSimpleAnnotation:
-	skipServer?='skipServer';
+	skipServer?=('skipServer'|'SkipServer');
 
 JdlFilterAnnotation returns JdlSimpleAnnotation:
-	skipServer?='filter';
+	skipServer?=('filter'|'Filter');
 
 JdlNoFluentMethodAnnotation returns JdlSimpleAnnotation:
-	noFluentMethod?='noFluentMethod';
+	noFluentMethod?=('noFluentMethod'|'NoFluentMethod');
 
 JdlReadOnlyAnnotation returns JdlSimpleAnnotation:
-	readOnly?='readOnly';
+	readOnly?=('readOnly'|'ReadOnly');
 
 JdlEmbeddedAnnotation returns JdlSimpleAnnotation:
-	embedded?='embedded';
+	embedded?=('embedded'|'Embedded');
 	
 JdlCustomAnnotation:
-	'@' name=ID ('(' value=(ID|STRING) ')')?;	
+	'@' name=ID ('(' value=AnnotationValue ')')?;	
 
 /* =========================================================================
  * OPTION 
@@ -467,6 +467,9 @@ JdlEmbeddedOption returns JdlOptionSetting:
 /* =========================================================================
  * DATA RULES
  * ========================================================================= */ 
+
+AnnotationValue:
+	ValidID | INT | STRING;
 
 JdlParameterLiteral:
 	ValidID | NUMERIC_PREFIXED_ID;

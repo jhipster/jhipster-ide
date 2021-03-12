@@ -11,8 +11,9 @@ entity A {
 
 @paginate(pagination)
 @dto(mapstruct)
-@service(serviceClass) 
+@service(serviceClass)
 @myCustomUnaryOption
+@Custom1(relationship)
 entity B
 
 @skipClient
@@ -20,8 +21,9 @@ entity B
 @paginate(pagination)
 @myCustomBinaryOption(customValue2)
 @Annotation("MyAnnotation")
+@Custom1(all)
 entity C
 
 relationship OneToMany {
-  @id A{b required} to B{a}
+  @annotationOnSource(toto) A{b required} to @annotationOnDestination B{a}
 }
