@@ -16,8 +16,8 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.24.0</xtextVersion>
-		<mwe2Version>2.12.0</mwe2Version>
+		<xtextVersion>2.25.0</xtextVersion>
+		<mwe2Version>2.12.1</mwe2Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
@@ -125,6 +125,23 @@
 							<arch>x86_64</arch>
 						</environment>
 					</environments>
+					<dependency-resolution>
+						<extraRequirements>
+							<requirement>
+								<type>eclipse-plugin</type>
+								<id>org.eclipse.xtext.logging</id>
+								<versionRange>1.2.15</versionRange>
+							</requirement>
+							<!-- to get the org.eclipse.osgi.compatibility.state plugin if the target 
+								platform is Luna or later. (backward compatible with kepler and previous 
+								versions) see https://bugs.eclipse.org/bugs/show_bug.cgi?id=492149 -->
+							<requirement>
+								<type>eclipse-feature</type>
+								<id>org.eclipse.rcp</id>
+								<versionRange>0.0.0</versionRange>
+							</requirement>
+						</extraRequirements>
+					</dependency-resolution>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -171,26 +188,6 @@
 					<configuration>
 						<lifecycleMappingMetadata>
 							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-resources-plugin
-										</artifactId>
-										<versionRange>
-											[2.4.3,)
-										</versionRange>
-										<goals>
-											<goal>resources</goal>
-											<goal>testResources</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
@@ -289,7 +286,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
@@ -303,7 +299,6 @@
 			</snapshots>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
