@@ -18,20 +18,20 @@
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
       <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.25.0/">
-        <bundles name="org.eclipse.xtext.java" versionRange="2.24.0.v20201130-0919"/>
-        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.24.0.v20201130-0931"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.24.0"/>
+        <bundles name="org.eclipse.xtext.java" versionRange="2.25.0"/>
+        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.25.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.25.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.11.0">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.10.0"/>
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.11.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/tools/orbit/downloads/2021-03">
         <bundles name="com.google.inject" versionRange="3.0.0"/>
-        <bundles name="com.google.gson" versionRange="2.8.2"/>
+        <bundles name="com.google.gson" versionRange="2.8.6"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
         <bundles name="org.junit" versionRange="[4.13.0,4.14.0]"/>
-        <bundles name="org.objectweb.asm" versionRange="9.0.0"/>
-        <bundles name="org.objectweb.asm.tree" versionRange="9.0.0"/>
+        <bundles name="org.objectweb.asm" versionRange="9.1.0"/>
+        <bundles name="org.objectweb.asm.tree" versionRange="9.1.0"/>
         <bundles name="io.github.classgraph" versionRange="4.8.35"/>
       </repositories>
     </contributions>
@@ -55,8 +55,8 @@
       <repositories location="https://download.eclipse.org/tools/cdt/releases/10.2">
         <bundles name="org.eclipse.cdt.core"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.12.0/" categoryPrefix="MWE2">
-        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.12.0"/>
+      <repositories location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.12.1/" categoryPrefix="MWE2">
+        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.12.1"/>
       </repositories>
     </contributions>
     <validationRepositories location="https://download.eclipse.org/releases/2021-03"/>
