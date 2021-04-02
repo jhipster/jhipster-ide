@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.lib
 Bundle-SymbolicName: io.github.jhipster.jdl.lib;singleton:=true
-Bundle-Version: 2.3.5.qualifier
+Bundle-Version: 2.3.5
 Bundle-Vendor: io.github.jhipster
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.google.inject,

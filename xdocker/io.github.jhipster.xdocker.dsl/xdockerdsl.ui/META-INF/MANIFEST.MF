@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: xdockerdsl.ui
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.5.qualifier
+Bundle-Version: 2.3.5
 Bundle-SymbolicName: xdockerdsl.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: xdockerdsl,

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: io.github.jhipster.jdl.ide
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.3.5.qualifier
+Bundle-Version: 2.3.5
 Bundle-SymbolicName: io.github.jhipster.jdl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: jbase,
@@ -12,6 +12,7 @@ Require-Bundle: jbase,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
  org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
+ org.eclipse.emf.ecore,
  org.eclipse.lsp4j;visibility:=reexport,
  org.eclipse.lsp4j.jsonrpc;visibility:=reexport,
  org.eclipse.lsp4j.debug,
