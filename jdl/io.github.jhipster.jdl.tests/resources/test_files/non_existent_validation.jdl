@@ -1,3 +1,0 @@
-entity A {
-  email String min(42)
-}

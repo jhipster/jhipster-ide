@@ -1,9 +1,0 @@
-entity A {
-  name String required
-}
-entity B
-
-
-relationship OneToOne {
-  A{b} to B{a(name)}
-}

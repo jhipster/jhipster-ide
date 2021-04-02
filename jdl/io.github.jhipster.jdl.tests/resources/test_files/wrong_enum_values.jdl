@@ -1,8 +1,0 @@
-enum MyEnum {
-    AWrongValue, bbb, CCC
-}
-
-entity MyEntity {
-  name String,
-  sourceType MyEnum required
-}

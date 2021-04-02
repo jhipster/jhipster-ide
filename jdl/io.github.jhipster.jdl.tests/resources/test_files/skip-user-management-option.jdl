@@ -1,9 +1,0 @@
-// skip-user-management
-entity A
-entity B
-
-relationship OneToMany {
-  A to B
-  Authority to User
-}
-  

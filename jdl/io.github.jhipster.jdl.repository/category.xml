@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature id="io.github.jhipster.jdl.feature" version="0.0.0">
-      <category name="main"/>
-   </feature>
-   <category-def name="main" label="JDL"/>
-</site>

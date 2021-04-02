@@ -1,3 +1,0 @@
-include 'xdockerdsl'
-include 'xdockerdsl.ide'
-include 'xdockerdsl.idea'

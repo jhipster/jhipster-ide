@@ -1,6 +1,0 @@
-application {
-  config {
-    baseName appWithBlueprints
-    blueprints [vuejs, generator-jhipster-dotnetcore]
-  }
-}

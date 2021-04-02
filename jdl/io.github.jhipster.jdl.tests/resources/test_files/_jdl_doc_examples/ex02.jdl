@@ -1,8 +1,0 @@
-application {
-  config {
-    baseName myapp
-    applicationType microservice
-    prodDatabaseType postgresql
-    buildTool gradle
-  }
-}

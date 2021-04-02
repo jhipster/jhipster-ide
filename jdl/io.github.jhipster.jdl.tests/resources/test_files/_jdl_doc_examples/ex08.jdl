@@ -1,6 +1,0 @@
-entity Book
-entity Author
-
-relationship ManyToOne {
-  Book{author} to Author
-}

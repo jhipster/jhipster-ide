@@ -1,9 +1,0 @@
-// no-linting
-entity A
-entity B
-
-relationship OneToMany {
-  A to B
-  A to B
-}
-  

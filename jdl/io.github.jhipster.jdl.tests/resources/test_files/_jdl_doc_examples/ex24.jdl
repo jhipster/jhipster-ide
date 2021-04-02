@@ -1,4 +1,0 @@
-entity A {
-  name String, /** My comment */
-  count Integer
-}

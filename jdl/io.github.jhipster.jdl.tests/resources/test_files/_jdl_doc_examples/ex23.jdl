@@ -1,4 +1,0 @@
-entity A {
-  name String /** My super field */
-  count Integer /** My other super field */
-}

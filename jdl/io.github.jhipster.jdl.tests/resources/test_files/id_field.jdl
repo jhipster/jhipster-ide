@@ -1,4 +1,0 @@
-entity A {
-  id Long,
-  email String
-}

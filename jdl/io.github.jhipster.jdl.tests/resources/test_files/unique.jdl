@@ -1,4 +1,0 @@
-entity A {
-  myString String unique,
-  myInteger Integer required unique max(42)
-}

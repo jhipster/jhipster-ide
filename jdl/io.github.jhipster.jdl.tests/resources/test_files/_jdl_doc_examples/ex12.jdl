@@ -1,9 +1,0 @@
-enum Language {
-    FRENCH, ENGLISH, SPANISH
-}
-  
-entity Book {
-    title String required,
-    description String,
-    language Language
-}

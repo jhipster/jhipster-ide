@@ -1,5 +1,0 @@
-entity A
-
-relationship OneToMany {
-  User{a} to A{user}
-}

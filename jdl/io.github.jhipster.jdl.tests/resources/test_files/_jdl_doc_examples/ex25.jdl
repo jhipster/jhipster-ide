@@ -1,5 +1,0 @@
-entity Driver
-entity Car
-relationship OneToOne {
-  Car{driver} to Driver{car}
-}

@@ -1,9 +1,0 @@
-// lint = false
-entity A
-entity B
-
-relationship OneToMany {
-  A to B
-  A to B
-}
-  

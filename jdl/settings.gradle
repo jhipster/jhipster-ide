@@ -1,4 +1,0 @@
-include 'io.github.jhipster.jdl.lib'
-include 'io.github.jhipster.jdl.base'
-include 'io.github.jhipster.jdl'
-include 'io.github.jhipster.jdl.ide'

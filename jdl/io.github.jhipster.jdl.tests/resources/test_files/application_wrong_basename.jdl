@@ -1,7 +1,0 @@
-application {
-  config {
-    baseName aFile
-    enableTranslation false
-    languages []
-  }
-}

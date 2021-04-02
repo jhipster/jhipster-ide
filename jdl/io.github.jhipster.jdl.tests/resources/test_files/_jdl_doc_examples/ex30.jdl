@@ -1,5 +1,0 @@
-entity Driver
-entity Car
-relationship ManyToMany {
-  Car{driver} to Driver{car}
-}

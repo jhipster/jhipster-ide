@@ -1,5 +1,0 @@
-out/
-node_modules/
-
-lib/*
-!lib/plantuml.jar
