@@ -1,4 +1,4 @@
-[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main] [![Download][download-image]][download-url]
+[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main]
 
 JHipster-IDE
 ============
@@ -29,6 +29,3 @@ Please use VisualStudio Code with the JHipster IDE extension instead.
 
 [azure-devops-image]: https://dev.azure.com/jhipster-ide/jhipster-ide/_apis/build/status/jhipster.jhipster-ide?branchName=main
 [azure-devops-url-main]: https://dev.azure.com/jhipster-ide/jhipster-ide/_build
-
-[download-image]: https://api.bintray.com/packages/jhipster/jhipster-ide/2.3/images/download.svg
-[download-url]: https://bintray.com/jhipster/jhipster-ide/2.3/_latestVersion
