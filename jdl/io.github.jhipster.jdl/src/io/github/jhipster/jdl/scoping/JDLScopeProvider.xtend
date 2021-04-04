@@ -29,6 +29,7 @@ import static io.github.jhipster.jdl.jdl.JdlPackage.Literals.*
 import static org.eclipse.xtext.scoping.Scopes.*
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
+import org.eclipse.xtext.scoping.IScope
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -38,6 +39,7 @@ class JDLScopeProvider extends AbstractJDLScopeProvider {
 	@Inject extension JdlModelUtil
 
 	override getScope(EObject ctx, EReference ref) {
+		if (ctx === null || ref === null) return IScope.NULLSCOPE
 		val model = ref == JDL_RELATION__ENTITY ? ctx?.getContainerOfType(JdlDomainModel)
 		return if (model !== null) {
 			model.entityScope
