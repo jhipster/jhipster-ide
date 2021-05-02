@@ -149,11 +149,4 @@
 		</pluginManagement>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>itemis</id>
-			<url>http://dl.bintray.com/itemis/maven</url>
-		</repository>
-	</repositories>
-
 </project>
