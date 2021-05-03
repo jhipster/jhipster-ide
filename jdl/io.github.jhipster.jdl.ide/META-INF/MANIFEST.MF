@@ -17,7 +17,6 @@ Require-Bundle: jbase,
  org.eclipse.lsp4j.debug,
  org.eclipse.lsp4j.generator,
  org.eclipse.lsp4j.jsonrpc.debug,
- org.eclipse.lsp4j.websocket.jakarta,
  io.github.classgraph;bundle-version="4.8.35"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: io.github.jhipster.jdl.ide,
