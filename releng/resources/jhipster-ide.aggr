@@ -5,7 +5,7 @@
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
         <features name="io.github.jhipster.jdl.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
-      <repositories location="https://dl.bintray.com/jhipster/jbase/">
+      <repositories location="https://atcode-io.github.io/jbase-p2/1.4.4">
         <features name="jbase.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
     </contributions>
