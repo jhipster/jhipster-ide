@@ -1,8 +1,4 @@
-# p2.index file to speed things up.
-# Please note that the values in this file denotes repository factories and
-# not files. The factory '<name>.xml' will look for both the <name>.jar
-# and the <name>.xml file, in that order
-#Sun Apr 04 21:38:02 CEST 2021
-artifact.repository.factory.order=artifacts.xml,\!
+#Mon May 10 22:18:02 CEST 2021
+artifact.repository.factory.order=artifacts.xml.xz,artifacts.xml,\!
 version=1
-metadata.repository.factory.order=content.xml,\!
+metadata.repository.factory.order=content.xml.xz,content.xml,\!
