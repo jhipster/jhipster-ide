@@ -20,9 +20,6 @@ package io.github.jhipster.jdl.ui.wizard;
 
 import org.eclipse.osgi.util.NLS;
 
-/**
- * @author Serano Colameo - Initial contribution and API
- */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "io.github.jhipster.jdl.ui.wizard.messages"; //$NON-NLS-1$
 	

@@ -63,12 +63,12 @@ class KeywordsSemanticHighlightingCalculator extends DefaultSemanticHighlighting
 				return true
 			}
 			JdlEntity: {
-				#[jdlCustomAnnotation_Name, jdlEntity_Annotations, jdlEntity_Name].forEach[ feature |
+				#[jdlCustomAnnotation_Identifier, jdlEntity_Annotations, jdlEntity_Name].forEach[ feature |
 					highlightFeature(eObj, feature, NAME_ID)
 				]
 				eObj.fieldDefinition?.fields?.forEach[ f |
 					highlightFeature(f, jdlEntityField_Type, TYPE_ID)
-					#[jdlEntityField_Name, jdlCustomAnnotation_Name, jdlEntityField_Annotations].forEach[ feature |
+					#[jdlEntityField_Name, jdlCustomAnnotation_Identifier, jdlEntityField_Annotations].forEach[ feature |
 						highlightFeature(f, feature, NAME_ID)
 					]
 				]
@@ -86,7 +86,7 @@ class KeywordsSemanticHighlightingCalculator extends DefaultSemanticHighlighting
 				return true
 			}
 			JdlAnnotation: {
-				#[jdlCustomAnnotation_Name, jdlCustomAnnotation_Value].forEach[ feature |
+				#[jdlCustomAnnotation_Identifier, jdlCustomAnnotation_Value].forEach[ feature |
 					highlightFeature(eObj, feature, KEYWORD_ID)
 				]
 				return true
