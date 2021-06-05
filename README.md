@@ -1,4 +1,4 @@
-[![Azure DevOps Build Status][azure-devops-image]][azure-devops-url-main]
+![DevOps Build Status](https://github.com/jhipster/jhipster-ide/actions/workflows/build.yml/badge.svg)
 
 JHipster-IDE
 ============
