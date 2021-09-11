@@ -123,11 +123,7 @@ JdlFieldType:
 	| JdlNumericFieldType 
 	| JdlBooleanFieldType 
 	| JdlDateFieldType 
-	| JdlBlobFieldType 
-	| JdlEntityType;
-
-JdlEntityType:
-	element=JdlEntity;
+	| JdlBlobFieldType;
 
 JdlEnumFieldType:
 	element=[JdlEnum] validators+=JdlDefaultValidator*;

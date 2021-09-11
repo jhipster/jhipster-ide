@@ -38,7 +38,7 @@ Statement:
 	| OnbuildStatement;
 
 FromStatement:
-	'FROM' image=LiteralValue (qualifier=ImageQualifier)?;
+	'FROM' image=LiteralValue (qualifier=ImageQualifier)? (shortName=ShortName)?;
 
 MaintainerStatement:
 	'MAINTAINER' (author+=LiteralValue)+;
@@ -82,6 +82,9 @@ OnbuildStatement:
 /*****************************************************************************************
  * Base Definitions
  *****************************************************************************************/
+ShortName:
+	'AS' name=LiteralValue;
+
 ImageQualifier:
 	TagQualifier | DigestQualifier;
 
