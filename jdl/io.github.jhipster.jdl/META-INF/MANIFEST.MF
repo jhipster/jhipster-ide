@@ -11,6 +11,7 @@ Require-Bundle: jbase,
  org.eclipse.equinox.common;bundle-version="3.5.0",
  net.sourceforge.plantuml.eclipse;bundle-version="1.1.26";visibility:=reexport,
  net.sourceforge.plantuml.text;bundle-version="1.1.26";visibility:=reexport,
+ net.sourceforge.plantuml.lib;bundle-version="1.2021.5",
  org.eclipse.emf.ecore,
  org.eclipse.xtext.util,
  org.eclipse.emf.common,
@@ -96,7 +97,7 @@ Import-Package: org.apache.log4j,
 Bundle-ClassPath: .,
  lib/commons-io-2.8.0.jar,
  lib/commons-lang3-3.11.jar,
- lib/plantuml-epl-8059.jar,
- lib/generator-vscode-0.4.jar
+ lib/generator-vscode-0.4.jar,
+ lib/plantuml-epl-8059.jar
 Automatic-Module-Name: io.github.jhipster.jdl
 Bundle-RequiredExecutionEnvironment: JavaSE-11

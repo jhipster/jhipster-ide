@@ -21,9 +21,9 @@ package io.github.jhipster.jdl.util
 import java.io.File
 import java.io.FileOutputStream
 import net.sourceforge.plantuml.SourceStringReader
-import net.sourceforge.plantuml.cucadiagram.dot.GraphvizUtils
 
 import static java.nio.file.Files.*
+import static net.sourceforge.plantuml.cucadiagram.dot.GraphvizUtils.*
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -39,15 +39,12 @@ class PlantUmlUtil {
 	}
 
 	def static String createImage(String src, File dst) {
-		val reader = new SourceStringReader(src)
-		return reader.generateImage(new FileOutputStream(dst))
+		return new SourceStringReader(src).generateImage(new FileOutputStream(dst))
 	} 
 
 	def static boolean useDotExe() {
 		try {
-			val dotExists = GraphvizUtils.dotExe.exists
-			val dotVersion = GraphvizUtils.getDotVersion
-			return dotExists && dotVersion > 0
+			return getDotVersion > 0 && dotExe.exists
 		} catch (Exception e) {
 			return false
 		}
