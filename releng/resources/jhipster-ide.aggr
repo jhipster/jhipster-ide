@@ -25,8 +25,8 @@
       <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.11.0">
         <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.11.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/tools/orbit/downloads/2021-03">
-        <bundles name="com.google.inject" versionRange="3.0.0"/>
+      <repositories location="https://download.eclipse.org/tools/orbit/downloads/2021-06">
+        <bundles name="com.google.inject" versionRange="[3.0.0,3.1.0]"/>
         <bundles name="com.google.gson" versionRange="2.8.6"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
         <bundles name="org.junit" versionRange="[4.13.0,4.14.0]"/>
