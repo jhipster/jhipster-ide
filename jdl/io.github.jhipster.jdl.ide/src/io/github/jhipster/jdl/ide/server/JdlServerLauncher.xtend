@@ -27,9 +27,9 @@ import org.eclipse.xtext.ide.server.ServerModule
 class JdlServerLauncher extends ServerLauncher {
 
 	def static void main(String[] args) {
-		var String name = ServerLauncher.name
+		var name = ServerLauncher.name
 		println('''Starting «name»...''')
-		var ServerModule serverModule = new ServerModule()
+		var serverModule = new ServerModule
 		ServerLauncher.launch(name, args, serverModule)
 	}
 }
