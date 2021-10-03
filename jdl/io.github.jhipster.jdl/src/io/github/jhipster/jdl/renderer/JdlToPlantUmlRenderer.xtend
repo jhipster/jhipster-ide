@@ -69,7 +69,7 @@ class JdlToPlantUmlRenderer extends AbstractJdlRenderer implements IJdlToPlantUm
 	'''
 	
 	def protected getPragmas() '''
-		«IF useJDot»!pragma graphviz_dot jdot«ENDIF»
+		«IF useJDot»!pragma «SMETANA»«ENDIF»
 		!pragma syntax class
 	'''
 

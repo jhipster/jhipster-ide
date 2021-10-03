@@ -31,9 +31,11 @@ import static net.sourceforge.plantuml.cucadiagram.dot.GraphvizUtils.*
 class PlantUmlUtil {
 
 	public static val USER = 'class User'
-	public static final String START_UML = "@startuml"
-	public static final String END_UML = "@enduml"
-
+	public static val START_UML = "@startuml"
+	public static val END_UML = "@enduml"
+	public static val GRAPHVIZ_DOT = 'graphviz_dot jdot'
+	public static val SMETANA = 'layout smetana'
+	
 	def static createPlantUml(String src, File dst) {
 		write(dst.toPath, #[src]);
 	}
