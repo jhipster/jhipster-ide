@@ -5,7 +5,7 @@
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
         <features name="io.github.jhipster.jdl.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
-      <repositories location="https://raw.githubusercontent.com/Arcware-io/jbase-repo/main/v1.5.0">
+      <repositories location="https://arcware-io.github.io/jbase-repo/1.5.1">
         <features name="jbase.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
     </contributions>
@@ -22,8 +22,8 @@
         <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.25.0"/>
         <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.25.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.11.0">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.11.0"/>
+      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.10.0">
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.10.0"/>
       </repositories>
       <repositories location="https://download.eclipse.org/tools/orbit/downloads/2021-06">
         <bundles name="com.google.inject" versionRange="[3.0.0,3.1.0]"/>

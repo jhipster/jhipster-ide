@@ -38,7 +38,7 @@
 		<repository location="http://hallvard.github.io/plantuml/"/>
 	</location>
 	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<repository location="https://arcware-io.github.io/jbase-repo/v1.5.0/"/>
+		<repository location="https://arcware-io.github.io/jbase-repo/1.5.1/"/>
 		<unit id="jbase.feature.feature.group" version="0.0.0"/>
 	</location>
 </locations>
