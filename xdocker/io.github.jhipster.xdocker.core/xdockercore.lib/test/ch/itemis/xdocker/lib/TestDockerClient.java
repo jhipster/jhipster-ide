@@ -36,6 +36,7 @@ import com.github.dockerjava.core.command.ExecStartResultCallback;
  *
  * @author Serano Colameo - Initial contribution and API
  */
+@SuppressWarnings("deprecation")
 public class TestDockerClient {
 
 	protected DockerClient dockerClient;

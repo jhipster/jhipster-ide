@@ -34,6 +34,7 @@ import junit.framework.TestCase;
  *
  * @author Serano Colameo - Initial contribution and API
  */
+@SuppressWarnings("deprecation")
 public class TestJHipsterDockerRun extends TestCase {
 
 	private static DockerClient dockerClient = getDockerClient();
