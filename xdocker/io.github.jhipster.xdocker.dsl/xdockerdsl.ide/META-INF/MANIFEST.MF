@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: xdockerdsl.ide
 Bundle-Vendor: io.github.jhipster
-Bundle-Version: 2.4.1.qualifier
+Bundle-Version: 2.4.1
 Bundle-SymbolicName: xdockerdsl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: xdockerdsl,
