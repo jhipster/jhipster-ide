@@ -12,19 +12,24 @@ import org.eclipse.ui.console.IConsoleFactory
 import org.eclipse.ui.console.IOConsole
 import org.eclipse.ui.console.IOConsoleOutputStream
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.jface.resource.ImageDescriptor
 
 /**
  * Xdocker Console Implementation
  * 
  * @author Serano Colameo - Initial contribution and API
  */
-final class XdockerConsole extends IOConsole {
+class XdockerConsole extends IOConsole {
 	
 	@Accessors static var XdockerConsole INSTANCE = new XdockerConsole
 	@Accessors var IOConsoleOutputStream outStream
 	
 	new() { 
-		super('Xdocker Console', 'XdockerConsole', null, true)
+		this('Xdocker Console', 'XdockerConsole', null, true)
+	}
+
+	new(String name, String consoleType, ImageDescriptor imageDescriptor, boolean autoLifecycle) { 
+		super(name, consoleType, imageDescriptor, autoLifecycle)
 		initStream
 		consoleManager?.addConsoles(#[this])
 	}

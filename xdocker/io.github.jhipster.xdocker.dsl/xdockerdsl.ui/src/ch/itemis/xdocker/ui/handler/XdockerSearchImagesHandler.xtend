@@ -19,8 +19,8 @@ import static extension org.eclipse.ui.handlers.HandlerUtil.*
  * @author Serano Colameo - Initial contribution and API
  */
 class XdockerSearchImagesHandler extends AbstractHandler {
-	private static final String ERR_SEARCHING_IMAGE = 'Error opening search image browser'
-	private static final String IMAGE_BROWESER_ID = 'ch.itemis.xdocker.ui.view.xdockerImageBrowserView'
+	static final String ERR_SEARCHING_IMAGE = 'Error opening search image browser'
+	static final String IMAGE_BROWESER_ID = 'ch.itemis.xdocker.ui.view.xdockerImageBrowserView'
 
     /* 
      * (non-Javadoc)

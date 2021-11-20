@@ -26,7 +26,7 @@ class XdockerStream extends OutputStream {
 		this.logger = logger
 	}
 
-	def public print(String message) {
+	def print(String message) {
 		buffer.add(message)
 	}
 

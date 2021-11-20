@@ -18,7 +18,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
  * 
  * @author Serano Colameo - Initial contribution and API
  */
-final class XdockerConsoleLogger implements IConsoleLogger {
+class XdockerConsoleLogger implements IConsoleLogger {
 
 	XdockerConsole console
 
