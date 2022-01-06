@@ -1,5 +1,5 @@
 /**
- * Copyright 2016-2021 the original author or authors from the JHipster project.
+ * Copyright 2016-2022 the original author or authors from the JHipster project.
  *
  * This file is part of the JHipster project, see http://www.jhipster.tech/
  * for more information.
@@ -21,13 +21,18 @@ package io.github.jhipster.jdl.ui.wizard
 import com.google.inject.Inject
 import java.nio.charset.Charset
 import java.nio.file.Path
+import java.util.concurrent.atomic.AtomicReference
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.jface.preference.IPreferenceStore
+import org.eclipse.swt.widgets.Display
 import org.eclipse.tm.terminal.view.core.interfaces.ITerminalService
 import org.eclipse.ui.IWorkbench
+import org.eclipse.ui.IWorkbenchWindow
+import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.console.ConsolePlugin
+import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
 
 import static io.github.jhipster.jdl.ui.internal.JdlActivator.*
 import static io.github.jhipster.jdl.ui.preference.JDLPreferenceProperties.*
@@ -36,11 +41,6 @@ import static java.nio.file.Files.*
 import static java.nio.file.attribute.PosixFilePermission.*
 import static java.nio.file.attribute.PosixFilePermissions.*
 import static org.eclipse.jface.dialogs.MessageDialog.*
-import org.eclipse.ui.PlatformUI
-import org.eclipse.ui.IWorkbenchWindow
-import org.eclipse.swt.widgets.Display
-import java.util.concurrent.atomic.AtomicReference
-import org.eclipse.xtext.ui.wizard.template.TemplateProjectInfo
 
 /**
  * @author Serano Colameo - Initial contribution and API
@@ -87,7 +87,7 @@ class JDLNewProjectWizardExtension {
 	}
 	
 	def void openPerspective(String perspectiveID) {
-	    val AtomicReference<IWorkbenchWindow> window = new AtomicReference<IWorkbenchWindow>
+	    val window = new AtomicReference<IWorkbenchWindow>
 		try {
             Display.getDefault().asyncExec [
                 PlatformUI.workbench.activeWorkbenchWindow => [

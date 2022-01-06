@@ -18,7 +18,6 @@ import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate
-import org.eclipse.debug.ui.RefreshTab
 import org.eclipse.swt.widgets.Display
 import xdockerdsl.ui.internal.XdockerdslActivator
 
@@ -26,6 +25,7 @@ import static ch.itemis.xdocker.ui.launch.shortcut.XdockerBuildLaunchConfigData.
 import static ch.itemis.xdocker.ui.util.MessageUtil.*
 
 import static extension ch.itemis.xdocker.ui.job.AbstractXdockerJob.*
+import static extension org.eclipse.debug.ui.RefreshTab.*
 
 /**
  * Xdocker build image delegating class
@@ -60,12 +60,11 @@ class XdockerBuildImageLaunchDelegate extends LaunchConfigurationDelegate {
 			}) => [
 				execute [it, result |
 					// refresh after job has finished
-					if (result !== null && result.isOK && 
-						RefreshTab.getRefreshScope(cfg) !== null) {
+					if (result !== null && result.isOK && cfg.refreshScope !== null) {
 						try {
-							RefreshTab.refreshResources(cfg, monitor)
+							refreshResources(cfg, monitor)
 						} catch (CoreException e) {
-							console.log(e.message)
+							log(e.message)
 						}
 					}
 				]
