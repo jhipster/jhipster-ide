@@ -2,7 +2,7 @@
 <feature
       id="io.github.jhipster.jdl.feature"
       label="JHipster IDE Feature"
-      version="2.4.2.qualifier">
+      version="2.5.0.qualifier">
 
    <plugin
          id="io.github.jhipster.jdl"
