@@ -5,7 +5,7 @@
       <repositories location="../../jdl/io.github.jhipster.jdl.repository/target/repository">
         <features name="io.github.jhipster.jdl.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='JHipster%20IDE']"/>
       </repositories>
-      <repositories location="https://arcware-io.github.io/jbase-repo/1.6.0">
+      <repositories location="https://arcware-io.github.io/jbase-repo/1.7.0">
         <features name="jbase.feature.feature.group" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1"/>
       </repositories>
     </contributions>
@@ -17,15 +17,15 @@
   </validationSets>
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
-      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.26.0/">
-        <bundles name="org.eclipse.xtext.java" versionRange="2.26.0"/>
-        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.26.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.26.0"/>
+      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.27.0/">
+        <bundles name="org.eclipse.xtext.java" versionRange="2.27.0"/>
+        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.27.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.27.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.12.0">
+      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.14.0">
         <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.12.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/releases/2022-03">
+      <repositories location="https://download.eclipse.org/releases/2022-06">
         <bundles name="com.google.inject" versionRange="[3.0.0,5.1.0]"/>
         <bundles name="com.google.gson" versionRange="2.8.6"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
@@ -46,17 +46,17 @@
         <features name="org.eclipse.m2e.logback.feature.feature.group" versionRange="1.17.0"/>
         <features name="org.eclipse.m2e.sdk.feature.feature.group" versionRange="1.20.1"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/releases/2022-03">
-        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="10.3.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
-        <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="10.2.0"/>
+      <repositories location="https://download.eclipse.org/releases/2022-06">
+        <features name="org.eclipse.tm.terminal.feature.feature.group" versionRange="10.7.0" validConfigurations="//@configurations.2 //@configurations.3 //@configurations.4 //@configurations.5 //@configurations.0 //@configurations.1" categories="//@customCategories[identifier='TM%20Terminal%20Shell%20Integration']"/>
+        <features name="org.eclipse.tm.terminal.view.feature.feature.group" versionRange="10.7.0"/>
       </repositories>
     </contributions>
     <contributions description="Eclipse Extras" label="Eclipse Extras">
       <repositories location="https://download.eclipse.org/tools/cdt/releases/latest/">
         <bundles name="org.eclipse.cdt.core"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.12.2/" categoryPrefix="MWE2">
-        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.12.2"/>
+      <repositories location="https://download.eclipse.org/modeling/emft/mwe/updates/releases/2.13.0/" categoryPrefix="MWE2">
+        <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.13.0"/>
       </repositories>
     </contributions>
     <validationRepositories location="https://download.eclipse.org/releases/2022-03"/>

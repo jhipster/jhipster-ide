@@ -143,7 +143,7 @@ class JDLRendererTest {
 		'''.parse)
 		
 		val pragmas = '''
-			«IF useJDot»!pragma graphviz_dot jdot«ENDIF»
+			«IF useJDot»!pragma layout smetana«ENDIF»
 			!pragma syntax class
 		'''.toString
 
