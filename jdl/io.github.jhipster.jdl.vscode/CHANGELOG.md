@@ -1,3 +1,6 @@
+### 2.6.0
+- Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/37).
+
 ### 2.5.0
 - Resolved [issues](https://github.com/jhipster/jhipster-ide/projects/36).
 
