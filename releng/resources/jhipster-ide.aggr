@@ -33,6 +33,10 @@
         <bundles name="org.objectweb.asm" versionRange="9.1.0"/>
         <bundles name="org.objectweb.asm.tree" versionRange="9.1.0"/>
         <bundles name="io.github.classgraph" versionRange="4.8.35"/>
+        <bundles name="org.eclipse.emf" versionRange="2.8.0"/>
+        <bundles name="org.eclipse.emf.codegen" versionRange="2.22.0"/>
+        <bundles name="org.eclipse.emf.codegen.ecore" versionRange="2.30.0"/>
+        <bundles name="org.eclipse.emf.ecore.edit" versionRange="2.13.0"/>
       </repositories>
     </contributions>
     <contributions description="Tools" label="Tools">
@@ -59,8 +63,8 @@
         <features name="org.eclipse.emf.mwe2.launcher.feature.group" versionRange="2.13.0"/>
       </repositories>
     </contributions>
-    <validationRepositories location="https://download.eclipse.org/releases/2022-03"/>
-    <validationRepositories location="https://download.eclipse.org/tools/orbit/downloads/2022-03"/>
+    <validationRepositories location="https://download.eclipse.org/releases/2022-06"/>
+    <validationRepositories location="https://download.eclipse.org/tools/orbit/downloads/2022-06"/>
   </validationSets>
   <configurations/>
   <configurations architecture="x86_64"/>
