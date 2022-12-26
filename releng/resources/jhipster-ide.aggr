@@ -17,15 +17,15 @@
   </validationSets>
   <validationSets description="Base" label="Base">
     <contributions description="Xtext" label="Xtext">
-      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.27.0/">
-        <bundles name="org.eclipse.xtext.java" versionRange="2.27.0"/>
-        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.27.0"/>
-        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.27.0"/>
+      <repositories location="https://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.29.0/">
+        <bundles name="org.eclipse.xtext.java" versionRange="2.29.0"/>
+        <bundles name="org.eclipse.xtext.xbase.ui" versionRange="2.29.0"/>
+        <features name="org.eclipse.xtext.sdk.feature.group" versionRange="2.29.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.14.0">
-        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.14.0"/>
+      <repositories location="https://download.eclipse.org/lsp4j/updates/releases/0.19.0">
+        <features name="org.eclipse.lsp4j.sdk.feature.group" versionRange="0.19.0"/>
       </repositories>
-      <repositories location="https://download.eclipse.org/releases/2022-06">
+      <repositories location="https://download.eclipse.org/releases/2022-12">
         <bundles name="com.google.inject" versionRange="[3.0.0,5.1.0]"/>
         <bundles name="com.google.gson" versionRange="2.8.6"/>
         <bundles name="org.antlr.runtime" versionRange="[3.2.0,3.5.0]"/>
