@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: xdockercore.lib
 Bundle-SymbolicName: xdockercore.lib
-Bundle-Version: 2.6.0.qualifier
+Bundle-Version: 2.7.0.qualifier
 Bundle-Vendor: Arcware GmbH GmbH
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: ch.itemis.xdocker.lib,
  ch.itemis.xdocker.lib.config,
  ch.itemis.xdocker.lib.util,

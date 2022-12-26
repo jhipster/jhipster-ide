@@ -21,7 +21,7 @@ Require-Bundle: jbase,
  org.eclipse.lsp4j.websocket.jakarta;bundle-version="[0.9.0,0.20.0)",
  io.github.classgraph;bundle-version="4.8.138",
  org.aopalliance;bundle-version="1.0.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Export-Package: io.github.jhipster.jdl.ide,
  io.github.jhipster.jdl.ide.contentassist,
  io.github.jhipster.jdl.ide.contentassist.antlr,
