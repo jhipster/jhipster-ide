@@ -40,7 +40,7 @@
       </repositories>
     </contributions>
     <contributions description="Tools" label="Tools">
-      <repositories location="http://hallvard.github.io/plantuml">
+      <repositories location="https://hallvard.github.io/plantuml">
         <features name="net.sourceforge.plantuml.ecore.feature.feature.group" versionRange="1.1.27"/>
         <features name="net.sourceforge.plantuml.feature.feature.group" versionRange="1.1.26"/>
         <features name="net.sourceforge.plantuml.lib.feature.feature.group" versionRange="1.2021.5"/>

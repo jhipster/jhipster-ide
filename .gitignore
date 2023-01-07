@@ -21,6 +21,7 @@ bin
 .buildpath
 .externalToolBuilders
 *.launch
+*.tycho-consumer-pom.xml
 
 # Visual Studio Code
 *.vsix
