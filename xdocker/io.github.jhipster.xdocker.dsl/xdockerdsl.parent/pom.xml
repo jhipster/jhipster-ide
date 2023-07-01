@@ -1,22 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>io.github.jhipster-ide.xdocker.dsl</groupId>
-	<version>2.7.0-SNAPSHOT</version>
+	<version>2.8.0-SNAPSHOT</version>
 	<artifactId>xdockerdsl.parent</artifactId>
 	<name>Xdocker DSL Parent</name>
 	<packaging>pom</packaging>
 
 	<properties>
-		<xtextVersion>2.29.0</xtextVersion>
+		<xtextVersion>2.31.0</xtextVersion>
 		<mwe2Version>2.14.0</mwe2Version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<org.reficio.p2-maven-plugin.version>1.3.0</org.reficio.p2-maven-plugin.version>
 		<!-- Tycho settings -->
-		<tycho-version>2.7.5</tycho-version>
+		<tycho-version>3.0.4</tycho-version>
 		<!-- Define overridable properties for tycho-surefire-plugin -->
 		<platformSystemProperties></platformSystemProperties>
 		<moduleProperties></moduleProperties>
@@ -242,7 +243,8 @@
 						<useProjectSettings>false</useProjectSettings>
 					</configuration>
 				</plugin>
-				<!-- to skip running (and compiling) tests use commandline flag: -Dmaven.test.skip
+				<!-- to skip running (and compiling) tests use commandline flag:
+				-Dmaven.test.skip
 					To skip tests, but still compile them, use: -DskipTests
 					To allow all tests in a pom to pass/fail, use commandline flag: -fae (fail
 					at end) -->
@@ -251,8 +253,11 @@
 					<artifactId>tycho-surefire-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<configuration>
-						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY AUTOFORMATTING -->
-						<argLine>${tycho.testArgLine} ${platformSystemProperties} ${systemProperties} ${moduleProperties}</argLine>
+						<!-- THE FOLLOWING LINE MUST NOT BE BROKEN BY
+						AUTOFORMATTING -->
+						<argLine>${tycho.testArgLine}
+							${platformSystemProperties} ${systemProperties}
+							${moduleProperties}</argLine>
 					</configuration>
 				</plugin>
 			</plugins>
@@ -262,7 +267,8 @@
 	<repositories>
 		<repository>
 			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<name>disable dead 'Codehaus Snapshots' repository, see
+				https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
 			<url>http://nexus.codehaus.org/snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
@@ -271,7 +277,8 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		<!-- This must be disabled explicitly, otherwise it is enabled by https://github.com/mojohaus/mojo-parent 
+		<!-- This must be disabled explicitly, otherwise it is enabled by
+		https://github.com/mojohaus/mojo-parent 
 			which is taken from exec-maven-plugin from at least version 1.6.0 -->
 		<repository>
 			<id>ossrh-snapshots</id>
@@ -300,15 +307,20 @@
 		<repository>
 			<id>sonatype-snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases><enabled>false</enabled></releases>
-			<snapshots><enabled>true</enabled></snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
 			<id>codehaus-snapshots</id>
-			<name>disable dead 'Codehaus Snapshots' repository, see https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
+			<name>disable dead 'Codehaus Snapshots' repository, see
+				https://bugs.eclipse.org/bugs/show_bug.cgi?id=481478</name>
 			<url>http://nexus.codehaus.org/snapshots/</url>
 			<releases>
 				<enabled>false</enabled>
@@ -342,8 +354,12 @@
 		<pluginRepository>
 			<id>sonatype-snapshots</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases><enabled>false</enabled></releases>
-			<snapshots><enabled>true</enabled></snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
 

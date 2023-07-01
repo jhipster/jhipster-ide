@@ -32,6 +32,13 @@ Workflow {
 			name = "io.github.jhipster.jdl.JDL"
 			fileExtensions = "jdl,jh"
 
+/*
+			fragment = io.typefox.xtext2langium.Xtext2LangiumFragment {
+//				prefixEnumLiterals = false
+				useStringAsEnumRuleType = true
+		        outputPath = './langium'
+    		}
+*/
 			referencedResource = "platform:/resource/jbase/model/generated/JBase.genmodel"
 
 /* 	
